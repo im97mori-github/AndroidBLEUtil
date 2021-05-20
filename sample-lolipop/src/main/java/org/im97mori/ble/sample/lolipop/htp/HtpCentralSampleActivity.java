@@ -48,7 +48,7 @@ public class HtpCentralSampleActivity extends BaseActivity implements View.OnCli
         mHealthThermometerProfile.start();
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
-        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<>()) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -208,14 +208,11 @@ public class HtpCentralSampleActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onCallbacked(final Pair<String, String> log) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.add(log);
-                mListView.smoothScrollToPosition(mAdapter.getCount());
+        runOnUiThread(() -> {
+            mAdapter.add(log);
+            mListView.smoothScrollToPosition(mAdapter.getCount());
 
-                updateLayout();
-            }
+            updateLayout();
         });
     }
 

@@ -27,6 +27,7 @@ public class EnvironmentalSensingConfigurationAndroidTest {
         assertEquals(value[0], result.getTriggerLogicValue());
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor002() {
         //@formatter:off

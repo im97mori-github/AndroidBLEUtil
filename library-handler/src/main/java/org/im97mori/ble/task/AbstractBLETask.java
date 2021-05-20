@@ -446,7 +446,8 @@ public abstract class AbstractBLETask {
      * @param message {@link Message} from {@link org.im97mori.ble.TaskHandler#handleMessage(Message)}
      * @return {@code true}:this task has been finished(or timeout), {@code false}:work in progress
      */
-    public abstract boolean doProcess(@NonNull Message message);
+    @SuppressWarnings("SameReturnValue")
+    public abstract boolean doProcess(@SuppressWarnings("unused") @NonNull Message message);
 
     /**
      * check busy status

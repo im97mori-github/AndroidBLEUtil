@@ -32,7 +32,8 @@ dependencies {
     api "${groupId}:${serviceCentralAndroid.artifactId}:${serviceCentralAndroid.versionName}"
     api "${groupId}:${serviceGapCentralAndroid.artifactId}:${serviceGapCentralAndroid.versionName}"
     api "${groupId}:${serviceGattCentralAndroid.artifactId}:${serviceGattCentralAndroid.versionName}"
-    androidTestImplementation "${groupId}:${testCentral.artifactId}:${testCentral.versionName}"
+//    androidTestImplementation "${groupId}:${testCentral.artifactId}:${testCentral.versionName}"
+    androidTestImplementation project(path: ':test:central')
 }
 
 task sourcesJar(type: Jar) {

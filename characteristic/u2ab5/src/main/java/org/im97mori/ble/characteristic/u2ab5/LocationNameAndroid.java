@@ -75,6 +75,7 @@ public class LocationNameAndroid extends LocationName implements Parcelable {
      * @param in Parcel
      */
     private LocationNameAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

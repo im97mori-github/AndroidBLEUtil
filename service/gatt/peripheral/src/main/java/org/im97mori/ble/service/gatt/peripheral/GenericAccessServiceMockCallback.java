@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a00.DeviceName;
@@ -120,7 +119,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
             mDeviceNameData = new CharacteristicData(DEVICE_NAME_CHARACTERISTIC
                     , property
                     , permission
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -175,7 +174,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
             mAppearanceData = new CharacteristicData(APPEARANCE_CHARACTERISTIC
                     , property
                     , permission
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -223,7 +222,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
             mPeripheralPreferredConnectionParametersData = new CharacteristicData(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -271,7 +270,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
             mCentralAddressResolutionData = new CharacteristicData(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -319,7 +318,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
             mResolvablePrivateAddressOnlyData = new CharacteristicData(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -350,7 +349,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
             mReconnectionAddressData = new CharacteristicData(RECONNECTION_ADDRESS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , null
@@ -405,7 +404,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
             mPeripheralPrivacyFlagData = new CharacteristicData(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC
                     , property
                     , permission
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

@@ -1,9 +1,5 @@
 package org.im97mori.ble.profile.wsp.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
@@ -11,10 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
@@ -32,25 +26,42 @@ import org.im97mori.ble.service.cts.central.CurrentTimeService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.uds.central.UserDataService;
 import org.im97mori.ble.service.wss.central.WeightScaleService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BATTERY_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.BATTERY_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.BODY_COMPOSITION_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.CURRENT_TIME_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.USER_DATA_SERVICE;
+import static org.im97mori.ble.BLEConstants.ServiceUUID.WEIGHT_SCALE_SERVICE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class WeightScaleProfileTest {
+public class WeightScaleProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findWeightScaleProfileDevices_00001() {
@@ -85,20 +96,34 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_hasBodyCompositionService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-            @Override
-            public synchronized boolean isConnected() {
-                return true;
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
-        weightScaleProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(BODY_COMPOSITION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY)), null);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.hasBodyCompositionService());
         weightScaleProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasBodyCompositionService_00003() {
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = weightScaleProfile.hasBodyCompositionService();
+        weightScaleProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasBodyCompositionService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(WEIGHT_SCALE_SERVICE, 0);
+        bluetoothGattService.addService(new BluetoothGattService(BODY_COMPOSITION_SERVICE, 0));
+
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        weightScaleProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = weightScaleProfile.hasBodyCompositionService();
+        weightScaleProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -109,20 +134,33 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_hasUserDataService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-            @Override
-            public synchronized boolean isConnected() {
-                return true;
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
-        weightScaleProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(USER_DATA_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY)), null);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.hasUserDataService());
         weightScaleProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasUserDataService_00003() {
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = weightScaleProfile.hasUserDataService();
+        weightScaleProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasUserDataService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
+
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        weightScaleProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = weightScaleProfile.hasUserDataService();
+        weightScaleProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -133,20 +171,33 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_hasBatteryService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-            @Override
-            public synchronized boolean isConnected() {
-                return true;
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
-        weightScaleProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY)), null);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.hasBatteryService());
         weightScaleProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasBatteryService_00003() {
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = weightScaleProfile.hasBatteryService();
+        weightScaleProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasBatteryService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
+
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        weightScaleProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = weightScaleProfile.hasBatteryService();
+        weightScaleProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -157,20 +208,33 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_hasCurrentTimeService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-            @Override
-            public synchronized boolean isConnected() {
-                return true;
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
-        weightScaleProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(CURRENT_TIME_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY)), null);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.hasCurrentTimeService());
         weightScaleProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasCurrentTimeService_00003() {
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = weightScaleProfile.hasCurrentTimeService();
+        weightScaleProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasCurrentTimeService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
+
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        weightScaleProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = weightScaleProfile.hasCurrentTimeService();
+        weightScaleProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -181,52 +245,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getWeightScaleFeature_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
                     mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWeightScaleFeature() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getWeightScaleFeature());
         weightScaleProfile.disconnect();
     }
@@ -239,52 +271,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getWeightMeasurementClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
                     mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWeightMeasurementClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getWeightMeasurementClientCharacteristicConfiguration());
         weightScaleProfile.disconnect();
     }
@@ -297,52 +297,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_startWeightMeasurementIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
                     mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startWeightMeasurementIndication() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.startWeightMeasurementIndication());
         weightScaleProfile.disconnect();
     }
@@ -355,52 +323,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_stopWeightMeasurementIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
                     mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopWeightMeasurementIndication() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.stopWeightMeasurementIndication());
         weightScaleProfile.disconnect();
     }
@@ -413,46 +349,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_hasSystemId_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public synchronized boolean hasPnpId() {
-                            return true;
-                        }
-
-                    };
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.hasSystemId());
         weightScaleProfile.disconnect();
     }
@@ -465,59 +363,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getManufacturerNameString() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasManufacturerNameString() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getManufacturerNameString());
         weightScaleProfile.disconnect();
     }
@@ -530,59 +389,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getModelNumberString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getModelNumberString() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasModelNumberString() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getModelNumberString());
         weightScaleProfile.disconnect();
     }
@@ -595,59 +415,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getSystemId_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getSystemId() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasSystemId() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getSystemId());
         weightScaleProfile.disconnect();
     }
@@ -660,52 +441,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBodyCompositionFeature_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBodyCompositionService == null) {
                     mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBodyCompositionFeature() {
+                            return 1;
                         }
                     };
                 }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBodyCompositionFeature());
         weightScaleProfile.disconnect();
     }
@@ -718,38 +467,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isAgeCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isAgeCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
@@ -762,38 +481,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isDateOfBirthCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isDateOfBirthCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
@@ -806,38 +495,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isFirstNameCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isFirstNameCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
@@ -850,38 +509,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isHeightCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isHeightCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
@@ -894,38 +523,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isGenderCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isGenderCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
@@ -938,38 +537,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isDatabaseChangeIncrementCharacteristicNotifySupported());
         weightScaleProfile.disconnect();
     }
@@ -982,59 +551,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getAge_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isAgeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getAge() {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getAge());
         weightScaleProfile.disconnect();
     }
@@ -1047,59 +577,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setAge_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isAgeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setAge(@NonNull Age age) {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setAge(new Age(1)));
         weightScaleProfile.disconnect();
     }
@@ -1112,59 +603,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getDateOfBirth_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isDateOfBirthCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getDateOfBirth() {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getDateOfBirth());
         weightScaleProfile.disconnect();
     }
@@ -1177,59 +629,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setDateOfBirth_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isDateOfBirthCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setDateOfBirth(@NonNull DateOfBirth dateOfBirth) {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setDateOfBirth(new DateOfBirth(0, 0, 0)));
         weightScaleProfile.disconnect();
     }
@@ -1242,60 +655,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getFirstName_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getFirstName() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isFirstNameCharacteristicSupported() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getFirstName());
         weightScaleProfile.disconnect();
     }
@@ -1308,59 +681,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setFirstName_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isFirstNameCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setFirstName(@NonNull FirstName firstName) {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setFirstName(new FirstName("")));
         weightScaleProfile.disconnect();
     }
@@ -1373,60 +707,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getHeight_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getHeight() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isHeightCharacteristicSupported() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getHeight());
         weightScaleProfile.disconnect();
     }
@@ -1439,59 +733,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setHeight_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isHeightCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setHeight(@NonNull Height height) {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setHeight(new Height(0)));
         weightScaleProfile.disconnect();
     }
@@ -1504,60 +759,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getGender_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getGender() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isGenderCharacteristicSupported() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getGender());
         weightScaleProfile.disconnect();
     }
@@ -1570,59 +785,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setGender_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isGenderCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setGender(@NonNull Gender gender) {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setGender(new Gender(0)));
         weightScaleProfile.disconnect();
     }
@@ -1635,55 +811,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getDatabaseChangeIncrement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getDatabaseChangeIncrement() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getDatabaseChangeIncrement());
         weightScaleProfile.disconnect();
     }
@@ -1696,54 +837,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setDatabaseChangeIncrement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setDatabaseChangeIncrement(@NonNull DatabaseChangeIncrement databaseChangeIncrement) {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setDatabaseChangeIncrement(new DatabaseChangeIncrement(0)));
         weightScaleProfile.disconnect();
     }
@@ -1756,60 +863,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getDatabaseChangeIncrementClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
-                            return true;
+                        public synchronized Integer getDatabaseChangeIncrementClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getDatabaseChangeIncrementClientCharacteristicConfiguration());
         weightScaleProfile.disconnect();
     }
@@ -1822,60 +889,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_startDatabaseChangeIncrementNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
-                            return true;
+                        public synchronized Integer startDatabaseChangeIncrementNotification() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.startDatabaseChangeIncrementNotification());
         weightScaleProfile.disconnect();
     }
@@ -1888,60 +915,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_stopDatabaseChangeIncrementNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
-                            return true;
+                        public synchronized Integer stopDatabaseChangeIncrementNotification() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.stopDatabaseChangeIncrementNotification());
         weightScaleProfile.disconnect();
     }
@@ -1954,56 +941,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getUserIndex_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUserIndex() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getUserIndex());
         weightScaleProfile.disconnect();
     }
@@ -2016,56 +967,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getRegisteredUserClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRegisteredUserClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getRegisteredUserClientCharacteristicConfiguration());
         weightScaleProfile.disconnect();
     }
@@ -2079,56 +994,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_startRegisteredUserIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startRegisteredUserIndication() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.startRegisteredUserIndication());
         weightScaleProfile.disconnect();
     }
@@ -2141,56 +1020,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_stopRegisteredUserIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopRegisteredUserIndication() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.stopRegisteredUserIndication());
         weightScaleProfile.disconnect();
     }
@@ -2203,54 +1046,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setUserControlPoint_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setUserControlPoint(@NonNull UserControlPoint userControlPoint) {
+                            return 1;
                         }
                     };
                 }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setUserControlPoint(new UserControlPoint(0, 0, 0, 0, 0, 0)));
         weightScaleProfile.disconnect();
     }
@@ -2263,56 +1072,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getUserControlPointClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUserControlPointClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getUserControlPointClientCharacteristicConfiguration());
         weightScaleProfile.disconnect();
     }
@@ -2325,56 +1098,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_startUserControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startUserControlPointIndication() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.startUserControlPointIndication());
         weightScaleProfile.disconnect();
     }
@@ -2387,56 +1124,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_stopUserControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopUserControlPointIndication() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.stopUserControlPointIndication());
         weightScaleProfile.disconnect();
     }
@@ -2449,55 +1150,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBodyCompositionMeasurementClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBodyCompositionService == null) {
                     mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBodyCompositionMeasurementClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBodyCompositionMeasurementClientCharacteristicConfiguration());
         weightScaleProfile.disconnect();
     }
@@ -2510,55 +1176,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_startBodyCompositionMeasurementIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBodyCompositionService == null) {
                     mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startBodyCompositionMeasurementIndication() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.startBodyCompositionMeasurementIndication());
         weightScaleProfile.disconnect();
     }
@@ -2571,55 +1202,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_stopBodyCompositionMeasurementIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBodyCompositionService == null) {
                     mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopBodyCompositionMeasurementIndication() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.stopBodyCompositionMeasurementIndication());
         weightScaleProfile.disconnect();
     }
@@ -2632,42 +1228,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBatteryLevelCount_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCount() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBatteryLevelCount());
         weightScaleProfile.disconnect();
     }
@@ -2680,60 +1254,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBatteryLevel_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevel(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-        weightScaleProfile.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBatteryLevel());
         weightScaleProfile.disconnect();
     }
@@ -2746,58 +1280,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBatteryLevel_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevel(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBatteryLevel(0));
         weightScaleProfile.disconnect();
     }
@@ -2810,57 +1306,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isBatteryLevelNotificatable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                    };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ));
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isBatteryLevelNotificatable());
         weightScaleProfile.disconnect();
     }
@@ -2873,57 +1320,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isBatteryLevelNotificatable_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                    };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ));
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isBatteryLevelNotificatable(0));
         weightScaleProfile.disconnect();
     }
@@ -2936,59 +1334,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBatteryLevelCharacteristicPresentationFormat_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ);
-                    bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-                    bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBatteryLevelCharacteristicPresentationFormat());
         weightScaleProfile.disconnect();
     }
@@ -3001,59 +1360,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBatteryLevelCharacteristicPresentationFormat_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ);
-                    bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-                    bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBatteryLevelCharacteristicPresentationFormat(0));
         weightScaleProfile.disconnect();
     }
@@ -3066,59 +1386,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBatteryLevelClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ);
-                    bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-                    bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBatteryLevelClientCharacteristicConfiguration());
         weightScaleProfile.disconnect();
     }
@@ -3131,59 +1412,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getBatteryLevelClientCharacteristicConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ);
-                    bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-                    bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getBatteryLevelClientCharacteristicConfiguration(0));
         weightScaleProfile.disconnect();
     }
@@ -3196,59 +1438,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_startBatteryLevelNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startBatteryLevelNotification(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ);
-                    bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-                    bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.startBatteryLevelNotification());
         weightScaleProfile.disconnect();
     }
@@ -3261,59 +1464,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_startBatteryLevelNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startBatteryLevelNotification(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ);
-                    bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-                    bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.startBatteryLevelNotification(0));
         weightScaleProfile.disconnect();
     }
@@ -3326,59 +1490,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_stopBatteryLevelNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopBatteryLevelNotification(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ);
-                    bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-                    bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.stopBatteryLevelNotification());
         weightScaleProfile.disconnect();
     }
@@ -3391,59 +1516,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_stopBatteryLevelNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopBatteryLevelNotification(int index) {
+                            return 1;
                         }
-
                     };
-                    BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY);
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ);
-                    bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-                    bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-                    mBatteryService.onDiscoverServiceSuccess(0, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.stopBatteryLevelNotification(0));
         weightScaleProfile.disconnect();
     }
@@ -3456,35 +1542,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isCurrentTimeCharacteristicWritable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isCurrentTimeCharacteristicWritable());
         weightScaleProfile.disconnect();
     }
@@ -3497,35 +1556,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isLocalTimeInformationCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isLocalTimeInformationCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
@@ -3538,35 +1570,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isLocalTimeInformationCharacteristicWritable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isLocalTimeInformationCharacteristicWritable());
         weightScaleProfile.disconnect();
     }
@@ -3579,35 +1584,8 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_isReferenceTimeInformationCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-            }
-        };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.isReferenceTimeInformationCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
@@ -3620,53 +1598,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getCurrentTime_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getCurrentTime() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getCurrentTime());
         weightScaleProfile.disconnect();
     }
@@ -3679,59 +1624,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setCurrentTime_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isCurrentTimeCharacteristicWritable() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setCurrentTime(@NonNull CurrentTime currentTime) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setCurrentTime(new CurrentTime(new byte[10])));
         weightScaleProfile.disconnect();
     }
@@ -3744,55 +1650,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getCurrentTimeClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getCurrentTimeClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getCurrentTimeClientCharacteristicConfiguration());
         weightScaleProfile.disconnect();
     }
@@ -3805,55 +1676,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_startCurrentTimeNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startCurrentTimeNotification() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.startCurrentTimeNotification());
         weightScaleProfile.disconnect();
     }
@@ -3866,55 +1702,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_stopCurrentTimeNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopCurrentTimeNotification() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.stopCurrentTimeNotification());
         weightScaleProfile.disconnect();
     }
@@ -3927,58 +1728,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getLocalTimeInformation_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isLocalTimeInformationCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getLocalTimeInformation() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getLocalTimeInformation());
         weightScaleProfile.disconnect();
     }
@@ -3991,59 +1754,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_setLocalTimeInformation_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isLocalTimeInformationCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setLocalTimeInformation(@NonNull LocalTimeInformation localTimeInformation) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.setLocalTimeInformation(new LocalTimeInformation(new byte[2])));
         weightScaleProfile.disconnect();
     }
@@ -4056,58 +1780,20 @@ public class WeightScaleProfileTest {
 
     @Test
     public void test_getReferenceTimeInformation_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBodyCompositionService == null) {
-                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
-                }
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isReferenceTimeInformationCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getReferenceTimeInformation() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.getReferenceTimeInformation());
         weightScaleProfile.disconnect();
     }
@@ -4128,10 +1814,7 @@ public class WeightScaleProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(weightScaleProfile.mWeightScaleService);
         assertNotNull(weightScaleProfile.mDeviceInformationService);
         assertNotNull(weightScaleProfile.mUserDataService);
@@ -4139,15 +1822,13 @@ public class WeightScaleProfileTest {
         assertNotNull(weightScaleProfile.mBatteryService);
         assertNotNull(weightScaleProfile.mCurrentTimeService);
         assertTrue(atomicBoolean.get());
+        weightScaleProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         weightScaleProfile.quit();
         assertNull(weightScaleProfile.mWeightScaleService);
         assertNull(weightScaleProfile.mDeviceInformationService);

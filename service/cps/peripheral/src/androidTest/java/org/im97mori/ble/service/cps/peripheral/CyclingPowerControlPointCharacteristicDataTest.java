@@ -26,7 +26,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
 
     @Test
     public void test_constructor_00001() {
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -170,7 +170,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_setCumulativeValueResponseValue_00001() {
         int firstSetCumulativeValueResponseValue = 3;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , firstSetCumulativeValueResponseValue
@@ -209,7 +209,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_updateSensorLocationResponseValue_00001() {
         int firstUpdateSensorLocationResponseValue = 4;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -248,7 +248,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestSupportedSensorLocationsResponseValue_00001() {
         int firstRequestSupportedSensorLocationsResponseValue = 5;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -287,7 +287,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestSupportedSensorLocationsResponseParameter_00001() {
         byte[] firstRequestSupportedSensorLocationsResponseParameter = new byte[]{6};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -326,7 +326,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_setCrankLengthResponseValue_00001() {
         int firstSetCrankLengthResponseValue = 7;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -365,7 +365,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestCrankLengthResponseValue_00001() {
         int firstRequestCrankLengthResponseValue = 8;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -404,7 +404,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestCrankLengthResponseParameter_00001() {
         byte[] firstRequestCrankLengthResponseParameter = new byte[]{9};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -443,7 +443,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_setChainLengthResponseValue_00001() {
         int firstSetChainLengthResponseValue = 10;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -482,7 +482,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestChainLengthResponseValue_00001() {
         int firstRequestChainLengthResponseValue = 11;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -521,7 +521,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestChainLengthResponseParameter_00001() {
         byte[] firstRequestChainLengthResponseParameter = new byte[]{12};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -560,7 +560,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_setChainWeightResponseValue_00001() {
         int firstSetChainWeightResponseValue = 13;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -599,7 +599,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestChainWeightResponseValue_00001() {
         int firstRequestChainWeightResponseValue = 14;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -638,7 +638,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestChainWeightResponseParameter_00001() {
         byte[] firstRequestChainWeightResponseParameter = new byte[]{15};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -677,7 +677,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_setSpanLengthResponseValue_00001() {
         int firstSetSpanLengthResponseValue = 16;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -716,7 +716,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestSpanLengthResponseValue_00001() {
         int firstRequestSpanLengthResponseValue = 17;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -755,7 +755,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestSpanLengthResponseParameter_00001() {
         byte[] firstRequestSpanLengthResponseParameter = new byte[]{18};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -794,7 +794,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_startOffsetCompensationResponseValue_00001() {
         int firstStartOffsetCompensationResponseValue = 19;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -833,7 +833,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_startOffsetCompensationResponseParameter_00001() {
         byte[] firstStartOffsetCompensationResponseParameter = new byte[]{20};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -872,7 +872,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_maskCyclingPowerMeasurementCharacteristicContentResponseValue_00001() {
         int firstMaskCyclingPowerMeasurementCharacteristicContentResponseValue = 21;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -911,7 +911,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestSamplingRateResponseValue_00001() {
         int firstRequestSamplingRateResponseValue = 22;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -950,7 +950,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestSamplingRateResponseParameter_00001() {
         byte[] firstRequestSamplingRateResponseParameter = new byte[]{23};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -989,7 +989,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestFactoryCalibrationDateResponseValue_00001() {
         int firstRequestFactoryCalibrationDateResponseValue = 24;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -1028,7 +1028,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_requestFactoryCalibrationDateResponseParameter_00001() {
         byte[] firstRequestFactoryCalibrationDateResponseParameter = new byte[]{25};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -1067,7 +1067,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_startEnhancedOffsetCompensationResponseValue_00001() {
         int firstStartEnhancedOffsetCompensationResponseValue = 26;
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -1106,7 +1106,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     @Test
     public void test_startEnhancedOffsetCompensationResponseParameter_00001() {
         byte[] firstStartEnhancedOffsetCompensationResponseParameter = new byte[]{27};
-        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3

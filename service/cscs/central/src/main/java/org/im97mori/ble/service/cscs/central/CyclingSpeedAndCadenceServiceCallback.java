@@ -22,6 +22,7 @@ import java.util.UUID;
 /**
  * Cycling Speed and Cadence Service (Service UUID: 0x1816) callback
  */
+@SuppressWarnings("unused")
 public interface CyclingSpeedAndCadenceServiceCallback {
 
     /**

@@ -115,7 +115,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
             mCyclingPowerFeatureData = new CharacteristicData(CYCLING_POWER_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -211,7 +211,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
             mSensorLocationData = new CharacteristicData(SENSOR_LOCATION_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -238,31 +238,31 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
          * @param descriptorResponseCode                                        descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay                                               descritptor response delay(millis)
          * @param descriptorValue                                               descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param setCumulativeValueResponseValue                               characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
-         * @param updateSensorLocationResponseValue                             characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Update Sensor Location response)
-         * @param requestSupportedSensorLocationsResponseValue                  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Supported Sensor Locations response)
-         * @param requestSupportedSensorLocationsResponseParameter              part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Supported Sensor Locations response)
-         * @param setCrankLengthResponseValue                                   characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Crank Length response)
-         * @param requestCrankLengthResponseValue                               characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Crank Length response)
-         * @param requestCrankLengthResponseParameter                           characteristic response parameter for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Crank Length response)
-         * @param setChainLengthResponseValue                                   characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Chain Length response)
-         * @param requestChainLengthResponseValue                               characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Chain Length response)
-         * @param requestChainLengthResponseParameter                           characteristic response parameter for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Chain Length response)
-         * @param setChainWeightResponseValue                                   characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Chain Weight response)
-         * @param requestChainWeightResponseValue                               characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Chain Weight response)
-         * @param requestChainWeightResponseParameter                           characteristic response parameter for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Chain Weight response)
-         * @param setSpanLengthResponseValue                                    characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Span Length response)
-         * @param requestSpanLengthResponseValue                                characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Span Length response)
-         * @param requestSpanLengthResponseParameter                            characteristic response parameter for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Span Length response)
-         * @param startOffsetCompensationResponseValue                          characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Start Offset Compensation response)
-         * @param startOffsetCompensationResponseParameter                      characteristic response parameter for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Start Offset Compensation response)
-         * @param maskCyclingPowerMeasurementCharacteristicContentResponseValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Cycling Power Measurement Characteristic Content response)
-         * @param requestSamplingRateResponseValue                              characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Sampling Rate response)
-         * @param requestSamplingRateResponseParameter                          characteristic response parameter for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Sampling Rate response)
-         * @param requestFactoryCalibrationDateResponseValue                    characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Factory Calibration Date response)
-         * @param requestFactoryCalibrationDateResponseParameter                part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Factory Calibration Date response)
-         * @param startEnhancedOffsetCompensationResponseValue                  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Start Enhanced Offset Compensation response)
-         * @param startEnhancedOffsetCompensationResponseParameter              characteristic response parameter for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Start Enhanced Offset Compensation response)
+         * @param setCumulativeValueResponseValue                               characteristic response code (Set Cumulative Value response)
+         * @param updateSensorLocationResponseValue                             characteristic response code (Update Sensor Location response)
+         * @param requestSupportedSensorLocationsResponseValue                  characteristic response code (Request Supported Sensor Locations response)
+         * @param requestSupportedSensorLocationsResponseParameter              part of characteristic data array (Request Supported Sensor Locations response)
+         * @param setCrankLengthResponseValue                                   characteristic response code (Set Crank Length response)
+         * @param requestCrankLengthResponseValue                               characteristic response code (Request Crank Length response)
+         * @param requestCrankLengthResponseParameter                           characteristic response parameter (Request Crank Length response)
+         * @param setChainLengthResponseValue                                   characteristic response code (Set Chain Length response)
+         * @param requestChainLengthResponseValue                               characteristic response code (Request Chain Length response)
+         * @param requestChainLengthResponseParameter                           characteristic response parameter (Request Chain Length response)
+         * @param setChainWeightResponseValue                                   characteristic response code (Set Chain Weight response)
+         * @param requestChainWeightResponseValue                               characteristic response code (Request Chain Weight response)
+         * @param requestChainWeightResponseParameter                           characteristic response parameter (Request Chain Weight response)
+         * @param setSpanLengthResponseValue                                    characteristic response code (Set Span Length response)
+         * @param requestSpanLengthResponseValue                                characteristic response code (Request Span Length response)
+         * @param requestSpanLengthResponseParameter                            characteristic response parameter (Request Span Length response)
+         * @param startOffsetCompensationResponseValue                          characteristic response code (Start Offset Compensation response)
+         * @param startOffsetCompensationResponseParameter                      characteristic response parameter (Start Offset Compensation response)
+         * @param maskCyclingPowerMeasurementCharacteristicContentResponseValue characteristic response code (Mask Cycling Power Measurement Characteristic Content response)
+         * @param requestSamplingRateResponseValue                              characteristic response code (Request Sampling Rate response)
+         * @param requestSamplingRateResponseParameter                          characteristic response parameter (Request Sampling Rate response)
+         * @param requestFactoryCalibrationDateResponseValue                    characteristic response code (Request Factory Calibration Date response)
+         * @param requestFactoryCalibrationDateResponseParameter                part of characteristic data array (Request Factory Calibration Date response)
+         * @param startEnhancedOffsetCompensationResponseValue                  characteristic response code (Start Enhanced Offset Compensation response)
+         * @param startEnhancedOffsetCompensationResponseParameter              characteristic response parameter (Start Enhanced Offset Compensation response)
          * @return {@link Builder} instance
          */
         @NonNull

@@ -20,6 +20,7 @@ import org.im97mori.ble.descriptor.u290e.TimeTriggerSettingAndroid;
 
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 class MockAutomationIOServiceCallback implements AutomationIOServiceCallback {
 
     @Override

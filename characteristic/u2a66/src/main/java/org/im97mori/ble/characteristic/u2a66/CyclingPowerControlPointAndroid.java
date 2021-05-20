@@ -79,6 +79,7 @@ public class CyclingPowerControlPointAndroid extends CyclingPowerControlPoint im
      * @param in Parcel
      */
     private CyclingPowerControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -28,6 +28,7 @@ import java.util.UUID;
 /**
  * Automation IO (Service UUID: 0x1815) callback
  */
+@SuppressWarnings("unused")
 public interface AutomationIOServiceCallback {
 
     /**

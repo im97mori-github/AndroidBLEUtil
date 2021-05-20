@@ -22,7 +22,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
@@ -752,19 +751,14 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         boolean isMultipleBondDetectionSupported = false;
         BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
 
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
-                    .addManufacturerNameString("")
-                    .addModelNumberString("")
-                    .addBloodPressureMeasurement(bloodPressureMeasurement, bpmclientCharacteristicConfiguration)
-                    .addBloodPressureFeature(bloodPressureFeature)
-                    .build();
-        } catch (Exception e) {
-            exception = e;
-        }
+        BloodPressureProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                .addManufacturerNameString("")
+                .addModelNumberString("")
+                .addBloodPressureMeasurement(bloodPressureMeasurement, bpmclientCharacteristicConfiguration)
+                .addBloodPressureFeature(bloodPressureFeature)
+                .build();
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

@@ -81,6 +81,7 @@ public class SCControlPointAndroid extends SCControlPoint implements Parcelable 
      * @param in Parcel
      */
     private SCControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

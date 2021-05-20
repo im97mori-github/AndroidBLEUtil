@@ -75,6 +75,7 @@ public class TemperatureAndroid extends Temperature implements Parcelable {
      * @param in Parcel
      */
     private TemperatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

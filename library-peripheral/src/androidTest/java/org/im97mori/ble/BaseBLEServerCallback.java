@@ -15,8 +15,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BaseBLEServerCallback implements BLEServerCallback {
 
-    public AtomicBoolean result = new AtomicBoolean(false);
-    public AtomicBoolean isProccesing = new AtomicBoolean(true);
+    public final AtomicBoolean result = new AtomicBoolean(false);
+    public final AtomicBoolean isProccesing = new AtomicBoolean(true);
 
     @Override
     public void onServerStarted() {
@@ -36,7 +36,7 @@ public class BaseBLEServerCallback implements BLEServerCallback {
 
     @Override
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
-        return false;
+        return true;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class BaseBLEServerCallback implements BLEServerCallback {
 
     @Override
     public boolean onCharacteristicReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force) {
-        return false;
+        return true;
     }
 
     @Override
@@ -76,12 +76,12 @@ public class BaseBLEServerCallback implements BLEServerCallback {
 
     @Override
     public boolean onDescriptorReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean force) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean onDescriptorWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
-        return false;
+        return true;
     }
 
     @Override
@@ -98,7 +98,7 @@ public class BaseBLEServerCallback implements BLEServerCallback {
 
     @Override
     public boolean onExecuteWrite(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, boolean execute, boolean force) {
-        return false;
+        return true;
     }
 
     @Override

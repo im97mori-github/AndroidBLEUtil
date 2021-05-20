@@ -4,7 +4,6 @@ import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.CYCLING_SPEED_AND_CADENCE_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.RUNNING_SPEED_AND_CADENCE_SERVICE;
 import static org.junit.Assert.assertEquals;
 

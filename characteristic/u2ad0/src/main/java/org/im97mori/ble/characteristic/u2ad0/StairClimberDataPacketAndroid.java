@@ -87,6 +87,7 @@ public class StairClimberDataPacketAndroid extends StairClimberDataPacket implem
      * @param in Parcel
      */
     private StairClimberDataPacketAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

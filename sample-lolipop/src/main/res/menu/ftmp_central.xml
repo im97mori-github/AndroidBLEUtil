@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/pre_connected">
         <item
             android:id="@+id/load_bonded_device"
@@ -11,7 +12,8 @@
     </group>
     <group
         android:id="@+id/service_check"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/has_user_data_service"
             android:title="@string/menu_has_user_data_service" />
@@ -21,7 +23,8 @@
     </group>
     <group
         android:id="@+id/fitness_machine_service_1"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/is_treadmill_data_characteristic_supported"
             android:title="@string/menu_is_treadmill_data_characteristic_supported" />
@@ -67,7 +70,8 @@
     </group>
     <group
         android:id="@+id/fitness_machine_service_2"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_fitness_machine_feature"
             android:title="@string/menu_read_fitness_machine_feature" />
@@ -155,7 +159,8 @@
     </group>
     <group
         android:id="@+id/fitness_machine_service_3"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/write_fitness_machine_control_point_request_control"
             android:title="@string/menu_write_fitness_machine_control_point_request_control" />
@@ -240,7 +245,8 @@
     </group>
     <group
         android:id="@+id/user_data_service_1"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/has_first_name"
             android:title="@string/menu_has_first_name" />
@@ -286,7 +292,8 @@
     </group>
     <group
         android:id="@+id/user_data_service_2"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_user_index"
             android:title="@string/menu_read_user_index" />
@@ -413,7 +420,8 @@
     </group>
     <group
         android:id="@+id/device_information_service"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/has_manufacturer_name"
             android:title="@string/menu_has_manufacturer_name" />

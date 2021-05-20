@@ -73,6 +73,7 @@ public class NumberOfDigitalsAndroid extends NumberOfDigitals implements Parcela
      * @param in Parcel
      */
     private NumberOfDigitalsAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

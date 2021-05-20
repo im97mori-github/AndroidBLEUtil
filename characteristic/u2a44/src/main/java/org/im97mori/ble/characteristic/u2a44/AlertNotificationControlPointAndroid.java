@@ -76,6 +76,7 @@ public class AlertNotificationControlPointAndroid extends AlertNotificationContr
      * @param in Parcel
      */
     private AlertNotificationControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -31,8 +31,7 @@ android {
 dependencies {
     api apiCoreAndroid
     api BASE_MODULE
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

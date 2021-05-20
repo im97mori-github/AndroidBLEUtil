@@ -66,6 +66,7 @@ public class PositionQualityAndroid extends PositionQuality implements Parcelabl
      * @param in Parcel
      */
     private PositionQualityAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

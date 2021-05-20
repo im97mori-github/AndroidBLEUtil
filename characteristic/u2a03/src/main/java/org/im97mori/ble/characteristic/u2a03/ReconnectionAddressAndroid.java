@@ -75,6 +75,7 @@ public class ReconnectionAddressAndroid extends ReconnectionAddress implements P
      * @param in Parcel
      */
     private ReconnectionAddressAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

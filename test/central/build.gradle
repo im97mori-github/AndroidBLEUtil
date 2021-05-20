@@ -16,8 +16,6 @@ android {
         targetSdkVersion globalTargetSdkVersion
         versionCode VERSION_CODE
         versionName VERSION_NAME
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -29,7 +27,7 @@ android {
 
 dependencies {
     api apiTest
-    implementation "${groupId}:${central.artifactId}:${central.versionName}"
+    compileOnly "${groupId}:${central.artifactId}:${central.versionName}"
 }
 
 task sourcesJar(type: Jar) {

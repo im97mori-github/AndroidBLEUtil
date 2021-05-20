@@ -76,6 +76,7 @@ public class FitnessMachineStatusAndroid extends FitnessMachineStatus implements
      * @param in Parcel
      */
     private FitnessMachineStatusAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

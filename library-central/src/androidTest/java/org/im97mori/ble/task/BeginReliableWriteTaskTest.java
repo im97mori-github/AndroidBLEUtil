@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class BeginReliableWriteTaskTest {
+public class BeginReliableWriteTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -44,35 +44,29 @@ public class BeginReliableWriteTaskTest {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
 
-        BeginReliableWriteTask task = new BeginReliableWriteTask(new MockBLEConnection(), null, BLECallbackDistributer.wrapArgument(null, null));
+        BeginReliableWriteTask task = new BeginReliableWriteTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributer.wrapArgument(null, null));
         task.cancel();
         assertTrue(task.doProcess(message));
     }
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection();
-        try {
-            mockBleConnection.start();
-            BaseBLECallback callback = new BaseBLECallback() {
+        BaseBLECallback callback = new BaseBLECallback() {
 
-                @Override
-                public void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
-                    result.set(true);
-                }
-            };
-            mockBleConnection.attach(callback);
+            @Override
+            public void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        MOCK_BLE_CONNECTION.attach(callback);
 
-            Message message = Message.obtain();
-            message.setData(Bundle.EMPTY);
+        Message message = Message.obtain();
+        message.setData(Bundle.EMPTY);
 
-            BeginReliableWriteTask task = new BeginReliableWriteTask(mockBleConnection, null, BLECallbackDistributer.wrapArgument(null, null));
-            task.cancel();
-            assertTrue(task.doProcess(message));
-            assertTrue(callback.result.get());
-        } finally {
-            mockBleConnection.quit();
-        }
+        BeginReliableWriteTask task = new BeginReliableWriteTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributer.wrapArgument(null, null));
+        task.cancel();
+        assertTrue(task.doProcess(message));
+        assertTrue(callback.result.get());
     }
 
 }

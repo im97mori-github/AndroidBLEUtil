@@ -77,6 +77,7 @@ public class BondManagementControlPointAndroid extends BondManagementControlPoin
      * @param in Parcel
      */
     private BondManagementControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

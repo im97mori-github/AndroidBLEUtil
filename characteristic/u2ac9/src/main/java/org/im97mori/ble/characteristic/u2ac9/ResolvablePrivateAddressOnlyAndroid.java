@@ -75,6 +75,7 @@ public class ResolvablePrivateAddressOnlyAndroid extends ResolvablePrivateAddres
      * @param in Parcel
      */
     private ResolvablePrivateAddressOnlyAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

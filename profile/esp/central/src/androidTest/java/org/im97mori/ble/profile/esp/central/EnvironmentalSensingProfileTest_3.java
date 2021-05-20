@@ -1,50 +1,39 @@
 package org.im97mori.ble.profile.esp.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u290b.EnvironmentalSensingConfiguration;
 import org.im97mori.ble.descriptor.u290d.EnvironmentalSensingTriggerSetting;
-import org.im97mori.ble.service.bas.central.BatteryService;
-import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.ess.central.EnvironmentalSensingService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
-import java.util.Collections;
-import java.util.UUID;
-
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.POLLEN_CONCENTRATION_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PRESSURE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RAINFALL_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TEMPERATURE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TRUE_WIND_DIRECTION_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TRUE_WIND_SPEED_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.UV_INDEX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WIND_CHILL_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.ENVIRONMENTAL_SENSING_SERVICE;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class EnvironmentalSensingProfileTest_3 {
+public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_getPollenConcentration_00001() {
@@ -54,49 +43,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentration());
         environmentalSensingProfile.disconnect();
     }
@@ -109,49 +69,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -164,49 +95,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startPollenConcentrationNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startPollenConcentrationNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startPollenConcentrationNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -219,49 +121,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startPollenConcentrationNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startPollenConcentrationNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startPollenConcentrationNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -274,49 +147,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopPollenConcentrationNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopPollenConcentrationNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopPollenConcentrationNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -329,49 +173,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopPollenConcentrationNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopPollenConcentrationNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopPollenConcentrationNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -384,50 +199,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationEnvironmentalSensingMeasurement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingMeasurement());
         environmentalSensingProfile.disconnect();
     }
@@ -440,50 +225,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationEnvironmentalSensingMeasurement_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingMeasurement(0));
         environmentalSensingProfile.disconnect();
     }
@@ -496,50 +251,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingTriggerSetting());
         environmentalSensingProfile.disconnect();
     }
@@ -552,50 +277,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingTriggerSetting(0, 0));
         environmentalSensingProfile.disconnect();
     }
@@ -608,50 +303,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPollenConcentrationEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPollenConcentrationEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPollenConcentrationEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -664,50 +329,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPollenConcentrationEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPollenConcentrationEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPollenConcentrationEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -720,50 +355,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingConfiguration());
         environmentalSensingProfile.disconnect();
     }
@@ -776,50 +381,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingConfiguration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -832,50 +407,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPollenConcentrationEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPollenConcentrationEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPollenConcentrationEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -888,50 +433,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPollenConcentrationEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPollenConcentrationEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPollenConcentrationEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -944,50 +459,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationCharacteristicUserDescription());
         environmentalSensingProfile.disconnect();
     }
@@ -1000,50 +485,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationCharacteristicUserDescription(0));
         environmentalSensingProfile.disconnect();
     }
@@ -1056,50 +511,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPollenConcentrationCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPollenConcentrationCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPollenConcentrationCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -1112,50 +537,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPollenConcentrationCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPollenConcentrationCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPollenConcentrationCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -1168,50 +563,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationValidRange());
         environmentalSensingProfile.disconnect();
     }
@@ -1224,50 +589,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPollenConcentrationValidRange_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPollenConcentrationValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPollenConcentrationValidRange(0));
         environmentalSensingProfile.disconnect();
     }
@@ -1280,49 +615,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfall_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfall(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfall());
         environmentalSensingProfile.disconnect();
     }
@@ -1335,49 +641,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfall_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfall(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfall(0));
         environmentalSensingProfile.disconnect();
     }
@@ -1390,49 +667,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startRainfallNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startRainfallNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startRainfallNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -1445,49 +693,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startRainfallNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startRainfallNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startRainfallNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -1500,49 +719,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopRainfallNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopRainfallNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopRainfallNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -1555,49 +745,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopRainfallNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopRainfallNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopRainfallNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -1610,50 +771,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallEnvironmentalSensingMeasurement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallEnvironmentalSensingMeasurement());
         environmentalSensingProfile.disconnect();
     }
@@ -1666,50 +797,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallEnvironmentalSensingMeasurement_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallEnvironmentalSensingMeasurement(0));
         environmentalSensingProfile.disconnect();
     }
@@ -1722,50 +823,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallEnvironmentalSensingTriggerSetting());
         environmentalSensingProfile.disconnect();
     }
@@ -1778,50 +849,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallEnvironmentalSensingTriggerSetting(0, 0));
         environmentalSensingProfile.disconnect();
     }
@@ -1834,50 +875,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setRainfallEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setRainfallEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setRainfallEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -1890,50 +901,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setRainfallEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setRainfallEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setRainfallEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -1946,50 +927,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallEnvironmentalSensingConfiguration());
         environmentalSensingProfile.disconnect();
     }
@@ -2002,50 +953,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallEnvironmentalSensingConfiguration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -2058,50 +979,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setRainfallEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setRainfallEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setRainfallEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -2114,50 +1005,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setRainfallEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setRainfallEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setRainfallEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -2170,50 +1031,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallCharacteristicUserDescription());
         environmentalSensingProfile.disconnect();
     }
@@ -2226,50 +1057,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallCharacteristicUserDescription(0));
         environmentalSensingProfile.disconnect();
     }
@@ -2282,50 +1083,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setRainfallCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setRainfallCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setRainfallCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -2338,50 +1109,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setRainfallCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setRainfallCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setRainfallCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -2394,50 +1135,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallValidRange());
         environmentalSensingProfile.disconnect();
     }
@@ -2450,50 +1161,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getRainfallValidRange_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getRainfallValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getRainfallValidRange(0));
         environmentalSensingProfile.disconnect();
     }
@@ -2506,49 +1187,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressure_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressure(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressure());
         environmentalSensingProfile.disconnect();
     }
@@ -2561,49 +1213,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressure_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressure(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressure(0));
         environmentalSensingProfile.disconnect();
     }
@@ -2616,49 +1239,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startPressureNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startPressureNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startPressureNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -2671,49 +1265,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startPressureNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startPressureNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startPressureNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -2726,49 +1291,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopPressureNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopPressureNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopPressureNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -2781,49 +1317,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopPressureNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopPressureNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopPressureNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -2836,50 +1343,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureEnvironmentalSensingMeasurement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureEnvironmentalSensingMeasurement());
         environmentalSensingProfile.disconnect();
     }
@@ -2892,50 +1369,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureEnvironmentalSensingMeasurement_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureEnvironmentalSensingMeasurement(0));
         environmentalSensingProfile.disconnect();
     }
@@ -2948,50 +1395,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureEnvironmentalSensingTriggerSetting());
         environmentalSensingProfile.disconnect();
     }
@@ -3004,50 +1421,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureEnvironmentalSensingTriggerSetting(0, 0));
         environmentalSensingProfile.disconnect();
     }
@@ -3060,50 +1447,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPressureEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPressureEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPressureEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -3116,50 +1473,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPressureEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPressureEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPressureEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -3172,50 +1499,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureEnvironmentalSensingConfiguration());
         environmentalSensingProfile.disconnect();
     }
@@ -3228,50 +1525,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureEnvironmentalSensingConfiguration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -3284,50 +1551,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPressureEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPressureEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPressureEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -3340,50 +1577,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPressureEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPressureEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPressureEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -3396,50 +1603,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureCharacteristicUserDescription());
         environmentalSensingProfile.disconnect();
     }
@@ -3452,50 +1629,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureCharacteristicUserDescription(0));
         environmentalSensingProfile.disconnect();
     }
@@ -3508,50 +1655,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPressureCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPressureCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPressureCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -3564,50 +1681,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setPressureCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setPressureCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setPressureCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -3620,50 +1707,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureValidRange());
         environmentalSensingProfile.disconnect();
     }
@@ -3676,50 +1733,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getPressureValidRange_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPressureValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getPressureValidRange(0));
         environmentalSensingProfile.disconnect();
     }
@@ -3732,49 +1759,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperature_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperature(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperature());
         environmentalSensingProfile.disconnect();
     }
@@ -3787,49 +1785,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperature_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperature(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperature(0));
         environmentalSensingProfile.disconnect();
     }
@@ -3842,49 +1811,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startTemperatureNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startTemperatureNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startTemperatureNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -3897,49 +1837,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startTemperatureNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startTemperatureNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startTemperatureNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -3952,49 +1863,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopTemperatureNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopTemperatureNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopTemperatureNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -4007,49 +1889,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopTemperatureNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopTemperatureNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopTemperatureNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -4062,50 +1915,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureEnvironmentalSensingMeasurement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingMeasurement());
         environmentalSensingProfile.disconnect();
     }
@@ -4118,50 +1941,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureEnvironmentalSensingMeasurement_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingMeasurement(0));
         environmentalSensingProfile.disconnect();
     }
@@ -4174,50 +1967,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingTriggerSetting());
         environmentalSensingProfile.disconnect();
     }
@@ -4230,50 +1993,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingTriggerSetting(0, 0));
         environmentalSensingProfile.disconnect();
     }
@@ -4286,50 +2019,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTemperatureEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTemperatureEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTemperatureEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -4342,50 +2045,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTemperatureEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTemperatureEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTemperatureEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -4398,50 +2071,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingConfiguration());
         environmentalSensingProfile.disconnect();
     }
@@ -4454,50 +2097,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingConfiguration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -4510,50 +2123,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTemperatureEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTemperatureEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTemperatureEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -4566,50 +2149,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTemperatureEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTemperatureEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTemperatureEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -4622,50 +2175,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureCharacteristicUserDescription());
         environmentalSensingProfile.disconnect();
     }
@@ -4678,50 +2201,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureCharacteristicUserDescription(0));
         environmentalSensingProfile.disconnect();
     }
@@ -4734,50 +2227,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTemperatureCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTemperatureCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTemperatureCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -4790,50 +2253,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTemperatureCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTemperatureCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTemperatureCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -4846,50 +2279,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureValidRange());
         environmentalSensingProfile.disconnect();
     }
@@ -4902,50 +2305,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTemperatureValidRange_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTemperatureValidRange(0));
         environmentalSensingProfile.disconnect();
     }
@@ -4958,49 +2331,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirection_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirection(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirection());
         environmentalSensingProfile.disconnect();
     }
@@ -5013,49 +2357,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirection_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirection(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirection(0));
         environmentalSensingProfile.disconnect();
     }
@@ -5068,49 +2383,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startTrueWindDirectionNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startTrueWindDirectionNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startTrueWindDirectionNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -5123,49 +2409,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startTrueWindDirectionNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startTrueWindDirectionNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startTrueWindDirectionNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -5178,49 +2435,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopTrueWindDirectionNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopTrueWindDirectionNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopTrueWindDirectionNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -5233,49 +2461,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopTrueWindDirectionNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopTrueWindDirectionNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopTrueWindDirectionNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -5288,50 +2487,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingMeasurement());
         environmentalSensingProfile.disconnect();
     }
@@ -5344,50 +2513,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingMeasurement(0));
         environmentalSensingProfile.disconnect();
     }
@@ -5400,50 +2539,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingTriggerSetting());
         environmentalSensingProfile.disconnect();
     }
@@ -5456,50 +2565,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingTriggerSetting(0, 0));
         environmentalSensingProfile.disconnect();
     }
@@ -5512,50 +2591,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindDirectionEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindDirectionEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -5568,50 +2617,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindDirectionEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindDirectionEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -5624,50 +2643,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingConfiguration());
         environmentalSensingProfile.disconnect();
     }
@@ -5680,50 +2669,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingConfiguration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -5736,50 +2695,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindDirectionEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindDirectionEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -5792,50 +2721,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindDirectionEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindDirectionEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -5848,50 +2747,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionCharacteristicUserDescription());
         environmentalSensingProfile.disconnect();
     }
@@ -5904,50 +2773,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionCharacteristicUserDescription(0));
         environmentalSensingProfile.disconnect();
     }
@@ -5960,50 +2799,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindDirectionCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindDirectionCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindDirectionCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -6016,51 +2825,21 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindDirectionCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindDirectionCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        assertNotNull(environmentalSensingProfile.setTrueWindDirectionCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(environmentalSensingProfile.setTrueWindDirectionCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
 
@@ -6072,50 +2851,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionValidRange());
         environmentalSensingProfile.disconnect();
     }
@@ -6128,50 +2877,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindDirectionValidRange_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindDirectionValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindDirectionValidRange(0));
         environmentalSensingProfile.disconnect();
     }
@@ -6184,49 +2903,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeed_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeed(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeed());
         environmentalSensingProfile.disconnect();
     }
@@ -6239,49 +2929,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeed_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeed(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeed(0));
         environmentalSensingProfile.disconnect();
     }
@@ -6294,49 +2955,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startTrueWindSpeedNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startTrueWindSpeedNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startTrueWindSpeedNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -6349,49 +2981,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startTrueWindSpeedNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startTrueWindSpeedNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startTrueWindSpeedNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -6404,49 +3007,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopTrueWindSpeedNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopTrueWindSpeedNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopTrueWindSpeedNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -6459,49 +3033,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopTrueWindSpeedNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopTrueWindSpeedNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopTrueWindSpeedNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -6514,50 +3059,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedEnvironmentalSensingMeasurement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingMeasurement());
         environmentalSensingProfile.disconnect();
     }
@@ -6570,50 +3085,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedEnvironmentalSensingMeasurement_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingMeasurement(0));
         environmentalSensingProfile.disconnect();
     }
@@ -6626,50 +3111,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingTriggerSetting());
         environmentalSensingProfile.disconnect();
     }
@@ -6682,50 +3137,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingTriggerSetting(0, 0));
         environmentalSensingProfile.disconnect();
     }
@@ -6738,50 +3163,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindSpeedEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindSpeedEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindSpeedEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -6794,50 +3189,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindSpeedEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindSpeedEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindSpeedEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -6850,50 +3215,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingConfiguration());
         environmentalSensingProfile.disconnect();
     }
@@ -6906,50 +3241,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingConfiguration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -6962,50 +3267,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindSpeedEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindSpeedEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindSpeedEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -7018,50 +3293,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindSpeedEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindSpeedEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindSpeedEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -7074,50 +3319,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedCharacteristicUserDescription());
         environmentalSensingProfile.disconnect();
     }
@@ -7130,50 +3345,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedCharacteristicUserDescription(0));
         environmentalSensingProfile.disconnect();
     }
@@ -7186,51 +3371,21 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindSpeedCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindDirectionCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        assertNotNull(environmentalSensingProfile.setTrueWindSpeedCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(environmentalSensingProfile.setTrueWindDirectionCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
 
@@ -7242,50 +3397,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setTrueWindSpeedCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTrueWindSpeedCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setTrueWindSpeedCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -7298,50 +3423,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedValidRange());
         environmentalSensingProfile.disconnect();
     }
@@ -7354,50 +3449,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getTrueWindSpeedValidRange_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRUE_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTrueWindSpeedValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getTrueWindSpeedValidRange(0));
         environmentalSensingProfile.disconnect();
     }
@@ -7410,49 +3475,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndex_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndex(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndex());
         environmentalSensingProfile.disconnect();
     }
@@ -7465,49 +3501,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndex_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndex(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndex(0));
         environmentalSensingProfile.disconnect();
     }
@@ -7520,49 +3527,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startUVIndexNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startUVIndexNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startUVIndexNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -7575,49 +3553,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startUVIndexNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startUVIndexNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startUVIndexNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -7630,49 +3579,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopUVIndexNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopUVIndexNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopUVIndexNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -7685,49 +3605,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopUVIndexNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopUVIndexNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopUVIndexNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -7740,50 +3631,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexEnvironmentalSensingMeasurement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingMeasurement());
         environmentalSensingProfile.disconnect();
     }
@@ -7796,50 +3657,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexEnvironmentalSensingMeasurement_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingMeasurement(0));
         environmentalSensingProfile.disconnect();
     }
@@ -7852,50 +3683,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingTriggerSetting());
         environmentalSensingProfile.disconnect();
     }
@@ -7908,50 +3709,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingTriggerSetting(0, 0));
         environmentalSensingProfile.disconnect();
     }
@@ -7964,50 +3735,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setUVIndexEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setUVIndexEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -8020,50 +3761,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setUVIndexEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setUVIndexEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -8076,50 +3787,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingConfiguration());
         environmentalSensingProfile.disconnect();
     }
@@ -8132,50 +3813,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingConfiguration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -8188,50 +3839,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setUVIndexEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setUVIndexEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setUVIndexEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -8244,50 +3865,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setUVIndexEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setUVIndexEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setUVIndexEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -8300,50 +3891,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexCharacteristicUserDescription());
         environmentalSensingProfile.disconnect();
     }
@@ -8356,50 +3917,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexCharacteristicUserDescription(0));
         environmentalSensingProfile.disconnect();
     }
@@ -8412,50 +3943,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setUVIndexCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setUVIndexCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setUVIndexCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -8468,50 +3969,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setUVIndexCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setUVIndexCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setUVIndexCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -8524,50 +3995,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexValidRange());
         environmentalSensingProfile.disconnect();
     }
@@ -8580,50 +4021,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getUVIndexValidRange_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UV_INDEX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUVIndexValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getUVIndexValidRange(0));
         environmentalSensingProfile.disconnect();
     }
@@ -8636,49 +4047,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChill_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChill(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChill());
         environmentalSensingProfile.disconnect();
     }
@@ -8691,49 +4073,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChill_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChill(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChill(0));
         environmentalSensingProfile.disconnect();
     }
@@ -8746,49 +4099,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startWindChillNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startWindChillNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startWindChillNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -8801,49 +4125,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_startWindChillNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startWindChillNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.startWindChillNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -8856,49 +4151,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopWindChillNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopWindChillNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopWindChillNotification());
         environmentalSensingProfile.disconnect();
     }
@@ -8911,49 +4177,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_stopWindChillNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopWindChillNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.stopWindChillNotification(0));
         environmentalSensingProfile.disconnect();
     }
@@ -8966,50 +4203,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillEnvironmentalSensingMeasurement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillEnvironmentalSensingMeasurement());
         environmentalSensingProfile.disconnect();
     }
@@ -9022,50 +4229,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillEnvironmentalSensingMeasurement_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillEnvironmentalSensingMeasurement(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillEnvironmentalSensingMeasurement(0));
         environmentalSensingProfile.disconnect();
     }
@@ -9078,50 +4255,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillEnvironmentalSensingTriggerSetting());
         environmentalSensingProfile.disconnect();
     }
@@ -9134,50 +4281,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillEnvironmentalSensingTriggerSetting(0, 0));
         environmentalSensingProfile.disconnect();
     }
@@ -9190,50 +4307,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setWindChillEnvironmentalSensingTriggerSetting_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setWindChillEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setWindChillEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -9246,50 +4333,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setWindChillEnvironmentalSensingTriggerSetting_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setWindChillEnvironmentalSensingTriggerSetting(int characteristicIndex, int descriptorIndex, @NonNull EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setWindChillEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
         environmentalSensingProfile.disconnect();
     }
@@ -9302,50 +4359,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillEnvironmentalSensingConfiguration());
         environmentalSensingProfile.disconnect();
     }
@@ -9358,50 +4385,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillEnvironmentalSensingConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillEnvironmentalSensingConfiguration(0));
         environmentalSensingProfile.disconnect();
     }
@@ -9414,50 +4411,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setWindChillEnvironmentalSensingConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setWindChillEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setWindChillEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -9470,50 +4437,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setWindChillEnvironmentalSensingConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setWindChillEnvironmentalSensingConfiguration(int index, @NonNull EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setWindChillEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
         environmentalSensingProfile.disconnect();
     }
@@ -9526,50 +4463,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillCharacteristicUserDescription());
         environmentalSensingProfile.disconnect();
     }
@@ -9582,50 +4489,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillCharacteristicUserDescription(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillCharacteristicUserDescription(0));
         environmentalSensingProfile.disconnect();
     }
@@ -9638,50 +4515,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setWindChillCharacteristicUserDescription_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setWindChillCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setWindChillCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -9694,50 +4541,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_setWindChillCharacteristicUserDescription_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer setWindChillCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.setWindChillCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
         environmentalSensingProfile.disconnect();
     }
@@ -9750,50 +4567,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillValidRange());
         environmentalSensingProfile.disconnect();
     }
@@ -9806,50 +4593,20 @@ public class EnvironmentalSensingProfileTest_3 {
 
     @Test
     public void test_getWindChillValidRange_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mEnvironmentalSensingService == null) {
                     mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getWindChillValidRange(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
-                }
             }
         };
-        environmentalSensingProfile.connect(MOCK_DEVICE);
-        environmentalSensingProfile.mEnvironmentalSensingService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(environmentalSensingProfile.getWindChillValidRange(0));
         environmentalSensingProfile.disconnect();
     }

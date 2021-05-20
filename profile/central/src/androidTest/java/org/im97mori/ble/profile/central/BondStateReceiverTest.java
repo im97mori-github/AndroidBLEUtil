@@ -1,6 +1,5 @@
 package org.im97mori.ble.profile.central;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 
@@ -9,13 +8,13 @@ import androidx.test.core.app.ApplicationProvider;
 
 import org.im97mori.ble.profile.central.db.BaseBondedDeviceDatabaseHelper;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class BondStateReceiverTest {
@@ -35,13 +34,7 @@ public class BondStateReceiverTest {
             }
         };
 
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED + "1");
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
@@ -63,13 +56,7 @@ public class BondStateReceiverTest {
             }
         };
 
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
@@ -90,19 +77,10 @@ public class BondStateReceiverTest {
                 result.set(true);
             }
         };
-
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress1 = "00:11:22:33:AA:BB";
-        String macAddress2 = "00:11:22:33:AA:CC";
-        BluetoothDevice bluetoothDevice1 = bluetoothAdapter.getRemoteDevice(macAddress1);
-        BluetoothDevice bluetoothDevice2 = bluetoothAdapter.getRemoteDevice(macAddress2);
-
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice1);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, bluetoothDevice2);
+        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, BLETestUtilsAndroid.MOCK_DEVICE_1);
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
         assertFalse(baseAbstractCentralProfile.result.get());
     }
@@ -122,16 +100,10 @@ public class BondStateReceiverTest {
             }
         };
 
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, bluetoothDevice);
+        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, BLETestUtilsAndroid.MOCK_DEVICE_0);
         intent.putExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
         assertFalse(baseAbstractCentralProfile.result.get());
@@ -152,16 +124,10 @@ public class BondStateReceiverTest {
             }
         };
 
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, bluetoothDevice);
+        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, BLETestUtilsAndroid.MOCK_DEVICE_0);
         intent.putExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
         intent.putExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, BluetoothDevice.BOND_NONE);
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
@@ -170,11 +136,6 @@ public class BondStateReceiverTest {
 
     @Test
     public void test_onReceive_00203() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -186,24 +147,19 @@ public class BondStateReceiverTest {
             }
         };
 
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, bluetoothDevice);
+        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, BLETestUtilsAndroid.MOCK_DEVICE_0);
         intent.putExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
         intent.putExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, BluetoothDevice.BOND_BONDING);
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
         assertTrue(baseAbstractCentralProfile.result.get());
-        assertEquals(bluetoothDevice, atomicReference.get());
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, atomicReference.get());
     }
 
     @Test
     public void test_onReceive_00204() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -215,24 +171,19 @@ public class BondStateReceiverTest {
             }
         };
 
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, bluetoothDevice);
+        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, BLETestUtilsAndroid.MOCK_DEVICE_0);
         intent.putExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
         intent.putExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, BluetoothDevice.BOND_BONDED);
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
         assertTrue(baseAbstractCentralProfile.result.get());
-        assertEquals(bluetoothDevice, atomicReference.get());
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, atomicReference.get());
     }
 
     @Test
     public void test_onReceive_00301() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -245,23 +196,18 @@ public class BondStateReceiverTest {
 
         };
 
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, bluetoothDevice);
+        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, BLETestUtilsAndroid.MOCK_DEVICE_0);
         intent.putExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_BONDED);
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
         assertTrue(baseAbstractCentralProfile.result.get());
-        assertEquals(bluetoothDevice, atomicReference.get());
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, atomicReference.get());
     }
 
     @Test
     public void test_onReceive_00302() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
         final AtomicReference<BluetoothDevice> atomicReference1 = new AtomicReference<>(null);
         final AtomicReference<BluetoothDevice> atomicReference2 = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
@@ -286,15 +232,15 @@ public class BondStateReceiverTest {
 
         };
 
-        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, bluetoothDevice);
+        BondStateReceiver bondStateReceiver = new BondStateReceiver(baseAbstractCentralProfile, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         Intent intent = new Intent(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, bluetoothDevice);
+        intent.putExtra(BluetoothDevice.EXTRA_DEVICE, BLETestUtilsAndroid.MOCK_DEVICE_0);
         intent.putExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_BONDED);
         bondStateReceiver.onReceive(ApplicationProvider.getApplicationContext(), intent);
         assertTrue(baseAbstractCentralProfile.result.get());
-        assertEquals(bluetoothDevice, atomicReference1.get());
-        assertEquals(bluetoothDevice, atomicReference2.get());
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, atomicReference1.get());
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, atomicReference2.get());
     }
 
 }

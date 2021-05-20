@@ -69,6 +69,7 @@ public class PublicTargetAddressAndroid extends PublicTargetAddress implements A
      * @param in Parcel
      */
     private PublicTargetAddressAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

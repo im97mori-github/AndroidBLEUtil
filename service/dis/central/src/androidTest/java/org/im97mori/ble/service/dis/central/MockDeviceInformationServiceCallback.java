@@ -18,6 +18,7 @@ import org.im97mori.ble.characteristic.u2a50.PnpIdAndroid;
 
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 class MockDeviceInformationServiceCallback implements DeviceInformationServiceCallback {
 
     @Override

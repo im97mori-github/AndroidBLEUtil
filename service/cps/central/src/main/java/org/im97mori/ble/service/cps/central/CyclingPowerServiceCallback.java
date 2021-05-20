@@ -389,8 +389,7 @@ public interface CyclingPowerServiceCallback {
             , @NonNull Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @NonNull Integer characteristicInstanceId
-            ,
-                                                @NonNull CyclingPowerControlPointAndroid cyclingPowerControlPointAndroid
+            , @NonNull CyclingPowerControlPointAndroid cyclingPowerControlPointAndroid
             , @Nullable Bundle argument);
 
     /**
@@ -411,8 +410,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
-            ,
-                                               int status
+            , int status
             , @Nullable Bundle argument);
 
     /**
@@ -433,8 +431,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
-            ,
-                                                long timeout
+            , long timeout
             , @Nullable Bundle argument);
 
     /**

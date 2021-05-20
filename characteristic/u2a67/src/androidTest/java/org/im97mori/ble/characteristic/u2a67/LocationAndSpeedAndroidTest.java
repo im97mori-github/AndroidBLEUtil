@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class LocationAndSpeedAndroidTest {
 
     @Test
@@ -861,7 +862,6 @@ public class LocationAndSpeedAndroidTest {
         assertEquals(0, result1.getHours());
         assertEquals(0, result1.getMinutes());
         assertEquals(0, result1.getSeconds());
-        ;
     }
 
     @Test

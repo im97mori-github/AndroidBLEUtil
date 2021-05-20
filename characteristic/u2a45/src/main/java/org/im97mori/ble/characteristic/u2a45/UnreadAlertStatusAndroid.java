@@ -76,6 +76,7 @@ public class UnreadAlertStatusAndroid extends UnreadAlertStatus implements Parce
      * @param in Parcel
      */
     private UnreadAlertStatusAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:id="@+id/pre_connected">
         <item
@@ -45,7 +46,8 @@
             android:title="@string/menu_write_local_time_information" />
         <item
             android:id="@+id/has_reference_time_information"
-            android:title="@string/menu_has_reference_time_information" />
+            android:title="@string/menu_has_reference_time_information"
+            tools:ignore="UnusedIds" />
         <item
             android:id="@+id/read_reference_time_information"
             android:title="@string/menu_read_reference_time_information" />

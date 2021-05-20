@@ -69,6 +69,7 @@ public class ShortenedLocalNameAndroid extends ShortenedLocalName implements Adv
      * @param in Parcel
      */
     private ShortenedLocalNameAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

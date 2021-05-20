@@ -10,85 +10,45 @@ public class OrFilterTest {
 
     @Test
     public void test_001() {
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = advertisingDataParseResult -> false;
         OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter<>(filter);
         assertFalse(orFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
     @Test
     public void test_002() {
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return true;
-            }
-        };
-        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter(filter);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = advertisingDataParseResult -> true;
+        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter<>(filter);
         assertTrue(orFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
     @Test
     public void test_003() {
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
-        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter(filter1, filter2);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = advertisingDataParseResult -> false;
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = advertisingDataParseResult -> false;
+        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter<>(filter1, filter2);
         assertFalse(orFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
     @Test
     public void test_004() {
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return true;
-            }
-        };
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
-        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter(filter1, filter2);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = advertisingDataParseResult -> true;
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = advertisingDataParseResult -> false;
+        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter<>(filter1, filter2);
         assertTrue(orFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
     @Test
     public void test_005() {
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return true;
-            }
-        };
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return true;
-            }
-        };
-        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter(filter1, filter2);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = advertisingDataParseResult -> true;
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = advertisingDataParseResult -> true;
+        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter<>(filter1, filter2);
         assertTrue(orFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
     @Test
     public void test_006() {
-        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter();
+        OrFilter<AdvertisingDataParser.AdvertisingDataParseResult> orFilter = new OrFilter<>();
         assertTrue(orFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 }

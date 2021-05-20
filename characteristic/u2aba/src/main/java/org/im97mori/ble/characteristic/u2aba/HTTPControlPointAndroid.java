@@ -75,6 +75,7 @@ public class HTTPControlPointAndroid extends HTTPControlPoint implements Parcela
      * @param in Parcel
      */
     private HTTPControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

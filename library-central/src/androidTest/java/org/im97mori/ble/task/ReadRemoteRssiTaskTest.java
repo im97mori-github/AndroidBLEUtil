@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Random;
@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class ReadRemoteRssiTaskTest {
+public class ReadRemoteRssiTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -83,7 +83,7 @@ public class ReadRemoteRssiTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadRemoteRssiTask task = new ReadRemoteRssiTask(new MockBLEConnection(), null, mockTaskHandler, ReadRemoteRssiTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadRemoteRssiTask task = new ReadRemoteRssiTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, ReadRemoteRssiTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -95,10 +95,8 @@ public class ReadRemoteRssiTaskTest {
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
-            mockBleConnection.start();
 
             BaseBLECallback callback = new BaseBLECallback() {
 
@@ -107,7 +105,7 @@ public class ReadRemoteRssiTaskTest {
                     result.set(true);
                 }
             };
-            mockBleConnection.attach(callback);
+            MOCK_BLE_CONNECTION.attach(callback);
 
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
@@ -116,7 +114,7 @@ public class ReadRemoteRssiTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadRemoteRssiTask task = new ReadRemoteRssiTask(mockBleConnection, null, mockTaskHandler, ReadRemoteRssiTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadRemoteRssiTask task = new ReadRemoteRssiTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, ReadRemoteRssiTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -124,7 +122,6 @@ public class ReadRemoteRssiTaskTest {
             if (looper != null) {
                 looper.quit();
             }
-            mockBleConnection.quit();
         }
     }
 

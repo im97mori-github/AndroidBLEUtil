@@ -75,6 +75,7 @@ public class ElevationAndroid extends Elevation implements Parcelable {
      * @param in Parcel
      */
     private ElevationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.task.NotificationTask;
 
 import java.util.LinkedList;
@@ -45,7 +44,7 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
-        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<>()) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -111,13 +110,7 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
                         , serviceInstanceId
                         , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                         , characteristicInstanceId
-                        , new ByteArrayInterface() {
-                            @NonNull
-                            @Override
-                            public byte[] getBytes() {
-                                return new byte[]{1, 2, 3, 4};
-                            }
-                        }
+                        , () -> new byte[]{1, 2, 3, 4}
                         , false
                         , NotificationTask.TIMEOUT_MILLIS
                         , 0
@@ -134,13 +127,7 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
                         , serviceInstanceId
                         , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                         , characteristicInstanceId
-                        , new ByteArrayInterface() {
-                            @NonNull
-                            @Override
-                            public byte[] getBytes() {
-                                return new byte[]{1, 2, 3, 4};
-                            }
-                        }
+                        , () -> new byte[]{1, 2, 3, 4}
                         , true
                         , NotificationTask.TIMEOUT_MILLIS
                         , 0
@@ -180,17 +167,14 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onCallbacked(final Pair<String, String> log) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.add(log);
-                mListView.smoothScrollToPosition(mAdapter.getCount());
+        runOnUiThread(() -> {
+            mAdapter.add(log);
+            mListView.smoothScrollToPosition(mAdapter.getCount());
 
-                updateLayout();
+            updateLayout();
 
-                if ("onDeviceConnected".equals(log.first)) {
-                    mBLEServerConnection.stopAdvertising();
-                }
+            if ("onDeviceConnected".equals(log.first)) {
+                mBLEServerConnection.stopAdvertising();
             }
         });
     }

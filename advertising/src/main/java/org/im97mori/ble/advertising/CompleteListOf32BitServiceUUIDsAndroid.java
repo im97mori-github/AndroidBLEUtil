@@ -69,6 +69,7 @@ public class CompleteListOf32BitServiceUUIDsAndroid extends CompleteListOf32BitS
      * @param in Parcel
      */
     private CompleteListOf32BitServiceUUIDsAndroid(Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

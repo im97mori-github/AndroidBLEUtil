@@ -4,16 +4,11 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a31.ScanRefresh;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindow;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -29,7 +24,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class ScanParametersServiceMockCallbackBuilderTest {
+public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_exception_00001() {
@@ -63,20 +58,14 @@ public class ScanParametersServiceMockCallbackBuilderTest {
         ScanIntervalWindow scanIntervalWindow = new ScanIntervalWindow(0, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
             ScanParametersServiceMockCallback scanParametersServiceMockCallback = new ScanParametersServiceMockCallback.Builder<>()
                     .addScanIntervalWindow(scanIntervalWindow)
                     .build();
-            scanParametersServiceMockCallback.setup(mockBLEServerConnection);
+            scanParametersServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -101,20 +90,14 @@ public class ScanParametersServiceMockCallbackBuilderTest {
         ScanIntervalWindow scanIntervalWindow = new ScanIntervalWindow(0, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
             ScanParametersServiceMockCallback scanParametersServiceMockCallback = new ScanParametersServiceMockCallback.Builder<>()
                     .addScanIntervalWindow(scanIntervalWindow.getBytes())
                     .build();
-            scanParametersServiceMockCallback.setup(mockBLEServerConnection);
+            scanParametersServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -139,20 +122,14 @@ public class ScanParametersServiceMockCallbackBuilderTest {
         ScanIntervalWindow scanIntervalWindow = new ScanIntervalWindow(0, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
             ScanParametersServiceMockCallback scanParametersServiceMockCallback = new ScanParametersServiceMockCallback.Builder<>()
                     .addScanIntervalWindow(BluetoothGatt.GATT_SUCCESS, 0, scanIntervalWindow.getBytes())
                     .build();
-            scanParametersServiceMockCallback.setup(mockBLEServerConnection);
+            scanParametersServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -196,13 +173,7 @@ public class ScanParametersServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -210,7 +181,7 @@ public class ScanParametersServiceMockCallbackBuilderTest {
                     .addScanIntervalWindow(new ScanIntervalWindow(0, 1))
                     .addScanRefresh(scanRefresh, clientCharacteristicConfiguration)
                     .build();
-            scanParametersServiceMockCallback.setup(mockBLEServerConnection);
+            scanParametersServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -243,13 +214,7 @@ public class ScanParametersServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -257,7 +222,7 @@ public class ScanParametersServiceMockCallbackBuilderTest {
                     .addScanIntervalWindow(new ScanIntervalWindow(0, 1))
                     .addScanRefresh(BluetoothGatt.GATT_SUCCESS, 0, scanRefresh.getBytes(), 0, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes())
                     .build();
-            scanParametersServiceMockCallback.setup(mockBLEServerConnection);
+            scanParametersServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -290,13 +255,7 @@ public class ScanParametersServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -305,7 +264,7 @@ public class ScanParametersServiceMockCallbackBuilderTest {
                     .addScanRefresh(scanRefresh, clientCharacteristicConfiguration)
                     .removeScanRefresh()
                     .build();
-            scanParametersServiceMockCallback.setup(mockBLEServerConnection);
+            scanParametersServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }

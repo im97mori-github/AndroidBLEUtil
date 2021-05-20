@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:id="@+id/pre_connected">
         <item
@@ -17,7 +18,8 @@
     </group>
     <group
         android:id="@+id/gatt"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/get_device_name"
             android:title="@string/menu_get_device_name" />
@@ -75,7 +77,8 @@
     </group>
     <group
         android:id="@+id/gap"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/has_service_changed"
             android:title="@string/menu_has_service_changed" />
@@ -106,7 +109,8 @@
     </group>
     <group
         android:id="@+id/digital_0"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/is_digital_readable_0"
             android:title="@string/menu_is_digital_readable_0" />
@@ -194,7 +198,8 @@
     </group>
     <group
         android:id="@+id/digital_1"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/is_digital_readable_1"
             android:title="@string/menu_is_digital_readable_1" />
@@ -282,7 +287,8 @@
     </group>
     <group
         android:id="@+id/analog_0"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/is_analog_readable_0"
             android:title="@string/menu_is_analog_readable_0" />
@@ -370,7 +376,8 @@
     </group>
     <group
         android:id="@+id/analog_1"
-        android:visible="false">
+        android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/is_analog_readable_1"
             android:title="@string/menu_is_analog_readable_1" />
@@ -458,7 +465,8 @@
     </group>
     <group
         android:id="@+id/aggregate"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/is_aggregate_supported"
             android:title="@string/menu_is_aggregate_supported" />

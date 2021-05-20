@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class PhoneAlertStatusProfileMockCallbackBuilderTest {
@@ -272,6 +273,66 @@ public class PhoneAlertStatusProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeRingerControlPoint());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_build_00001() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new PhoneAlertStatusServiceMockCallback.Builder<>())
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Alert Status data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00002() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new PhoneAlertStatusServiceMockCallback.Builder<>())
+                    .addAlertStatus(new AlertStatus(AlertStatus.ALERT_STATUS_DISPLAY_ALERT_STATUS_ACTIVE), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Ringer Setting data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00003() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new PhoneAlertStatusServiceMockCallback.Builder<>())
+                    .addAlertStatus(new AlertStatus(AlertStatus.ALERT_STATUS_DISPLAY_ALERT_STATUS_ACTIVE), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .addRingerSetting(new RingerSetting(RingerSetting.RINGER_SETTING_NORMAL), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Ringer Control point data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00004() {
+        PhoneAlertStatusProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new PhoneAlertStatusServiceMockCallback.Builder<>())
+                .addAlertStatus(new AlertStatus(AlertStatus.ALERT_STATUS_DISPLAY_ALERT_STATUS_ACTIVE), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .addRingerSetting(new RingerSetting(RingerSetting.RINGER_SETTING_NORMAL), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .addRingerControlPoint(new RingerControlPoint(RingerControlPoint.RINGER_CONTROL_POINT_CANCEL_SILENT_MODE))
+                .build();
+
+        assertNotNull(callback);
     }
 
 }

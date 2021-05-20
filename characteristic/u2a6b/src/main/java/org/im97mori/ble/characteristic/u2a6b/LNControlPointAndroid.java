@@ -79,6 +79,7 @@ public class LNControlPointAndroid extends LNControlPoint implements Parcelable 
      * @param in Parcel
      */
     private LNControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

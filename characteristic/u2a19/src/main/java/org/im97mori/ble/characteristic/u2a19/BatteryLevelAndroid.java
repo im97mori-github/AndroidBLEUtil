@@ -75,6 +75,7 @@ public class BatteryLevelAndroid extends BatteryLevel implements Parcelable {
      * @param in Parcel
      */
     private BatteryLevelAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

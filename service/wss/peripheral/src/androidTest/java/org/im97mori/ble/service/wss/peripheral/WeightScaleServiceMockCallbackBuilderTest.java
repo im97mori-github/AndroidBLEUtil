@@ -4,16 +4,11 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -29,7 +24,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class WeightScaleServiceMockCallbackBuilderTest {
+public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_addWeightScaleFeature_00001() {
@@ -53,13 +48,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
                 , WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -67,7 +56,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
                     .addWeightScaleFeature(weightScaleFeature)
                     .addWeightMeasurement(new WeightMeasurement(new byte[3]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -96,13 +85,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
                 , WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -110,7 +93,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
                     .addWeightScaleFeature(weightScaleFeature.getBytes())
                     .addWeightMeasurement(new WeightMeasurement(new byte[3]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -139,13 +122,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
                 , WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -153,7 +130,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
                     .addWeightScaleFeature(BluetoothGatt.GATT_SUCCESS, 0, weightScaleFeature.getBytes())
                     .addWeightMeasurement(new WeightMeasurement(new byte[3]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -442,13 +419,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -456,7 +427,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
                     .addWeightScaleFeature(weightScaleFeature)
                     .addWeightMeasurement(weightMeasurement, clientCharacteristicConfiguration)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -495,13 +466,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -509,7 +474,7 @@ public class WeightScaleServiceMockCallbackBuilderTest {
                     .addWeightScaleFeature(weightScaleFeature)
                     .addWeightMeasurement(BluetoothGatt.GATT_SUCCESS, 0, weightMeasurement.getBytes(), 0, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes())
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }

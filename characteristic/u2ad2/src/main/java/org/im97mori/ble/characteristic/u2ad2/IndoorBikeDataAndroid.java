@@ -87,6 +87,7 @@ public class IndoorBikeDataAndroid extends IndoorBikeData implements Parcelable 
      * @param in Parcel
      */
     private IndoorBikeDataAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }
 

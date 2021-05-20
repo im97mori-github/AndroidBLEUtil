@@ -14,11 +14,14 @@ import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.BLEServerConnection;
 
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BaseBLEServerCallback implements BLEServerCallback {
 
-    public AtomicBoolean result = new AtomicBoolean(false);
+    public final AtomicBoolean result = new AtomicBoolean(false);
+
+    public final CountDownLatch tearDownLatch = new CountDownLatch(1);
 
     @Override
     public void onServerStarted() {
@@ -26,6 +29,7 @@ public class BaseBLEServerCallback implements BLEServerCallback {
 
     @Override
     public void onServerStopped() {
+        tearDownLatch.countDown();
     }
 
     @Override

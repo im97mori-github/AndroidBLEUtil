@@ -77,6 +77,7 @@ public class SupportedPowerRangeAndroid extends SupportedPowerRange implements P
      * @param in Parcel
      */
     private SupportedPowerRangeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

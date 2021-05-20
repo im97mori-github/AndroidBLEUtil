@@ -5159,29 +5159,24 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00007() {
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext()
-                    , new FitnessMachineServiceMockCallback.Builder<>()
-                    , new FtmpUserDataServiceMockCallback.Builder<>()
-                    , new DeviceInformationServiceMockCallback.Builder<>())
-                    .addFitnessMachineFeature(new FitnessMachineFeature(new byte[8]))
-                    .addAge(1)
-                    .addDatabaseChangeIncrement(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
-                    .addUserIndex()
-                    .addUserControlPoint(0
-                            , UserControlPoint.RESPONSE_VALUE_SUCCESS
-                            , UserControlPoint.RESPONSE_VALUE_SUCCESS
-                            , UserControlPoint.RESPONSE_VALUE_SUCCESS
-                            , 0
-                            , 0
-                            , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .build();
-        } catch (Exception e) {
-            exception = e;
-        }
+        FitnessMachineProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new FitnessMachineServiceMockCallback.Builder<>()
+                , new FtmpUserDataServiceMockCallback.Builder<>()
+                , new DeviceInformationServiceMockCallback.Builder<>())
+                .addFitnessMachineFeature(new FitnessMachineFeature(new byte[8]))
+                .addAge(1)
+                .addDatabaseChangeIncrement(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .addUserIndex()
+                .addUserControlPoint(0
+                        , UserControlPoint.RESPONSE_VALUE_SUCCESS
+                        , UserControlPoint.RESPONSE_VALUE_SUCCESS
+                        , UserControlPoint.RESPONSE_VALUE_SUCCESS
+                        , 0
+                        , 0
+                        , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
+                .build();
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

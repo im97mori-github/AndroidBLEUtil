@@ -76,6 +76,7 @@ public class ThreeZoneHeartRateLimitsAndroid extends ThreeZoneHeartRateLimits im
      * @param in Parcel
      */
     private ThreeZoneHeartRateLimitsAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -64,6 +64,7 @@ public class ClientCharacteristicConfigurationAndroid extends ClientCharacterist
      * @param in Parcel
      */
     private ClientCharacteristicConfigurationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

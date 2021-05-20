@@ -73,6 +73,7 @@ public class EnvironmentalSensingTriggerSettingAndroid extends EnvironmentalSens
      * @param in Parcel
      */
     private EnvironmentalSensingTriggerSettingAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

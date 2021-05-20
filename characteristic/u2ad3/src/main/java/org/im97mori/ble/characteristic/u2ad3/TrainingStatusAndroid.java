@@ -78,6 +78,7 @@ public class TrainingStatusAndroid extends TrainingStatus implements Parcelable 
      * @param in Parcel
      */
     private TrainingStatusAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

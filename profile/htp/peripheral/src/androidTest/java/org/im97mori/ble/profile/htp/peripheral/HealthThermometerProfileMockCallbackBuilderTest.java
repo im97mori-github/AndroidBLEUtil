@@ -654,13 +654,13 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         final byte[] characteristicValue = new byte[]{0, 1};
-        final   MeasurementInterval measurementInterval = new MeasurementInterval(characteristicValue);
+        final MeasurementInterval measurementInterval = new MeasurementInterval(characteristicValue);
 
         final byte[] descriptorValue1 = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
-        final    ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue1);
+        final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue1);
 
         final byte[] descriptorValue2 = new byte[]{2, 3, 4, 5};
-        final    ValidRange validRange = new ValidRange(descriptorValue2);
+        final ValidRange validRange = new ValidRange(descriptorValue2);
 
         Context context = ApplicationProvider.getApplicationContext();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -978,20 +978,15 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         ClientCharacteristicConfiguration measurementIntervalClientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
         ValidRange validRange = new ValidRange(new byte[]{1, 0}, new byte[]{5, 0});
 
-        Exception exception = null;
-        try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new HealthThermometerServiceMockCallback.Builder<>());
-            baseBuilder.addManufacturerNameString("Manufacturer Name String data");
-            baseBuilder.addModelNumberString("Model Number String data");
-            baseBuilder.addSystemId(0, 1);
-            baseBuilder.addTemperatureMeasurement(temperatureMeasurement, clientCharacteristicConfiguration);
-            baseBuilder.addMeasurementInterval(measurementInterval, measurementIntervalClientCharacteristicConfiguration, validRange);
-            baseBuilder.build();
-        } catch (Exception e) {
-            exception = e;
-        }
+        HealthThermometerProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new HealthThermometerServiceMockCallback.Builder<>())
+                .addManufacturerNameString("Manufacturer Name String data")
+                .addModelNumberString("Model Number String data")
+                .addSystemId(0, 1)
+                .addTemperatureMeasurement(temperatureMeasurement, clientCharacteristicConfiguration)
+                .addMeasurementInterval(measurementInterval, measurementIntervalClientCharacteristicConfiguration, validRange)
+                .build();
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

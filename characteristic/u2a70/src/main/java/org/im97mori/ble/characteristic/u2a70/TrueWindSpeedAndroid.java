@@ -75,6 +75,7 @@ public class TrueWindSpeedAndroid extends TrueWindSpeed implements Parcelable {
      * @param in Parcel
      */
     private TrueWindSpeedAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

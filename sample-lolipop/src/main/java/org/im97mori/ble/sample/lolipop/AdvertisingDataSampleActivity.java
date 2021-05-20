@@ -458,15 +458,12 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
 
             final Pair<String, String> log = Pair.create(now, sb.toString());
 
-            mAdvertisingDataSampleActivity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        mAdvertisingDataSampleActivity.mAdapter.add(log);
-                        mAdvertisingDataSampleActivity.mListView.smoothScrollToPosition(mAdvertisingDataSampleActivity.mAdapter.getCount());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+            mAdvertisingDataSampleActivity.runOnUiThread(() -> {
+                try {
+                    mAdvertisingDataSampleActivity.mAdapter.add(log);
+                    mAdvertisingDataSampleActivity.mListView.smoothScrollToPosition(mAdvertisingDataSampleActivity.mAdapter.getCount());
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
         }
@@ -486,7 +483,7 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
         super.onCreate(savedInstanceState);
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
-        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<>()) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

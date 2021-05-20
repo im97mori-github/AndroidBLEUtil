@@ -78,6 +78,7 @@ public class FiveZoneHeartRateLimitsAndroid extends FiveZoneHeartRateLimits impl
      * @param in Parcel
      */
     private FiveZoneHeartRateLimitsAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

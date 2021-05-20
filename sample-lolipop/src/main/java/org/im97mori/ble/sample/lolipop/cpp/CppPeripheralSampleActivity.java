@@ -37,6 +37,7 @@ import java.util.LinkedList;
 
 import static org.im97mori.ble.BLEConstants.UnitsUUID.PERCENTAGE_UNITS;
 
+@SuppressWarnings("ConstantConditions")
 public class CppPeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
@@ -51,7 +52,7 @@ public class CppPeripheralSampleActivity extends BaseActivity implements View.On
         super.onCreate(savedInstanceState);
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
-        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<>()) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -269,17 +270,14 @@ public class CppPeripheralSampleActivity extends BaseActivity implements View.On
 
     @Override
     public void onCallbacked(final Pair<String, String> log) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.add(log);
-                mListView.smoothScrollToPosition(mAdapter.getCount());
+        runOnUiThread(() -> {
+            mAdapter.add(log);
+            mListView.smoothScrollToPosition(mAdapter.getCount());
 
-                updateLayout();
+            updateLayout();
 
-                if ("onDeviceConnected".equals(log.first)) {
-                    mCyclingPowerProfileMockCallback.stopAdvertising();
-                }
+            if ("onDeviceConnected".equals(log.first)) {
+                mCyclingPowerProfileMockCallback.stopAdvertising();
             }
         });
     }

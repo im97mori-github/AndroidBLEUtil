@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 public class TDSControlPointAndroidTest {
 
     //@formatter:off

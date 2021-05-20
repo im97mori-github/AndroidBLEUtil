@@ -77,6 +77,7 @@ public class SupportedSpeedRangeAndroid extends SupportedSpeedRange implements P
      * @param in Parcel
      */
     private SupportedSpeedRangeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

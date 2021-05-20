@@ -12,10 +12,8 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerCallbackDistributer;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BaseBLEServerCallback;
-import org.im97mori.ble.MockBLEServerConnection;
 import org.im97mori.ble.TaskHandler;
-import org.junit.After;
-import org.junit.Before;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -24,22 +22,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class RemoveServiceTaskTest {
-
-    private MockBLEServerConnection MOCK_BLE_SERVER_CONNECTION;
-
-    @Before
-    public void setup() {
-        MOCK_BLE_SERVER_CONNECTION = new MockBLEServerConnection();
-    }
-
-    @After
-    public void tearDown() {
-        if (MOCK_BLE_SERVER_CONNECTION != null) {
-            MOCK_BLE_SERVER_CONNECTION.quit();
-            MOCK_BLE_SERVER_CONNECTION = null;
-        }
-    }
+public class RemoveServiceTaskTest extends AbstractPeripherallTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -60,7 +43,7 @@ public class RemoveServiceTaskTest {
 
     @Test
     public void test_doProcess_00001() {
-        RemoveServiceTask task = new RemoveServiceTask(new MockBLEServerConnection()
+        RemoveServiceTask task = new RemoveServiceTask(MOCK_BLE_SERVER_CONNECTION
                 , null
                 , null
                 , RemoveServiceTask.TIMEOUT_MILLIS
@@ -79,7 +62,7 @@ public class RemoveServiceTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            RemoveServiceTask task = new RemoveServiceTask(new MockBLEServerConnection()
+            RemoveServiceTask task = new RemoveServiceTask(MOCK_BLE_SERVER_CONNECTION
                     , mockTaskHandler
                     , null
                     , RemoveServiceTask.TIMEOUT_MILLIS

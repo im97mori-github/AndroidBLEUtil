@@ -75,6 +75,7 @@ public class PressureAndroid extends Pressure implements Parcelable {
      * @param in Parcel
      */
     private PressureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

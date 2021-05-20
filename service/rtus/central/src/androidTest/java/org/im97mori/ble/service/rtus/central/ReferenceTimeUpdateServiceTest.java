@@ -6,13 +6,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPointAndroid;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateState;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateStateAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -27,13 +26,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class ReferenceTimeUpdateServiceTest {
+public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = REFERENCE_TIME_UPDATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TIME_UPDATE_STATE_CHARACTERISTIC;
@@ -56,7 +55,7 @@ public class ReferenceTimeUpdateServiceTest {
             }
 
         };
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), mockReferenceTimeUpdateServiceCallback, null);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, mockReferenceTimeUpdateServiceCallback, null);
         referenceTimeUpdateService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -66,7 +65,7 @@ public class ReferenceTimeUpdateServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = REFERENCE_TIME_UPDATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TIME_UPDATE_STATE_CHARACTERISTIC;
@@ -89,7 +88,7 @@ public class ReferenceTimeUpdateServiceTest {
             }
 
         };
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), mockReferenceTimeUpdateServiceCallback, null);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, mockReferenceTimeUpdateServiceCallback, null);
         referenceTimeUpdateService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -99,7 +98,7 @@ public class ReferenceTimeUpdateServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = REFERENCE_TIME_UPDATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TIME_UPDATE_STATE_CHARACTERISTIC;
@@ -122,7 +121,7 @@ public class ReferenceTimeUpdateServiceTest {
             }
 
         };
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), mockReferenceTimeUpdateServiceCallback, null);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, mockReferenceTimeUpdateServiceCallback, null);
         referenceTimeUpdateService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -132,7 +131,7 @@ public class ReferenceTimeUpdateServiceTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = REFERENCE_TIME_UPDATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC;
@@ -155,7 +154,7 @@ public class ReferenceTimeUpdateServiceTest {
             }
 
         };
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), mockReferenceTimeUpdateServiceCallback, null);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, mockReferenceTimeUpdateServiceCallback, null);
         referenceTimeUpdateService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -165,7 +164,7 @@ public class ReferenceTimeUpdateServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = REFERENCE_TIME_UPDATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC;
@@ -188,7 +187,7 @@ public class ReferenceTimeUpdateServiceTest {
             }
 
         };
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), mockReferenceTimeUpdateServiceCallback, null);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, mockReferenceTimeUpdateServiceCallback, null);
         referenceTimeUpdateService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -198,7 +197,7 @@ public class ReferenceTimeUpdateServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = REFERENCE_TIME_UPDATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC;
@@ -221,7 +220,7 @@ public class ReferenceTimeUpdateServiceTest {
             }
 
         };
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), mockReferenceTimeUpdateServiceCallback, null);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, mockReferenceTimeUpdateServiceCallback, null);
         referenceTimeUpdateService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -229,7 +228,7 @@ public class ReferenceTimeUpdateServiceTest {
 
     @Test
     public void test_setTimeUpdateControlPoint_000001() {
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), new MockReferenceTimeUpdateServiceCallback(), null);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null);
         TimeUpdateControlPoint timeUpdateControlPoint = new TimeUpdateControlPoint(TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE);
 
         assertNull(referenceTimeUpdateService.setTimeUpdateControlPoint(timeUpdateControlPoint));
@@ -237,7 +236,7 @@ public class ReferenceTimeUpdateServiceTest {
 
     @Test
     public void test_setTimeUpdateControlPoint_000002() {
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), new MockReferenceTimeUpdateServiceCallback(), null) {
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -253,15 +252,8 @@ public class ReferenceTimeUpdateServiceTest {
     @Test
     public void test_setTimeUpdateControlPoint_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(mockBLEConnection, new MockReferenceTimeUpdateServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -278,14 +270,14 @@ public class ReferenceTimeUpdateServiceTest {
 
     @Test
     public void test_getTimeUpdateState_000001() {
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), new MockReferenceTimeUpdateServiceCallback(), null);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null);
 
         assertNull(referenceTimeUpdateService.getTimeUpdateState());
     }
 
     @Test
     public void test_getTimeUpdateState_000002() {
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(new MockBLEConnection(), new MockReferenceTimeUpdateServiceCallback(), null) {
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -300,15 +292,8 @@ public class ReferenceTimeUpdateServiceTest {
     @Test
     public void test_getTimeUpdateState_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(mockBLEConnection, new MockReferenceTimeUpdateServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {

@@ -1,7 +1,5 @@
 package org.im97mori.ble.advertising.filter;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
 import android.os.Parcel;
@@ -9,6 +7,7 @@ import android.os.Parcel;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -18,16 +17,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("unused")
 public class FilteredScanCallbackTest {
 
     @Test
     public void test_001() {
         int callbackType = 1;
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
         parcel.writeInt(1);
-        bluetoothDevice.writeToParcel(parcel, 0);
+        BLETestUtilsAndroid.MOCK_DEVICE_0.writeToParcel(parcel, 0);
         parcel.writeInt(1);
         parcel.writeByteArray(scanRecord);
         parcel.writeInt(1);
@@ -74,11 +73,10 @@ public class FilteredScanCallbackTest {
     @Test
     public void test_002() {
         int callbackType = 1;
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
         parcel.writeInt(1);
-        bluetoothDevice.writeToParcel(parcel, 0);
+        BLETestUtilsAndroid.MOCK_DEVICE_0.writeToParcel(parcel, 0);
         parcel.writeInt(1);
         parcel.writeByteArray(scanRecord);
         parcel.writeInt(1);
@@ -112,12 +110,7 @@ public class FilteredScanCallbackTest {
             public void onScanFailed(int errorCode) {
 
             }
-        }, null).addFilter(new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        }).build();
+        }, null).addFilter(advertisingDataParseResult -> false).build();
         callback.onScanResult(callbackType, scanResult);
 
         assertEquals(0, list1.size());
@@ -127,11 +120,10 @@ public class FilteredScanCallbackTest {
 
     @Test
     public void test_003() {
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
         parcel.writeInt(1);
-        bluetoothDevice.writeToParcel(parcel, 0);
+        BLETestUtilsAndroid.MOCK_DEVICE_0.writeToParcel(parcel, 0);
         parcel.writeInt(1);
         parcel.writeByteArray(scanRecord);
         parcel.writeInt(1);
@@ -177,11 +169,10 @@ public class FilteredScanCallbackTest {
 
     @Test
     public void test_004() {
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
         parcel.writeInt(1);
-        bluetoothDevice.writeToParcel(parcel, 0);
+        BLETestUtilsAndroid.MOCK_DEVICE_0.writeToParcel(parcel, 0);
         parcel.writeInt(1);
         parcel.writeByteArray(scanRecord);
         parcel.writeInt(1);
@@ -215,12 +206,7 @@ public class FilteredScanCallbackTest {
             public void onScanFailed(int errorCode) {
 
             }
-        }, null).addFilter(new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        }).build();
+        }, null).addFilter(advertisingDataParseResult -> false).build();
         callback.onBatchScanResults(Collections.singletonList(scanResult));
 
         assertEquals(0, list1.size());
@@ -256,11 +242,10 @@ public class FilteredScanCallbackTest {
     @Test
     public void test_101() {
         int callbackType = 1;
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
         parcel.writeInt(1);
-        bluetoothDevice.writeToParcel(parcel, 0);
+        BLETestUtilsAndroid.MOCK_DEVICE_0.writeToParcel(parcel, 0);
         parcel.writeInt(1);
         parcel.writeByteArray(scanRecord);
         parcel.writeInt(1);
@@ -320,11 +305,10 @@ public class FilteredScanCallbackTest {
     @Test
     public void test_102() {
         int callbackType = 1;
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
         parcel.writeInt(1);
-        bluetoothDevice.writeToParcel(parcel, 0);
+        BLETestUtilsAndroid.MOCK_DEVICE_0.writeToParcel(parcel, 0);
         parcel.writeInt(1);
         parcel.writeByteArray(scanRecord);
         parcel.writeInt(1);
@@ -370,12 +354,7 @@ public class FilteredScanCallbackTest {
             public void onScanFailed(int errorCode) {
 
             }
-        }, scanCallback).addFilter(new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        }).build();
+        }, scanCallback).addFilter(advertisingDataParseResult -> false).build();
         callback.onScanResult(callbackType, scanResult);
 
 
@@ -386,11 +365,10 @@ public class FilteredScanCallbackTest {
 
     @Test
     public void test_103() {
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
         parcel.writeInt(1);
-        bluetoothDevice.writeToParcel(parcel, 0);
+        BLETestUtilsAndroid.MOCK_DEVICE_0.writeToParcel(parcel, 0);
         parcel.writeInt(1);
         parcel.writeByteArray(scanRecord);
         parcel.writeInt(1);
@@ -448,11 +426,10 @@ public class FilteredScanCallbackTest {
 
     @Test
     public void test_104() {
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
         parcel.writeInt(1);
-        bluetoothDevice.writeToParcel(parcel, 0);
+        BLETestUtilsAndroid.MOCK_DEVICE_0.writeToParcel(parcel, 0);
         parcel.writeInt(1);
         parcel.writeByteArray(scanRecord);
         parcel.writeInt(1);
@@ -495,12 +472,7 @@ public class FilteredScanCallbackTest {
             @Override
             public void onScanFailed(int errorCode) {
             }
-        }, scanCallback).addFilter(new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        }).build();
+        }, scanCallback).addFilter(advertisingDataParseResult -> false).build();
         callback.onBatchScanResults(Collections.singletonList(scanResult));
 
         assertEquals(0, list1.size());

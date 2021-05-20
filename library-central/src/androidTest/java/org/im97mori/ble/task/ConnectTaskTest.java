@@ -7,13 +7,11 @@ import android.os.Looper;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
-import androidx.test.core.app.ApplicationProvider;
 
 import org.im97mori.ble.BLECallbackDistributer;
-import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -21,8 +19,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
-public class ConnectTaskTest {
+@SuppressWarnings({"ConstantConditions", "unused"})
+public class ConnectTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage001() {
@@ -52,24 +50,14 @@ public class ConnectTaskTest {
 
     @Test
     public void test_doProcess_00001() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection() {
-            @Override
-            public boolean isConnected() {
-                return false;
-            }
-        };
-        ConnectTask task = new ConnectTask(mockBleConnection, null, false, ConnectTask.TIMEOUT_MILLIS, null);
+        MOCK_BLE_CONNECTION.setConnected(false);
+        ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, null, false, ConnectTask.TIMEOUT_MILLIS, null);
         assertFalse(task.doProcess(new Message()));
     }
 
     @Test
     public void test_doProcess_00101() {
-        BLEConnection mockBleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), null, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -77,7 +65,7 @@ public class ConnectTaskTest {
             looper = thread.getLooper();
             TaskHandler mockTaskHandler = new TaskHandler(looper);
 
-            ConnectTask task = new ConnectTask(mockBleConnection, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, null);
+            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, null);
 
             assertTrue(task.doProcess(null));
         } finally {
@@ -90,12 +78,7 @@ public class ConnectTaskTest {
 
     @Test
     public void test_cancel_00001() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection() {
-            @Override
-            public boolean isConnected() {
-                return false;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(false);
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -105,7 +88,7 @@ public class ConnectTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ConnectTask task = new ConnectTask(mockBleConnection, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -117,15 +100,9 @@ public class ConnectTaskTest {
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection() {
-            @Override
-            public boolean isConnected() {
-                return false;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(false);
         Looper looper = null;
         try {
-            mockBleConnection.start();
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
             looper = thread.getLooper();
@@ -133,7 +110,7 @@ public class ConnectTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ConnectTask task = new ConnectTask(mockBleConnection, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -145,20 +122,13 @@ public class ConnectTaskTest {
 
     @Test
     public void test_cancel_00003() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection() {
-            @Override
-            public boolean isConnected() {
-                return false;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(false);
         Looper looper = null;
         try {
-            mockBleConnection.start();
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
             looper = thread.getLooper();
             TaskHandler mockTaskHandler = new TaskHandler(looper);
-
 
             BaseBLECallback callback = new BaseBLECallback() {
                 @Override
@@ -166,12 +136,12 @@ public class ConnectTaskTest {
                     result.set(true);
                 }
             };
-            mockBleConnection.attach(callback);
+            MOCK_BLE_CONNECTION.attach(callback);
 
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ConnectTask task = new ConnectTask(mockBleConnection, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -179,7 +149,6 @@ public class ConnectTaskTest {
             if (looper != null) {
                 looper.quit();
             }
-            mockBleConnection.quit();
         }
     }
 

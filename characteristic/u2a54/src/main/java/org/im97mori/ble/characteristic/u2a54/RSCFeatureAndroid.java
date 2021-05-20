@@ -66,6 +66,7 @@ public class RSCFeatureAndroid extends RSCFeature implements Parcelable {
      * @param in Parcel
      */
     private RSCFeatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

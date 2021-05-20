@@ -26,7 +26,7 @@ public class SCControlPointCharacteristicDataTest {
 
     @Test
     public void test_constructor_00001() {
-        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -91,7 +91,7 @@ public class SCControlPointCharacteristicDataTest {
     @Test
     public void test_setCumulativeValueResponseValue_00001() {
         int firstSetCumulativeValueResponseValue = 3;
-        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , firstSetCumulativeValueResponseValue
@@ -110,7 +110,7 @@ public class SCControlPointCharacteristicDataTest {
     @Test
     public void test_startSensorCalibrationResponseValue_00001() {
         int firstStartSensorCalibrationResponseValue = 4;
-        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -129,7 +129,7 @@ public class SCControlPointCharacteristicDataTest {
     @Test
     public void test_updateSensorLocationResponseValue_00001() {
         int firstUpdateSensorLocationResponseValue = 5;
-        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -148,7 +148,7 @@ public class SCControlPointCharacteristicDataTest {
     @Test
     public void test_requestSupportedSensorLocationsResponseValue_00001() {
         int firstRequestSupportedSensorLocationsResponseValue = 6;
-        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -167,7 +167,7 @@ public class SCControlPointCharacteristicDataTest {
     @Test
     public void test_requestSupportedSensorLocationsResponseParameter_00001() {
         byte[] firstRequestSupportedSensorLocationsResponseParameter = new byte[]{7};
-        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3

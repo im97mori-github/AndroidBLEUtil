@@ -89,6 +89,7 @@ public class WeightScaleFeatureAndroid extends WeightScaleFeature implements Par
      * @param in Parcel
      */
     private WeightScaleFeatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

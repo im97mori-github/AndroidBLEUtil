@@ -1,36 +1,47 @@
 package org.im97mori.ble.profile.htp.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a21.MeasurementInterval;
 import org.im97mori.ble.profile.htp.central.db.HealthThermometerProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.hts.central.HealthThermometerService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
-import java.util.Collections;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class HealthThermometerProfileTest {
+public class HealthThermometerProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findHealthThermometerProfileDevices_00001() {
@@ -65,48 +76,20 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getManufacturerNameString() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasManufacturerNameString() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mHealthThermometerService == null) {
-                    mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null);
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
-        healthThermometerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getManufacturerNameString());
         healthThermometerProfile.disconnect();
     }
@@ -119,48 +102,20 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getModelNumberString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getModelNumberString() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasModelNumberString() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mHealthThermometerService == null) {
-                    mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null);
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
-        healthThermometerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getModelNumberString());
         healthThermometerProfile.disconnect();
     }
@@ -173,48 +128,20 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getSystemId_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getSystemId() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasSystemId() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mHealthThermometerService == null) {
-                    mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null);
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
-        healthThermometerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getSystemId());
         healthThermometerProfile.disconnect();
     }
@@ -227,12 +154,8 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_isTemperatureTypeCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.isTemperatureTypeCharacteristicSupported());
         healthThermometerProfile.disconnect();
     }
@@ -245,12 +168,8 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_isIntermediateTemperatureCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.isIntermediateTemperatureCharacteristicSupported());
         healthThermometerProfile.disconnect();
     }
@@ -263,12 +182,8 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_isMeasurementIntervalCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicSupported());
         healthThermometerProfile.disconnect();
     }
@@ -281,12 +196,8 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_isMeasurementIntervalCharacteristicIndicateSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicIndicateSupported());
         healthThermometerProfile.disconnect();
     }
@@ -299,12 +210,8 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_isMeasurementIntervalCharacteristicWriteSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicWriteSupported());
         healthThermometerProfile.disconnect();
     }
@@ -317,140 +224,74 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getTemperatureMeasurementClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTemperatureMeasurementClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getTemperatureMeasurementClientCharacteristicConfiguration());
         healthThermometerProfile.disconnect();
     }
 
     @Test
     public void test_startTemperatureMeasurementIndication_00001() {
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(heartRateProfile.startTemperatureMeasurementIndication());
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
+        assertNull(healthThermometerProfile.startTemperatureMeasurementIndication());
     }
 
     @Test
     public void test_startTemperatureMeasurementIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startTemperatureMeasurementIndication() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.startTemperatureMeasurementIndication());
-        heartRateProfile.disconnect();
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(healthThermometerProfile.startTemperatureMeasurementIndication());
+        healthThermometerProfile.disconnect();
     }
 
     @Test
     public void test_stopHeartRateMeasurementIndication_00001() {
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(heartRateProfile.stopHeartRateMeasurementIndication());
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
+        assertNull(healthThermometerProfile.stopHeartRateMeasurementIndication());
     }
 
     @Test
     public void test_stopHeartRateMeasurementIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopHeartRateMeasurementIndication() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.stopHeartRateMeasurementIndication());
-        heartRateProfile.disconnect();
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(healthThermometerProfile.stopHeartRateMeasurementIndication());
+        healthThermometerProfile.disconnect();
     }
 
     @Test
@@ -461,48 +302,20 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getTemperatureType_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isTemperatureTypeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getTemperatureType() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getTemperatureType());
         healthThermometerProfile.disconnect();
     }
@@ -515,156 +328,74 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getIntermediateTemperatureClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isIntermediateTemperatureCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getIntermediateTemperatureClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getIntermediateTemperatureClientCharacteristicConfiguration());
         healthThermometerProfile.disconnect();
     }
 
     @Test
     public void test_startIntermediateTemperatureNotification_00001() {
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(heartRateProfile.startIntermediateTemperatureNotification());
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
+        assertNull(healthThermometerProfile.startIntermediateTemperatureNotification());
     }
 
     @Test
     public void test_startIntermediateTemperatureNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isIntermediateTemperatureCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startIntermediateTemperatureNotification() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.startIntermediateTemperatureNotification());
-        heartRateProfile.disconnect();
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(healthThermometerProfile.startIntermediateTemperatureNotification());
+        healthThermometerProfile.disconnect();
     }
 
     @Test
     public void test_stopIntermediateTemperaturNotification_00001() {
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(heartRateProfile.stopIntermediateTemperaturNotification());
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
+        assertNull(healthThermometerProfile.stopIntermediateTemperaturNotification());
     }
 
     @Test
     public void test_stopIntermediateTemperaturNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isIntermediateTemperatureCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopIntermediateTemperaturNotification() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.stopIntermediateTemperaturNotification());
-        heartRateProfile.disconnect();
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(healthThermometerProfile.stopIntermediateTemperaturNotification());
+        healthThermometerProfile.disconnect();
     }
 
     @Test
@@ -675,48 +406,20 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getMeasurementInterval_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getMeasurementInterval() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getMeasurementInterval());
         healthThermometerProfile.disconnect();
     }
@@ -729,48 +432,20 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_setMeasurementInterval_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicWriteSupported() {
-                            return true;
+                        public synchronized Integer setMeasurementInterval(@NonNull MeasurementInterval measurementInterval) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.setMeasurementInterval(new MeasurementInterval(0)));
         healthThermometerProfile.disconnect();
     }
@@ -783,156 +458,74 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getMeasurementIntervalClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
-                            return true;
+                        public synchronized Integer getMeasurementIntervalClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getMeasurementIntervalClientCharacteristicConfiguration());
         healthThermometerProfile.disconnect();
     }
 
     @Test
     public void test_startMeasurementIntervalInidication_00001() {
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(heartRateProfile.startMeasurementIntervalInidication());
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
+        assertNull(healthThermometerProfile.startMeasurementIntervalInidication());
     }
 
     @Test
     public void test_startMeasurementIntervalInidication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
-                            return true;
+                        public synchronized Integer startMeasurementIntervalInidication() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.startMeasurementIntervalInidication());
-        heartRateProfile.disconnect();
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(healthThermometerProfile.startMeasurementIntervalInidication());
+        healthThermometerProfile.disconnect();
     }
 
     @Test
     public void test_stopMeasurementIntervalInidication_00001() {
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(heartRateProfile.stopMeasurementIntervalInidication());
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
+        assertNull(healthThermometerProfile.stopMeasurementIntervalInidication());
     }
 
     @Test
     public void test_stopMeasurementIntervalInidication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
-                            return true;
+                        public synchronized Integer stopMeasurementIntervalInidication() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.stopMeasurementIntervalInidication());
-        heartRateProfile.disconnect();
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(healthThermometerProfile.stopMeasurementIntervalInidication());
+        healthThermometerProfile.disconnect();
     }
 
     @Test
@@ -943,48 +536,20 @@ public class HealthThermometerProfileTest {
 
     @Test
     public void test_getMeasurementIntervalValidRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHealthThermometerProfileCallback, null);
-                }
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
-
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicWriteSupported() {
-                            return true;
+                        public synchronized Integer getMeasurementIntervalValidRange() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.getMeasurementIntervalValidRange());
         healthThermometerProfile.disconnect();
     }
@@ -1005,22 +570,17 @@ public class HealthThermometerProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(healthThermometerProfile.mDeviceInformationService);
         assertNotNull(healthThermometerProfile.mHealthThermometerService);
         assertTrue(atomicBoolean.get());
+        healthThermometerProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        healthThermometerProfile.connect(MOCK_DEVICE);
+        healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         healthThermometerProfile.quit();
         assertNull(healthThermometerProfile.mDeviceInformationService);
         assertNull(healthThermometerProfile.mHealthThermometerService);

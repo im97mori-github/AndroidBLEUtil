@@ -26,7 +26,7 @@ public class UserControlPointCharacteristicDataTest {
     public void test_constructor_00001() {
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
-                , new ArrayList<DescriptorData>()
+                , new ArrayList<>()
                 , 3
                 , 5
                 , 6
@@ -94,7 +94,7 @@ public class UserControlPointCharacteristicDataTest {
         int firstRegisterNewUserResponseValue = 5;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
-                , new ArrayList<DescriptorData>()
+                , new ArrayList<>()
                 , 3
                 ,
                 firstRegisterNewUserResponseValue
@@ -115,7 +115,7 @@ public class UserControlPointCharacteristicDataTest {
         int firstConsentResponseValue = 6;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
-                , new ArrayList<DescriptorData>()
+                , new ArrayList<>()
                 , 3
                 ,
                 5
@@ -136,7 +136,7 @@ public class UserControlPointCharacteristicDataTest {
         int firstDeleteUserDataResponseValue = 7;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
-                , new ArrayList<DescriptorData>()
+                , new ArrayList<>()
                 , 3
                 ,
                 5
@@ -157,7 +157,7 @@ public class UserControlPointCharacteristicDataTest {
         int firstListAllUsersResponseValue = 8;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
-                , new ArrayList<DescriptorData>()
+                , new ArrayList<>()
                 , 3
                 ,
                 5
@@ -178,7 +178,7 @@ public class UserControlPointCharacteristicDataTest {
         int firstDeleteUsersResponseValue = 9;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
-                , new ArrayList<DescriptorData>()
+                , new ArrayList<>()
                 , 3
                 ,
                 5

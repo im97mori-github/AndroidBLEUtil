@@ -66,6 +66,7 @@ public class BondManagementFeaturesAndroid extends BondManagementFeatures implem
      * @param in Parcel
      */
     private BondManagementFeaturesAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

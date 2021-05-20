@@ -75,6 +75,7 @@ public class HeightAndroid extends Height implements Parcelable {
      * @param in Parcel
      */
     private HeightAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

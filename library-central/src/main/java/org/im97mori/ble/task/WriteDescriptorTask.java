@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLEUtilsAndroid;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 
@@ -140,9 +139,9 @@ public class WriteDescriptorTask extends AbstractBLETask {
     private Integer mDescriptorInstanceId;
 
     /**
-     * task target data class
+     * task target data
      */
-    private final ByteArrayInterface mByteArrayInterface;
+    private final byte[] mByteArray;
 
     /**
      * timeout(millis)
@@ -164,7 +163,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           task target descriptor {@link UUID}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param byteArrayInterface       task target data class
+     * @param byteArray                task target data
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -177,7 +176,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
             , @Nullable Integer characteristicInstanceId
             , @NonNull UUID descriptorUUID
             , @Nullable Integer descriptorInstanceId
-            , @NonNull ByteArrayInterface byteArrayInterface
+            , @NonNull byte[] byteArray
             , long timeout
             , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
@@ -189,7 +188,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
         mCharacteristicInstanceId = characteristicInstanceId;
         mDescriptorUUID = descriptorUUID;
         mDescriptorInstanceId = descriptorInstanceId;
-        mByteArrayInterface = byteArrayInterface;
+        mByteArray = byteArray;
         mTimeout = timeout;
         mArgumemnt = argument;
     }
@@ -280,8 +279,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
                             }
 
                             if (bluetoothGattDescriptor != null) {
-                                byte[] bytes = mByteArrayInterface.getBytes();
-                                bluetoothGattDescriptor.setValue(bytes);
+                                bluetoothGattDescriptor.setValue(mByteArray);
 
                                 // write descriptor
                                 mServiceInstanceId = bluetoothGattService.getInstanceId();

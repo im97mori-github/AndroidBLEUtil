@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEPeripheralLogUtils;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
@@ -83,7 +82,7 @@ public class LinkLossServiceMockCallback extends AbstractServiceMockCallback {
             mAlertLevelCharacteristicData = new CharacteristicData(ALERT_LEVEL_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

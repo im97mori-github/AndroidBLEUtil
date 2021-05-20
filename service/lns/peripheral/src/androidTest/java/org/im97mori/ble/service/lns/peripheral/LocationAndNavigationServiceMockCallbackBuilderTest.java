@@ -3,12 +3,7 @@ package org.im97mori.ble.service.lns.peripheral;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a67.LocationAndSpeed;
 import org.im97mori.ble.characteristic.u2a68.Navigation;
 import org.im97mori.ble.characteristic.u2a69.PositionQuality;
@@ -16,7 +11,7 @@ import org.im97mori.ble.characteristic.u2a6a.LNFeature;
 import org.im97mori.ble.characteristic.u2a6b.LNControlPoint;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -35,7 +30,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class LocationAndNavigationServiceMockCallbackBuilderTest {
+public class LocationAndNavigationServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_addLNFeature_00001() {
@@ -92,13 +87,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         );
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -106,7 +95,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLNFeature(lnFeature)
                     .addLocationAndSpeed(locationAndSpeed, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -170,13 +159,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         );
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -184,7 +167,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLNFeature(responseCode, delay, lnFeature.getBytes())
                     .addLocationAndSpeed(locationAndSpeed, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -325,13 +308,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration locationAndSpeedClientCharacteristicConfiguration = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -339,7 +316,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLNFeature(lnFeature)
                     .addLocationAndSpeed(locationAndSpeed, locationAndSpeedClientCharacteristicConfiguration)
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -415,13 +392,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
 
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -429,7 +400,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLNFeature(lnFeature)
                     .addLocationAndSpeed(locationAndSpeedResponseCode, locationAndSpeedDelay, locationAndSpeed.getBytes(), locationAndSpeedNotificationCount, locationAndSpeedClientCharacteristicConfigurationResponseCode, locationAndSpeedClientCharacteristicConfigurationDelay, locationAndSpeedClientCharacteristicConfiguration.getBytes())
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -556,13 +527,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration locationAndSpeedClientCharacteristicConfiguration = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -570,7 +535,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLNFeature(lnFeature)
                     .addLocationAndSpeed(locationAndSpeed, locationAndSpeedClientCharacteristicConfiguration)
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -974,13 +939,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         PositionQuality positionQuality = new PositionQuality(new byte[2], 0, 0, 0, 0, 0, 0, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -989,7 +948,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLocationAndSpeed(locationAndSpeed, locationAndSpeedClientCharacteristicConfiguration)
                     .addPositionQuality(positionQuality)
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1058,13 +1017,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1073,7 +1026,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLocationAndSpeed(locationAndSpeed, locationAndSpeedClientCharacteristicConfiguration)
                     .addPositionQuality(responseCode, delay, positionQuality.getBytes())
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1139,13 +1092,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         PositionQuality positionQuality = new PositionQuality(new byte[2], 0, 0, 0, 0, 0, 0, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1155,7 +1102,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addPositionQuality(positionQuality)
                     .removePositionQuality()
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1215,13 +1162,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration locationAndSpeedClientCharacteristicConfiguration = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1229,7 +1170,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLNFeature(lnFeature)
                     .addLocationAndSpeed(locationAndSpeed, locationAndSpeedClientCharacteristicConfiguration)
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1541,13 +1482,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         long lnControlPointClientCharacteristicConfigurationDelay = 4;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1571,7 +1506,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                             , lnControlPointClientCharacteristicConfigurationDelay
                             , lnControlPointClientCharacteristicConfiguration.getBytes())
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1666,13 +1601,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         long lnControlPointClientCharacteristicConfigurationDelay = 4;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1696,7 +1625,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                             , lnControlPointClientCharacteristicConfigurationDelay
                             , lnControlPointClientCharacteristicConfiguration.getBytes())
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1779,13 +1708,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration navigationClientCharacteristicConfiguration = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1795,7 +1718,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addNavigation(navigation, navigationClientCharacteristicConfiguration)
                     .removeNavigation()
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1855,13 +1778,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration locationAndSpeedClientCharacteristicConfiguration = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1869,7 +1786,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLNFeature(lnFeature)
                     .addLocationAndSpeed(locationAndSpeed, locationAndSpeedClientCharacteristicConfiguration)
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2238,13 +2155,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         LNControlPoint resultLnControlPoint = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2267,7 +2178,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                             , lnControlPointClientCharacteristicConfigurationDelay
                             , lnControlPointClientCharacteristicConfiguration.getBytes())
                     .build();
-            locationAndNavigationServiceMockCallback.setup(mockBLEServerConnection);
+            locationAndNavigationServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }

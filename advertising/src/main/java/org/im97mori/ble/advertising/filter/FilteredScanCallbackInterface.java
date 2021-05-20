@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Callback interface for {@link FilteredScanCallback}
  */
+@SuppressWarnings("unused")
 public interface FilteredScanCallbackInterface {
 
     /**

@@ -123,7 +123,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasBodyCompositionService() {
         Boolean result = null;
-        if (isConnected()) {
+        if (mBodyCompositionService != null) {
             result = mHasBodyCompositionService;
         }
         return result;
@@ -135,7 +135,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasUserDataService() {
         Boolean result = null;
-        if (isConnected()) {
+        if (mUserDataService != null) {
             result = mHasUserDataService;
         }
         return result;
@@ -147,7 +147,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasBatteryService() {
         Boolean result = null;
-        if (isConnected()) {
+        if (mBatteryService != null) {
             result = mHasBatteryService;
         }
         return result;
@@ -159,7 +159,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasCurrentTimeService() {
         Boolean result = null;
-        if (isConnected()) {
+        if (mCurrentTimeService != null) {
             result = mHasCurrentTimeService;
         }
         return result;

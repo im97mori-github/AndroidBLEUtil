@@ -75,6 +75,7 @@ public class SensorLocationAndroid extends SensorLocation implements Parcelable 
      * @param in Parcel
      */
     private SensorLocationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

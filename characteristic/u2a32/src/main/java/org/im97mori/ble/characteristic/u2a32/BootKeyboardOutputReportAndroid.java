@@ -66,6 +66,7 @@ public class BootKeyboardOutputReportAndroid extends BootKeyboardOutputReport im
      * @param in Parcel
      */
     private BootKeyboardOutputReportAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.TaskHandler;
 
 import java.util.List;
@@ -118,9 +117,9 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     private Integer mCharacteristicInstanceId;
 
     /**
-     * task target data class
+     * task target data
      */
-    private final ByteArrayInterface mbyteArrayInterface;
+    private final byte[] mByteArray;
 
     /**
      * one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
@@ -145,7 +144,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       task target characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param byteArrayInterface       task target data class
+     * @param byteArray                task target data
      * @param writeType                one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -157,7 +156,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
-            , @NonNull ByteArrayInterface byteArrayInterface
+            , @NonNull byte[] byteArray
             , int writeType
             , long timeout
             , @NonNull Bundle argument) {
@@ -168,7 +167,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
         mServiceInstanceId = serviceInstanceId;
         mCharacteristicUUID = characteristicUUID;
         mCharacteristicInstanceId = characteristicInstanceId;
-        mbyteArrayInterface = byteArrayInterface;
+        mByteArray = byteArray;
         mWriteType = writeType;
         mTimeout = timeout;
         mArgumemnt = argument;
@@ -240,7 +239,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                             }
                         }
                         if (bluetoothGattCharacteristic != null) {
-                            bluetoothGattCharacteristic.setValue(mbyteArrayInterface.getBytes());
+                            bluetoothGattCharacteristic.setValue(mByteArray);
                             bluetoothGattCharacteristic.setWriteType(mWriteType);
 
                             // write characteristic

@@ -4,12 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_FLOAT;
 import org.im97mori.ble.characteristic.core.TemperatureMeasurementUtils;
 import org.im97mori.ble.characteristic.core.TemperatureTypeUtils;
@@ -19,7 +14,7 @@ import org.im97mori.ble.characteristic.u2a1e.IntermediateTemperature;
 import org.im97mori.ble.characteristic.u2a21.MeasurementInterval;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u2906.ValidRange;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -38,7 +33,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class HealthThermometerServiceMockCallbackBuilderTest {
+public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_addTemperatureMeasurement_00001() {
@@ -69,20 +64,14 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
             HealthThermometerServiceMockCallback callback = new HealthThermometerServiceMockCallback.Builder<>()
                     .addTemperatureMeasurement(temperatureMeasurement, clientCharacteristicConfiguration)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -123,20 +112,14 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
             HealthThermometerServiceMockCallback callback = new HealthThermometerServiceMockCallback.Builder<>()
                     .addTemperatureMeasurement(BluetoothGatt.GATT_SUCCESS, 0, temperatureMeasurement.getBytes(), 0, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes())
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -208,13 +191,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         TemperatureType temperatureType = new TemperatureType(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -222,7 +199,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                     .addTemperatureMeasurement(temperatureMeasurement, clientCharacteristicConfiguration)
                     .addTemperatureType(temperatureType)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -260,13 +237,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         TemperatureType temperatureType = new TemperatureType(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -274,7 +245,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                     .addTemperatureMeasurement(temperatureMeasurement, clientCharacteristicConfiguration)
                     .addTemperatureType(BluetoothGatt.GATT_SUCCESS, 0, temperatureType.getBytes())
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -312,13 +283,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         TemperatureType temperatureType = new TemperatureType(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -327,7 +292,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                     .addTemperatureType(temperatureType)
                     .removeTemperatureType()
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -366,13 +331,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration intermediateTemperatureClientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -380,7 +339,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                     .addTemperatureMeasurement(temperatureMeasurement, temperatureMeasurementClientCharacteristicConfiguration)
                     .addIntermediateTemperature(intermediateTemperature, intermediateTemperatureClientCharacteristicConfiguration)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -428,13 +387,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration intermediateTemperatureClientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -442,7 +395,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                     .addTemperatureMeasurement(temperatureMeasurement, temperatureMeasurementClientCharacteristicConfiguration)
                     .addIntermediateTemperature(BluetoothGatt.GATT_SUCCESS, 0, intermediateTemperature.getBytes(), 0, BluetoothGatt.GATT_SUCCESS, 0, intermediateTemperatureClientCharacteristicConfiguration.getBytes())
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -490,13 +443,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration intermediateTemperatureClientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -505,7 +452,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                     .addIntermediateTemperature(intermediateTemperature, intermediateTemperatureClientCharacteristicConfiguration)
                     .removeIntermediateTemperature()
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -714,13 +661,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ValidRange validRange = new ValidRange(new byte[]{1, 0}, new byte[]{5, 0});
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -728,7 +669,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                     .addTemperatureMeasurement(temperatureMeasurement, temperatureMeasurementClientCharacteristicConfiguration)
                     .addMeasurementInterval(measurementInterval, measurementIntervalClientCharacteristicConfiguration, validRange)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -778,13 +719,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ValidRange validRange = new ValidRange(new byte[]{1, 0}, new byte[]{5, 0});
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -802,7 +737,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                             , 0
                             , validRange.getBytes())
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -852,13 +787,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ValidRange validRange = new ValidRange(new byte[]{1, 0}, new byte[]{5, 0});
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -876,7 +805,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                             , 0
                             , validRange.getBytes())
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -923,13 +852,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ValidRange validRange = new ValidRange(new byte[]{1, 0}, new byte[]{5, 0});
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -947,7 +870,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                             , 0
                             , validRange.getBytes())
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -994,13 +917,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ValidRange validRange = new ValidRange(new byte[]{1, 0}, new byte[]{5, 0});
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1018,7 +935,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                             , 0
                             , validRange.getBytes())
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1062,13 +979,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         ValidRange validRange = new ValidRange(new byte[]{1, 0}, new byte[]{5, 0});
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1077,7 +988,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
                     .addMeasurementInterval(measurementInterval, measurementIntervalClientCharacteristicConfiguration, validRange)
                     .removeMeasurementInterval()
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }

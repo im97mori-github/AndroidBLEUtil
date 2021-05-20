@@ -13,27 +13,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.task.AbstractBLETask;
-import org.junit.After;
-import org.junit.Before;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
-public class BLEServerConnectionTest {
+@SuppressWarnings({"ConstantConditions", "BusyWait"})
+public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
     private static final long SLEEP_DURATION = 50;
 
     private static abstract class MockBLETask extends AbstractBLETask {
 
-        AtomicBoolean isProccesing = new AtomicBoolean(true);
+        final AtomicBoolean isProccesing = new AtomicBoolean(true);
 
         @NonNull
         @Override
@@ -49,21 +48,6 @@ public class BLEServerConnectionTest {
         @Override
         public void cancel() {
 
-        }
-    }
-
-    private MockBLEServerConnection MOCK_BLE_SERVER_CONNECTION;
-
-    @Before
-    public void setup() {
-        MOCK_BLE_SERVER_CONNECTION = new MockBLEServerConnection();
-    }
-
-    @After
-    public void tearDown() {
-        if (MOCK_BLE_SERVER_CONNECTION != null) {
-            MOCK_BLE_SERVER_CONNECTION.quit();
-            MOCK_BLE_SERVER_CONNECTION = null;
         }
     }
 
@@ -166,7 +150,7 @@ public class BLEServerConnectionTest {
         };
         MOCK_BLE_SERVER_CONNECTION.start();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
-        MOCK_BLE_SERVER_CONNECTION.onConnectionStateChange(MockBLEServerConnection.MOCK_DEVICE, 0, BluetoothProfile.STATE_CONNECTED);
+        MOCK_BLE_SERVER_CONNECTION.onConnectionStateChange(BLETestUtilsAndroid.MOCK_DEVICE_0, 0, BluetoothProfile.STATE_CONNECTED);
         assertTrue(firstCallback.result.get());
     }
 
@@ -183,7 +167,7 @@ public class BLEServerConnectionTest {
         };
         MOCK_BLE_SERVER_CONNECTION.start();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
-        MOCK_BLE_SERVER_CONNECTION.onConnectionStateChange(MockBLEServerConnection.MOCK_DEVICE, 0, BluetoothProfile.STATE_DISCONNECTED);
+        MOCK_BLE_SERVER_CONNECTION.onConnectionStateChange(BLETestUtilsAndroid.MOCK_DEVICE_0, 0, BluetoothProfile.STATE_DISCONNECTED);
         assertTrue(firstCallback.result.get());
     }
 
@@ -408,7 +392,7 @@ public class BLEServerConnectionTest {
         };
         MOCK_BLE_SERVER_CONNECTION.start();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
-        MOCK_BLE_SERVER_CONNECTION.onCharacteristicReadRequest(MockBLEServerConnection.MOCK_DEVICE, 0, 0, null);
+        MOCK_BLE_SERVER_CONNECTION.onCharacteristicReadRequest(BLETestUtilsAndroid.MOCK_DEVICE_0, 0, 0, null);
         assertTrue(firstCallback.result.get());
     }
 
@@ -425,7 +409,7 @@ public class BLEServerConnectionTest {
         };
         MOCK_BLE_SERVER_CONNECTION.start();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
-        MOCK_BLE_SERVER_CONNECTION.onCharacteristicWriteRequest(MockBLEServerConnection.MOCK_DEVICE, 0, null, false, false, 0, null);
+        MOCK_BLE_SERVER_CONNECTION.onCharacteristicWriteRequest(BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null, false, false, 0, null);
         assertTrue(firstCallback.result.get());
     }
 
@@ -442,7 +426,7 @@ public class BLEServerConnectionTest {
         };
         MOCK_BLE_SERVER_CONNECTION.start();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
-        MOCK_BLE_SERVER_CONNECTION.onDescriptorReadRequest(MockBLEServerConnection.MOCK_DEVICE, 0, 0, null);
+        MOCK_BLE_SERVER_CONNECTION.onDescriptorReadRequest(BLETestUtilsAndroid.MOCK_DEVICE_0, 0, 0, null);
         assertTrue(firstCallback.result.get());
     }
 
@@ -459,7 +443,7 @@ public class BLEServerConnectionTest {
         };
         MOCK_BLE_SERVER_CONNECTION.start();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
-        MOCK_BLE_SERVER_CONNECTION.onDescriptorWriteRequest(MockBLEServerConnection.MOCK_DEVICE, 0, null, false, false, 0, null);
+        MOCK_BLE_SERVER_CONNECTION.onDescriptorWriteRequest(BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null, false, false, 0, null);
         assertTrue(firstCallback.result.get());
     }
 
@@ -476,7 +460,7 @@ public class BLEServerConnectionTest {
         };
         MOCK_BLE_SERVER_CONNECTION.start();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
-        MOCK_BLE_SERVER_CONNECTION.onExecuteWrite(MockBLEServerConnection.MOCK_DEVICE, 0, false);
+        MOCK_BLE_SERVER_CONNECTION.onExecuteWrite(BLETestUtilsAndroid.MOCK_DEVICE_0, 0, false);
         assertTrue(firstCallback.result.get());
     }
 
@@ -686,72 +670,42 @@ public class BLEServerConnectionTest {
 
     @Test
     public void test_startAdvertising_001() {
-        final AtomicBoolean atomicBoolean1 = new AtomicBoolean(true);
-        final AtomicBoolean atomicBoolean2 = new AtomicBoolean(false);
-        final AtomicReference<UUID> atomicReference = new AtomicReference<>(UUID.randomUUID());
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingIncludeDeviceName(true);
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingIncludeUUID(false);
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingServiceUUID(null);
 
-            @Override
-            public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
-                atomicBoolean1.set(includeDeviceName);
-                atomicBoolean2.set(includeUUID);
-                atomicReference.set(serviceUUID);
-                return false;
-            }
-        };
-
-        mockBLEServerConnection.startAdvertising();
-        assertFalse(atomicBoolean1.get());
-        assertTrue(atomicBoolean2.get());
-        assertNull(atomicReference.get());
+        MOCK_BLE_SERVER_CONNECTION.startAdvertising();
+        assertFalse(MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingIncludeDeviceName());
+        assertTrue(MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingIncludeUUID());
+        assertNull(MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingServiceUUID());
     }
 
     @Test
     public void test_startAdvertising_002() {
-        final AtomicBoolean atomicBoolean1 = new AtomicBoolean(true);
-        final AtomicBoolean atomicBoolean2 = new AtomicBoolean(false);
-        UUID firstUUID = UUID.randomUUID();
-        UUID secondUUID = UUID.randomUUID();
-        final AtomicReference<UUID> atomicReference = new AtomicReference<>(firstUUID);
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
+        UUID firstUUID = new UUID(0, 0);
+        UUID secondUUID = new UUID(0, 1);
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingIncludeDeviceName(true);
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingIncludeUUID(false);
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingServiceUUID(firstUUID);
 
-            @Override
-            public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
-                atomicBoolean1.set(includeDeviceName);
-                atomicBoolean2.set(includeUUID);
-                atomicReference.set(serviceUUID);
-                return false;
-            }
-        };
-
-        mockBLEServerConnection.startAdvertising(false, secondUUID);
-        assertFalse(atomicBoolean1.get());
-        assertTrue(atomicBoolean2.get());
-        assertEquals(secondUUID, atomicReference.get());
+        MOCK_BLE_SERVER_CONNECTION.startAdvertising(false, secondUUID);
+        assertFalse(MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingIncludeDeviceName());
+        assertTrue(MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingIncludeUUID());
+        assertEquals(secondUUID, MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingServiceUUID());
     }
 
     @Test
     public void test_startAdvertising_003() {
-        final AtomicBoolean atomicBoolean1 = new AtomicBoolean(true);
-        final AtomicBoolean atomicBoolean2 = new AtomicBoolean(true);
-        UUID firstUUID = UUID.randomUUID();
-        UUID secondUUID = UUID.randomUUID();
-        final AtomicReference<UUID> atomicReference = new AtomicReference<>(firstUUID);
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
+        UUID firstUUID = new UUID(0, 0);
+        UUID secondUUID = new UUID(0, 1);
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingIncludeDeviceName(true);
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingIncludeUUID(true);
+        MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingServiceUUID(firstUUID);
 
-            @Override
-            public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
-                atomicBoolean1.set(includeDeviceName);
-                atomicBoolean2.set(includeUUID);
-                atomicReference.set(serviceUUID);
-                return false;
-            }
-        };
-
-        mockBLEServerConnection.startAdvertising(false, false, secondUUID);
-        assertFalse(atomicBoolean1.get());
-        assertFalse(atomicBoolean2.get());
-        assertEquals(secondUUID, atomicReference.get());
+        MOCK_BLE_SERVER_CONNECTION.startAdvertising(false, false, secondUUID);
+        assertFalse(MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingIncludeDeviceName());
+        assertFalse(MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingIncludeUUID());
+        assertEquals(secondUUID, MOCK_BLE_SERVER_CONNECTION.getStartAdvertisingServiceUUID());
     }
 
     @Test

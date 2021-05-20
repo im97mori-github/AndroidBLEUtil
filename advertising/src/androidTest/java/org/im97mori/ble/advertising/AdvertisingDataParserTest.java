@@ -48,6 +48,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ALL")
 public class AdvertisingDataParserTest {
 
     @Test
@@ -9279,6 +9280,7 @@ public class AdvertisingDataParserTest {
         assertNotNull(result.getResultList());
         assertEquals(2, result.getResultList().size());
         assertEquals(2, result.getIncompleteListOf16BitServiceUUIDsList().size());
+        assertNotNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertEquals(result.getIncompleteListOf16BitServiceUUIDs(), result.getIncompleteListOf16BitServiceUUIDsList().get(1));
         assertEquals(BASE_UUID, result.getIncompleteListOf16BitServiceUUIDs().getUuidList().get(0));
         assertNull(result.getCompleteListOf16BitServiceUUIDs());
@@ -9331,6 +9333,7 @@ public class AdvertisingDataParserTest {
         assertEquals(2, result.getResultList().size());
         assertNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertEquals(2, result.getCompleteListOf16BitServiceUUIDsList().size());
+        assertNotNull(result.getCompleteListOf16BitServiceUUIDs());
         assertEquals(result.getCompleteListOf16BitServiceUUIDs(), result.getCompleteListOf16BitServiceUUIDsList().get(1));
         assertEquals(BASE_UUID, result.getCompleteListOf16BitServiceUUIDs().getUuidList().get(0));
         assertNull(result.getIncompleteListOf32BitServiceUUIDs());
@@ -9387,6 +9390,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertNull(result.getCompleteListOf16BitServiceUUIDs());
         assertEquals(2, result.getIncompleteListOf32BitServiceUUIDsList().size());
+        assertNotNull(result.getIncompleteListOf32BitServiceUUIDs());
         assertEquals(result.getIncompleteListOf32BitServiceUUIDs(), result.getIncompleteListOf32BitServiceUUIDsList().get(1));
         assertEquals(BASE_UUID, result.getIncompleteListOf32BitServiceUUIDs().getUuidList().get(0));
         assertNull(result.getCompleteListOf32BitServiceUUIDs());
@@ -9443,6 +9447,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getCompleteListOf16BitServiceUUIDs());
         assertNull(result.getIncompleteListOf32BitServiceUUIDs());
         assertEquals(2, result.getCompleteListOf32BitServiceUUIDsList().size());
+        assertNotNull(result.getCompleteListOf32BitServiceUUIDs());
         assertEquals(result.getCompleteListOf32BitServiceUUIDs(), result.getCompleteListOf32BitServiceUUIDsList().get(1));
         assertEquals(BASE_UUID, result.getCompleteListOf32BitServiceUUIDs().getUuidList().get(0));
         assertNull(result.getIncompleteListOf128BitServiceUUIDs());
@@ -9523,6 +9528,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getIncompleteListOf32BitServiceUUIDs());
         assertNull(result.getCompleteListOf32BitServiceUUIDs());
         assertEquals(2, result.getIncompleteListOf128BitServiceUUIDsList().size());
+        assertNotNull(result.getIncompleteListOf128BitServiceUUIDs());
         assertEquals(result.getIncompleteListOf128BitServiceUUIDs(), result.getIncompleteListOf128BitServiceUUIDsList().get(1));
         assertEquals(new UUID(0, 0), result.getIncompleteListOf128BitServiceUUIDs().getUuidList().get(0));
         assertNull(result.getCompleteListOf128BitServiceUUIDs());
@@ -9603,6 +9609,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getCompleteListOf32BitServiceUUIDs());
         assertNull(result.getIncompleteListOf128BitServiceUUIDs());
         assertEquals(2, result.getCompleteListOf128BitServiceUUIDsList().size());
+        assertNotNull(result.getCompleteListOf128BitServiceUUIDs());
         assertEquals(result.getCompleteListOf128BitServiceUUIDs(), result.getCompleteListOf128BitServiceUUIDsList().get(1));
         assertEquals(new UUID(0, 0), result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0));
         assertNull(result.getShortenedLocalName());
@@ -9658,6 +9665,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getCompleteLocalName());
         assertNull(result.getFlags());
         assertEquals(2, result.getManufacturerSpecificDataList().size());
+        assertNotNull(result.getManufacturerSpecificData());
         assertEquals(result.getManufacturerSpecificData(), result.getManufacturerSpecificDataList().get(1));
         assertEquals(0x00000008, result.getManufacturerSpecificData().getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING.get(0x00000008), result.getManufacturerSpecificData().getCompanyName());
@@ -9709,6 +9717,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getFlags());
         assertNull(result.getManufacturerSpecificData());
         assertEquals(2, result.getTxPowerLevelList().size());
+        assertNotNull(result.getTxPowerLevel());
         assertEquals(result.getTxPowerLevel(), result.getTxPowerLevelList().get(1));
         assertEquals(0, result.getTxPowerLevel().getTxPowerLevel());
         assertNull(result.getSlaveConnectionIntervalRange());
@@ -9765,6 +9774,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getManufacturerSpecificData());
         assertNull(result.getTxPowerLevel());
         assertEquals(2, result.getSlaveConnectionIntervalRangeList().size());
+        assertNotNull(result.getSlaveConnectionIntervalRange());
         assertEquals(result.getSlaveConnectionIntervalRange(), result.getSlaveConnectionIntervalRangeList().get(1));
         assertTrue(result.getSlaveConnectionIntervalRange().hasMaximum());
         assertEquals(0d, 0x0006 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result.getSlaveConnectionIntervalRange().getMaximumValueMillis());
@@ -9820,6 +9830,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getTxPowerLevel());
         assertNull(result.getSlaveConnectionIntervalRange());
         assertEquals(2, result.getListOf16BitServiceSolicitationUUIDsList().size());
+        assertNotNull(result.getListOf16BitServiceSolicitationUUIDs());
         assertEquals(result.getListOf16BitServiceSolicitationUUIDs(), result.getListOf16BitServiceSolicitationUUIDsList().get(1));
         assertEquals(BASE_UUID, result.getListOf16BitServiceSolicitationUUIDs().getUuidList().get(0));
         assertNull(result.getListOf32BitServiceSolicitationUUIDs());
@@ -9876,6 +9887,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getSlaveConnectionIntervalRange());
         assertNull(result.getListOf16BitServiceSolicitationUUIDs());
         assertEquals(2, result.getListOf32BitServiceSolicitationUUIDsList().size());
+        assertNotNull(result.getListOf32BitServiceSolicitationUUIDs());
         assertEquals(result.getListOf32BitServiceSolicitationUUIDs(), result.getListOf32BitServiceSolicitationUUIDsList().get(1));
         assertEquals(BASE_UUID, result.getListOf32BitServiceSolicitationUUIDs().getUuidList().get(0));
         assertNull(result.getListOf128BitServiceSolicitationUUIDs());
@@ -9956,6 +9968,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getListOf16BitServiceSolicitationUUIDs());
         assertNull(result.getListOf32BitServiceSolicitationUUIDs());
         assertEquals(2, result.getListOf128BitServiceSolicitationUUIDsList().size());
+        assertNotNull(result.getListOf128BitServiceSolicitationUUIDs());
         assertEquals(result.getListOf128BitServiceSolicitationUUIDs(), result.getListOf128BitServiceSolicitationUUIDsList().get(1));
         assertEquals(new UUID(0, 0), result.getListOf128BitServiceSolicitationUUIDs().getUuidList().get(0));
         assertNull(result.getServiceData16BitUUID());
@@ -10008,6 +10021,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getListOf32BitServiceSolicitationUUIDs());
         assertNull(result.getListOf128BitServiceSolicitationUUIDs());
         assertEquals(2, result.getServiceData16BitUUIDList().size());
+        assertNotNull(result.getServiceData16BitUUID());
         assertEquals(result.getServiceData16BitUUID(), result.getServiceData16BitUUIDList().get(1));
         assertEquals(BASE_UUID, result.getServiceData16BitUUID().getUuid());
         assertNull(result.getServiceData32BitUUID());
@@ -10064,6 +10078,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getListOf128BitServiceSolicitationUUIDs());
         assertNull(result.getServiceData16BitUUID());
         assertEquals(2, result.getServiceData32BitUUIDList().size());
+        assertNotNull(result.getServiceData32BitUUID());
         assertEquals(result.getServiceData32BitUUID(), result.getServiceData32BitUUIDList().get(1));
         assertEquals(BASE_UUID, result.getServiceData32BitUUID().getUuid());
         assertNull(result.getServiceData128BitUUID());
@@ -10144,6 +10159,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getServiceData16BitUUID());
         assertNull(result.getServiceData32BitUUID());
         assertEquals(2, result.getServiceData128BitUUIDList().size());
+        assertNotNull(result.getServiceData128BitUUID());
         assertEquals(result.getServiceData128BitUUID(), result.getServiceData128BitUUIDList().get(1));
         assertEquals(new UUID(0, 0), result.getServiceData128BitUUID().getUuid());
         assertNull(result.getAppearance());
@@ -10215,6 +10231,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertEquals(2, result.getUniformRsourceIdentifierList().size());
+        assertNotNull(result.getUniformRsourceIdentifier());
         assertEquals(result.getUniformRsourceIdentifier(), result.getUniformRsourceIdentifierList().get(1));
         assertEquals(URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(0xb9) + new String(data, 15, 8)), result.getUniformRsourceIdentifier().getUri());
         assertNull(result.getIndoorPositioning());

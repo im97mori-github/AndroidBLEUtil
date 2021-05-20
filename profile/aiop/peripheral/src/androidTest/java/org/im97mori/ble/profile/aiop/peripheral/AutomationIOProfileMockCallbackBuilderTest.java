@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class AutomationIOProfileMockCallbackBuilderTest {
@@ -954,6 +955,32 @@ public class AutomationIOProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeAggregateClientCharacteristicConfiguration());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_build_00001() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new AutomationIOServiceMockCallback.Builder<>())
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("Digital and Analog Characteristic not found", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00002() {
+        AutomationIOProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new AutomationIOServiceMockCallback.Builder<>())
+                .addDigital(0, 0, 0, 0, new byte[]{5})
+                .addDigitalNumberOfDigitals(0, 0, 0, new byte[]{4})
+                .build();
+
+        assertNotNull(callback);
     }
 
 }

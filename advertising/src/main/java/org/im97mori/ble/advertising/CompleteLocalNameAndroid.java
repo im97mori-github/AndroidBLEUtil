@@ -69,6 +69,7 @@ public class CompleteLocalNameAndroid extends CompleteLocalName implements Adver
      * @param in Parcel
      */
     private CompleteLocalNameAndroid(Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

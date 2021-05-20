@@ -75,6 +75,7 @@ public class URIAndroid extends URI implements Parcelable {
      * @param in Parcel
      */
     private URIAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -72,6 +72,7 @@ public class FirstNameAndroid extends FirstName implements Parcelable {
      * @param in Parcel
      */
     private FirstNameAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(new RegisteredUser[]{new RegisteredUser(in.createByteArray())});
     }
 

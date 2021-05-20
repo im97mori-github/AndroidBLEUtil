@@ -203,7 +203,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), new LinkedList<byte[]>());
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), new LinkedList<>());
         assertFalse(filter.isMatched(result));
     }
 
@@ -390,11 +390,9 @@ public class PublicTargetAddressFilterTest {
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
 
-        byte[] bitmask = new byte[6];
-
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddressAndroid(expectData, 0, expectData.length - 1), Arrays.asList(bitmask, bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddressAndroid(expectData, 0, expectData.length - 1), Arrays.asList(new byte[6], new byte[6]));
         assertTrue(filter.isMatched(result));
     }
 

@@ -35,7 +35,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 8
                 , 9
                 , 10
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
 
         Gson gson = new Gson();
         UnreadAlertStatusCharacteristicData result2 = gson.fromJson(gson.toJson(result1), UnreadAlertStatusCharacteristicData.class);
@@ -74,7 +74,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstSimpleAlertUnreadCount, characteristicData.simpleAlertUnreadCount);
 
         int secondSimpleAlertUnreadCount = 101;
@@ -95,7 +95,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstEmailUnreadCount, characteristicData.emailUnreadCount);
 
         int secondEmailUnreadCount = 101;
@@ -116,7 +116,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstNewsUnreadCount, characteristicData.newsUnreadCount);
 
         int secondNewsUnreadCount = 101;
@@ -137,7 +137,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstCallUnreadCount, characteristicData.callUnreadCount);
 
         int secondCallUnreadCount = 101;
@@ -158,7 +158,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstMissedCallUnreadCount, characteristicData.missedCallUnreadCount);
 
         int secondMissedCallUnreadCount = 101;
@@ -179,7 +179,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstSmsMmsUnreadCount, characteristicData.smsMmsUnreadCount);
 
         int secondSmsMmsUnreadCount = 101;
@@ -200,7 +200,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstVoiceMailUnreadCount, characteristicData.voiceMailUnreadCount);
 
         int secondVoiceMailUnreadCount = 101;
@@ -221,7 +221,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , firstScheduleUnreadCount
                 , 0
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstScheduleUnreadCount, characteristicData.scheduleUnreadCount);
 
         int secondScheduleUnreadCount = 101;
@@ -242,7 +242,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , firstHighPrioritizedAlertUnreadCount
                 , 0
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstHighPrioritizedAlertUnreadCount, characteristicData.highPrioritizedAlertUnreadCount);
 
         int secondHighPrioritizedAlertUnreadCount = 101;
@@ -263,7 +263,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 0
                 , 0
                 , firstInstantMessageAlertUnreadCount
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstInstantMessageAlertUnreadCount, characteristicData.instantMessageAlertUnreadCount);
 
         int secondInstantMessageAlertUnreadCount = 101;
@@ -283,7 +283,7 @@ public class UnreadAlertStatusCharacteristicDataTest {
                 , 8
                 , 9
                 , 10
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);

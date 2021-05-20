@@ -176,7 +176,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
             mBloodPressureFeature = new CharacteristicData(BLOOD_PRESSURE_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

@@ -1,7 +1,5 @@
 package org.im97mori.ble.profile.ftmp.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
@@ -9,10 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a80.Age;
 import org.im97mori.ble.characteristic.u2a85.DateOfBirth;
@@ -35,20 +31,39 @@ import org.im97mori.ble.profile.ftmp.central.db.FitnessMachineProfileBondedDatab
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.ftms.central.FitnessMachineService;
 import org.im97mori.ble.service.uds.central.UserDataService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.USER_DATA_SERVICE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class FitnessMachineProfileTest {
+public class FitnessMachineProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findFitnessMachineProfileDevices_00001() {
@@ -83,20 +98,33 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_hasUserDataService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-            @Override
-            public synchronized boolean isConnected() {
-                return true;
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
-        fitnessMachineProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(USER_DATA_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY)), null);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.hasUserDataService());
         fitnessMachineProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasUserDataService_00003() {
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = fitnessMachineProfile.hasUserDataService();
+        fitnessMachineProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasUserDataService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
+
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        fitnessMachineProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = fitnessMachineProfile.hasUserDataService();
+        fitnessMachineProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -107,20 +135,33 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_hasDeviceInformationService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-            @Override
-            public synchronized boolean isConnected() {
-                return true;
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
-        fitnessMachineProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY)), null);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.hasDeviceInformationService());
         fitnessMachineProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00003() {
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = fitnessMachineProfile.hasDeviceInformationService();
+        fitnessMachineProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
+
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        fitnessMachineProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = fitnessMachineProfile.hasDeviceInformationService();
+        fitnessMachineProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -131,29 +172,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isTreadmillDataCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isTreadmillDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -166,29 +186,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isCrossTrainerDataCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isCrossTrainerDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -201,29 +200,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isStepClimberDataCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isStepClimberDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -236,29 +214,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isStairClimberDataCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isStairClimberDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -271,29 +228,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isRowerDataCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isRowerDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -306,29 +242,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isIndoorBikeDataCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isIndoorBikeDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -341,29 +256,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isTrainingStatusCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isTrainingStatusCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -376,29 +270,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isSupportedSpeedRangeCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isSupportedSpeedRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -411,29 +284,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isSupportedInclinationRangeCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isSupportedInclinationRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -446,29 +298,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isSupportedResistanceLevelRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -481,29 +312,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isSupportedPowerRangeCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isSupportedPowerRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -516,29 +326,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isSupportedHeartRateRangeCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isSupportedHeartRateRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -551,29 +340,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isFitnessMachineControlPointCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isFitnessMachineControlPointCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -586,29 +354,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isFitnessMachineStatusCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isFitnessMachineStatusCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -621,29 +368,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isFirstNameCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isFirstNameCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -656,29 +382,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isWeightCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isWeightCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -691,29 +396,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isGenderCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isGenderCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -726,29 +410,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isHeightCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isHeightCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -761,29 +424,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isAgeCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isAgeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -796,29 +438,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isDateOfBirthCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isDateOfBirthCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -831,29 +452,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isHeartRateMaxCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isHeartRateMaxCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -866,29 +466,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isRestingHeartRateCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isRestingHeartRateCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -901,29 +480,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isMaximumRecommendedHeartRateCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -936,29 +494,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isVO2MaxCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isVO2MaxCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -971,29 +508,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isLanguageCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isLanguageCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -1006,29 +522,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isTwoZoneHeartRateLimitCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -1041,29 +536,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isThreeZoneHeartRateLimitsCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -1076,29 +550,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isFiveZoneHeartRateLimitsCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
@@ -1111,29 +564,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.isDatabaseChangeIncrementCharacteristicNotifySupported());
         fitnessMachineProfile.disconnect();
     }
@@ -1146,29 +578,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_hasManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.hasManufacturerNameString());
         fitnessMachineProfile.disconnect();
     }
@@ -1181,29 +592,8 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_hasModelNumberString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-            }
-        };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.hasModelNumberString());
         fitnessMachineProfile.disconnect();
     }
@@ -1216,46 +606,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getFitnessMachineFeature_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getFitnessMachineFeature() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getFitnessMachineFeature());
         fitnessMachineProfile.disconnect();
     }
@@ -1268,50 +632,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getTreadmillDataClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isTreadmillDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getTreadmillDataClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getTreadmillDataClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -1324,50 +658,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startTreadmillDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isTreadmillDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startTreadmillDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startTreadmillDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -1380,50 +684,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopTreadmillDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isTreadmillDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopTreadmillDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopTreadmillDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -1436,50 +710,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getCrossTrainerDataClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isCrossTrainerDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getCrossTrainerDataClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getCrossTrainerDataClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -1492,50 +736,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startCrossTrainerDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isCrossTrainerDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startCrossTrainerDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startCrossTrainerDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -1548,50 +762,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopCrossTrainerDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isCrossTrainerDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopCrossTrainerDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopCrossTrainerDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -1604,50 +788,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getStepClimberDataClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStepClimberDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getStepClimberDataClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getStepClimberDataClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -1660,50 +814,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startStepClimberDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStepClimberDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startStepClimberDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startStepClimberDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -1716,50 +840,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopStepClimberDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStepClimberDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopStepClimberDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopStepClimberDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -1772,50 +866,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getStairClimberDataClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStairClimberDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getStairClimberDataClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getStairClimberDataClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -1828,50 +892,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startStairClimberDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStairClimberDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startStairClimberDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startStairClimberDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -1884,50 +918,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopStairClimberDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStairClimberDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopStairClimberDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopStairClimberDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -1940,50 +944,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getRowerDataClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isRowerDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getRowerDataClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getRowerDataClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -1996,50 +970,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startRowerDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isRowerDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startRowerDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startRowerDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -2052,50 +996,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopRowerDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isRowerDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopRowerDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopRowerDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -2108,50 +1022,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getIndoorBikeDataClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isIndoorBikeDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getIndoorBikeDataClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getIndoorBikeDataClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -2164,50 +1048,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startIndoorBikeDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isIndoorBikeDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startIndoorBikeDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startIndoorBikeDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -2220,50 +1074,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopIndoorBikeDataNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isIndoorBikeDataCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopIndoorBikeDataNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopIndoorBikeDataNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -2276,51 +1100,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getTrainingStatus_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isTrainingStatusCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getTrainingStatus() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getTrainingStatus());
         fitnessMachineProfile.disconnect();
     }
@@ -2333,50 +1126,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getTrainingStatusClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isTrainingStatusCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getTrainingStatusClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getTrainingStatusClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -2389,50 +1152,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startTrainingStatusNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isTrainingStatusCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startTrainingStatusNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startTrainingStatusNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -2445,50 +1178,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopTrainingStatusNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isTrainingStatusCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopTrainingStatusNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopTrainingStatusNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -2501,51 +1204,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getSupportedSpeedRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isSupportedSpeedRangeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getSupportedSpeedRange() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getSupportedSpeedRange());
         fitnessMachineProfile.disconnect();
     }
@@ -2558,51 +1230,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getSupportedInclinationRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isSupportedInclinationRangeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getSupportedInclinationRange() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getSupportedInclinationRange());
         fitnessMachineProfile.disconnect();
     }
@@ -2615,51 +1256,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getSupportedResistanceLevelRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isSupportedResistanceLevelRangeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getSupportedResistanceLevelRange() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getSupportedResistanceLevelRange());
         fitnessMachineProfile.disconnect();
     }
@@ -2672,51 +1282,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getSupportedPowerRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isSupportedPowerRangeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getSupportedPowerRange() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getSupportedPowerRange());
         fitnessMachineProfile.disconnect();
     }
@@ -2729,51 +1308,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getSupportedHeartRateRange_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isSupportedHeartRateRangeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getSupportedHeartRateRange() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getSupportedHeartRateRange());
         fitnessMachineProfile.disconnect();
     }
@@ -2786,51 +1334,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setFitnessMachineControlPoint_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isFitnessMachineControlPointCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setFitnessMachineControlPoint(@NonNull FitnessMachineControlPoint fitnessMachineControlPoint) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setFitnessMachineControlPoint(new FitnessMachineControlPoint(FitnessMachineControlPoint.OP_CODE_RESET, new byte[0], 0, 0, new byte[0])));
         fitnessMachineProfile.disconnect();
     }
@@ -2843,50 +1360,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getFitnessMachineControlPointClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isFitnessMachineControlPointCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getFitnessMachineControlPointClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getFitnessMachineControlPointClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -2899,50 +1386,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startFitnessMachineControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isFitnessMachineControlPointCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startFitnessMachineControlPointIndication() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startFitnessMachineControlPointIndication());
         fitnessMachineProfile.disconnect();
     }
@@ -2955,50 +1412,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopFitnessMachineControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isFitnessMachineControlPointCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopFitnessMachineControlPointIndication() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopFitnessMachineControlPointIndication());
         fitnessMachineProfile.disconnect();
     }
@@ -3011,50 +1438,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getFitnessMachineStatusClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isFitnessMachineStatusCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getFitnessMachineStatusClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getFitnessMachineStatusClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -3067,50 +1464,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startFitnessMachineStatusNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isFitnessMachineStatusCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer startFitnessMachineStatusNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startFitnessMachineStatusNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -3123,50 +1490,20 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopFitnessMachineStatusNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mFitnessMachineService == null) {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isFitnessMachineStatusCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer stopFitnessMachineStatusNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopFitnessMachineStatusNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -3179,46 +1516,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getDatabaseChangeIncrement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getDatabaseChangeIncrement() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getDatabaseChangeIncrement());
         fitnessMachineProfile.disconnect();
     }
@@ -3231,46 +1543,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setDatabaseChangeIncrement_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setDatabaseChangeIncrement(@NonNull DatabaseChangeIncrement databaseChangeIncrement) {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setDatabaseChangeIncrement(new DatabaseChangeIncrement(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -3283,51 +1570,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getDatabaseChangeIncrementClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
-                            return true;
+                        public synchronized Integer getDatabaseChangeIncrementClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getDatabaseChangeIncrementClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -3340,51 +1597,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startDatabaseChangeIncrementNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
-                            return true;
+                        public synchronized Integer startDatabaseChangeIncrementNotification() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startDatabaseChangeIncrementNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -3397,51 +1624,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopDatabaseChangeIncrementNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
-                            return true;
+                        public synchronized Integer stopDatabaseChangeIncrementNotification() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopDatabaseChangeIncrementNotification());
         fitnessMachineProfile.disconnect();
     }
@@ -3454,46 +1651,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setUserControlPoint_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setUserControlPoint(@NonNull UserControlPoint userControlPoint) {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setUserControlPoint(new UserControlPoint(0, 0, 0, 0, 0, 0)));
         fitnessMachineProfile.disconnect();
     }
@@ -3506,46 +1678,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getUserControlPointClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUserControlPointClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getUserControlPointClientCharacteristicConfiguration());
         fitnessMachineProfile.disconnect();
     }
@@ -3558,46 +1705,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_startUserControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startUserControlPointIndication() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.startUserControlPointIndication());
         fitnessMachineProfile.disconnect();
     }
@@ -3610,46 +1732,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_stopUserControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopUserControlPointIndication() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.stopUserControlPointIndication());
         fitnessMachineProfile.disconnect();
     }
@@ -3662,46 +1759,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getUserIndex_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getUserIndex() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getUserIndex());
         fitnessMachineProfile.disconnect();
     }
@@ -3714,51 +1786,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getFirstName_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isFirstNameCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getFirstName() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getFirstName());
         fitnessMachineProfile.disconnect();
     }
@@ -3771,51 +1813,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setFirstName_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isFirstNameCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setFirstName(@NonNull FirstName firstName) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setFirstName(new FirstName("firstName")));
         fitnessMachineProfile.disconnect();
     }
@@ -3828,51 +1840,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getWeight_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isWeightCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getWeight() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getWeight());
         fitnessMachineProfile.disconnect();
     }
@@ -3885,51 +1867,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setWeight_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isWeightCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setWeight(@NonNull Weight weight) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setWeight(new Weight(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -3942,51 +1894,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getGender_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isGenderCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getGender() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getGender());
         fitnessMachineProfile.disconnect();
     }
@@ -3999,51 +1921,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setGender_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isGenderCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setGender(@NonNull Gender gender) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setGender(new Gender(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -4056,51 +1948,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getHeight_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isHeightCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getHeight() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getHeight());
         fitnessMachineProfile.disconnect();
     }
@@ -4113,51 +1975,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setHeight_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isHeightCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setHeight(@NonNull Height height) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setHeight(new Height(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -4170,51 +2002,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getAge_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isAgeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getAge() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getAge());
         fitnessMachineProfile.disconnect();
     }
@@ -4227,51 +2029,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setAge_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isAgeCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setAge(@NonNull Age age) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setAge(new Age(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -4284,51 +2056,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getDateOfBirth_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isDateOfBirthCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getDateOfBirth() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getDateOfBirth());
         fitnessMachineProfile.disconnect();
     }
@@ -4341,51 +2083,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setDateOfBirth_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isDateOfBirthCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setDateOfBirth(@NonNull DateOfBirth dateOfBirth) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setDateOfBirth(new DateOfBirth(1, 2, 3)));
         fitnessMachineProfile.disconnect();
     }
@@ -4398,51 +2110,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getHeartRateMax_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isHeartRateMaxCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getHeartRateMax() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getHeartRateMax());
         fitnessMachineProfile.disconnect();
     }
@@ -4455,51 +2137,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setHeartRateMax_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isHeartRateMaxCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setHeartRateMax(@NonNull HeartRateMax heartRateMax) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setHeartRateMax(new HeartRateMax(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -4512,51 +2164,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getRestingHeartRate_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isRestingHeartRateCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getRestingHeartRate() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getRestingHeartRate());
         fitnessMachineProfile.disconnect();
     }
@@ -4569,51 +2191,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setRestingHeartRate_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isRestingHeartRateCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setRestingHeartRate(@NonNull RestingHeartRate restingHeartRate) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setRestingHeartRate(new RestingHeartRate(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -4626,51 +2218,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getMaximumRecommendedHeartRate_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getMaximumRecommendedHeartRate() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getMaximumRecommendedHeartRate());
         fitnessMachineProfile.disconnect();
     }
@@ -4683,51 +2245,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setMaximumRecommendedHeartRate_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setMaximumRecommendedHeartRate(@NonNull MaximumRecommendedHeartRate maximumRecommendedHeartRate) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setMaximumRecommendedHeartRate(new MaximumRecommendedHeartRate(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -4740,51 +2272,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getVO2Max_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isVO2MaxCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getVO2Max() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getVO2Max());
         fitnessMachineProfile.disconnect();
     }
@@ -4797,51 +2299,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setVO2Max_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isVO2MaxCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setVO2Max(@NonNull VO2Max vo2Max) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setVO2Max(new VO2Max(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -4854,51 +2326,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getLanguage_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isLanguageCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getLanguage() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getLanguage());
         fitnessMachineProfile.disconnect();
     }
@@ -4911,51 +2353,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setLanguage_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isLanguageCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setLanguage(@NonNull Language language) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setLanguage(new Language("language")));
         fitnessMachineProfile.disconnect();
     }
@@ -4968,51 +2380,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getTwoZoneHeartRateLimit_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getTwoZoneHeartRateLimit() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getTwoZoneHeartRateLimit());
         fitnessMachineProfile.disconnect();
     }
@@ -5025,51 +2407,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setTwoZoneHeartRateLimit_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setTwoZoneHeartRateLimit(@NonNull TwoZoneHeartRateLimit twoZoneHeartRateLimit) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setTwoZoneHeartRateLimit(new TwoZoneHeartRateLimit(1)));
         fitnessMachineProfile.disconnect();
     }
@@ -5082,51 +2434,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getThreeZoneHeartRateLimits_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getThreeZoneHeartRateLimits() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getThreeZoneHeartRateLimits());
         fitnessMachineProfile.disconnect();
     }
@@ -5139,51 +2461,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setThreeZoneHeartRateLimits_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setThreeZoneHeartRateLimits(@NonNull ThreeZoneHeartRateLimits threeZoneHeartRateLimits) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setThreeZoneHeartRateLimits(new ThreeZoneHeartRateLimits(1, 2)));
         fitnessMachineProfile.disconnect();
     }
@@ -5196,51 +2488,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getFiveZoneHeartRateLimits_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getFiveZoneHeartRateLimits() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getFiveZoneHeartRateLimits());
         fitnessMachineProfile.disconnect();
     }
@@ -5253,51 +2515,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_setFiveZoneHeartRateLimits_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setFiveZoneHeartRateLimits(@NonNull FiveZoneHeartRateLimits fiveZoneHeartRateLimits) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.setFiveZoneHeartRateLimits(new FiveZoneHeartRateLimits(1, 2, 3, 4)));
         fitnessMachineProfile.disconnect();
     }
@@ -5310,49 +2542,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public synchronized boolean hasManufacturerNameString() {
-                            return true;
+                        public synchronized Integer getManufacturerNameString() {
+                            return 1;
                         }
                     };
                 }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getManufacturerNameString());
         fitnessMachineProfile.disconnect();
     }
@@ -5365,49 +2569,21 @@ public class FitnessMachineProfileTest {
 
     @Test
     public void test_getModelNumberString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mFitnessMachineService == null) {
-                    mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
+
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mFitnessMachineProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public synchronized boolean hasModelNumberString() {
-                            return true;
+                        public synchronized Integer getModelNumberString() {
+                            return 1;
                         }
                     };
                 }
-                if (mUserDataService == null) {
-                    mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null);
-                }
             }
         };
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.getModelNumberString());
         fitnessMachineProfile.disconnect();
     }
@@ -5428,23 +2604,18 @@ public class FitnessMachineProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(fitnessMachineProfile.mFitnessMachineService);
         assertNotNull(fitnessMachineProfile.mDeviceInformationService);
         assertNotNull(fitnessMachineProfile.mUserDataService);
         assertTrue(atomicBoolean.get());
+        fitnessMachineProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        fitnessMachineProfile.connect(MOCK_DEVICE);
+        fitnessMachineProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         fitnessMachineProfile.quit();
         assertNull(fitnessMachineProfile.mFitnessMachineService);
         assertNull(fitnessMachineProfile.mDeviceInformationService);

@@ -75,6 +75,7 @@ public class HeartRateControlPointAndroid extends HeartRateControlPoint implemen
      * @param in Parcel
      */
     private HeartRateControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

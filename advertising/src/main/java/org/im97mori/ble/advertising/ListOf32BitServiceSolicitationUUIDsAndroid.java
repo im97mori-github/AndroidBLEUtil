@@ -69,6 +69,7 @@ public class ListOf32BitServiceSolicitationUUIDsAndroid extends ListOf32BitServi
      * @param in Parcel
      */
     private ListOf32BitServiceSolicitationUUIDsAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

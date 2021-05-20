@@ -85,6 +85,7 @@ public class NavigationAndroid extends Navigation implements Parcelable {
      * @param in Parcel
      */
     private NavigationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

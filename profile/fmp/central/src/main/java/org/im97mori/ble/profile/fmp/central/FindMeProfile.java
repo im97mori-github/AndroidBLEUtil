@@ -13,7 +13,6 @@ import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
 import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.fmp.central.db.FindMeProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.ias.central.ImmediateAlertService;
-import org.im97mori.ble.task.DiscoverServiceTask;
 
 /**
  * Find Me Profile for Central
@@ -90,17 +89,6 @@ public class FindMeProfile extends AbstractCentralProfile {
     public synchronized void quit() {
         super.quit();
         mImmediateAlertService = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
-        if (bluetoothDevice.equals(mCurrentBluetoothDevice)) {
-            mBLEConnection.createDiscoverServiceTask(DiscoverServiceTask.TIMEOUT_MILLIS, null, this);
-        }
-        super.onBLEConnected(taskId, bluetoothDevice, argument);
     }
 
 }

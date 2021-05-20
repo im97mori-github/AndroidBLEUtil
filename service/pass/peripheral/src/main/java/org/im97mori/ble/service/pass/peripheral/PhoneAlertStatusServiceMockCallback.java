@@ -191,7 +191,7 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
             mRingerControlPointData = new CharacteristicData(RINGER_CONTROL_POINT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE
                     , BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

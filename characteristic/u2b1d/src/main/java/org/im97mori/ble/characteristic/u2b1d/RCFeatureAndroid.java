@@ -76,6 +76,7 @@ public class RCFeatureAndroid extends RCFeature implements Parcelable {
      * @param in Parcel
      */
     private RCFeatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -75,6 +75,7 @@ public class HTTPHeadersAndroid extends HTTPHeaders implements Parcelable {
      * @param in Parcel
      */
     private HTTPHeadersAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

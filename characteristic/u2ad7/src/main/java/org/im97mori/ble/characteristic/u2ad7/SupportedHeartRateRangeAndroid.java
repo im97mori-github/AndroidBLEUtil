@@ -77,6 +77,7 @@ public class SupportedHeartRateRangeAndroid extends SupportedHeartRateRange impl
      * @param in Parcel
      */
     private SupportedHeartRateRangeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

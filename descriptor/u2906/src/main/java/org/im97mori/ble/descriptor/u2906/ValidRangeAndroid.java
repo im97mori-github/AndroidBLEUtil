@@ -74,6 +74,7 @@ public class ValidRangeAndroid extends ValidRange implements Parcelable {
      * @param in Parcel
      */
     private ValidRangeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

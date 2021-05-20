@@ -66,6 +66,7 @@ public class BodyCompositionFeatureAndroid extends BodyCompositionFeature implem
      * @param in Parcel
      */
     private BodyCompositionFeatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

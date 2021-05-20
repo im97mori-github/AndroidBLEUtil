@@ -75,6 +75,7 @@ public class ModelNumberStringAndroid extends ModelNumberString implements Parce
      * @param in Parcel
      */
     private ModelNumberStringAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

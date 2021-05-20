@@ -70,6 +70,7 @@ public class ChannelMapUpdateIndicationAndroid extends ChannelMapUpdateIndicatio
      * @param in Parcel
      */
     private ChannelMapUpdateIndicationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

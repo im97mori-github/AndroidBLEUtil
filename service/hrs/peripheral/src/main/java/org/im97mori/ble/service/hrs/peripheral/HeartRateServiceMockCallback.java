@@ -134,7 +134,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
             mBodySensorLocation = new CharacteristicData(BODY_SENSOR_LOCATION_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -174,7 +174,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
             mHeartRateControlPoint = new CharacteristicData(HEART_RATE_CONTROL_POINT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

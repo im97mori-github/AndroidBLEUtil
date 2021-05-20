@@ -15,6 +15,7 @@ import org.im97mori.ble.descriptor.u2906.ValidRangeAndroid;
 
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 class MockHealthThermometerServiceCallback implements HealthThermometerServiceCallback {
     @Override
     public void onTemperatureMeasurementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {

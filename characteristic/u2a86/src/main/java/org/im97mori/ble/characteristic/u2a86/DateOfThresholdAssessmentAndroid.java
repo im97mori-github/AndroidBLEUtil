@@ -77,6 +77,7 @@ public class DateOfThresholdAssessmentAndroid extends DateOfThresholdAssessment 
      * @param in Parcel
      */
     private DateOfThresholdAssessmentAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

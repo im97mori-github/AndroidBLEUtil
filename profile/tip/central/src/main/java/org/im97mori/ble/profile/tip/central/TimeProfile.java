@@ -88,7 +88,7 @@ public class TimeProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasNextDstChangeService() {
         Boolean result = null;
-        if (isConnected()) {
+        if (mNextDstChangeService != null) {
             result = mHasNextDstChangeService;
         }
         return result;
@@ -100,7 +100,7 @@ public class TimeProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasReferenceTimeUpdateService() {
         Boolean result = null;
-        if (isConnected()) {
+        if (mReferenceTimeUpdateService != null) {
             result = mHasReferenceTimeUpdateService;
         }
         return result;

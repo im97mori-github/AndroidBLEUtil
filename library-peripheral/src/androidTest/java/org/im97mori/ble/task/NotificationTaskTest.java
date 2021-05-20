@@ -1,6 +1,5 @@
 package org.im97mori.ble.task;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.os.HandlerThread;
@@ -13,10 +12,9 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerCallbackDistributer;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BaseBLEServerCallback;
-import org.im97mori.ble.MockBLEServerConnection;
 import org.im97mori.ble.TaskHandler;
-import org.junit.After;
-import org.junit.Before;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.Random;
@@ -28,22 +26,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class NotificationTaskTest {
-
-    private MockBLEServerConnection MOCK_BLE_SERVER_CONNECTION;
-
-    @Before
-    public void setup() {
-        MOCK_BLE_SERVER_CONNECTION = new MockBLEServerConnection();
-    }
-
-    @After
-    public void tearDown() {
-        if (MOCK_BLE_SERVER_CONNECTION != null) {
-            MOCK_BLE_SERVER_CONNECTION.quit();
-            MOCK_BLE_SERVER_CONNECTION = null;
-        }
-    }
+public class NotificationTaskTest extends AbstractPeripherallTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -70,29 +53,27 @@ public class NotificationTaskTest {
 
     @Test
     public void test_createNotificationSentSuccessMessage_00001() {
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
-        Message message = NotificationTask.createNotificationSentSuccessMessage(bluetoothDevice);
+        Message message = NotificationTask.createNotificationSentSuccessMessage(BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(bluetoothDevice, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
     public void test_createNotificationSentErrorMessage_00001() {
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         int status = new Random().nextInt();
-        Message message = NotificationTask.createNotificationSentErrorMessage(bluetoothDevice, status);
+        Message message = NotificationTask.createNotificationSentErrorMessage(BLETestUtilsAndroid.MOCK_DEVICE_0, status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(bluetoothDevice, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));

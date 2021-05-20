@@ -75,6 +75,7 @@ public class LocalEastCoordinateAndroid extends LocalEastCoordinate implements P
      * @param in Parcel
      */
     private LocalEastCoordinateAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

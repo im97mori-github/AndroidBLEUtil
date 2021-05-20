@@ -64,6 +64,7 @@ public class CharacteristicAggregateFormatAndroid extends CharacteristicAggregat
      * @param in Parcel
      */
     private CharacteristicAggregateFormatAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -29,11 +29,9 @@ android {
 }
 
 dependencies {
-    api "org.im97mori:stacklog:$stacklogVersionName"
     api apiCoreAndroid
     api BASE_MODULE
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    api apiTest
 }
 
 task sourcesJar(type: Jar) {

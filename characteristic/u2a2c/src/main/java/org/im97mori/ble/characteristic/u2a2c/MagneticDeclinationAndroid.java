@@ -75,6 +75,7 @@ public class MagneticDeclinationAndroid extends MagneticDeclination implements P
      * @param in Parcel
      */
     private MagneticDeclinationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -103,7 +103,7 @@ public class RunningSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
             mRSCFeatureData = new CharacteristicData(RSC_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -199,7 +199,7 @@ public class RunningSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
             mSensorLocationData = new CharacteristicData(SENSOR_LOCATION_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -226,11 +226,11 @@ public class RunningSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
          * @param descriptorResponseCode                           descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay                                  descritptor response delay(millis)
          * @param descriptorValue                                  descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param setCumulativeValueResponseValue                  characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
-         * @param startSensorCalibrationResponseValue              characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Start Sensor Calibration response)
-         * @param updateSensorLocationResponseValue                characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Update Sensor Location response)
-         * @param requestSupportedSensorLocationsResponseValue     characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Supported Sensor Locations response)
-         * @param requestSupportedSensorLocationsResponseParameter part of characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Supported Sensor Locations response)
+         * @param setCumulativeValueResponseValue                  characteristic response code (Set Cumulative Value response)
+         * @param startSensorCalibrationResponseValue              characteristic response code (Start Sensor Calibration response)
+         * @param updateSensorLocationResponseValue                characteristic response code (Update Sensor Location response)
+         * @param requestSupportedSensorLocationsResponseValue     characteristic response code (Request Supported Sensor Locations response)
+         * @param requestSupportedSensorLocationsResponseParameter part of characteristic data array (Request Supported Sensor Locations response)
          * @return {@link Builder} instance
          */
         @NonNull

@@ -75,6 +75,7 @@ public class FatBurnHeartRateLowerLimitAndroid extends FatBurnHeartRateLowerLimi
      * @param in Parcel
      */
     private FatBurnHeartRateLowerLimitAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

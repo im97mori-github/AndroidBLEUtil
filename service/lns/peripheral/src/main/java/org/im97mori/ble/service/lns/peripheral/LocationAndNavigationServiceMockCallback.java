@@ -101,7 +101,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
             mLNFeature = new CharacteristicData(LN_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -189,7 +189,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
             mPositionQuality = new CharacteristicData(POSITION_QUALITY_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -213,16 +213,16 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
          *
          * @param characteristicResponseCode                             characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay                                    characteristic response delay(millis)
-         * @param setCumulativeValueResponseValue                        characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
-         * @param maskLocationAndSpeedCharacteristicContentResponseValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
-         * @param navigationControlResponseValue                         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
-         * @param requestNumberOfRoutesResponseValue                     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
-         * @param requestNumberOfRoutesResponseParameter                 part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Number of Routes)
-         * @param requestNameOfRouteResponseValue                        characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
-         * @param requestNameOfRouteResponseParameter                    part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Name of Route)
-         * @param selectRouteResponseValue                               characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
-         * @param setFixRateResponseValue                                characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
-         * @param setElevationResponseValue                              characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
+         * @param setCumulativeValueResponseValue                        characteristic response code (Set Cumulative Value response)
+         * @param maskLocationAndSpeedCharacteristicContentResponseValue characteristic response code (Mask Location and Speed Characteristic Content response)
+         * @param navigationControlResponseValue                         characteristic response code (Navigation Control response)
+         * @param requestNumberOfRoutesResponseValue                     characteristic response code (Request Number of Routes response)
+         * @param requestNumberOfRoutesResponseParameter                 part of characteristic data array (Number of Routes)
+         * @param requestNameOfRouteResponseValue                        characteristic response code (Request Name of Route response)
+         * @param requestNameOfRouteResponseParameter                    part of characteristic data array (Name of Route)
+         * @param selectRouteResponseValue                               characteristic response code (Select Route response)
+         * @param setFixRateResponseValue                                characteristic response code (Set Fix Rate response)
+         * @param setElevationResponseValue                              characteristic response code (Set Elevation response)
          * @param descriptorResponseCode                                 descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay                                        characteristic response delay(millis)
          * @param descriptorValue                                        descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter

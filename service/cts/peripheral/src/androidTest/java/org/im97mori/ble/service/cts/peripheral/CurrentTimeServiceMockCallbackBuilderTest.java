@@ -4,17 +4,12 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -31,7 +26,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class CurrentTimeServiceMockCallbackBuilderTest {
+public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_exception_00001() {
@@ -68,20 +63,14 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
             CurrentTimeServiceMockCallback currentTimeServiceMockCallback = new CurrentTimeServiceMockCallback.Builder<>()
                     .addCurrentTime(currentTime, clientCharacteristicConfiguration)
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -114,20 +103,14 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
             CurrentTimeServiceMockCallback currentTimeServiceMockCallback = new CurrentTimeServiceMockCallback.Builder<>()
                     .addCurrentTime(false, BluetoothGatt.GATT_SUCCESS, 0, currentTime.getBytes(), 1, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes())
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -160,20 +143,14 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
             CurrentTimeServiceMockCallback currentTimeServiceMockCallback = new CurrentTimeServiceMockCallback.Builder<>()
                     .addCurrentTime(true, BluetoothGatt.GATT_SUCCESS, 0, currentTime.getBytes(), 1, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes())
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -224,13 +201,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -238,7 +209,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
                     .addLocalTimeInformation(localTimeInformation)
                     .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -263,13 +234,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -277,7 +242,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
                     .addLocalTimeInformation(localTimeInformation.getBytes())
                     .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -302,13 +267,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -316,7 +275,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
                     .addLocalTimeInformation(false, BluetoothGatt.GATT_SUCCESS, 0, localTimeInformation.getBytes())
                     .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -341,13 +300,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -355,7 +308,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
                     .addLocalTimeInformation(true, BluetoothGatt.GATT_SUCCESS, 0, localTimeInformation.getBytes())
                     .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -398,13 +351,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         ReferenceTimeInformation referenceTimeInformation = new ReferenceTimeInformation(1, 2, 3, 4);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -412,7 +359,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
                     .addReferenceTimeInformation(referenceTimeInformation)
                     .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -439,13 +386,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         ReferenceTimeInformation referenceTimeInformation = new ReferenceTimeInformation(1, 2, 3, 4);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -453,7 +394,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
                     .addReferenceTimeInformation(referenceTimeInformation.getBytes())
                     .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -480,13 +421,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
         ReferenceTimeInformation referenceTimeInformation = new ReferenceTimeInformation(1, 2, 3, 4);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -494,7 +429,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest {
                     .addReferenceTimeInformation(BluetoothGatt.GATT_SUCCESS, 0, referenceTimeInformation.getBytes())
                     .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            currentTimeServiceMockCallback.setup(mockBLEServerConnection);
+            currentTimeServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }

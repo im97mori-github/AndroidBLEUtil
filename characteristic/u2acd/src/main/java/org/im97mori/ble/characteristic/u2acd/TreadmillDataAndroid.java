@@ -89,6 +89,7 @@ public class TreadmillDataAndroid extends TreadmillData implements Parcelable {
      * @param in Parcel
      */
     private TreadmillDataAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(new TreadmillDataPacketAndroid[]{TreadmillDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }
 

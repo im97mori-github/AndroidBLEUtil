@@ -82,7 +82,7 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
-            mCharacteristicDataMap.put(index, new CharacteristicData(BATTERY_LEVEL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, notificationCount));
+            mCharacteristicDataMap.put(index, new CharacteristicData(BATTERY_LEVEL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, notificationCount));
             return this;
         }
 
@@ -177,25 +177,27 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
             int count = mCharacteristicDataMap.size();
             CharacteristicData characteristicData;
             DescriptorData descriptorData;
-            int index;
-            for (Map.Entry<Integer, CharacteristicData> entry : mCharacteristicDataMap.entrySet()) {
-                index = entry.getKey();
-                characteristicData = entry.getValue();
-                if (count > 1) {
-                    descriptorData = mCharacteristicPresentationFormatMap.get(index);
-                    if (descriptorData == null) {
-                        descriptorData = new DescriptorData(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, BluetoothGatt.GATT_SUCCESS, 0, new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UTF_8_STRING, 0, 0, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0, 0}).getBytes());
+            List<Integer> keySet = new ArrayList<>(mCharacteristicDataMap.keySet());
+            Collections.sort(keySet);
+            for (Integer index : keySet) {
+                characteristicData = mCharacteristicDataMap.get(index);
+                if (characteristicData != null) {
+                    if (count > 1) {
+                        descriptorData = mCharacteristicPresentationFormatMap.get(index);
+                        if (descriptorData == null) {
+                            descriptorData = new DescriptorData(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, BluetoothGatt.GATT_SUCCESS, 0, new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UTF_8_STRING, 0, 0, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0, 0}).getBytes());
+                        }
+                        characteristicData.descriptorDataList.add(descriptorData);
                     }
-                    characteristicData.descriptorDataList.add(descriptorData);
-                }
-                if ((BluetoothGattCharacteristic.PROPERTY_NOTIFY & characteristicData.property) != 0) {
-                    descriptorData = mClientCharacteristicConfigurationMap.get(index);
-                    if (descriptorData == null) {
-                        descriptorData = new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
+                    if ((BluetoothGattCharacteristic.PROPERTY_NOTIFY & characteristicData.property) != 0) {
+                        descriptorData = mClientCharacteristicConfigurationMap.get(index);
+                        if (descriptorData == null) {
+                            descriptorData = new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
+                        }
+                        characteristicData.descriptorDataList.add(descriptorData);
                     }
-                    characteristicData.descriptorDataList.add(descriptorData);
+                    serviceDataList.add(new ServiceData(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, Collections.singletonList(characteristicData)));
                 }
-                serviceDataList.add(new ServiceData(BATTERY_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, Collections.singletonList(characteristicData)));
 
             }
             return new MockData(serviceDataList);

@@ -45,7 +45,7 @@ public class NewAlertCharacteristicDataTest {
                 , "i"
                 , 10
                 , "j"
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
 
         Gson gson = new Gson();
         NewAlertCharacteristicData result2 = gson.fromJson(gson.toJson(result1), NewAlertCharacteristicData.class);
@@ -104,7 +104,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstSimpleAlertNumberOfNewAlert, characteristicData.simpleAlertNumberOfNewAlert);
 
         int secondSimpleAlertNumberOfNewAlert = 101;
@@ -135,7 +135,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstSimpleAlertTextStringInformation, characteristicData.simpleAlertTextStringInformation);
 
         String secondSimpleAlertTextStringInformation = "b";
@@ -166,7 +166,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstEmailNumberOfNewAlert, characteristicData.emailNumberOfNewAlert);
 
         int secondEmailNumberOfNewAlert = 101;
@@ -197,7 +197,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstEmailTextStringInformation, characteristicData.emailTextStringInformation);
 
         String secondEmailTextStringInformation = "b";
@@ -228,7 +228,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstNewsNumberOfNewAlert, characteristicData.newsNumberOfNewAlert);
 
         int secondNewsNumberOfNewAlert = 101;
@@ -259,7 +259,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstNewsTextStringInformation, characteristicData.newsTextStringInformation);
 
         String secondNewsTextStringInformation = "b";
@@ -290,7 +290,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstCallNumberOfNewAlert, characteristicData.callNumberOfNewAlert);
 
         int secondCallNumberOfNewAlert = 101;
@@ -321,7 +321,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstCallTextStringInformation, characteristicData.callTextStringInformation);
 
         String secondCallTextStringInformation = "b";
@@ -352,7 +352,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstMissedCallNumberOfNewAlert, characteristicData.missedCallNumberOfNewAlert);
 
         int secondMissedCallNumberOfNewAlert = 101;
@@ -383,7 +383,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstMissedCallTextStringInformation, characteristicData.missedCallTextStringInformation);
 
         String secondMissedCallTextStringInformation = "b";
@@ -414,7 +414,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstSmsMmsNumberOfNewAlert, characteristicData.smsMmsNumberOfNewAlert);
 
         int secondSmsMmsNumberOfNewAlert = 101;
@@ -445,7 +445,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstSmsMmsTextStringInformation, characteristicData.smsMmsTextStringInformation);
 
         String secondSmsMmsTextStringInformation = "b";
@@ -476,7 +476,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstVoiceMailNumberOfNewAlert, characteristicData.voiceMailNumberOfNewAlert);
 
         int secondVoiceMailNumberOfNewAlert = 101;
@@ -507,7 +507,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstVoiceMailTextStringInformation, characteristicData.voiceMailTextStringInformation);
 
         String secondVoiceMailTextStringInformation = "b";
@@ -538,7 +538,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstScheduleNumberOfNewAlert, characteristicData.scheduleNumberOfNewAlert);
 
         int secondScheduleNumberOfNewAlert = 101;
@@ -569,7 +569,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstScheduleTextStringInformation, characteristicData.scheduleTextStringInformation);
 
         String secondScheduleTextStringInformation = "b";
@@ -600,7 +600,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstHighPrioritizedAlertNumberOfNewAlert, characteristicData.highPrioritizedAlertNumberOfNewAlert);
 
         int secondHighPrioritizedAlertNumberOfNewAlert = 101;
@@ -631,7 +631,7 @@ public class NewAlertCharacteristicDataTest {
                 , firstHighPrioritizedAlertTextStringInformation
                 , 0
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstHighPrioritizedAlertTextStringInformation, characteristicData.highPrioritizedAlertTextStringInformation);
 
         String secondHighPrioritizedAlertTextStringInformation = "b";
@@ -662,7 +662,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , firstInstantMessageAlertNumberOfNewAlert
                 , null
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstInstantMessageAlertNumberOfNewAlert, characteristicData.instantMessageAlertNumberOfNewAlert);
 
         int secondInstantMessageAlertNumberOfNewAlert = 101;
@@ -693,7 +693,7 @@ public class NewAlertCharacteristicDataTest {
                 , null
                 , 0
                 , firstInstantMessageTextStringInformation
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         assertEquals(firstInstantMessageTextStringInformation, characteristicData.instantMessageTextStringInformation);
 
         String secondInstantMessageTextStringInformation = "b";
@@ -723,7 +723,7 @@ public class NewAlertCharacteristicDataTest {
                 , "i"
                 , 10
                 , "j"
-                , new ArrayList<DescriptorData>());
+                , new ArrayList<>());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);

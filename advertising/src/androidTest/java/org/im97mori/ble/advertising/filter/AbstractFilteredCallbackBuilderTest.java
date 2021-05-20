@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.AdvertisingInterval;
 import org.im97mori.ble.advertising.AdvertisingIntervalAndroid;
 import org.im97mori.ble.advertising.AppearanceAndroid;
 import org.im97mori.ble.advertising.ChannelMapUpdateIndicationAndroid;
@@ -72,6 +71,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class AbstractFilteredCallbackBuilderTest {
 
     private static class MockFilteredCallbackBuilder extends AbstractFilteredCallbackBuilder<List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>>> {
@@ -86,12 +86,7 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addFilterTest_001() {
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = advertisingDataParseResult -> false;
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addFilter(filter).build();
         assertEquals(1, result.size());
         assertEquals(filter, result.get(0));
@@ -100,18 +95,8 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addFilter2Test_001() {
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = advertisingDataParseResult -> false;
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = advertisingDataParseResult -> false;
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addFilters(filter1, filter2).build();
         assertEquals(2, result.size());
         assertEquals(filter1, result.get(0));
@@ -121,18 +106,8 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addFilter2Test_002() {
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter1 = advertisingDataParseResult -> false;
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter2 = advertisingDataParseResult -> false;
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addFilters(Arrays.asList(filter1, filter2)).build();
         assertEquals(2, result.size());
         assertEquals(filter1, result.get(0));
@@ -142,12 +117,7 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void clearFilterTest_001() {
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
-            @Override
-            public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
-                return false;
-            }
-        };
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = advertisingDataParseResult -> false;
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addFilter(filter).clearFilter().build();
         assertTrue(result.isEmpty());
     }

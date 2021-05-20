@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class SetNotificationTaskTest {
+public class SetNotificationTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -63,7 +63,7 @@ public class SetNotificationTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            SetNotificationTask task = new SetNotificationTask(new MockBLEConnection(), null, mockTaskHandler, null, null, null, null, true, BLECallbackDistributer.wrapArgument(null, null));
+            SetNotificationTask task = new SetNotificationTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, true, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -75,10 +75,8 @@ public class SetNotificationTaskTest {
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
-            mockBleConnection.start();
 
             BaseBLECallback callback = new BaseBLECallback() {
 
@@ -87,7 +85,7 @@ public class SetNotificationTaskTest {
                     result.set(true);
                 }
             };
-            mockBleConnection.attach(callback);
+            MOCK_BLE_CONNECTION.attach(callback);
 
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
@@ -96,7 +94,7 @@ public class SetNotificationTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            SetNotificationTask task = new SetNotificationTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, true, BLECallbackDistributer.wrapArgument(null, null));
+            SetNotificationTask task = new SetNotificationTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, true, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -104,7 +102,6 @@ public class SetNotificationTaskTest {
             if (looper != null) {
                 looper.quit();
             }
-            mockBleConnection.quit();
         }
     }
 

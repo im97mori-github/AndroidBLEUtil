@@ -1,7 +1,6 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.AdvertisingInterval;
 import org.im97mori.ble.advertising.AdvertisingIntervalAndroid;
 import org.junit.Test;
 

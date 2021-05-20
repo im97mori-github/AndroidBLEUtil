@@ -26,7 +26,7 @@ public class UDSCharacteristicDataTest {
 
     @Test
     public void test_constructor_00001() {
-        UDSCharacteristicData result1 = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5);
+        UDSCharacteristicData result1 = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
 
         Gson gson = new Gson();
         UDSCharacteristicData result2 = gson.fromJson(gson.toJson(result1), UDSCharacteristicData.class);

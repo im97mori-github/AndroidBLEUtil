@@ -75,6 +75,7 @@ public class GenderAndroid extends Gender implements Parcelable {
      * @param in Parcel
      */
     private GenderAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

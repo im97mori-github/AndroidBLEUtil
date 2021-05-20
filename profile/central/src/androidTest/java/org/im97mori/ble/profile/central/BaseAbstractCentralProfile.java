@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BaseAbstractCentralProfile extends AbstractCentralProfile {
 
-    public AtomicBoolean result = new AtomicBoolean(false);
+    public final AtomicBoolean result = new AtomicBoolean(false);
 
     /**
      * @param context         {@link Context} instance

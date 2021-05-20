@@ -6,11 +6,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -28,20 +27,19 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
-public class ImmediateAlertServiceTest {
+public class ImmediateAlertServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -58,7 +56,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -68,14 +66,13 @@ public class ImmediateAlertServiceTest {
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -84,7 +81,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -94,14 +91,13 @@ public class ImmediateAlertServiceTest {
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -110,7 +106,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -120,14 +116,13 @@ public class ImmediateAlertServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -144,7 +139,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -154,14 +149,13 @@ public class ImmediateAlertServiceTest {
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -170,7 +164,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -180,14 +174,13 @@ public class ImmediateAlertServiceTest {
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -196,7 +189,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -206,14 +199,13 @@ public class ImmediateAlertServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -230,7 +222,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -240,14 +232,13 @@ public class ImmediateAlertServiceTest {
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -256,7 +247,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -266,14 +257,13 @@ public class ImmediateAlertServiceTest {
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockImmediateAlertServiceCallback mockImmediateAlertServiceCallback = new MockImmediateAlertServiceCallback() {
 
             @Override
@@ -282,7 +272,7 @@ public class ImmediateAlertServiceTest {
             }
 
         };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, mockImmediateAlertServiceCallback, null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, mockImmediateAlertServiceCallback, null);
         immediateAlertService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -290,14 +280,14 @@ public class ImmediateAlertServiceTest {
 
     @Test
     public void test_setAlertLevel_000001() {
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(new MockBLEConnection(), new MockImmediateAlertServiceCallback(), null);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, new MockImmediateAlertServiceCallback(), null);
 
         assertNull(immediateAlertService.setAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT)));
     }
 
     @Test
     public void test_setAlertLevel_000002() {
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(new MockBLEConnection(), new MockImmediateAlertServiceCallback(), null) {
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, new MockImmediateAlertServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -312,15 +302,8 @@ public class ImmediateAlertServiceTest {
     @Test
     public void test_setAlertLevel_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        ImmediateAlertService immediateAlertService = new ImmediateAlertService(mockBLEConnection, new MockImmediateAlertServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
+        ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, new MockImmediateAlertServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {

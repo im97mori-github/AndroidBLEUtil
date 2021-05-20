@@ -69,6 +69,7 @@ public class ServiceData16BitUUIDAndroid extends ServiceData16BitUUID implements
      * @param in Parcel
      */
     private ServiceData16BitUUIDAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

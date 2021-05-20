@@ -21,6 +21,7 @@ import java.util.UUID;
 /**
  * Current Time Service (Service UUID: 0x1805) callback
  */
+@SuppressWarnings("unused")
 public interface CurrentTimeServiceCallback {
 
     /**

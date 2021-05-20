@@ -75,6 +75,7 @@ public class HumidityAndroid extends Humidity implements Parcelable {
      * @param in Parcel
      */
     private HumidityAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

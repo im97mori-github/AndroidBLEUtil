@@ -1,18 +1,13 @@
 package org.im97mori.ble.profile.central;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.ScanResult;
-import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.advertising.filter.FilteredScanCallbackInterface;
@@ -27,12 +22,13 @@ import org.im97mori.ble.profile.central.task.BondTask;
 import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.service.gap.central.GenericAttributeService;
 import org.im97mori.ble.service.gatt.central.GenericAccessService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertEquals;
@@ -42,47 +38,39 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class AbstractCentralProfileTest {
+public class AbstractCentralProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_addHistory_00001() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.addHistory(bluetoothDevice));
+        assertNull(baseAbstractCentralProfile.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
     }
 
     @Test
     public void test_addHistory_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
             public BondedDeviceDatabaseHelper getDatabaseHelper() {
                 return new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext());
             }
         };
-        assertNotNull(baseAbstractCentralProfile.addHistory(bluetoothDevice));
+        assertNotNull(baseAbstractCentralProfile.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
     }
 
     @Test
     public void test_removeHistory_00001() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.removeHistory(bluetoothDevice));
+        assertNull(baseAbstractCentralProfile.removeHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
     }
 
     @Test
@@ -93,15 +81,9 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_clearHistory_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
         final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext());
         baseBondedDeviceDatabaseHelper.clearHistory();
-        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(bluetoothDevice));
+        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
             public BondedDeviceDatabaseHelper getDatabaseHelper() {
@@ -120,15 +102,9 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_syncBondedDevice_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
         final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext());
         baseBondedDeviceDatabaseHelper.clearHistory();
-        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(bluetoothDevice));
+        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
             public BondedDeviceDatabaseHelper getDatabaseHelper() {
@@ -147,15 +123,9 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getBondedDevices_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
         final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext());
         baseBondedDeviceDatabaseHelper.clearHistory();
-        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(bluetoothDevice));
+        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
             public BondedDeviceDatabaseHelper getDatabaseHelper() {
@@ -166,21 +136,15 @@ public class AbstractCentralProfileTest {
         Set<BluetoothDevice> bluetoothDeviceSet = baseAbstractCentralProfile.getBondedDevices();
         assertNotNull(bluetoothDeviceSet);
         assertEquals(1, bluetoothDeviceSet.size());
-        assertEquals(bluetoothDevice, bluetoothDeviceSet.iterator().next());
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bluetoothDeviceSet.iterator().next());
     }
 
     @Test
     public void test_start_00001() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.bondDevice(bluetoothDevice, BondTask.TIMEOUT_MILLIS, null));
+        assertNull(baseAbstractCentralProfile.bondDevice(BLETestUtilsAndroid.MOCK_DEVICE_0, BondTask.TIMEOUT_MILLIS, null));
         baseAbstractCentralProfile.start();
-        assertNotNull(baseAbstractCentralProfile.bondDevice(bluetoothDevice, BondTask.TIMEOUT_MILLIS, null));
+        assertNotNull(baseAbstractCentralProfile.bondDevice(BLETestUtilsAndroid.MOCK_DEVICE_0, BondTask.TIMEOUT_MILLIS, null));
         baseAbstractCentralProfile.quit();
     }
 
@@ -192,20 +156,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isConnected_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(mockBLEConnection, true);
+        MOCK_BLE_CONNECTION.setConnected(true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         assertFalse(baseAbstractCentralProfile.isConnected());
-        assertNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
+        assertNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
         assertTrue(baseAbstractCentralProfile.isConnected());
         baseAbstractCentralProfile.quit();
     }
@@ -213,8 +168,7 @@ public class AbstractCentralProfileTest {
     @Test
     public void test_connect_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        BLEConnectionHolder.clearInstance();
-        assertNotNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
+        assertNotNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
         baseAbstractCentralProfile.quit();
     }
 
@@ -222,17 +176,12 @@ public class AbstractCentralProfileTest {
     public void test_connect_00002() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         BLEConnectionHolder.clearInstance();
-        assertNotNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
+        assertNotNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
 
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(mockBLEConnection, true);
-        assertNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+        assertNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
         baseAbstractCentralProfile.quit();
     }
 
@@ -240,17 +189,12 @@ public class AbstractCentralProfileTest {
     public void test_connect_00003() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         BLEConnectionHolder.clearInstance();
-        assertNotNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
+        assertNotNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
 
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-            @Override
-            public boolean isConnected() {
-                return false;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(false);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(mockBLEConnection, true);
-        assertNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+        assertNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
         baseAbstractCentralProfile.quit();
     }
 
@@ -264,18 +208,13 @@ public class AbstractCentralProfileTest {
     public void test_disconnect_00002() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         BLEConnectionHolder.clearInstance();
-        assertNotNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
+        assertNotNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
 
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(mockBLEConnection, true);
-        assertNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
-        assertEquals(MockBLEConnection.MOCK_DEVICE, baseAbstractCentralProfile.getCurrentBluetoothDevice());
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+        assertNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, baseAbstractCentralProfile.getCurrentBluetoothDevice());
         baseAbstractCentralProfile.disconnect();
         assertNull(baseAbstractCentralProfile.getCurrentBluetoothDevice());
     }
@@ -292,23 +231,11 @@ public class AbstractCentralProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.mGenericAccessService);
         assertNotNull(baseAbstractCentralProfile.mGenericAttributeService);
         assertTrue(atomicBoolean.get());
@@ -317,23 +244,11 @@ public class AbstractCentralProfileTest {
     @Test
     public void test_quit_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         baseAbstractCentralProfile.quit();
         assertNull(baseAbstractCentralProfile.mGenericAccessService);
         assertNull(baseAbstractCentralProfile.mGenericAttributeService);
@@ -349,8 +264,8 @@ public class AbstractCentralProfileTest {
     public void test_getCurrentBluetoothDevice_00002() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         BLEConnectionHolder.clearInstance();
-        assertNotNull(baseAbstractCentralProfile.connect(MockBLEConnection.MOCK_DEVICE));
-        assertEquals(MockBLEConnection.MOCK_DEVICE, baseAbstractCentralProfile.getCurrentBluetoothDevice());
+        assertNotNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, baseAbstractCentralProfile.getCurrentBluetoothDevice());
         baseAbstractCentralProfile.quit();
     }
 
@@ -401,21 +316,16 @@ public class AbstractCentralProfileTest {
     @Test
     public void test_bondDevice_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.bondDevice(MockBLEConnection.MOCK_DEVICE, ScanTask.TIMEOUT_MILLIS, null));
+        assertNull(baseAbstractCentralProfile.bondDevice(BLETestUtilsAndroid.MOCK_DEVICE_0, ScanTask.TIMEOUT_MILLIS, null));
     }
 
     @Test
     public void test_bondDevice_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:FF";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-        assertEquals(BluetoothDevice.BOND_NONE, bluetoothDevice.getBondState());
+        assertEquals(BluetoothDevice.BOND_NONE, BLETestUtilsAndroid.MOCK_DEVICE_0.getBondState());
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.start();
-        assertNotNull(baseAbstractCentralProfile.bondDevice(bluetoothDevice, ScanTask.TIMEOUT_MILLIS, null));
+        assertNotNull(baseAbstractCentralProfile.bondDevice(BLETestUtilsAndroid.MOCK_DEVICE_0, ScanTask.TIMEOUT_MILLIS, null));
         baseAbstractCentralProfile.quit();
     }
 
@@ -427,20 +337,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isDeviceNameCharacteristicWritable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isDeviceNameCharacteristicWritable());
         baseAbstractCentralProfile.disconnect();
     }
@@ -453,20 +354,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isAppearanceCharacteristicWritable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isAppearanceCharacteristicWritable());
         baseAbstractCentralProfile.disconnect();
     }
@@ -479,20 +371,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isPeripheralPreferredConnectionParametersCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isPeripheralPreferredConnectionParametersCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
@@ -505,20 +388,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isCentralAddressResolutionCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isCentralAddressResolutionCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
@@ -531,20 +405,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isResolvablePrivateAddressOnlyCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isResolvablePrivateAddressOnlyCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
@@ -557,20 +422,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isReconnectionAddressCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isReconnectionAddressCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
@@ -583,20 +439,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isPeripheralPrivacyFlagCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isPeripheralPrivacyFlagCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
@@ -609,20 +456,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isPeripheralPrivacyFlagCharacteristicWritable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isPeripheralPrivacyFlagCharacteristicWritable());
         baseAbstractCentralProfile.disconnect();
     }
@@ -635,20 +473,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isServiceChangedCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isServiceChangedCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
@@ -661,20 +490,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isClientSupportedFeaturesCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isClientSupportedFeaturesCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
@@ -687,20 +507,11 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_isDatabaseHashCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isDatabaseHashCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
@@ -713,23 +524,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getDeviceName_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -749,7 +547,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getDeviceName());
         baseAbstractCentralProfile.disconnect();
     }
@@ -762,23 +560,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_setDeviceName_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -803,7 +588,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setDeviceName(new DeviceName("")));
         baseAbstractCentralProfile.disconnect();
     }
@@ -816,23 +601,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getAppearance_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -852,7 +624,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getAppearance());
         baseAbstractCentralProfile.disconnect();
     }
@@ -865,23 +637,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_setAppearance_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -906,7 +665,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setAppearance(new Appearance(new byte[]{0, 1})));
         baseAbstractCentralProfile.disconnect();
     }
@@ -919,23 +678,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getPeripheralPreferredConnectionParameters_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -960,7 +706,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getPeripheralPreferredConnectionParameters());
         baseAbstractCentralProfile.disconnect();
     }
@@ -973,23 +719,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getCentralAddressResolutionParameters_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1014,7 +747,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getCentralAddressResolutionParameters());
         baseAbstractCentralProfile.disconnect();
     }
@@ -1027,23 +760,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getResolvablePrivateAddressOnly_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1068,7 +788,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getResolvablePrivateAddressOnly());
         baseAbstractCentralProfile.disconnect();
     }
@@ -1081,23 +801,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_setReconnectionAddress_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1122,7 +829,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setReconnectionAddress(new ReconnectionAddress(new byte[]{0, 1, 2, 3, 4, 5})));
         baseAbstractCentralProfile.disconnect();
     }
@@ -1135,23 +842,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getPeripheralPrivacyFlag_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1176,7 +870,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getPeripheralPrivacyFlag());
         baseAbstractCentralProfile.disconnect();
     }
@@ -1189,23 +883,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_setPeripheralPrivacyFlag_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1230,7 +911,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setPeripheralPrivacyFlag(new PeripheralPrivacyFlag(new byte[]{0})));
         baseAbstractCentralProfile.disconnect();
     }
@@ -1243,23 +924,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getServiceChangedClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1284,7 +952,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getServiceChangedClientCharacteristicConfiguration());
         baseAbstractCentralProfile.disconnect();
     }
@@ -1297,23 +965,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_startServiceChangedIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1338,7 +993,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.startServiceChangedIndication());
         baseAbstractCentralProfile.disconnect();
     }
@@ -1351,23 +1006,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_stopServiceChangedIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1392,7 +1034,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.stopServiceChangedIndication());
         baseAbstractCentralProfile.disconnect();
     }
@@ -1405,23 +1047,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getClientSupportedFeatures_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1446,7 +1075,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getClientSupportedFeatures());
         baseAbstractCentralProfile.disconnect();
     }
@@ -1459,23 +1088,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_setClientSupportedFeatures_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1500,7 +1116,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setClientSupportedFeatures(new ClientSupportedFeatures(new byte[]{})));
         baseAbstractCentralProfile.disconnect();
     }
@@ -1513,23 +1129,10 @@ public class AbstractCentralProfileTest {
 
     @Test
     public void test_getDatabaseHash_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(1);
         BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
 
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
             @Override
@@ -1554,7 +1157,7 @@ public class AbstractCentralProfileTest {
                 }
             }
         };
-        baseAbstractCentralProfile.connect(MOCK_DEVICE);
+        baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getDatabaseHash());
         baseAbstractCentralProfile.disconnect();
     }

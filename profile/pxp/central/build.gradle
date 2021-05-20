@@ -32,7 +32,7 @@ dependencies {
     api "${groupId}:${serviceLlsCentralAndroid.artifactId}:${serviceLlsCentralAndroid.versionName}"
     api "${groupId}:${serviceIasCentralAndroid.artifactId}:${serviceIasCentralAndroid.versionName}"
     api "${groupId}:${serviceTpsCentralAndroid.artifactId}:${serviceTpsCentralAndroid.versionName}"
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestCentral
 }
 
 task sourcesJar(type: Jar) {

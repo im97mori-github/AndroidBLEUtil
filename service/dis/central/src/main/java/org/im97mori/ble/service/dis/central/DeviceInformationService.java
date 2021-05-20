@@ -232,6 +232,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onManufacturerNameStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onManufacturerNameStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getManufacturerNameString() {
         Integer taskId = null;
         if (isStarted() && hasManufacturerNameString()) {
@@ -248,6 +249,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onModelNumberStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onModelNumberStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getModelNumberString() {
         Integer taskId = null;
         if (isStarted() && hasModelNumberString()) {
@@ -264,6 +266,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onSerialNumberStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onSerialNumberStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getSerialNumberString() {
         Integer taskId = null;
         if (isStarted() && hasSerialNumberString()) {
@@ -280,6 +283,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onHardwareRevisionStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onHardwareRevisionStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getHardwareRevisionString() {
         Integer taskId = null;
         if (isStarted() && hasHardwareRevisionString()) {
@@ -296,6 +300,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onFirmwareRevisionStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onFirmwareRevisionStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getFirmwareRevisionString() {
         Integer taskId = null;
         if (isStarted() && hasFirmwareRevisionString()) {
@@ -312,6 +317,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onSoftwareRevisionStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onSoftwareRevisionStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getSoftwareRevisionString() {
         Integer taskId = null;
         if (isStarted() && hasSoftwareRevisionString()) {
@@ -328,6 +334,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onSystemIdReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onSystemIdReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getSystemId() {
         Integer taskId = null;
         if (isStarted() && hasSystemId()) {
@@ -344,6 +351,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onIEEE_11073_20601_RegulatoryCertificationDataListReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onIEEE_11073_20601_RegulatoryCertificationDataListReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getIEEE_11073_20601_RegulatoryCertificationDataList() {
         Integer taskId = null;
         if (isStarted() && hasIEEE_11073_20601_RegulatoryCertificationDataList()) {

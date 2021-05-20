@@ -3774,24 +3774,19 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00502() {
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext()
-                    , new WeightScaleServiceMockCallback.Builder<>()
-                    , new DeviceInformationServiceMockCallback.Builder<>()
-                    , new UserDataServiceMockCallback.Builder<>()
-                    , new BatteryServiceMockCallback.Builder<>()
-                    , null)
-                    .addWeightScaleFeature(new WeightScaleFeature(false, false, false, WeightScaleFeature.WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED, WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED))
-                    .addWeightMeasurement(new WeightMeasurement(new byte[3]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
-                    .addManufacturerNameString("ManufacturerNameString")
-                    .addModelNumberString(0, 1, new ModelNumberString("ModelNumberString").getBytes())
-                    .build();
-        } catch (Exception e) {
-            exception = e;
-        }
+        WeightScaleProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new WeightScaleServiceMockCallback.Builder<>()
+                , new DeviceInformationServiceMockCallback.Builder<>()
+                , new UserDataServiceMockCallback.Builder<>()
+                , new BatteryServiceMockCallback.Builder<>()
+                , null)
+                .addWeightScaleFeature(new WeightScaleFeature(false, false, false, WeightScaleFeature.WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED, WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED))
+                .addWeightMeasurement(new WeightMeasurement(new byte[3]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .addManufacturerNameString("ManufacturerNameString")
+                .addModelNumberString(0, 1, new ModelNumberString("ModelNumberString").getBytes())
+                .build();
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

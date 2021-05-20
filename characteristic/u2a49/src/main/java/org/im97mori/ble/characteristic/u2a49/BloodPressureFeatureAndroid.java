@@ -66,6 +66,7 @@ public class BloodPressureFeatureAndroid extends BloodPressureFeature implements
      * @param in Parcel
      */
     private BloodPressureFeatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

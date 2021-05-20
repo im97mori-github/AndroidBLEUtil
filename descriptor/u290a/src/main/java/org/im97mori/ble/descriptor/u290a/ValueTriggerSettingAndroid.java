@@ -77,6 +77,7 @@ public class ValueTriggerSettingAndroid extends ValueTriggerSetting implements P
      * @param in Parcel
      */
     private ValueTriggerSettingAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

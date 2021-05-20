@@ -4,16 +4,11 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategory;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategory;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -32,7 +27,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class AlertNotificationServiceMockCallbackBuilderTest {
+public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_exception_00001() {
@@ -254,13 +249,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -311,7 +300,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -336,13 +325,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -393,7 +376,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -418,13 +401,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -475,7 +452,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -561,13 +538,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -618,7 +589,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -708,13 +679,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -765,7 +730,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -790,13 +755,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -847,7 +806,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -872,13 +831,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -929,7 +882,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1015,13 +968,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1072,7 +1019,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1160,13 +1107,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
     @Test
     public void test_addAlertNotificationControlPoint_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1217,7 +1158,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , BluetoothGatt.GATT_SUCCESS
                             , 0)
                     .build();
-            callback.setup(mockBLEServerConnection);
+            callback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }

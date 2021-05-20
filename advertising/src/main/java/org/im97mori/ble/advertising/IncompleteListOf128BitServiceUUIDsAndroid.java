@@ -69,6 +69,7 @@ public class IncompleteListOf128BitServiceUUIDsAndroid extends IncompleteListOf1
      * @param in Parcel
      */
     private IncompleteListOf128BitServiceUUIDsAndroid(Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -21,7 +21,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class AbortReliableWriteTaskTest {
+public class AbortReliableWriteTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -53,7 +53,7 @@ public class AbortReliableWriteTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            AbortReliableWriteTask task = new AbortReliableWriteTask(new MockBLEConnection(), null, mockTaskHandler, AbortReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            AbortReliableWriteTask task = new AbortReliableWriteTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, AbortReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -65,10 +65,8 @@ public class AbortReliableWriteTaskTest {
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
-            mockBleConnection.start();
 
             BaseBLECallback callback = new BaseBLECallback() {
 
@@ -77,7 +75,7 @@ public class AbortReliableWriteTaskTest {
                     result.set(true);
                 }
             };
-            mockBleConnection.attach(callback);
+            MOCK_BLE_CONNECTION.attach(callback);
 
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
@@ -86,7 +84,7 @@ public class AbortReliableWriteTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            AbortReliableWriteTask task = new AbortReliableWriteTask(mockBleConnection, null, mockTaskHandler, AbortReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            AbortReliableWriteTask task = new AbortReliableWriteTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, AbortReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -94,7 +92,6 @@ public class AbortReliableWriteTaskTest {
             if (looper != null) {
                 looper.quit();
             }
-            mockBleConnection.quit();
         }
     }
 

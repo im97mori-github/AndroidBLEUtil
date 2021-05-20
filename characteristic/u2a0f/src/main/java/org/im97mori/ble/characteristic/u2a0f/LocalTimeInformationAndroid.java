@@ -76,6 +76,7 @@ public class LocalTimeInformationAndroid extends LocalTimeInformation implements
      * @param in Parcel
      */
     private LocalTimeInformationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

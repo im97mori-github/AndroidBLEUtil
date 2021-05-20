@@ -407,6 +407,7 @@ public class TaskHandlerTest {
         taskHandler.quit();
     }
 
+    @SuppressWarnings("BusyWait")
     @Test
     public void clearBusyTest001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
@@ -567,6 +568,7 @@ public class TaskHandlerTest {
 
         do {
             try {
+                //noinspection BusyWait
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();

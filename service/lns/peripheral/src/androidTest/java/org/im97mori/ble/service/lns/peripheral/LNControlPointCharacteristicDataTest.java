@@ -26,7 +26,7 @@ public class LNControlPointCharacteristicDataTest {
     public void test_constructor_00001() {
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(1
                 , 2
-                , new ArrayList<DescriptorData>()
+                , new ArrayList<>()
                 , 3
                 , 4
                 , 5

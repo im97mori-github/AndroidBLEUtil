@@ -10,6 +10,7 @@ import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("ConstantConditions")
 public class UnreadAlertAndroidTest {
 
     @Test

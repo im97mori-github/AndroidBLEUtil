@@ -5,15 +5,13 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.ParcelUuid;
-import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.descriptor.u290d.EnvironmentalSensingTriggerSettingAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -41,13 +39,13 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings({"WrapperTypeMayBePrimitive", "UnnecessaryLocalVariable"})
-public class EnvironmentalSensingServiceTest_29 {
+public class EnvironmentalSensingServiceTest_29 extends AbstractCentralTest {
 
     @Test
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
@@ -57,7 +55,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -75,18 +72,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
@@ -96,7 +92,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -105,18 +100,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -126,7 +120,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -135,18 +128,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -156,7 +148,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -165,18 +156,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
@@ -186,7 +176,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -195,18 +184,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
@@ -216,7 +204,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -225,18 +212,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -246,7 +232,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -255,18 +240,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -276,7 +260,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -285,18 +268,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
@@ -306,7 +288,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -324,18 +305,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00010() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
@@ -345,7 +325,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -354,18 +333,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00011() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -375,7 +353,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -384,18 +361,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00012() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -405,7 +381,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -414,18 +389,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00013() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
@@ -435,7 +409,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -444,18 +417,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00014() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
@@ -465,7 +437,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -474,18 +445,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00015() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -495,7 +465,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -504,18 +473,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00016() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -525,7 +493,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -534,18 +501,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00111() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -554,7 +520,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -574,18 +539,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00112() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -596,21 +560,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -631,19 +581,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00113() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -655,21 +604,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -690,19 +625,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00114() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -714,28 +648,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -757,19 +670,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00115() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -781,28 +693,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Arrays.asList(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0), bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Arrays.asList(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0), BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -824,19 +715,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00116() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -848,28 +738,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -878,19 +747,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00117() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -902,28 +770,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -932,19 +779,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00119() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -956,28 +802,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -986,19 +811,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00120() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1010,28 +834,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1040,19 +843,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00121() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1064,28 +866,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1094,19 +875,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00122() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -1118,28 +898,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1148,19 +907,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00123() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -1172,28 +930,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1202,19 +939,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00124() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1223,7 +959,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1242,18 +977,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00125() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1264,21 +998,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1298,19 +1018,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00126() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1322,21 +1041,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1356,19 +1061,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00127() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1379,21 +1083,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1402,19 +1092,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00128() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -1425,21 +1114,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1448,19 +1123,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00129() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -1471,21 +1145,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1494,19 +1154,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00130() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1517,21 +1176,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1540,19 +1185,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00131() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1563,21 +1207,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1586,19 +1216,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00132() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -1609,21 +1238,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1632,19 +1247,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00133() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -1655,21 +1269,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1678,19 +1278,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00134() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1699,7 +1298,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1718,18 +1316,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00135() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1740,21 +1337,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1774,19 +1357,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00136() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1798,21 +1380,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1832,19 +1400,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00137() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1855,21 +1422,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1878,19 +1431,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00138() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -1901,21 +1453,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1924,19 +1462,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00139() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -1947,21 +1484,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -1970,19 +1493,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00140() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -1993,21 +1515,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2016,19 +1524,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00141() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_DIRECTION_CHARACTERISTIC;
@@ -2039,21 +1546,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2062,19 +1555,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00142() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -2085,21 +1577,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2108,19 +1586,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00143() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -2131,21 +1608,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_DIRECTION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2154,19 +1617,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00211() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2175,7 +1637,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2195,18 +1656,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00212() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2217,21 +1677,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2252,19 +1698,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00213() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2276,21 +1721,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2311,19 +1742,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00214() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2335,28 +1765,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2378,19 +1787,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00215() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2402,28 +1810,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Arrays.asList(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0), bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Arrays.asList(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0), BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2445,19 +1832,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00216() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2469,28 +1855,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2499,19 +1864,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00217() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -2523,28 +1887,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2553,19 +1896,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00219() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -2577,28 +1919,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2607,19 +1928,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00220() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2631,28 +1951,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2661,19 +1960,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00221() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2685,28 +1983,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2715,19 +1992,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00222() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -2739,28 +2015,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2769,19 +2024,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00223() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -2793,28 +2047,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2823,19 +2056,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00224() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2844,7 +2076,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2863,18 +2094,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00225() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2885,21 +2115,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2919,19 +2135,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00226() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -2943,21 +2158,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -2977,19 +2178,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00227() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3000,21 +2200,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3023,19 +2209,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00228() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -3046,21 +2231,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3069,19 +2240,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00229() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -3092,21 +2262,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3115,19 +2271,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00230() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3138,21 +2293,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3161,19 +2302,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00231() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3184,21 +2324,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3207,19 +2333,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00232() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -3230,21 +2355,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3253,19 +2364,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00233() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -3276,21 +2386,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3299,19 +2395,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00234() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3320,7 +2415,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3339,18 +2433,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00235() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3361,21 +2454,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3395,19 +2474,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00236() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3419,21 +2497,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3453,19 +2517,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00237() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3476,21 +2539,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3499,19 +2548,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00238() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -3522,21 +2570,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3545,19 +2579,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00239() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -3568,21 +2601,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3591,19 +2610,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00240() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3614,21 +2632,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3637,19 +2641,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00241() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -3660,21 +2663,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3683,19 +2672,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00242() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -3706,21 +2694,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3729,19 +2703,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00243() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -3752,21 +2725,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(APPARENT_WIND_SPEED_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(APPARENT_WIND_SPEED_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3775,19 +2734,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00311() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -3796,7 +2754,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3816,18 +2773,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00312() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -3838,21 +2794,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3873,19 +2815,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00313() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -3897,21 +2838,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DEW_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3932,19 +2859,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00314() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -3956,28 +2882,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -3999,19 +2904,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00315() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4023,28 +2927,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Arrays.asList(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0), bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Arrays.asList(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0), BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4066,19 +2949,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00316() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4090,28 +2972,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4120,19 +2981,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00317() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -4144,28 +3004,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4174,19 +3013,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00319() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -4198,28 +3036,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4228,19 +3045,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00320() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4252,28 +3068,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4282,19 +3077,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00321() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4306,28 +3100,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4336,19 +3109,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00322() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -4360,28 +3132,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4390,19 +3141,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00323() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -4414,28 +3164,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4444,19 +3173,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00324() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4465,7 +3193,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4484,18 +3211,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00325() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4506,21 +3232,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4540,19 +3252,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00326() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4564,21 +3275,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DEW_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4598,19 +3295,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00327() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4621,21 +3317,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4644,19 +3326,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00328() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -4667,21 +3348,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4690,19 +3357,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00329() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -4713,21 +3379,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4736,19 +3388,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00330() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4759,21 +3410,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4782,19 +3419,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00331() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4805,21 +3441,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4828,19 +3450,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00332() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -4851,21 +3472,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4874,19 +3481,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00333() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -4897,21 +3503,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4920,19 +3512,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00334() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4941,7 +3532,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -4960,18 +3550,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00335() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -4982,21 +3571,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5016,19 +3591,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00336() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -5040,21 +3614,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DEW_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5074,19 +3634,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00337() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -5097,21 +3656,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5120,19 +3665,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00338() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -5143,21 +3687,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5166,19 +3696,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00339() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -5189,21 +3718,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5212,19 +3727,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00340() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -5235,21 +3749,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5258,19 +3758,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00341() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DEW_POINT_CHARACTERISTIC;
@@ -5281,21 +3780,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5304,19 +3789,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00342() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -5327,21 +3811,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5350,19 +3820,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00343() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -5373,21 +3842,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(DEW_POINT_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(DEW_POINT_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5396,19 +3851,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00411() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -5417,7 +3871,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5437,18 +3890,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00412() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -5459,21 +3911,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5494,19 +3932,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00413() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -5518,21 +3955,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ELEVATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5553,19 +3976,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00414() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -5577,28 +3999,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5620,19 +4021,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00415() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -5644,28 +4044,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Arrays.asList(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0), bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Arrays.asList(new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, 0), BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5687,19 +4066,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00416() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -5711,28 +4089,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5741,19 +4098,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00417() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -5765,28 +4121,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5795,19 +4130,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00419() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -5819,28 +4153,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5849,19 +4162,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00420() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -5873,28 +4185,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5903,19 +4194,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00421() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -5927,28 +4217,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -5957,19 +4226,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00422() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -5981,28 +4249,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6011,19 +4258,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00423() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6035,28 +4281,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
 
-        Parcel parcel = Parcel.obtain();
-
-        parcel.writeParcelable(new ParcelUuid(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR), 0);
-        parcel.writeInt(originalDescriptorInstanceId);
-        parcel.writeInt(0);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
-
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.singletonList(BLETestUtilsAndroid.createBluetoothDescriptor(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, originalDescriptorInstanceId, 0))));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6065,19 +4290,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00424() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6086,7 +4310,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6105,18 +4328,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00425() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6127,21 +4349,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6161,19 +4369,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00426() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6185,21 +4392,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ELEVATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6219,19 +4412,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00427() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6242,21 +4434,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6265,19 +4443,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00428() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6288,21 +4465,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6311,19 +4474,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00429() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6334,21 +4496,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6357,19 +4505,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00430() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6380,21 +4527,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6403,19 +4536,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00431() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6426,21 +4558,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6449,19 +4567,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00432() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6472,21 +4589,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6495,19 +4598,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00433() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6518,21 +4620,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6541,19 +4629,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00434() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6562,7 +4649,6 @@ public class EnvironmentalSensingServiceTest_29 {
         final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6581,18 +4667,17 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00435() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6603,21 +4688,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6637,19 +4708,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00436() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6661,21 +4731,7 @@ public class EnvironmentalSensingServiceTest_29 {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ELEVATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6695,19 +4751,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00437() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6718,21 +4773,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6741,19 +4782,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00438() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6764,21 +4804,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6787,19 +4813,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00439() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6810,21 +4835,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6833,19 +4844,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00440() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6856,21 +4866,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6879,19 +4875,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00441() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ELEVATION_CHARACTERISTIC;
@@ -6902,21 +4897,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6925,19 +4906,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00442() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ENVIRONMENTAL_SENSING_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6948,21 +4928,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -6971,19 +4937,18 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
     @Test
     public void test_onDescriptorWriteTimeout_00443() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TDS_CONTROL_POINT_CHARACTERISTIC;
@@ -6994,21 +4959,7 @@ public class EnvironmentalSensingServiceTest_29 {
         final Bundle originalBundle = new Bundle();
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(ELEVATION_CHARACTERISTIC), 0);
-        parcel.writeInt(originalCharacteristicInstanceId);
-        parcel.writeInt(BluetoothGattCharacteristic.PROPERTY_READ);
-        parcel.writeInt(BluetoothGattCharacteristic.PERMISSION_READ);
-        parcel.writeInt(16);
-        parcel.writeInt(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-        parcel.writeTypedList(Collections.<Parcelable>emptyList());
-        parcel.setDataPosition(0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(ELEVATION_CHARACTERISTIC, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 16, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, Collections.emptyList()));
         MockEnvironmentalSensingServiceCallback mockEnvironmentalSensingServiceCallback = new MockEnvironmentalSensingServiceCallback() {
 
             @Override
@@ -7017,12 +4968,11 @@ public class EnvironmentalSensingServiceTest_29 {
             }
 
         };
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, mockEnvironmentalSensingServiceCallback, null);
-        environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, mockEnvironmentalSensingServiceCallback, null);
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
-        mockBLEConnection.onConnectFailed(1, 0, new Bundle());
     }
 
 }

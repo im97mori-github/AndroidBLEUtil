@@ -1,6 +1,5 @@
 package org.im97mori.ble.profile.pxp.central;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
@@ -9,10 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid;
@@ -20,6 +17,9 @@ import org.im97mori.ble.profile.pxp.central.db.ProximityProfileBondedDatabaseHel
 import org.im97mori.ble.service.ias.central.ImmediateAlertService;
 import org.im97mori.ble.service.lls.central.LinkLossService;
 import org.im97mori.ble.service.tps.central.TxPowerService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -40,7 +40,23 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
-public class ProximityProfileTest {
+public class ProximityProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findProximityProfileDevices_00001() {
@@ -75,13 +91,33 @@ public class ProximityProfileTest {
 
     @Test
     public void test_hasImmediateAlertService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(proximityProfile.hasImmediateAlertService());
+        proximityProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasImmediateAlertService_00003() {
+        ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = proximityProfile.hasImmediateAlertService();
+        proximityProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasImmediateAlertService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(IMMEDIATE_ALERT_SERVICE, 0);
 
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
-        proximityProfile.mImmediateAlertService = new ImmediateAlertService(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), proximityProfile.mProximityProfileCallback, null);
-        assertNotNull(proximityProfile.hasImmediateAlertService());
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        proximityProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = proximityProfile.hasImmediateAlertService();
+        proximityProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -92,13 +128,33 @@ public class ProximityProfileTest {
 
     @Test
     public void test_hasTxPowerService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(proximityProfile.hasTxPowerService());
+        proximityProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasTxPowerService_00003() {
+        ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = proximityProfile.hasTxPowerService();
+        proximityProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasTxPowerService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(TX_POWER_SERVICE, 0);
 
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
-        proximityProfile.mTxPowerService = new TxPowerService(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), proximityProfile.mProximityProfileCallback, null);
-        assertNotNull(proximityProfile.hasTxPowerService());
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        proximityProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = proximityProfile.hasTxPowerService();
+        proximityProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -109,45 +165,20 @@ public class ProximityProfileTest {
 
     @Test
     public void test_getAlertLevel_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mLinkLossService == null) {
                     mLinkLossService = new LinkLossService(mBLEConnection, mProximityProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getAlertLevel() {
+                            return 1;
                         }
-
                     };
-                }
-                if (mImmediateAlertService == null) {
-                    mImmediateAlertService = new ImmediateAlertService(mBLEConnection, mProximityProfileCallback, null);
-                }
-                if (mTxPowerService == null) {
-                    mTxPowerService = new TxPowerService(mBLEConnection, mProximityProfileCallback, null);
                 }
             }
         };
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(proximityProfile.getAlertLevel());
         proximityProfile.disconnect();
     }
@@ -160,45 +191,20 @@ public class ProximityProfileTest {
 
     @Test
     public void test_setLinkLossServiceAlertLevel_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mLinkLossService == null) {
                     mLinkLossService = new LinkLossService(mBLEConnection, mProximityProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setAlertLevel(@NonNull AlertLevel alertLevel) {
+                            return 1;
                         }
-
                     };
-                }
-                if (mImmediateAlertService == null) {
-                    mImmediateAlertService = new ImmediateAlertService(mBLEConnection, mProximityProfileCallback, null);
-                }
-                if (mTxPowerService == null) {
-                    mTxPowerService = new TxPowerService(mBLEConnection, mProximityProfileCallback, null);
                 }
             }
         };
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(proximityProfile.setLinkLossServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT)));
         proximityProfile.disconnect();
     }
@@ -211,46 +217,20 @@ public class ProximityProfileTest {
 
     @Test
     public void test_setImmediateAlertServiceAlertLevel_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mLinkLossService == null) {
-                    mLinkLossService = new LinkLossService(mBLEConnection, mProximityProfileCallback, null);
-                }
                 if (mImmediateAlertService == null) {
                     mImmediateAlertService = new ImmediateAlertService(mBLEConnection, mProximityProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setAlertLevel(@NonNull AlertLevel alertLevel) {
+                            return 1;
                         }
-
                     };
-                }
-                if (mTxPowerService == null) {
-                    mTxPowerService = new TxPowerService(mBLEConnection, mProximityProfileCallback, null);
                 }
             }
         };
-        proximityProfile.connect(MOCK_DEVICE);
-        proximityProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(IMMEDIATE_ALERT_SERVICE, 0)), null);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(proximityProfile.setImmediateAlertServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT)));
         proximityProfile.disconnect();
     }
@@ -263,46 +243,20 @@ public class ProximityProfileTest {
 
     @Test
     public void test_getTxPowerLevel_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mLinkLossService == null) {
-                    mLinkLossService = new LinkLossService(mBLEConnection, mProximityProfileCallback, null);
-                }
-                if (mImmediateAlertService == null) {
-                    mImmediateAlertService = new ImmediateAlertService(mBLEConnection, mProximityProfileCallback, null);
-                }
                 if (mTxPowerService == null) {
                     mTxPowerService = new TxPowerService(mBLEConnection, mProximityProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTxPowerLevel() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        proximityProfile.connect(MOCK_DEVICE);
-        proximityProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(TX_POWER_SERVICE, 0)), null);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(proximityProfile.getTxPowerLevel());
         proximityProfile.disconnect();
     }
@@ -323,23 +277,18 @@ public class ProximityProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(proximityProfile.mLinkLossService);
         assertNotNull(proximityProfile.mImmediateAlertService);
         assertNotNull(proximityProfile.mTxPowerService);
         assertTrue(atomicBoolean.get());
+        proximityProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.quit();
         assertNull(proximityProfile.mLinkLossService);
         assertNull(proximityProfile.mImmediateAlertService);
@@ -350,10 +299,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -375,7 +321,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
         proximityProfile.quit();
         assertTrue(isCalled.get());
@@ -385,10 +331,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -402,7 +345,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -412,10 +355,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TX_POWER_LEVEL_CHARACTERISTIC;
@@ -429,7 +369,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -439,10 +379,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -464,7 +401,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
         proximityProfile.quit();
         assertTrue(isCalled.get());
@@ -474,10 +411,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -491,7 +425,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -501,10 +435,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TX_POWER_LEVEL_CHARACTERISTIC;
@@ -518,7 +449,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -528,10 +459,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -553,7 +481,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
         proximityProfile.quit();
         assertTrue(isCalled.get());
@@ -563,10 +491,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -580,7 +505,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -590,10 +515,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TX_POWER_LEVEL_CHARACTERISTIC;
@@ -607,7 +529,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -617,10 +539,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -642,7 +561,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
         proximityProfile.quit();
         assertTrue(isCalled.get());
@@ -652,10 +571,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -669,7 +585,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -679,10 +595,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TX_POWER_LEVEL_CHARACTERISTIC;
@@ -696,7 +609,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -706,10 +619,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -731,7 +641,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
         proximityProfile.quit();
         assertTrue(isCalled.get());
@@ -741,10 +651,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -758,7 +665,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -768,10 +675,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TX_POWER_LEVEL_CHARACTERISTIC;
@@ -785,7 +689,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -795,10 +699,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -820,7 +721,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
         proximityProfile.quit();
         assertTrue(isCalled.get());
@@ -830,10 +731,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
@@ -847,7 +745,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());
@@ -857,10 +755,7 @@ public class ProximityProfileTest {
     public void test_onCharacteristicWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        final BluetoothDevice originalBluetoothDevice = MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = IMMEDIATE_ALERT_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = TX_POWER_LEVEL_CHARACTERISTIC;
@@ -874,7 +769,7 @@ public class ProximityProfileTest {
             }
         };
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), baseProximityProfileCallback);
-        proximityProfile.connect(MOCK_DEVICE);
+        proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         proximityProfile.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
         proximityProfile.quit();
         assertFalse(isCalled.get());

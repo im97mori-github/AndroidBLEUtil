@@ -75,6 +75,7 @@ public class LanguageAndroid extends Language implements Parcelable {
      * @param in Parcel
      */
     private LanguageAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

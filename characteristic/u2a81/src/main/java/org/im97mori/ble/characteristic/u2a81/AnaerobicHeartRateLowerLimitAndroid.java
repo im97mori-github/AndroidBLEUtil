@@ -75,6 +75,7 @@ public class AnaerobicHeartRateLowerLimitAndroid extends AnaerobicHeartRateLower
      * @param in Parcel
      */
     private AnaerobicHeartRateLowerLimitAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

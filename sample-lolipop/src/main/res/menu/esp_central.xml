@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:id="@+id/pre_connected">
         <item
@@ -51,7 +52,8 @@
 
     <group
         android:id="@+id/apparent_wind_direction"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_awd_count"
             android:title="@string/menu_read_awd_count" />
@@ -167,7 +169,8 @@
 
     <group
         android:id="@+id/apparent_wind_speed"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_aws_count"
             android:title="@string/menu_read_aws_count" />
@@ -283,7 +286,8 @@
 
     <group
         android:id="@+id/dew_point"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_dp_count"
             android:title="@string/menu_read_dp_count" />
@@ -399,7 +403,8 @@
 
     <group
         android:id="@+id/elevation"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_elevation_count"
             android:title="@string/menu_read_elevation_count" />
@@ -515,7 +520,8 @@
 
     <group
         android:id="@+id/gf"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_gf_count"
             android:title="@string/menu_read_gf_count" />
@@ -631,7 +637,8 @@
 
     <group
         android:id="@+id/hi"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_hi_count"
             android:title="@string/menu_read_hi_count" />
@@ -747,7 +754,8 @@
 
     <group
         android:id="@+id/humidity"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_humidity_count"
             android:title="@string/menu_read_humidity_count" />
@@ -863,7 +871,8 @@
 
     <group
         android:id="@+id/irradiance"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_irradiance_count"
             android:title="@string/menu_read_irradiance_count" />
@@ -979,7 +988,8 @@
 
     <group
         android:id="@+id/pc"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_pc_count"
             android:title="@string/menu_read_pc_count" />
@@ -1095,7 +1105,8 @@
 
     <group
         android:id="@+id/rainfall"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_rainfall_count"
             android:title="@string/menu_read_rainfall_count" />
@@ -1211,7 +1222,8 @@
 
     <group
         android:id="@+id/pressure"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_pressure_count"
             android:title="@string/menu_read_pressure_count" />
@@ -1327,7 +1339,8 @@
 
     <group
         android:id="@+id/temperature"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_temperature_count"
             android:title="@string/menu_read_temperature_count" />
@@ -1443,7 +1456,8 @@
 
     <group
         android:id="@+id/twd"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_twd_count"
             android:title="@string/menu_read_twd_count" />
@@ -1559,7 +1573,8 @@
 
     <group
         android:id="@+id/tws"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_tws_count"
             android:title="@string/menu_read_tws_count" />
@@ -1675,7 +1690,8 @@
 
     <group
         android:id="@+id/uvi"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_uvi_count"
             android:title="@string/menu_read_uvi_count" />
@@ -1791,7 +1807,8 @@
 
     <group
         android:id="@+id/wc"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_wc_count"
             android:title="@string/menu_read_wc_count" />
@@ -1907,7 +1924,8 @@
 
     <group
         android:id="@+id/bpt"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_bpt_count"
             android:title="@string/menu_read_bpt_count" />
@@ -2023,7 +2041,8 @@
 
     <group
         android:id="@+id/md"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_md_count"
             android:title="@string/menu_read_md_count" />
@@ -2139,7 +2158,8 @@
 
     <group
         android:id="@+id/mfd2d"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_mfd2d_count"
             android:title="@string/menu_read_mfd2d_count" />
@@ -2255,7 +2275,8 @@
 
     <group
         android:id="@+id/mfd3d"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_mfd3d_count"
             android:title="@string/menu_read_mfd3d_count" />

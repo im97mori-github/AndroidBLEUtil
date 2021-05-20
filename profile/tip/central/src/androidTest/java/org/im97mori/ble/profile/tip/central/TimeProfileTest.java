@@ -1,7 +1,5 @@
 package org.im97mori.ble.profile.tip.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
@@ -9,10 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
@@ -21,21 +17,40 @@ import org.im97mori.ble.profile.tip.central.db.TimeProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.cts.central.CurrentTimeService;
 import org.im97mori.ble.service.ndcs.central.NextDstChangeService;
 import org.im97mori.ble.service.rtus.central.ReferenceTimeUpdateService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class TimeProfileTest {
+public class TimeProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findTimeProfileDevices_00001() {
@@ -70,20 +85,33 @@ public class TimeProfileTest {
 
     @Test
     public void test_hasNextDstChangeService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-            @Override
-            public synchronized boolean isConnected() {
-                return true;
-            }
-        };
-        timeProfile.connect(MOCK_DEVICE);
-        timeProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(NEXT_DST_CHANGE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY)), null);
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.hasNextDstChangeService());
         timeProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasNextDstChangeService_00003() {
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = timeProfile.hasNextDstChangeService();
+        timeProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasNextDstChangeService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(NEXT_DST_CHANGE_SERVICE, 0);
+
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        timeProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = timeProfile.hasNextDstChangeService();
+        timeProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -94,20 +122,33 @@ public class TimeProfileTest {
 
     @Test
     public void test_hasReferenceTimeUpdateService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-            @Override
-            public synchronized boolean isConnected() {
-                return true;
-            }
-        };
-        timeProfile.connect(MOCK_DEVICE);
-        timeProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(REFERENCE_TIME_UPDATE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY)), null);
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.hasReferenceTimeUpdateService());
         timeProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasReferenceTimeUpdateService_00003() {
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = timeProfile.hasReferenceTimeUpdateService();
+        timeProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasReferenceTimeUpdateService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(REFERENCE_TIME_UPDATE_SERVICE, 0);
+
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        timeProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = timeProfile.hasReferenceTimeUpdateService();
+        timeProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -118,26 +159,8 @@ public class TimeProfileTest {
 
     @Test
     public void test_isCurrentTimeCharacteristicWritable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
-            }
-        };
-        timeProfile.connect(MOCK_DEVICE);
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.isCurrentTimeCharacteristicWritable());
         timeProfile.disconnect();
     }
@@ -150,26 +173,8 @@ public class TimeProfileTest {
 
     @Test
     public void test_isLocalTimeInformationCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
-            }
-        };
-        timeProfile.connect(MOCK_DEVICE);
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.isLocalTimeInformationCharacteristicSupported());
         timeProfile.disconnect();
     }
@@ -182,26 +187,8 @@ public class TimeProfileTest {
 
     @Test
     public void test_isLocalTimeInformationCharacteristicWritable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
-            }
-        };
-        timeProfile.connect(MOCK_DEVICE);
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.isLocalTimeInformationCharacteristicWritable());
         timeProfile.disconnect();
     }
@@ -214,26 +201,8 @@ public class TimeProfileTest {
 
     @Test
     public void test_isReferenceTimeInformationCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
-            @Override
-            public synchronized void createServices() {
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
-            }
-        };
-        timeProfile.connect(MOCK_DEVICE);
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.isReferenceTimeInformationCharacteristicSupported());
         timeProfile.disconnect();
     }
@@ -246,31 +215,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_getCurrentTime_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getCurrentTime() {
+                            return 1;
                         }
                     };
                 }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.getCurrentTime());
         timeProfile.disconnect();
     }
@@ -283,48 +241,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_setCurrentTime_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isCurrentTimeCharacteristicWritable() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setCurrentTime(@NonNull CurrentTime currentTime) {
+                            return 1;
                         }
                     };
                 }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.setCurrentTime(new CurrentTime(new byte[10])));
         timeProfile.disconnect();
     }
@@ -337,44 +267,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_getCurrentTimeClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getCurrentTimeClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.getCurrentTimeClientCharacteristicConfiguration());
         timeProfile.disconnect();
     }
@@ -387,44 +293,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_startCurrentTimeNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startCurrentTimeNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.startCurrentTimeNotification());
         timeProfile.disconnect();
     }
@@ -437,44 +319,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_stopCurrentTimeNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopCurrentTimeNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.stopCurrentTimeNotification());
         timeProfile.disconnect();
     }
@@ -487,48 +345,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_getLocalTimeInformation_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isLocalTimeInformationCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getLocalTimeInformation() {
+                            return 1;
                         }
                     };
                 }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.getLocalTimeInformation());
         timeProfile.disconnect();
     }
@@ -541,48 +371,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_setLocalTimeInformation_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isLocalTimeInformationCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setLocalTimeInformation(@NonNull LocalTimeInformation localTimeInformation) {
+                            return 1;
                         }
                     };
                 }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.setLocalTimeInformation(new LocalTimeInformation(new byte[2])));
         timeProfile.disconnect();
     }
@@ -595,48 +397,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_getReferenceTimeInformation_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isReferenceTimeInformationCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getReferenceTimeInformation() {
+                            return 1;
                         }
                     };
                 }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.getReferenceTimeInformation());
         timeProfile.disconnect();
     }
@@ -649,43 +423,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_getTimeWithDst_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null);
-                }
                 if (mNextDstChangeService == null) {
                     mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTimeWithDst() {
+                            return 1;
                         }
                     };
                 }
-                if (mReferenceTimeUpdateService == null) {
-                    mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null);
-                }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.getTimeWithDst());
         timeProfile.disconnect();
     }
@@ -698,43 +449,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_setTimeUpdateControlPoint_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
                 if (mReferenceTimeUpdateService == null) {
                     mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setTimeUpdateControlPoint(@NonNull TimeUpdateControlPoint timeUpdateControlPoint) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.setTimeUpdateControlPoint(new TimeUpdateControlPoint(TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE)));
         timeProfile.disconnect();
     }
@@ -747,43 +475,20 @@ public class TimeProfileTest {
 
     @Test
     public void test_getTimeUpdateState_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
-
             @Override
             public synchronized void createServices() {
-                if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null);
-                }
-                if (mNextDstChangeService == null) {
-                    mNextDstChangeService = new NextDstChangeService(mBLEConnection, mTimeProfileCallback, null);
-                }
                 if (mReferenceTimeUpdateService == null) {
                     mReferenceTimeUpdateService = new ReferenceTimeUpdateService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getTimeUpdateState() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.getTimeUpdateState());
         timeProfile.disconnect();
     }
@@ -804,23 +509,18 @@ public class TimeProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(timeProfile.mCurrentTimeService);
         assertNotNull(timeProfile.mNextDstChangeService);
         assertNotNull(timeProfile.mReferenceTimeUpdateService);
         assertTrue(atomicBoolean.get());
+        timeProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         timeProfile.quit();
         assertNull(timeProfile.mCurrentTimeService);
         assertNull(timeProfile.mNextDstChangeService);

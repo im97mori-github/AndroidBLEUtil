@@ -1,6 +1,5 @@
 package org.im97mori.ble.service.hrs.central;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
@@ -9,14 +8,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocationAndroid;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPoint;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPointAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -43,106 +41,96 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
-public class HeartRateServiceTest {
+public class HeartRateServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onDiscoverServiceSuccess_00001() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, 0, 0));
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00005() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00101() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00102() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00103() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00104() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC, 0, 0));
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00105() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
@@ -151,14 +139,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{4};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -175,7 +162,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -185,14 +172,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{4};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -201,7 +187,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -211,14 +197,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{4};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -227,7 +212,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -237,14 +222,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -261,7 +245,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -271,14 +255,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -287,7 +270,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -297,14 +280,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -313,7 +295,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -323,14 +305,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -347,7 +328,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -357,14 +338,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -373,7 +353,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -383,14 +363,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -399,7 +378,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -409,14 +388,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -433,7 +411,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -443,14 +421,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -459,7 +436,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -469,14 +446,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -485,7 +461,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -495,14 +471,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -519,7 +494,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -529,14 +504,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -545,7 +519,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -555,14 +529,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -571,7 +544,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -581,14 +554,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -605,7 +577,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -615,14 +587,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -631,7 +602,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -641,14 +612,13 @@ public class HeartRateServiceTest {
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -657,7 +627,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -667,7 +637,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -676,7 +646,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -694,7 +663,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -704,7 +673,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -713,7 +682,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -722,7 +690,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -732,7 +700,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -741,7 +709,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -750,7 +717,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -760,7 +727,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -769,7 +736,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -778,7 +744,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -788,7 +754,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -797,7 +763,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -815,7 +780,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -825,7 +790,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -834,7 +799,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -843,7 +807,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -853,7 +817,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -862,7 +826,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -871,7 +834,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -881,7 +844,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -890,7 +853,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -899,7 +861,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -909,7 +871,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -918,7 +880,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -936,7 +897,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -946,7 +907,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -955,7 +916,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -964,7 +924,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -974,7 +934,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -983,7 +943,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -992,7 +951,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1002,7 +961,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1011,7 +970,6 @@ public class HeartRateServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1020,7 +978,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1030,7 +988,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1040,7 +998,6 @@ public class HeartRateServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1057,7 +1014,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1067,7 +1024,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1077,7 +1034,6 @@ public class HeartRateServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1086,7 +1042,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1096,7 +1052,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1106,7 +1062,6 @@ public class HeartRateServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1115,7 +1070,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1125,7 +1080,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1135,7 +1090,6 @@ public class HeartRateServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1144,7 +1098,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1154,7 +1108,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1164,7 +1118,6 @@ public class HeartRateServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1181,7 +1134,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1191,7 +1144,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1201,7 +1154,6 @@ public class HeartRateServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1210,7 +1162,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1220,7 +1172,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1230,7 +1182,6 @@ public class HeartRateServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1239,7 +1190,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1249,7 +1200,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1259,7 +1210,6 @@ public class HeartRateServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1268,7 +1218,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1278,7 +1228,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1288,7 +1238,6 @@ public class HeartRateServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1306,7 +1255,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1316,7 +1265,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1326,7 +1275,6 @@ public class HeartRateServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1335,7 +1283,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1345,7 +1293,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1355,7 +1303,6 @@ public class HeartRateServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1364,7 +1311,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1374,7 +1321,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1384,7 +1331,6 @@ public class HeartRateServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1393,7 +1339,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1403,7 +1349,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1413,7 +1359,6 @@ public class HeartRateServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1431,7 +1376,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1441,7 +1386,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1451,7 +1396,6 @@ public class HeartRateServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1460,7 +1404,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1470,7 +1414,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1480,7 +1424,6 @@ public class HeartRateServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1489,7 +1432,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1499,7 +1442,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1509,7 +1452,6 @@ public class HeartRateServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1518,7 +1460,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1528,7 +1470,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1538,7 +1480,6 @@ public class HeartRateServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1556,7 +1497,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1566,7 +1507,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1576,7 +1517,6 @@ public class HeartRateServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1585,7 +1525,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1595,7 +1535,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1605,7 +1545,6 @@ public class HeartRateServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1614,7 +1553,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1624,7 +1563,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1634,7 +1573,6 @@ public class HeartRateServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1643,7 +1581,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1653,7 +1591,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1663,7 +1601,6 @@ public class HeartRateServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1681,7 +1618,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1691,7 +1628,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1701,7 +1638,6 @@ public class HeartRateServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1710,7 +1646,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1720,7 +1656,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1730,7 +1666,6 @@ public class HeartRateServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1739,7 +1674,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1749,7 +1684,7 @@ public class HeartRateServiceTest {
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1759,7 +1694,6 @@ public class HeartRateServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1768,7 +1702,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1777,14 +1711,12 @@ public class HeartRateServiceTest {
     @Test
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0, 0};
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1800,7 +1732,7 @@ public class HeartRateServiceTest {
 
         };
 
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertTrue(isCalled.get());
@@ -1809,14 +1741,12 @@ public class HeartRateServiceTest {
     @Test
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:CC");
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
         final UUID originalServiceUUID = HEART_RATE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0, 0};
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1826,7 +1756,7 @@ public class HeartRateServiceTest {
 
         };
 
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -1835,14 +1765,12 @@ public class HeartRateServiceTest {
     @Test
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0, 0};
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1852,7 +1780,7 @@ public class HeartRateServiceTest {
 
         };
 
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -1861,14 +1789,12 @@ public class HeartRateServiceTest {
     @Test
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LOCATION_AND_NAVIGATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0, 0};
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
 
             @Override
@@ -1877,7 +1803,7 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, mockHeartRateServiceCallback, null);
         heartRateService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -1885,78 +1811,74 @@ public class HeartRateServiceTest {
 
     @Test
     public void test_isBodySensorLocationCharacteristicSupported_00001() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
         assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
     public void test_isBodySensorLocationCharacteristicSupported_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
     public void test_isBodySensorLocationCharacteristicSupported_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        heartRateService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
     public void test_isHeartRateControlPointCharacteristicSupported_00001() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
         assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
     public void test_isHeartRateControlPointCharacteristicSupported_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
     public void test_isHeartRateControlPointCharacteristicSupported_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        heartRateService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        heartRateService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_000001() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
         assertNull(heartRateService.getHeartRateMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_000002() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null) {
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1971,15 +1893,8 @@ public class HeartRateServiceTest {
     @Test
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1995,14 +1910,14 @@ public class HeartRateServiceTest {
 
     @Test
     public void test_startHeartRateMeasurementNotification_000001() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
         assertNull(heartRateService.startHeartRateMeasurementNotification());
     }
 
     @Test
     public void test_startHeartRateMeasurementNotification_000002() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null) {
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -2017,15 +1932,8 @@ public class HeartRateServiceTest {
     @Test
     public void test_startHeartRateMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -2041,14 +1949,14 @@ public class HeartRateServiceTest {
 
     @Test
     public void test_stopHeartRateMeasurementNotification_000001() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
         assertNull(heartRateService.stopHeartRateMeasurementNotification());
     }
 
     @Test
     public void test_stopHeartRateMeasurementNotification_000002() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null) {
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -2063,15 +1971,8 @@ public class HeartRateServiceTest {
     @Test
     public void test_stopHeartRateMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -2087,14 +1988,14 @@ public class HeartRateServiceTest {
 
     @Test
     public void test_getBodySensorLocation_000001() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
         assertNull(heartRateService.getBodySensorLocation());
     }
 
     @Test
     public void test_getBodySensorLocation_000002() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null) {
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -2109,15 +2010,8 @@ public class HeartRateServiceTest {
     @Test
     public void test_getBodySensorLocation_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -2132,15 +2026,8 @@ public class HeartRateServiceTest {
     @Test
     public void test_getBodySensorLocation_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isBodySensorLocationCharacteristicSupported() {
@@ -2161,7 +2048,7 @@ public class HeartRateServiceTest {
 
     @Test
     public void test_setLNControlPoint_000001() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         HeartRateControlPoint heartRateControlPoint = new HeartRateControlPoint(new byte[]{0});
 
         assertNull(heartRateService.setHeartRateControlPoint(heartRateControlPoint));
@@ -2169,7 +2056,7 @@ public class HeartRateServiceTest {
 
     @Test
     public void test_setLNControlPoint_000002() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null) {
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -2184,7 +2071,7 @@ public class HeartRateServiceTest {
 
     @Test
     public void test_setLNControlPoint_000003() {
-        HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null) {
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isHeartRateControlPointCharacteristicSupported() {
@@ -2205,15 +2092,8 @@ public class HeartRateServiceTest {
     @Test
     public void test_setLNControlPoint_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
+        HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
             @Override
             public boolean isHeartRateControlPointCharacteristicSupported() {

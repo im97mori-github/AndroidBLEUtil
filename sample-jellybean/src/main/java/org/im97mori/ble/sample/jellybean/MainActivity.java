@@ -438,15 +438,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         final Pair<String, String> log = Pair.create(now, sb.toString());
 
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    mAdapter.add(log);
-                    mListView.smoothScrollToPosition(mAdapter.getCount());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        runOnUiThread(() -> {
+            try {
+                mAdapter.add(log);
+                mListView.smoothScrollToPosition(mAdapter.getCount());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -479,7 +476,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
         mEnableLocationButton = findViewById(R.id.enableLocationButton);
 
-        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<>()) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

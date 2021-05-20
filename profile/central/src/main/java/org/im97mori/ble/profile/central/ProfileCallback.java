@@ -15,6 +15,7 @@ import java.util.Set;
 /**
  * Profile callback
  */
+@SuppressWarnings({"EmptyMethod", "unused"})
 public interface ProfileCallback extends GenericAccessServiceCallback, GenericAttributeServiceCallback, BLECallback {
 
     /**

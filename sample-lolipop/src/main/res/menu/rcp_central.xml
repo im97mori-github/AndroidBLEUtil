@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/has_bond_management_service"
+            android:title="@string/menu_has_bond_management_service" />
+        <item
+            android:id="@+id/has_rc_settings"
+            android:title="@string/menu_has_rc_settings" />
+        <item
+            android:id="@+id/is_rc_settings_notificatable"
+            android:title="@string/menu_is_rc_settings_notificatable" />
+        <item
+            android:id="@+id/has_reconnection_configuration_control_point"
+            android:title="@string/menu_has_reconnection_configuration_control_point" />
+        <item
+            android:id="@+id/read_rc_feature"
+            android:title="@string/menu_read_rc_feature" />
+        <item
+            android:id="@+id/read_rc_settings"
+            android:title="@string/menu_read_rc_settings" />
+        <item
+            android:id="@+id/get_rc_settings_characteristic_configuration"
+            android:title="@string/menu_get_rc_settings_characteristic_configuration" />
+        <item
+            android:id="@+id/notify_rc_settings_start"
+            android:title="@string/menu_notify_rc_settings_start" />
+        <item
+            android:id="@+id/notify_rc_settings_stop"
+            android:title="@string/menu_notify_rc_settings_stop" />
+        <item
+            android:id="@+id/write_reconnection_configuration_control_point"
+            android:title="@string/menu_write_reconnection_configuration_control_point" />
+        <item
+            android:id="@+id/get_reconnection_configuration_control_point_characteristic_configuration"
+            android:title="@string/menu_get_reconnection_configuration_control_point_characteristic_configuration" />
+        <item
+            android:id="@+id/indicate_reconnection_configuration_control_point_start"
+            android:title="@string/menu_indicate_reconnection_configuration_control_point_start" />
+        <item
+            android:id="@+id/indicate_reconnection_configuration_control_point_stop"
+            android:title="@string/menu_indicate_reconnection_configuration_control_point_stop" />
+        <item
+            android:id="@+id/indicate_client_parameter_indication"
+            android:title="@string/menu_ndicate_client_parameter_indication" />
+        <item
+            android:id="@+id/read_bond_banagement_features"
+            android:title="@string/menu_read_bond_banagement_features" />
+        <item
+            android:id="@+id/write_bond_management_control_point"
+            android:title="@string/menu_write_bond_management_control_point" />
+    </group>
+</menu>

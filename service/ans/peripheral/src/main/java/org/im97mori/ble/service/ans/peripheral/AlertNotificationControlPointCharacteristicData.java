@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import com.google.gson.annotations.SerializedName;
 
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.DescriptorData;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -104,7 +103,7 @@ public class AlertNotificationControlPointCharacteristicData extends Characteris
         super(ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC
                 , BluetoothGattCharacteristic.PROPERTY_WRITE
                 , BluetoothGattCharacteristic.PERMISSION_WRITE
-                , Collections.<DescriptorData>emptyList()
+                , Collections.emptyList()
                 , BluetoothGatt.GATT_SUCCESS
                 , delay
                 , null

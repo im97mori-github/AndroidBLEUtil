@@ -75,6 +75,7 @@ public class BarometricPressureTrendAndroid extends BarometricPressureTrend impl
      * @param in Parcel
      */
     private BarometricPressureTrendAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

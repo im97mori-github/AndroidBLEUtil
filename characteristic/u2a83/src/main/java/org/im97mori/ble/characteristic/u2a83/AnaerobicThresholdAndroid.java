@@ -76,6 +76,7 @@ public class AnaerobicThresholdAndroid extends AnaerobicThreshold implements Par
      * @param in Parcel
      */
     private AnaerobicThresholdAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

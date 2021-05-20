@@ -30,7 +30,7 @@ android {
 dependencies {
     api "${groupId}:${profileCentralAndroid.artifactId}:${profileCentralAndroid.versionName}"
     api "${groupId}:${servicePassCentralAndroid.artifactId}:${servicePassCentralAndroid.versionName}"
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestCentral
 }
 
 task sourcesJar(type: Jar) {

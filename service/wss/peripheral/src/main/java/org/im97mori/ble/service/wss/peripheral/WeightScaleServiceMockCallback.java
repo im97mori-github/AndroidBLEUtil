@@ -84,7 +84,7 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
             mWeightScaleFeatureCharacteristicData = new CharacteristicData(WEIGHT_SCALE_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

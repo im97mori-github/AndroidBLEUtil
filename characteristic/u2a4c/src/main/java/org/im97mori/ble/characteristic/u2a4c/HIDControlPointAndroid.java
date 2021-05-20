@@ -75,6 +75,7 @@ public class HIDControlPointAndroid extends HIDControlPoint implements Parcelabl
      * @param in Parcel
      */
     private HIDControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

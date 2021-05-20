@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Random;
@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class SetPreferredPhyTaskTest {
+public class SetPreferredPhyTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -86,7 +86,7 @@ public class SetPreferredPhyTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            SetPreferredPhyTask task = new SetPreferredPhyTask(new MockBLEConnection(), null, mockTaskHandler, 0, 0, 0, SetPreferredPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            SetPreferredPhyTask task = new SetPreferredPhyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, 0, 0, 0, SetPreferredPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -98,10 +98,8 @@ public class SetPreferredPhyTaskTest {
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
-            mockBleConnection.start();
 
             BaseBLECallback callback = new BaseBLECallback() {
 
@@ -110,7 +108,7 @@ public class SetPreferredPhyTaskTest {
                     result.set(true);
                 }
             };
-            mockBleConnection.attach(callback);
+            MOCK_BLE_CONNECTION.attach(callback);
 
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
@@ -119,7 +117,7 @@ public class SetPreferredPhyTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            SetPreferredPhyTask task = new SetPreferredPhyTask(mockBleConnection, null, mockTaskHandler, 0, 0, 0, SetPreferredPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            SetPreferredPhyTask task = new SetPreferredPhyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, 0, 0, 0, SetPreferredPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -127,7 +125,6 @@ public class SetPreferredPhyTaskTest {
             if (looper != null) {
                 looper.quit();
             }
-            mockBleConnection.quit();
         }
     }
 

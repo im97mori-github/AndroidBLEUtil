@@ -29,7 +29,7 @@ import org.im97mori.ble.task.AddServiceTask;
 import org.im97mori.ble.task.NotificationTask;
 import org.im97mori.ble.task.RemoveServiceTask;
 
-import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -55,46 +55,45 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * {@link Context} instance
      */
-    private final Context mContext;
+    protected final Context mContext;
 
     /**
      * {@link BluetoothManager} instance
      */
-    private final BluetoothManager mBluetoothManager;
+    protected final BluetoothManager mBluetoothManager;
 
     /**
      * {@link BluetoothAdapter} instance
      */
-    private final BluetoothAdapter mBluetoothAdapter;
+    protected final BluetoothAdapter mBluetoothAdapter;
 
     /**
      * {@link BluetoothGattServer} instance
      */
-    private BluetoothGattServer mBluetoothGattServer;
+    protected BluetoothGattServer mBluetoothGattServer;
 
     /**
      * {@link AdvertiseCallback} instance
      */
-    private AdvertiseCallback mAdvertiseCallback;
+    protected AdvertiseCallback mAdvertiseCallback;
 
     /**
      * {@link BluetoothLeAdvertiser} instance
      */
-    private BluetoothLeAdvertiser mBluetoothLeAdvertiser;
+    protected BluetoothLeAdvertiser mBluetoothLeAdvertiser;
 
     /**
      * newest {@link TaskHandler} instance
      */
-    private TaskHandler mTaskHandler;
+    protected TaskHandler mTaskHandler;
 
     /**
      * {@link BLEServerCallbackDistributer} instance
      */
     protected BLEServerCallbackDistributer mBLEServerCallbackDistributer;
 
-
     /**
-     * for {@link BLEServerCallbackDistributer.SubscriberInterface#getSubscriberCallbackSet()}
+     * for {@link BLEServerCallbackDistributer.SubscriberInterface#getSubscriberCallbackList()}
      */
     protected final List<BLEServerCallback> mAttachedBLEServerCallbackSet = new LinkedList<>();
 
@@ -151,6 +150,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
         }
 
         if (mBluetoothGattServer != null) {
+            mBluetoothGattServer.clearServices();
             mBluetoothGattServer.close();
             mBluetoothGattServer = null;
             mBLEServerCallbackDistributer.onServerStopped();
@@ -335,8 +335,8 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @return {@link BLEServerCallback} instance
      */
     @Override
-    public Collection<BLEServerCallback> getSubscriberCallbackSet() {
-        return mAttachedBLEServerCallbackSet;
+    public List<BLEServerCallback> getSubscriberCallbackList() {
+        return Collections.synchronizedList(new LinkedList<>(mAttachedBLEServerCallbackSet));
     }
 
     /**
@@ -448,7 +448,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                     , serviceInstanceId
                     , characteristicUUID
                     , characteristicInstanceId
-                    , byteArrayInterface
+                    , byteArrayInterface.getBytes()
                     , isConfirm
                     , timeout
                     , BLEServerCallbackDistributer.wrapArgument(argument, bleServerCallback));

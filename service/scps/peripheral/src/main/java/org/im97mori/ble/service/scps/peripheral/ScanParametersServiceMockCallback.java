@@ -82,7 +82,7 @@ public class ScanParametersServiceMockCallback extends AbstractServiceMockCallba
             mScanIntervalWindowData = new CharacteristicData(SCAN_INTERVAL_WINDOW_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE
                     , BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

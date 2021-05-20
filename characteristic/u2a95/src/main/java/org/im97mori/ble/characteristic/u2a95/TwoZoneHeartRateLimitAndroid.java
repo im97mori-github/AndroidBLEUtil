@@ -75,6 +75,7 @@ public class TwoZoneHeartRateLimitAndroid extends TwoZoneHeartRateLimit implemen
      * @param in Parcel
      */
     private TwoZoneHeartRateLimitAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

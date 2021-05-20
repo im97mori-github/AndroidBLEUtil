@@ -75,6 +75,7 @@ public class RingerControlPointAndroid extends RingerControlPoint implements Par
      * @param in Parcel
      */
     private RingerControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -75,6 +75,7 @@ public class AgeAndroid extends Age implements Parcelable {
      * @param in Parcel
      */
     private AgeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

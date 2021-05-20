@@ -13,6 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 public class GenderAndroidTest {
 
+    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor001() {
         //@formatter:off

@@ -1008,17 +1008,12 @@ public class CyclingSpeedAndCadenceProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00502() {
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext(), new CyclingSpeedAndCadenceServiceMockCallback.Builder<>(), null)
+        CyclingSpeedAndCadenceProfileMockCallback callback =new BaseBuilder(ApplicationProvider.getApplicationContext(), new CyclingSpeedAndCadenceServiceMockCallback.Builder<>(), null)
                     .addCSCFeature(new CSCFeature(new byte[1]))
                     .addCSCMeasurement(new CSCMeasurement(new byte[1]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-        } catch (Exception e) {
-            exception = e;
-        }
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

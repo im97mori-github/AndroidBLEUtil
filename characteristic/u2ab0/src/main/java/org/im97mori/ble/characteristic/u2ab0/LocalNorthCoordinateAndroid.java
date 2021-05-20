@@ -66,6 +66,7 @@ public class LocalNorthCoordinateAndroid extends LocalNorthCoordinate implements
      * @param in Parcel
      */
     private LocalNorthCoordinateAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -33,7 +33,6 @@ import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.BLEUtilsAndroid;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDsAndroid;
 import org.im97mori.ble.advertising.FlagsAndroid;
@@ -101,7 +100,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
         mBLECallbackSample = new BLECallbackSample(this, null);
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
-        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<>()) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -341,13 +340,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
         } else if (R.id.write_characteristc == item.getItemId()) {
             mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_WRITABLE_CHARACTERISTIC
-                    , new ByteArrayInterface() {
-                        @Override
-                        @NonNull
-                        public byte[] getBytes() {
-                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
-                        }
-                    }
+                    , () -> new byte[]{0x00, 0x00, 0x00, 0x00, 0x00}
                     , WriteCharacteristicTask.TIMEOUT_MILLIS);
         } else if (R.id.read_descriptor == item.getItemId()) {
             mBleConnection.createReadDescriptorTask(SAMPLE_PRIMARY_SERVICE_1
@@ -464,13 +457,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                         BLESyncConnection.BLEResult result = BLESyncConnection.createWriteCharacteristicTask(target,
                                 SAMPLE_PRIMARY_SERVICE_1
                                 , null, SAMPLE_WRITABLE_CHARACTERISTIC
-                                , null, new ByteArrayInterface() {
-                                    @Override
-                                    @NonNull
-                                    public byte[] getBytes() {
-                                        return value;
-                                    }
-                                }
+                                , null, () -> value
                                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                                 , WriteCharacteristicTask.TIMEOUT_MILLIS
@@ -514,26 +501,14 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             mBleConnection.createBeginReliableWriteTask(null, null);
             mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_WRITABLE_CHARACTERISTIC
-                    , new ByteArrayInterface() {
-                        @Override
-                        @NonNull
-                        public byte[] getBytes() {
-                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
-                        }
-                    }
+                    , () -> new byte[]{0x00, 0x00, 0x00, 0x00, 0x00}
                     , WriteCharacteristicTask.TIMEOUT_MILLIS);
             mBleConnection.createExecuteReliableWriteTask(ExecuteReliableWriteTask.TIMEOUT_MILLIS, null, null);
         } else if (R.id.write_characteristc_reliable_abort == item.getItemId()) {
             mBleConnection.createBeginReliableWriteTask(null, null);
             mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_WRITABLE_CHARACTERISTIC
-                    , new ByteArrayInterface() {
-                        @Override
-                        @NonNull
-                        public byte[] getBytes() {
-                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
-                        }
-                    }
+                    , () -> new byte[]{0x00, 0x00, 0x00, 0x00, 0x00}
                     , WriteCharacteristicTask.TIMEOUT_MILLIS);
             mBleConnection.createAbortReliableWriteTask(AbortReliableWriteTask.TIMEOUT_MILLIS, null, null);
         } else if (R.id.read_multi_instance_characteristic == item.getItemId()) {
@@ -820,14 +795,11 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void onCallbacked(final Pair<String, String> log) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.add(log);
-                mListView.smoothScrollToPosition(mAdapter.getCount());
+        runOnUiThread(() -> {
+            mAdapter.add(log);
+            mListView.smoothScrollToPosition(mAdapter.getCount());
 
-                updateLayout();
-            }
+            updateLayout();
         });
     }
 
@@ -868,56 +840,53 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     private void parse(@NonNull final ScanResult scanResult) {
         BLELogUtils.stackLog(scanResult);
         if (scanResult.getScanRecord() != null) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        CentralSampleActivity.this.mBluetoothLeScanner.stopScan(CentralSampleActivity.this.mFilteredScanCallback);
-                        CentralSampleActivity.this.mFilteredScanCallback = null;
-                        BluetoothDevice device = scanResult.getDevice();
-                        if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
-                            CentralSampleActivity.this.mBleConnection = BLEConnectionHolder.getInstance(device);
-                            if (CentralSampleActivity.this.mBleConnection == null) {
-                                CentralSampleActivity.this.mBleConnection = new BLEConnection(CentralSampleActivity.this, device, null);
-                                BLEConnectionHolder.addInstance(CentralSampleActivity.this.mBleConnection, true);
-                            }
-                            CentralSampleActivity.this.mBleConnection.attach(CentralSampleActivity.this.mBLECallbackSample);
-                            CentralSampleActivity.this.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
-                        } else {
-                            CentralSampleActivity.this.mReceiver = new BroadcastReceiver() {
-                                @Override
-                                public void onReceive(Context context, Intent intent) {
-                                    try {
-                                        String action = intent.getAction();
-                                        BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
-                                        if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
-                                            int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
-                                            if (BluetoothDevice.BOND_BONDED == state) {
-                                                CentralSampleActivity.this.getPreferences(Context.MODE_PRIVATE).edit().putString(KEY_LATEST_DEVICE, scanResult.getDevice().getAddress()).apply();
-                                                CentralSampleActivity.this.mBleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
-                                                if (CentralSampleActivity.this.mBleConnection == null) {
-                                                    CentralSampleActivity.this.mBleConnection = new BLEConnection(CentralSampleActivity.this, scanResult.getDevice(), null);
-                                                    BLEConnectionHolder.addInstance(CentralSampleActivity.this.mBleConnection, true);
-                                                }
-                                                CentralSampleActivity.this.mBleConnection.attach(CentralSampleActivity.this.mBLECallbackSample);
-                                                CentralSampleActivity.this.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
-                                                CentralSampleActivity.this.unregisterReceiver(CentralSampleActivity.this.mReceiver);
-                                                CentralSampleActivity.this.mReceiver = null;
-                                            }
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-
-                                }
-                            };
-                            IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-                            CentralSampleActivity.this.registerReceiver(CentralSampleActivity.this.mReceiver, intentFilter);
-                            device.createBond();
+            runOnUiThread(() -> {
+                try {
+                    CentralSampleActivity.this.mBluetoothLeScanner.stopScan(CentralSampleActivity.this.mFilteredScanCallback);
+                    CentralSampleActivity.this.mFilteredScanCallback = null;
+                    BluetoothDevice device = scanResult.getDevice();
+                    if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
+                        CentralSampleActivity.this.mBleConnection = BLEConnectionHolder.getInstance(device);
+                        if (CentralSampleActivity.this.mBleConnection == null) {
+                            CentralSampleActivity.this.mBleConnection = new BLEConnection(CentralSampleActivity.this, device, null);
+                            BLEConnectionHolder.addInstance(CentralSampleActivity.this.mBleConnection, true);
                         }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        CentralSampleActivity.this.mBleConnection.attach(CentralSampleActivity.this.mBLECallbackSample);
+                        CentralSampleActivity.this.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                    } else {
+                        CentralSampleActivity.this.mReceiver = new BroadcastReceiver() {
+                            @Override
+                            public void onReceive(Context context, Intent intent) {
+                                try {
+                                    String action = intent.getAction();
+                                    BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
+                                    if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
+                                        int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
+                                        if (BluetoothDevice.BOND_BONDED == state) {
+                                            CentralSampleActivity.this.getPreferences(Context.MODE_PRIVATE).edit().putString(KEY_LATEST_DEVICE, scanResult.getDevice().getAddress()).apply();
+                                            CentralSampleActivity.this.mBleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
+                                            if (CentralSampleActivity.this.mBleConnection == null) {
+                                                CentralSampleActivity.this.mBleConnection = new BLEConnection(CentralSampleActivity.this, scanResult.getDevice(), null);
+                                                BLEConnectionHolder.addInstance(CentralSampleActivity.this.mBleConnection, true);
+                                            }
+                                            CentralSampleActivity.this.mBleConnection.attach(CentralSampleActivity.this.mBLECallbackSample);
+                                            CentralSampleActivity.this.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                                            CentralSampleActivity.this.unregisterReceiver(CentralSampleActivity.this.mReceiver);
+                                            CentralSampleActivity.this.mReceiver = null;
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        };
+                        IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
+                        CentralSampleActivity.this.registerReceiver(CentralSampleActivity.this.mReceiver, intentFilter);
+                        device.createBond();
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
         }

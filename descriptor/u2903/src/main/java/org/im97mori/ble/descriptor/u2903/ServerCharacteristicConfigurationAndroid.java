@@ -74,6 +74,7 @@ public class ServerCharacteristicConfigurationAndroid extends ServerCharacterist
      * @param in Parcel
      */
     private ServerCharacteristicConfigurationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

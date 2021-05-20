@@ -33,6 +33,7 @@ import org.im97mori.ble.task.SetPreferredPhyTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -809,7 +810,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
-            WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, byteArrayInterface, writeType, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, byteArrayInterface.getBytes(), writeType, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -900,7 +901,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
-            WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, byteArrayInterface, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, byteArrayInterface.getBytes(), timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -1075,6 +1076,6 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     @Override
     @NonNull
     public synchronized Set<BLECallback> getSubscriberCallbackSet() {
-        return new HashSet<>(mAttachedBLECallbackSet);
+        return Collections.synchronizedSet(new HashSet<>(mAttachedBLECallbackSet));
     }
 }

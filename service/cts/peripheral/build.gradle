@@ -30,7 +30,8 @@ android {
 dependencies {
     api "${groupId}:${servicePeripheralAndroid.artifactId}:${servicePeripheralAndroid.versionName}"
     api "${groupId}:${serviceCtsAndroid.artifactId}:${serviceCtsAndroid.versionName}"
-    androidTestImplementation "${groupId}:${testPeripheral.artifactId}:${testPeripheral.versionName}"
+//    androidTestImplementation "${groupId}:${testPeripheral.artifactId}:${testPeripheral.versionName}"
+    androidTestImplementation project(path: ':test:peripheral')
 }
 
 task sourcesJar(type: Jar) {

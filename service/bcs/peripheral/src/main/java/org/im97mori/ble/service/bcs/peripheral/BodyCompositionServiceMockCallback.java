@@ -81,7 +81,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
             mBodyCompositionFeatureData = new CharacteristicData(BODY_COMPOSITION_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

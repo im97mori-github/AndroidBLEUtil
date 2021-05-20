@@ -1012,17 +1012,12 @@ public class RunningSpeedAndCadenceProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00502() {
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext(), new RunningSpeedAndCadenceServiceMockCallback.Builder<>(), null)
-                    .addRSCFeature(new RSCFeature(new byte[1]))
-                    .addRSCMeasurement(new RSCMeasurement(new byte[4]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
-                    .build();
-        } catch (Exception e) {
-            exception = e;
-        }
+        RunningSpeedAndCadenceProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext(), new RunningSpeedAndCadenceServiceMockCallback.Builder<>(), null)
+                .addRSCFeature(new RSCFeature(new byte[1]))
+                .addRSCMeasurement(new RSCMeasurement(new byte[4]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .build();
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

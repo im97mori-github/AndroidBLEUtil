@@ -66,6 +66,7 @@ public class BootMouseInputReportAndroid extends BootMouseInputReport implements
      * @param in Parcel
      */
     private BootMouseInputReportAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -75,6 +75,7 @@ public class ScanRefreshAndroid extends ScanRefresh implements Parcelable {
      * @param in Parcel
      */
     private ScanRefreshAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

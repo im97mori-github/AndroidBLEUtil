@@ -25,6 +25,7 @@ import java.util.UUID;
 /**
  * Device Information Service (Service UUID: 0x180A) callback
  */
+@SuppressWarnings("unused")
 public interface DeviceInformationServiceCallback {
 
     /**

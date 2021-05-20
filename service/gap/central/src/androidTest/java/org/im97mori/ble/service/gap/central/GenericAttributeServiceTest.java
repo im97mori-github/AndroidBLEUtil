@@ -9,14 +9,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a05.ServiceChangedAndroid;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeaturesAndroid;
 import org.im97mori.ble.characteristic.u2b2a.DatabaseHashAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -37,192 +36,174 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
-public class GenericAttributeServiceTest {
+public class GenericAttributeServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onDiscoverServiceSuccess_00001() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SERVICE_CHANGED_CHARACTERISTIC, 0, 0));
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00005() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SERVICE_CHANGED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00006() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SERVICE_CHANGED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00101() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00102() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00103() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00104() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, 0, 0));
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00105() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00106() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00107() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00201() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00202() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00203() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00204() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATABASE_HASH_CHARACTERISTIC, 0, 0));
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00205() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATABASE_HASH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
@@ -231,14 +212,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[4];
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -255,7 +235,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -265,14 +245,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DATABASE_HASH_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[4];
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -289,7 +268,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -299,14 +278,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -323,7 +301,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -333,14 +311,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DATABASE_HASH_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -357,7 +334,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -367,14 +344,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -391,7 +367,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -401,14 +377,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = DATABASE_HASH_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -425,7 +400,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -435,14 +410,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[4];
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -459,7 +433,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -470,14 +444,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -494,7 +467,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -504,14 +477,13 @@ public class GenericAttributeServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -528,7 +500,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -538,7 +510,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -547,7 +519,6 @@ public class GenericAttributeServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -565,7 +536,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -575,7 +546,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -584,7 +555,6 @@ public class GenericAttributeServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -602,7 +572,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -612,7 +582,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -621,7 +591,6 @@ public class GenericAttributeServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -639,7 +608,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -649,7 +618,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -659,7 +628,6 @@ public class GenericAttributeServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -676,7 +644,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -686,7 +654,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -696,7 +664,6 @@ public class GenericAttributeServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -713,7 +680,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -723,7 +690,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -733,7 +700,6 @@ public class GenericAttributeServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -751,7 +717,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -761,7 +727,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -771,7 +737,6 @@ public class GenericAttributeServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -789,7 +754,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -799,7 +764,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -809,7 +774,6 @@ public class GenericAttributeServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -827,7 +791,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -837,7 +801,7 @@ public class GenericAttributeServiceTest {
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
@@ -847,7 +811,6 @@ public class GenericAttributeServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -865,7 +828,7 @@ public class GenericAttributeServiceTest {
             }
 
         };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -874,14 +837,12 @@ public class GenericAttributeServiceTest {
     @Test
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{4, 5, 6, 7};
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockGenericAttributeServiceCallback mockGenericAttributeServiceCallback = new MockGenericAttributeServiceCallback() {
 
             @Override
@@ -898,7 +859,7 @@ public class GenericAttributeServiceTest {
 
         };
 
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, mockGenericAttributeServiceCallback, null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, mockGenericAttributeServiceCallback, null);
         genericAttributeService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertTrue(isCalled.get());
@@ -906,112 +867,106 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_isServiceChangedCharacteristicSupported_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
         assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_isServiceChangedCharacteristicSupported_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SERVICE_CHANGED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_isServiceChangedCharacteristicSupported_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SERVICE_CHANGED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        genericAttributeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
     public void test_isClientSupportedFeaturesCharacteristicSupported_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
         assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_isClientSupportedFeaturesCharacteristicSupported_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_isClientSupportedFeaturesCharacteristicSupported_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        genericAttributeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
     public void test_isDatabaseHashCharacteristicSupported_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
         assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
     public void test_isDatabaseHashCharacteristicSupported_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DATABASE_HASH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
     public void test_isDatabaseHashCharacteristicSupported_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DATABASE_HASH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        genericAttributeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        genericAttributeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
     public void test_getServiceChangedClientCharacteristicConfiguration_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
         assertNull(genericAttributeService.getServiceChangedClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getServiceChangedClientCharacteristicConfiguration_00002() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1025,7 +980,7 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_getServiceChangedClientCharacteristicConfiguration_00003() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isServiceChangedCharacteristicSupported() {
@@ -1045,15 +1000,8 @@ public class GenericAttributeServiceTest {
     @Test
     public void test_getServiceChangedClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isServiceChangedCharacteristicSupported() {
@@ -1074,14 +1022,14 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_startServiceChangedIndication_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
         assertNull(genericAttributeService.startServiceChangedIndication());
     }
 
     @Test
     public void test_startServiceChangedIndication_00002() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1095,7 +1043,7 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_startServiceChangedIndication_00003() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isServiceChangedCharacteristicSupported() {
@@ -1115,15 +1063,8 @@ public class GenericAttributeServiceTest {
     @Test
     public void test_startServiceChangedIndication_00004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
 
             @Override
@@ -1145,14 +1086,14 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_stopServiceChangedIndication_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
         assertNull(genericAttributeService.stopServiceChangedIndication());
     }
 
     @Test
     public void test_stopServiceChangedIndication_00002() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1166,7 +1107,7 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_stopServiceChangedIndication_00003() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isServiceChangedCharacteristicSupported() {
@@ -1186,15 +1127,8 @@ public class GenericAttributeServiceTest {
     @Test
     public void test_stopServiceChangedIndication_00004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isServiceChangedCharacteristicSupported() {
@@ -1215,14 +1149,14 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_getClientSupportedFeatures_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
         assertNull(genericAttributeService.getClientSupportedFeatures());
     }
 
     @Test
     public void test_getClientSupportedFeatures_00002() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1236,7 +1170,7 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_getClientSupportedFeatures_00003() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isClientSupportedFeaturesCharacteristicSupported() {
@@ -1256,15 +1190,8 @@ public class GenericAttributeServiceTest {
     @Test
     public void test_getClientSupportedFeatures_00004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isClientSupportedFeaturesCharacteristicSupported() {
@@ -1285,7 +1212,7 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_setClientSupportedFeatures_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         ClientSupportedFeatures clientSupportedFeatures = new ClientSupportedFeatures(new byte[]{1});
 
         assertNull(genericAttributeService.setClientSupportedFeatures(clientSupportedFeatures));
@@ -1293,7 +1220,7 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_setClientSupportedFeatures_00002() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1308,7 +1235,7 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_setClientSupportedFeatures_00003() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isClientSupportedFeaturesCharacteristicSupported() {
@@ -1329,15 +1256,8 @@ public class GenericAttributeServiceTest {
     @Test
     public void test_setClientSupportedFeatures_00004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isClientSupportedFeaturesCharacteristicSupported() {
@@ -1359,14 +1279,14 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_getDatabaseHash_00001() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
         assertNull(genericAttributeService.getDatabaseHash());
     }
 
     @Test
     public void test_getDatabaseHash_00002() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1380,7 +1300,7 @@ public class GenericAttributeServiceTest {
 
     @Test
     public void test_getDatabaseHash_00003() {
-        GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isDatabaseHashCharacteristicSupported() {
@@ -1400,15 +1320,8 @@ public class GenericAttributeServiceTest {
     @Test
     public void test_getDatabaseHash_00004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
             public boolean isDatabaseHashCharacteristicSupported() {

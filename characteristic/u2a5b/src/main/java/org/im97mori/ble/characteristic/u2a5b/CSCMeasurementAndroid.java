@@ -79,6 +79,7 @@ public class CSCMeasurementAndroid extends CSCMeasurement implements Parcelable 
      * @param in Parcel
      */
     private CSCMeasurementAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

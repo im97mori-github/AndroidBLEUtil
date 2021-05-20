@@ -69,6 +69,7 @@ public class IEEE_11073_20601_RegulatoryCertificationDataListAndroid extends IEE
      * @param in Parcel
      */
     private IEEE_11073_20601_RegulatoryCertificationDataListAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

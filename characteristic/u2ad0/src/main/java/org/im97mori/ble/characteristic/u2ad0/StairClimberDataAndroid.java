@@ -84,6 +84,7 @@ public class StairClimberDataAndroid extends StairClimberData implements Parcela
      * @param in Parcel
      */
     private StairClimberDataAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(new StairClimberDataPacketAndroid[]{StairClimberDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }
 

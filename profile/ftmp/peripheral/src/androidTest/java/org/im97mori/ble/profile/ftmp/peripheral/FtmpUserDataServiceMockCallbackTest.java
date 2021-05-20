@@ -1,18 +1,17 @@
 package org.im97mori.ble.profile.ftmp.peripheral;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.MockData;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
@@ -66,10 +65,7 @@ public class FtmpUserDataServiceMockCallbackTest {
                 isCalled.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        ftmpUserDataServiceMockCallback.onDeviceDisconnected(null, MOCK_DEVICE);
+        ftmpUserDataServiceMockCallback.onDeviceDisconnected(null, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         assertFalse(isCalled.get());
     }
@@ -83,12 +79,8 @@ public class FtmpUserDataServiceMockCallbackTest {
                 isCalled.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE1 = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BluetoothDevice MOCK_DEVICE2 = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:CC");
-        ftmpUserDataServiceMockCallback.setCurrentUserMap(MOCK_DEVICE2, 1);
-        ftmpUserDataServiceMockCallback.onDeviceDisconnected(null, MOCK_DEVICE1);
+        ftmpUserDataServiceMockCallback.setCurrentUserMap(BLETestUtilsAndroid.MOCK_DEVICE_1, 1);
+        ftmpUserDataServiceMockCallback.onDeviceDisconnected(null, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         assertFalse(isCalled.get());
     }
@@ -104,11 +96,8 @@ public class FtmpUserDataServiceMockCallbackTest {
                 isCalled.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE1 = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        ftmpUserDataServiceMockCallback.setCurrentUserMap(MOCK_DEVICE1, originalUserIndex);
-        ftmpUserDataServiceMockCallback.onDeviceDisconnected(null, MOCK_DEVICE1);
+        ftmpUserDataServiceMockCallback.setCurrentUserMap(BLETestUtilsAndroid.MOCK_DEVICE_0, originalUserIndex);
+        ftmpUserDataServiceMockCallback.onDeviceDisconnected(null, BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         assertTrue(isCalled.get());
     }

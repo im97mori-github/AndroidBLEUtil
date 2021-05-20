@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import com.google.gson.annotations.Expose;
 
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
 
 import java.util.Collections;
@@ -63,7 +62,7 @@ public class ReferenceTimeInformationCharacteristicData extends CharacteristicDa
         super(REFERENCE_TIME_INFORMATION_CHARACTERISTIC
                 , BluetoothGattCharacteristic.PROPERTY_READ
                 , BluetoothGattCharacteristic.PERMISSION_READ
-                , Collections.<DescriptorData>emptyList()
+                , Collections.emptyList()
                 , responseCode
                 , delay
                 , data

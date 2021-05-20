@@ -193,7 +193,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             mFitnessMachineFeatureData = new CharacteristicData(FITNESS_MACHINE_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -577,7 +577,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             mSupportedSpeedRangeData = new CharacteristicData(SUPPORTED_SPEED_RANGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -625,7 +625,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             mSupportedInclinationRangeData = new CharacteristicData(SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -673,7 +673,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             mSupportedResistanceLevelRangeData = new CharacteristicData(SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -721,7 +721,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             mSupportedPowerRangeData = new CharacteristicData(SUPPORTED_POWER_RANGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -769,7 +769,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             mSupportedHeartRateRangeData = new CharacteristicData(SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1322,8 +1322,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                         Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, characteristicInstanceId));
                         if (characteristicData instanceof FitnessMachineControlPointCharacteristicData && descriptorDataMap != null) {
                             for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorDataEntry : descriptorDataMap.entrySet()) {
-                                Pair<UUID, Integer> key = descriptorDataEntry.getKey();
-                                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(key.first)) {
+                                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)
+                                        && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorDataEntry.getValue().getBytes())) {
                                     responseCode = BluetoothGatt.GATT_SUCCESS;
 
                                     FitnessMachineControlPointCharacteristicData fitnessMachineControlPointCharacteristicData = (FitnessMachineControlPointCharacteristicData) characteristicData;

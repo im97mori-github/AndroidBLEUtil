@@ -16,6 +16,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class ProximityProfileMockCallbackBuilderTest {
@@ -135,7 +137,7 @@ public class ProximityProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
-        LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> linkLossServiceMockCallbackBuilder = new LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback>(){
+        LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> linkLossServiceMockCallbackBuilder = new LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback>() {
             @NonNull
             @Override
             public LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> removeAlertLevel() {
@@ -276,7 +278,7 @@ public class ProximityProfileMockCallbackBuilderTest {
         Context context = ApplicationProvider.getApplicationContext();
         LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> linkLossServiceMockCallbackBuilder = new LinkLossServiceMockCallback.Builder<>();
         ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> immediateAlertServiceMockCallbackBuilder = new ImmediateAlertServiceMockCallback.Builder<>();
-        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>(){
+        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>() {
             @NonNull
             @Override
             public TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> addTxPowerLevel(int txPower) {
@@ -299,7 +301,7 @@ public class ProximityProfileMockCallbackBuilderTest {
         Context context = ApplicationProvider.getApplicationContext();
         LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> linkLossServiceMockCallbackBuilder = new LinkLossServiceMockCallback.Builder<>();
         ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> immediateAlertServiceMockCallbackBuilder = new ImmediateAlertServiceMockCallback.Builder<>();
-        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>(){
+        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>() {
             @NonNull
             @Override
             public TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> addTxPowerLevel(@NonNull TxPowerLevel txPowerLevel) {
@@ -322,7 +324,7 @@ public class ProximityProfileMockCallbackBuilderTest {
         Context context = ApplicationProvider.getApplicationContext();
         LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> linkLossServiceMockCallbackBuilder = new LinkLossServiceMockCallback.Builder<>();
         ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> immediateAlertServiceMockCallbackBuilder = new ImmediateAlertServiceMockCallback.Builder<>();
-        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>(){
+        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>() {
             @NonNull
             @Override
             public TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> addTxPowerLevel(@NonNull byte[] value) {
@@ -347,7 +349,7 @@ public class ProximityProfileMockCallbackBuilderTest {
         Context context = ApplicationProvider.getApplicationContext();
         LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> linkLossServiceMockCallbackBuilder = new LinkLossServiceMockCallback.Builder<>();
         ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> immediateAlertServiceMockCallbackBuilder = new ImmediateAlertServiceMockCallback.Builder<>();
-        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>(){
+        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>() {
             @NonNull
             @Override
             public TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> addTxPowerLevel(int responseCode, long delay, @NonNull byte[] value) {
@@ -371,7 +373,7 @@ public class ProximityProfileMockCallbackBuilderTest {
         Context context = ApplicationProvider.getApplicationContext();
         ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> immediateAlertServiceMockCallbackBuilder = new ImmediateAlertServiceMockCallback.Builder<>();
         LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> linkLossServiceMockCallbackBuilder = new LinkLossServiceMockCallback.Builder<>();
-        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>(){
+        TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>() {
             @NonNull
             @Override
             public TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> removeTxPowerLevel() {
@@ -384,5 +386,96 @@ public class ProximityProfileMockCallbackBuilderTest {
 
         assertTrue(atomicBoolean.get());
     }
+
+    @Test
+    public void test_build_00001() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new LinkLossServiceMockCallback.Builder<>()
+                    , new ImmediateAlertServiceMockCallback.Builder<>()
+                    , new TxPowerServiceMockCallback.Builder<>())
+                    .addImmediateAlertServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                    .addTxPowerLevel(new TxPowerLevel(0))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Alert Level data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00002() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new LinkLossServiceMockCallback.Builder<>()
+                    , new ImmediateAlertServiceMockCallback.Builder<>()
+                    , new TxPowerServiceMockCallback.Builder<>())
+                    .addLinkLossServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                    .addImmediateAlertServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                    .addTxPowerLevel(new TxPowerLevel(0))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_build_00101() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new LinkLossServiceMockCallback.Builder<>()
+                    , new ImmediateAlertServiceMockCallback.Builder<>()
+                    , new TxPowerServiceMockCallback.Builder<>())
+                    .addLinkLossServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                    .addTxPowerLevel(new TxPowerLevel(0))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Alert Level data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00201() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new LinkLossServiceMockCallback.Builder<>()
+                    , new ImmediateAlertServiceMockCallback.Builder<>()
+                    , new TxPowerServiceMockCallback.Builder<>())
+                    .addLinkLossServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                    .addImmediateAlertServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Tx Power Level data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00202() {
+        ProximityProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new LinkLossServiceMockCallback.Builder<>()
+                , new ImmediateAlertServiceMockCallback.Builder<>()
+                , new TxPowerServiceMockCallback.Builder<>())
+                .addLinkLossServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                .addImmediateAlertServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                .addTxPowerLevel(new TxPowerLevel(0))
+                .build();
+
+        assertNotNull(callback);
+    }
+
 
 }

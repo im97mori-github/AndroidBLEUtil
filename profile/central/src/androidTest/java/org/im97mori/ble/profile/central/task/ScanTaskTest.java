@@ -1,12 +1,12 @@
 package org.im97mori.ble.profile.central.task;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.ScanResult;
 import android.os.Bundle;
 import android.os.Message;
 
 import org.im97mori.ble.task.AbstractBLETask;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -20,6 +20,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ScanTaskTest {
 
+    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_createInitialMessage_00001() {
         ScanTask task = new ScanTask(null, null, null, 0, null);
@@ -35,12 +36,7 @@ public class ScanTaskTest {
 
     @Test
     public void test_createDeviceFoundMessage_00001() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress = "00:11:22:33:AA:BB";
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress);
-        ScanResult scanResult = new ScanResult(bluetoothDevice, 1, 2, 3, 4, 5, 6, 7, null, 8);
+        ScanResult scanResult = BLETestUtilsAndroid.createScanResult(BLETestUtilsAndroid.MOCK_DEVICE_0, 1, 2, 3, 4, 5, 6, 7, null, 8);
         Message message = ScanTask.createDeviceFoundMessage(scanResult);
 
         assertNotNull(message);
@@ -54,15 +50,8 @@ public class ScanTaskTest {
 
     @Test
     public void test_createDeviceFoundMessage_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        String macAddress1 = "00:11:22:33:AA:BB";
-        String macAddress2 = "00:11:22:33:AA:CC";
-        BluetoothDevice bluetoothDevice1 = bluetoothAdapter.getRemoteDevice(macAddress1);
-        BluetoothDevice bluetoothDevice2 = bluetoothAdapter.getRemoteDevice(macAddress2);
-        ScanResult scanResult1 = new ScanResult(bluetoothDevice1, 1, 2, 3, 4, 5, 6, 7, null, 8);
-        ScanResult scanResult2 = new ScanResult(bluetoothDevice2, 11, 22, 33, 44, 55, 66, 77, null, 88);
+        ScanResult scanResult1 = BLETestUtilsAndroid.createScanResult(BLETestUtilsAndroid.MOCK_DEVICE_0, 1, 2, 3, 4, 5, 6, 7, null, 8);
+        ScanResult scanResult2 = BLETestUtilsAndroid.createScanResult(BLETestUtilsAndroid.MOCK_DEVICE_1, 11, 22, 33, 44, 55, 66, 77, null, 88);
         Message message = ScanTask.createDeviceFoundMessage(scanResult1, scanResult2);
 
         assertNotNull(message);

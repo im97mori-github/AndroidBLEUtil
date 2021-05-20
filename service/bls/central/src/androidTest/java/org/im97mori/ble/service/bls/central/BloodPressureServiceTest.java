@@ -1,6 +1,5 @@
 package org.im97mori.ble.service.bls.central;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -10,8 +9,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 import org.im97mori.ble.characteristic.u2a35.BloodPressureMeasurement;
 import org.im97mori.ble.characteristic.u2a35.BloodPressureMeasurementAndroid;
@@ -19,7 +16,8 @@ import org.im97mori.ble.characteristic.u2a36.IntermediateCuffPressure;
 import org.im97mori.ble.characteristic.u2a36.IntermediateCuffPressureAndroid;
 import org.im97mori.ble.characteristic.u2a49.BloodPressureFeatureAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -44,81 +42,74 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
-public class BloodPressureServiceTest {
+public class BloodPressureServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onDiscoverServiceSuccess_00001() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, 0, 0));
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00005() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00006() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00007() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(bloodPressureService.isIntermediateCuffPressureSupported());
     }
@@ -127,14 +118,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{4, 5};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -151,7 +141,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -161,14 +151,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{4, 5};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -177,7 +166,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -187,14 +176,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{4, 5};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -203,7 +191,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -213,14 +201,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -237,7 +224,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -247,14 +234,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -263,7 +249,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -273,14 +259,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -289,7 +274,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -299,14 +284,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -323,7 +307,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -333,14 +317,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -349,7 +332,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -359,14 +342,13 @@ public class BloodPressureServiceTest {
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -375,7 +357,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -385,7 +367,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -394,7 +376,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -412,7 +393,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -422,7 +403,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -431,7 +412,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -440,7 +420,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -450,7 +430,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -459,7 +439,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -468,7 +447,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -478,7 +457,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -487,7 +466,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -496,7 +474,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -506,7 +484,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -515,7 +493,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -533,7 +510,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -543,7 +520,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -552,7 +529,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -561,7 +537,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -571,7 +547,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -580,7 +556,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -589,7 +564,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -599,7 +574,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -608,7 +583,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -617,7 +591,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -627,7 +601,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -636,7 +610,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -654,7 +627,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -664,7 +637,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -673,7 +646,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -682,7 +654,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -692,7 +664,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -701,7 +673,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -710,7 +681,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -720,7 +691,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -729,7 +700,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -738,7 +708,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -748,7 +718,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -757,7 +727,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -775,7 +744,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -785,7 +754,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -794,7 +763,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -803,7 +771,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -813,7 +781,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -822,7 +790,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -831,7 +798,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -841,7 +808,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -850,7 +817,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -859,7 +825,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -869,7 +835,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -878,7 +844,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -896,7 +861,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -906,7 +871,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -915,7 +880,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -924,7 +888,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -934,7 +898,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -943,7 +907,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -952,7 +915,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -962,7 +925,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -971,7 +934,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -980,7 +942,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -990,7 +952,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -999,7 +961,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1017,7 +978,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1027,7 +988,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1036,7 +997,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1045,7 +1005,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1055,7 +1015,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1064,7 +1024,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1073,7 +1032,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1083,7 +1042,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorReadTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1092,7 +1051,6 @@ public class BloodPressureServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1101,7 +1059,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1111,7 +1069,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1121,7 +1079,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1138,7 +1095,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1148,7 +1105,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1158,7 +1115,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1167,7 +1123,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1177,7 +1133,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1187,7 +1143,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1196,7 +1151,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1206,7 +1161,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1216,7 +1171,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1225,7 +1179,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1235,7 +1189,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1245,7 +1199,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1262,7 +1215,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1272,7 +1225,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1282,7 +1235,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1291,7 +1243,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1301,7 +1253,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1311,7 +1263,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1320,7 +1271,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1330,7 +1281,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1340,7 +1291,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1349,7 +1299,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1359,7 +1309,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1369,7 +1319,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1386,7 +1335,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1396,7 +1345,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1406,7 +1355,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1415,7 +1363,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1425,7 +1373,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1435,7 +1383,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1444,7 +1391,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1454,7 +1401,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1464,7 +1411,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1473,7 +1419,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1483,7 +1429,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1493,7 +1439,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1510,7 +1455,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1520,7 +1465,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1530,7 +1475,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1539,7 +1483,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1549,7 +1493,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1559,7 +1503,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1568,7 +1511,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1578,7 +1521,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteSuccess_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1588,7 +1531,6 @@ public class BloodPressureServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1597,7 +1539,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1607,7 +1549,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1617,7 +1559,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1635,7 +1576,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1645,7 +1586,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1655,7 +1596,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1664,7 +1604,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1674,7 +1614,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1684,7 +1624,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1693,7 +1632,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1703,7 +1642,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1713,7 +1652,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1722,7 +1660,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1732,7 +1670,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1742,7 +1680,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1760,7 +1697,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1770,7 +1707,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1780,7 +1717,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1789,7 +1725,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1799,7 +1735,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1809,7 +1745,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1818,7 +1753,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1828,7 +1763,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1838,7 +1773,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1847,7 +1781,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1857,7 +1791,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1867,7 +1801,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1885,7 +1818,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1895,7 +1828,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1905,7 +1838,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1914,7 +1846,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1924,7 +1856,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -1934,7 +1866,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1943,7 +1874,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1953,7 +1884,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -1963,7 +1894,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -1972,7 +1902,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1982,7 +1912,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -1992,7 +1922,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2010,7 +1939,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -2020,7 +1949,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2030,7 +1959,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2039,7 +1967,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2049,7 +1977,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -2059,7 +1987,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2068,7 +1995,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2078,7 +2005,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteFailed_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2088,7 +2015,6 @@ public class BloodPressureServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2097,7 +2023,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2107,7 +2033,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2117,7 +2043,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2135,7 +2060,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -2145,7 +2070,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2155,7 +2080,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2164,7 +2088,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2174,7 +2098,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -2184,7 +2108,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2193,7 +2116,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2203,7 +2126,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2213,7 +2136,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2222,7 +2144,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2232,7 +2154,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2242,7 +2164,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2260,7 +2181,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -2270,7 +2191,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2280,7 +2201,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2289,7 +2209,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2299,7 +2219,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -2309,7 +2229,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2318,7 +2237,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2328,7 +2247,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2338,7 +2257,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2347,7 +2265,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2357,7 +2275,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2367,7 +2285,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2385,7 +2302,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -2395,7 +2312,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2405,7 +2322,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2414,7 +2330,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2424,7 +2340,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -2434,7 +2350,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2443,7 +2358,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2453,7 +2368,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2463,7 +2378,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2472,7 +2386,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2482,7 +2396,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2492,7 +2406,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2510,7 +2423,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -2520,7 +2433,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2530,7 +2443,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2539,7 +2451,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2549,7 +2461,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -2559,7 +2471,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2568,7 +2479,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2578,7 +2489,7 @@ public class BloodPressureServiceTest {
     public void test_onDescriptorWriteTimeout_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2588,7 +2499,6 @@ public class BloodPressureServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2597,7 +2507,7 @@ public class BloodPressureServiceTest {
             }
 
         };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -2606,7 +2516,7 @@ public class BloodPressureServiceTest {
     @Test
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2628,8 +2538,6 @@ public class BloodPressureServiceTest {
         int bpmuserId = 36;
         byte[] bpmmeasurementStatus = new byte[]{37};
         final byte[] originalValues = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2645,7 +2553,7 @@ public class BloodPressureServiceTest {
 
         };
 
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertTrue(isCalled.get());
@@ -2654,7 +2562,6 @@ public class BloodPressureServiceTest {
     @Test
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:CC");
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2676,8 +2583,6 @@ public class BloodPressureServiceTest {
         int bpmuserId = 36;
         byte[] bpmmeasurementStatus = new byte[]{37};
         final byte[] originalValues = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2687,8 +2592,8 @@ public class BloodPressureServiceTest {
 
         };
 
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
-        bloodPressureService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
+        bloodPressureService.onCharacteristicNotified(BLETestUtilsAndroid.MOCK_DEVICE_1, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
     }
@@ -2696,7 +2601,7 @@ public class BloodPressureServiceTest {
     @Test
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -2718,8 +2623,6 @@ public class BloodPressureServiceTest {
         int bpmuserId = 36;
         byte[] bpmmeasurementStatus = new byte[]{37};
         final byte[] originalValues = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2729,7 +2632,7 @@ public class BloodPressureServiceTest {
 
         };
 
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -2738,7 +2641,7 @@ public class BloodPressureServiceTest {
     @Test
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -2760,8 +2663,6 @@ public class BloodPressureServiceTest {
         int bpmuserId = 36;
         byte[] bpmmeasurementStatus = new byte[]{37};
         final byte[] originalValues = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2771,7 +2672,7 @@ public class BloodPressureServiceTest {
 
         };
 
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -2780,7 +2681,7 @@ public class BloodPressureServiceTest {
     @Test
     public void test_onCharacteristicNotified_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2802,8 +2703,6 @@ public class BloodPressureServiceTest {
         int icpuserId = 73;
         byte[] icpmeasurementStatus = new byte[]{74};
         final byte[] originalValues = new IntermediateCuffPressure(icpflags, icpbloodPressureMeasurementCompoundValueSystolicMmhg, icpbloodPressureMeasurementCompoundValueDiastolicMmhg, icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, icpbloodPressureMeasurementCompoundValueSystolicKpa, icpbloodPressureMeasurementCompoundValueDiastolicKpa, icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2819,7 +2718,7 @@ public class BloodPressureServiceTest {
 
         };
 
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertTrue(isCalled.get());
@@ -2828,7 +2727,6 @@ public class BloodPressureServiceTest {
     @Test
     public void test_onCharacteristicNotified_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:CC");
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2850,8 +2748,6 @@ public class BloodPressureServiceTest {
         int icpuserId = 73;
         byte[] icpmeasurementStatus = new byte[]{74};
         final byte[] originalValues = new IntermediateCuffPressure(icpflags, icpbloodPressureMeasurementCompoundValueSystolicMmhg, icpbloodPressureMeasurementCompoundValueDiastolicMmhg, icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, icpbloodPressureMeasurementCompoundValueSystolicKpa, icpbloodPressureMeasurementCompoundValueDiastolicKpa, icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2861,8 +2757,8 @@ public class BloodPressureServiceTest {
 
         };
 
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
-        bloodPressureService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
+        bloodPressureService.onCharacteristicNotified(BLETestUtilsAndroid.MOCK_DEVICE_1, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
     }
@@ -2870,7 +2766,7 @@ public class BloodPressureServiceTest {
     @Test
     public void test_onCharacteristicNotified_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -2892,8 +2788,6 @@ public class BloodPressureServiceTest {
         int icpuserId = 73;
         byte[] icpmeasurementStatus = new byte[]{74};
         final byte[] originalValues = new IntermediateCuffPressure(icpflags, icpbloodPressureMeasurementCompoundValueSystolicMmhg, icpbloodPressureMeasurementCompoundValueDiastolicMmhg, icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, icpbloodPressureMeasurementCompoundValueSystolicKpa, icpbloodPressureMeasurementCompoundValueDiastolicKpa, icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2903,7 +2797,7 @@ public class BloodPressureServiceTest {
 
         };
 
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -2912,7 +2806,7 @@ public class BloodPressureServiceTest {
     @Test
     public void test_onCharacteristicNotified_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BLOOD_PRESSURE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
@@ -2934,8 +2828,6 @@ public class BloodPressureServiceTest {
         int icpuserId = 73;
         byte[] icpmeasurementStatus = new byte[]{74};
         final byte[] originalValues = new IntermediateCuffPressure(icpflags, icpbloodPressureMeasurementCompoundValueSystolicMmhg, icpbloodPressureMeasurementCompoundValueDiastolicMmhg, icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, icpbloodPressureMeasurementCompoundValueSystolicKpa, icpbloodPressureMeasurementCompoundValueDiastolicKpa, icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2945,7 +2837,7 @@ public class BloodPressureServiceTest {
 
         };
 
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, mockBloodPressureServiceCallback, null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, mockBloodPressureServiceCallback, null);
         bloodPressureService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -2953,48 +2845,46 @@ public class BloodPressureServiceTest {
 
     @Test
     public void test_isIntermediateCuffPressureSupported_00001() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_isIntermediateCuffPressureSupported_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_isIntermediateCuffPressureSupported_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        bloodPressureService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        bloodPressureService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_000001() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
 
         assertNull(bloodPressureService.getBloodPressureMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_000002() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null) {
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3009,15 +2899,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3033,14 +2916,14 @@ public class BloodPressureServiceTest {
 
     @Test
     public void test_startBloodPressureMeasurementIndication_000001() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
 
         assertNull(bloodPressureService.startBloodPressureMeasurementIndication());
     }
 
     @Test
     public void test_startBloodPressureMeasurementIndication_000002() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null) {
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3055,15 +2938,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_startBloodPressureMeasurementIndication_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3079,14 +2955,14 @@ public class BloodPressureServiceTest {
 
     @Test
     public void test_stopBloodPressureMeasurementIndication_000001() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
 
         assertNull(bloodPressureService.stopBloodPressureMeasurementIndication());
     }
 
     @Test
     public void test_stopBloodPressureMeasurementIndication_000002() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null) {
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3101,15 +2977,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_stopBloodPressureMeasurementIndication_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3125,14 +2994,14 @@ public class BloodPressureServiceTest {
 
     @Test
     public void test_getIntermediateCuffPressureClientCharacteristicConfiguration_000001() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
 
         assertNull(bloodPressureService.getIntermediateCuffPressureClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getIntermediateCuffPressureClientCharacteristicConfiguration_000002() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null) {
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3147,15 +3016,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_getIntermediateCuffPressureClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3170,15 +3032,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_getIntermediateCuffPressureClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isIntermediateCuffPressureSupported() {
@@ -3199,14 +3054,14 @@ public class BloodPressureServiceTest {
 
     @Test
     public void test_startIntermediateCuffPressureNotification_000001() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
 
         assertNull(bloodPressureService.startIntermediateCuffPressureNotification());
     }
 
     @Test
     public void test_startIntermediateCuffPressureNotification_000002() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null) {
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3221,15 +3076,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_startIntermediateCuffPressureNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3244,15 +3092,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_startIntermediateCuffPressureNotification_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isIntermediateCuffPressureSupported() {
@@ -3273,14 +3114,14 @@ public class BloodPressureServiceTest {
 
     @Test
     public void test_stopIntermediateCuffPressureNotification_000001() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
 
         assertNull(bloodPressureService.stopIntermediateCuffPressureNotification());
     }
 
     @Test
     public void test_stopIntermediateCuffPressureNotification_000002() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null) {
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3295,15 +3136,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_stopIntermediateCuffPressureNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3318,15 +3152,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_stopIntermediateCuffPressureNotification_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isIntermediateCuffPressureSupported() {
@@ -3347,14 +3174,14 @@ public class BloodPressureServiceTest {
 
     @Test
     public void test_getBloodPressureFeature_000001() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null);
 
         assertNull(bloodPressureService.getBloodPressureFeature());
     }
 
     @Test
     public void test_getBloodPressureFeature_000002() {
-        BloodPressureService bloodPressureService = new BloodPressureService(new MockBLEConnection(), new MockBloodPressureServiceCallback(), null) {
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -3369,15 +3196,8 @@ public class BloodPressureServiceTest {
     @Test
     public void test_getBloodPressureFeature_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        BloodPressureService bloodPressureService = new BloodPressureService(MOCK_BLE_CONNECTION, new MockBloodPressureServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {

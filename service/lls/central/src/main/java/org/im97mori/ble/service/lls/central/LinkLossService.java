@@ -114,6 +114,7 @@ public class LinkLossService extends AbstractCentralService {
      * @see LinkLossServiceCallback#onAlertLevelReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see LinkLossServiceCallback#onAlertLevelReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      */
+    @Nullable
     public synchronized Integer getAlertLevel() {
         Integer taskId = null;
         if (isStarted()) {

@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 public class BaseProfileCallback implements ProfileCallback {
 
     @Override

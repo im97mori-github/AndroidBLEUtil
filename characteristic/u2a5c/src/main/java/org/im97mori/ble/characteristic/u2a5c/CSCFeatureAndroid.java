@@ -66,6 +66,7 @@ public class CSCFeatureAndroid extends CSCFeature implements Parcelable {
      * @param in Parcel
      */
     private CSCFeatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

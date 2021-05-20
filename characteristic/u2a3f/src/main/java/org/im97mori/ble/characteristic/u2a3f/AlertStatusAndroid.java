@@ -75,6 +75,7 @@ public class AlertStatusAndroid extends AlertStatus implements Parcelable {
      * @param in Parcel
      */
     private AlertStatusAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

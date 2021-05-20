@@ -6,14 +6,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a3f.AlertStatusAndroid;
 import org.im97mori.ble.characteristic.u2a40.RingerControlPoint;
 import org.im97mori.ble.characteristic.u2a40.RingerControlPointAndroid;
 import org.im97mori.ble.characteristic.u2a41.RingerSettingAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -30,21 +29,20 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("UnnecessaryLocalVariable")
-public class PhoneAlertStatusServiceTest {
+@SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
+public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[1];
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -61,7 +59,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -71,14 +69,13 @@ public class PhoneAlertStatusServiceTest {
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[1];
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -95,7 +92,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -105,14 +102,13 @@ public class PhoneAlertStatusServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -129,7 +125,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -139,14 +135,13 @@ public class PhoneAlertStatusServiceTest {
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -163,7 +158,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -173,14 +168,13 @@ public class PhoneAlertStatusServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -197,7 +191,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -207,14 +201,13 @@ public class PhoneAlertStatusServiceTest {
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -231,7 +224,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -241,14 +234,13 @@ public class PhoneAlertStatusServiceTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[1];
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -265,7 +257,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -275,14 +267,13 @@ public class PhoneAlertStatusServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -299,7 +290,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -309,14 +300,13 @@ public class PhoneAlertStatusServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -333,7 +323,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -343,7 +333,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -352,7 +342,6 @@ public class PhoneAlertStatusServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -370,7 +359,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -380,7 +369,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -389,7 +378,6 @@ public class PhoneAlertStatusServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -407,7 +395,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -417,7 +405,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -426,7 +414,6 @@ public class PhoneAlertStatusServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -444,7 +431,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -454,7 +441,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -463,7 +450,6 @@ public class PhoneAlertStatusServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -481,7 +467,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -491,7 +477,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -500,7 +486,6 @@ public class PhoneAlertStatusServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -518,7 +503,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -528,7 +513,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -537,7 +522,6 @@ public class PhoneAlertStatusServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -555,7 +539,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -565,7 +549,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -575,7 +559,6 @@ public class PhoneAlertStatusServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -592,7 +575,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -602,7 +585,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -612,7 +595,6 @@ public class PhoneAlertStatusServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -629,7 +611,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -639,7 +621,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -649,7 +631,6 @@ public class PhoneAlertStatusServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -666,7 +647,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -676,7 +657,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -686,7 +667,6 @@ public class PhoneAlertStatusServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -703,7 +683,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -713,7 +693,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -723,7 +703,6 @@ public class PhoneAlertStatusServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -741,7 +720,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -751,7 +730,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -761,7 +740,6 @@ public class PhoneAlertStatusServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -779,7 +757,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -789,7 +767,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -799,7 +777,6 @@ public class PhoneAlertStatusServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -817,7 +794,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -827,7 +804,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -837,7 +814,6 @@ public class PhoneAlertStatusServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -855,7 +831,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -865,7 +841,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -875,7 +851,6 @@ public class PhoneAlertStatusServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -893,7 +868,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -903,7 +878,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -913,7 +888,6 @@ public class PhoneAlertStatusServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -931,7 +905,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -941,7 +915,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
@@ -951,7 +925,6 @@ public class PhoneAlertStatusServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -969,7 +942,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -979,7 +952,7 @@ public class PhoneAlertStatusServiceTest {
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
@@ -989,7 +962,6 @@ public class PhoneAlertStatusServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockPhoneAlertStatusServiceCallback mockPhoneAlertStatusServiceCallback = new MockPhoneAlertStatusServiceCallback() {
 
             @Override
@@ -1007,7 +979,7 @@ public class PhoneAlertStatusServiceTest {
             }
 
         };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, mockPhoneAlertStatusServiceCallback, null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockPhoneAlertStatusServiceCallback, null);
         phoneAlertStatusService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1015,14 +987,14 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_getAlertStatus_000001() {
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
         assertNull(phoneAlertStatusService.getAlertStatus());
     }
 
     @Test
     public void test_getAlertStatus_000002() {
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1037,15 +1009,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_getAlertStatus_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1059,14 +1024,14 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_getAlertStatusClientCharacteristicConfiguration_000001() {
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
         assertNull(phoneAlertStatusService.getAlertStatusClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getAlertStatusClientCharacteristicConfiguration_000002() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1081,15 +1046,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_getAlertStatusClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1105,14 +1063,14 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_startAlertStatusNotification_000001() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
         assertNull(runningSpeedAndCadenceService.startAlertStatusNotification());
     }
 
     @Test
     public void test_startAlertStatusNotification_000002() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1127,15 +1085,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_startAlertStatusNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1151,14 +1102,14 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_stopAlertStatusNotification_000001() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
         assertNull(runningSpeedAndCadenceService.stopAlertStatusNotification());
     }
 
     @Test
     public void test_stopAlertStatusNotification_000002() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1173,15 +1124,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_stopAlertStatusNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1197,14 +1141,14 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_getRingerSetting_000001() {
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
         assertNull(phoneAlertStatusService.getRingerSetting());
     }
 
     @Test
     public void test_getRingerSetting_000002() {
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1219,15 +1163,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_getRingerSetting_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1241,14 +1178,14 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_getRingerSettingClientCharacteristicConfiguration_000001() {
-        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
         assertNull(phoneAlertStatusService.getRingerSettingClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getRingerSettingClientCharacteristicConfiguration_000002() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1263,15 +1200,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_getRingerSettingClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1287,14 +1217,14 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_startRingerSettingNotification_000001() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
         assertNull(runningSpeedAndCadenceService.startRingerSettingNotification());
     }
 
     @Test
     public void test_startRingerSettingNotification_000002() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1309,15 +1239,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_startRingerSettingNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1333,14 +1256,14 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_stopRingerSettingNotification_000001() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
         assertNull(runningSpeedAndCadenceService.stopRingerSettingNotification());
     }
 
     @Test
     public void test_stopRingerSettingNotification_000002() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1355,15 +1278,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_stopRingerSettingNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1379,7 +1295,7 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_setRingerControlPoint_000001() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
         RingerControlPoint ringerControlPoint = new RingerControlPoint(0);
 
         assertNull(runningSpeedAndCadenceService.setRingerControlPoint(ringerControlPoint));
@@ -1387,7 +1303,7 @@ public class PhoneAlertStatusServiceTest {
 
     @Test
     public void test_setRingerControlPoint_000002() {
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(new MockBLEConnection(), new MockPhoneAlertStatusServiceCallback(), null) {
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1403,15 +1319,8 @@ public class PhoneAlertStatusServiceTest {
     @Test
     public void test_setRingerControlPoint_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(mockBLEConnection, new MockPhoneAlertStatusServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
+        PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {

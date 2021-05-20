@@ -80,6 +80,7 @@ public class UserControlPointAndroid extends UserControlPoint implements Parcela
      * @param in Parcel
      */
     private UserControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

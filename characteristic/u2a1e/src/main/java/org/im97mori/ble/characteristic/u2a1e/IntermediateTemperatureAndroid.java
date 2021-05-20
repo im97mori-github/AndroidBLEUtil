@@ -87,6 +87,7 @@ public class IntermediateTemperatureAndroid extends IntermediateTemperature impl
      * @param in Parcel
      */
     private IntermediateTemperatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

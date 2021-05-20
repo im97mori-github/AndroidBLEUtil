@@ -75,6 +75,7 @@ public class MaximumRecommendedHeartRateAndroid extends MaximumRecommendedHeartR
      * @param in Parcel
      */
     private MaximumRecommendedHeartRateAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

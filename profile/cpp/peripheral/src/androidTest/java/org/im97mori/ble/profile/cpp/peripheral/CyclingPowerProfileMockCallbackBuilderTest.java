@@ -1596,18 +1596,13 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00502() {
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext(), new CyclingPowerServiceMockCallback.Builder<>(), null, new BatteryServiceMockCallback.Builder<>())
+        CyclingPowerProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext(), new CyclingPowerServiceMockCallback.Builder<>(), null, new BatteryServiceMockCallback.Builder<>())
                     .addCyclingPowerFeature(new CyclingPowerFeature(new byte[4]))
                     .addCyclingPowerMeasurement(new CyclingPowerMeasurement(new byte[4]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE))
                     .addSensorLocation(new SensorLocation(SensorLocationUtils.SENSOR_LOCATION_OTHER))
                     .build();
-        } catch (Exception e) {
-            exception = e;
-        }
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

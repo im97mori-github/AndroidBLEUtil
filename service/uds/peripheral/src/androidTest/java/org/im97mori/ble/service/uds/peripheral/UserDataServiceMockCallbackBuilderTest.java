@@ -1,16 +1,9 @@
 package org.im97mori.ble.service.uds.peripheral;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimit;
 import org.im97mori.ble.characteristic.u2a7f.AerobicThreshold;
@@ -42,7 +35,8 @@ import org.im97mori.ble.characteristic.u2a98.Weight;
 import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
 import org.im97mori.ble.characteristic.u2aa2.Language;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -90,7 +84,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class UserDataServiceMockCallbackBuilderTest {
+public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_exception_00001() {
@@ -211,13 +205,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FirstName firstName = new FirstName(firstNameString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -236,7 +224,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -262,13 +250,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FirstName firstName = new FirstName(firstNameString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -287,7 +269,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -313,13 +295,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FirstName firstName = new FirstName(firstNameString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -338,7 +314,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -366,13 +342,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -391,7 +361,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -448,13 +418,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         LastName lastName = new LastName(lastNameString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -473,7 +437,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -499,13 +463,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         LastName lastName = new LastName(lastNameString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -524,7 +482,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -550,13 +508,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         LastName lastName = new LastName(lastNameString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -575,7 +527,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -603,13 +555,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -628,7 +574,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -685,13 +631,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         EmailAddress emailAddress = new EmailAddress(emailAddressString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -710,7 +650,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -736,13 +676,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         EmailAddress emailAddress = new EmailAddress(emailAddressString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -761,7 +695,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -787,13 +721,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         EmailAddress emailAddress = new EmailAddress(emailAddressString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -812,7 +740,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -840,13 +768,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -865,7 +787,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -922,13 +844,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Age age = new Age(ageInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -947,7 +863,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -973,13 +889,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Age age = new Age(ageInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -998,7 +908,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1024,13 +934,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Age age = new Age(ageInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1049,7 +953,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1077,13 +981,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1102,7 +1000,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1161,13 +1059,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         DateOfBirth dateOfBirth = new DateOfBirth(yearInt, monthInt, dayInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1186,7 +1078,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1214,13 +1106,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         DateOfBirth dateOfBirth = new DateOfBirth(yearInt, monthInt, dayInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1239,7 +1125,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1267,13 +1153,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         DateOfBirth dateOfBirth = new DateOfBirth(yearInt, monthInt, dayInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1292,7 +1172,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1322,13 +1202,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1347,7 +1221,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1406,13 +1280,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Gender gender = new Gender(genderInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1431,7 +1299,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1457,13 +1325,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Gender gender = new Gender(genderInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1482,7 +1344,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1508,13 +1370,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Gender gender = new Gender(genderInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1533,7 +1389,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1561,13 +1417,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1586,7 +1436,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1643,13 +1493,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Weight weight = new Weight(weightInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1668,7 +1512,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1694,13 +1538,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Weight weight = new Weight(weightInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1719,7 +1557,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1745,13 +1583,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Weight weight = new Weight(weightInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1770,7 +1602,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1798,13 +1630,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1823,7 +1649,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1880,13 +1706,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Height height = new Height(heightInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1905,7 +1725,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1931,13 +1751,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Height height = new Height(heightInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -1956,7 +1770,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -1982,13 +1796,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Height height = new Height(heightInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2007,7 +1815,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2035,13 +1843,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2060,7 +1862,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2117,13 +1919,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         VO2Max vo2Max = new VO2Max(vo2MaxInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2142,7 +1938,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2168,13 +1964,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         VO2Max vo2Max = new VO2Max(vo2MaxInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2193,7 +1983,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2219,13 +2009,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         VO2Max vo2Max = new VO2Max(vo2MaxInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2244,7 +2028,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2272,13 +2056,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2297,7 +2075,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2354,13 +2132,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2379,7 +2151,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2405,13 +2177,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2430,7 +2196,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2456,13 +2222,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2481,7 +2241,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2509,13 +2269,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2534,7 +2288,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2591,13 +2345,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2616,7 +2364,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2642,13 +2390,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2667,7 +2409,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2693,13 +2435,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2718,7 +2454,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2746,13 +2482,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2771,7 +2501,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2828,13 +2558,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2853,7 +2577,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2879,13 +2603,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2904,7 +2622,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2930,13 +2648,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -2955,7 +2667,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -2983,13 +2695,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3008,7 +2714,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3065,13 +2771,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3090,7 +2790,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3116,13 +2816,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3141,7 +2835,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3167,13 +2861,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3192,7 +2880,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3220,13 +2908,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3245,7 +2927,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3302,13 +2984,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3327,7 +3003,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3353,13 +3029,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3378,7 +3048,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3404,13 +3074,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3429,7 +3093,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3457,13 +3121,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3482,7 +3140,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3539,13 +3197,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3564,7 +3216,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3590,13 +3242,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3615,7 +3261,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3641,13 +3287,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3666,7 +3306,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3694,13 +3334,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3719,7 +3353,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3778,13 +3412,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         DateOfThresholdAssessment dateOfThresholdAssessment = new DateOfThresholdAssessment(yearInt, monthInt, dayInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3803,7 +3431,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3831,13 +3459,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         DateOfThresholdAssessment dateOfThresholdAssessment = new DateOfThresholdAssessment(yearInt, monthInt, dayInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3856,7 +3478,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3884,13 +3506,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         DateOfThresholdAssessment dateOfThresholdAssessment = new DateOfThresholdAssessment(yearInt, monthInt, dayInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3909,7 +3525,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -3939,13 +3555,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -3964,7 +3574,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4023,13 +3633,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4048,7 +3652,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4074,13 +3678,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4099,7 +3697,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4125,13 +3723,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4150,7 +3742,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4178,13 +3770,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4203,7 +3789,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4260,13 +3846,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4285,7 +3865,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4311,13 +3891,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4336,7 +3910,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4362,13 +3936,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4387,7 +3955,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4415,13 +3983,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4440,7 +4002,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4497,13 +4059,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4522,7 +4078,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4548,13 +4104,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4573,7 +4123,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4599,13 +4149,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4624,7 +4168,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4652,13 +4196,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4677,7 +4215,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4734,13 +4272,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4759,7 +4291,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4785,13 +4317,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4810,7 +4336,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4836,13 +4362,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4861,7 +4381,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4889,13 +4409,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4914,7 +4428,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -4971,13 +4485,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -4996,7 +4504,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5022,13 +4530,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5047,7 +4549,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5073,13 +4575,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5098,7 +4594,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5126,13 +4622,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5151,7 +4641,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5208,13 +4698,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5233,7 +4717,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5259,13 +4743,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5284,7 +4762,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5310,13 +4788,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5335,7 +4807,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5363,13 +4835,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5388,7 +4854,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5445,13 +4911,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5470,7 +4930,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5496,13 +4956,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5521,7 +4975,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5547,13 +5001,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5572,7 +5020,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5600,13 +5048,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5625,7 +5067,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5682,13 +5124,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5707,7 +5143,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5733,13 +5169,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5758,7 +5188,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5784,13 +5214,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5809,7 +5233,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5837,13 +5261,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5862,7 +5280,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5922,13 +5340,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FiveZoneHeartRateLimits fiveZoneHeartRateLimits = new FiveZoneHeartRateLimits(fiveZoneHeartRateLimitsVeryLightLightLimitInt, fiveZoneHeartRateLimitsLightModerateLimitInt, fiveZoneHeartRateLimitsModerateHardLimitInt, fiveZoneHeartRateLimitsHardMaximumLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -5947,7 +5359,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -5976,13 +5388,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FiveZoneHeartRateLimits fiveZoneHeartRateLimits = new FiveZoneHeartRateLimits(fiveZoneHeartRateLimitsVeryLightLightLimitInt, fiveZoneHeartRateLimitsLightModerateLimitInt, fiveZoneHeartRateLimitsModerateHardLimitInt, fiveZoneHeartRateLimitsHardMaximumLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6001,7 +5407,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6030,13 +5436,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         FiveZoneHeartRateLimits fiveZoneHeartRateLimits = new FiveZoneHeartRateLimits(fiveZoneHeartRateLimitsVeryLightLightLimitInt, fiveZoneHeartRateLimitsLightModerateLimitInt, fiveZoneHeartRateLimitsModerateHardLimitInt, fiveZoneHeartRateLimitsHardMaximumLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6055,7 +5455,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6086,13 +5486,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6111,7 +5505,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6172,13 +5566,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         ThreeZoneHeartRateLimits threeZoneHeartRateLimits = new ThreeZoneHeartRateLimits(threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt, threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6197,7 +5585,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6224,13 +5612,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         ThreeZoneHeartRateLimits threeZoneHeartRateLimits = new ThreeZoneHeartRateLimits(threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt, threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6249,7 +5631,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6276,13 +5658,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         ThreeZoneHeartRateLimits threeZoneHeartRateLimits = new ThreeZoneHeartRateLimits(threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt, threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6301,7 +5677,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6330,13 +5706,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6355,7 +5725,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6413,13 +5783,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6438,7 +5802,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6464,13 +5828,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6489,7 +5847,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6515,13 +5873,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6540,7 +5892,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6568,13 +5920,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6593,7 +5939,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6650,13 +5996,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Language language = new Language(languageString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6675,7 +6015,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6701,13 +6041,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Language language = new Language(languageString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6726,7 +6060,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6752,13 +6086,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Language language = new Language(languageString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6777,7 +6105,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6805,13 +6133,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6830,7 +6152,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6887,13 +6209,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6912,7 +6228,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -6948,13 +6264,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long descriptorDelay = 4;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -6973,7 +6283,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -7009,13 +6319,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long descriptorDelay = 4;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -7034,7 +6338,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -7090,13 +6394,7 @@ public class UserDataServiceMockCallbackBuilderTest {
     @Test
     public void test_addUserIndex_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -7115,7 +6413,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -7141,13 +6439,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long delay = 2;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -7166,7 +6458,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -7220,13 +6512,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -7245,7 +6531,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , UserControlPoint.RESPONSE_VALUE_SUCCESS
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -7280,13 +6566,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         long descriptorDelay = 4;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -7305,7 +6585,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                             , UserControlPoint.RESPONSE_VALUE_SUCCESS
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -7405,13 +6685,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return null;
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         Exception exception = null;
         try {
@@ -7430,7 +6704,7 @@ public class UserDataServiceMockCallbackBuilderTest {
                     .addDatabaseChangeIncrement(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .addUserIndex()
                     .build();
-            userDataServiceMockCallback.setup(mockBLEServerConnection);
+            userDataServiceMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
         } catch (RuntimeException e) {
             exception = e;
         }
@@ -7497,70 +6771,52 @@ public class UserDataServiceMockCallbackBuilderTest {
     @Test
     public void test_hasNoConsent_00001() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
 
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, null));
+        assertTrue(userDataServiceMockCallback.hasNoConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, null));
     }
 
     @Test
     public void test_hasNoConsent_00002() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
 
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         Integer userIndex = 1;
-        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+        assertTrue(userDataServiceMockCallback.hasNoConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, userIndex));
     }
 
     @Test
     public void test_hasNoConsent_00003() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
 
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         Integer userIndex = 1;
-        userDataServiceMockCallback.setConsent(bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:CC"), 2);
-        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+        userDataServiceMockCallback.setConsent(BLETestUtilsAndroid.MOCK_DEVICE_1, 2);
+        assertTrue(userDataServiceMockCallback.hasNoConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, userIndex));
     }
 
     @Test
     public void test_hasNoConsent_00004() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
 
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         Integer userIndex = 1;
-        userDataServiceMockCallback.setConsent(bluetoothDevice, 2);
-        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+        userDataServiceMockCallback.setConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, 2);
+        assertTrue(userDataServiceMockCallback.hasNoConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, userIndex));
     }
 
     @Test
     public void test_hasNoConsent_00005() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
 
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         Integer userIndex = 1;
-        userDataServiceMockCallback.setConsent(bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:CC"), userIndex);
-        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+        userDataServiceMockCallback.setConsent(BLETestUtilsAndroid.MOCK_DEVICE_1, userIndex);
+        assertTrue(userDataServiceMockCallback.hasNoConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, userIndex));
     }
 
     @Test
     public void test_hasNoConsent_00006() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
 
-        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         Integer userIndex = 1;
-        userDataServiceMockCallback.setConsent(bluetoothDevice, userIndex);
-        assertFalse(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+        userDataServiceMockCallback.setConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, userIndex);
+        assertFalse(userDataServiceMockCallback.hasNoConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, userIndex));
     }
 
 }

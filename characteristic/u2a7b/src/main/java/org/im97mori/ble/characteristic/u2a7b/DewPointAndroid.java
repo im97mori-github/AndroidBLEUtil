@@ -75,6 +75,7 @@ public class DewPointAndroid extends DewPoint implements Parcelable {
      * @param in Parcel
      */
     private DewPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

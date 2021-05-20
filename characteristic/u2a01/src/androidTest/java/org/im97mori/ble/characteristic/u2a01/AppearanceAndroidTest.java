@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class AppearanceAndroidTest {
 
+    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor001() {
         //@formatter:off

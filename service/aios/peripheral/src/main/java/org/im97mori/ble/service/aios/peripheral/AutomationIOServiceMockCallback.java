@@ -37,7 +37,6 @@ import org.im97mori.ble.task.NotificationTask;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -196,7 +195,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             mDigitalMap.put(index, new CharacteristicData(DIGITAL_CHARACTERISTIC
                     , property
                     , permission
-                    , new ArrayList<DescriptorData>()
+                    , new ArrayList<>()
                     , responseCode
                     , delay
                     , value
@@ -493,7 +492,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             mAnalogMap.put(index, new CharacteristicData(ANALOG_CHARACTERISTIC
                     , property
                     , permission
-                    , new ArrayList<DescriptorData>()
+                    , new ArrayList<>()
                     , responseCode
                     , delay
                     , value
@@ -779,7 +778,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             mAggregateData = new CharacteristicData(AGGREGATE_CHARACTERISTIC
                     , property
                     , permission
-                    , new ArrayList<DescriptorData>()
+                    , new ArrayList<>()
                     , responseCode
                     , delay
                     , new byte[0]
@@ -958,6 +957,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             characteristicPresentationFormatList.clear();
 
             keyList = new ArrayList<>(mAnalogMap.keySet());
+            Collections.sort(keyList);
             for (Integer index : keyList) {
                 characteristicData = mAnalogMap.get(index);
 
@@ -1546,18 +1546,8 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             }
         }
 
-        Collections.sort(digitalList, new Comparator<Pair<Pair<UUID, Integer>, Integer>>() {
-            @Override
-            public int compare(Pair<Pair<UUID, Integer>, Integer> o1, Pair<Pair<UUID, Integer>, Integer> o2) {
-                return o1.second.compareTo(o2.second);
-            }
-        });
-        Collections.sort(analogList, new Comparator<Pair<CharacteristicData, Integer>>() {
-            @Override
-            public int compare(Pair<CharacteristicData, Integer> o1, Pair<CharacteristicData, Integer> o2) {
-                return o1.second.compareTo(o2.second);
-            }
-        });
+        Collections.sort(digitalList, (o1, o2) -> o1.second.compareTo(o2.second));
+        Collections.sort(analogList, (o1, o2) -> o1.second.compareTo(o2.second));
 
 
         int totalBits = 0;
@@ -1618,13 +1608,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             }
         }
 
-        return new ByteArrayInterface() {
-            @NonNull
-            @Override
-            public byte[] getBytes() {
-                return aggregateData;
-            }
-        };
+        return () -> aggregateData;
 
     }
 

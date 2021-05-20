@@ -16,9 +16,7 @@ android {
         targetSdkVersion globalTargetSdkVersion
         versionCode VERSION_CODE
         versionName VERSION_NAME
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
+}
 
     buildTypes {
         release {

@@ -23,7 +23,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -38,7 +38,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -53,7 +53,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -68,7 +68,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -83,7 +83,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -98,7 +98,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_TRUE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -113,7 +113,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -128,7 +128,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_TRUE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -143,7 +143,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -158,7 +158,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_TRUE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -173,7 +173,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_1;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_1;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -188,7 +188,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_2;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_2;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -203,7 +203,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_3;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_3;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);
@@ -218,7 +218,7 @@ public class RCSettingsAndroidTest {
                 | RCSettings.SETTINGS_READY_FOR_DISCONNECT_FALSE
                 | RCSettings.SETTINGS_LIMITED_ACCESS_FALSE
                 | RCSettings.SETTINGS_ACCESS_PERMITTED_FALSE
-                | RCSettings.SETTINGS_ADVERTISEMENT_MOD_CONFIGURATION_4;
+                | RCSettings.SETTINGS_ADVERTISEMENT_MODE_CONFIGURATION_4;
         data[ 0] = 0x03;
         data[ 1] = (byte) flags;
         data[ 2] = (byte) (flags >> 8);

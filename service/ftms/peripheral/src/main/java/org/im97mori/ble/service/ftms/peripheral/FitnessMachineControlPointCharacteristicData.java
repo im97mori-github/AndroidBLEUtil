@@ -1,6 +1,5 @@
 package org.im97mori.ble.service.ftms.peripheral;
 
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -52,133 +51,133 @@ public class FitnessMachineControlPointCharacteristicData extends Characteristic
     };
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Control result)
+     * characteristic result code (Request Control result)
      */
     @SerializedName("request_control_result_code")
     public int requestControlResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Reset result)
+     * characteristic result code (Reset result)
      */
     @SerializedName("reset_result_code")
     public int resetResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Speed result)
+     * characteristic result code (Set Target Speed result)
      */
     @SerializedName("set_target_speed_result_code")
     public int setTargetSpeedResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Inclination result)
+     * characteristic result code (Set Target Inclination result)
      */
     @SerializedName("set_target_inclination_result_code")
     public int setTargetInclinationResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Resistance Level result)
+     * characteristic result code (Set Target Resistance Level result)
      */
     @SerializedName("set_target_resistance_level_result_code")
     public int setTargetResistanceLevelResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Power result)
+     * characteristic result code (Set Target Power result)
      */
     @SerializedName("set_target_power_result_code")
     public int setTargetPowerResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Heart Rate result)
+     * characteristic result code (Set Target Heart Rate result)
      */
     @SerializedName("set_target_heart_rate_result_code")
     public int setTargetHeartRateResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Start or Resume result)
+     * characteristic result code (Start or Resume result)
      */
     @SerializedName("start_or_resume_result_code")
     public int startOrResumeResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Stop or Pause result)
+     * characteristic result code (Stop or Pause result)
      */
     @SerializedName("stop_or_pause_result_code")
     public int stopOrPauseResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Expended Energy result)
+     * characteristic result code (Set Targeted Expended Energy result)
      */
     @SerializedName("set_targeted_expended_energy_result_code")
     public int setTargetedExpendedEnergyResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Number of Steps result)
+     * characteristic result code (Set Targeted Number of Steps result)
      */
     @SerializedName("set_targeted_number_of_steps_result_code")
     public int setTargetedNumberOfStepsResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Number of Strides result)
+     * characteristic result code (Set Targeted Number of Strides result)
      */
     @SerializedName("set_targeted_number_of_strides_result_code")
     public int setTargetedNumberOfStridesResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Distance result)
+     * characteristic result code (Set Targeted Distance result)
      */
     @SerializedName("set_targeted_distance_result_code")
     public int setTargetedDistanceResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Training Time result)
+     * characteristic result code (Set Targeted Training Time result)
      */
     @SerializedName("set_targeted_training_time_result_code")
     public int setTargetedTrainingTimeResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Two Heart Rate Zones result)
+     * characteristic result code (Set Targeted Timein Two Heart Rate Zones result)
      */
     @SerializedName("set_targeted_time_in_two_heart_rate_zones_result_code")
     public int setTargetedTimeInTwoHeartRateZonesResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Three Heart Rate Zones result)
+     * characteristic result code (Set Targeted Timein Three Heart Rate Zones result)
      */
     @SerializedName("set_targeted_time_in_three_heart_rate_zones_result_code")
     public int setTargetedTimeInThreeHeartRateZonesResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Five Heart Rate Zones result)
+     * characteristic result code (Set Targeted Timein Five Heart Rate Zones result)
      */
     @SerializedName("set_targeted_time_in_five_heart_rate_zones_result_code")
     public int setTargetedTimeInFiveHeartRateZonesResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Indoor Bike Simulation Parameters result)
+     * characteristic result code (Set Indoor Bike Simulation Parameters result)
      */
     @SerializedName("set_indoor_bike_simulation_parameters_result_code")
     public int setIndoorBikeSimulationParametersResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Wheel Circumference result)
+     * characteristic result code (Set Wheel Circumference result)
      */
     @SerializedName("set_wheel_circumference_result_code")
     public int setWheelCircumferenceResultCode;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Spin Down Control result)
+     * characteristic result code (Spin Down Control result)
      */
     @SerializedName("spin_down_control_result_code")
     public int spinDownControlResultCode;
 
     /**
-     * characteristic result data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Spin Down Control result)
+     * characteristic result data array (Spin Down Control result)
      */
     @SerializedName("spin_down_control_result_parameter")
     public byte[] spinDownControlResultParameter;
 
     /**
-     * characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Cadence result)
+     * characteristic result code (Set Targeted Cadence result)
      */
     @SerializedName("set_targeted_Cadence_result_code")
     public int setTargetedCadenceResultCode;
@@ -191,28 +190,28 @@ public class FitnessMachineControlPointCharacteristicData extends Characteristic
     /**
      * @param descriptorDataList                             {@link DescriptorData} list
      * @param delay                                          response delay(millis)
-     * @param requestControlResultCode                       characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Control result)
-     * @param resetResultCode                                characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Reset result)
-     * @param setTargetSpeedResultCode                       characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Speed result)
-     * @param setTargetInclinationResultCode                 characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Inclination result)
-     * @param setTargetResistanceLevelResultCode             characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Power result)
-     * @param setTargetPowerResultCode                       characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Power result)
-     * @param setTargetHeartRateResultCode                   characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Target Heart Rate result)
-     * @param startOrResumeResultCode                        characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Start or Resume result)
-     * @param stopOrPauseResultCode                          characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Stop or Pause result)
-     * @param setTargetedExpendedEnergyResultCode            characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Expended Energy result)
-     * @param setTargetedNumberOfStepsResultCode             characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Number of Steps result)
-     * @param setTargetedNumberOfStridesResultCode           characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Number of Strides result)
-     * @param setTargetedDistanceResultCode                  characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Distance result)
-     * @param setTargetedTrainingTimeResultCode              characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Training Time result)
-     * @param setTargetedTimeInTwoHeartRateZonesResultCode   characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Two Heart Rate Zones result)
-     * @param setTargetedTimeInThreeHeartRateZonesResultCode characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Three Heart Rate Zones result)
-     * @param setTargetedTimeInFiveHeartRateZonesResultCode  characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Five Heart Rate Zones result)
-     * @param setIndoorBikeSimulationParametersResultCode    characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Indoor Bike Simulation Parameters result)
-     * @param setWheelCircumferenceResultCode                characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Wheel Circumference result)
-     * @param spinDownControlResultCode                      characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Spin Down Control result)
-     * @param spinDownControlResultParameter                 characteristic result data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Spin Down Control result)
-     * @param setTargetedCadenceResultCode                   characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Cadence result)
+     * @param requestControlResultCode                       characteristic result code (Request Control result)
+     * @param resetResultCode                                characteristic result code (Reset result)
+     * @param setTargetSpeedResultCode                       characteristic result code (Set Target Speed result)
+     * @param setTargetInclinationResultCode                 characteristic result code (Set Target Inclination result)
+     * @param setTargetResistanceLevelResultCode             characteristic result code (Set Target Power result)
+     * @param setTargetPowerResultCode                       characteristic result code (Set Target Power result)
+     * @param setTargetHeartRateResultCode                   characteristic result code (Set Target Heart Rate result)
+     * @param startOrResumeResultCode                        characteristic result code (Start or Resume result)
+     * @param stopOrPauseResultCode                          characteristic result code (Stop or Pause result)
+     * @param setTargetedExpendedEnergyResultCode            characteristic result code (Set Targeted Expended Energy result)
+     * @param setTargetedNumberOfStepsResultCode             characteristic result code (Set Targeted Number of Steps result)
+     * @param setTargetedNumberOfStridesResultCode           characteristic result code (Set Targeted Number of Strides result)
+     * @param setTargetedDistanceResultCode                  characteristic result code (Set Targeted Distance result)
+     * @param setTargetedTrainingTimeResultCode              characteristic result code (Set Targeted Training Time result)
+     * @param setTargetedTimeInTwoHeartRateZonesResultCode   characteristic result code (Set Targeted Timein Two Heart Rate Zones result)
+     * @param setTargetedTimeInThreeHeartRateZonesResultCode characteristic result code (Set Targeted Timein Three Heart Rate Zones result)
+     * @param setTargetedTimeInFiveHeartRateZonesResultCode  characteristic result code (Set Targeted Timein Five Heart Rate Zones result)
+     * @param setIndoorBikeSimulationParametersResultCode    characteristic result code (Set Indoor Bike Simulation Parameters result)
+     * @param setWheelCircumferenceResultCode                characteristic result code (Set Wheel Circumference result)
+     * @param spinDownControlResultCode                      characteristic result code (Spin Down Control result)
+     * @param spinDownControlResultParameter                 characteristic result data array (Spin Down Control result)
+     * @param setTargetedCadenceResultCode                   characteristic result code (Set Targeted Cadence result)
      */
     public FitnessMachineControlPointCharacteristicData(@NonNull List<DescriptorData> descriptorDataList
             , long delay

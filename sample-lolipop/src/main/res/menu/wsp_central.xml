@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:id="@+id/pre_connected">
         <item
@@ -10,7 +11,8 @@
             android:id="@+id/clear_bonded_history"
             android:title="@string/menu_clear_bonded_history" />
     </group>
-    <group android:id="@+id/service_check" android:visible="false">
+    <group android:id="@+id/service_check" android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/has_body_composition_service"
             android:title="@string/menu_has_body_composition_service" />
@@ -24,7 +26,8 @@
             android:id="@+id/has_current_time_service"
             android:title="@string/menu_has_current_time_service" />
     </group>
-    <group android:id="@+id/weight_scale_service" android:visible="true">
+    <group android:id="@+id/weight_scale_service" android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_weight_scale_feature"
             android:title="@string/menu_read_weight_scale_feature" />
@@ -35,10 +38,12 @@
             android:id="@+id/stop_indicate_weight_mesurement"
             android:title="@string/menu_indicate_weight_mesurement_stop" />
     </group>
-    <group android:id="@+id/body_composition_service" android:visible="false">
+    <group android:id="@+id/body_composition_service" android:visible="false"
+        tools:ignore="UnusedIds">
 
     </group>
-    <group android:id="@+id/device_information_service" android:visible="false">
+    <group android:id="@+id/device_information_service" android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_manufacturer_name"
             android:title="@string/menu_read_manufacturer_name" />
@@ -52,7 +57,8 @@
             android:id="@+id/read_system_id"
             android:title="@string/menu_read_system_id" />
     </group>
-    <group android:id="@+id/current_time_service" android:visible="false">
+    <group android:id="@+id/current_time_service" android:visible="false"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_current_time"
             android:title="@string/menu_read_current_time" />
@@ -87,7 +93,8 @@
             android:id="@+id/read_reference_time_information"
             android:title="@string/menu_read_reference_time_information" />
     </group>
-    <group android:id="@+id/user_data_service" android:visible="true">
+    <group android:id="@+id/user_data_service" android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/write_user_control_point_register_new_user"
             android:title="@string/menu_write_user_control_point_register_new_user" />

@@ -94,6 +94,7 @@ public class BodyCompositionMeasurementAndroid extends BodyCompositionMeasuremen
      * @param in Parcel
      */
     private BodyCompositionMeasurementAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(new BodyCompositionMeasurementPacketAndroid[]{BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }
 

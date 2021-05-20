@@ -12,10 +12,8 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerCallbackDistributer;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BaseBLEServerCallback;
-import org.im97mori.ble.MockBLEServerConnection;
 import org.im97mori.ble.TaskHandler;
-import org.junit.After;
-import org.junit.Before;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.Random;
@@ -26,22 +24,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class AddServiceTaskTest {
-
-    private MockBLEServerConnection MOCK_BLE_SERVER_CONNECTION;
-
-    @Before
-    public void setup() {
-        MOCK_BLE_SERVER_CONNECTION = new MockBLEServerConnection();
-    }
-
-    @After
-    public void tearDown() {
-        if (MOCK_BLE_SERVER_CONNECTION != null) {
-            MOCK_BLE_SERVER_CONNECTION.quit();
-            MOCK_BLE_SERVER_CONNECTION = null;
-        }
-    }
+public class AddServiceTaskTest extends AbstractPeripherallTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -91,7 +74,7 @@ public class AddServiceTaskTest {
 
     @Test
     public void test_doProcess_00001() {
-        AddServiceTask task = new AddServiceTask(new MockBLEServerConnection()
+        AddServiceTask task = new AddServiceTask(MOCK_BLE_SERVER_CONNECTION
                 , null
                 , null
                 , AddServiceTask.TIMEOUT_MILLIS
@@ -110,7 +93,7 @@ public class AddServiceTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            AddServiceTask task = new AddServiceTask(new MockBLEServerConnection()
+            AddServiceTask task = new AddServiceTask(MOCK_BLE_SERVER_CONNECTION
                     , mockTaskHandler
                     , null
                     , AddServiceTask.TIMEOUT_MILLIS

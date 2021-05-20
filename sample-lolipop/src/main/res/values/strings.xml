@@ -55,6 +55,8 @@
     <string name="label_esp_central">ESP Central sample</string>
     <string name="label_scpp_peripheral">SCPP Peripheral sample</string>
     <string name="label_scpp_central">SCPP Central sample</string>
+    <string name="label_rcp_peripheral">RCP Peripheral sample</string>
+    <string name="label_rcp_central">RCP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -174,7 +176,7 @@
     <string name="menu_is_current_time_writable">Is Current Time Writable</string>
     <string name="menu_write_current_time">Write Current Time</string>
     <string name="menu_notify_current_time_start">Notify Current Time start</string>
-    <string name="menu_notify_current_time_stop">Notify Current Time  stop</string>
+    <string name="menu_notify_current_time_stop">Notify Current Time stop</string>
     <string name="menu_has_local_time_information">Has Local Time Information</string>
     <string name="menu_read_local_time_information">Read Local Time Information</string>
     <string name="menu_is_local_time_information_writable">Is Local Time Information Writable</string>
@@ -1389,6 +1391,22 @@
     <string name="menu_notify_scan_refresh_start">Notify Scan Refresh start</string>
     <string name="menu_notify_scan_refresh_stop">Notify Scan Refresh stop</string>
 
+    <string name="menu_has_bond_management_service">Has Bond Management Service</string>
+    <string name="menu_has_rc_settings">Has RC Settings</string>
+    <string name="menu_is_rc_settings_notificatable">Is RC Settings Notificatable</string>
+    <string name="menu_has_reconnection_configuration_control_point">Has RCCP</string>
+    <string name="menu_read_rc_feature">Read RC Feature</string>
+    <string name="menu_read_rc_settings">Read RC Settings</string>
+    <string name="menu_get_rc_settings_characteristic_configuration">Read RC Settings Client Characteristic Configuration</string>
+    <string name="menu_notify_rc_settings_start">Notify RC Settings start</string>
+    <string name="menu_notify_rc_settings_stop">Notify RC Settings stop</string>
+    <string name="menu_write_reconnection_configuration_control_point">Write RCCP</string>
+    <string name="menu_get_reconnection_configuration_control_point_characteristic_configuration">Read RCCP Client Characteristic Configuration</string>
+    <string name="menu_indicate_reconnection_configuration_control_point_start">Indicate RCCP start</string>
+    <string name="menu_indicate_reconnection_configuration_control_point_stop">Indicate RCCP stop</string>
+    <string name="menu_ndicate_client_parameter_indication">Indicate Client Parameter Indication</string>
+    <string name="menu_read_bond_banagement_features">Read Bond Management Features</string>
+    <string name="menu_write_bond_management_control_point">Write Bond Management Control Point</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

@@ -91,6 +91,7 @@ public class IntermediateCuffPressureAndroid extends IntermediateCuffPressure im
      * @param in Parcel
      */
     private IntermediateCuffPressureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

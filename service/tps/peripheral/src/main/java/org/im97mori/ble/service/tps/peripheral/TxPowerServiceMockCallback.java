@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
@@ -81,7 +80,7 @@ public class TxPowerServiceMockCallback extends AbstractServiceMockCallback {
             mTxPowerLevelCharacteristicData = new CharacteristicData(TX_POWER_LEVEL_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

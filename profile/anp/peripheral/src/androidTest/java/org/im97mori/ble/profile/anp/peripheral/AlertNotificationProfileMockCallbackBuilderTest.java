@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class AlertNotificationProfileMockCallbackBuilderTest {
@@ -517,6 +518,223 @@ public class AlertNotificationProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeAlertNotificationControlPoint());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_build_00001() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new AlertNotificationServiceMockCallback.Builder<>())
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Supported New Alert Category data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00002() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new AlertNotificationServiceMockCallback.Builder<>())
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no New Alert data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00003() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new AlertNotificationServiceMockCallback.Builder<>())
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0))
+                    .addNewAlert(0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , 0
+                            , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Supported Unread Alert Category data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00004() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new AlertNotificationServiceMockCallback.Builder<>())
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0))
+                    .addNewAlert(0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , 0
+                            , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Unread Alert Status data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00005() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new AlertNotificationServiceMockCallback.Builder<>())
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0))
+                    .addNewAlert(0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , ""
+                            , 0
+                            , 0
+                            , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0))
+                    .addUnreadAlertStatus(0
+                            , 0
+                            , 0
+                            , 0
+                            , 0
+                            , 0
+                            , 0
+                            , 0
+                            , 0
+                            , 0
+                            , 0
+                            , 0
+                            , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Alert Notification Control Point data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00006() {
+        AlertNotificationProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new AlertNotificationServiceMockCallback.Builder<>())
+                .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0))
+                .addNewAlert(0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , ""
+                        , 0
+                        , 0
+                        , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
+                .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0))
+                .addUnreadAlertStatus(0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
+                .addAlertNotificationControlPoint(0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0
+                        , 0)
+                .build();
+
+        assertNotNull(callback);
     }
 
 }

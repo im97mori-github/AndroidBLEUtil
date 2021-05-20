@@ -66,6 +66,7 @@ public class LNFeatureAndroid extends LNFeature implements Parcelable {
      * @param in Parcel
      */
     private LNFeatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

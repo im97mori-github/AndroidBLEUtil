@@ -76,6 +76,7 @@ public class DescriptorValueChangedAndroid extends DescriptorValueChanged implem
      * @param in Parcel
      */
     private DescriptorValueChangedAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

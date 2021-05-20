@@ -28,6 +28,8 @@
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_ABORT_RELIABLE_WRITE_START" />
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_BOND_ERROR" />
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_FIRST_USER" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.test.BLETestUtilsAndroid MOCK_DEVICE_0" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.test.BLETestUtilsAndroid MOCK_DEVICE_1" />
     </entry_points>
     <pattern value="org.im97mori.ble.advertising.filter.AdvertisingIntervalFilter" method="isMatched" />
     <pattern value="org.im97mori.ble.advertising.filter.AppearanceFilter" method="isMatched" />
@@ -212,6 +214,29 @@
     <pattern value="org.im97mori.ble.BLESyncConnection" method="createSetNotificationTask" />
     <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getNotifiationStatus" />
     <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getDescriptorInstanceId" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="MockBLEConnection" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="MockBLEServerConnection" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="getStartAdvertisingIncludeDeviceName" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="getStartAdvertisingIncludeUUID" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="getStartAdvertisingServiceUUID" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="setCreateAddServiceTaskServiceDataList" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="setCreateRemoveServiceTaskBluetoothGattServiceList" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="setStartAdvertisingIncludeDeviceName" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="setStartAdvertisingIncludeUUID" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="setStartAdvertisingServiceUUID" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="isCreateDiscoverServiceTaskPassed" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateDiscoverServiceTaskId" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateSetNotificationTaskId" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setQuitTaskId" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnectionTest" />
+    <pattern value="org.im97mori.ble.test.BLETestUtilsAndroid" />
+    <pattern value="org.im97mori.ble.test.BLETestUtilsAndroid" method="createBluetoothCharacteristic" />
+    <pattern value="org.im97mori.ble.test.BLETestUtilsAndroid" method="createBluetoothDescriptor" />
+    <pattern value="org.im97mori.ble.test.BLETestUtilsAndroid" method="createBluetoothGattService" />
+    <pattern value="org.im97mori.ble.test.BLETestUtilsAndroid" method="createScanResult" />
+    <pattern value="org.im97mori.ble.BLEServerConnection" method="BLEServerConnection" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />
@@ -220,8 +245,8 @@
     <option name="OPEN_IN_BROWSER" value="false" />
   </component>
   <component name="NullableNotNullManager">
-    <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
-    <option name="myDefaultNotNull" value="androidx.annotation.RecentlyNonNull" />
+    <option name="myDefaultNullable" value="androidx.annotation.Nullable" />
+    <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
     <option name="myNullables">
       <value>
         <list size="15">
@@ -264,7 +289,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

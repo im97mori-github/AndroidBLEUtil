@@ -2,25 +2,22 @@ package org.im97mori.ble.service.tps.peripheral;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TX_POWER_LEVEL_CHARACTERISTIC;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.TX_POWER_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
-public class TxPowerServiceMockCallbackBuilderTest {
+public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_addTxPowerLevel_00001() {
@@ -38,17 +35,13 @@ public class TxPowerServiceMockCallbackBuilderTest {
     @Test
     public void test_addTxPowerLevel_00002() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         TxPowerServiceMockCallback callback = new TxPowerServiceMockCallback.Builder<>().addTxPowerLevel(txPowerLevel.getTxPower()).build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertFalse(bluetoothGattServiceList.isEmpty());
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
 
         assertEquals(TX_POWER_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TX_POWER_LEVEL_CHARACTERISTIC);
@@ -59,19 +52,15 @@ public class TxPowerServiceMockCallbackBuilderTest {
     @Test
     public void test_addTxPowerLevel_00003() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> builder = new TxPowerServiceMockCallback.Builder<>();
         builder.addTxPowerLevel(txPowerLevel);
         TxPowerServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertFalse(bluetoothGattServiceList.isEmpty());
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
 
         assertEquals(TX_POWER_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TX_POWER_LEVEL_CHARACTERISTIC);
@@ -82,19 +71,15 @@ public class TxPowerServiceMockCallbackBuilderTest {
     @Test
     public void test_addTxPowerLevel_00004() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> builder = new TxPowerServiceMockCallback.Builder<>();
         builder.addTxPowerLevel(txPowerLevel.getBytes());
         TxPowerServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertFalse(bluetoothGattServiceList.isEmpty());
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
 
         assertEquals(TX_POWER_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TX_POWER_LEVEL_CHARACTERISTIC);
@@ -106,19 +91,15 @@ public class TxPowerServiceMockCallbackBuilderTest {
     @Test
     public void test_addTxPowerLevel_00005() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> builder = new TxPowerServiceMockCallback.Builder<>();
         builder.addTxPowerLevel(0, 0, txPowerLevel.getBytes());
         TxPowerServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertFalse(bluetoothGattServiceList.isEmpty());
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
 
         assertEquals(TX_POWER_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TX_POWER_LEVEL_CHARACTERISTIC);

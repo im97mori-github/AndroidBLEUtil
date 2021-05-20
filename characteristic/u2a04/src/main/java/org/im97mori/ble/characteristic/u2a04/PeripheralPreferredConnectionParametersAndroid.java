@@ -78,6 +78,7 @@ public class PeripheralPreferredConnectionParametersAndroid extends PeripheralPr
      * @param in Parcel
      */
     private PeripheralPreferredConnectionParametersAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

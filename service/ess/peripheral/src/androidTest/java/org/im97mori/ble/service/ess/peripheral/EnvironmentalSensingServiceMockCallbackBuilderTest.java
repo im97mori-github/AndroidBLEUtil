@@ -4,12 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a2c.MagneticDeclination;
 import org.im97mori.ble.characteristic.u2a6c.Elevation;
 import org.im97mori.ble.characteristic.u2a6d.Pressure;
@@ -34,10 +29,11 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u290b.EnvironmentalSensingConfiguration;
 import org.im97mori.ble.descriptor.u290c.EnvironmentalSensingMeasurement;
 import org.im97mori.ble.descriptor.u290d.EnvironmentalSensingTriggerSetting;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPARENT_WIND_DIRECTION_CHARACTERISTIC;
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPARENT_WIND_SPEED_CHARACTERISTIC;
@@ -64,11 +60,12 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
 import static org.im97mori.ble.BLEConstants.ServiceUUID.ENVIRONMENTAL_SENSING_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class EnvironmentalSensingServiceMockCallbackBuilderTest {
+public class EnvironmentalSensingServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_exception_00001() {
@@ -8353,17 +8350,12 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addDescriptorValueChanged_00001() {
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         EnvironmentalSensingServiceMockCallback callback = new EnvironmentalSensingServiceMockCallback.Builder<>().build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertFalse(bluetoothGattServiceList.isEmpty());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
 
         assertEquals(ENVIRONMENTAL_SENSING_SERVICE, bluetoothGattService.getUuid());
         assertTrue(bluetoothGattService.getCharacteristics().isEmpty());
@@ -8372,19 +8364,14 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest {
     @Test
     public void test_addDescriptorValueChanged_00002() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         EnvironmentalSensingServiceMockCallback callback = new EnvironmentalSensingServiceMockCallback.Builder<>()
                 .addDescriptorValueChanged(new ClientCharacteristicConfiguration(descriptorValue))
                 .build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertFalse(bluetoothGattServiceList.isEmpty());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
 
         assertEquals(ENVIRONMENTAL_SENSING_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC);
@@ -8402,19 +8389,14 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest {
     @Test
     public void test_addDescriptorValueChanged_00003() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         EnvironmentalSensingServiceMockCallback callback = new EnvironmentalSensingServiceMockCallback.Builder<>()
                 .addDescriptorValueChanged(0, 1, descriptorValue)
                 .build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertFalse(bluetoothGattServiceList.isEmpty());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
 
         assertEquals(ENVIRONMENTAL_SENSING_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC);
@@ -8432,20 +8414,15 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest {
     @Test
     public void test_removeDescriptorValueChanged_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         EnvironmentalSensingServiceMockCallback callback = new EnvironmentalSensingServiceMockCallback.Builder<>()
                 .addDescriptorValueChanged(new ClientCharacteristicConfiguration(descriptorValue))
                 .removeDescriptorValueChanged()
                 .build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertFalse(bluetoothGattServiceList.isEmpty());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
 
         assertEquals(ENVIRONMENTAL_SENSING_SERVICE, bluetoothGattService.getUuid());
         assertTrue(bluetoothGattService.getCharacteristics().isEmpty());

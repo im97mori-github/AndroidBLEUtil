@@ -93,6 +93,7 @@ public class TreadmillDataPacketAndroid extends TreadmillDataPacket implements P
      * @param in Parcel
      */
     private TreadmillDataPacketAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

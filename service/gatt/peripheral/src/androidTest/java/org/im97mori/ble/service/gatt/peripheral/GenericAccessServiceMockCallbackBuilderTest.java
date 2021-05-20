@@ -3,22 +3,18 @@ package org.im97mori.ble.service.gatt.peripheral;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a00.DeviceName;
 import org.im97mori.ble.characteristic.u2a01.Appearance;
 import org.im97mori.ble.characteristic.u2a02.PeripheralPrivacyFlag;
 import org.im97mori.ble.characteristic.u2a04.PeripheralPreferredConnectionParameters;
 import org.im97mori.ble.characteristic.u2aa6.CentralAddressResolution;
 import org.im97mori.ble.characteristic.u2ac9.ResolvablePrivateAddressOnly;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC;
@@ -33,7 +29,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class GenericAccessServiceMockCallbackBuilderTest {
+public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
     public void test_exception_00001() {
@@ -82,20 +78,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addDeviceName_00001() {
         String deviceName = "deviceName";
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName(deviceName));
         builder.addAppearance(new Appearance(new byte[2]));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DEVICE_NAME_CHARACTERISTIC);
@@ -106,20 +98,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addDeviceName_00002() {
         String deviceName = "deviceName";
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(deviceName.getBytes());
         builder.addAppearance(new Appearance(new byte[2]));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DEVICE_NAME_CHARACTERISTIC);
@@ -130,20 +118,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addDeviceName_00003() {
         String deviceName = "deviceName";
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(false, 0, 0, deviceName.getBytes());
         builder.addAppearance(new Appearance(new byte[2]));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DEVICE_NAME_CHARACTERISTIC);
@@ -156,20 +140,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addDeviceName_00004() {
         String deviceName = "deviceName";
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(true, 0, 0, deviceName.getBytes());
         builder.addAppearance(new Appearance(new byte[2]));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DEVICE_NAME_CHARACTERISTIC);
@@ -200,20 +180,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addAppearance_00001() {
         byte[] data = new byte[]{0, 1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(data));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(APPEARANCE_CHARACTERISTIC);
@@ -224,20 +200,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addAppearance_00002() {
         byte[] data = new byte[]{0, 1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(APPEARANCE_CHARACTERISTIC);
@@ -248,20 +220,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addAppearance_00003() {
         byte[] data = new byte[]{0, 1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(false, 0, 0, data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(APPEARANCE_CHARACTERISTIC);
@@ -274,20 +242,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addAppearance_00004() {
         byte[] data = new byte[]{0, 1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(true, 0, 0, data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(APPEARANCE_CHARACTERISTIC);
@@ -318,20 +282,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addPeripheralPreferredConnectionParameters_00001() {
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC);
@@ -341,21 +301,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addPeripheralPreferredConnectionParameters_00002() {
         byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addPeripheralPreferredConnectionParameters(new PeripheralPreferredConnectionParameters(data));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC);
@@ -366,21 +322,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addPeripheralPreferredConnectionParameters_00003() {
         byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addPeripheralPreferredConnectionParameters(data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC);
@@ -393,21 +345,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addPeripheralPreferredConnectionParameters_00004() {
         byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addPeripheralPreferredConnectionParameters(BluetoothGatt.GATT_SUCCESS, 0, data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC);
@@ -438,20 +386,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addCentralAddressResolution_00001() {
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC);
@@ -461,21 +405,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addCentralAddressResolution_00002() {
         byte[] data = new byte[]{1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addCentralAddressResolution(new CentralAddressResolution(data));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC);
@@ -486,21 +426,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addCentralAddressResolution_00003() {
         byte[] data = new byte[]{1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addCentralAddressResolution(data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC);
@@ -513,21 +449,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addCentralAddressResolution_00004() {
         byte[] data = new byte[]{1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addCentralAddressResolution(BluetoothGatt.GATT_SUCCESS, 0, data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC);
@@ -558,20 +490,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addResolvablePrivateAddressOnly_00001() {
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC);
@@ -581,21 +509,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addResolvablePrivateAddressOnly_00002() {
         byte[] data = new byte[]{1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addResolvablePrivateAddressOnly(new ResolvablePrivateAddressOnly(data));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC);
@@ -606,21 +530,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addResolvablePrivateAddressOnly_00003() {
         byte[] data = new byte[]{1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addResolvablePrivateAddressOnly(data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC);
@@ -633,21 +553,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addResolvablePrivateAddressOnly_00004() {
         byte[] data = new byte[]{1};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addResolvablePrivateAddressOnly(BluetoothGatt.GATT_SUCCESS, 0, data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC);
@@ -678,21 +594,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addReconnectionAddress_00001() {
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addReconnectionAddress(BluetoothGatt.GATT_SUCCESS, 0);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RECONNECTION_ADDRESS_CHARACTERISTIC);
@@ -718,20 +630,16 @@ public class GenericAccessServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addPeripheralPrivacyFlag_00001() {
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC);
@@ -741,21 +649,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addPeripheralPrivacyFlag_00002() {
         byte[] data = new byte[]{0};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addPeripheralPrivacyFlag(new PeripheralPrivacyFlag(data));
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC);
@@ -766,21 +670,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addPeripheralPrivacyFlag_00003() {
         byte[] data = new byte[]{0};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addPeripheralPrivacyFlag(data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC);
@@ -793,21 +693,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addPeripheralPrivacyFlag_00004() {
         byte[] data = new byte[]{0};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addPeripheralPrivacyFlag(false, BluetoothGatt.GATT_SUCCESS, 0, data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC);
@@ -820,21 +716,17 @@ public class GenericAccessServiceMockCallbackBuilderTest {
     @Test
     public void test_addPeripheralPrivacyFlag_00005() {
         byte[] data = new byte[]{0};
-        final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceAtomicReference.set(bluetoothGattService);
-                return null;
-            }
-        };
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
         GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
         builder.addDeviceName(new DeviceName("deviceName"));
         builder.addAppearance(new Appearance(new byte[]{0, 1}));
         builder.addPeripheralPrivacyFlag(true, BluetoothGatt.GATT_SUCCESS, 0, data);
         GenericAccessServiceMockCallback callback = builder.build();
-        callback.setup(mockBLEServerConnection);
-        BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
 
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC);

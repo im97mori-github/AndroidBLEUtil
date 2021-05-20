@@ -32,7 +32,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
-    public void test_constructor_00002() {
+    public void test_constructor_00002() throws InterruptedException {
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
             @Override
             public void setup(@NonNull BLEServerConnection bleServerConnection) {
@@ -47,6 +47,7 @@ public class AbstractProfileMockCallbackTest {
         assertTrue(baseBLEServerCallback1.result.get());
 
         profileMockCallback.quit();
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
     }
 
     @Test
@@ -62,11 +63,13 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
-    public void test_start_00002() {
+    public void test_start_00002() throws InterruptedException {
+        final CountDownLatch tearDownLatch = new CountDownLatch(1);
         ProfileMockCallback profileMockCallback = new ProfileMockCallback(ApplicationProvider.getApplicationContext(), false, new BaseBLEServerCallback());
         profileMockCallback.start();
         assertTrue(profileMockCallback.isStarted());
         profileMockCallback.quit();
+        tearDownLatch.await(10, TimeUnit.SECONDS);
     }
 
     @Test
@@ -155,6 +158,7 @@ public class AbstractProfileMockCallbackTest {
     public void test_startAdvertising_00004() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
+
             @Override
             public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
                 result.set(true);
@@ -177,6 +181,9 @@ public class AbstractProfileMockCallbackTest {
         assertFalse(profileMockCallback.startAdvertising());
         assertTrue(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
+
         assertFalse(profileMockCallback.stopAdvertising());
     }
 
@@ -184,6 +191,7 @@ public class AbstractProfileMockCallbackTest {
     public void test_startAdvertising_00005() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
+
             @Override
             public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
                 result.set(true);
@@ -205,6 +213,9 @@ public class AbstractProfileMockCallbackTest {
         assertFalse(profileMockCallback.startAdvertising());
         assertFalse(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
+
         assertFalse(profileMockCallback.stopAdvertising());
     }
 
@@ -294,6 +305,7 @@ public class AbstractProfileMockCallbackTest {
     public void test_startAdvertising_00104() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
+
             @Override
             public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
                 result.set(true);
@@ -316,6 +328,9 @@ public class AbstractProfileMockCallbackTest {
         assertFalse(profileMockCallback.startAdvertising(true));
         assertTrue(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
+
         assertFalse(profileMockCallback.stopAdvertising());
     }
 
@@ -323,6 +338,7 @@ public class AbstractProfileMockCallbackTest {
     public void test_startAdvertising_00105() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
+
             @Override
             public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
                 result.set(true);
@@ -344,6 +360,9 @@ public class AbstractProfileMockCallbackTest {
         assertFalse(profileMockCallback.startAdvertising(true));
         assertFalse(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
+
         assertFalse(profileMockCallback.stopAdvertising());
     }
 
@@ -433,6 +452,7 @@ public class AbstractProfileMockCallbackTest {
     public void test_startAdvertising_00204() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
+
             @Override
             public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
                 result.set(true);
@@ -455,6 +475,9 @@ public class AbstractProfileMockCallbackTest {
         assertFalse(profileMockCallback.startAdvertising(false));
         assertTrue(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
+
         assertFalse(profileMockCallback.stopAdvertising());
     }
 
@@ -462,6 +485,7 @@ public class AbstractProfileMockCallbackTest {
     public void test_startAdvertising_00205() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
+
             @Override
             public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
                 result.set(true);
@@ -483,6 +507,9 @@ public class AbstractProfileMockCallbackTest {
         assertFalse(profileMockCallback.startAdvertising(false));
         assertFalse(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
+
         assertFalse(profileMockCallback.stopAdvertising());
     }
 
@@ -494,6 +521,7 @@ public class AbstractProfileMockCallbackTest {
             public void onServerStopped() {
                 result.set(true);
                 countDownLatch.countDown();
+                super.onServerStopped();
             }
 
         };
@@ -504,6 +532,8 @@ public class AbstractProfileMockCallbackTest {
         countDownLatch.await(10, TimeUnit.SECONDS);
 
         assertTrue(baseBLEServerCallback1.result.get());
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
     }
 
     @Test
@@ -555,6 +585,8 @@ public class AbstractProfileMockCallbackTest {
         countDownLatch.await(10, TimeUnit.SECONDS);
         assertFalse(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
     }
 
     @Test
@@ -584,6 +616,8 @@ public class AbstractProfileMockCallbackTest {
         countDownLatch.await(10, TimeUnit.SECONDS);
         assertFalse(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
     }
 
     @Test
@@ -613,6 +647,8 @@ public class AbstractProfileMockCallbackTest {
         countDownLatch.await(10, TimeUnit.SECONDS);
         assertTrue(baseBLEServerCallback1.result.get());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
     }
 
     @Test
@@ -650,10 +686,13 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
-    public void test_isStarted_00002() {
-        ProfileMockCallback profileMockCallback = new ProfileMockCallback(ApplicationProvider.getApplicationContext(), false, new BaseBLEServerCallback());
+    public void test_isStarted_00002() throws InterruptedException {
+        BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback();
+        ProfileMockCallback profileMockCallback = new ProfileMockCallback(ApplicationProvider.getApplicationContext(), false, baseBLEServerCallback1);
         profileMockCallback.start();
         assertTrue(profileMockCallback.isStarted());
         profileMockCallback.quit();
+
+        baseBLEServerCallback1.tearDownLatch.await(10, TimeUnit.SECONDS);
     }
 }

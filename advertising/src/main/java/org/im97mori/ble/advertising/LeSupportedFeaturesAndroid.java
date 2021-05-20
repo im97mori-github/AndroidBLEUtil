@@ -70,6 +70,7 @@ public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements A
      * @param in Parcel
      */
     private LeSupportedFeaturesAndroid(Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

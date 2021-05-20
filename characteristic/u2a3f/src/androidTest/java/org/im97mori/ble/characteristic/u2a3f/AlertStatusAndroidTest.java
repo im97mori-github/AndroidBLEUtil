@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class AlertStatusAndroidTest {
 
     @Test
@@ -115,7 +116,7 @@ public class AlertStatusAndroidTest {
                 | AlertStatus.ALERT_STATUS_DISPLAY_ALERT_STATUS_ACTIVE;
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) flags;;
+        data[ 0] = (byte) flags;
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -247,7 +248,7 @@ public class AlertStatusAndroidTest {
                 | AlertStatus.ALERT_STATUS_DISPLAY_ALERT_STATUS_ACTIVE;
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) flags;;
+        data[ 0] = (byte) flags;
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -353,7 +354,7 @@ public class AlertStatusAndroidTest {
                 | AlertStatus.ALERT_STATUS_DISPLAY_ALERT_STATUS_ACTIVE;
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) flags;;
+        data[ 0] = (byte) flags;
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -460,7 +461,7 @@ public class AlertStatusAndroidTest {
                 | AlertStatus.ALERT_STATUS_DISPLAY_ALERT_STATUS_ACTIVE;
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) flags;;
+        data[ 0] = (byte) flags;
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);

@@ -1,20 +1,18 @@
 package org.im97mori.ble.service.bcs.central;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a9b.BodyCompositionFeatureAndroid;
 import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurement;
 import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurementPacket;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -38,14 +36,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("UnnecessaryLocalVariable")
-public class BodyCompositionServiceTest {
+@SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
+public class BodyCompositionServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
@@ -68,7 +66,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -78,7 +76,7 @@ public class BodyCompositionServiceTest {
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
@@ -101,7 +99,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -111,7 +109,7 @@ public class BodyCompositionServiceTest {
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -134,7 +132,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -144,7 +142,7 @@ public class BodyCompositionServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
@@ -167,7 +165,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -177,7 +175,7 @@ public class BodyCompositionServiceTest {
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
@@ -192,7 +190,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -202,7 +200,7 @@ public class BodyCompositionServiceTest {
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -217,7 +215,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -227,7 +225,7 @@ public class BodyCompositionServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
@@ -250,7 +248,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -260,7 +258,7 @@ public class BodyCompositionServiceTest {
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
@@ -275,7 +273,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -285,7 +283,7 @@ public class BodyCompositionServiceTest {
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -300,7 +298,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -310,7 +308,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -336,7 +334,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -346,7 +344,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -363,7 +361,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -373,7 +371,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -390,7 +388,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -400,7 +398,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -417,7 +415,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -427,7 +425,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -453,7 +451,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -463,7 +461,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -480,7 +478,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -490,7 +488,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -507,7 +505,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -517,7 +515,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -534,7 +532,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -544,7 +542,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -570,7 +568,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -580,7 +578,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -597,7 +595,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -607,7 +605,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -624,7 +622,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
         assertFalse(isCalled.get());
     }
@@ -633,7 +631,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -650,7 +648,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -660,7 +658,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -686,7 +684,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -696,7 +694,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -714,7 +712,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -724,7 +722,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -742,7 +740,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -752,7 +750,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -770,7 +768,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -780,7 +778,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -806,7 +804,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -816,7 +814,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -834,7 +832,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -844,7 +842,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -862,7 +860,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -872,7 +870,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -890,7 +888,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -900,7 +898,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -926,7 +924,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -936,7 +934,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -954,7 +952,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -964,7 +962,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -982,7 +980,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -992,7 +990,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1010,7 +1008,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1020,7 +1018,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1046,7 +1044,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1056,7 +1054,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1074,7 +1072,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1084,7 +1082,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1102,7 +1100,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1112,7 +1110,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1130,7 +1128,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1140,7 +1138,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1166,7 +1164,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1176,7 +1174,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1194,7 +1192,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1204,7 +1202,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1222,7 +1220,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1232,7 +1230,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1250,7 +1248,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1260,7 +1258,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1286,7 +1284,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1296,7 +1294,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1314,7 +1312,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1324,7 +1322,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
@@ -1342,7 +1340,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1352,7 +1350,7 @@ public class BodyCompositionServiceTest {
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1370,7 +1368,7 @@ public class BodyCompositionServiceTest {
             }
 
         };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -1379,7 +1377,7 @@ public class BodyCompositionServiceTest {
     @Test
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1401,7 +1399,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertTrue(isCalled.get());
@@ -1410,7 +1408,6 @@ public class BodyCompositionServiceTest {
     @Test
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:CC");
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1426,8 +1423,8 @@ public class BodyCompositionServiceTest {
 
         };
 
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
-        bodyCompositionService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
+        bodyCompositionService.onCharacteristicNotified(BLETestUtilsAndroid.MOCK_DEVICE_1, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
     }
@@ -1435,7 +1432,7 @@ public class BodyCompositionServiceTest {
     @Test
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
@@ -1451,7 +1448,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -1460,7 +1457,7 @@ public class BodyCompositionServiceTest {
     @Test
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BODY_COMPOSITION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
@@ -1476,7 +1473,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), mockBodyCompositionServiceCallback, null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, mockBodyCompositionServiceCallback, null);
         bodyCompositionService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
@@ -1484,14 +1481,14 @@ public class BodyCompositionServiceTest {
 
     @Test
     public void test_getBodyCompositionFeature_000001() {
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null);
 
         assertNull(bodyCompositionService.getBodyCompositionFeature());
     }
 
     @Test
     public void test_getBodyCompositionFeature_000002() {
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null) {
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1506,15 +1503,8 @@ public class BodyCompositionServiceTest {
     @Test
     public void test_getBodyCompositionFeature_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(mockBLEConnection, new MockBodyCompositionServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1530,14 +1520,14 @@ public class BodyCompositionServiceTest {
 
     @Test
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_000001() {
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null);
 
         assertNull(bodyCompositionService.getBodyCompositionMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_000002() {
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null) {
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1552,15 +1542,8 @@ public class BodyCompositionServiceTest {
     @Test
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(mockBLEConnection, new MockBodyCompositionServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1576,14 +1559,14 @@ public class BodyCompositionServiceTest {
 
     @Test
     public void test_startBloodPressureMeasurementIndication_000001() {
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null);
 
         assertNull(bodyCompositionService.startBodyCompositionMeasurementIndication());
     }
 
     @Test
     public void test_startBloodPressureMeasurementIndication_000002() {
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null) {
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1598,15 +1581,8 @@ public class BodyCompositionServiceTest {
     @Test
     public void test_startBloodPressureMeasurementIndication_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(mockBLEConnection, new MockBodyCompositionServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1622,14 +1598,14 @@ public class BodyCompositionServiceTest {
 
     @Test
     public void test_stopBloodPressureMeasurementIndication_000001() {
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null);
 
         assertNull(bodyCompositionService.stopBodyCompositionMeasurementIndication());
     }
 
     @Test
     public void test_stopBloodPressureMeasurementIndication_000002() {
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null) {
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1644,15 +1620,8 @@ public class BodyCompositionServiceTest {
     @Test
     public void test_stopBloodPressureMeasurementIndication_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        BodyCompositionService bodyCompositionService = new BodyCompositionService(mockBLEConnection, new MockBodyCompositionServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        BodyCompositionService bodyCompositionService = new BodyCompositionService(MOCK_BLE_CONNECTION, new MockBodyCompositionServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {

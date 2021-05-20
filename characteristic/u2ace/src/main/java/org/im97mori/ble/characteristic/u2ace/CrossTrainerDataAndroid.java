@@ -63,6 +63,7 @@ public class CrossTrainerDataAndroid extends CrossTrainerData implements Parcela
      * @param in Parcel
      */
     private CrossTrainerDataAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(new CrossTrainerDataPacketAndroid[]{CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }
 

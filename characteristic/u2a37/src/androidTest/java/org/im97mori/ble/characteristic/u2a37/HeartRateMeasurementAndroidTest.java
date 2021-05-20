@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class HeartRateMeasurementAndroidTest {
 
     @Test
@@ -84,9 +85,9 @@ public class HeartRateMeasurementAndroidTest {
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
                 | HeartRateMeasurement.FLAGS_RR_INTERVAL_NOT_PRESENT, result1.getFlags());
-        assertTrue(result1.isFlagsSesorContactStatusNotSupported());
-        assertFalse(result1.isFlagsSeonsorContactStatusSupportedButNotDetected());
-        assertFalse(result1.isFlagsSeonsorContactStatusSupportedAndDetected());
+        assertTrue(result1.isFlagsSensorContactStatusNotSupported());
+        assertFalse(result1.isFlagsSensorContactStatusSupportedButNotDetected());
+        assertFalse(result1.isFlagsSensorContactStatusSupportedAndDetected());
     }
 
     @Test
@@ -108,9 +109,9 @@ public class HeartRateMeasurementAndroidTest {
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_1
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
                 | HeartRateMeasurement.FLAGS_RR_INTERVAL_NOT_PRESENT, result1.getFlags());
-        assertTrue(result1.isFlagsSesorContactStatusNotSupported());
-        assertFalse(result1.isFlagsSeonsorContactStatusSupportedButNotDetected());
-        assertFalse(result1.isFlagsSeonsorContactStatusSupportedAndDetected());
+        assertTrue(result1.isFlagsSensorContactStatusNotSupported());
+        assertFalse(result1.isFlagsSensorContactStatusSupportedButNotDetected());
+        assertFalse(result1.isFlagsSensorContactStatusSupportedAndDetected());
     }
 
     @Test
@@ -132,9 +133,9 @@ public class HeartRateMeasurementAndroidTest {
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_SUPPORTED_BUT_NOT_DETECTED
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
                 | HeartRateMeasurement.FLAGS_RR_INTERVAL_NOT_PRESENT, result1.getFlags());
-        assertFalse(result1.isFlagsSesorContactStatusNotSupported());
-        assertTrue(result1.isFlagsSeonsorContactStatusSupportedButNotDetected());
-        assertFalse(result1.isFlagsSeonsorContactStatusSupportedAndDetected());
+        assertFalse(result1.isFlagsSensorContactStatusNotSupported());
+        assertTrue(result1.isFlagsSensorContactStatusSupportedButNotDetected());
+        assertFalse(result1.isFlagsSensorContactStatusSupportedAndDetected());
     }
 
     @Test
@@ -156,9 +157,9 @@ public class HeartRateMeasurementAndroidTest {
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_SUPPORTED_AND_DETECTED
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
                 | HeartRateMeasurement.FLAGS_RR_INTERVAL_NOT_PRESENT, result1.getFlags());
-        assertFalse(result1.isFlagsSesorContactStatusNotSupported());
-        assertFalse(result1.isFlagsSeonsorContactStatusSupportedButNotDetected());
-        assertTrue(result1.isFlagsSeonsorContactStatusSupportedAndDetected());
+        assertFalse(result1.isFlagsSensorContactStatusNotSupported());
+        assertFalse(result1.isFlagsSensorContactStatusSupportedButNotDetected());
+        assertTrue(result1.isFlagsSensorContactStatusSupportedAndDetected());
     }
 
     @Test

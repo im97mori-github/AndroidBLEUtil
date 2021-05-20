@@ -74,6 +74,7 @@ public class CharacteristicExtendedPropertiesAndroid extends CharacteristicExten
      * @param in Parcel
      */
     private CharacteristicExtendedPropertiesAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

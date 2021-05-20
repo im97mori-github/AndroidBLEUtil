@@ -153,6 +153,12 @@
         <activity
             android:name=".scpp.ScppCentralSampleActivity"
             android:label="@string/label_scpp_central" />
+        <activity
+            android:name=".rcp.RcpPeripheralSampleActivity"
+            android:label="@string/label_rcp_peripheral" />
+        <activity
+            android:name=".rcp.RcpCentralSampleActivity"
+            android:label="@string/label_rcp_central" />
     </application>
 
 </manifest>

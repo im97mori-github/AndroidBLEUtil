@@ -76,6 +76,7 @@ public class TimeUpdateStateAndroid extends TimeUpdateState implements Parcelabl
      * @param in Parcel
      */
     private TimeUpdateStateAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

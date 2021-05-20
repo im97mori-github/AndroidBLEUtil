@@ -75,6 +75,7 @@ public class IndoorPositioningConfigurationAndroid extends IndoorPositioningConf
      * @param in Parcel
      */
     private IndoorPositioningConfigurationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

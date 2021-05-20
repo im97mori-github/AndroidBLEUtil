@@ -1,7 +1,5 @@
 package org.im97mori.ble.profile.hrp.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
@@ -9,32 +7,45 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPoint;
 import org.im97mori.ble.profile.hrp.central.db.HeartRateProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.hrs.central.HeartRateService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.GENERIC_ACCESS_SERVICE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class HeartRateProfileTest {
+public class HeartRateProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findHeartRateProfileDevices_00001() {
@@ -69,155 +80,33 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_hasDeviceInformationService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.hasDeviceInformationService());
         heartRateProfile.disconnect();
     }
 
     @Test
-    public void test_hasDeviceInformationService_00101() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<>();
-
+    public void test_hasDeviceInformationService_00003() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertFalse(hasDeviceInformationService);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = heartRateProfile.hasDeviceInformationService();
         heartRateProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
     }
 
     @Test
-    public void test_hasDeviceInformationService_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<>();
-        serviceList.add(new BluetoothGattService(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+    public void test_hasDeviceInformationService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
 
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertFalse(hasDeviceInformationService);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        heartRateProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = heartRateProfile.hasDeviceInformationService();
         heartRateProfile.disconnect();
-    }
-
-    @Test
-    public void test_hasDeviceInformationService_00103() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<>();
-        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
-
-        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertTrue(hasDeviceInformationService);
-        heartRateProfile.disconnect();
-    }
-
-    @Test
-    public void test_hasDeviceInformationService_00104() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<>();
-        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
-
-        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertTrue(hasDeviceInformationService);
-        heartRateProfile.disconnect();
-        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertFalse(hasDeviceInformationService);
-    }
-
-    @Test
-    public void test_hasDeviceInformationService_00105() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<>();
-        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
-
-        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertTrue(hasDeviceInformationService);
-        heartRateProfile.disconnect();
-        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertFalse(hasDeviceInformationService);
-
-        serviceList.clear();
-        serviceList.add(new BluetoothGattService(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertFalse(hasDeviceInformationService);
-        heartRateProfile.disconnect();
-    }
-
-    @Test
-    public void test_hasDeviceInformationService_00106() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<>();
-        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
-
-        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertTrue(hasDeviceInformationService);
-        heartRateProfile.disconnect();
-        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        serviceList.clear();
-        serviceList.add(new BluetoothGattService(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertFalse(hasDeviceInformationService);
-        heartRateProfile.disconnect();
-
-        serviceList.clear();
-        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
-        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
-        assertNotNull(hasDeviceInformationService);
-        assertTrue(hasDeviceInformationService);
-        heartRateProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -228,13 +117,9 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_hasManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        heartRateProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
         assertNotNull(heartRateProfile.hasManufacturerNameString());
         heartRateProfile.disconnect();
     }
@@ -247,48 +132,20 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_getManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getManufacturerNameString() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasManufacturerNameString() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mHeartRateService == null) {
-                    mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null);
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
-        heartRateProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.getManufacturerNameString());
         heartRateProfile.disconnect();
     }
@@ -301,34 +158,8 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_isBodySensorLocationCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
-            @Override
-            public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null);
-                }
-                if (mHeartRateService == null) {
-                    mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isBodySensorLocationCharacteristicSupported() {
-                            return true;
-                        }
-
-                    };
-                }
-            }
-        };
-        heartRateProfile.connect(MOCK_DEVICE);
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.isBodySensorLocationCharacteristicSupported());
         heartRateProfile.disconnect();
     }
@@ -341,34 +172,8 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_isHeartRateControlPointCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
-            @Override
-            public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null);
-                }
-                if (mHeartRateService == null) {
-                    mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isHeartRateControlPointCharacteristicSupported() {
-                            return true;
-                        }
-
-                    };
-                }
-            }
-        };
-        heartRateProfile.connect(MOCK_DEVICE);
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.isHeartRateControlPointCharacteristicSupported());
         heartRateProfile.disconnect();
     }
@@ -381,42 +186,20 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null);
-                }
                 if (mHeartRateService == null) {
                     mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getHeartRateMeasurementClientCharacteristicConfiguration() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.getHeartRateMeasurementClientCharacteristicConfiguration());
         heartRateProfile.disconnect();
     }
@@ -429,42 +212,20 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_startHeartRateMeasurementNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null);
-                }
                 if (mHeartRateService == null) {
                     mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startHeartRateMeasurementNotification() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.startHeartRateMeasurementNotification());
         heartRateProfile.disconnect();
     }
@@ -477,42 +238,20 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_stopHeartRateMeasurementNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null);
-                }
                 if (mHeartRateService == null) {
                     mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopHeartRateMeasurementNotification() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.stopHeartRateMeasurementNotification());
         heartRateProfile.disconnect();
     }
@@ -525,47 +264,20 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_getBodySensorLocation_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null);
-                }
                 if (mHeartRateService == null) {
                     mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
-
                         @Override
-                        public boolean isBodySensorLocationCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer getBodySensorLocation() {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.getBodySensorLocation());
         heartRateProfile.disconnect();
     }
@@ -578,47 +290,20 @@ public class HeartRateProfileTest {
 
     @Test
     public void test_setHeartRateControlPoint_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null);
-                }
                 if (mHeartRateService == null) {
                     mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
-
                         @Override
-                        public boolean isHeartRateControlPointCharacteristicSupported() {
-                            return true;
+                        public synchronized Integer setHeartRateControlPoint(@NonNull HeartRateControlPoint heartRateControlPoint) {
+                            return 1;
                         }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
                     };
                 }
             }
         };
-        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.setHeartRateControlPoint(new HeartRateControlPoint(HeartRateControlPoint.HEART_RATE_CONTROL_POINT_RESET_ENERGY_EXPENDED)));
         heartRateProfile.disconnect();
     }
@@ -639,22 +324,17 @@ public class HeartRateProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(heartRateProfile.mDeviceInformationService);
         assertNotNull(heartRateProfile.mHeartRateService);
         assertTrue(atomicBoolean.get());
+        heartRateProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         heartRateProfile.quit();
         assertNull(heartRateProfile.mDeviceInformationService);
         assertNull(heartRateProfile.mHeartRateService);

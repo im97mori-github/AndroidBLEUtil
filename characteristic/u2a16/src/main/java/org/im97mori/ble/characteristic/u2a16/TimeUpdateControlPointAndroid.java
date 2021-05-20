@@ -75,6 +75,7 @@ public class TimeUpdateControlPointAndroid extends TimeUpdateControlPoint implem
      * @param in Parcel
      */
     private TimeUpdateControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

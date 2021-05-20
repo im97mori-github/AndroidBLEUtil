@@ -75,6 +75,7 @@ public class LatitudeAndroid extends Latitude implements Parcelable {
      * @param in Parcel
      */
     private LatitudeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

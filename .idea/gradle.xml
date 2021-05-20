@@ -243,6 +243,9 @@
             <option value="$PROJECT_DIR$/profile/pxp" />
             <option value="$PROJECT_DIR$/profile/pxp/central" />
             <option value="$PROJECT_DIR$/profile/pxp/peripheral" />
+            <option value="$PROJECT_DIR$/profile/rcp" />
+            <option value="$PROJECT_DIR$/profile/rcp/central" />
+            <option value="$PROJECT_DIR$/profile/rcp/peripheral" />
             <option value="$PROJECT_DIR$/profile/rscp" />
             <option value="$PROJECT_DIR$/profile/rscp/central" />
             <option value="$PROJECT_DIR$/profile/rscp/peripheral" />
@@ -273,6 +276,9 @@
             <option value="$PROJECT_DIR$/service/bls" />
             <option value="$PROJECT_DIR$/service/bls/central" />
             <option value="$PROJECT_DIR$/service/bls/peripheral" />
+            <option value="$PROJECT_DIR$/service/bms" />
+            <option value="$PROJECT_DIR$/service/bms/central" />
+            <option value="$PROJECT_DIR$/service/bms/peripheral" />
             <option value="$PROJECT_DIR$/service/central" />
             <option value="$PROJECT_DIR$/service/cps" />
             <option value="$PROJECT_DIR$/service/cps/central" />
@@ -320,6 +326,9 @@
             <option value="$PROJECT_DIR$/service/pass/central" />
             <option value="$PROJECT_DIR$/service/pass/peripheral" />
             <option value="$PROJECT_DIR$/service/peripheral" />
+            <option value="$PROJECT_DIR$/service/rcs" />
+            <option value="$PROJECT_DIR$/service/rcs/central" />
+            <option value="$PROJECT_DIR$/service/rcs/peripheral" />
             <option value="$PROJECT_DIR$/service/rscs" />
             <option value="$PROJECT_DIR$/service/rscs/central" />
             <option value="$PROJECT_DIR$/service/rscs/peripheral" />

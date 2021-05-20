@@ -75,6 +75,7 @@ public class BodySensorLocationAndroid extends BodySensorLocation implements Par
      * @param in Parcel
      */
     private BodySensorLocationAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

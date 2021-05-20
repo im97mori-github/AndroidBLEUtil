@@ -85,6 +85,7 @@ public class TemperatureMeasurementAndroid extends TemperatureMeasurement implem
      * @param in Parcel
      */
     private TemperatureMeasurementAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

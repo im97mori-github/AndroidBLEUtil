@@ -1,6 +1,5 @@
 package org.im97mori.ble.service.central;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
@@ -10,6 +9,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -24,7 +25,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class AbstractCentralServiceTest {
+public class AbstractCentralServiceTest extends AbstractCentralTest {
 
     static class TestCentralService extends AbstractCentralService {
 
@@ -35,98 +36,92 @@ public class AbstractCentralServiceTest {
 
     @Test
     public void test_isStarted_00001() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
         assertFalse(testCentralService.isStarted());
     }
 
     @Test
     public void test_isStarted_00002() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        mockBLEConnection.setIsConnected(true);
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        MOCK_BLE_CONNECTION.setConnected(true);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
         assertFalse(testCentralService.isStarted());
     }
 
     @Test
     public void test_isStarted_00003() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
-        testCentralService.onDiscoverServiceSuccess(0, CentralMockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
+        testCentralService.onDiscoverServiceSuccess(0, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(testCentralService.isStarted());
     }
 
     @Test
     public void test_isStarted_00004() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        mockBLEConnection.setIsConnected(true);
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
-        testCentralService.onDiscoverServiceSuccess(0, CentralMockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        MOCK_BLE_CONNECTION.setConnected(true);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
+        testCentralService.onDiscoverServiceSuccess(0, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertTrue(testCentralService.isStarted());
     }
 
     @Test
     public void test_start_00001() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
         assertNotNull(testCentralService.start());
     }
 
     @Test
     public void test_start_00002() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        mockBLEConnection.setIsConnected(true);
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        final Integer originalTaskId = 1;
+        MOCK_BLE_CONNECTION.setConnected(true);
+        MOCK_BLE_CONNECTION.setCreateDiscoverServiceTaskId(originalTaskId);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
-        assertNotNull(testCentralService.start());
+        assertEquals(originalTaskId, testCentralService.start());
     }
 
     @Test
     public void test_start_00003() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
-        testCentralService.onDiscoverServiceSuccess(0, CentralMockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
+        testCentralService.onDiscoverServiceSuccess(0, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertNotNull(testCentralService.start());
     }
 
     @Test
     public void test_start_00004() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        mockBLEConnection.setIsConnected(true);
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
-        testCentralService.onDiscoverServiceSuccess(0, CentralMockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        MOCK_BLE_CONNECTION.setConnected(true);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
+        testCentralService.onDiscoverServiceSuccess(0, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertNull(testCentralService.start());
     }
 
     @Test
     public void test_quit_00001() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
         assertNull(testCentralService.quit());
     }
 
     @Test
     public void test_quit_00002() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        mockBLEConnection.setIsConnected(true);
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        final Integer originalTaskId = 1;
+        MOCK_BLE_CONNECTION.setQuitTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setConnected(true);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
-        assertNotNull(testCentralService.quit());
+        assertEquals(originalTaskId, testCentralService.quit());
     }
 
     @Test
     public void test_onBLEConnected_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
             @Override
@@ -137,8 +132,7 @@ public class AbstractCentralServiceTest {
                 isCalled.set(true);
             }
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onBLEConnected(originalTaskId, originalBluetoothDevice, originalBundle);
         assertTrue(isCalled.get());
@@ -146,26 +140,17 @@ public class AbstractCentralServiceTest {
 
     @Test
     public void test_onBLEConnected_00002() {
-        final AtomicBoolean isCalled = new AtomicBoolean(false);
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection() {
-            @Nullable
-            @Override
-            public Integer createDiscoverServiceTask(long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                isCalled.set(true);
-                return super.createDiscoverServiceTask(timeout, argument, bleCallback);
-            }
-        };
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
-        testCentralService.onBLEConnected(1, CentralMockBLEConnection.MOCK_DEVICE, null);
-        assertTrue(isCalled.get());
+        testCentralService.onBLEConnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, null);
+        assertTrue(MOCK_BLE_CONNECTION.isCreateDiscoverServiceTaskPassed());
     }
 
     @Test
     public void test_onBLEConnectFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -180,8 +165,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onBLEConnectFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -191,7 +175,7 @@ public class AbstractCentralServiceTest {
     public void test_onBLEConnectTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
@@ -204,8 +188,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onBLEConnectTimeout(originalTaskId, originalBluetoothDevice, originalBundle);
         assertTrue(isCalled.get());
@@ -215,7 +198,7 @@ public class AbstractCentralServiceTest {
     public void test_onBLEDisconnected_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -230,8 +213,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onBLEDisconnected(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -240,12 +222,11 @@ public class AbstractCentralServiceTest {
     @Test
     public void test_onBLEDisconnected_00002() {
         MockBLECallback bleCallback = new MockBLECallback();
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
         testCentralService.mAvailableCharacteristicSet.add(UUID.randomUUID());
         testCentralService.mIsServiceDiscovered = true;
 
-        testCentralService.onBLEDisconnected(1, CentralMockBLEConnection.MOCK_DEVICE, 2, null);
+        testCentralService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 2, null);
         assertTrue(testCentralService.mAvailableCharacteristicSet.isEmpty());
         assertFalse(testCentralService.mIsServiceDiscovered);
     }
@@ -253,12 +234,11 @@ public class AbstractCentralServiceTest {
     @Test
     public void test_onBLEDisconnected_00003() {
         MockBLECallback bleCallback = new MockBLECallback();
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
         testCentralService.mAvailableCharacteristicSet.add(UUID.randomUUID());
         testCentralService.mIsServiceDiscovered = true;
 
-        testCentralService.onBLEDisconnected(1, BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:CC"), 2, null);
+        testCentralService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_1, 2, null);
         assertFalse(testCentralService.mAvailableCharacteristicSet.isEmpty());
         assertTrue(testCentralService.mIsServiceDiscovered);
     }
@@ -267,7 +247,7 @@ public class AbstractCentralServiceTest {
     public void test_onDiscoverServiceSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final List<BluetoothGattService> originalServiceList = Collections.emptyList();
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -282,8 +262,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDiscoverServiceSuccess(originalTaskId, originalBluetoothDevice, originalServiceList, originalBundle);
         assertTrue(isCalled.get());
@@ -291,21 +270,19 @@ public class AbstractCentralServiceTest {
 
     @Test
     public void test_onDiscoverServiceSuccess_00002() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
         testCentralService.mIsServiceDiscovered = false;
 
-        testCentralService.onDiscoverServiceSuccess(1, CentralMockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        testCentralService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
         assertTrue(testCentralService.mIsServiceDiscovered);
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00003() {
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, null);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
         testCentralService.mIsServiceDiscovered = false;
 
-        testCentralService.onDiscoverServiceSuccess(1, BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:CC"), Collections.<BluetoothGattService>emptyList(), null);
+        testCentralService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_1, Collections.emptyList(), null);
         assertFalse(testCentralService.mIsServiceDiscovered);
     }
 
@@ -313,7 +290,7 @@ public class AbstractCentralServiceTest {
     public void test_onDiscoverServiceFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -328,8 +305,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDiscoverServiceFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -339,7 +315,7 @@ public class AbstractCentralServiceTest {
     public void test_onDiscoverServiceTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final long originalTimeout = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -354,8 +330,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDiscoverServiceTimeout(originalTaskId, originalBluetoothDevice, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -365,7 +340,7 @@ public class AbstractCentralServiceTest {
     public void test_onRequestMtuSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalMtu = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -380,8 +355,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onRequestMtuSuccess(originalTaskId, originalBluetoothDevice, originalMtu, originalBundle);
         assertTrue(isCalled.get());
@@ -391,7 +365,7 @@ public class AbstractCentralServiceTest {
     public void test_onRequestMtuFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -406,8 +380,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onRequestMtuFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -417,7 +390,7 @@ public class AbstractCentralServiceTest {
     public void test_onRequestMtuTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final long originalTimeout = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -432,8 +405,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onRequestMtuTimeout(originalTaskId, originalBluetoothDevice, 2, originalBundle);
         assertTrue(isCalled.get());
@@ -443,7 +415,7 @@ public class AbstractCentralServiceTest {
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -466,8 +438,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
         assertTrue(isCalled.get());
@@ -477,7 +448,7 @@ public class AbstractCentralServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -502,8 +473,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -513,7 +483,7 @@ public class AbstractCentralServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -538,8 +508,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -549,7 +518,7 @@ public class AbstractCentralServiceTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -572,8 +541,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
         assertTrue(isCalled.get());
@@ -583,7 +551,7 @@ public class AbstractCentralServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -608,8 +576,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -619,7 +586,7 @@ public class AbstractCentralServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -644,8 +611,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -655,7 +621,7 @@ public class AbstractCentralServiceTest {
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -682,8 +648,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
         assertTrue(isCalled.get());
@@ -693,7 +658,7 @@ public class AbstractCentralServiceTest {
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -720,8 +685,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -731,7 +695,7 @@ public class AbstractCentralServiceTest {
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -758,8 +722,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -769,7 +732,7 @@ public class AbstractCentralServiceTest {
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -796,8 +759,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
         assertTrue(isCalled.get());
@@ -807,7 +769,7 @@ public class AbstractCentralServiceTest {
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -834,8 +796,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -845,7 +806,7 @@ public class AbstractCentralServiceTest {
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -872,8 +833,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -882,7 +842,7 @@ public class AbstractCentralServiceTest {
     @Test
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 1;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -902,8 +862,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalValues);
         assertTrue(isCalled.get());
@@ -913,7 +872,7 @@ public class AbstractCentralServiceTest {
     public void test_onReadPhySuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalTxPhy = 2;
         final int originalRxPhy = 3;
         final Bundle originalBundle = new Bundle();
@@ -930,8 +889,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onReadPhySuccess(originalTaskId, originalBluetoothDevice, originalTxPhy, originalRxPhy, originalBundle);
         assertTrue(isCalled.get());
@@ -941,7 +899,7 @@ public class AbstractCentralServiceTest {
     public void test_onReadPhyFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -956,8 +914,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onReadPhyFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -967,7 +924,7 @@ public class AbstractCentralServiceTest {
     public void test_onReadPhyTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final long originalTimeout = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -982,8 +939,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onReadPhyTimeout(originalTaskId, originalBluetoothDevice, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -993,7 +949,7 @@ public class AbstractCentralServiceTest {
     public void test_onSetPreferredPhySuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalTxPhy = 2;
         final int originalRxPhy = 3;
         final int originalPhyOptions = 4;
@@ -1012,8 +968,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onSetPreferredPhySuccess(originalTaskId, originalBluetoothDevice, originalTxPhy, originalRxPhy, originalPhyOptions, originalBundle);
         assertTrue(isCalled.get());
@@ -1023,7 +978,7 @@ public class AbstractCentralServiceTest {
     public void test_onSetPreferredPhyFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1038,8 +993,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onSetPreferredPhyFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -1049,7 +1003,7 @@ public class AbstractCentralServiceTest {
     public void test_onSetPreferredPhyTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final long originalTimeout = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1064,8 +1018,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onSetPreferredPhyTimeout(originalTaskId, originalBluetoothDevice, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -1075,7 +1028,7 @@ public class AbstractCentralServiceTest {
     public void test_onReadRemoteRssiSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalRssi = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1090,8 +1043,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onReadRemoteRssiSuccess(originalTaskId, originalBluetoothDevice, originalRssi, originalBundle);
         assertTrue(isCalled.get());
@@ -1102,7 +1054,7 @@ public class AbstractCentralServiceTest {
     public void test_onReadRemoteRssiFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1117,8 +1069,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onReadRemoteRssiFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -1128,7 +1079,7 @@ public class AbstractCentralServiceTest {
     public void test_onReadRemoteRssiTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final long originalTimeout = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1143,8 +1094,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onReadRemoteRssiTimeout(originalTaskId, originalBluetoothDevice, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -1154,7 +1104,7 @@ public class AbstractCentralServiceTest {
     public void test_onBeginReliableWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
@@ -1167,8 +1117,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onBeginReliableWriteSuccess(originalTaskId, originalBluetoothDevice, originalBundle);
         assertTrue(isCalled.get());
@@ -1178,7 +1127,7 @@ public class AbstractCentralServiceTest {
     public void test_onBeginReliableWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1193,8 +1142,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onBeginReliableWriteFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -1204,7 +1152,7 @@ public class AbstractCentralServiceTest {
     public void test_onExecuteReliableWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
@@ -1217,8 +1165,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onExecuteReliableWriteSuccess(originalTaskId, originalBluetoothDevice, originalBundle);
         assertTrue(isCalled.get());
@@ -1228,7 +1175,7 @@ public class AbstractCentralServiceTest {
     public void test_onExecuteReliableWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1243,8 +1190,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onExecuteReliableWriteFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -1254,7 +1200,7 @@ public class AbstractCentralServiceTest {
     public void test_onExecuteReliableWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final long originalTimeout = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1269,8 +1215,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onExecuteReliableWriteTimeout(originalTaskId, originalBluetoothDevice, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -1280,7 +1225,7 @@ public class AbstractCentralServiceTest {
     public void test_onAbortReliableWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
@@ -1293,8 +1238,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onAbortReliableWriteSuccess(originalTaskId, originalBluetoothDevice, originalBundle);
         assertTrue(isCalled.get());
@@ -1304,7 +1248,7 @@ public class AbstractCentralServiceTest {
     public void test_onAbortReliableWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalStatus = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1319,8 +1263,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onAbortReliableWriteFailed(originalTaskId, originalBluetoothDevice, originalStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -1330,7 +1273,7 @@ public class AbstractCentralServiceTest {
     public void test_onAbortReliableWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final int originalTimeout = 2;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
@@ -1345,8 +1288,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onAbortReliableWriteTimeout(originalTaskId, originalBluetoothDevice, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
@@ -1356,7 +1298,7 @@ public class AbstractCentralServiceTest {
     public void test_onSetNotificationSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -1379,8 +1321,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onSetNotificationSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalNotificationStatus, originalBundle);
         assertTrue(isCalled.get());
@@ -1390,7 +1331,7 @@ public class AbstractCentralServiceTest {
     public void test_onSetNotificationFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = UUID.randomUUID();
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharactersticUUID = UUID.randomUUID();
@@ -1415,8 +1356,7 @@ public class AbstractCentralServiceTest {
             }
 
         };
-        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
-        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+        TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
 
         testCentralService.onSetNotificationFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalNotificationStatus, originalStatus, originalBundle);
         assertTrue(isCalled.get());

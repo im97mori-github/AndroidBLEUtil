@@ -941,20 +941,15 @@ public class TimeProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00402() {
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext()
-                    , new CurrentTimeServiceMockCallback.Builder<>()
-                    , new NextDstChangeServiceMockCallback.Builder<>()
-                    , null)
-                    .addCurrentTime(new CurrentTime(new byte[]{6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
-                    .addTimeWithDst(new TimeWithDst(new byte[]{1, 2, 3, 4, 5, 6, 7, 8}))
-                    .build();
-        } catch (Exception e) {
-            exception = e;
-        }
+        TimeProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new CurrentTimeServiceMockCallback.Builder<>()
+                , new NextDstChangeServiceMockCallback.Builder<>()
+                , null)
+                .addCurrentTime(new CurrentTime(new byte[]{6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .addTimeWithDst(new TimeWithDst(new byte[]{1, 2, 3, 4, 5, 6, 7, 8}))
+                .build();
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

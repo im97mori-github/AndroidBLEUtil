@@ -75,6 +75,7 @@ public class HipCircumferenceAndroid extends HipCircumference implements Parcela
      * @param in Parcel
      */
     private HipCircumferenceAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

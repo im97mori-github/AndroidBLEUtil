@@ -79,6 +79,7 @@ public class FitnessMachineControlPointAndroid extends FitnessMachineControlPoin
      * @param in Parcel
      */
     private FitnessMachineControlPointAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

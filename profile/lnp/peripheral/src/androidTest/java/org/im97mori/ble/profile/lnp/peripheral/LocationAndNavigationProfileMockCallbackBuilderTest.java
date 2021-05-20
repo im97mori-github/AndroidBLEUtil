@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -1127,6 +1128,54 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         }
 
         assertNull(exception);
+    }
+
+    @Test
+    public void test_build_00001() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new LocationAndNavigationServiceMockCallback.Builder<>()
+                    , new DeviceInformationServiceMockCallback.Builder<>()
+                    , new BatteryServiceMockCallback.Builder<>())
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no LN Feature data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00002() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new LocationAndNavigationServiceMockCallback.Builder<>()
+                    , new DeviceInformationServiceMockCallback.Builder<>()
+                    , new BatteryServiceMockCallback.Builder<>())
+                    .addLNFeature(new LNFeature(new byte[4]))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Location and Speed data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00003() {
+        LocationAndNavigationProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new LocationAndNavigationServiceMockCallback.Builder<>()
+                , new DeviceInformationServiceMockCallback.Builder<>()
+                , new BatteryServiceMockCallback.Builder<>())
+                .addLNFeature(new LNFeature(new byte[4]))
+                .addLocationAndSpeed(new LocationAndSpeed(new byte[2]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .build();
+
+        assertNotNull(callback);
     }
 
 }

@@ -91,6 +91,7 @@ public class RowerDataPacketAndroid extends RowerDataPacket implements Parcelabl
      * @param in Parcel
      */
     private RowerDataPacketAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

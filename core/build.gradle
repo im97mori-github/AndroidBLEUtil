@@ -18,7 +18,6 @@ android {
         versionCode VERSION_CODE
         versionName VERSION_NAME
 
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,9 +30,9 @@ android {
 
 dependencies {
     api BASE_MODULE
+    api stackLog
     api androidxAnnotation
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

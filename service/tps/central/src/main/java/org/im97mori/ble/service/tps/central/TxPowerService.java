@@ -78,6 +78,7 @@ public class TxPowerService extends AbstractCentralService {
      * @see TxPowerServiceCallback#onTxPowerLevelReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see TxPowerServiceCallback#onTxPowerLevelReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
+    @Nullable
     public synchronized Integer getTxPowerLevel() {
         Integer taskId = null;
         if (isStarted()) {

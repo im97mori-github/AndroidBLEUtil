@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Random;
@@ -26,13 +26,23 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class WriteCharacteristicTaskTest {
+public class WriteCharacteristicTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
-        WriteCharacteristicTask task = new WriteCharacteristicTask(null, null, null, serviceUUID, null, characteristicUUID, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null);
+        WriteCharacteristicTask task = new WriteCharacteristicTask(null
+                , null
+                , null
+                , serviceUUID
+                , null
+                , characteristicUUID
+                , null
+                , null
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask.TIMEOUT_MILLIS
+                , null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
@@ -118,7 +128,7 @@ public class WriteCharacteristicTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            WriteCharacteristicTask task = new WriteCharacteristicTask(new MockBLEConnection(), null, mockTaskHandler, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            WriteCharacteristicTask task = new WriteCharacteristicTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -130,10 +140,8 @@ public class WriteCharacteristicTaskTest {
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
-            mockBleConnection.start();
 
             BaseBLECallback callback = new BaseBLECallback() {
 
@@ -142,7 +150,7 @@ public class WriteCharacteristicTaskTest {
                     result.set(true);
                 }
             };
-            mockBleConnection.attach(callback);
+            MOCK_BLE_CONNECTION.attach(callback);
 
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
@@ -151,7 +159,7 @@ public class WriteCharacteristicTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            WriteCharacteristicTask task = new WriteCharacteristicTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            WriteCharacteristicTask task = new WriteCharacteristicTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -159,7 +167,6 @@ public class WriteCharacteristicTaskTest {
             if (looper != null) {
                 looper.quit();
             }
-            mockBleConnection.quit();
         }
     }
 

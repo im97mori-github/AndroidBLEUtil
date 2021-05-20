@@ -58,12 +58,6 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     protected AdvertisingDataParser mAdvertisingDataParser;
 
     /**
-     * constructor
-     */
-    public AbstractFilteredCallbackBuilder() {
-    }
-
-    /**
      * @param filter filter
      * @return myself
      */

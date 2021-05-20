@@ -73,7 +73,7 @@ public class DisCentralSampleActivity extends BaseActivity implements View.OnCli
         mDisCallbackSample = new DisCallbackSample.Builder(this).build();
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
-        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<>()) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -252,14 +252,11 @@ public class DisCentralSampleActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onCallbacked(final Pair<String, String> log) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.add(log);
-                mListView.smoothScrollToPosition(mAdapter.getCount());
+        runOnUiThread(() -> {
+            mAdapter.add(log);
+            mListView.smoothScrollToPosition(mAdapter.getCount());
 
-                updateLayout();
-            }
+            updateLayout();
         });
     }
 
@@ -300,58 +297,55 @@ public class DisCentralSampleActivity extends BaseActivity implements View.OnCli
     private void parse(@NonNull final ScanResult scanResult) {
         BLELogUtils.stackLog(scanResult);
         if (scanResult.getScanRecord() != null) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        if (mFilteredScanCallback != null) {
-                            mBluetoothLeScanner.stopScan(DisCentralSampleActivity.this.mFilteredScanCallback);
-                            mFilteredScanCallback = null;
-                            BluetoothDevice device = scanResult.getDevice();
-                            if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
-                                BLEConnection bleConnection = BLEConnectionHolder.getInstance(device);
-                                if (bleConnection == null) {
-                                    bleConnection = new BLEConnection(DisCentralSampleActivity.this, device, null);
-                                    BLEConnectionHolder.addInstance(bleConnection, true);
-                                    DisCentralSampleActivity.this.mDeviceInformationService = new DeviceInformationService(bleConnection, DisCentralSampleActivity.this.mDisCallbackSample, DisCentralSampleActivity.this.mDisCallbackSample);
-                                }
-                                DisCentralSampleActivity.this.mDeviceInformationService.start();
-                            } else {
-                                DisCentralSampleActivity.this.mReceiver = new BroadcastReceiver() {
-                                    @Override
-                                    public void onReceive(Context context, Intent intent) {
-                                        try {
-                                            String action = intent.getAction();
-                                            BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
-                                            if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
-                                                int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
-                                                if (BluetoothDevice.BOND_BONDED == state) {
-                                                    DisCentralSampleActivity.this.getPreferences(Context.MODE_PRIVATE).edit().putString(KEY_LATEST_DEVICE, scanResult.getDevice().getAddress()).apply();
-                                                    BLEConnection bleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
-                                                    if (bleConnection == null) {
-                                                        bleConnection = new BLEConnection(DisCentralSampleActivity.this, scanResult.getDevice(), null);
-                                                        BLEConnectionHolder.addInstance(bleConnection, true);
-                                                        DisCentralSampleActivity.this.mDeviceInformationService = new DeviceInformationService(bleConnection, DisCentralSampleActivity.this.mDisCallbackSample, DisCentralSampleActivity.this.mDisCallbackSample);
-                                                    }
-                                                    DisCentralSampleActivity.this.mDeviceInformationService.start();
-                                                    DisCentralSampleActivity.this.unregisterReceiver(DisCentralSampleActivity.this.mReceiver);
-                                                    DisCentralSampleActivity.this.mReceiver = null;
-                                                }
-                                            }
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-
-                                    }
-                                };
-                                IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-                                DisCentralSampleActivity.this.registerReceiver(DisCentralSampleActivity.this.mReceiver, intentFilter);
-                                device.createBond();
+            runOnUiThread(() -> {
+                try {
+                    if (mFilteredScanCallback != null) {
+                        mBluetoothLeScanner.stopScan(DisCentralSampleActivity.this.mFilteredScanCallback);
+                        mFilteredScanCallback = null;
+                        BluetoothDevice device = scanResult.getDevice();
+                        if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
+                            BLEConnection bleConnection = BLEConnectionHolder.getInstance(device);
+                            if (bleConnection == null) {
+                                bleConnection = new BLEConnection(DisCentralSampleActivity.this, device, null);
+                                BLEConnectionHolder.addInstance(bleConnection, true);
+                                DisCentralSampleActivity.this.mDeviceInformationService = new DeviceInformationService(bleConnection, DisCentralSampleActivity.this.mDisCallbackSample, DisCentralSampleActivity.this.mDisCallbackSample);
                             }
+                            DisCentralSampleActivity.this.mDeviceInformationService.start();
+                        } else {
+                            DisCentralSampleActivity.this.mReceiver = new BroadcastReceiver() {
+                                @Override
+                                public void onReceive(Context context, Intent intent) {
+                                    try {
+                                        String action = intent.getAction();
+                                        BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
+                                        if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
+                                            int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
+                                            if (BluetoothDevice.BOND_BONDED == state) {
+                                                DisCentralSampleActivity.this.getPreferences(Context.MODE_PRIVATE).edit().putString(KEY_LATEST_DEVICE, scanResult.getDevice().getAddress()).apply();
+                                                BLEConnection bleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
+                                                if (bleConnection == null) {
+                                                    bleConnection = new BLEConnection(DisCentralSampleActivity.this, scanResult.getDevice(), null);
+                                                    BLEConnectionHolder.addInstance(bleConnection, true);
+                                                    DisCentralSampleActivity.this.mDeviceInformationService = new DeviceInformationService(bleConnection, DisCentralSampleActivity.this.mDisCallbackSample, DisCentralSampleActivity.this.mDisCallbackSample);
+                                                }
+                                                DisCentralSampleActivity.this.mDeviceInformationService.start();
+                                                DisCentralSampleActivity.this.unregisterReceiver(DisCentralSampleActivity.this.mReceiver);
+                                                DisCentralSampleActivity.this.mReceiver = null;
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            };
+                            IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
+                            DisCentralSampleActivity.this.registerReceiver(DisCentralSampleActivity.this.mReceiver, intentFilter);
+                            device.createBond();
                         }
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
         }

@@ -75,6 +75,7 @@ public class MeasurementIntervalAndroid extends MeasurementInterval implements P
      * @param in Parcel
      */
     private MeasurementIntervalAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

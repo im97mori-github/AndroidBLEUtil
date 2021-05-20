@@ -69,6 +69,7 @@ public class UniformRsourceIdentifierAndroid extends UniformRsourceIdentifier im
      * @param in Parcel
      */
     private UniformRsourceIdentifierAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

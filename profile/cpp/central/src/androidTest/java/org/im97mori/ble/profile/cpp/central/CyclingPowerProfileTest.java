@@ -1,9 +1,5 @@
 package org.im97mori.ble.profile.cpp.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
@@ -11,35 +7,47 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a66.CyclingPowerControlPoint;
 import org.im97mori.ble.profile.cpp.central.db.CyclingPowerProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.bas.central.BatteryService;
 import org.im97mori.ble.service.cps.central.CyclingPowerService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BATTERY_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CYCLING_POWER_VECTOR_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.BATTERY_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.CYCLING_POWER_SERVICE;
+import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class CyclingPowerProfileTest {
+public class CyclingPowerProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findCyclingPowerProfileDevices_00001() {
@@ -74,13 +82,33 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_hasDeviceInformationService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(cyclingPowerProfile.hasDeviceInformationService());
+        cyclingPowerProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00003() {
+        CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = cyclingPowerProfile.hasDeviceInformationService();
+        cyclingPowerProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        cyclingPowerProfile.mDeviceInformationService = new DeviceInformationService(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), cyclingPowerProfile.mCyclingPowerProfileCallback, null);
-        assertNotNull(cyclingPowerProfile.hasDeviceInformationService());
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        cyclingPowerProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = cyclingPowerProfile.hasDeviceInformationService();
+        cyclingPowerProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -91,13 +119,33 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_hasBatteryService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(cyclingPowerProfile.hasBatteryService());
+        cyclingPowerProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasBatteryService_00003() {
+        CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = cyclingPowerProfile.hasBatteryService();
+        cyclingPowerProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasBatteryService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        cyclingPowerProfile.mBatteryService = new BatteryService(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), cyclingPowerProfile.mCyclingPowerProfileCallback, null);
-        assertNotNull(cyclingPowerProfile.hasBatteryService());
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        cyclingPowerProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = cyclingPowerProfile.hasBatteryService();
+        cyclingPowerProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -108,12 +156,9 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_isCyclingPowerControlPointCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.isCyclingPowerControlPointCharacteristicSupported());
         cyclingPowerProfile.disconnect();
     }
@@ -126,12 +171,9 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_isCyclingPowerVectorCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.isCyclingPowerVectorCharacteristicSupported());
         cyclingPowerProfile.disconnect();
     }
@@ -144,43 +186,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getCyclingPowerFeature_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getCyclingPowerFeature() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getCyclingPowerFeature());
         cyclingPowerProfile.disconnect();
     }
@@ -193,43 +212,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getCyclingPowerMeasurementClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getCyclingPowerMeasurementClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getCyclingPowerMeasurementClientCharacteristicConfiguration());
         cyclingPowerProfile.disconnect();
     }
@@ -242,43 +238,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_startCyclingPowerMeasurementNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer startCyclingPowerMeasurementNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.startCyclingPowerMeasurementNotification());
         cyclingPowerProfile.disconnect();
     }
@@ -291,43 +264,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_stopCyclingPowerMeasurementNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopCyclingPowerMeasurementNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.stopCyclingPowerMeasurementNotification());
         cyclingPowerProfile.disconnect();
     }
@@ -340,43 +290,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getSensorLocation_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public synchronized boolean isStarted() {
-                            return true;
+                        public synchronized Integer getSensorLocation() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getSensorLocation());
         cyclingPowerProfile.disconnect();
     }
@@ -385,55 +312,30 @@ public class CyclingPowerProfileTest {
     @Test
     public void test_setCyclingPowerControlPoint_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        assertNull(cyclingPowerProfile.setCyclingPowerControlPoint(new CyclingPowerControlPoint(new byte[]{CyclingPowerControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, 0, 0, 0, 0})));
+        assertNull(cyclingPowerProfile.setCyclingPowerControlPoint(new CyclingPowerControlPoint(new byte[]{
+                CyclingPowerControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, 0, 0, 0, 0})));
     }
 
     @Test
     public void test_setCyclingPowerControlPoint_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
+
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setCyclingPowerControlPoint(@NonNull CyclingPowerControlPoint cyclingPowerControlPoint) {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.mCyclingPowerService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        assertNotNull(cyclingPowerProfile.setCyclingPowerControlPoint(new CyclingPowerControlPoint(new byte[]{CyclingPowerControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, 0, 0, 0, 0})));
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+
+        assertNotNull(cyclingPowerProfile.setCyclingPowerControlPoint(new CyclingPowerControlPoint(new byte[]{
+                CyclingPowerControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, 0, 0, 0, 0})));
         cyclingPowerProfile.disconnect();
     }
 
@@ -445,54 +347,21 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getCyclingPowerControlPointClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isCyclingPowerControlPointCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getCyclingPowerControlPointClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.mCyclingPowerService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+
         assertNotNull(cyclingPowerProfile.getCyclingPowerControlPointClientCharacteristicConfiguration());
         cyclingPowerProfile.disconnect();
     }
@@ -505,49 +374,21 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_startCyclingPowerControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startCyclingPowerControlPointIndication() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.mCyclingPowerService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+
         assertNotNull(cyclingPowerProfile.startCyclingPowerControlPointIndication());
         cyclingPowerProfile.disconnect();
     }
@@ -560,49 +401,21 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_stopCyclingPowerControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopCyclingPowerControlPointIndication() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.mCyclingPowerService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+
         assertNotNull(cyclingPowerProfile.stopCyclingPowerControlPointIndication());
         cyclingPowerProfile.disconnect();
     }
@@ -615,54 +428,21 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getCyclingPowerVectorClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_VECTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isCyclingPowerControlPointCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getCyclingPowerVectorClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.mCyclingPowerService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+
         assertNotNull(cyclingPowerProfile.getCyclingPowerVectorClientCharacteristicConfiguration());
         cyclingPowerProfile.disconnect();
     }
@@ -675,49 +455,21 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_startCyclingPowerVectorNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_VECTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startCyclingPowerVectorNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.mCyclingPowerService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+
         assertNotNull(cyclingPowerProfile.startCyclingPowerVectorNotification());
         cyclingPowerProfile.disconnect();
     }
@@ -730,49 +482,21 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_stopCyclingPowerVectorNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_VECTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopCyclingPowerVectorNotification() {
+                            return 1;
                         }
                     };
                 }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.mCyclingPowerService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+
         assertNotNull(cyclingPowerProfile.stopCyclingPowerVectorNotification());
         cyclingPowerProfile.disconnect();
     }
@@ -785,12 +509,9 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_hasManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.hasManufacturerNameString());
         cyclingPowerProfile.disconnect();
     }
@@ -803,12 +524,9 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_hasModelNumberString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.hasModelNumberString());
         cyclingPowerProfile.disconnect();
     }
@@ -821,50 +539,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getManufacturerNameString() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasManufacturerNameString() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getManufacturerNameString());
         cyclingPowerProfile.disconnect();
     }
@@ -877,49 +565,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getModelNumberString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public synchronized boolean hasModelNumberString() {
-                            return true;
+                        public synchronized Integer getModelNumberString() {
+                            return 1;
                         }
                     };
                 }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getModelNumberString());
         cyclingPowerProfile.disconnect();
     }
@@ -932,44 +591,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getBatteryLevelCount_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCount() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(BATTERY_SERVICE, 0)), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getBatteryLevelCount());
         cyclingPowerProfile.disconnect();
     }
@@ -982,48 +617,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getBatteryLevel_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, 0, 0));
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevel(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getBatteryLevel());
         cyclingPowerProfile.disconnect();
     }
@@ -1036,48 +643,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getBatteryLevel_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, 0, 0));
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevel(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getBatteryLevel(0));
         cyclingPowerProfile.disconnect();
     }
@@ -1090,48 +669,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_isBatteryLevelNotificatable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isBatteryLevelNotificatable(int index) {
                             return true;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.isBatteryLevelNotificatable());
         cyclingPowerProfile.disconnect();
     }
@@ -1144,48 +695,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_isBatteryLevelNotificatable_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isBatteryLevelNotificatable(int index) {
                             return true;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.isBatteryLevelNotificatable(0));
         cyclingPowerProfile.disconnect();
     }
@@ -1198,50 +721,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getBatteryLevelCharacteristicPresentationFormat_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getBatteryLevelCharacteristicPresentationFormat());
         cyclingPowerProfile.disconnect();
     }
@@ -1254,51 +747,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getBatteryLevelCharacteristicPresentationFormat_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getBatteryLevelCharacteristicPresentationFormat(0));
         cyclingPowerProfile.disconnect();
     }
@@ -1311,50 +773,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getBatteryLevelClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getBatteryLevelClientCharacteristicConfiguration());
         cyclingPowerProfile.disconnect();
     }
@@ -1367,51 +799,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_getBatteryLevelClientCharacteristicConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.getBatteryLevelClientCharacteristicConfiguration(0));
         cyclingPowerProfile.disconnect();
     }
@@ -1424,50 +825,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_startBatteryLevelNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startBatteryLevelNotification(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.startBatteryLevelNotification());
         cyclingPowerProfile.disconnect();
     }
@@ -1480,50 +851,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_startBatteryLevelNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startBatteryLevelNotification(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.startBatteryLevelNotification(0));
         cyclingPowerProfile.disconnect();
     }
@@ -1536,50 +877,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_stopBatteryLevelNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopBatteryLevelNotification(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.stopBatteryLevelNotification());
         cyclingPowerProfile.disconnect();
     }
@@ -1592,50 +903,20 @@ public class CyclingPowerProfileTest {
 
     @Test
     public void test_stopBatteryLevelNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mCyclingPowerService == null) {
-                    mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mCyclingPowerProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopBatteryLevelNotification(int index) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        cyclingPowerProfile.connect(MOCK_DEVICE);
-        cyclingPowerProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        cyclingPowerProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.stopBatteryLevelNotification(0));
         cyclingPowerProfile.disconnect();
     }
@@ -1656,23 +937,18 @@ public class CyclingPowerProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(cyclingPowerProfile.mCyclingPowerService);
         assertNotNull(cyclingPowerProfile.mDeviceInformationService);
         assertNotNull(cyclingPowerProfile.mBatteryService);
         assertTrue(atomicBoolean.get());
+        cyclingPowerProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        cyclingPowerProfile.connect(MOCK_DEVICE);
+        cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         cyclingPowerProfile.quit();
         assertNull(cyclingPowerProfile.mCyclingPowerService);
         assertNull(cyclingPowerProfile.mDeviceInformationService);

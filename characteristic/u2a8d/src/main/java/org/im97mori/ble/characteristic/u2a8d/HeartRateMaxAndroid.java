@@ -75,6 +75,7 @@ public class HeartRateMaxAndroid extends HeartRateMax implements Parcelable {
      * @param in Parcel
      */
     private HeartRateMaxAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

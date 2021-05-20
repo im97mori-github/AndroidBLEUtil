@@ -96,6 +96,7 @@ public class SupportedNewAlertCategoryAndroid extends SupportedNewAlertCategory 
      * @param in Parcel
      */
     private SupportedNewAlertCategoryAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

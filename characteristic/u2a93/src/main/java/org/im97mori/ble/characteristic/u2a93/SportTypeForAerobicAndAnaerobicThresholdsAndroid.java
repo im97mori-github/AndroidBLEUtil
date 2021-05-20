@@ -76,6 +76,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroid extends SportTypeF
      * @param in Parcel
      */
     private SportTypeForAerobicAndAnaerobicThresholdsAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -66,6 +66,7 @@ public class AppearanceAndroid extends Appearance implements Parcelable {
      * @param in Parcel
      */
     private AppearanceAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -75,6 +75,7 @@ public class VO2MaxAndroid extends VO2Max implements Parcelable {
      * @param in Parcel
      */
     private VO2MaxAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -23,6 +23,7 @@ import java.util.UUID;
 /**
  * Health Thermometer Service (Service UUID: 0x1809) callback
  */
+@SuppressWarnings("unused")
 public interface HealthThermometerServiceCallback {
 
     /**

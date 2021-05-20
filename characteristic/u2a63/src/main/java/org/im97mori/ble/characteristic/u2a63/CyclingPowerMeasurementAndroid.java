@@ -90,6 +90,7 @@ public class CyclingPowerMeasurementAndroid extends CyclingPowerMeasurement impl
      * @param in Parcel
      */
     private CyclingPowerMeasurementAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

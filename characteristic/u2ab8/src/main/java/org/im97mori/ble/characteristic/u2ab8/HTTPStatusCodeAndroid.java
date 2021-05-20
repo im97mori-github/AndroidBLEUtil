@@ -76,6 +76,7 @@ public class HTTPStatusCodeAndroid extends HTTPStatusCode implements Parcelable 
      * @param in Parcel
      */
     private HTTPStatusCodeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

@@ -28,10 +28,9 @@ android {
 }
 
 dependencies {
-    api "org.im97mori:stacklog:$stacklogVersionName"
     api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
     api apiHandler
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestCentral
 }
 
 task sourcesJar(type: Jar) {

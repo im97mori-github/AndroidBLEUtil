@@ -12,6 +12,7 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroi
 
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 class MockScanParametersServiceCallback implements ScanParametersServiceCallback {
 
     @Override

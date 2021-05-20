@@ -75,6 +75,7 @@ public class SoftwareRevisionStringAndroid extends SoftwareRevisionString implem
      * @param in Parcel
      */
     private SoftwareRevisionStringAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

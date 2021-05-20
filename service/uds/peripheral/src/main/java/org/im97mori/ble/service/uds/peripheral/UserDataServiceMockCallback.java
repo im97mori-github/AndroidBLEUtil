@@ -364,7 +364,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mFirstNameCharacteristicData = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -422,7 +422,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mLastNameCharacteristicData = new UDSCharacteristicData(LAST_NAME_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -480,7 +480,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mEmailAddressCharacteristicData = new UDSCharacteristicData(EMAIL_ADDRESS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -538,7 +538,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mAgeCharacteristicData = new UDSCharacteristicData(AGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -596,7 +596,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mDateOfBirthCharacteristicData = new UDSCharacteristicData(DATE_OF_BIRTH_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -654,7 +654,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mGenderCharacteristicData = new UDSCharacteristicData(GENDER_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -712,7 +712,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mWeightCharacteristicData = new UDSCharacteristicData(WEIGHT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -770,7 +770,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mHeightCharacteristicData = new UDSCharacteristicData(HEIGHT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -828,7 +828,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mVO2MaxCharacteristicData = new UDSCharacteristicData(VO2_MAX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -886,7 +886,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mHeartRateMaxCharacteristicData = new UDSCharacteristicData(HEART_RATE_MAX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -944,7 +944,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mRestingHeartRateCharacteristicData = new UDSCharacteristicData(RESTING_HEART_RATE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1002,7 +1002,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mMaximumRecommendedHeartRateCharacteristicData = new UDSCharacteristicData(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1060,7 +1060,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mAerobicThresholdCharacteristicData = new UDSCharacteristicData(AEROBIC_THRESHOLD_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1118,7 +1118,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mAnaerobicThresholdCharacteristicData = new UDSCharacteristicData(ANAEROBIC_THRESHOLD_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1176,7 +1176,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mSportTypeForAerobicAndAnaerobicThresholdsCharacteristicData = new UDSCharacteristicData(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1234,7 +1234,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mDateOfThresholdAssessmentCharacteristicData = new UDSCharacteristicData(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1292,7 +1292,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mWaistCircumferenceCharacteristicData = new UDSCharacteristicData(WAIST_CIRCUMFERENCE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1350,7 +1350,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mHipCircumferenceCharacteristicData = new UDSCharacteristicData(HIP_CIRCUMFERENCE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1408,7 +1408,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mFatBurnHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1466,7 +1466,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mFatBurnHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1524,7 +1524,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mAerobicHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1582,7 +1582,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mAerobicHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1640,7 +1640,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mAnaerobicHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1698,7 +1698,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mAnaerobicHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1756,7 +1756,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mFiveZoneHeartRateLimitsCharacteristicData = new UDSCharacteristicData(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1814,7 +1814,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mThreeZoneHeartRateLimitsCharacteristicData = new UDSCharacteristicData(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1872,7 +1872,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mTwoZoneHeartRateLimitCharacteristicData = new UDSCharacteristicData(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -1930,7 +1930,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mLanguageCharacteristicData = new UDSCharacteristicData(LANGUAGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -2020,7 +2020,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             mUserIndexCharacteristicData = new CharacteristicData(USER_INDEX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , new byte[0] // variable
@@ -2336,17 +2336,17 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
     /**
      * key:user index, value:consent
      */
-    protected final Map<Integer, Integer> mUserMap = Collections.synchronizedMap(new HashMap<Integer, Integer>());
+    protected final Map<Integer, Integer> mUserMap = Collections.synchronizedMap(new HashMap<>());
 
     /**
      * key:bluetooth device, value:user index
      */
-    protected final Map<BluetoothDevice, Integer> mCurrentUserMap = Collections.synchronizedMap(new HashMap<BluetoothDevice, Integer>());
+    protected final Map<BluetoothDevice, Integer> mCurrentUserMap = Collections.synchronizedMap(new HashMap<>());
 
     /**
      * key:user index, value:database change increment
      */
-    protected final Map<Integer, Long> mCurrentDatabaseChangeIncrementMap = Collections.synchronizedMap(new HashMap<Integer, Long>());
+    protected final Map<Integer, Long> mCurrentDatabaseChangeIncrementMap = Collections.synchronizedMap(new HashMap<>());
 
     /**
      * current registered user(list all users) indication data

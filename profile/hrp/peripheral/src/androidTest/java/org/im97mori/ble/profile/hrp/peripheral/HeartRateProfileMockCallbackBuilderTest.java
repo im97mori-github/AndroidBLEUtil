@@ -464,17 +464,12 @@ public class HeartRateProfileMockCallbackBuilderTest {
         final byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
-        Exception exception = null;
-        try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new HeartRateServiceMockCallback.Builder<>());
-            baseBuilder.addManufacturerNameString("");
-            baseBuilder.addHeartRateMeasurement(heartRateMeasurement, clientCharacteristicConfiguration);
-            baseBuilder.build();
-        } catch (Exception e) {
-            exception = e;
-        }
+        HeartRateProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new HeartRateServiceMockCallback.Builder<>())
+                .addManufacturerNameString("")
+                .addHeartRateMeasurement(heartRateMeasurement, clientCharacteristicConfiguration)
+                .build();
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

@@ -26,7 +26,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
 
     @Test
     public void test_constructor_00001() {
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -156,7 +156,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setRequestControlResultCode_00001() {
         int firstRequestControlResultCode = 2;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , firstRequestControlResultCode
                 , 3
@@ -191,7 +191,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setResetResultCode_00001() {
         int firstResetResultCode = 3;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , firstResetResultCode
@@ -226,7 +226,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetSpeedResultCode_00001() {
         int firstSetTargetSpeedResultCode = 4;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -261,7 +261,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetInclinationResultCode_00001() {
         int firstSetTargetInclinationResultCode = 55;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -296,7 +296,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetResistanceLevelResultCode_00001() {
         int firstSetTargetResistanceLevelResultCode = 66;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -331,7 +331,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetPowerResultCode_00001() {
         int firstSetTargetPowerResultCode = 7;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -366,7 +366,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetHeartRateResultCode_00001() {
         int firstSetTargetHeartRateResultCode = 8;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -401,7 +401,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setStartOrResumeResultCode_00001() {
         int firstStartOrResumeResultCode = 9;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -436,7 +436,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setStopOrPauseResultCode_00001() {
         int firstStopOrPauseResultCode = 10;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -471,7 +471,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedExpendedEnergyResultCode_00001() {
         int firstSetTargetedExpendedEnergyResultCode = 11;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -506,7 +506,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedNumberOfStepsResultCode_00001() {
         int firstSetTargetedNumberOfStepsResultCode = 12;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -541,7 +541,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedNumberOfStridesResultCode_00001() {
         int firstSetTargetedNumberOfStridesResultCode = 13;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -576,7 +576,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedDistanceResultCode_00001() {
         int firstSetTargetedDistanceResultCode = 14;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -611,7 +611,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedTrainingTimeResultCode_00001() {
         int firstSetTargetedTrainingTimeResultCode = 15;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -646,7 +646,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedTimeInTwoHeartRateZonesResultCode_00001() {
         int firstSetTargetedTimeInTwoHeartRateZonesResultCode = 16;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -681,7 +681,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedTimeInThreeHeartRateZonesResultCode_00001() {
         int firstSetTargetedTimeInThreeHeartRateZonesResultCode = 17;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -716,7 +716,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedTimeInFiveHeartRateZonesResultCode_00001() {
         int firstSetTargetedTimeInFiveHeartRateZonesResultCode = 18;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -751,7 +751,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetIndoorBikeSimulationParametersResultCode_00001() {
         int firstSetIndoorBikeSimulationParametersResultCode = 19;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -786,7 +786,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetWheelCircumferenceResultCode_00001() {
         int firstSetWheelCircumferenceResultCode = 20;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -821,7 +821,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSpinDownControlResultCode_00001() {
         int firstSpinDownControlResultCode = 21;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -856,7 +856,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSpinDownControlResultParameter_00001() {
         byte[] firstSpinDownControlResultParameter = new byte[]{22};
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3
@@ -891,7 +891,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
     @Test
     public void test_setSetTargetedCadenceResultCode_00001() {
         int firstSetTargetedCadenceResultCode = 23;
-        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(new ArrayList<>()
                 , 1
                 , 2
                 , 3

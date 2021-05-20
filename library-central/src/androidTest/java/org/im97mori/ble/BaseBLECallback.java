@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BaseBLECallback implements BLECallback {
 
-    public AtomicBoolean result = new AtomicBoolean(false);
+    public final AtomicBoolean result = new AtomicBoolean(false);
 
     @Override
     public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {

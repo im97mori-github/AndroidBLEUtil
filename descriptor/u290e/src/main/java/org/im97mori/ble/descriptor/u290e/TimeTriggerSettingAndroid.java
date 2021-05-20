@@ -76,6 +76,7 @@ public class TimeTriggerSettingAndroid extends TimeTriggerSetting implements Par
      * @param in Parcel
      */
     private TimeTriggerSettingAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

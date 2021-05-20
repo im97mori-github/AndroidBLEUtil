@@ -20,6 +20,7 @@ public class BLELogUtils {
     /**
      * enable verbose mode
      */
+    @SuppressWarnings("unused")
     public static void verbose() {
         VERBOSE = true;
     }

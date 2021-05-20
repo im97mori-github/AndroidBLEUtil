@@ -10,13 +10,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockBLEServerConnection;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class BaseMockCallbackTest {
+public class BaseMockCallbackTest extends AbstractPeripherallTest {
 
     static class BaseMockCallbackInner extends BaseMockCallback {
         /**
@@ -118,20 +117,15 @@ public class BaseMockCallbackTest {
         int serviceType1 = 1;
         ServiceData serviceData1 = new ServiceData(serviceUUID1
                 , serviceType1
-                , new ArrayList<CharacteristicData>());
+                , new ArrayList<>());
         MockData mockData1 = new MockData(Collections.singletonList(serviceData1));
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return 0;
-            }
-        };
+
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(mockData1, true);
-        baseMockCallback.setup(mockBLEServerConnection);
+        baseMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
 
         assertEquals(1, bluetoothGattServiceList.size());
         BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
@@ -146,27 +140,22 @@ public class BaseMockCallbackTest {
         int serviceType1 = 1;
         ServiceData serviceData1 = new ServiceData(serviceUUID1
                 , serviceType1
-                , new ArrayList<CharacteristicData>());
+                , new ArrayList<>());
         MockData mockData1 = new MockData(Collections.singletonList(serviceData1));
 
         UUID serviceUUID2 = UUID.randomUUID();
         int serviceType2 = 2;
         ServiceData serviceData2 = new ServiceData(serviceUUID2
                 , serviceType2
-                , new ArrayList<CharacteristicData>());
+                , new ArrayList<>());
         MockData mockData2 = new MockData(Collections.singletonList(serviceData2));
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return 0;
-            }
-        };
+
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(Arrays.asList(mockData1, mockData2), true);
-        baseMockCallback.setup(mockBLEServerConnection);
+        baseMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
 
         assertEquals(2, bluetoothGattServiceList.size());
         BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
@@ -195,13 +184,8 @@ public class BaseMockCallbackTest {
         byte[] descriptorDataArray = new byte[]{11};
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-            @Override
-            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return 0;
-            }
-        };
+
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         DescriptorData descriptorData = new DescriptorData(descriptorUUID
                 , descriptorPermission
@@ -221,7 +205,7 @@ public class BaseMockCallbackTest {
                 , Collections.singletonList(characteristicData));
         MockData mockData = new MockData(Collections.singletonList(serviceData));
         BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(mockData, true);
-        baseMockCallback.setup(mockBLEServerConnection);
+        baseMockCallback.setup(MOCK_BLE_SERVER_CONNECTION);
 
         assertEquals(1, bluetoothGattServiceList.size());
         BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
@@ -256,14 +240,7 @@ public class BaseMockCallbackTest {
         byte[] descriptorDataArray = new byte[]{11};
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
-
-            @Override
-            public synchronized Integer createRemoveServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
-                bluetoothGattServiceList.add(bluetoothGattService);
-                return super.createRemoveServiceTask(bluetoothGattService, timeout, argument, bleServerCallback);
-            }
-        };
+        MOCK_BLE_SERVER_CONNECTION.setCreateRemoveServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
 
         DescriptorData descriptorData = new DescriptorData(descriptorUUID
                 , descriptorPermission
@@ -292,8 +269,8 @@ public class BaseMockCallbackTest {
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
         BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(mockData, true);
-        assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
-        baseMockCallback.tearDown(mockBLEServerConnection);
+        assertTrue(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
+        baseMockCallback.tearDown(MOCK_BLE_SERVER_CONNECTION);
         assertEquals(1, bluetoothGattServiceList.size());
         assertEquals(bluetoothGattService, bluetoothGattServiceList.get(0));
     }
@@ -315,8 +292,6 @@ public class BaseMockCallbackTest {
         long descriptorDelay = 10;
         byte[] descriptorDataArray = new byte[]{11};
 
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection();
-
         DescriptorData descriptorData = new DescriptorData(descriptorUUID
                 , descriptorPermission
                 , descriptorResponseCode
@@ -344,7 +319,7 @@ public class BaseMockCallbackTest {
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
         BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(mockData, true);
-        assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
+        assertTrue(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
     }
 
     @Test
@@ -364,8 +339,6 @@ public class BaseMockCallbackTest {
         long descriptorDelay = 10;
         byte[] descriptorDataArray = new byte[]{11};
 
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection();
-
         DescriptorData descriptorData = new DescriptorData(descriptorUUID
                 , descriptorPermission
                 , descriptorResponseCode
@@ -393,8 +366,8 @@ public class BaseMockCallbackTest {
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
         BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(mockData, true);
-        assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
-        assertFalse(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
+        assertTrue(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
+        assertFalse(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
     }
 
     @Test
@@ -406,21 +379,11 @@ public class BaseMockCallbackTest {
         int characteristicPermission = 3;
         UUID descriptorUUID = UUID.randomUUID();
         int descriptorPermission = 8;
-        int descriptorResponseCode = 9;
-        long descriptorDelay = 10;
-        byte[] descriptorDataArray = new byte[]{11};
 
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection();
-
-        DescriptorData descriptorData = new DescriptorData(descriptorUUID
-                , descriptorPermission
-                , descriptorResponseCode
-                , descriptorDelay
-                , descriptorDataArray);
         ServiceData serviceData = new ServiceData(serviceUUID
                 , serviceType
-                , new ArrayList<CharacteristicData>());
-        MockData mockData = new MockData(new ArrayList<ServiceData>());
+                , new ArrayList<>());
+        MockData mockData = new MockData(new ArrayList<>());
 
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(descriptorUUID, descriptorPermission);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(characteristicUUID, characteristicProperty, characteristicPermission);
@@ -431,7 +394,7 @@ public class BaseMockCallbackTest {
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
         BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(mockData, true);
-        assertFalse(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
+        assertFalse(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
     }
 
     @Test
@@ -451,8 +414,6 @@ public class BaseMockCallbackTest {
         long descriptorDelay = 10;
         byte[] descriptorDataArray = new byte[]{11};
 
-        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection();
-
         DescriptorData descriptorData = new DescriptorData(descriptorUUID
                 , descriptorPermission
                 , descriptorResponseCode
@@ -480,9 +441,9 @@ public class BaseMockCallbackTest {
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
         BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(mockData, true);
-        assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
-        baseMockCallback.onServiceRemoveSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle);
-        assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
+        assertTrue(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
+        baseMockCallback.onServiceRemoveSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle);
+        assertTrue(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
     }
 
     @Test

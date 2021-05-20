@@ -66,6 +66,7 @@ public class DigitalAndroid extends Digital implements Parcelable {
      * @param in Parcel
      */
     private DigitalAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

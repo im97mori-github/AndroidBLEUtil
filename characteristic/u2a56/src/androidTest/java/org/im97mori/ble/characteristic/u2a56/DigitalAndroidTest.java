@@ -9,6 +9,7 @@ import org.junit.Test;
 import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 
+@SuppressWarnings("ConstantConditions")
 public class DigitalAndroidTest {
 
     @Test

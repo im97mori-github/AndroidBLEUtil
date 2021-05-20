@@ -75,6 +75,7 @@ public class TemperatureTypeAndroid extends TemperatureType implements Parcelabl
      * @param in Parcel
      */
     private TemperatureTypeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

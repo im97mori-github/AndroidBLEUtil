@@ -100,7 +100,7 @@ public class FitnessMachineProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasUserDataService() {
         Boolean result = null;
-        if (isConnected()) {
+        if (mUserDataService != null) {
             result = mHasUserDataService;
         }
         return result;
@@ -112,7 +112,7 @@ public class FitnessMachineProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasDeviceInformationService() {
         Boolean result = null;
-        if (isConnected()) {
+        if (mDeviceInformationService != null) {
             result = mHasDeviceInformationService;
         }
         return result;

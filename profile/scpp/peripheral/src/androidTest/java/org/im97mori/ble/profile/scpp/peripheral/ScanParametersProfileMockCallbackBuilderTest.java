@@ -17,7 +17,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class ScanParametersProfileMockCallbackBuilderTest {
@@ -229,17 +228,12 @@ public class ScanParametersProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00002() {
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext()
-                    , new ScanParametersServiceMockCallback.Builder<>())
-                    .addScanIntervalWindow(new ScanIntervalWindow(0, 1))
-                    .build();
-        } catch (Exception e) {
-            exception = e;
-        }
+        ScanParametersProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new ScanParametersServiceMockCallback.Builder<>())
+                .addScanIntervalWindow(new ScanIntervalWindow(0, 1))
+                .build();
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

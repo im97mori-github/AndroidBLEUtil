@@ -8,15 +8,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformationAndroid;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformationAndroid;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTimeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -36,238 +35,216 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("UnnecessaryLocalVariable")
-public class CurrentTimeServiceTest {
+@SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
+public class CurrentTimeServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onBLEDisconnected_00001() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CURRENT_TIME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_onBLEDisconnected_00101() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onBLEDisconnected_00201() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00001() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CURRENT_TIME_CHARACTERISTIC, 0, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CURRENT_TIME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00005() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CURRENT_TIME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00101() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00102() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00103() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, 0, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00104() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00201() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00202() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00203() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, 0, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00204() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00205() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00206() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(currentTimeService.isLocalTimeInformationCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00301() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
 
         assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00302() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00303() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, 0, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00304() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
@@ -276,7 +253,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -299,7 +276,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -309,7 +286,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LOCAL_TIME_INFORMATION_CHARACTERISTIC;
@@ -332,7 +309,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -342,7 +319,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = REFERENCE_TIME_INFORMATION_CHARACTERISTIC;
@@ -365,7 +342,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -375,7 +352,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -398,7 +375,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -408,7 +385,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LOCAL_TIME_INFORMATION_CHARACTERISTIC;
@@ -431,7 +408,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -441,7 +418,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = REFERENCE_TIME_INFORMATION_CHARACTERISTIC;
@@ -464,7 +441,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -474,7 +451,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -497,7 +474,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -507,7 +484,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LOCAL_TIME_INFORMATION_CHARACTERISTIC;
@@ -530,7 +507,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -540,7 +517,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicReadTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = REFERENCE_TIME_INFORMATION_CHARACTERISTIC;
@@ -563,7 +540,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -573,7 +550,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -596,7 +573,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -606,7 +583,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LOCAL_TIME_INFORMATION_CHARACTERISTIC;
@@ -629,7 +606,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -639,7 +616,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -662,7 +639,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -672,7 +649,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LOCAL_TIME_INFORMATION_CHARACTERISTIC;
@@ -695,7 +672,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -705,7 +682,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -728,7 +705,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -738,7 +715,7 @@ public class CurrentTimeServiceTest {
     public void test_onCharacteristicWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LOCAL_TIME_INFORMATION_CHARACTERISTIC;
@@ -761,7 +738,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -771,7 +748,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -797,7 +774,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -807,7 +784,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -833,7 +810,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -843,7 +820,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -869,7 +846,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -879,7 +856,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -904,7 +881,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -914,7 +891,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -939,7 +916,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -949,7 +926,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -976,7 +953,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -986,7 +963,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -1013,7 +990,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1023,7 +1000,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -1050,7 +1027,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1060,7 +1037,7 @@ public class CurrentTimeServiceTest {
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -1087,7 +1064,7 @@ public class CurrentTimeServiceTest {
             }
 
         };
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1096,7 +1073,7 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = CURRENT_TIME_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
@@ -1118,7 +1095,7 @@ public class CurrentTimeServiceTest {
 
         };
 
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), mockCurrentTimeServiceCallback, null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, mockCurrentTimeServiceCallback, null);
         currentTimeService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertTrue(isCalled.get());
@@ -1126,98 +1103,98 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_isCurrentTimeCharacteristicWritable_00001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertFalse(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_isCurrentTimeCharacteristicWritable_00002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CURRENT_TIME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_isCurrentTimeCharacteristicWritable_00003() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CURRENT_TIME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(currentTimeService.isCurrentTimeCharacteristicWritable());
     }
 
     @Test
     public void test_isLocalTimeInformationCharacteristicSupported_00001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_isLocalTimeInformationCharacteristicSupported_00002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_isLocalTimeInformationCharacteristicSupported_00003() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_isReferenceTimeInformationCharacteristicSupported_00001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_isReferenceTimeInformationCharacteristicSupported_00002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_isReferenceTimeInformationCharacteristicSupported_00003() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+        currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        currentTimeService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
         assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
     public void test_getCurrentTime_000001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertNull(currentTimeService.getCurrentTime());
     }
 
     @Test
     public void test_getCurrentTime_000002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1232,15 +1209,8 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_getCurrentTime_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1256,7 +1226,7 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_setCurrentTime_000001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         CurrentTime currentTime = new CurrentTime(0, 1, 2, 3, 4, 5, 6, 7, 8);
 
         assertNull(currentTimeService.setCurrentTime(currentTime));
@@ -1264,7 +1234,7 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_setCurrentTime_000002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1279,7 +1249,7 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_setCurrentTime_000003() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isCurrentTimeCharacteristicWritable() {
@@ -1300,15 +1270,8 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_setCurrentTime_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isCurrentTimeCharacteristicWritable() {
@@ -1330,14 +1293,14 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_getCurrentTimeClientCharacteristicConfiguration_000001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertNull(currentTimeService.getCurrentTimeClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getCurrentTimeClientCharacteristicConfiguration_000002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1352,15 +1315,8 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_getCurrentTimeClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1376,14 +1332,14 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_startCurrentTimeNotification_000001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertNull(currentTimeService.startCurrentTimeNotification());
     }
 
     @Test
     public void test_startCurrentTimeNotification_000002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1398,15 +1354,8 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_startCurrentTimeNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1422,14 +1371,14 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_stopCurrentTimeNotification_000001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertNull(currentTimeService.stopCurrentTimeNotification());
     }
 
     @Test
     public void test_stopCurrentTimeNotification_000002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1444,15 +1393,8 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_stopCurrentTimeNotification_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1468,14 +1410,14 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_getLocalTimeInformation_000001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertNull(currentTimeService.getLocalTimeInformation());
     }
 
     @Test
     public void test_getLocalTimeInformation_000002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1489,7 +1431,7 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_getLocalTimeInformation_000003() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isLocalTimeInformationCharacteristicSupported() {
@@ -1509,15 +1451,8 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_getLocalTimeInformation_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isLocalTimeInformationCharacteristicSupported() {
@@ -1538,7 +1473,7 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_setLocalTimeInformation_000001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         assertNull(currentTimeService.setLocalTimeInformation(localTimeInformation));
@@ -1546,7 +1481,7 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_setLocalTimeInformation_000002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1561,7 +1496,7 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_setLocalTimeInformation_000003() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isLocalTimeInformationCharacteristicSupported() {
@@ -1582,15 +1517,8 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_setLocalTimeInformation_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isLocalTimeInformationCharacteristicSupported() {
@@ -1612,14 +1540,14 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_getReferenceTimeInformation_000001() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
         assertNull(currentTimeService.getReferenceTimeInformation());
     }
 
     @Test
     public void test_getReferenceTimeInformation_000002() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1633,7 +1561,7 @@ public class CurrentTimeServiceTest {
 
     @Test
     public void test_getReferenceTimeInformation_000003() {
-        CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isReferenceTimeInformationCharacteristicSupported() {
@@ -1653,15 +1581,8 @@ public class CurrentTimeServiceTest {
     @Test
     public void test_getReferenceTimeInformation_000004() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
             public boolean isReferenceTimeInformationCharacteristicSupported() {

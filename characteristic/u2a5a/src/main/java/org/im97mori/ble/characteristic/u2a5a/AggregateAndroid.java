@@ -66,6 +66,7 @@ public class AggregateAndroid extends Aggregate implements Parcelable {
      * @param in Parcel
      */
     private AggregateAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

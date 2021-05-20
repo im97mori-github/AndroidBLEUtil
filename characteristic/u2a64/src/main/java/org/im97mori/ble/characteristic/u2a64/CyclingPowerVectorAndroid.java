@@ -80,6 +80,7 @@ public class CyclingPowerVectorAndroid extends CyclingPowerVector implements Par
      * @param in Parcel
      */
     private CyclingPowerVectorAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

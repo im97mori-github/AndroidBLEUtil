@@ -22,7 +22,7 @@ public class CharacteristicDataTest {
 
     @Test
     public void test_constructor_00001() {
-        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5);
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
 
         Gson gson = new Gson();
         CharacteristicData result2 = gson.fromJson(gson.toJson(result1), CharacteristicData.class);

@@ -6,11 +6,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -28,20 +27,19 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
-public class LinkLossServiceTest {
+public class LinkLossServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -58,7 +56,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -68,14 +66,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -84,7 +81,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -94,14 +91,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -110,7 +106,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -120,14 +116,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -144,7 +139,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -154,14 +149,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -170,7 +164,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -180,14 +174,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -196,7 +189,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -206,14 +199,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -230,7 +222,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -240,14 +232,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -256,7 +247,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -266,14 +257,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -282,7 +272,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -292,14 +282,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -316,7 +305,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -326,14 +315,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -342,7 +330,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -352,14 +340,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -368,7 +355,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
@@ -378,14 +365,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -402,7 +388,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -412,14 +398,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -428,7 +413,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -438,14 +423,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -454,7 +438,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
@@ -464,14 +448,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -488,7 +471,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -498,14 +481,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_LEVEL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -514,7 +496,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -524,14 +506,13 @@ public class LinkLossServiceTest {
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = LINK_LOSS_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLinkLossServiceCallback mockLinkLossServiceCallback = new MockLinkLossServiceCallback() {
 
             @Override
@@ -540,7 +521,7 @@ public class LinkLossServiceTest {
             }
 
         };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, mockLinkLossServiceCallback, null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, mockLinkLossServiceCallback, null);
         linkLossService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
@@ -548,14 +529,14 @@ public class LinkLossServiceTest {
 
     @Test
     public void test_getAlertLevel_000001() {
-        LinkLossService linkLossService = new LinkLossService(new MockBLEConnection(), new MockLinkLossServiceCallback(), null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, new MockLinkLossServiceCallback(), null);
 
         assertNull(linkLossService.getAlertLevel());
     }
 
     @Test
     public void test_getAlertLevel_000002() {
-        LinkLossService linkLossService = new LinkLossService(new MockBLEConnection(), new MockLinkLossServiceCallback(), null) {
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, new MockLinkLossServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -570,15 +551,8 @@ public class LinkLossServiceTest {
     @Test
     public void test_getAlertLevel_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, new MockLinkLossServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, new MockLinkLossServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -594,14 +568,14 @@ public class LinkLossServiceTest {
 
     @Test
     public void test_setAlertLevel_000001() {
-        LinkLossService linkLossService = new LinkLossService(new MockBLEConnection(), new MockLinkLossServiceCallback(), null);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, new MockLinkLossServiceCallback(), null);
 
         assertNull(linkLossService.setAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT)));
     }
 
     @Test
     public void test_setAlertLevel_000002() {
-        LinkLossService linkLossService = new LinkLossService(new MockBLEConnection(), new MockLinkLossServiceCallback(), null) {
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, new MockLinkLossServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -616,15 +590,8 @@ public class LinkLossServiceTest {
     @Test
     public void test_setAlertLevel_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        LinkLossService linkLossService = new LinkLossService(mockBLEConnection, new MockLinkLossServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
+        LinkLossService linkLossService = new LinkLossService(MOCK_BLE_CONNECTION, new MockLinkLossServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {

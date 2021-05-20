@@ -76,6 +76,7 @@ public class ExternalReportReferenceAndroid extends ExternalReportReference impl
      * @param in Parcel
      */
     private ExternalReportReferenceAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

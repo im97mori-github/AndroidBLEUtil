@@ -81,6 +81,7 @@ public class TimeWithDstAndroid extends TimeWithDst implements Parcelable {
      * @param in Parcel
      */
     private TimeWithDstAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

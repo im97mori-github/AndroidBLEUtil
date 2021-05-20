@@ -120,6 +120,7 @@ public class DescriptorDataTest {
         assertEquals(secondData, descriptorData.getBytes());
     }
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     @Test
     public void test_getBytes_00003() {
         byte[] firstData = new byte[0];

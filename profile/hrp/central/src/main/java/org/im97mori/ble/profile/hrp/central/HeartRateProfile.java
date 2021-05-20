@@ -84,7 +84,7 @@ public class HeartRateProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasManufacturerNameString() {
         Boolean result = null;
-        if (mDeviceInformationService != null && mHasDeviceInformationService) {
+        if (mDeviceInformationService != null) {
             result = mDeviceInformationService.hasManufacturerNameString();
         }
         return result;
@@ -96,7 +96,7 @@ public class HeartRateProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getManufacturerNameString() {
         Integer taskId = null;
-        if (mDeviceInformationService != null && mHasDeviceInformationService) {
+        if (mDeviceInformationService != null) {
             taskId = mDeviceInformationService.getManufacturerNameString();
         }
         return taskId;

@@ -69,6 +69,7 @@ public class TransportDiscoveryDataAndroid extends TransportDiscoveryData implem
      * @param in Parcel
      */
     private TransportDiscoveryDataAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

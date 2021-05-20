@@ -33,6 +33,7 @@ public class LocalTimeInformationAndroidTest {
         assertEquals(DstOffsetUtils.DST_OFFSET_IS_NOT_KNOWN, result1.getDstOffset());
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor002() {
         //@formatter:off

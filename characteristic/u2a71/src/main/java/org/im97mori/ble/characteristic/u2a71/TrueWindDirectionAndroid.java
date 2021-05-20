@@ -75,6 +75,7 @@ public class TrueWindDirectionAndroid extends TrueWindDirection implements Parce
      * @param in Parcel
      */
     private TrueWindDirectionAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

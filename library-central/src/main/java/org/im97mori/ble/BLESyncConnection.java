@@ -468,12 +468,12 @@ public class BLESyncConnection implements BLECallback {
     /**
      * map for waiting result lock
      */
-    protected final Map<Long, CountDownLatch> mLockMap = Collections.synchronizedMap(new LinkedHashMap<Long, CountDownLatch>());
+    protected final Map<Long, CountDownLatch> mLockMap = Collections.synchronizedMap(new LinkedHashMap<>());
 
     /**
      * map for result
      */
-    protected final Map<Long, BLEResult> mResultMap = Collections.synchronizedMap(new LinkedHashMap<Long, BLEResult>());
+    protected final Map<Long, BLEResult> mResultMap = Collections.synchronizedMap(new LinkedHashMap<>());
 
     /**
      * notification(indication) listner map

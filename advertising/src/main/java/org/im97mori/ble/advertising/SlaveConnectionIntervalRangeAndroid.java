@@ -69,6 +69,7 @@ public class SlaveConnectionIntervalRangeAndroid extends SlaveConnectionInterval
      * @param in Parcel
      */
     private SlaveConnectionIntervalRangeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

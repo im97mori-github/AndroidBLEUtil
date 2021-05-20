@@ -17,7 +17,8 @@ public class ResolvablePrivateAddressOnlyAndroidTest {
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0xff);
+        //noinspection ConstantConditions
+data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0xff);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);

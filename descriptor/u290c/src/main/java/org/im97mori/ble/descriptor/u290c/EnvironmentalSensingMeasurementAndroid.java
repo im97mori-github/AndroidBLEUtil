@@ -64,6 +64,7 @@ public class EnvironmentalSensingMeasurementAndroid extends EnvironmentalSensing
      * @param in Parcel
      */
     private EnvironmentalSensingMeasurementAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

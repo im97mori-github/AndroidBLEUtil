@@ -20,6 +20,7 @@ import java.util.UUID;
 /**
  * Scan Parameters Service (Service UUID: 0x1813) callback
  */
+@SuppressWarnings("unused")
 public interface ScanParametersServiceCallback {
 
     /**

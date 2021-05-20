@@ -64,6 +64,7 @@ public class CharacteristicUserDescriptionAndroid extends CharacteristicUserDesc
      * @param in Parcel
      */
     private CharacteristicUserDescriptionAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

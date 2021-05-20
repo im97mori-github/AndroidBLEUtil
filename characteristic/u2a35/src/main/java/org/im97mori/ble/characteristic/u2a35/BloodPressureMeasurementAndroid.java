@@ -91,6 +91,7 @@ public class BloodPressureMeasurementAndroid extends BloodPressureMeasurement im
      * @param in Parcel
      */
     private BloodPressureMeasurementAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

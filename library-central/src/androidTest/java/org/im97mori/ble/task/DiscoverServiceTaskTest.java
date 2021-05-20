@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Random;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class DiscoverServiceTaskTest {
+public class DiscoverServiceTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -83,7 +83,7 @@ public class DiscoverServiceTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            DiscoverServiceTask task = new DiscoverServiceTask(new MockBLEConnection(), null, mockTaskHandler, DiscoverServiceTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            DiscoverServiceTask task = new DiscoverServiceTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, DiscoverServiceTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -95,10 +95,8 @@ public class DiscoverServiceTaskTest {
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
-            mockBleConnection.start();
 
             BaseBLECallback callback = new BaseBLECallback() {
                 @Override
@@ -106,7 +104,7 @@ public class DiscoverServiceTaskTest {
                     result.set(true);
                 }
             };
-            mockBleConnection.attach(callback);
+            MOCK_BLE_CONNECTION.attach(callback);
 
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
@@ -115,7 +113,7 @@ public class DiscoverServiceTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            DiscoverServiceTask task = new DiscoverServiceTask(mockBleConnection, null, mockTaskHandler, DiscoverServiceTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            DiscoverServiceTask task = new DiscoverServiceTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, DiscoverServiceTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -123,7 +121,6 @@ public class DiscoverServiceTaskTest {
             if (looper != null) {
                 looper.quit();
             }
-            mockBleConnection.quit();
         }
     }
 

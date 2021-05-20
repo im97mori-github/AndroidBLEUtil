@@ -34,6 +34,7 @@ dependencies {
     api "${groupId}:${characteristicU2a46Android.artifactId}:${characteristicU2a46Android.versionName}"
     api "${groupId}:${characteristicU2a47Android.artifactId}:${characteristicU2a47Android.versionName}"
     api "${groupId}:${characteristicU2a48Android.artifactId}:${characteristicU2a48Android.versionName}"
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

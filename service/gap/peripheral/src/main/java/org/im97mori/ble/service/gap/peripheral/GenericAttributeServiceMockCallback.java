@@ -142,7 +142,7 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
             mClientSupportedFeaturesData = new CharacteristicData(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -190,7 +190,7 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
             mDatabaseHashData = new CharacteristicData(DATABASE_HASH_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

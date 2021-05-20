@@ -5,8 +5,6 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.ParcelUuid;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +14,8 @@ import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
-import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -36,7 +35,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class GenericAttributeServiceMockCallbackTest {
+public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherallTest {
 
     @Test
     public void test_onServiceAddSuccess_00001() {
@@ -51,7 +50,7 @@ public class GenericAttributeServiceMockCallbackTest {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(UUID.randomUUID(), BluetoothGattService.SERVICE_TYPE_PRIMARY);
 
-        assertFalse(genericAttributeServiceMockCallback.onServiceAddSuccess(1, new MockBLEServerConnection(), bluetoothGattService, null));
+        assertFalse(genericAttributeServiceMockCallback.onServiceAddSuccess(1, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, null));
         assertFalse(atomicBoolean.get());
     }
 
@@ -63,16 +62,8 @@ public class GenericAttributeServiceMockCallbackTest {
         int serviceInstanceId = 1;
         int serviceType = BluetoothGattService.SERVICE_TYPE_PRIMARY;
 
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(uuid), 0);
-        parcel.writeInt(serviceInstanceId);
-        parcel.writeInt(serviceType);
-        parcel.writeTypedList(Collections.<BluetoothGattCharacteristic>emptyList());
-
-        parcel.setDataPosition(0);
-        BluetoothGattService bluetoothGattService = BluetoothGattService.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        ServiceData serviceData = new ServiceData(uuid, serviceType, Collections.<CharacteristicData>emptyList());
+        BluetoothGattService bluetoothGattService = BLETestUtilsAndroid.createBluetoothGattService(uuid, serviceInstanceId, serviceType, Collections.emptyList());
+        ServiceData serviceData = new ServiceData(uuid, serviceType, Collections.emptyList());
         Bundle bundle = new Bundle();
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
@@ -83,7 +74,7 @@ public class GenericAttributeServiceMockCallbackTest {
             }
         };
 
-        assertTrue(genericAttributeServiceMockCallback.onServiceAddSuccess(1, new MockBLEServerConnection(), bluetoothGattService, bundle));
+        assertTrue(genericAttributeServiceMockCallback.onServiceAddSuccess(1, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
         assertTrue(atomicBoolean.get());
     }
 
@@ -100,7 +91,7 @@ public class GenericAttributeServiceMockCallbackTest {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(UUID.randomUUID(), BluetoothGattService.SERVICE_TYPE_PRIMARY);
 
-        genericAttributeServiceMockCallback.onServiceRemoveSuccess(1, new MockBLEServerConnection(), bluetoothGattService, null);
+        genericAttributeServiceMockCallback.onServiceRemoveSuccess(1, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, null);
         assertFalse(atomicBoolean.get());
     }
 
@@ -112,16 +103,9 @@ public class GenericAttributeServiceMockCallbackTest {
         int serviceInstanceId = 1;
         int serviceType = BluetoothGattService.SERVICE_TYPE_PRIMARY;
 
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(uuid), 0);
-        parcel.writeInt(serviceInstanceId);
-        parcel.writeInt(serviceType);
-        parcel.writeTypedList(Collections.<BluetoothGattCharacteristic>emptyList());
+        BluetoothGattService bluetoothGattService = BLETestUtilsAndroid.createBluetoothGattService(uuid, serviceInstanceId, serviceType, Collections.emptyList());
 
-        parcel.setDataPosition(0);
-        BluetoothGattService bluetoothGattService = BluetoothGattService.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
-        ServiceData serviceData = new ServiceData(uuid, serviceType, Collections.<CharacteristicData>emptyList());
+        ServiceData serviceData = new ServiceData(uuid, serviceType, Collections.emptyList());
         Bundle bundle = new Bundle();
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
@@ -132,9 +116,9 @@ public class GenericAttributeServiceMockCallbackTest {
             }
         };
 
-        assertTrue(genericAttributeServiceMockCallback.onServiceAddSuccess(1, new MockBLEServerConnection(), bluetoothGattService, bundle));
+        assertTrue(genericAttributeServiceMockCallback.onServiceAddSuccess(1, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
 
-        genericAttributeServiceMockCallback.onServiceRemoveSuccess(2, new MockBLEServerConnection(), bluetoothGattService, bundle);
+        genericAttributeServiceMockCallback.onServiceRemoveSuccess(2, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle);
         assertEquals(2, atomicInteger.get());
     }
 
@@ -152,7 +136,7 @@ public class GenericAttributeServiceMockCallbackTest {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(UUID.randomUUID(), BluetoothGattService.SERVICE_TYPE_PRIMARY);
 
-        genericAttributeServiceMockCallback.updateGenericAttributeServiceStatus(new MockBLEServerConnection(), bluetoothGattService);
+        genericAttributeServiceMockCallback.updateGenericAttributeServiceStatus(MOCK_BLE_SERVER_CONNECTION, bluetoothGattService);
         assertFalse(atomicBoolean.get());
     }
 
@@ -169,37 +153,25 @@ public class GenericAttributeServiceMockCallbackTest {
         byte[] oldCharacteristicData = new byte[16];
         new Random().nextBytes(oldCharacteristicData);
 
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(characteristicUUID), 0);
-        parcel.writeInt(characteristicInstanceId);
-        parcel.writeInt(charactereisticProperties);
-        parcel.writeInt(characteristicPermissions);
-        parcel.writeInt(characteristicKeySize);
-        parcel.writeInt(characteristicWriteType);
-        parcel.writeTypedList(Collections.<BluetoothGattDescriptor>emptyList());
-        parcel.setDataPosition(0);
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(characteristicUUID
+                , characteristicInstanceId
+                , charactereisticProperties
+                , characteristicPermissions
+                , characteristicKeySize
+                , characteristicWriteType
+                , Collections.emptyList());
         bluetoothGattCharacteristic.setValue(oldCharacteristicData);
 
         UUID serviceUuid = GENERIC_ATTRIBUTE_SERVICE;
         int serviceInstanceId = 2;
         int serviceType = BluetoothGattService.SERVICE_TYPE_PRIMARY;
 
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(serviceUuid), 0);
-        parcel.writeInt(serviceInstanceId);
-        parcel.writeInt(serviceType);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattCharacteristic));
-
-        parcel.setDataPosition(0);
-        BluetoothGattService bluetoothGattService = BluetoothGattService.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
+        BluetoothGattService bluetoothGattService = BLETestUtilsAndroid.createBluetoothGattService(serviceUuid, serviceInstanceId, serviceType, Collections.singletonList(bluetoothGattCharacteristic));
 
         CharacteristicData characteristicData = new CharacteristicData(characteristicUUID
                 , charactereisticProperties
                 , characteristicPermissions
-                , Collections.<DescriptorData>emptyList()
+                , Collections.emptyList()
                 , 0
                 , 0
                 , oldCharacteristicData
@@ -217,7 +189,7 @@ public class GenericAttributeServiceMockCallbackTest {
         };
 
         assertNull(characteristicData.currentData);
-        assertTrue(genericAttributeServiceMockCallback.onServiceAddSuccess(1, new MockBLEServerConnection(), bluetoothGattService, bundle));
+        assertTrue(genericAttributeServiceMockCallback.onServiceAddSuccess(1, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
         assertNotNull(characteristicData.currentData);
         assertFalse(Arrays.equals(oldCharacteristicData, characteristicData.getBytes()));
 
@@ -232,12 +204,7 @@ public class GenericAttributeServiceMockCallbackTest {
         int descriptorInstanceId = 1;
         int descriptorPermission = BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE;
 
-        Parcel parcel = Parcel.obtain();
-        parcel.writeParcelable(new ParcelUuid(descriptorUUID), 0);
-        parcel.writeInt(descriptorInstanceId);
-        parcel.writeInt(descriptorPermission);
-        parcel.setDataPosition(0);
-        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
+        BluetoothGattDescriptor bluetoothGattDescriptor = BLETestUtilsAndroid.createBluetoothDescriptor(descriptorUUID, descriptorInstanceId, descriptorPermission);
 
         UUID characteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
         int characteristicInstanceId = 2;
@@ -246,31 +213,20 @@ public class GenericAttributeServiceMockCallbackTest {
         int characteristicKeySize = 16;
         int characteristicWriteType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
 
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(characteristicUUID), 0);
-        parcel.writeInt(characteristicInstanceId);
-        parcel.writeInt(charactereisticProperties);
-        parcel.writeInt(characteristicPermissions);
-        parcel.writeInt(characteristicKeySize);
-        parcel.writeInt(characteristicWriteType);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattDescriptor));
-        parcel.setDataPosition(0);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(characteristicUUID
+                , characteristicInstanceId
+                , charactereisticProperties
+                , characteristicPermissions
+                , characteristicKeySize
+                , characteristicWriteType
+                , Collections.singletonList(bluetoothGattDescriptor));
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel);
 
         UUID serviceUuid = GENERIC_ATTRIBUTE_SERVICE;
         int serviceInstanceId = 3;
         int serviceType = BluetoothGattService.SERVICE_TYPE_PRIMARY;
 
-        parcel.setDataPosition(0);
-        parcel.writeParcelable(new ParcelUuid(serviceUuid), 0);
-        parcel.writeInt(serviceInstanceId);
-        parcel.writeInt(serviceType);
-        parcel.writeTypedList(Collections.singletonList(bluetoothGattCharacteristic));
-
-        parcel.setDataPosition(0);
-        BluetoothGattService bluetoothGattService = BluetoothGattService.CREATOR.createFromParcel(parcel);
-        parcel.recycle();
+        BluetoothGattService bluetoothGattService = BLETestUtilsAndroid.createBluetoothGattService(serviceUuid, serviceInstanceId, serviceType, Collections.singletonList(bluetoothGattCharacteristic));
 
         DescriptorData descriptorData = new DescriptorData(descriptorUUID
                 , descriptorPermission
@@ -297,7 +253,7 @@ public class GenericAttributeServiceMockCallbackTest {
 
         };
 
-        assertTrue(genericAttributeServiceMockCallback.onServiceAddSuccess(1, new MockBLEServerConnection(), bluetoothGattService, bundle));
+        assertTrue(genericAttributeServiceMockCallback.onServiceAddSuccess(1, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
         assertTrue(atomicBoolean.get());
     }
 

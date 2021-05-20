@@ -19,6 +19,7 @@ import java.util.Set;
 /**
  * Bonded device database helper
  */
+@SuppressWarnings("SameReturnValue")
 @SuppressLint("MissingPermission")
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public abstract class BondedDeviceDatabaseHelper extends SQLiteOpenHelper {

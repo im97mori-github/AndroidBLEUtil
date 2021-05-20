@@ -10,10 +10,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -28,12 +26,12 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
     public interface SubscriberInterface {
 
         /**
-         * get Subscriber's callback instance {@link Set}
+         * get Subscriber's callback instance {@link List}
          * must thread safe
          *
-         * @return Subscriber's callback instance {@link Set}
+         * @return Subscriber's callback instance {@link List}
          */
-        Collection<BLEServerCallback> getSubscriberCallbackSet();
+        List<BLEServerCallback> getSubscriberCallbackList();
     }
 
     /**
@@ -82,7 +80,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      */
     @Override
     public void onServerStarted() {
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 bleServerCallback.onServerStarted();
             } catch (Exception e) {
@@ -96,7 +94,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      */
     @Override
     public void onServerStopped() {
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 bleServerCallback.onServerStopped();
             } catch (Exception e) {
@@ -110,7 +108,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      */
     @Override
     public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 bleServerCallback.onDeviceConnected(bleServerConnection, device);
             } catch (Exception e) {
@@ -124,7 +122,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      */
     @Override
     public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 bleServerCallback.onDeviceDisconnected(bleServerConnection, device);
             } catch (Exception e) {
@@ -151,7 +149,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     result |= bleServerCallback.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, originalArgument);
@@ -183,7 +181,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     bleServerCallback.onServiceAddFailed(taskId, bleServerConnection, bluetoothGattService, status, originalArgument);
@@ -214,7 +212,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     bleServerCallback.onServiceAddTimeout(taskId, bleServerConnection, bluetoothGattService, timeout, originalArgument);
@@ -244,7 +242,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     bleServerCallback.onServiceRemoveSuccess(taskId, bleServerConnection, bluetoothGattService, originalArgument);
@@ -275,7 +273,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     bleServerCallback.onServiceRemoveFailed(taskId, bleServerConnection, bluetoothGattService, status, originalArgument);
@@ -306,7 +304,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     bleServerCallback.onServiceRemoveTimeout(taskId, bleServerConnection, bluetoothGattService, timeout, originalArgument);
@@ -333,7 +331,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         boolean result = false;
 
         List<BLEServerCallback> handleUnregisteredServiceCallbackList = new LinkedList<>();
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 result = bleServerCallback.onCharacteristicReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattCharacteristic, false);
                 if (result) {
@@ -378,7 +376,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         boolean result = false;
 
         List<BLEServerCallback> handleUnregisteredServiceCallbackList = new LinkedList<>();
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 result = bleServerCallback.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, false);
                 if (result) {
@@ -415,7 +413,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         boolean result = false;
 
         List<BLEServerCallback> handleUnregisteredServiceCallbackList = new LinkedList<>();
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 result = bleServerCallback.onDescriptorReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattDescriptor, false);
                 if (result) {
@@ -460,7 +458,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         boolean result = false;
 
         List<BLEServerCallback> handleUnregisteredServiceCallbackList = new LinkedList<>();
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 result = bleServerCallback.onDescriptorWriteRequest(bleServerConnection, device, requestId, bluetoothGattDescriptor, preparedWrite, responseNeeded, offset, value, false);
                 if (result) {
@@ -510,7 +508,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     bleServerCallback.onNotificationSuccess(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, value, originalArgument);
@@ -545,7 +543,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     bleServerCallback.onNotificationFailed(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, originalArgument);
@@ -580,7 +578,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
         }
         Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
 
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 if (callbackId == null) {
                     bleServerCallback.onNotificationTimeout(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, originalArgument);
@@ -604,7 +602,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
             , boolean execute
             , boolean force) {
         boolean result = false;
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 result = bleServerCallback.onExecuteWrite(bleServerConnection, device, requestId, execute, false);
                 if (result) {
@@ -615,7 +613,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
             }
         }
         if (!result && force) {
-            for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
                 try {
                     if (bleServerCallback.isFallback()) {
                         result = bleServerCallback.onExecuteWrite(bleServerConnection, device, requestId, execute, true);
@@ -636,7 +634,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      */
     @Override
     public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 bleServerCallback.onAdvertisingStartSuccess(advertiseSettings);
             } catch (Exception e) {
@@ -652,7 +650,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      */
     @Override
     public void onAdvertisingStartFailed(Integer errorCode) {
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 bleServerCallback.onAdvertisingStartFailed(errorCode);
             } catch (Exception e) {
@@ -666,7 +664,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      */
     @Override
     public void onAdvertisingFinished() {
-        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
             try {
                 bleServerCallback.onAdvertisingFinished();
             } catch (Exception e) {

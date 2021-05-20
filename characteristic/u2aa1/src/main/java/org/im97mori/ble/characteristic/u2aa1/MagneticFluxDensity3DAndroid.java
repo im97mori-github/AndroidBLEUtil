@@ -77,6 +77,7 @@ public class MagneticFluxDensity3DAndroid extends MagneticFluxDensity3D implemen
      * @param in Parcel
      */
     private MagneticFluxDensity3DAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

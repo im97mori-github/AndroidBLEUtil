@@ -66,6 +66,7 @@ public class ClientSupportedFeaturesAndroid extends ClientSupportedFeatures impl
      * @param in Parcel
      */
     private ClientSupportedFeaturesAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

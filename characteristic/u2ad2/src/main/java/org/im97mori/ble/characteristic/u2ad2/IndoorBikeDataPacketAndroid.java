@@ -90,6 +90,7 @@ public class IndoorBikeDataPacketAndroid extends IndoorBikeDataPacket implements
      * @param in Parcel
      */
     private IndoorBikeDataPacketAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

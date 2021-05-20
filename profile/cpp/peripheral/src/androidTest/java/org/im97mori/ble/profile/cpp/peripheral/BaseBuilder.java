@@ -11,7 +11,8 @@ import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallb
 
 public class BaseBuilder extends CyclingPowerProfileMockCallback.Builder<CyclingPowerProfileMockCallback> {
 
-    public BaseBuilder(@NonNull Context context, @NonNull CyclingPowerServiceMockCallback.Builder<? extends CyclingPowerServiceMockCallback> cyclingPowerServiceMockCallbackBuilder
+    public BaseBuilder(@NonNull Context context
+            , @NonNull CyclingPowerServiceMockCallback.Builder<? extends CyclingPowerServiceMockCallback> cyclingPowerServiceMockCallbackBuilder
             , @Nullable DeviceInformationServiceMockCallback.Builder<? extends DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder
             , @Nullable BatteryServiceMockCallback.Builder<? extends BatteryServiceMockCallback> batteryServiceMockCallbackBuilder) {
         super(context, cyclingPowerServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);

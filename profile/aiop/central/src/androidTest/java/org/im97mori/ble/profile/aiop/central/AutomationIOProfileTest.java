@@ -1,13 +1,13 @@
 package org.im97mori.ble.profile.aiop.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
+import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.BLEConnectionHolder;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a56.Digital;
 import org.im97mori.ble.characteristic.u2a58.Analog;
@@ -16,6 +16,9 @@ import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
 import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
 import org.im97mori.ble.profile.aiop.central.db.AutomationIOProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.aios.central.AutomationIOService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -26,7 +29,23 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class AutomationIOProfileTest {
+public class AutomationIOProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findAutomationIOProfileDevices_00001() {
@@ -61,26 +80,20 @@ public class AutomationIOProfileTest {
 
     @Test
     public void test_getDigitalCount_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mAutomationIOService == null) {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
-
                         @Override
                         public boolean isStarted() {
                             return true;
                         }
-
                     };
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalCount());
         automationIOProfile.disconnect();
     }
@@ -95,10 +108,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -116,7 +125,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalReadable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -132,10 +141,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalReadable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -153,7 +158,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalReadable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -169,10 +174,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -190,7 +191,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalWritable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -206,10 +207,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -227,7 +224,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalWritable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -243,10 +240,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalWritableWithNoResponse_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -264,7 +257,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalWritableWithNoResponse());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -280,10 +273,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalWritableWithNoResponse_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -301,7 +290,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalWritableWithNoResponse(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -317,10 +306,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -338,7 +323,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalNotificatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -354,10 +339,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalNotificatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -375,7 +356,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalNotificatable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -391,10 +372,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -412,7 +389,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalIndicatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -428,10 +405,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalIndicatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -449,7 +422,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalIndicatable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -465,10 +438,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -486,7 +455,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalCharacteristicPresentationFormat());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -502,10 +471,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -523,7 +488,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalCharacteristicPresentationFormat(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -539,10 +504,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -560,7 +521,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalCharacteristicUserDescription());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -576,10 +537,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -597,7 +554,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalCharacteristicUserDescription(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -613,10 +570,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalCharacteristicUserDescriptionWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -634,7 +587,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalCharacteristicUserDescriptionWritable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -650,10 +603,6 @@ public class AutomationIOProfileTest {
     public void test_isDigitalCharacteristicUserDescriptionWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -671,7 +620,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isDigitalCharacteristicUserDescriptionWritable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -687,10 +636,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -708,7 +653,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalCharacteristicExtendedProperties());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -724,10 +669,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -745,7 +686,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalCharacteristicExtendedProperties(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -761,10 +702,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -782,7 +719,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalValueTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -798,10 +735,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -819,7 +752,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalValueTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -835,10 +768,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -856,7 +785,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalTimeTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -872,10 +801,6 @@ public class AutomationIOProfileTest {
     public void test_hasDigitalTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -893,7 +818,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasDigitalTimeTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -907,26 +832,20 @@ public class AutomationIOProfileTest {
 
     @Test
     public void test_getAnalogCount_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mAutomationIOService == null) {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getAnalogCount() {
+                            return 1;
                         }
-
                     };
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogCount());
         automationIOProfile.disconnect();
     }
@@ -941,10 +860,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -962,7 +877,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogReadable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -978,10 +893,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogReadable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -999,7 +910,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogReadable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1015,10 +926,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1036,7 +943,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogWritable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1052,10 +959,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1073,7 +976,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogWritable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1089,10 +992,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogWritableWithNoResponse_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1110,7 +1009,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogWritableWithNoResponse());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1126,10 +1025,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogWritableWithNoResponse_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1147,7 +1042,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogWritableWithNoResponse(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1163,10 +1058,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1184,7 +1075,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogNotificatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1200,10 +1091,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogNotificatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1221,7 +1108,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogNotificatable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1237,10 +1124,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1258,7 +1141,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogIndicatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1274,10 +1157,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogIndicatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1295,7 +1174,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogIndicatable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1311,10 +1190,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1332,7 +1207,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogCharacteristicPresentationFormat());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1348,10 +1223,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1369,7 +1240,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogCharacteristicPresentationFormat(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1385,10 +1256,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1406,7 +1273,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogCharacteristicUserDescription());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1422,10 +1289,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1443,7 +1306,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogCharacteristicUserDescription(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1459,10 +1322,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogCharacteristicUserDescriptionWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1480,7 +1339,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogCharacteristicUserDescriptionWritable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1496,10 +1355,6 @@ public class AutomationIOProfileTest {
     public void test_isAnalogCharacteristicUserDescriptionWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1517,7 +1372,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAnalogCharacteristicUserDescriptionWritable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1533,10 +1388,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1554,7 +1405,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogCharacteristicExtendedProperties());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1570,10 +1421,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1591,7 +1438,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogCharacteristicExtendedProperties(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1607,10 +1454,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1628,7 +1471,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogValueTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1644,10 +1487,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1665,7 +1504,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogValueTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1681,10 +1520,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1702,7 +1537,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogTimeTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1718,10 +1553,6 @@ public class AutomationIOProfileTest {
     public void test_hasAnalogTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1739,7 +1570,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.hasAnalogTimeTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1754,10 +1585,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_isAggregateSupported_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1774,7 +1601,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAggregateSupported());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1789,10 +1616,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_isAggregateReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1809,7 +1632,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAggregateReadable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1824,10 +1647,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_isAggregateNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1844,7 +1663,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAggregateNotificatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1859,10 +1678,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_isAggregateIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1879,7 +1694,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.isAggregateIndicatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1895,10 +1710,6 @@ public class AutomationIOProfileTest {
     public void test_getDigital_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1916,7 +1727,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigital());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1932,10 +1743,6 @@ public class AutomationIOProfileTest {
     public void test_getDigital_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1953,7 +1760,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigital(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -1971,10 +1778,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final Digital originalDigital = new Digital(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -1994,7 +1797,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigital(originalDigital));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2012,10 +1815,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final Digital originalDigital = new Digital(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2034,7 +1833,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigital(originalIndex, originalDigital));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2052,10 +1851,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final Digital originalDigital = new Digital(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2075,7 +1870,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigitalWithNoResponse(originalDigital));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2093,10 +1888,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final Digital originalDigital = new Digital(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2115,7 +1906,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigitalWithNoResponse(originalIndex, originalDigital));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2131,10 +1922,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalClientCharacteristicConfiguration_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2152,7 +1939,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalClientCharacteristicConfiguration());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2168,10 +1955,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalClientCharacteristicConfiguration_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2189,7 +1972,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalClientCharacteristicConfiguration(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2205,10 +1988,6 @@ public class AutomationIOProfileTest {
     public void test_startDigitalNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2226,7 +2005,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startDigitalNotification());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2242,10 +2021,6 @@ public class AutomationIOProfileTest {
     public void test_startDigitalNotification_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2263,7 +2038,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startDigitalNotification(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2279,10 +2054,6 @@ public class AutomationIOProfileTest {
     public void test_stopDigitalNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2300,7 +2071,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopDigitalNotification());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2316,10 +2087,6 @@ public class AutomationIOProfileTest {
     public void test_stopDigitalNotification_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2337,7 +2104,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopDigitalNotification(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2353,10 +2120,6 @@ public class AutomationIOProfileTest {
     public void test_startDigitalIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2374,7 +2137,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startDigitalIndication());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2390,10 +2153,6 @@ public class AutomationIOProfileTest {
     public void test_startDigitalIndication_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2411,7 +2170,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startDigitalIndication(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2427,10 +2186,6 @@ public class AutomationIOProfileTest {
     public void test_stopDigitalIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2448,7 +2203,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopDigitalIndication());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2464,10 +2219,6 @@ public class AutomationIOProfileTest {
     public void test_stopDigitalIndication_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2485,7 +2236,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopDigitalIndication(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2501,10 +2252,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2522,7 +2269,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalCharacteristicPresentationFormat());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2538,10 +2285,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2559,7 +2302,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalCharacteristicPresentationFormat(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2575,10 +2318,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2596,7 +2335,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalCharacteristicUserDescription());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2612,10 +2351,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2633,7 +2368,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalCharacteristicUserDescription(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2651,10 +2386,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final CharacteristicUserDescription originalCharacteristicUserDescription = new CharacteristicUserDescription(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2674,7 +2405,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigitalCharacteristicUserDescription(originalCharacteristicUserDescription));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2692,10 +2423,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final CharacteristicUserDescription originalCharacteristicUserDescription = new CharacteristicUserDescription(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2714,7 +2441,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigitalCharacteristicUserDescription(originalIndex, originalCharacteristicUserDescription));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2730,10 +2457,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2751,7 +2474,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalCharacteristicExtendedProperties());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2767,10 +2490,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2788,7 +2507,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalCharacteristicExtendedProperties(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2804,10 +2523,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2825,7 +2540,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalValueTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2841,10 +2556,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2862,7 +2573,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalValueTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2880,10 +2591,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final ValueTriggerSetting originalValueTriggerSetting = new ValueTriggerSetting(new byte[]{ValueTriggerSetting.NONE_0});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2903,7 +2610,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigitalValueTriggerSetting(originalValueTriggerSetting));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2921,10 +2628,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final ValueTriggerSetting originalValueTriggerSetting = new ValueTriggerSetting(new byte[]{ValueTriggerSetting.NONE_0});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2943,7 +2646,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigitalValueTriggerSetting(originalIndex, originalValueTriggerSetting));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2959,10 +2662,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -2980,7 +2679,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalTimeTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -2996,10 +2695,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3017,7 +2712,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalTimeTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3035,10 +2730,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final TimeTriggerSetting originalTimeTriggerSetting = new TimeTriggerSetting(new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3058,7 +2749,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigitalTimeTriggerSetting(originalTimeTriggerSetting));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3076,10 +2767,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final TimeTriggerSetting originalTimeTriggerSetting = new TimeTriggerSetting(new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3098,7 +2785,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setDigitalTimeTriggerSetting(originalIndex, originalTimeTriggerSetting));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3114,10 +2801,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalNumberOfDigitals_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3135,7 +2818,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalNumberOfDigitals());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3151,10 +2834,6 @@ public class AutomationIOProfileTest {
     public void test_getDigitalNumberOfDigitals_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3172,7 +2851,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getDigitalNumberOfDigitals(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3188,10 +2867,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalog_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3209,7 +2884,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalog());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3225,10 +2900,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalog_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3246,7 +2917,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalog(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3264,10 +2935,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final Analog originalAnalog = new Analog(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3287,7 +2954,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalog(originalAnalog));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3305,10 +2972,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final Analog originalAnalog = new Analog(new byte[]{1, 2});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3327,7 +2990,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalog(originalIndex, originalAnalog));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3345,10 +3008,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final Analog originalAnalog = new Analog(new byte[]{1, 2});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3368,7 +3027,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalogWithNoResponse(originalAnalog));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3386,10 +3045,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final Analog originalAnalog = new Analog(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3408,7 +3063,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalogWithNoResponse(originalIndex, originalAnalog));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3424,10 +3079,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogClientCharacteristicConfiguration_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3445,7 +3096,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogClientCharacteristicConfiguration());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3461,10 +3112,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogClientCharacteristicConfiguration_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3482,7 +3129,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogClientCharacteristicConfiguration(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3498,10 +3145,6 @@ public class AutomationIOProfileTest {
     public void test_startAnalogNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3519,7 +3162,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startAnalogNotification());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3535,10 +3178,6 @@ public class AutomationIOProfileTest {
     public void test_startAnalogNotification_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3556,7 +3195,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startAnalogNotification(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3572,10 +3211,6 @@ public class AutomationIOProfileTest {
     public void test_stopAnalogNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3593,7 +3228,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopAnalogNotification());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3609,10 +3244,6 @@ public class AutomationIOProfileTest {
     public void test_stopAnalogNotification_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3630,7 +3261,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopAnalogNotification(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3646,10 +3277,6 @@ public class AutomationIOProfileTest {
     public void test_startAnalogIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3667,7 +3294,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startAnalogIndication());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3683,10 +3310,6 @@ public class AutomationIOProfileTest {
     public void test_startAnalogIndication_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3704,7 +3327,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startAnalogIndication(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3720,10 +3343,6 @@ public class AutomationIOProfileTest {
     public void test_stopAnalogIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3741,7 +3360,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopAnalogIndication());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3757,10 +3376,6 @@ public class AutomationIOProfileTest {
     public void test_stopAnalogIndication_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3778,7 +3393,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopAnalogIndication(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3794,10 +3409,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3815,7 +3426,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogCharacteristicPresentationFormat());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3831,10 +3442,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3852,7 +3459,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogCharacteristicPresentationFormat(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3868,10 +3475,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3889,7 +3492,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogCharacteristicUserDescription());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3905,10 +3508,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3926,7 +3525,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogCharacteristicUserDescription(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3944,10 +3543,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final CharacteristicUserDescription originalCharacteristicUserDescription = new CharacteristicUserDescription(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -3967,7 +3562,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalogCharacteristicUserDescription(originalCharacteristicUserDescription));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -3985,10 +3580,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final CharacteristicUserDescription originalCharacteristicUserDescription = new CharacteristicUserDescription(new byte[]{1});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4007,7 +3598,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalogCharacteristicUserDescription(originalIndex, originalCharacteristicUserDescription));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4023,10 +3614,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4044,7 +3631,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogCharacteristicExtendedProperties());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4060,10 +3647,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4081,7 +3664,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogCharacteristicExtendedProperties(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4097,10 +3680,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4118,7 +3697,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogValueTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4134,10 +3713,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4155,7 +3730,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogValueTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4173,10 +3748,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final ValueTriggerSetting originalValueTriggerSetting = new ValueTriggerSetting(new byte[]{ValueTriggerSetting.NONE_0});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4196,7 +3767,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalogValueTriggerSetting(originalValueTriggerSetting));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4214,10 +3785,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final ValueTriggerSetting originalValueTriggerSetting = new ValueTriggerSetting(new byte[]{ValueTriggerSetting.NONE_0});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4236,7 +3803,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalogValueTriggerSetting(originalIndex, originalValueTriggerSetting));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4252,10 +3819,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4273,7 +3836,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogTimeTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4289,10 +3852,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4310,7 +3869,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogTimeTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4328,10 +3887,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         final TimeTriggerSetting originalTimeTriggerSetting = new TimeTriggerSetting(new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4351,7 +3906,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalogTimeTriggerSetting(originalTimeTriggerSetting));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4369,10 +3924,6 @@ public class AutomationIOProfileTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         final TimeTriggerSetting originalTimeTriggerSetting = new TimeTriggerSetting(new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0});
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4391,7 +3942,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.setAnalogTimeTriggerSetting(originalIndex, originalTimeTriggerSetting));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4407,10 +3958,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogValidRange_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4428,7 +3975,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogValidRange());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4444,10 +3991,6 @@ public class AutomationIOProfileTest {
     public void test_getAnalogValidRange_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4465,7 +4008,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAnalogValidRange(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4480,10 +4023,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_getAggregate_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4500,7 +4039,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAggregate());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4515,10 +4054,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_getAggregateClientCharacteristicConfiguration_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4535,7 +4070,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.getAggregateClientCharacteristicConfiguration());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4550,10 +4085,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_startAggregateNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4570,7 +4101,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startAggregateNotification());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4585,10 +4116,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_stopAggregateNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4605,7 +4132,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopAggregateNotification());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4620,10 +4147,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_startAggregateIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4640,7 +4163,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.startAggregateIndication());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4655,10 +4178,6 @@ public class AutomationIOProfileTest {
     @Test
     public void test_stopAggregateIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
@@ -4675,7 +4194,7 @@ public class AutomationIOProfileTest {
                 }
             }
         };
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.stopAggregateIndication());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
@@ -4690,28 +4209,23 @@ public class AutomationIOProfileTest {
     @Test
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()){
+        AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 super.createServices();
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(automationIOProfile.mAutomationIOService);
         assertTrue(atomicBoolean.get());
+        automationIOProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        automationIOProfile.connect(MOCK_DEVICE);
+        automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         automationIOProfile.quit();
         assertNull(automationIOProfile.mAutomationIOService);
     }

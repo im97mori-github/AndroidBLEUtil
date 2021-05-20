@@ -6,8 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a44.AlertNotificationControlPoint;
 import org.im97mori.ble.characteristic.u2a44.AlertNotificationControlPointAndroid;
 import org.im97mori.ble.characteristic.u2a45.UnreadAlertStatus;
@@ -18,7 +16,8 @@ import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategoryAndroid;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategoryAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.service.ans.AlertNotificationCategoryIdUtils;
-import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -38,20 +37,19 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
-public class AlertNotificationServiceTest {
+public class AlertNotificationServiceTest extends AbstractCentralTest {
 
     @Test
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -68,7 +66,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -78,14 +76,13 @@ public class AlertNotificationServiceTest {
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{0};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -102,7 +99,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -112,14 +109,13 @@ public class AlertNotificationServiceTest {
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -136,7 +132,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -146,14 +142,13 @@ public class AlertNotificationServiceTest {
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -170,7 +165,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -180,14 +175,13 @@ public class AlertNotificationServiceTest {
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -204,7 +198,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -214,14 +208,13 @@ public class AlertNotificationServiceTest {
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -238,7 +231,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -248,14 +241,13 @@ public class AlertNotificationServiceTest {
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new AlertNotificationControlPoint(AlertNotificationControlPoint.COMMAND_ID_ENABLE_NEW_IMCOMING_ALERT_NOTIFICATION, AlertNotificationCategoryIdUtils.CATEGORY_ID_ALL).getBytes();
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -272,7 +264,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -282,14 +274,13 @@ public class AlertNotificationServiceTest {
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -306,7 +297,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -316,14 +307,13 @@ public class AlertNotificationServiceTest {
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -340,7 +330,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -350,7 +340,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -359,7 +349,6 @@ public class AlertNotificationServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -377,7 +366,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -387,7 +376,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -396,7 +385,6 @@ public class AlertNotificationServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -414,7 +402,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -424,7 +412,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -433,7 +421,6 @@ public class AlertNotificationServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -451,7 +438,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -461,7 +448,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -470,7 +457,6 @@ public class AlertNotificationServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -488,7 +474,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -498,7 +484,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -507,7 +493,6 @@ public class AlertNotificationServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -525,7 +510,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -535,7 +520,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -544,7 +529,6 @@ public class AlertNotificationServiceTest {
         final Integer originalDescriptorInstanceId = 4;
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -562,7 +546,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -572,7 +556,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -582,7 +566,6 @@ public class AlertNotificationServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -599,7 +582,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -609,7 +592,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -619,7 +602,6 @@ public class AlertNotificationServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -636,7 +618,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -646,7 +628,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -656,7 +638,6 @@ public class AlertNotificationServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -673,7 +654,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -683,7 +664,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -693,7 +674,6 @@ public class AlertNotificationServiceTest {
         final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -710,7 +690,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
@@ -720,7 +700,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -730,7 +710,6 @@ public class AlertNotificationServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -748,7 +727,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -758,7 +737,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -768,7 +747,6 @@ public class AlertNotificationServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -786,7 +764,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -796,7 +774,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -806,7 +784,6 @@ public class AlertNotificationServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -824,7 +801,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -834,7 +811,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -844,7 +821,6 @@ public class AlertNotificationServiceTest {
         final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -862,7 +838,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
@@ -872,7 +848,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -882,7 +858,6 @@ public class AlertNotificationServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -900,7 +875,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -910,7 +885,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -920,7 +895,6 @@ public class AlertNotificationServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -938,7 +912,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -948,7 +922,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
@@ -958,7 +932,6 @@ public class AlertNotificationServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -976,7 +949,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -986,7 +959,7 @@ public class AlertNotificationServiceTest {
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
@@ -996,7 +969,6 @@ public class AlertNotificationServiceTest {
         final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -1014,7 +986,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
@@ -1023,15 +995,13 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = NEW_ALERT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
 
         final byte[] originalValues = new NewAlert(AlertNotificationCategoryIdUtils.CATEGORY_ID_SIMPLE_ALERT, 0, "a").getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -1046,7 +1016,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertTrue(isCalled.get());
@@ -1055,15 +1025,13 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
-        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = ALERT_NOTIFICATION_SERVICE;
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = UNREAD_ALERT_STATUS_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
 
         final byte[] originalValues = new UnreadAlertStatus(AlertNotificationCategoryIdUtils.CATEGORY_ID_SIMPLE_ALERT, 0).getBytes();
-
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAlertNotificationServiceCallback mockAlertNotificationServiceCallback = new MockAlertNotificationServiceCallback() {
 
             @Override
@@ -1078,7 +1046,7 @@ public class AlertNotificationServiceTest {
             }
 
         };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, mockAlertNotificationServiceCallback, null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, mockAlertNotificationServiceCallback, null);
         alertNotificationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertTrue(isCalled.get());
@@ -1086,14 +1054,14 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_getSupportedNewAlertCategory_000001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
         assertNull(alertNotificationService.getSupportedNewAlertCategory());
     }
 
     @Test
     public void test_getSupportedNewAlertCategory_000002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1108,15 +1076,8 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_getSupportedNewAlertCategory_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1132,14 +1093,14 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_getNewAlertClientCharacteristicConfiguration_00001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
         assertNull(alertNotificationService.getNewAlertClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getNewAlertClientCharacteristicConfiguration_00002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1154,15 +1115,9 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_getNewAlertClientCharacteristicConfiguration_00003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
 
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1178,14 +1133,14 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_startNewAlertNotification_00001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
         assertNull(alertNotificationService.startNewAlertNotification());
     }
 
     @Test
     public void test_startNewAlertNotification_00002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1200,15 +1155,9 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_startNewAlertNotification_00003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
 
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1224,14 +1173,14 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_stopNewAlertNotification_00001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
         assertNull(alertNotificationService.stopNewAlertNotification());
     }
 
     @Test
     public void test_stopNewAlertNotification_00002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1246,15 +1195,8 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_stopNewAlertNotification_00003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1270,14 +1212,14 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_getSupportedUnreadAlertCategory_000001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
         assertNull(alertNotificationService.getSupportedUnreadAlertCategory());
     }
 
     @Test
     public void test_getSupportedUnreadAlertCategory_000002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1292,15 +1234,9 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_getSupportedUnreadAlertCategory_000003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1316,14 +1252,14 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_getUnreadAlertStatusClientCharacteristicConfiguration_00001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
         assertNull(alertNotificationService.getUnreadAlertStatusClientCharacteristicConfiguration());
     }
 
     @Test
     public void test_getUnreadAlertStatusClientCharacteristicConfiguration_00002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1338,15 +1274,8 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_getUnreadAlertStatusClientCharacteristicConfiguration_00003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1362,14 +1291,14 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_startUnreadAlertStatusNotification_00001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
         assertNull(alertNotificationService.startUnreadAlertStatusNotification());
     }
 
     @Test
     public void test_startUnreadAlertStatusNotification_00002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1384,15 +1313,8 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_startUnreadAlertStatusNotification_00003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1408,14 +1330,14 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_stopUnreadAlertStatusNotification_00001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
         assertNull(alertNotificationService.stopUnreadAlertStatusNotification());
     }
 
     @Test
     public void test_stopUnreadAlertStatusNotification_00002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1430,15 +1352,8 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_stopUnreadAlertStatusNotification_00003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1454,7 +1369,7 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_setAlertNotificationControlPoint_00001() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null);
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
         AlertNotificationControlPoint alertNotificationControlPoint = new AlertNotificationControlPoint(AlertNotificationControlPoint.COMMAND_ID_ENABLE_NEW_IMCOMING_ALERT_NOTIFICATION, AlertNotificationCategoryIdUtils.CATEGORY_ID_ALL);
 
         assertNull(alertNotificationService.setAlertNotificationControlPoint(alertNotificationControlPoint));
@@ -1462,7 +1377,7 @@ public class AlertNotificationServiceTest {
 
     @Test
     public void test_setAlertNotificationControlPoint_00002() {
-        AlertNotificationService alertNotificationService = new AlertNotificationService(new MockBLEConnection(), new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {
@@ -1478,15 +1393,9 @@ public class AlertNotificationServiceTest {
     @Test
     public void test_setAlertNotificationControlPoint_00003() {
         final Integer originalTaskId = 1;
-        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
+        MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
 
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return originalTaskId;
-            }
-
-        };
-        AlertNotificationService alertNotificationService = new AlertNotificationService(mockBLEConnection, new MockAlertNotificationServiceCallback(), null) {
+        AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
             @Override
             public boolean isStarted() {

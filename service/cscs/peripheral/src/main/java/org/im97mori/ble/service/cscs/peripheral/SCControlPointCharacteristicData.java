@@ -51,25 +51,25 @@ public class SCControlPointCharacteristicData extends CharacteristicData {
     };
 
     /**
-     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
+     * characteristic response code (Set Cumulative Value response)
      */
     @SerializedName("set_cumulative_value_response_value")
     public int setCumulativeValueResponseValue;
 
     /**
-     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Update Sensor Location response)
+     * characteristic response code (Update Sensor Location response)
      */
     @SerializedName("update_sensor_location_response_value")
     public int updateSensorLocationResponseValue;
 
     /**
-     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Supported Sensor Locations response)
+     * characteristic response code (Request Supported Sensor Locations response)
      */
     @SerializedName("request_supported_sensor_locations_response_value")
     public int requestSupportedSensorLocationsResponseValue;
 
     /**
-     * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Supported Sensor Locations response)
+     * part of characteristic data array (Request Supported Sensor Locations response)
      */
     @SerializedName("request_supported_sensor_locations_response_parameter")
     public byte[] requestSupportedSensorLocationsResponseParameter;
@@ -81,11 +81,12 @@ public class SCControlPointCharacteristicData extends CharacteristicData {
 
     /**
      * @param descriptorDataList                               {@link DescriptorData} list
+     * @param responseCode                                     response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
      * @param delay                                            response delay(millis)
-     * @param setCumulativeValueResponseValue                  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
-     * @param updateSensorLocationResponseValue                characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Update Sensor Location response)
-     * @param requestSupportedSensorLocationsResponseValue     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Supported Sensor Locations response)
-     * @param requestSupportedSensorLocationsResponseParameter part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Supported Sensor Locations response)
+     * @param setCumulativeValueResponseValue                  characteristic response code (Set Cumulative Value response)
+     * @param updateSensorLocationResponseValue                characteristic response code (Update Sensor Location response)
+     * @param requestSupportedSensorLocationsResponseValue     characteristic response code (Request Supported Sensor Locations response)
+     * @param requestSupportedSensorLocationsResponseParameter part of characteristic data array (Request Supported Sensor Locations response)
      */
     public SCControlPointCharacteristicData(@NonNull List<DescriptorData> descriptorDataList
             , int responseCode

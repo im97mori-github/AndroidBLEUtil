@@ -79,6 +79,7 @@ public class HeartRateMeasurementAndroid extends HeartRateMeasurement implements
      * @param in Parcel
      */
     private HeartRateMeasurementAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

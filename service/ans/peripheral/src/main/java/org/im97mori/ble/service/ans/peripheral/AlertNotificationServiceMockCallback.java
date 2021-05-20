@@ -119,7 +119,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
             mSupportedNewAlertCategory = new CharacteristicData(SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -259,7 +259,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
             mSupportedUnreadAlertCategory = new CharacteristicData(SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

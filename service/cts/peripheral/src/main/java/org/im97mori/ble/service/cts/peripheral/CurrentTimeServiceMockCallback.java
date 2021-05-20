@@ -157,7 +157,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
             mLocalTimeInformationData = new CharacteristicData(LOCAL_TIME_INFORMATION_CHARACTERISTIC
                     , property
                     , permission
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

@@ -1,9 +1,5 @@
 package org.im97mori.ble.profile.lnp.central;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
@@ -11,37 +7,47 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a6b.LNControlPoint;
 import org.im97mori.ble.profile.lnp.central.db.LocationAndNavigationProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.bas.central.BatteryService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.lns.central.LocationAndNavigationService;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BATTERY_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LN_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.NAVIGATION_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.POSITION_QUALITY_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.BATTERY_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.LOCATION_AND_NAVIGATION_SERVICE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class LocationAndNavigationProfileTest {
+public class LocationAndNavigationProfileTest extends AbstractCentralTest {
+
+    @Override
+    public void setup() {
+        super.setup();
+        BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        BLEConnection bleConnection = BLEConnectionHolder.getInstance(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        if (bleConnection instanceof MockBLEConnection) {
+            ((MockBLEConnection) bleConnection).quitTaskHandler();
+        }
+        BLEConnectionHolder.clearInstance();
+    }
 
     @Test
     public void test_findLocationAndNavigationProfileDevices_00001() {
@@ -76,13 +82,33 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_hasDeviceInformationService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(locationAndNavigationProfile.hasDeviceInformationService());
+        locationAndNavigationProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00003() {
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = locationAndNavigationProfile.hasDeviceInformationService();
+        locationAndNavigationProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
 
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        locationAndNavigationProfile.mDeviceInformationService = new DeviceInformationService(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), locationAndNavigationProfile.mLocationAndNavigationProfileCallback, null);
-        assertNotNull(locationAndNavigationProfile.hasDeviceInformationService());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        locationAndNavigationProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = locationAndNavigationProfile.hasDeviceInformationService();
+        locationAndNavigationProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -93,13 +119,33 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_hasBatteryService_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(locationAndNavigationProfile.hasBatteryService());
+        locationAndNavigationProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasBatteryService_00003() {
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = locationAndNavigationProfile.hasBatteryService();
+        locationAndNavigationProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
+    }
+
+    @Test
+    public void test_hasBatteryService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
 
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        locationAndNavigationProfile.mBatteryService = new BatteryService(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), locationAndNavigationProfile.mLocationAndNavigationProfileCallback, null);
-        assertNotNull(locationAndNavigationProfile.hasBatteryService());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        locationAndNavigationProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = locationAndNavigationProfile.hasBatteryService();
+        locationAndNavigationProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
     }
 
     @Test
@@ -110,38 +156,8 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_hasManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
-            @Override
-            public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public synchronized boolean hasManufacturerNameString() {
-                            return true;
-                        }
-
-                    };
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-            }
-        };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.hasManufacturerNameString());
         locationAndNavigationProfile.disconnect();
     }
@@ -154,38 +170,8 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_hasModelNumberString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-
-        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
-            @Override
-            public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public synchronized boolean hasModelNumberString() {
-                            return true;
-                        }
-
-                    };
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-            }
-        };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.hasModelNumberString());
         locationAndNavigationProfile.disconnect();
     }
@@ -198,51 +184,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getManufacturerNameString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getManufacturerNameString() {
+                            return 1;
                         }
-
-                        @Override
-                        public synchronized boolean hasManufacturerNameString() {
-                            return true;
-                        }
-
                     };
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getManufacturerNameString());
         locationAndNavigationProfile.disconnect();
     }
@@ -255,50 +210,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getModelNumberString_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-
                         @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-
-                        @Override
-                        public synchronized boolean hasModelNumberString() {
-                            return true;
+                        public synchronized Integer getModelNumberString() {
+                            return 1;
                         }
                     };
                 }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0)), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getModelNumberString());
         locationAndNavigationProfile.disconnect();
     }
@@ -311,44 +236,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getBatteryLevelCount_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCount() {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(new BluetoothGattService(BATTERY_SERVICE, 0)), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getBatteryLevelCount());
         locationAndNavigationProfile.disconnect();
     }
@@ -361,48 +262,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getBatteryLevel_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, 0, 0));
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevel(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getBatteryLevel());
         locationAndNavigationProfile.disconnect();
     }
@@ -415,48 +288,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getBatteryLevel_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, 0, 0));
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevel(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getBatteryLevel(0));
         locationAndNavigationProfile.disconnect();
     }
@@ -469,48 +314,8 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_isBatteryLevelNotificatable_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-
-        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
-            @Override
-            public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-                    };
-                }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-            }
-        };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.isBatteryLevelNotificatable());
         locationAndNavigationProfile.disconnect();
     }
@@ -523,48 +328,8 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_isBatteryLevelNotificatable_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-
-        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
-            @Override
-            public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-                        @Override
-                        public boolean isStarted() {
-                            return true;
-                        }
-                    };
-                }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-            }
-        };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.isBatteryLevelNotificatable(0));
         locationAndNavigationProfile.disconnect();
     }
@@ -577,50 +342,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getBatteryLevelCharacteristicPresentationFormat_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getBatteryLevelCharacteristicPresentationFormat());
         locationAndNavigationProfile.disconnect();
     }
@@ -633,51 +368,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getBatteryLevelCharacteristicPresentationFormat_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getBatteryLevelCharacteristicPresentationFormat(0));
         locationAndNavigationProfile.disconnect();
     }
@@ -690,50 +394,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getBatteryLevelClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getBatteryLevelClientCharacteristicConfiguration());
         locationAndNavigationProfile.disconnect();
     }
@@ -746,51 +420,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getBatteryLevelClientCharacteristicConfiguration_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getBatteryLevelClientCharacteristicConfiguration(0));
         locationAndNavigationProfile.disconnect();
     }
@@ -803,50 +446,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_startBatteryLevelNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startBatteryLevelNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.startBatteryLevelNotification());
         locationAndNavigationProfile.disconnect();
     }
@@ -859,50 +472,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_startBatteryLevelNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startBatteryLevelNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.startBatteryLevelNotification(0));
         locationAndNavigationProfile.disconnect();
     }
@@ -915,50 +498,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_stopBatteryLevelNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopBatteryLevelNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.stopBatteryLevelNotification());
         locationAndNavigationProfile.disconnect();
     }
@@ -971,50 +524,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_stopBatteryLevelNotification_00102() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopBatteryLevelNotification(int index) {
+                            return 1;
                         }
                     };
                 }
-                if (mLocationAndNavigationService == null) {
-                    mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        locationAndNavigationProfile.mBatteryService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.stopBatteryLevelNotification(0));
         locationAndNavigationProfile.disconnect();
     }
@@ -1027,18 +550,8 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_isPositionQualityCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.isPositionQualityCharacteristicSupported());
         locationAndNavigationProfile.disconnect();
     }
@@ -1051,20 +564,8 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_isLNControlPointCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.isLNControlPointCharacteristicSupported());
         locationAndNavigationProfile.disconnect();
     }
@@ -1077,20 +578,8 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_isNavigationCharacteristicSupported_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.isNavigationCharacteristicSupported());
         locationAndNavigationProfile.disconnect();
     }
@@ -1103,46 +592,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getLNFeature_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getLNFeature() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getLNFeature());
         locationAndNavigationProfile.disconnect();
     }
@@ -1155,46 +618,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getLocationAndSpeedClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getLocationAndSpeedClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getLocationAndSpeedClientCharacteristicConfiguration());
         locationAndNavigationProfile.disconnect();
     }
@@ -1207,46 +644,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_startLocationAndSpeedNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startLocationAndSpeedNotification() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.startLocationAndSpeedNotification());
         locationAndNavigationProfile.disconnect();
     }
@@ -1259,46 +670,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_stopLocationAndSpeedNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopLocationAndSpeedNotification() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.stopLocationAndSpeedNotification());
         locationAndNavigationProfile.disconnect();
     }
@@ -1311,47 +696,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getPositionQuality_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getPositionQuality() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getPositionQuality());
         locationAndNavigationProfile.disconnect();
     }
@@ -1364,55 +722,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_setLNControlPoint_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-
                         @Override
-                        public boolean isLNControlPointCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer setLNControlPoint(@NonNull LNControlPoint lnControlPoint) {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.setLNControlPoint(new LNControlPoint(new byte[]{0})));
         locationAndNavigationProfile.disconnect();
     }
@@ -1425,49 +748,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_getLNControlPointClientCharacteristicConfiguration_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-
                         @Override
-                        public boolean isLNControlPointCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer getLNControlPointClientCharacteristicConfiguration() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.getLNControlPointClientCharacteristicConfiguration());
         locationAndNavigationProfile.disconnect();
     }
@@ -1480,55 +774,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_startLNControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-
                         @Override
-                        public boolean isLNControlPointCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startLNControlPointIndication() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.startLNControlPointIndication());
         locationAndNavigationProfile.disconnect();
     }
@@ -1541,55 +800,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_stopLNControlPointIndication_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
-
                         @Override
-                        public boolean isLNControlPointCharacteristicSupported() {
-                            return true;
-                        }
-
-                        @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopLNControlPointIndication() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.stopLNControlPointIndication());
         locationAndNavigationProfile.disconnect();
     }
@@ -1602,49 +826,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_startNavigationNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer startNavigationNotification() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.startNavigationNotification());
         locationAndNavigationProfile.disconnect();
     }
@@ -1657,49 +852,20 @@ public class LocationAndNavigationProfileTest {
 
     @Test
     public void test_stopNavigationNotification_00002() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-
-            @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
             public synchronized void createServices() {
-                if (mDeviceInformationService == null) {
-                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
-                if (mBatteryService == null) {
-                    mBatteryService = new BatteryService(mBLEConnection, mLocationAndNavigationProfileCallback, null);
-                }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
                         @Override
-                        public boolean isStarted() {
-                            return true;
+                        public synchronized Integer stopNavigationNotification() {
+                            return 1;
                         }
                     };
                 }
             }
         };
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
-        locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.stopNavigationNotification());
         locationAndNavigationProfile.disconnect();
     }
@@ -1720,23 +886,18 @@ public class LocationAndNavigationProfileTest {
                 atomicBoolean.set(true);
             }
         };
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(locationAndNavigationProfile.mDeviceInformationService);
         assertNotNull(locationAndNavigationProfile.mBatteryService);
         assertNotNull(locationAndNavigationProfile.mLocationAndNavigationService);
         assertTrue(atomicBoolean.get());
+        locationAndNavigationProfile.quit();
     }
 
     @Test
     public void test_quit_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        assertNotNull(bluetoothAdapter);
-        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        locationAndNavigationProfile.connect(MOCK_DEVICE);
+        locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         locationAndNavigationProfile.quit();
         assertNull(locationAndNavigationProfile.mDeviceInformationService);
         assertNull(locationAndNavigationProfile.mBatteryService);

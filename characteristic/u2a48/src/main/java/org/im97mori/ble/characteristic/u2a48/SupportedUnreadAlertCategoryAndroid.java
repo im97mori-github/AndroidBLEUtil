@@ -96,6 +96,7 @@ public class SupportedUnreadAlertCategoryAndroid extends SupportedUnreadAlertCat
      * @param in Parcel
      */
     private SupportedUnreadAlertCategoryAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

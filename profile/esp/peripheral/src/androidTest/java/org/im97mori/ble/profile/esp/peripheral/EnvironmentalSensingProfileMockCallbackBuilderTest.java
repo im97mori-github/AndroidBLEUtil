@@ -10628,18 +10628,13 @@ public class EnvironmentalSensingProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00502() {
-        Exception exception = null;
-        try {
-            new BaseBuilder(ApplicationProvider.getApplicationContext()
+        EnvironmentalSensingProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
                     , new EnvironmentalSensingServiceMockCallback.Builder<>()
                     , null
                     , new BatteryServiceMockCallback.Builder<>())
                     .build();
-        } catch (Exception e) {
-            exception = e;
-        }
 
-        assertNull(exception);
+        assertNotNull(callback);
     }
 
 }

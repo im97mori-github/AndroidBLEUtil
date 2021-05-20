@@ -11,12 +11,11 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
-import org.im97mori.ble.MockBLEConnection;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
 import java.util.Random;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -24,7 +23,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class ReadPhyTaskTest {
+public class ReadPhyTaskTest extends AbstractCentralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -87,7 +86,7 @@ public class ReadPhyTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadPhyTask task = new ReadPhyTask(new MockBLEConnection(), null, mockTaskHandler, ReadPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadPhyTask task = new ReadPhyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, ReadPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -99,10 +98,8 @@ public class ReadPhyTaskTest {
 
     @Test
     public void test_cancel_00002() {
-        MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
-            mockBleConnection.start();
 
             BaseBLECallback callback = new BaseBLECallback() {
 
@@ -111,7 +108,7 @@ public class ReadPhyTaskTest {
                     result.set(true);
                 }
             };
-            mockBleConnection.attach(callback);
+            MOCK_BLE_CONNECTION.attach(callback);
 
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
@@ -120,7 +117,7 @@ public class ReadPhyTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadPhyTask task = new ReadPhyTask(mockBleConnection, null, mockTaskHandler, ReadPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadPhyTask task = new ReadPhyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, ReadPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -128,7 +125,6 @@ public class ReadPhyTaskTest {
             if (looper != null) {
                 looper.quit();
             }
-            mockBleConnection.quit();
         }
     }
 

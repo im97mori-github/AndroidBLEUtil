@@ -75,6 +75,7 @@ public class FloorNumberAndroid extends FloorNumber implements Parcelable {
      * @param in Parcel
      */
     private FloorNumberAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

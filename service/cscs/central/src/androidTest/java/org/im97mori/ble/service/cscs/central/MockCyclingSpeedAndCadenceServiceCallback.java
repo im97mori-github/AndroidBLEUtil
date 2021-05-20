@@ -14,6 +14,7 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroi
 
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 class MockCyclingSpeedAndCadenceServiceCallback implements CyclingSpeedAndCadenceServiceCallback {
     @Override
     public void onCSCFeatureReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull CSCFeatureAndroid cscFeatureAndroid, @Nullable Bundle argument) {

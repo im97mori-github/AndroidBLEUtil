@@ -11,6 +11,7 @@ import java.util.Arrays;
 import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 
+@SuppressWarnings("ConstantConditions")
 public class AggregateAndroidTest {
 
     @Test

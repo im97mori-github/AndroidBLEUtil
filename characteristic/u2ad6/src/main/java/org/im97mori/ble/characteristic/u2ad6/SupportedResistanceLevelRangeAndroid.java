@@ -78,6 +78,7 @@ public class SupportedResistanceLevelRangeAndroid extends SupportedResistanceLev
      * @param in Parcel
      */
     private SupportedResistanceLevelRangeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

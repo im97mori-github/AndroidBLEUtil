@@ -75,6 +75,7 @@ public class ProtocolModeAndroid extends ProtocolMode implements Parcelable {
      * @param in Parcel
      */
     private ProtocolModeAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

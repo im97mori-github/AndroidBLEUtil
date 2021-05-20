@@ -158,8 +158,6 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
         this(context, null, null, null, null, null, sampleCallback);
     }
 
-    WspCentralSampleActivity mWspCentralSampleActivity;
-
     public WspCallbackSample(Context context
             , WeightScaleServiceMockCallback weightScaleServiceMockCallback
             , DeviceInformationServiceMockCallback deviceInformationServiceMockCallback

@@ -75,6 +75,7 @@ public class HardwareRevisionStringAndroid extends HardwareRevisionString implem
      * @param in Parcel
      */
     private HardwareRevisionStringAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

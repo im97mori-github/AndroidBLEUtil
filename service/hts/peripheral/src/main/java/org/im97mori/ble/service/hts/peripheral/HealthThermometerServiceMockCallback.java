@@ -146,7 +146,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
             mTemperatureType = new CharacteristicData(TEMPERATURE_TYPE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

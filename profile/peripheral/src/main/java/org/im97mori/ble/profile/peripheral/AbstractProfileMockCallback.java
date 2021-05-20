@@ -44,6 +44,7 @@ public abstract class AbstractProfileMockCallback {
     /**
      * @return {@link UUID} for advertising
      */
+    @SuppressWarnings("SameReturnValue")
     @Nullable
     public abstract UUID getServiceUUID();
 

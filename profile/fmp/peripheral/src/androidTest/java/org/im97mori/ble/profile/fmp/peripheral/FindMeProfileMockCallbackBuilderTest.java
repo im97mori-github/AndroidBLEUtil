@@ -13,6 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class FindMeProfileMockCallbackBuilderTest {
@@ -132,6 +133,31 @@ public class FindMeProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeAlertLevel());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_build_00001() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new ImmediateAlertServiceMockCallback.Builder<>())
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Alert Level data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00002() {
+        FindMeProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext()
+                , new ImmediateAlertServiceMockCallback.Builder<>())
+                .addAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_NO_ALERT))
+                .build();
+
+        assertNotNull(callback);
     }
 
 }

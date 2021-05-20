@@ -25,7 +25,7 @@ public class FitnessMachineStatusCharacteristicDataTest {
 
     @Test
     public void test_constructor_00001() {
-        FitnessMachineStatusCharacteristicData result1 = new FitnessMachineStatusCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineStatusCharacteristicData result1 = new FitnessMachineStatusCharacteristicData(new ArrayList<>()
                 , 1);
 
         Gson gson = new Gson();
@@ -69,7 +69,7 @@ public class FitnessMachineStatusCharacteristicDataTest {
     @Test
     public void test_setSpinDownStatusValue_00001() {
         int firstSpinDownStatusValue = 1;
-        FitnessMachineStatusCharacteristicData result1 = new FitnessMachineStatusCharacteristicData(new ArrayList<DescriptorData>()
+        FitnessMachineStatusCharacteristicData result1 = new FitnessMachineStatusCharacteristicData(new ArrayList<>()
                 , firstSpinDownStatusValue);
 
         assertEquals(firstSpinDownStatusValue, result1.spinDownStatusValue);

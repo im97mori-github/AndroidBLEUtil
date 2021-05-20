@@ -12,7 +12,6 @@ import org.im97mori.ble.advertising.CompleteListOf32BitServiceUUIDs;
 import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDs;
 import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDs;
 import org.im97mori.ble.advertising.IncompleteListOf32BitServiceUUIDs;
-import org.im97mori.ble.advertising.filter.AdvertisingDataFilter;
 import org.im97mori.ble.advertising.filter.CompleteListOf128BitServiceUUIDsFilter;
 import org.im97mori.ble.advertising.filter.CompleteListOf16BitServiceUUIDsFilter;
 import org.im97mori.ble.advertising.filter.CompleteListOf32BitServiceUUIDsFilter;
@@ -44,7 +43,7 @@ public class ScanParametersProfileScanCallback extends FilteredScanCallback {
      * @param scanCallback                  {@link ScanCallback} instance
      */
     public ScanParametersProfileScanCallback(@NonNull UUID serviceUUID, @NonNull FilteredScanCallbackInterface filteredScanCallbackInterface, @Nullable ScanCallback scanCallback) {
-        super(Collections.<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>>singletonList(
+        super(Collections.singletonList(
                 new OrFilter<>(
                         new CompleteListOf16BitServiceUUIDsFilter(new CompleteListOf16BitServiceUUIDs(serviceUUID))
                         , new CompleteListOf32BitServiceUUIDsFilter(new CompleteListOf32BitServiceUUIDs(serviceUUID))

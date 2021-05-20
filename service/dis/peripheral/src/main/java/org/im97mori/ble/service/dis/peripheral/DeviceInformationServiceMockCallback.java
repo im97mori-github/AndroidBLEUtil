@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a23.SystemId;
@@ -137,7 +136,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mManufacturerNameStringCharacteristicData = new CharacteristicData(MANUFACTURER_NAME_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -195,7 +194,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mModelNumberStringCharacteristicData = new CharacteristicData(MODEL_NUMBER_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -253,7 +252,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mSerialNumberStringCharacteristicData = new CharacteristicData(SERIAL_NUMBER_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -311,7 +310,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mHardwareRevisionStringCharacteristicData = new CharacteristicData(HARDWARE_REVISION_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -364,7 +363,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mFirmwareRevisionStringCharacteristicData = new CharacteristicData(FIRMWARE_REVISION_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -417,7 +416,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mSoftwareRevisionStringCharacteristicData = new CharacteristicData(SOFTWARE_REVISION_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -470,7 +469,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mSystemIdCharacteristicData = new CharacteristicData(SYSTEM_ID_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -516,7 +515,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mIEEE_11073_20601_RegulatoryCertificationDataListCharacteristicData = new CharacteristicData(IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value
@@ -569,7 +568,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             mPnpIdCharacteristicData = new CharacteristicData(PNP_ID_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
-                    , Collections.<DescriptorData>emptyList()
+                    , Collections.emptyList()
                     , responseCode
                     , delay
                     , value

@@ -69,6 +69,7 @@ public class FlagsAndroid extends Flags implements AdvertisingDataInterfaceAndro
      * @param in Parcel
      */
     private FlagsAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }
 

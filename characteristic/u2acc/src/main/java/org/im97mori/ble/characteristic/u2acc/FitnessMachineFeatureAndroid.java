@@ -76,6 +76,7 @@ public class FitnessMachineFeatureAndroid extends FitnessMachineFeature implemen
      * @param in Parcel
      */
     private FitnessMachineFeatureAndroid(@NonNull Parcel in) {
+        //noinspection ConstantConditions
         super(in.createByteArray());
     }
 

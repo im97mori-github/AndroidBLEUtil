@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/pre_connected">
         <item
             android:id="@+id/load_bonded_device"
@@ -9,7 +10,8 @@
             android:id="@+id/clear_bonded_history"
             android:title="@string/menu_clear_bonded_history" />
     </group>
-    <group android:id="@+id/basic">
+    <group android:id="@+id/basic"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/read_supported_new_alert_category"
             android:title="@string/menu_read_supported_new_alert_category" />
@@ -37,7 +39,8 @@
     </group>
     <group
         android:id="@+id/na"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/enable_new_alert_simple_alert"
             android:title="@string/menu_enable_new_alert_simple_alert" />
@@ -108,7 +111,8 @@
     </group>
     <group
         android:id="@+id/uas"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/enable_unread_alert_status_simple_alert"
             android:title="@string/menu_enable_unread_alert_status_simple_alert" />
@@ -160,7 +164,8 @@
             android:title="@string/menu_disable_unread_alert_status_missed_call" />
         <item
             android:id="@+id/disable_unread_alert_status_sms_mms"
-            android:title="@string/menu_disable_unread_alert_status_sms_mms" />
+            android:title="@string/menu_disable_unread_alert_status_sms_mms"
+            tools:ignore="UnusedIds" />
         <item
             android:id="@+id/disable_unread_alert_status_voice_mail"
             android:title="@string/menu_disable_unread_alert_status_voice_mail" />
@@ -179,7 +184,8 @@
     </group>
     <group
         android:id="@+id/na_control"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/notify_new_alert_simple_alert"
             android:title="@string/menu_notify_new_alert_simple_alert" />
@@ -216,7 +222,8 @@
     </group>
     <group
         android:id="@+id/uas_control"
-        android:visible="true">
+        android:visible="true"
+        tools:ignore="UnusedIds">
         <item
             android:id="@+id/notify_unread_alert_status_simple_alert"
             android:title="@string/menu_notify_unread_alert_status_simple_alert" />

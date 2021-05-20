@@ -199,7 +199,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(APPARENT_WIND_DIRECTION_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(APPARENT_WIND_DIRECTION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(APPARENT_WIND_DIRECTION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -490,7 +490,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(APPARENT_WIND_SPEED_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(APPARENT_WIND_SPEED_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(APPARENT_WIND_SPEED_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -781,7 +781,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(DEW_POINT_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(DEW_POINT_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(DEW_POINT_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -1072,7 +1072,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(ELEVATION_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(ELEVATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(ELEVATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -1363,7 +1363,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(GUST_FACTOR_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(GUST_FACTOR_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(GUST_FACTOR_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -1654,7 +1654,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(HEAT_INDEX_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(HEAT_INDEX_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(HEAT_INDEX_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -1945,7 +1945,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(HUMIDITY_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(HUMIDITY_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(HUMIDITY_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -2236,7 +2236,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(IRRADIANCE_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(IRRADIANCE_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(IRRADIANCE_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -2527,7 +2527,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(POLLEN_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(POLLEN_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(POLLEN_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -2818,7 +2818,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(RAINFALL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(RAINFALL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -3109,7 +3109,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(PRESSURE_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(PRESSURE_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(PRESSURE_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -3400,7 +3400,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(TEMPERATURE_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(TEMPERATURE_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(TEMPERATURE_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -3691,7 +3691,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(TRUE_WIND_DIRECTION_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(TRUE_WIND_DIRECTION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(TRUE_WIND_DIRECTION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -3982,7 +3982,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(TRUE_WIND_SPEED_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(TRUE_WIND_SPEED_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(TRUE_WIND_SPEED_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -4273,7 +4273,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(UV_INDEX_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(UV_INDEX_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(UV_INDEX_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -4564,7 +4564,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(WIND_CHILL_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(WIND_CHILL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(WIND_CHILL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -4855,7 +4855,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -5146,7 +5146,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_DECLINATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_DECLINATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -5437,7 +5437,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -5728,7 +5728,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 characteristicDataMap = new HashMap<>();
                 mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
             }
-            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, 0));
+            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
             return this;
         }
 
@@ -6006,92 +6006,95 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
                 Map<Integer, CharacteristicData> characteristicDataMap = esCharacteristicEntry.getValue();
 
                 boolean hasMultipleCharacteristic = characteristicDataMap.size() > 1;
-                for (Map.Entry<Integer, CharacteristicData> characteristicDataEntry : characteristicDataMap.entrySet()) {
-                    int characteristicIndex = characteristicDataEntry.getKey();
-                    CharacteristicData characteristicData = characteristicDataEntry.getValue();
-                    DescriptorData descriptorData;
-                    Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(characteristicUUID);
-                    if (descriptorDataMap == null) {
-                        if (hasMultipleCharacteristic) {
-                            throw new RuntimeException("no ES Measurement data:" + characteristicUUID);
-                        }
-                    } else {
-                        descriptorData = descriptorDataMap.get(characteristicIndex);
-                        if (descriptorData == null) {
+                List<Integer> keyList = new ArrayList<>(characteristicDataMap.keySet());
+                Collections.sort(keyList);
+                for (Integer characteristicIndex : keyList) {
+                    CharacteristicData characteristicData = characteristicDataMap.get(characteristicIndex);
+                    if (characteristicData != null) {
+                        DescriptorData descriptorData;
+                        Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(characteristicUUID);
+                        if (descriptorDataMap == null) {
                             if (hasMultipleCharacteristic) {
                                 throw new RuntimeException("no ES Measurement data:" + characteristicUUID);
                             }
                         } else {
-                            characteristicData.descriptorDataList.add(descriptorData);
+                            descriptorData = descriptorDataMap.get(characteristicIndex);
+                            if (descriptorData == null) {
+                                if (hasMultipleCharacteristic) {
+                                    throw new RuntimeException("no ES Measurement data:" + characteristicUUID);
+                                }
+                            } else {
+                                characteristicData.descriptorDataList.add(descriptorData);
+                            }
                         }
-                    }
-                    if ((BluetoothGattCharacteristic.PROPERTY_NOTIFY & characteristicData.property) != 0) {
-                        Map<Integer, Map<Integer, DescriptorData>> esTriggerSettingDescriptorDataMap = mEsTriggerSettingMap.get(characteristicUUID);
-                        if (esTriggerSettingDescriptorDataMap == null) {
-                            throw new RuntimeException("no ES Trigger Setting data:" + characteristicUUID);
-                        } else {
-                            descriptorDataMap = esTriggerSettingDescriptorDataMap.get(characteristicIndex);
-                            if (descriptorDataMap == null) {
+                        if ((BluetoothGattCharacteristic.PROPERTY_NOTIFY & characteristicData.property) != 0) {
+                            Map<Integer, Map<Integer, DescriptorData>> esTriggerSettingDescriptorDataMap = mEsTriggerSettingMap.get(characteristicUUID);
+                            if (esTriggerSettingDescriptorDataMap == null) {
                                 throw new RuntimeException("no ES Trigger Setting data:" + characteristicUUID);
                             } else {
-                                DescriptorData esTriggerSettingDescriptorData0 = descriptorDataMap.get(0);
-                                DescriptorData esTriggerSettingDescriptorData1 = descriptorDataMap.get(1);
-                                DescriptorData esTriggerSettingDescriptorData2 = descriptorDataMap.get(2);
-                                if (esTriggerSettingDescriptorData0 == null
-                                        && esTriggerSettingDescriptorData1 == null
-                                        && esTriggerSettingDescriptorData2 == null) {
+                                descriptorDataMap = esTriggerSettingDescriptorDataMap.get(characteristicIndex);
+                                if (descriptorDataMap == null) {
                                     throw new RuntimeException("no ES Trigger Setting data:" + characteristicUUID);
                                 } else {
-                                    int triggerCount = 0;
-                                    if (esTriggerSettingDescriptorData0 != null) {
-                                        hasWritable |= (esTriggerSettingDescriptorData0.permission & BluetoothGattDescriptor.PERMISSION_WRITE) != 0;
-                                        characteristicData.descriptorDataList.add(esTriggerSettingDescriptorData0);
-                                        triggerCount++;
-                                    }
-                                    if (esTriggerSettingDescriptorData1 != null) {
-                                        hasWritable |= (esTriggerSettingDescriptorData1.permission & BluetoothGattDescriptor.PERMISSION_WRITE) != 0;
-                                        characteristicData.descriptorDataList.add(esTriggerSettingDescriptorData1);
-                                        triggerCount++;
-                                    }
-                                    if (esTriggerSettingDescriptorData2 != null) {
-                                        hasWritable |= (esTriggerSettingDescriptorData2.permission & BluetoothGattDescriptor.PERMISSION_WRITE) != 0;
-                                        characteristicData.descriptorDataList.add(esTriggerSettingDescriptorData2);
-                                        triggerCount++;
-                                    }
+                                    DescriptorData esTriggerSettingDescriptorData0 = descriptorDataMap.get(0);
+                                    DescriptorData esTriggerSettingDescriptorData1 = descriptorDataMap.get(1);
+                                    DescriptorData esTriggerSettingDescriptorData2 = descriptorDataMap.get(2);
+                                    if (esTriggerSettingDescriptorData0 == null
+                                            && esTriggerSettingDescriptorData1 == null
+                                            && esTriggerSettingDescriptorData2 == null) {
+                                        throw new RuntimeException("no ES Trigger Setting data:" + characteristicUUID);
+                                    } else {
+                                        int triggerCount = 0;
+                                        if (esTriggerSettingDescriptorData0 != null) {
+                                            hasWritable |= (esTriggerSettingDescriptorData0.permission & BluetoothGattDescriptor.PERMISSION_WRITE) != 0;
+                                            characteristicData.descriptorDataList.add(esTriggerSettingDescriptorData0);
+                                            triggerCount++;
+                                        }
+                                        if (esTriggerSettingDescriptorData1 != null) {
+                                            hasWritable |= (esTriggerSettingDescriptorData1.permission & BluetoothGattDescriptor.PERMISSION_WRITE) != 0;
+                                            characteristicData.descriptorDataList.add(esTriggerSettingDescriptorData1);
+                                            triggerCount++;
+                                        }
+                                        if (esTriggerSettingDescriptorData2 != null) {
+                                            hasWritable |= (esTriggerSettingDescriptorData2.permission & BluetoothGattDescriptor.PERMISSION_WRITE) != 0;
+                                            characteristicData.descriptorDataList.add(esTriggerSettingDescriptorData2);
+                                            triggerCount++;
+                                        }
 
-                                    if (triggerCount > 1) {
-                                        descriptorDataMap = mEsConfigurationMap.get(characteristicUUID);
-                                        if (descriptorDataMap == null) {
-                                            throw new RuntimeException("no ES Configuration data:" + characteristicUUID);
-                                        } else {
-                                            descriptorData = descriptorDataMap.get(characteristicIndex);
-                                            if (descriptorData == null) {
+                                        if (triggerCount > 1) {
+                                            descriptorDataMap = mEsConfigurationMap.get(characteristicUUID);
+                                            if (descriptorDataMap == null) {
                                                 throw new RuntimeException("no ES Configuration data:" + characteristicUUID);
                                             } else {
-                                                hasWritable |= (descriptorData.permission & BluetoothGattDescriptor.PERMISSION_WRITE) != 0;
-                                                characteristicData.descriptorDataList.add(descriptorData);
+                                                descriptorData = descriptorDataMap.get(characteristicIndex);
+                                                if (descriptorData == null) {
+                                                    throw new RuntimeException("no ES Configuration data:" + characteristicUUID);
+                                                } else {
+                                                    hasWritable |= (descriptorData.permission & BluetoothGattDescriptor.PERMISSION_WRITE) != 0;
+                                                    characteristicData.descriptorDataList.add(descriptorData);
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                    }
-                    descriptorDataMap = mCharacteristicUserDescriptionMap.get(characteristicUUID);
-                    if (descriptorDataMap != null) {
-                        descriptorData = descriptorDataMap.get(characteristicIndex);
-                        if (descriptorData != null) {
-                            characteristicData.descriptorDataList.add(descriptorData);
+                        descriptorDataMap = mCharacteristicUserDescriptionMap.get(characteristicUUID);
+                        if (descriptorDataMap != null) {
+                            descriptorData = descriptorDataMap.get(characteristicIndex);
+                            if (descriptorData != null) {
+                                characteristicData.descriptorDataList.add(descriptorData);
+                            }
                         }
-                    }
-                    descriptorDataMap = mValidRangeMap.get(characteristicUUID);
-                    if (descriptorDataMap != null) {
-                        descriptorData = descriptorDataMap.get(characteristicIndex);
-                        if (descriptorData != null) {
-                            characteristicData.descriptorDataList.add(descriptorData);
+                        descriptorDataMap = mValidRangeMap.get(characteristicUUID);
+                        if (descriptorDataMap != null) {
+                            descriptorData = descriptorDataMap.get(characteristicIndex);
+                            if (descriptorData != null) {
+                                characteristicData.descriptorDataList.add(descriptorData);
+                            }
                         }
+                        characteristicList.add(characteristicData);
                     }
-                    characteristicList.add(characteristicData);
                 }
             }
 

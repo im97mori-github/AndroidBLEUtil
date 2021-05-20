@@ -17,7 +17,7 @@ public class MockDataTest {
 
     @Test
     public void test_constructor_00001() {
-        MockData result1 = new MockData(new ArrayList<ServiceData>());
+        MockData result1 = new MockData(new ArrayList<>());
 
         Gson gson = new Gson();
         MockData result2 = gson.fromJson(gson.toJson(result1), MockData.class);
@@ -29,7 +29,7 @@ public class MockDataTest {
     @Test
     public void test_constructor_00002() {
         List<ServiceData> serviceDataList = new ArrayList<>();
-        serviceDataList.add(new ServiceData(UUID.randomUUID(), 1, new ArrayList<CharacteristicData>()));
+        serviceDataList.add(new ServiceData(UUID.randomUUID(), 1, new ArrayList<>()));
 
         MockData result1 = new MockData(serviceDataList);
 
@@ -44,13 +44,13 @@ public class MockDataTest {
     @Test
     public void test_setServiceDataList_00001() {
         List<ServiceData> firstServiceDataList = new ArrayList<>();
-        firstServiceDataList.add(new ServiceData(UUID.randomUUID(), 1, new ArrayList<CharacteristicData>()));
+        firstServiceDataList.add(new ServiceData(UUID.randomUUID(), 1, new ArrayList<>()));
 
         MockData mockData = new MockData(firstServiceDataList);
         assertArrayEquals(firstServiceDataList.toArray(), mockData.serviceDataList.toArray());
 
         List<ServiceData> secondServiceDataList = new ArrayList<>();
-        secondServiceDataList.add(new ServiceData(UUID.randomUUID(), 11, new ArrayList<CharacteristicData>()));
+        secondServiceDataList.add(new ServiceData(UUID.randomUUID(), 11, new ArrayList<>()));
         mockData.serviceDataList = secondServiceDataList;
         assertArrayEquals(secondServiceDataList.toArray(), mockData.serviceDataList.toArray());
     }

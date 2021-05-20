@@ -188,6 +188,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("EmptyMethod")
     @Override
     public void onServerStarted() {
         // do nothing

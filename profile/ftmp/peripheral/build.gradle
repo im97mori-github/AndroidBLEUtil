@@ -32,7 +32,7 @@ dependencies {
     api "${groupId}:${serviceFtmsPeripheralAndroid.artifactId}:${serviceFtmsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceUdsPeripheralAndroid.artifactId}:${serviceUdsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceDisPeripheralAndroid.artifactId}:${serviceDisPeripheralAndroid.versionName}"
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestPeripheral
 }
 
 task sourcesJar(type: Jar) {

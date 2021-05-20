@@ -136,7 +136,7 @@ public class ProximityProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer setImmediateAlertServiceAlertLevel(@NonNull AlertLevel alertLevel) {
         Integer taskId = null;
-        if (mImmediateAlertService != null && mHasImmediateAlertService) {
+        if (mImmediateAlertService != null) {
             taskId = mImmediateAlertService.setAlertLevel(alertLevel);
         }
         return taskId;
@@ -148,7 +148,7 @@ public class ProximityProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getTxPowerLevel() {
         Integer taskId = null;
-        if (mTxPowerService != null && mHasTxPowerService) {
+        if (mTxPowerService != null) {
             taskId = mTxPowerService.getTxPowerLevel();
         }
         return taskId;
