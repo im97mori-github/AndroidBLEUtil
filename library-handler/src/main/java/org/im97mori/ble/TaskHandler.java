@@ -9,6 +9,7 @@ import android.text.format.DateUtils;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.task.AbstractBLETask;
+import org.im97mori.stacklog.LogUtils;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -35,9 +36,14 @@ public class TaskHandler extends Handler {
     private static final int MESSAGE_TASK_ADD = MESSAGE_QUIT + 1;
 
     /**
+     * MESSAGE:HIGH_PRIORITY_TASK_ADD
+     */
+    private static final int MESSAGE_HIGH_PRIORITY_TASK_ADD = MESSAGE_TASK_ADD + 1;
+
+    /**
      * MESSAGE:TASK_PROCESSING
      */
-    private static final int MESSAGE_TASK_PROCESSING = MESSAGE_TASK_ADD + 1;
+    private static final int MESSAGE_TASK_PROCESSING = MESSAGE_HIGH_PRIORITY_TASK_ADD + 1;
 
     /**
      * MESSAGE:TASK_CLEAR
@@ -65,6 +71,11 @@ public class TaskHandler extends Handler {
     private final LinkedList<AbstractBLETask> mQueue = new LinkedList<>();
 
     /**
+     * high priority task queue
+     */
+    private final LinkedList<AbstractBLETask> mHighPriorityQueue = new LinkedList<>();
+
+    /**
      * end of busy status
      */
     private long mWaitForBusy;
@@ -74,6 +85,25 @@ public class TaskHandler extends Handler {
      */
     public TaskHandler(@NonNull Looper looper) {
         super(looper);
+    }
+
+    /**
+     * check task status
+     *
+     * @param task check target task
+     * @return {@code true}:task canceled, {@code false}:task alive
+     */
+    protected boolean isTaskAlive(@NonNull AbstractBLETask task) {
+        boolean result = true;
+        if (hasMessages(MESSAGE_TASK_CANCEL, task.getTaskId())) {
+            task.cancel();
+            removeMessages(MESSAGE_TASK_CANCEL, task.getTaskId());
+            result = false;
+        } else if (hasMessages(MESSAGE_TASK_CLEAR)) {
+            task.cancel();
+            result = false;
+        }
+        return result;
     }
 
     /**
@@ -98,7 +128,7 @@ public class TaskHandler extends Handler {
                 // cancel single task
                 Integer canceldTask = (Integer) msg.obj;
 
-                if (mCurrentTask != null && mCurrentTask.getTaskId().equals(canceldTask)) {
+                if (mCurrentTask != null && canceldTask.equals(mCurrentTask.getTaskId())) {
                     mCurrentTask.cancel();
                     mCurrentTask = null;
                 }
@@ -106,7 +136,16 @@ public class TaskHandler extends Handler {
                 Iterator<AbstractBLETask> it = mQueue.iterator();
                 while (it.hasNext()) {
                     AbstractBLETask task = it.next();
-                    if (task.getTaskId().equals(canceldTask)) {
+                    if (canceldTask.equals(task.getTaskId())) {
+                        it.remove();
+                        break;
+                    }
+                }
+
+                it = mHighPriorityQueue.iterator();
+                while (it.hasNext()) {
+                    AbstractBLETask task = it.next();
+                    if (canceldTask.equals(task.getTaskId())) {
                         it.remove();
                         break;
                     }
@@ -117,17 +156,21 @@ public class TaskHandler extends Handler {
                     cancelAllQueue();
                 }
 
+                // processing for high priority task
+
+                if (MESSAGE_HIGH_PRIORITY_TASK_ADD == msg.what) {
+                    AbstractBLETask task = (AbstractBLETask) msg.obj;
+                    if (isTaskAlive(task)) {
+                        mHighPriorityQueue.add(task);
+                    }
+                }
+
                 // processing for add
 
                 // add task
                 if (MESSAGE_TASK_ADD == msg.what) {
                     AbstractBLETask task = (AbstractBLETask) msg.obj;
-                    if (hasMessages(MESSAGE_TASK_CANCEL, task.getTaskId())) {
-                        task.cancel();
-                        removeMessages(MESSAGE_TASK_CANCEL, task.getTaskId());
-                    } else if (hasMessages(MESSAGE_TASK_CLEAR)) {
-                        task.cancel();
-                    } else {
+                    if (isTaskAlive(task)) {
                         // add to task queue
                         mQueue.add(task);
                     }
@@ -135,9 +178,7 @@ public class TaskHandler extends Handler {
 
                 // have current task, process task
                 if (mCurrentTask != null) {
-                    if (hasMessages(MESSAGE_TASK_CANCEL, mCurrentTask.getTaskId())) {
-                        mCurrentTask.cancel();
-                        removeMessages(MESSAGE_TASK_CANCEL, mCurrentTask.getTaskId());
+                    if (!isTaskAlive(mCurrentTask)) {
                         mCurrentTask = null;
                     } else if (mCurrentTask.doProcess(msg)) {
                         // task finished
@@ -157,16 +198,26 @@ public class TaskHandler extends Handler {
                     mWaitForBusy = 0;
                 }
 
+                Iterator<AbstractBLETask> it = mHighPriorityQueue.iterator();
+                while (it.hasNext()) {
+                    AbstractBLETask task = it.next();
+                    if (isTaskAlive(task)) {
+                        if (!isBusy() || task.isIgnoreBusy()) {
+                            task.doProcess(msg);
+                            it.remove();
+                        }
+                    } else {
+                        it.remove();
+                    }
+                }
+
                 // no current task and task queue is not empty
                 if (mCurrentTask == null && !mQueue.isEmpty()) {
                     // set current task
                     do {
                         AbstractBLETask task = mQueue.poll();
                         if (task != null) {
-                            if (hasMessages(MESSAGE_TASK_CANCEL, task.getTaskId())) {
-                                task.cancel();
-                                removeMessages(MESSAGE_TASK_CANCEL, task.getTaskId());
-                            } else if (mWaitForBusy < SystemClock.elapsedRealtime() || task.isIgnoreBusy()) {
+                            if (isTaskAlive(task) && (!isBusy() || task.isIgnoreBusy())) {
                                 // Disconnect task ignore busy status
 
                                 mCurrentTask = task;
@@ -175,20 +226,19 @@ public class TaskHandler extends Handler {
                                 Message initialMessage = task.createInitialMessage();
                                 initialMessage.what = MESSAGE_TASK_PROCESSING;
                                 sendMessage(initialMessage);
-                                break;
                             } else {
                                 // busy status
 
                                 // return to queue
                                 mQueue.push(task);
-                                break;
                             }
+                            break;
                         }
                     } while (!mQueue.isEmpty());
                 }
             }
         } catch (Exception e) {
-//            BLELogUtils.stackLog(e);
+            LogUtils.stackLog(e);
         }
     }
 
@@ -235,6 +285,13 @@ public class TaskHandler extends Handler {
         message.what = MESSAGE_TASK_ADD;
         message.obj = task;
         sendMessageDelayed(message, delay);
+    }
+
+    public void addHighPriorityTask(@NonNull AbstractBLETask task) {
+        Message message = new Message();
+        message.what = MESSAGE_HIGH_PRIORITY_TASK_ADD;
+        message.obj = task;
+        sendMessageDelayed(message, 0);
     }
 
     /**
@@ -284,6 +341,10 @@ public class TaskHandler extends Handler {
             task.cancel();
         }
         mQueue.clear();
+        for (AbstractBLETask task : mHighPriorityQueue) {
+            task.cancel();
+        }
+        mHighPriorityQueue.clear();
     }
 
 }

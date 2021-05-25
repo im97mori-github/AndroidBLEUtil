@@ -309,7 +309,7 @@ public abstract class AbstractBLETask {
     /**
      * PROGRESS:ADD_SERVICE
      */
-    public static final int PROGRESS_ADD_SERVICE = PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR + 1;
+    public static final int PROGRESS_ADD_SERVICE = PROGRESS_ABORT_RELIABLE_WRITE_START + 1;
 
     /**
      * PROGRESS:ADD_SERVICE_SUCCESS
@@ -369,7 +369,7 @@ public abstract class AbstractBLETask {
     /**
      * PROGRESS:SET_NOTIFICATION_START
      */
-    public static final int PROGRESS_SET_NOTIFICATION_START = PROGRESS_BOND_SUCCESS + 1;
+    public static final int PROGRESS_SET_NOTIFICATION_START = PROGRESS_BOND_ERROR + 1;
 
     /**
      * PROGRESS:SET_NOTIFICATION_SUCCESS
@@ -403,27 +403,7 @@ public abstract class AbstractBLETask {
     }
 
     /**
-     * <p>
      * task progress
-     * <p>
-     * one of {@link #PROGRESS_INIT}
-     * {@link #PROGRESS_FINISHED}
-     * {@link #PROGRESS_TIMEOUT}
-     * {@link #PROGRESS_CONNECT}
-     * {@link #PROGRESS_DISCONNECT}
-     * {@link #PROGRESS_CHARACTERISTIC_READ_START}
-     * {@link #PROGRESS_CHARACTERISTIC_READ_SUCCESS}
-     * {@link #PROGRESS_CHARACTERISTIC_READ_ERROR}
-     * {@link #PROGRESS_CHARACTERISTIC_WRITE_START}
-     * {@link #PROGRESS_CHARACTERISTIC_WRITE_SUCCESS}
-     * {@link #PROGRESS_CHARACTERISTIC_WRITE_ERROR}
-     * {@link #PROGRESS_DESCRIPTOR_READ_START}
-     * {@link #PROGRESS_DESCRIPTOR_READ_SUCCESS}
-     * {@link #PROGRESS_DESCRIPTOR_READ_ERROR}
-     * {@link #PROGRESS_DESCRIPTOR_WRITE_SUCCESS}
-     * {@link #PROGRESS_DESCRIPTOR_WRITE_SUCCESS}
-     * {@link #PROGRESS_DESCRIPTOR_WRITE_ERROR}
-     * </p>
      */
     protected int mCurrentProgress = PROGRESS_INIT;
 

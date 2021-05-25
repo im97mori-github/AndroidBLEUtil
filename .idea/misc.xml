@@ -30,6 +30,8 @@
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_FIRST_USER" />
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.test.BLETestUtilsAndroid MOCK_DEVICE_0" />
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.test.BLETestUtilsAndroid MOCK_DEVICE_1" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_BUSY" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_FINISHED" />
     </entry_points>
     <pattern value="org.im97mori.ble.advertising.filter.AdvertisingIntervalFilter" method="isMatched" />
     <pattern value="org.im97mori.ble.advertising.filter.AppearanceFilter" method="isMatched" />
@@ -237,6 +239,7 @@
     <pattern value="org.im97mori.ble.test.BLETestUtilsAndroid" method="createBluetoothGattService" />
     <pattern value="org.im97mori.ble.test.BLETestUtilsAndroid" method="createScanResult" />
     <pattern value="org.im97mori.ble.BLEServerConnection" method="BLEServerConnection" />
+    <pattern value="org.im97mori.ble.task.AbstractBLETask" method="dumpProgress" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />

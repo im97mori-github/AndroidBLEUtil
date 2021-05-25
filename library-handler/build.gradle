@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    api androidxAnnotation
+    api apiCoreAndroid
     androidTestImplementation apiTest
 }
 

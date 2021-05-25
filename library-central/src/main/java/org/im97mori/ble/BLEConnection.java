@@ -23,6 +23,7 @@ import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DisconnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ExecuteReliableWriteTask;
+import org.im97mori.ble.task.NotificatedTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.ReadPhyTask;
@@ -519,7 +520,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             return;
         }
         try {
-            getBLECallback().onCharacteristicNotified(mBluetoothDevice, characteristic.getService().getUuid(), characteristic.getService().getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), characteristic.getValue());
+            mTaskHandler.addHighPriorityTask(new NotificatedTask(this, characteristic.getService().getUuid(), characteristic.getService().getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), characteristic.getValue()));
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
         }

@@ -20,7 +20,7 @@ import static org.junit.Assert.assertFalse;
 public class TaskHandlerTest {
 
     @Test
-    public void addTaskTest001() {
+    public void test_addTask_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task = new AbstractBLETask() {
             @NonNull
@@ -63,7 +63,7 @@ public class TaskHandlerTest {
     }
 
     @Test
-    public void addTaskTest002() {
+    public void test_addTask_00002() {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         AbstractBLETask task = new AbstractBLETask() {
             @NonNull
@@ -107,7 +107,94 @@ public class TaskHandlerTest {
     }
 
     @Test
-    public void cancelTaskTest001() {
+    public void test_addHighPriorityTask_00001() {
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
+        AbstractBLETask task = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                countDownLatch.countDown();
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+        };
+
+        HandlerThread thread = new HandlerThread(this.getClass().getName());
+        thread.start();
+        TaskHandler taskHandler = new TaskHandler(thread.getLooper());
+
+        taskHandler.addHighPriorityTask(task);
+
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assertEquals(0, countDownLatch.getCount());
+
+        taskHandler.quit();
+    }
+
+    @Test
+    public void test_addHighPriorityTask_00002() {
+        final CountDownLatch countDownLatch = new CountDownLatch(2);
+        AbstractBLETask task = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                countDownLatch.countDown();
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+        };
+
+        HandlerThread thread = new HandlerThread(this.getClass().getName());
+        thread.start();
+        TaskHandler taskHandler = new TaskHandler(thread.getLooper());
+
+        taskHandler.addHighPriorityTask(task);
+        taskHandler.addHighPriorityTask(task);
+
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assertEquals(0, countDownLatch.getCount());
+
+        taskHandler.quit();
+    }
+
+    @Test
+    public void test_cancelTask_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
             @NonNull
@@ -182,7 +269,7 @@ public class TaskHandlerTest {
     }
 
     @Test
-    public void cancelTaskTest002() {
+    public void test_cancelTask_00002() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
             @NonNull
@@ -283,7 +370,183 @@ public class TaskHandlerTest {
     }
 
     @Test
-    public void clearTaskTest001() {
+    public void test_cancelTask_00101() {
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
+        AbstractBLETask task1 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                try {
+                    Thread.sleep(DateUtils.SECOND_IN_MILLIS);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+            }
+        };
+        final AtomicInteger atomicInteger = new AtomicInteger(0);
+        AbstractBLETask task2 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                atomicInteger.set(1);
+                countDownLatch.countDown();
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+                atomicInteger.set(2);
+                countDownLatch.countDown();
+            }
+        };
+
+        HandlerThread thread = new HandlerThread(this.getClass().getName());
+        thread.start();
+        TaskHandler taskHandler = new TaskHandler(thread.getLooper());
+
+        taskHandler.addHighPriorityTask(task1);
+        taskHandler.addHighPriorityTask(task2);
+        taskHandler.cancelTask(task2.getTaskId());
+
+        try {
+            countDownLatch.await(2, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        assertEquals(2, atomicInteger.get());
+
+        taskHandler.quit();
+    }
+
+    @Test
+    public void test_cancelTask_00102() {
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
+        AbstractBLETask task1 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                try {
+                    Thread.sleep(DateUtils.SECOND_IN_MILLIS * 2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+            }
+        };
+        final AtomicInteger atomicInteger1 = new AtomicInteger(0);
+        AbstractBLETask task2 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                atomicInteger1.set(1);
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+                atomicInteger1.set(2);
+            }
+        };
+        final AtomicInteger atomicInteger2 = new AtomicInteger(0);
+        AbstractBLETask task3 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                atomicInteger2.set(1);
+                countDownLatch.countDown();
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+                atomicInteger2.set(2);
+                countDownLatch.countDown();
+            }
+        };
+
+        HandlerThread thread = new HandlerThread(this.getClass().getName());
+        thread.start();
+        TaskHandler taskHandler = new TaskHandler(thread.getLooper());
+
+        taskHandler.addHighPriorityTask(task1);
+        taskHandler.addHighPriorityTask(task2);
+        taskHandler.addHighPriorityTask(task3);
+        taskHandler.cancelTask(task2.getTaskId());
+
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        assertEquals(2, atomicInteger1.get());
+        assertEquals(1, atomicInteger2.get());
+
+        taskHandler.quit();
+    }
+
+    @Test
+    public void test_clearTask_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
             @NonNull
@@ -407,9 +670,134 @@ public class TaskHandlerTest {
         taskHandler.quit();
     }
 
+    @Test
+    public void test_clearTask_00101() {
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
+        AbstractBLETask task1 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                try {
+                    Thread.sleep(DateUtils.SECOND_IN_MILLIS * 2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+            }
+        };
+        final AtomicInteger atomicInteger1 = new AtomicInteger(0);
+        AbstractBLETask task2 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                atomicInteger1.set(1);
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+                atomicInteger1.set(2);
+            }
+        };
+        final AtomicInteger atomicInteger2 = new AtomicInteger(0);
+        AbstractBLETask task3 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                atomicInteger2.set(1);
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+                atomicInteger2.set(2);
+            }
+        };
+        final AtomicInteger atomicInteger3 = new AtomicInteger(0);
+        AbstractBLETask task4 = new AbstractBLETask() {
+            @NonNull
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                atomicInteger3.set(1);
+                countDownLatch.countDown();
+                return true;
+            }
+
+            @Override
+            public boolean isBusy() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+                atomicInteger3.set(2);
+                countDownLatch.countDown();
+            }
+        };
+
+        HandlerThread thread = new HandlerThread(this.getClass().getName());
+        thread.start();
+        TaskHandler taskHandler = new TaskHandler(thread.getLooper());
+
+        taskHandler.addHighPriorityTask(task1);
+        taskHandler.addHighPriorityTask(task2);
+        taskHandler.addHighPriorityTask(task3);
+        taskHandler.clearTask();
+        taskHandler.addHighPriorityTask(task4);
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assertEquals(2, atomicInteger1.get());
+        assertEquals(2, atomicInteger2.get());
+        assertEquals(1, atomicInteger3.get());
+
+        taskHandler.quit();
+    }
+
     @SuppressWarnings("BusyWait")
     @Test
-    public void clearBusyTest001() {
+    public void test_clearBusy_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
             @NonNull
@@ -509,7 +897,7 @@ public class TaskHandlerTest {
     }
 
     @Test
-    public void clearBusyTest002() {
+    public void test_clearBusy_00002() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
             @NonNull
@@ -588,7 +976,7 @@ public class TaskHandlerTest {
     }
 
     @Test
-    public void quitTest001() {
+    public void test_quit_00001() {
         HandlerThread thread = new HandlerThread(this.getClass().getName());
         thread.start();
         Looper looper = thread.getLooper();
