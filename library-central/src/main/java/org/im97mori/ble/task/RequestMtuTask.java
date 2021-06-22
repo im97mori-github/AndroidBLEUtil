@@ -12,8 +12,8 @@ import androidx.annotation.RequiresApi;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 /**
  * Request mtu task
@@ -22,6 +22,13 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class RequestMtuTask extends AbstractBLETask {
+
+    /**
+     * Maximum MTU size
+     * <p>
+     * Core Specification v5.2 Vol 3 Part F 3.2.9
+     */
+    public static final int MAXIMUM_MTU = 512;
 
     /**
      * Default timeout(millis) for request mtu:30sec

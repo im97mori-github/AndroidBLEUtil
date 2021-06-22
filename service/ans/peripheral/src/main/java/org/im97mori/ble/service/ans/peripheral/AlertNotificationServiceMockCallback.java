@@ -38,15 +38,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.COMMAND_NOT_SUPPORTED;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.COMMAND_NOT_SUPPORTED;
+import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
 
 /**
  * Alert Notification Service (Service UUID: 0x1811) for Peripheral

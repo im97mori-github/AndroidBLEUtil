@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
 
 /**
  * Waist Circumference (Characteristics UUID: 0x2A97)

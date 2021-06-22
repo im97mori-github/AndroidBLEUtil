@@ -6,7 +6,6 @@ def GROUP_ID = groupId
 def ARTIFACT_ID = target[artifactId]
 def VERSION_CODE = target[versionCode]
 def VERSION_NAME = target[uploadVersionName]
-def BASE_MODULE = target[baseModule]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -27,8 +26,7 @@ android {
 }
 
 dependencies {
-    api apiCoreAndroid
-    api BASE_MODULE
+    api androidxAnnotation
 }
 
 task sourcesJar(type: Jar) {

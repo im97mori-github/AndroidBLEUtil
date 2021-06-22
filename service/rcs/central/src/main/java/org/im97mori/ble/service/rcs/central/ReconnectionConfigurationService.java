@@ -26,11 +26,11 @@ import org.im97mori.ble.task.WriteDescriptorTask;
 import java.util.List;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RC_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.RC_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
 
 /**
  * Reconnection Configuration Service (Service UUID: 0x1829) for Central

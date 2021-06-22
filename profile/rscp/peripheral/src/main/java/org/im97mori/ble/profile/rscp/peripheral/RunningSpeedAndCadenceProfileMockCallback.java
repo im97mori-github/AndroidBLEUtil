@@ -18,7 +18,7 @@ import org.im97mori.ble.service.rscs.peripheral.RunningSpeedAndCadenceServiceMoc
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.RUNNING_SPEED_AND_CADENCE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.RUNNING_SPEED_AND_CADENCE_SERVICE;
 
 /**
  * Running Speed and Cadence Profile for Peripheral

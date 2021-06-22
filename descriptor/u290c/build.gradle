@@ -29,8 +29,9 @@ android {
 }
 
 dependencies {
-    api apiCoreAndroid
+    api apiCoreConstantsDescriptor
     api BASE_MODULE
+    api apiCoreUtilsAndroid
     androidTestImplementation apiTest
 }
 

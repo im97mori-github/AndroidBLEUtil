@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
+import org.im97mori.ble.constants.ErrorCodeAndroid;
 
-import static org.im97mori.ble.BLEConstants.ErrorCodes;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 
 /**
  * Disconnect from {@link BluetoothGatt} task
@@ -30,7 +30,7 @@ public class DisconnectTask extends AbstractBLETask {
     private final BluetoothGatt mBluetoothGatt;
 
     /**
-     * {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodes#UNKNOWN}
+     * {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodeAndroid#UNKNOWN}
      */
     private final int mStatus;
 
@@ -42,7 +42,7 @@ public class DisconnectTask extends AbstractBLETask {
     /**
      * @param bleConnection task target {@link BLEConnection} instance
      * @param bluetoothGatt task target {@link BluetoothGatt} instance
-     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodes#UNKNOWN}
+     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodeAndroid#UNKNOWN}
      * @param argument      callback argument
      */
     public DisconnectTask(@NonNull BLEConnection bleConnection

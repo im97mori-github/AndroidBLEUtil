@@ -240,6 +240,7 @@
     <pattern value="org.im97mori.ble.test.BLETestUtilsAndroid" method="createScanResult" />
     <pattern value="org.im97mori.ble.BLEServerConnection" method="BLEServerConnection" />
     <pattern value="org.im97mori.ble.task.AbstractBLETask" method="dumpProgress" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setConnected" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />

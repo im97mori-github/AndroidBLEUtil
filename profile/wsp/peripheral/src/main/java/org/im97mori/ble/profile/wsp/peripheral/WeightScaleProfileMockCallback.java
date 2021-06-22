@@ -32,7 +32,7 @@ import org.im97mori.ble.service.wss.peripheral.WeightScaleServiceMockCallback;
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.WEIGHT_SCALE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.WEIGHT_SCALE_SERVICE;
 
 /**
  * Weight Scale Profile for Peripheral

@@ -20,7 +20,7 @@ import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
 
 /**
  * Reconnection Configuration Profile for Central

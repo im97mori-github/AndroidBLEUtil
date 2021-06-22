@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
 
 /**
  * Body Composition Feature (Characteristics UUID: 0x2A9B)

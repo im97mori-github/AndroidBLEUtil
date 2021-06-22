@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * Reconnection Configuration Control Point (Characteristics UUID: 0x2B1F)

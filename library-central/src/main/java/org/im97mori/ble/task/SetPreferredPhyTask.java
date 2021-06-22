@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 
 /**
  * Set preferred phy task

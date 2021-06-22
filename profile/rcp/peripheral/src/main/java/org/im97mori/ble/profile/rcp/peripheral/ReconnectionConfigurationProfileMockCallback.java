@@ -16,7 +16,7 @@ import org.im97mori.ble.service.rcs.peripheral.ReconnectionConfigurationServiceM
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
 
 /**
  * Reconnection Configuration Profile for Peripheral

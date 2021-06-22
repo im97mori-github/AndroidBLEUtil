@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC;
 
 /**
  * Supported Resistance Level Range (Characteristics UUID: 0x2AD6)

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.UNCERTAINTY_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.UNCERTAINTY_CHARACTERISTIC;
 
 /**
  * Uncertainty (Characteristics UUID: 0x2AB4)

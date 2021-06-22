@@ -17,7 +17,7 @@ import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallb
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BLOOD_PRESSURE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.BLOOD_PRESSURE_SERVICE;
 
 /**
  * Blood Pressure Profile for Peripheral

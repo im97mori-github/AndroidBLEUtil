@@ -14,10 +14,10 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SCAN_INTERVAL_WINDOW_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SCAN_REFRESH_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_INTERVAL_WINDOW_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_REFRESH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

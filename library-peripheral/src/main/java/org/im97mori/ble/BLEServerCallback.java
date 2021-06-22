@@ -15,7 +15,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEConstants.ErrorCodes;
+import org.im97mori.ble.constants.ErrorCodeAndroid;
 
 import java.util.UUID;
 
@@ -70,7 +70,7 @@ public interface BLEServerCallback {
      * @param taskId               task id
      * @param bleServerConnection  {@link BLEServerConnection} instance
      * @param bluetoothGattService {@link BluetoothGattService} instance
-     * @param status               one of {@link BluetoothGattServerCallback#onServiceAdded(int, BluetoothGattService)} 1st parameter, {@link ErrorCodes#UNKNOWN}, {@link ErrorCodes#CANCEL}, {@link ErrorCodes#BUSY}
+     * @param status               one of {@link BluetoothGattServerCallback#onServiceAdded(int, BluetoothGattService)} 1st parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
      * @param argument             callback argument
      */
     void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument);
@@ -102,7 +102,7 @@ public interface BLEServerCallback {
      * @param taskId               task id
      * @param bleServerConnection  {@link BLEServerConnection} instance
      * @param bluetoothGattService {@link BluetoothGattService} instance
-     * @param status               one of {@link BluetoothGattServerCallback#onServiceAdded(int, BluetoothGattService)} 1st parameter, {@link ErrorCodes#UNKNOWN}, {@link ErrorCodes#CANCEL}, {@link ErrorCodes#BUSY}
+     * @param status               one of {@link BluetoothGattServerCallback#onServiceAdded(int, BluetoothGattService)} 1st parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
      * @param argument             callback argument
      */
     void onServiceRemoveFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument);
@@ -171,7 +171,7 @@ public interface BLEServerCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link ErrorCodes#UNKNOWN}, {@link ErrorCodes#CANCEL}, {@link ErrorCodes#BUSY}
+     * @param status                   one of {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
      * @param argument                 callback argument
      */
     void onNotificationFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument);

@@ -35,7 +35,7 @@ import org.im97mori.ble.sample.lolipop.SampleCallback;
 
 import java.util.LinkedList;
 
-import static org.im97mori.ble.BLEConstants.UnitsUUID.PERCENTAGE_UNITS;
+import static org.im97mori.ble.constants.UnitUUID.PERCENTAGE_UNIT;
 
 @SuppressWarnings("ConstantConditions")
 public class CppPeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
@@ -214,8 +214,8 @@ public class CppPeripheralSampleActivity extends BaseActivity implements View.On
 
                 .addBatteryLevel(0, new BatteryLevel(10))
                 .addBatteryLevel(1, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGatt.GATT_SUCCESS, 0, new BatteryLevel(20).getBytes(), -1)
-                .setBatteryLevelCharacteristicPresentationFormat(0, new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_8_BIT_INTEGER, 0, PERCENTAGE_UNITS, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0x01}))
-                .setBatteryLevelCharacteristicPresentationFormat(1, new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_8_BIT_INTEGER, 0, PERCENTAGE_UNITS, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0x02}))
+                .setBatteryLevelCharacteristicPresentationFormat(0, new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_8_BIT_INTEGER, 0, PERCENTAGE_UNIT, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0x01}))
+                .setBatteryLevelCharacteristicPresentationFormat(1, new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_8_BIT_INTEGER, 0, PERCENTAGE_UNIT, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0x02}))
                 .setBatteryLevelClientCharacteristicConfiguration(0, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                 .setBatteryLevelClientCharacteristicConfiguration(1, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
 

@@ -10,12 +10,11 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.BLEConnection;
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 /**
  * Connect to {@link BluetoothDevice} task
@@ -198,7 +197,7 @@ public class ConnectTask extends AbstractBLETask {
 
                         // auto mtu setting
                         if (mNeedMtuSetting) {
-                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !mBluetoothGatt.requestMtu(BLEConstants.MAXIMUM_MTU)) {
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !mBluetoothGatt.requestMtu(RequestMtuTask.MAXIMUM_MTU)) {
                                 nextProgress = PROGRESS_FINISHED;
                             }
                         } else {

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
 
 /**
  * Aerobic Threshold (Characteristics UUID: 0x2A7F)

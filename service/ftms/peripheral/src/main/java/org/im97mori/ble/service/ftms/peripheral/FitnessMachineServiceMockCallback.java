@@ -14,7 +14,6 @@ import android.util.Pair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.CharacteristicData;
@@ -48,6 +47,7 @@ import org.im97mori.ble.characteristic.u2ad7.SupportedHeartRateRange;
 import org.im97mori.ble.characteristic.u2ad8.SupportedPowerRange;
 import org.im97mori.ble.characteristic.u2ad9.FitnessMachineControlPoint;
 import org.im97mori.ble.characteristic.u2ada.FitnessMachineStatus;
+import org.im97mori.ble.constants.ErrorCodeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
@@ -58,24 +58,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CROSS_TRAINER_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FITNESS_MACHINE_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.INDOOR_BIKE_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ROWER_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.STAIR_CLIMBER_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.STEP_CLIMBER_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_POWER_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_SPEED_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TRAINING_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TREADMILL_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.FITNESS_MACHINE_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.CROSS_TRAINER_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.INDOOR_BIKE_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ROWER_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.STAIR_CLIMBER_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.STEP_CLIMBER_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_POWER_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_SPEED_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TRAINING_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TREADMILL_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.FITNESS_MACHINE_SERVICE;
 
 /**
  * Fitness Machine Service (Service UUID: 0x1826) for Peripheral
@@ -1317,7 +1317,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                     delay(now, characteristicData.delay);
 
                     if (FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                        int responseCode = BLEConstants.ErrorCodes.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+                        int responseCode = ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
 
                         Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, characteristicInstanceId));
                         if (characteristicData instanceof FitnessMachineControlPointCharacteristicData && descriptorDataMap != null) {

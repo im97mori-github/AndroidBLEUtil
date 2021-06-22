@@ -45,7 +45,7 @@ import org.im97mori.ble.service.ess.peripheral.EnvironmentalSensingServiceMockCa
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.ENVIRONMENTAL_SENSING_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.ENVIRONMENTAL_SENSING_SERVICE;
 
 /**
  * Environmental Sensing Profile for Peripheral

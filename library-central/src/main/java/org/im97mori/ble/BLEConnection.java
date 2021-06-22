@@ -39,7 +39,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 /**
  * BLE connection(central role)
@@ -252,7 +253,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         if (mBluetoothGatt != null) {
             mTaskHandler.clearTask();
 
-            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, BLEConstants.ErrorCodes.UNKNOWN, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, UNKNOWN, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -312,7 +313,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * Callback at {@link ConnectTask} failed
      *
      * @param taskId   task id
-     * @param status   one of {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
+     * @param status   one of {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}
      * @param argument callback argument
      */
     public synchronized void onConnectFailed(@NonNull Integer taskId
@@ -347,7 +348,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      *
      * @param taskId        task id
      * @param bluetoothGatt Disconnected {@link BluetoothGatt}
-     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
+     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}
      * @param argument      callback argument
      */
     public synchronized void onDisconnected(@NonNull Integer taskId

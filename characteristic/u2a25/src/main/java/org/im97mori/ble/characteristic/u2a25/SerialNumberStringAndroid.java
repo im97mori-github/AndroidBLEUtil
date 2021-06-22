@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
 
 /**
  * Serial Number String (Characteristics UUID: 0x2A25)

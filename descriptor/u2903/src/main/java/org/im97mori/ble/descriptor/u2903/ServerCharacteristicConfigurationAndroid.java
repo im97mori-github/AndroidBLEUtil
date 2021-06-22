@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.SERVER_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.SERVER_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 
 /**
  * Server Characteristic Configuration (Descriptor UUID: 0x2903)

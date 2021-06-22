@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 
 @SuppressWarnings("WeakerAccess")
 public class SampleMockData extends MockData {

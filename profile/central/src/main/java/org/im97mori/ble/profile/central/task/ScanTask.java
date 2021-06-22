@@ -25,8 +25,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 /**
  * Scan device task

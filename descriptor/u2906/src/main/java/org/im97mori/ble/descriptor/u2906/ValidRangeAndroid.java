@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
 
 /**
  * Valid Range (Descriptor UUID: 0x2906)

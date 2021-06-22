@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERVICE_CHANGED_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SERVICE_CHANGED_CHARACTERISTIC;
 
 /**
  * Service Changed (Characteristics UUID: 0x2A05)

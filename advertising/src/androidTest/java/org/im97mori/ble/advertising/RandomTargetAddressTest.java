@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_RANDOM_TARGET_ADDRESS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_RANDOM_TARGET_ADDRESS;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 

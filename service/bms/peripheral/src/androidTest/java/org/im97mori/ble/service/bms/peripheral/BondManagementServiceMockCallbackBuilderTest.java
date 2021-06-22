@@ -11,9 +11,9 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_FEATURES_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -517,9 +517,9 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(BOND_MANAGEMENT_SERVICE, bluetoothGattService.getUuid());
         assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, bluetoothGattService.getType());
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BOND_MANAGEMENT_FEATURES_CHARACTERISTIC);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertEquals(BOND_MANAGEMENT_FEATURES_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
+        assertEquals(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
         assertArrayEquals(bondManagementFeatures.getBytes(), bluetoothGattCharacteristic.getValue());
@@ -568,9 +568,9 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(BOND_MANAGEMENT_SERVICE, bluetoothGattService.getUuid());
         assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, bluetoothGattService.getType());
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BOND_MANAGEMENT_FEATURES_CHARACTERISTIC);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertEquals(BOND_MANAGEMENT_FEATURES_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
+        assertEquals(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
         assertArrayEquals(bondManagementFeatures.getBytes(), bluetoothGattCharacteristic.getValue());
@@ -619,9 +619,9 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(BOND_MANAGEMENT_SERVICE, bluetoothGattService.getUuid());
         assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, bluetoothGattService.getType());
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BOND_MANAGEMENT_FEATURES_CHARACTERISTIC);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertEquals(BOND_MANAGEMENT_FEATURES_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
+        assertEquals(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
         assertArrayEquals(bondManagementFeatures.getBytes(), bluetoothGattCharacteristic.getValue());

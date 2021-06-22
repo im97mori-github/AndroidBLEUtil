@@ -34,11 +34,11 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BATTERY_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BODY_COMPOSITION_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.CURRENT_TIME_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.USER_DATA_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.WEIGHT_SCALE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.BATTERY_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.BODY_COMPOSITION_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.CURRENT_TIME_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.WEIGHT_SCALE_SERVICE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;

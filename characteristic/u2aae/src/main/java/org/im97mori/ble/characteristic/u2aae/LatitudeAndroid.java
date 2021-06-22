@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LATITUDE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LATITUDE_CHARACTERISTIC;
 
 /**
  * Latitude (Characteristics UUID: 0x2AAE)

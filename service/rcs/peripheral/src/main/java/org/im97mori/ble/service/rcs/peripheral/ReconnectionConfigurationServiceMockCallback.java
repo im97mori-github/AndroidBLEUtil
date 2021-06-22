@@ -14,7 +14,6 @@ import android.util.Pair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.BLEUtilsAndroid;
@@ -26,6 +25,7 @@ import org.im97mori.ble.callback.NotificationData;
 import org.im97mori.ble.characteristic.u2b1d.RCFeature;
 import org.im97mori.ble.characteristic.u2b1e.RCSettings;
 import org.im97mori.ble.characteristic.u2b1f.ReconnectionConfigurationControlPoint;
+import org.im97mori.ble.constants.ErrorCodeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
@@ -38,12 +38,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RC_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.RC_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
 
 /**
  * Reconnection Configuration Service (Service UUID: 0x1829) for Peripheral
@@ -670,7 +670,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                     delay(now, characteristicData.delay);
 
                     if (RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                        int responseCode = BLEConstants.ErrorCodes.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+                        int responseCode = ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
 
                         Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC, characteristicInstanceId));
                         if (characteristicData instanceof ReconnectionConfigurationControlPointCharacteristicData && descriptorDataMap != null) {
@@ -694,14 +694,14 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                                         } else if (rcFeature.isRcFeaturesE2eCrcSupported()) {
                                             Integer requestCrc = requestReconnectionConfigurationControlPoint.getE2eCrc();
                                             if (requestCrc == null) {
-                                                responseCode = BLEConstants.ErrorCodes.APPLICATION_ERROR_80;
+                                                responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
                                             } else {
                                                 if (valueWithOffset.length > 2) {
                                                     int calculatedCrc = BLEUtils.createCrc(valueWithOffset, 0, valueWithOffset.length - 2);
                                                     if (requestCrc == calculatedCrc) {
                                                         responseCode = reconnectionConfigurationControlPointCharacteristicData.responseCode;
                                                     } else {
-                                                        responseCode = BLEConstants.ErrorCodes.APPLICATION_ERROR_81;
+                                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_81;
                                                     }
                                                 } else {
                                                     responseCode = APPLICATION_ERROR_9F;

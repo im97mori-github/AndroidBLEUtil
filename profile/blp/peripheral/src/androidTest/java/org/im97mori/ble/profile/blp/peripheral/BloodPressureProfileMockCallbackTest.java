@@ -4,7 +4,7 @@ import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BLOOD_PRESSURE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.BLOOD_PRESSURE_SERVICE;
 import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings("ConstantConditions")

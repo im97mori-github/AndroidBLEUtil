@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_FLAGS;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

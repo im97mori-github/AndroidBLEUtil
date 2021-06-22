@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOOT_KEYBOARD_INPUT_REPORT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOOT_KEYBOARD_INPUT_REPORT_CHARACTERISTIC;
 
 /**
  * Boot Keyboard Input Report (Characteristics UUID: 0x2A22)

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LONGITUDE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LONGITUDE_CHARACTERISTIC;
 
 /**
  * Longitude (Characteristics UUID: 0x2AAF)

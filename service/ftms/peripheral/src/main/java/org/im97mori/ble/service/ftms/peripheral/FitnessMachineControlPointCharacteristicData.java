@@ -17,7 +17,7 @@ import org.im97mori.ble.characteristic.u2ad9.FitnessMachineControlPoint;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * Fitness Machine Control Point Characteristic data class

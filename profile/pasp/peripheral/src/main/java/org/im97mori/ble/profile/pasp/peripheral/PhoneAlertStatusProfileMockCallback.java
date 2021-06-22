@@ -17,7 +17,7 @@ import org.im97mori.ble.service.pass.peripheral.PhoneAlertStatusServiceMockCallb
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.PHONE_ALERT_STATUS_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.PHONE_ALERT_STATUS_SERVICE;
 
 /**
  * Phone Alert Status Profile for Peripheral

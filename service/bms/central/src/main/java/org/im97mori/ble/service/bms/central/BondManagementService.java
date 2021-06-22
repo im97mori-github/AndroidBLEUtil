@@ -18,9 +18,9 @@ import org.im97mori.ble.task.WriteCharacteristicTask;
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_FEATURES_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
 
 /**
  * Bond Management Service (Service UUID: 0x181E) for Central
@@ -48,7 +48,7 @@ public class BondManagementService extends AbstractCentralService {
     @Override
     public synchronized void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BOND_MANAGEMENT_SERVICE.equals(serviceUUID)) {
-            if (BOND_MANAGEMENT_FEATURES_CHARACTERISTIC.equals(characteristicUUID)) {
+            if (BOND_MANAGEMENT_FEATURE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mBondManagementServiceCallback.onBondManagementFeaturesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, BondManagementFeaturesAndroid.CREATOR.createFromByteArray(values), argument);
             }
         }
@@ -61,7 +61,7 @@ public class BondManagementService extends AbstractCentralService {
     @Override
     public synchronized void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BOND_MANAGEMENT_SERVICE.equals(serviceUUID)) {
-            if (BOND_MANAGEMENT_FEATURES_CHARACTERISTIC.equals(characteristicUUID)) {
+            if (BOND_MANAGEMENT_FEATURE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mBondManagementServiceCallback.onBondManagementFeaturesReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
             }
         }
@@ -74,7 +74,7 @@ public class BondManagementService extends AbstractCentralService {
     @Override
     public synchronized void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BOND_MANAGEMENT_SERVICE.equals(serviceUUID)) {
-            if (BOND_MANAGEMENT_FEATURES_CHARACTERISTIC.equals(characteristicUUID)) {
+            if (BOND_MANAGEMENT_FEATURE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mBondManagementServiceCallback.onBondManagementFeaturesReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
             }
         }
@@ -132,7 +132,7 @@ public class BondManagementService extends AbstractCentralService {
     public synchronized Integer getBondManagementFeatures() {
         Integer taskId = null;
         if (isStarted()) {
-            taskId = mBLEConnection.createReadCharacteristicTask(BOND_MANAGEMENT_SERVICE, null, BOND_MANAGEMENT_FEATURES_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadCharacteristicTask(BOND_MANAGEMENT_SERVICE, null, BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }

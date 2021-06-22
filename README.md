@@ -10,16 +10,16 @@ minSdkVersion 21
 project/build.gradle
 
     repositories {
-        google()
-        jcenter()
         maven { url "https://github.com/im97mori-github/maven/raw/master" }
+        google()
+        mavenCentral()
     }
 
 project/module/build.gradle
 
     dependencies {
-        implementation 'org.im97mori:ble-central:0.6.3' // central feature
-        implementation 'org.im97mori:ble-peripheral:0.2.33' // peripheral feature
+        implementation 'org.im97mori:ble-central:0.7.0' // central feature
+        implementation 'org.im97mori:ble-peripheral:0.3.0' // peripheral feature
     }
 
 ## Features
@@ -153,15 +153,15 @@ Read characteristic
     @Override
     public void onBLEConnected(long taskId, BluetoothDevice bluetoothDevice, Bundle argument);
         // create read task
-        mBleConnection.createReadCharacteristicTask(BLEConstants.ServiceUUID.GENERIC_ACCESS_SERVICE
-                , BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC
+        mBleConnection.createReadCharacteristicTask(ServiceUUID.GENERIC_ACCESS_SERVICE
+                , CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC
                 , ReadCharacteristicTask.TIMEOUT_MILLIS);
     }
     
     // read success
     @Override
     public void onCharacteristicReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument);
-        if (BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
+        if (CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
             DeviceName deviceName = DeviceName.CREATOR.createFromByteArray(values);
             System.out.println(deviceName.getName());
         }
@@ -225,8 +225,8 @@ Begin connection to finish connection
 
 Read characteristic
 
-    result = bleSyncConnection.createReadCharacteristicTask(BLEConstants.ServiceUUID.GENERIC_ACCESS_SERVICE
-        , BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC
+    result = bleSyncConnection.createReadCharacteristicTask(ServiceUUID.GENERIC_ACCESS_SERVICE
+        , CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC
         , ReadCharacteristicTask.TIMEOUT_MILLIS
         , ReadCharacteristicTask.TIMEOUT_MILLIS
         , null);
@@ -241,8 +241,8 @@ Instant read characteristic with connected BLEConnection
 
         BLESyncConnection.BLEResult result = BLESyncConnection.createReadCharacteristicTask(
                 bleConnection
-                , BLEConstants.ServiceUUID.GENERIC_ACCESS_SERVICE
-                , BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC
+                , ServiceUUID.GENERIC_ACCESS_SERVICE
+                , CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , null);

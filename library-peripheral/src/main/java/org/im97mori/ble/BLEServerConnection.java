@@ -36,7 +36,7 @@ import java.util.UUID;
 
 import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY;
 import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_TX_POWER_HIGH;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
 
 /**
  * BLE Connection(peripheral role)
@@ -48,7 +48,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * SERVICE_UUID for Advertising
      *
-     * @see org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes#DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS
+     * @see org.im97mori.ble.constants.DataType#DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS
      */
     public static final UUID MOCK_CONTROL_SERVICE_UUID = UUID.fromString("00000000-a087-4fa3-add4-3b8a7d5d491f");
 

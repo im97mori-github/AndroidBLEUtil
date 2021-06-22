@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
 
 /**
  * New Alert Characteristic data class

@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEConstants.BASE_UUID;
+import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

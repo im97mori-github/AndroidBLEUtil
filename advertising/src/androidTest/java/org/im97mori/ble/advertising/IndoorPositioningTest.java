@@ -5,7 +5,7 @@ import android.os.Parcel;
 import org.im97mori.ble.IndoorPositioningUtils;
 import org.junit.Test;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INDOOR_POSITIONING;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INDOOR_POSITIONING;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 

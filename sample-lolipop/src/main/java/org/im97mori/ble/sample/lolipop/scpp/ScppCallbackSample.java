@@ -42,7 +42,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
 
 public class ScppCallbackSample extends ScanParametersProfileMockCallback implements ScanParametersProfileCallback, BLEServerCallback {
 

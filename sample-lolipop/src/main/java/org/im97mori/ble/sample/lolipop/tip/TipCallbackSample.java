@@ -50,7 +50,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.CURRENT_TIME_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.CURRENT_TIME_SERVICE;
 
 public class TipCallbackSample extends TimeProfileMockCallback implements TimeProfileCallback, BLEServerCallback {
 

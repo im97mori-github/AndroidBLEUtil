@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HTTP_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * HTTP Control Point (Characteristics UUID: 0x2ABA)

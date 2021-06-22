@@ -15,8 +15,8 @@ import org.im97mori.ble.TaskHandler;
 import java.util.List;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ErrorCodes.BUSY;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.BUSY;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 
 /**
  * Set notification task

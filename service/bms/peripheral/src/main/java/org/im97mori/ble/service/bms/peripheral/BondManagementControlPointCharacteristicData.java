@@ -15,7 +15,7 @@ import org.im97mori.ble.CharacteristicData;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * Bond Management Control Point Characteristic data class

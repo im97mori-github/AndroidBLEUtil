@@ -48,39 +48,39 @@ import java.util.Collections;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.EMAIL_ADDRESS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIRST_NAME_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.GENDER_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LAST_NAME_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.USER_INDEX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.GENERIC_ACCESS_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.USER_DATA_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.EMAIL_ADDRESS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FIRST_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.GENDER_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LAST_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_INDEX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ACCESS_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -378,7 +378,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     public void test_onBLEDisconnected_02601() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE));
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
@@ -2155,7 +2155,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     public void test_onDiscoverServiceSuccess_02604() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, 0, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
@@ -2165,7 +2165,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     public void test_onDiscoverServiceSuccess_02605() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
@@ -2175,7 +2175,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     public void test_onDiscoverServiceSuccess_02606() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
@@ -2185,7 +2185,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     public void test_onDiscoverServiceSuccess_02607() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
@@ -3189,7 +3189,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = USER_DATA_SERVICE;
         final Integer originalServiceInstanceId = 2;
-        final UUID originalCharacteristicUUID = TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC;
+        final UUID originalCharacteristicUUID = TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[]{4};
         final Bundle originalBundle = new Bundle();
@@ -4179,7 +4179,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = USER_DATA_SERVICE;
         final Integer originalServiceInstanceId = 2;
-        final UUID originalCharacteristicUUID = TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC;
+        final UUID originalCharacteristicUUID = TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
@@ -5169,7 +5169,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = USER_DATA_SERVICE;
         final Integer originalServiceInstanceId = 2;
-        final UUID originalCharacteristicUUID = TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC;
+        final UUID originalCharacteristicUUID = TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();

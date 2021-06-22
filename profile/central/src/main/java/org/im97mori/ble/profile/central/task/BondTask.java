@@ -19,8 +19,8 @@ import org.im97mori.ble.profile.central.BondStateReceiver;
 import org.im97mori.ble.profile.central.ProfileCallback;
 import org.im97mori.ble.task.AbstractBLETask;
 
-import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 /**
  * Bond device task

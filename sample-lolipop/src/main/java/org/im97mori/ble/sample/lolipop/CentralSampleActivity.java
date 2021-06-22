@@ -61,11 +61,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATABLE_CHARACTERISTIC;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
@@ -192,7 +193,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , false);
 
                         if (result == null) {
-                            mBLECallbackSample.onDiscoverServiceFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                            mBLECallbackSample.onDiscoverServiceFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
                                 mBLECallbackSample.onDiscoverServiceSuccess(0, target.getBluetoothDevice(), Objects.requireNonNull(result.getServiceList()), result.getArgument());
@@ -221,7 +222,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , false);
 
                         if (result == null) {
-                            mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                            mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
                                 mBLECallbackSample.onRequestMtuSuccess(0, target.getBluetoothDevice(), result.getMtu(), result.getArgument());
@@ -252,7 +253,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , false);
 
                             if (result == null) {
-                                mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                                mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
                             } else {
                                 if (RESULT_SUCCESS == result.getResultCode()) {
                                     mBLECallbackSample.onReadPhySuccess(0, target.getBluetoothDevice(), result.getTxPhy(), result.getRxPhy(), result.getArgument());
@@ -291,7 +292,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , false);
 
                             if (result == null) {
-                                mBLECallbackSample.onSetPreferredPhyFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                                mBLECallbackSample.onSetPreferredPhyFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
                             } else {
                                 if (RESULT_SUCCESS == result.getResultCode()) {
                                     mBLECallbackSample.onSetPreferredPhySuccess(0, target.getBluetoothDevice(), result.getTxPhy(), result.getRxPhy(), result.getPhyOptions(), result.getArgument());
@@ -320,7 +321,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , false);
 
                         if (result == null) {
-                            mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                            mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
                                 mBLECallbackSample.onReadRemoteRssiSuccess(0, target.getBluetoothDevice(), result.getRssi(), result.getArgument());
@@ -410,7 +411,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , null
                                     , SAMPLE_READABLE_CHARACTERISTIC
                                     , null
-                                    , BLEConstants.ErrorCodes.UNKNOWN
+                                    , UNKNOWN
                                     , null);
                         } else {
                             byte[] value = result.getValues();
@@ -465,7 +466,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , false);
 
                         if (result == null) {
-                            mBLECallbackSample.onCharacteristicWriteFailed(0, target.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, null, SAMPLE_WRITABLE_CHARACTERISTIC, null, BLEConstants.ErrorCodes.UNKNOWN, null);
+                            mBLECallbackSample.onCharacteristicWriteFailed(0, target.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, null, SAMPLE_WRITABLE_CHARACTERISTIC, null, UNKNOWN, null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
                                 mBLECallbackSample.onCharacteristicWriteSuccess(0, target.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, Objects.requireNonNull(result.getServiceInstanceId()), SAMPLE_WRITABLE_CHARACTERISTIC, Objects.requireNonNull(result.getCharacteristicInstanceId()), value, result.getArgument());
@@ -609,7 +610,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                                     , null
                                     , true
-                                    , BLEConstants.ErrorCodes.UNKNOWN
+                                    , UNKNOWN
                                     , null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
@@ -660,7 +661,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                                     , null
                                     , true
-                                    , BLEConstants.ErrorCodes.UNKNOWN
+                                    , UNKNOWN
                                     , null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {

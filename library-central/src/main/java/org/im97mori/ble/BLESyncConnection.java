@@ -46,6 +46,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 /**
  * BLE connection(central role)
@@ -1939,7 +1940,7 @@ public class BLESyncConnection implements BLECallback {
             // create task failed
             if (taskId == null) {
                 // create failed result
-                bleResult = new BLEResult(null, RESULT_FAILED, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, null, 0, 0, 0, 0, 0, false, BLEConstants.ErrorCodes.UNKNOWN, null, argument);
+                bleResult = new BLEResult(null, RESULT_FAILED, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, null, 0, 0, 0, 0, 0, false, UNKNOWN, null, argument);
             } else {
                 // create task success
 

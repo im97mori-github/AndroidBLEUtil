@@ -15,7 +15,6 @@ import android.util.Pair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
@@ -26,6 +25,7 @@ import org.im97mori.ble.characteristic.u2a1c.TemperatureMeasurement;
 import org.im97mori.ble.characteristic.u2a1d.TemperatureType;
 import org.im97mori.ble.characteristic.u2a1e.IntermediateTemperature;
 import org.im97mori.ble.characteristic.u2a21.MeasurementInterval;
+import org.im97mori.ble.constants.ErrorCodeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u2906.ValidRange;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
@@ -37,14 +37,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.INTERMEDIATE_TEMPERATURE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MEASUREMENT_INTERVAL_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TEMPERATURE_MEASUREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TEMPERATURE_TYPE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.HEALTH_THERMOMETER_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.INTERMEDIATE_TEMPERATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MEASUREMENT_INTERVAL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_TYPE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.HEALTH_THERMOMETER_SERVICE;
 
 /**
  * Health Thermometer Service (Service UUID: 0x1809) for Peripheral
@@ -397,7 +397,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
                                         ValidRange validRange = new ValidRange(descriptorDataEntry.getValue().getBytes());
                                         int measurementIntervalSec = measurementInterval.getMeasurementInterval();
                                         if (measurementIntervalSec < validRange.getLowerInclusiveValueSint16() || measurementIntervalSec > validRange.getUpperInclusiveValueUint16()) {
-                                            responseCode = BLEConstants.ErrorCodes.OUT_OF_RANGE;
+                                            responseCode = ErrorCodeAndroid.OUT_OF_RANGE;
                                         }
                                         break;
                                     }

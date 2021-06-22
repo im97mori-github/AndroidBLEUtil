@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
 
 /**
  * Device Name (Characteristics UUID: 0x2A00)

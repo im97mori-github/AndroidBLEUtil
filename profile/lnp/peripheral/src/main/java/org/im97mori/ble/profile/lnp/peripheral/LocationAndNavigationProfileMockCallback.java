@@ -23,7 +23,7 @@ import org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockC
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.LOCATION_AND_NAVIGATION_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.LOCATION_AND_NAVIGATION_SERVICE;
 
 /**
  * Location and Navigation Profile for Peripheral

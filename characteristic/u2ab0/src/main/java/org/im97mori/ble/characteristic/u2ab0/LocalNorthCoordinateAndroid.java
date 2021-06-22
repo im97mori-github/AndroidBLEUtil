@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LOCAL_NORTH_COORDINATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_NORTH_COORDINATE_CHARACTERISTIC;
 
 /**
  * Local North Coordinate (Characteristics UUID: 0x2AB0)

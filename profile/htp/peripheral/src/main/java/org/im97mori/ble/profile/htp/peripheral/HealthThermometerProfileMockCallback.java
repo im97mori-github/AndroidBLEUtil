@@ -20,7 +20,7 @@ import org.im97mori.ble.service.hts.peripheral.HealthThermometerServiceMockCallb
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.HEALTH_THERMOMETER_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.HEALTH_THERMOMETER_SERVICE;
 
 /**
  * Health Thermometer Profile for Peripheral

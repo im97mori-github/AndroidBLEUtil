@@ -4,7 +4,7 @@ import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.FITNESS_MACHINE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.FITNESS_MACHINE_SERVICE;
 import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings("ConstantConditions")

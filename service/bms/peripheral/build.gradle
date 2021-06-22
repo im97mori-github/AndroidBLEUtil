@@ -30,6 +30,7 @@ android {
 dependencies {
     api "${groupId}:${servicePeripheralAndroid.artifactId}:${servicePeripheralAndroid.versionName}"
     api "${groupId}:${serviceBmsAndroid.artifactId}:${serviceBmsAndroid.versionName}"
+    api "${groupId}:${coreConstantsErrorCodeAndroid.artifactId}:${coreConstantsErrorCodeAndroid.versionName}"
     androidTestImplementation "${groupId}:${testPeripheral.artifactId}:${testPeripheral.versionName}"
 }
 

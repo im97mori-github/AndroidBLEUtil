@@ -272,10 +272,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             sb.append("Appearance");
             sb.append("\nkey\n");
             sb.append(appearance.getAppearanceKey());
-            sb.append("\nvalue\n");
-            sb.append(appearance.getAppearanceValue());
-            sb.append("\ndescription\n");
-            sb.append(appearance.getAppearanceDescription());
+            sb.append("\nsubcategory\n");
+            sb.append(appearance.getAppearanceSubCategory());
             sb.append('\n');
             sb.append('\n');
         }

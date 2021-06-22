@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TRAINING_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TRAINING_STATUS_CHARACTERISTIC;
 
 /**
  * Training Status (Characteristics UUID: 0x2AD3)

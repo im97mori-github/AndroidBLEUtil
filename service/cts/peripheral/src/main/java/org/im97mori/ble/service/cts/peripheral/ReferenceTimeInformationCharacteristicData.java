@@ -15,7 +15,7 @@ import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
 
 import java.util.Collections;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.REFERENCE_TIME_INFORMATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.REFERENCE_TIME_INFORMATION_CHARACTERISTIC;
 
 /**
  * Reference Time Information Characteristic data class

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.REPORT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.REPORT_CHARACTERISTIC;
 
 /**
  * Report (Characteristics UUID: 0x2A4D)

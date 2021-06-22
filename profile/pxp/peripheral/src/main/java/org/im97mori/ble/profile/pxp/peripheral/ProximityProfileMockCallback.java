@@ -13,7 +13,7 @@ import org.im97mori.ble.service.tps.peripheral.TxPowerServiceMockCallback;
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.LINK_LOSS_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.LINK_LOSS_SERVICE;
 
 /**
  * Proximity Profile for Peripheral

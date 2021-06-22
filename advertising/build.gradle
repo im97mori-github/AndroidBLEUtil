@@ -29,8 +29,9 @@ android {
 }
 
 dependencies {
-    api apiCoreAndroid
     api BASE_MODULE
+    api apiCoreUtilsAndroid
+    api androidxAnnotation
     androidTestImplementation apiTest
 }
 

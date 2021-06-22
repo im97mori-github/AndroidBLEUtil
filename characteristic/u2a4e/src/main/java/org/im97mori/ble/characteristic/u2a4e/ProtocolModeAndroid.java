@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PROTOCOL_MODE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.PROTOCOL_MODE_CHARACTERISTIC;
 
 /**
  * Protocol Mode (Characteristics UUID: 0x2A4E)

@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -153,7 +154,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -182,7 +183,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -270,7 +271,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -299,7 +300,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -386,7 +387,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -415,7 +416,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -560,7 +561,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -589,7 +590,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -737,7 +738,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -767,7 +768,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -943,7 +944,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -972,7 +973,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1117,7 +1118,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1146,7 +1147,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1323,7 +1324,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1353,7 +1354,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1503,7 +1504,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onReadPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onReadPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1533,7 +1534,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onReadPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onReadPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1683,7 +1684,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1713,7 +1714,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1863,7 +1864,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1893,7 +1894,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -2043,7 +2044,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -2073,7 +2074,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -2163,7 +2164,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -2193,7 +2194,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -2343,7 +2344,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -2373,7 +2374,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }

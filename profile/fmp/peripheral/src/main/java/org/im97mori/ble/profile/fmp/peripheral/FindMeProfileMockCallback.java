@@ -10,7 +10,7 @@ import org.im97mori.ble.service.ias.peripheral.ImmediateAlertServiceMockCallback
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.IMMEDIATE_ALERT_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.IMMEDIATE_ALERT_SERVICE;
 
 /**
  * Find Me Profile for Peripheral

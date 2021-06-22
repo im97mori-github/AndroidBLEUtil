@@ -22,7 +22,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -312,7 +311,7 @@ public class BLEUtilsAndroidTest {
 
     @Test
     public void test_getDescriptorInstanceId_00001() {
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
+        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BLEUtils.BASE_UUID, 0);
         if (Build.VERSION_CODES.N <= Build.VERSION.SDK_INT) {
             assertEquals(0, BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor));
         }
@@ -323,7 +322,7 @@ public class BLEUtilsAndroidTest {
         if (Build.VERSION_CODES.N <= Build.VERSION.SDK_INT) {
             int originalInstanceId = 1;
             Parcel parcel = Parcel.obtain();
-            parcel.writeParcelable(new ParcelUuid(BASE_UUID), 0);
+            parcel.writeParcelable(new ParcelUuid(BLEUtils.BASE_UUID), 0);
             parcel.writeInt(originalInstanceId);
             parcel.writeInt(0);
             parcel.setDataPosition(0);
@@ -335,7 +334,7 @@ public class BLEUtilsAndroidTest {
 
     @Test
     public void test_getDescriptorInstanceId_00101() {
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
+        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BLEUtils.BASE_UUID, 0);
         if (Build.VERSION_CODES.N > Build.VERSION.SDK_INT) {
             assertEquals(0, BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor));
         }
@@ -349,7 +348,7 @@ public class BLEUtilsAndroidTest {
 
             Constructor<BluetoothGattDescriptor> clazz = BluetoothGattDescriptor.class.getDeclaredConstructor(BluetoothGattCharacteristic.class, UUID.class, int.class, int.class);
             clazz.setAccessible(true);
-            BluetoothGattDescriptor bluetoothGattDescriptor = clazz.newInstance(null, BASE_UUID, originalInstanceId, 2);
+            BluetoothGattDescriptor bluetoothGattDescriptor = clazz.newInstance(null, BLEUtils.BASE_UUID, originalInstanceId, 2);
             assertEquals(originalInstanceId, BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor));
         }
     }

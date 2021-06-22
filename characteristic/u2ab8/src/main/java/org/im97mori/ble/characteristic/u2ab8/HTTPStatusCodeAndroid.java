@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HTTP_STATUS_CODE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_STATUS_CODE_CHARACTERISTIC;
 
 /**
  * HTTP Status Code (Characteristics UUID: 0x2AB8)

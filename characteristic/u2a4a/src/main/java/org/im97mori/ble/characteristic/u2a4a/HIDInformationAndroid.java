@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HID_INFORMATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HID_INFORMATION_CHARACTERISTIC;
 
 /**
  * HID Information (Characteristics UUID: 0x2A4A)

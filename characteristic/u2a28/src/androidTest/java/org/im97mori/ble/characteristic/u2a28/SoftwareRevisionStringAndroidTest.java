@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.im97mori.ble.BLEConstants.BASE_UUID;
+import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 

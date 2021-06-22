@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LOCATION_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LOCATION_NAME_CHARACTERISTIC;
 
 /**
  * Location Name (Characteristics UUID: 0x2AB5)

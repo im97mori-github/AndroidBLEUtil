@@ -10,8 +10,8 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TX_POWER_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.TX_POWER_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.TX_POWER_LEVEL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.TX_POWER_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LE_SUPPORTED_FEATURES;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LE_SUPPORTED_FEATURES;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -319,19 +319,120 @@ public class LeSupportedFeaturesTest {
         byte[] data = new byte[6];
         data[0] = 5;
         data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
-        data[2] = (byte) 0b11111111;
-        data[3] = (byte) 0b11111111;
-        data[4] = (byte) 0b11111111;
-        data[5] = (byte) 0b11111111;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00010000;
         data_00030 = data;
     }
 
     private static final byte[] data_00031;
     static {
+        byte[] data = new byte[6];
+        data[0] = 5;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00100000;
+        data_00031 = data;
+    }
+
+    private static final byte[] data_00032;
+    static {
+        byte[] data = new byte[6];
+        data[0] = 5;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b01000000;
+        data_00032 = data;
+    }
+
+    private static final byte[] data_00033;
+    static {
+        byte[] data = new byte[6];
+        data[0] = 5;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = (byte) 0b10000000;
+        data_00033 = data;
+    }
+
+    private static final byte[] data_00034;
+    static {
+        byte[] data = new byte[7];
+        data[0] = 6;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00000000;
+        data[6] = 0b00000001;
+        data_00034 = data;
+    }
+
+    private static final byte[] data_00035;
+    static {
+        byte[] data = new byte[7];
+        data[0] = 6;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00000000;
+        data[6] = 0b00000010;
+        data_00035 = data;
+    }
+
+    private static final byte[] data_00036;
+    static {
+        byte[] data = new byte[7];
+        data[0] = 6;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00000000;
+        data[6] = 0b00000100;
+        data_00036 = data;
+    }
+
+    private static final byte[] data_00037;
+    static {
+        byte[] data = new byte[7];
+        data[0] = 6;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00000000;
+        data[6] = 0b00001000;
+        data_00037 = data;
+    }
+
+    private static final byte[] data_00100;
+    static {
+        byte[] data = new byte[7];
+        data[0] = 6;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = (byte) 0b11111111;
+        data[3] = (byte) 0b11111111;
+        data[4] = (byte) 0b11111111;
+        data[5] = (byte) 0b11111111;
+        data[6] = (byte) 0b11111111;
+        data_00100 = data;
+    }
+
+    private static final byte[] data_00101;
+    static {
         byte[] data = new byte[2];
         data[0] = 1;
         data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
-        data_00031 = data;
+        data_00101 = data;
     }
     //@formatter:on
 
@@ -397,6 +498,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -435,6 +544,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -473,6 +590,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -511,6 +636,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -549,6 +682,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -587,6 +728,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -625,6 +774,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -663,6 +820,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -701,6 +866,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -739,6 +912,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -777,6 +958,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -815,6 +1004,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -853,6 +1050,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -891,6 +1096,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -929,6 +1142,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -967,6 +1188,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1005,6 +1234,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1043,6 +1280,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1081,6 +1326,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1119,6 +1372,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1157,6 +1418,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1195,6 +1464,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1233,6 +1510,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1271,6 +1556,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1309,6 +1602,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1347,6 +1648,14 @@ public class LeSupportedFeaturesTest {
         assertTrue(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1385,6 +1694,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertTrue(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1423,6 +1740,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertTrue(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1461,6 +1786,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertTrue(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1471,6 +1804,374 @@ public class LeSupportedFeaturesTest {
         assertEquals(5, result1.getLength());
         assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
+        assertFalse(result1.isLeEncryptionSupported());
+        assertFalse(result1.isConnectionParametersRequestProcedureSupported());
+        assertFalse(result1.isExtendedRejectIndicationSupported());
+        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isLePingSupported());
+        assertFalse(result1.isLeDataPacketLengthExtensionSupported());
+        assertFalse(result1.isLlPrivacySupported());
+        assertFalse(result1.isExtendedScannerFilterPoliciesSupported());
+        assertFalse(result1.isLe2mPhySupported());
+        assertFalse(result1.isStableModulationIndexTransmitterSupported());
+        assertFalse(result1.isStableModulationIndexReceiverSupported());
+        assertFalse(result1.isLeCodedPhySupported());
+        assertFalse(result1.isLeExtendedAdvertisingSupported());
+        assertFalse(result1.isLePeriodicAdvertisingSupported());
+        assertFalse(result1.isChannelSelectionAlgorithm2Supported());
+        assertFalse(result1.isLePowerClass1Supported());
+        assertFalse(result1.isMinimumNumberOfUsedChannelsProcedureSupported());
+        assertFalse(result1.isConnectionCteRequestSupported());
+        assertFalse(result1.isConnectionCteResponseSupported());
+        assertFalse(result1.isConnectionlessCteTransmitterSupported());
+        assertFalse(result1.isConnectionlessCteReceiverSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteTransmissionAodSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteReceptionAoaSupported());
+        assertFalse(result1.isReceivingConstantToneExtensionsSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferSenderSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
+        assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
+        assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertTrue(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
+    }
+
+    @Test
+    public void test_constructor_00031() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertEquals(5, result1.getLength());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(4, result1.getLeSupportedFeaturesList().size());
+        assertFalse(result1.isLeEncryptionSupported());
+        assertFalse(result1.isConnectionParametersRequestProcedureSupported());
+        assertFalse(result1.isExtendedRejectIndicationSupported());
+        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isLePingSupported());
+        assertFalse(result1.isLeDataPacketLengthExtensionSupported());
+        assertFalse(result1.isLlPrivacySupported());
+        assertFalse(result1.isExtendedScannerFilterPoliciesSupported());
+        assertFalse(result1.isLe2mPhySupported());
+        assertFalse(result1.isStableModulationIndexTransmitterSupported());
+        assertFalse(result1.isStableModulationIndexReceiverSupported());
+        assertFalse(result1.isLeCodedPhySupported());
+        assertFalse(result1.isLeExtendedAdvertisingSupported());
+        assertFalse(result1.isLePeriodicAdvertisingSupported());
+        assertFalse(result1.isChannelSelectionAlgorithm2Supported());
+        assertFalse(result1.isLePowerClass1Supported());
+        assertFalse(result1.isMinimumNumberOfUsedChannelsProcedureSupported());
+        assertFalse(result1.isConnectionCteRequestSupported());
+        assertFalse(result1.isConnectionCteResponseSupported());
+        assertFalse(result1.isConnectionlessCteTransmitterSupported());
+        assertFalse(result1.isConnectionlessCteReceiverSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteTransmissionAodSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteReceptionAoaSupported());
+        assertFalse(result1.isReceivingConstantToneExtensionsSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferSenderSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
+        assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
+        assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertTrue(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
+    }
+
+    @Test
+    public void test_constructor_00032() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertEquals(5, result1.getLength());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(4, result1.getLeSupportedFeaturesList().size());
+        assertFalse(result1.isLeEncryptionSupported());
+        assertFalse(result1.isConnectionParametersRequestProcedureSupported());
+        assertFalse(result1.isExtendedRejectIndicationSupported());
+        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isLePingSupported());
+        assertFalse(result1.isLeDataPacketLengthExtensionSupported());
+        assertFalse(result1.isLlPrivacySupported());
+        assertFalse(result1.isExtendedScannerFilterPoliciesSupported());
+        assertFalse(result1.isLe2mPhySupported());
+        assertFalse(result1.isStableModulationIndexTransmitterSupported());
+        assertFalse(result1.isStableModulationIndexReceiverSupported());
+        assertFalse(result1.isLeCodedPhySupported());
+        assertFalse(result1.isLeExtendedAdvertisingSupported());
+        assertFalse(result1.isLePeriodicAdvertisingSupported());
+        assertFalse(result1.isChannelSelectionAlgorithm2Supported());
+        assertFalse(result1.isLePowerClass1Supported());
+        assertFalse(result1.isMinimumNumberOfUsedChannelsProcedureSupported());
+        assertFalse(result1.isConnectionCteRequestSupported());
+        assertFalse(result1.isConnectionCteResponseSupported());
+        assertFalse(result1.isConnectionlessCteTransmitterSupported());
+        assertFalse(result1.isConnectionlessCteReceiverSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteTransmissionAodSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteReceptionAoaSupported());
+        assertFalse(result1.isReceivingConstantToneExtensionsSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferSenderSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
+        assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
+        assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertTrue(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
+    }
+
+    @Test
+    public void test_constructor_00033() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertEquals(5, result1.getLength());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(4, result1.getLeSupportedFeaturesList().size());
+        assertFalse(result1.isLeEncryptionSupported());
+        assertFalse(result1.isConnectionParametersRequestProcedureSupported());
+        assertFalse(result1.isExtendedRejectIndicationSupported());
+        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isLePingSupported());
+        assertFalse(result1.isLeDataPacketLengthExtensionSupported());
+        assertFalse(result1.isLlPrivacySupported());
+        assertFalse(result1.isExtendedScannerFilterPoliciesSupported());
+        assertFalse(result1.isLe2mPhySupported());
+        assertFalse(result1.isStableModulationIndexTransmitterSupported());
+        assertFalse(result1.isStableModulationIndexReceiverSupported());
+        assertFalse(result1.isLeCodedPhySupported());
+        assertFalse(result1.isLeExtendedAdvertisingSupported());
+        assertFalse(result1.isLePeriodicAdvertisingSupported());
+        assertFalse(result1.isChannelSelectionAlgorithm2Supported());
+        assertFalse(result1.isLePowerClass1Supported());
+        assertFalse(result1.isMinimumNumberOfUsedChannelsProcedureSupported());
+        assertFalse(result1.isConnectionCteRequestSupported());
+        assertFalse(result1.isConnectionCteResponseSupported());
+        assertFalse(result1.isConnectionlessCteTransmitterSupported());
+        assertFalse(result1.isConnectionlessCteReceiverSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteTransmissionAodSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteReceptionAoaSupported());
+        assertFalse(result1.isReceivingConstantToneExtensionsSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferSenderSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
+        assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
+        assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertTrue(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
+    }
+
+    @Test
+    public void test_constructor_00034() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertEquals(6, result1.getLength());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(5, result1.getLeSupportedFeaturesList().size());
+        assertFalse(result1.isLeEncryptionSupported());
+        assertFalse(result1.isConnectionParametersRequestProcedureSupported());
+        assertFalse(result1.isExtendedRejectIndicationSupported());
+        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isLePingSupported());
+        assertFalse(result1.isLeDataPacketLengthExtensionSupported());
+        assertFalse(result1.isLlPrivacySupported());
+        assertFalse(result1.isExtendedScannerFilterPoliciesSupported());
+        assertFalse(result1.isLe2mPhySupported());
+        assertFalse(result1.isStableModulationIndexTransmitterSupported());
+        assertFalse(result1.isStableModulationIndexReceiverSupported());
+        assertFalse(result1.isLeCodedPhySupported());
+        assertFalse(result1.isLeExtendedAdvertisingSupported());
+        assertFalse(result1.isLePeriodicAdvertisingSupported());
+        assertFalse(result1.isChannelSelectionAlgorithm2Supported());
+        assertFalse(result1.isLePowerClass1Supported());
+        assertFalse(result1.isMinimumNumberOfUsedChannelsProcedureSupported());
+        assertFalse(result1.isConnectionCteRequestSupported());
+        assertFalse(result1.isConnectionCteResponseSupported());
+        assertFalse(result1.isConnectionlessCteTransmitterSupported());
+        assertFalse(result1.isConnectionlessCteReceiverSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteTransmissionAodSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteReceptionAoaSupported());
+        assertFalse(result1.isReceivingConstantToneExtensionsSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferSenderSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
+        assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
+        assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertTrue(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
+    }
+
+    @Test
+    public void test_constructor_00035() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertEquals(6, result1.getLength());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(5, result1.getLeSupportedFeaturesList().size());
+        assertFalse(result1.isLeEncryptionSupported());
+        assertFalse(result1.isConnectionParametersRequestProcedureSupported());
+        assertFalse(result1.isExtendedRejectIndicationSupported());
+        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isLePingSupported());
+        assertFalse(result1.isLeDataPacketLengthExtensionSupported());
+        assertFalse(result1.isLlPrivacySupported());
+        assertFalse(result1.isExtendedScannerFilterPoliciesSupported());
+        assertFalse(result1.isLe2mPhySupported());
+        assertFalse(result1.isStableModulationIndexTransmitterSupported());
+        assertFalse(result1.isStableModulationIndexReceiverSupported());
+        assertFalse(result1.isLeCodedPhySupported());
+        assertFalse(result1.isLeExtendedAdvertisingSupported());
+        assertFalse(result1.isLePeriodicAdvertisingSupported());
+        assertFalse(result1.isChannelSelectionAlgorithm2Supported());
+        assertFalse(result1.isLePowerClass1Supported());
+        assertFalse(result1.isMinimumNumberOfUsedChannelsProcedureSupported());
+        assertFalse(result1.isConnectionCteRequestSupported());
+        assertFalse(result1.isConnectionCteResponseSupported());
+        assertFalse(result1.isConnectionlessCteTransmitterSupported());
+        assertFalse(result1.isConnectionlessCteReceiverSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteTransmissionAodSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteReceptionAoaSupported());
+        assertFalse(result1.isReceivingConstantToneExtensionsSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferSenderSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
+        assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
+        assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertTrue(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
+    }
+
+    @Test
+    public void test_constructor_00036() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertEquals(6, result1.getLength());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(5, result1.getLeSupportedFeaturesList().size());
+        assertFalse(result1.isLeEncryptionSupported());
+        assertFalse(result1.isConnectionParametersRequestProcedureSupported());
+        assertFalse(result1.isExtendedRejectIndicationSupported());
+        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isLePingSupported());
+        assertFalse(result1.isLeDataPacketLengthExtensionSupported());
+        assertFalse(result1.isLlPrivacySupported());
+        assertFalse(result1.isExtendedScannerFilterPoliciesSupported());
+        assertFalse(result1.isLe2mPhySupported());
+        assertFalse(result1.isStableModulationIndexTransmitterSupported());
+        assertFalse(result1.isStableModulationIndexReceiverSupported());
+        assertFalse(result1.isLeCodedPhySupported());
+        assertFalse(result1.isLeExtendedAdvertisingSupported());
+        assertFalse(result1.isLePeriodicAdvertisingSupported());
+        assertFalse(result1.isChannelSelectionAlgorithm2Supported());
+        assertFalse(result1.isLePowerClass1Supported());
+        assertFalse(result1.isMinimumNumberOfUsedChannelsProcedureSupported());
+        assertFalse(result1.isConnectionCteRequestSupported());
+        assertFalse(result1.isConnectionCteResponseSupported());
+        assertFalse(result1.isConnectionlessCteTransmitterSupported());
+        assertFalse(result1.isConnectionlessCteReceiverSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteTransmissionAodSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteReceptionAoaSupported());
+        assertFalse(result1.isReceivingConstantToneExtensionsSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferSenderSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
+        assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
+        assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertTrue(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
+    }
+
+    @Test
+    public void test_constructor_00037() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertEquals(6, result1.getLength());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(5, result1.getLeSupportedFeaturesList().size());
+        assertFalse(result1.isLeEncryptionSupported());
+        assertFalse(result1.isConnectionParametersRequestProcedureSupported());
+        assertFalse(result1.isExtendedRejectIndicationSupported());
+        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isLePingSupported());
+        assertFalse(result1.isLeDataPacketLengthExtensionSupported());
+        assertFalse(result1.isLlPrivacySupported());
+        assertFalse(result1.isExtendedScannerFilterPoliciesSupported());
+        assertFalse(result1.isLe2mPhySupported());
+        assertFalse(result1.isStableModulationIndexTransmitterSupported());
+        assertFalse(result1.isStableModulationIndexReceiverSupported());
+        assertFalse(result1.isLeCodedPhySupported());
+        assertFalse(result1.isLeExtendedAdvertisingSupported());
+        assertFalse(result1.isLePeriodicAdvertisingSupported());
+        assertFalse(result1.isChannelSelectionAlgorithm2Supported());
+        assertFalse(result1.isLePowerClass1Supported());
+        assertFalse(result1.isMinimumNumberOfUsedChannelsProcedureSupported());
+        assertFalse(result1.isConnectionCteRequestSupported());
+        assertFalse(result1.isConnectionCteResponseSupported());
+        assertFalse(result1.isConnectionlessCteTransmitterSupported());
+        assertFalse(result1.isConnectionlessCteReceiverSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteTransmissionAodSupported());
+        assertFalse(result1.isAntennaSwitchingDuringCteReceptionAoaSupported());
+        assertFalse(result1.isReceivingConstantToneExtensionsSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferSenderSupported());
+        assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
+        assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
+        assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertTrue(result1.isLePathLossMonitoringSupported());
+    }
+
+    @Test
+    public void test_constructor_00100() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertEquals(6, result1.getLength());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(5, result1.getLeSupportedFeaturesList().size());
         assertTrue(result1.isLeEncryptionSupported());
         assertTrue(result1.isConnectionParametersRequestProcedureSupported());
         assertTrue(result1.isExtendedRejectIndicationSupported());
@@ -1499,10 +2200,18 @@ public class LeSupportedFeaturesTest {
         assertTrue(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertTrue(result1.isSleepClockAccuracyUpdatesSupported());
         assertTrue(result1.isRemotePublicKeyValidationSupported());
+        assertTrue(result1.isConnectedIsochronousStreamMasterSupported());
+        assertTrue(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertTrue(result1.isIsochronousBroadcasterSupported());
+        assertTrue(result1.isSynchronizedReceiverSupported());
+        assertTrue(result1.isIsochronousChannelsSupported());
+        assertTrue(result1.isLePowerControlRequestSupported());
+        assertTrue(result1.isLePowerChangeIndicationSupported());
+        assertTrue(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
-    public void test_constructor_00031() {
+    public void test_constructor_00101() {
         byte[] data = getData();
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
@@ -1537,6 +2246,14 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
+        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
+        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isIsochronousBroadcasterSupported());
+        assertFalse(result1.isSynchronizedReceiverSupported());
+        assertFalse(result1.isIsochronousChannelsSupported());
+        assertFalse(result1.isLePowerControlRequestSupported());
+        assertFalse(result1.isLePowerChangeIndicationSupported());
+        assertFalse(result1.isLePathLossMonitoringSupported());
     }
 
     @Test
@@ -1974,6 +2691,118 @@ public class LeSupportedFeaturesTest {
     }
 
     @Test
+    public void test_parcelable_1_00032() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00033() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00034() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00035() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00036() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00037() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00100() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00101() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
+
+    @Test
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
@@ -2215,6 +3044,70 @@ public class LeSupportedFeaturesTest {
 
     @Test
     public void test_parcelable_2_00031() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00032() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00033() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00034() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00035() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00036() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00037() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00100() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00101() {
         byte[] data = getData();
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
@@ -2499,5 +3392,76 @@ public class LeSupportedFeaturesTest {
         LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
-    
+
+    @Test
+    public void test_parcelable_3_00032() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00033() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00034() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00035() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00036() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00037() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00100() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00101() {
+        byte[] data = getData();
+
+        LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
+        LeSupportedFeaturesAndroid result2 = LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
 }

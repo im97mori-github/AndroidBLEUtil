@@ -84,40 +84,40 @@ import org.im97mori.ble.task.WriteDescriptorTask;
 import java.util.List;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.EMAIL_ADDRESS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIRST_NAME_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.GENDER_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LAST_NAME_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.USER_INDEX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.USER_DATA_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.EMAIL_ADDRESS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FIRST_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.GENDER_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LAST_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_INDEX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
 
 /**
  * User Data Service (Service UUID: 0x181C) for Central
@@ -465,7 +465,7 @@ public class UserDataService extends AbstractCentralService {
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
                         mIsThreeZoneHeartRateLimitsCharacteristicSupported = true;
                     }
-                    bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC);
+                    bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
                         mIsTwoZoneHeartRateLimitCharacteristicSupported = true;
                     }
@@ -543,7 +543,7 @@ public class UserDataService extends AbstractCentralService {
                 mUserDataServiceCallback.onFiveZoneHeartRateLimitsReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, FiveZoneHeartRateLimitsAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onThreeZoneHeartRateLimitsReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ThreeZoneHeartRateLimitsAndroid.CREATOR.createFromByteArray(values), argument);
-            } else if (TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC.equals(characteristicUUID)) {
+            } else if (TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onTwoZoneHeartRateLimitReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, TwoZoneHeartRateLimitAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (LANGUAGE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onLanguageReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, LanguageAndroid.CREATOR.createFromByteArray(values), argument);
@@ -614,7 +614,7 @@ public class UserDataService extends AbstractCentralService {
                 mUserDataServiceCallback.onFiveZoneHeartRateLimitsReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
             } else if (THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onThreeZoneHeartRateLimitsReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
-            } else if (TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC.equals(characteristicUUID)) {
+            } else if (TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onTwoZoneHeartRateLimitReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
             } else if (LANGUAGE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onLanguageReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
@@ -685,7 +685,7 @@ public class UserDataService extends AbstractCentralService {
                 mUserDataServiceCallback.onFiveZoneHeartRateLimitsReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
             } else if (THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onThreeZoneHeartRateLimitsReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
-            } else if (TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC.equals(characteristicUUID)) {
+            } else if (TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onTwoZoneHeartRateLimitReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
             } else if (LANGUAGE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onLanguageReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
@@ -756,7 +756,7 @@ public class UserDataService extends AbstractCentralService {
                 mUserDataServiceCallback.onFiveZoneHeartRateLimitsWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, FiveZoneHeartRateLimitsAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onThreeZoneHeartRateLimitsWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ThreeZoneHeartRateLimitsAndroid.CREATOR.createFromByteArray(values), argument);
-            } else if (TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC.equals(characteristicUUID)) {
+            } else if (TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onTwoZoneHeartRateLimitWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, TwoZoneHeartRateLimitAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (LANGUAGE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onLanguageWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, LanguageAndroid.CREATOR.createFromByteArray(values), argument);
@@ -827,7 +827,7 @@ public class UserDataService extends AbstractCentralService {
                 mUserDataServiceCallback.onFiveZoneHeartRateLimitsWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
             } else if (THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onThreeZoneHeartRateLimitsWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
-            } else if (TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC.equals(characteristicUUID)) {
+            } else if (TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onTwoZoneHeartRateLimitWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
             } else if (LANGUAGE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onLanguageWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
@@ -898,7 +898,7 @@ public class UserDataService extends AbstractCentralService {
                 mUserDataServiceCallback.onFiveZoneHeartRateLimitsWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
             } else if (THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onThreeZoneHeartRateLimitsWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
-            } else if (TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC.equals(characteristicUUID)) {
+            } else if (TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onTwoZoneHeartRateLimitWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
             } else if (LANGUAGE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onLanguageWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
@@ -2223,7 +2223,7 @@ public class UserDataService extends AbstractCentralService {
     public synchronized Integer getTwoZoneHeartRateLimit() {
         Integer taskId = null;
         if (isStarted() && isTwoZoneHeartRateLimitCharacteristicSupported()) {
-            taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2240,7 +2240,7 @@ public class UserDataService extends AbstractCentralService {
     public synchronized Integer setTwoZoneHeartRateLimit(@NonNull TwoZoneHeartRateLimit twoZoneHeartRateLimit) {
         Integer taskId = null;
         if (isStarted() && isTwoZoneHeartRateLimitCharacteristicSupported()) {
-            taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, null, twoZoneHeartRateLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, twoZoneHeartRateLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }

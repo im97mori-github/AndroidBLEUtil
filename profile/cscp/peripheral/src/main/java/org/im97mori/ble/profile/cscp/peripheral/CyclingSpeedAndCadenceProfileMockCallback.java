@@ -18,7 +18,7 @@ import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallb
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.CYCLING_SPEED_AND_CADENCE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.CYCLING_SPEED_AND_CADENCE_SERVICE;
 
 /**
  * Cycling Speed and Cadence Profile for Peripheral

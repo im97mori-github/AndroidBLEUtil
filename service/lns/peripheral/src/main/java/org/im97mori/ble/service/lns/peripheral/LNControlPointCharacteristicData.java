@@ -15,7 +15,7 @@ import org.im97mori.ble.characteristic.u2a6b.LNControlPoint;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LN_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LN_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * LN Control Point Characteristic data class

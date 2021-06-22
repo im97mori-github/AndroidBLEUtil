@@ -28,7 +28,7 @@ import org.im97mori.ble.sample.lolipop.SampleCallback;
 import java.util.LinkedList;
 import java.util.Set;
 
-import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class HrpCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {

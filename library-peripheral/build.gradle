@@ -32,6 +32,8 @@ android {
 dependencies {
     api apiAdvertisingAndroid
     api apiHandler
+    api "${groupId}:${coreConstantsErrorCodeAndroid.artifactId}:${coreConstantsErrorCodeAndroid.versionName}"
+    api apiCoreConstantsDescriptor
     api gson
     androidTestImplementation apiTestPeripheral
 }

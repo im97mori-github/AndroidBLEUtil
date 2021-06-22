@@ -4,8 +4,8 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
+import static org.im97mori.ble.advertising.SlaveConnectionIntervalRange.SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

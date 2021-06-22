@@ -28,6 +28,7 @@ android {
 }
 
 dependencies {
+    api apiCoreConstantsService
     api "${groupId}:${central.artifactId}:${central.versionName}"
     androidTestImplementation "${groupId}:${testCentral.artifactId}:${testCentral.versionName}"
 }

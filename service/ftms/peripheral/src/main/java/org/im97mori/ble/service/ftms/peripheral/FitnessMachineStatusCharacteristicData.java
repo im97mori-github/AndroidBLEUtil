@@ -15,7 +15,7 @@ import org.im97mori.ble.DescriptorData;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
 
 /**
  * Fitness Machine Status Characteristic data class

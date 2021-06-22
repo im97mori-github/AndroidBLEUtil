@@ -28,6 +28,7 @@ android {
 }
 
 dependencies {
+    api apiCoreConstantsService
     api "${groupId}:${peripheral.artifactId}:${peripheral.versionName}"
 }
 

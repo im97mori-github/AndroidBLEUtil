@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
 
 public class RegisteredUserAndroid extends RegisteredUser implements Parcelable {
 

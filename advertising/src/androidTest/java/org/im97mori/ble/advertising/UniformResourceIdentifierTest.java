@@ -2,13 +2,14 @@ package org.im97mori.ble.advertising;
 
 import android.os.Parcel;
 
+import org.im97mori.ble.BLEUtils;
 import org.junit.Test;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 
-import static org.im97mori.ble.BLEConstants.URI_SCHEME_NAME_STRING_MAPPING;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+import static org.im97mori.ble.constants.SchemeUUID.SCHEME_MAPPING_128;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -21,7 +22,7 @@ public class UniformResourceIdentifierTest {
         // http scheme
         int schemeKey = 0x000016;
         String body = "//im97mori.org/";
-        URI uri = URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(schemeKey) + body);
+        URI uri = URI.create(SCHEME_MAPPING_128.get(BLEUtils.convert16to128(schemeKey)) + body);
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
         byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
@@ -37,7 +38,7 @@ public class UniformResourceIdentifierTest {
         // example scheme
         int schemeKey = 0x0000B9;
         String body = "//im97mori.org/";
-        URI uri = URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(schemeKey) + body);
+        URI uri = URI.create(SCHEME_MAPPING_128.get(BLEUtils.convert16to128(schemeKey)) + body);
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
         byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);

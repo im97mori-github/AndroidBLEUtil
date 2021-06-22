@@ -13,7 +13,7 @@ import org.im97mori.ble.service.ans.peripheral.AlertNotificationServiceMockCallb
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
 
 /**
  * Alert Notification Profile for Peripheral

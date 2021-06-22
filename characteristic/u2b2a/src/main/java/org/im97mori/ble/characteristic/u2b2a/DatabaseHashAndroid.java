@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATABASE_HASH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARACTERISTIC;
 
 /**
  * Database Hash (Characteristics UUID: 0x2B2A)

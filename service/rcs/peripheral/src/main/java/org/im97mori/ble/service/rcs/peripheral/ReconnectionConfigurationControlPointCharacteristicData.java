@@ -20,7 +20,7 @@ import java.nio.ByteOrder;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * Reconnection Configuration Control Point Characteristic data class

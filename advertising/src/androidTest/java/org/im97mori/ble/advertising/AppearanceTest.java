@@ -2,13 +2,14 @@ package org.im97mori.ble.advertising;
 
 import android.os.Parcel;
 
+import org.im97mori.ble.BLEUtils;
 import org.junit.Test;
 
 import java.util.Map;
+import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.APPEARANCE_DESCRIPTION_MAP;
-import static org.im97mori.ble.BLEConstants.APPEARANCE_VALUE_MAP;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_APPEARANCE;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_APPEARANCE;
+import static org.im97mori.ble.constants.AppearanceUUID.APPEARANCE_SUB_CATEGORY_MAPPING_128;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -18,8 +19,8 @@ public class AppearanceTest {
     //@formatter:off
     private static final byte[] data_00001;
     static {
-        Map.Entry<Integer, String> entry = APPEARANCE_VALUE_MAP.entrySet().iterator().next();
-        int key = entry.getKey();
+        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
+        int key = BLEUtils.convert128to16(entry.getKey());
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_APPEARANCE;
@@ -64,8 +65,7 @@ public class AppearanceTest {
         assertEquals(DATA_TYPE_APPEARANCE, result1.getDataType());
         int key = (data[2] & 0xff) | ((data[3] & 0xff) << 8);
         assertEquals(key, result1.getAppearanceKey());
-        assertEquals(APPEARANCE_VALUE_MAP.get(key), result1.getAppearanceValue());
-        assertEquals(APPEARANCE_DESCRIPTION_MAP.get(key), result1.getAppearanceDescription());
+        assertEquals(APPEARANCE_SUB_CATEGORY_MAPPING_128.get(BLEUtils.convert16to128(key)), result1.getAppearanceSubCategory());
     }
 
     @Test

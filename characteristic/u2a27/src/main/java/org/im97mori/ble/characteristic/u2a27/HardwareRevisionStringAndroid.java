@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HARDWARE_REVISION_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HARDWARE_REVISION_STRING_CHARACTERISTIC;
 
 /**
  * Hardware Revision String (Characteristics UUID: 0x2A27)

@@ -47,7 +47,7 @@ public interface ProfileCallback extends GenericAccessServiceCallback, GenericAt
      * Bond error callback
      *
      * @param bluetoothDevice bonded failed {@link BluetoothDevice} instance
-     * @param status          {@link org.im97mori.ble.BLEConstants.ErrorCodes#UNKNOWN} or {@link  org.im97mori.ble.BLEConstants.ErrorCodes#CANCEL}
+     * @param status          {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN} or {@link  org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}
      * @param argument        callback argument
      */
     void onBondFailed(@NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);

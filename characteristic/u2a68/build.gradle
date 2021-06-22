@@ -29,9 +29,11 @@ android {
 }
 
 dependencies {
-    api apiCoreAndroid
+    api apiCoreConstantsCharacteristic
+    api apiCharacteristicCore
+    api apiCoreUtilsAndroid
     api BASE_MODULE
-    androidTestImplementation apiCharacteristicCoreAndroid
+    api androidxAnnotation
     androidTestImplementation apiTest
 }
 

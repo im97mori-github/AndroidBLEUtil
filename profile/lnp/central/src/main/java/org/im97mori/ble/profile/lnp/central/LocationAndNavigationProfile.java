@@ -20,8 +20,8 @@ import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BATTERY_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.BATTERY_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 
 /**
  * Location and Navigation Profile for Central

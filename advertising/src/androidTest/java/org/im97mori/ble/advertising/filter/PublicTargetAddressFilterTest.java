@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

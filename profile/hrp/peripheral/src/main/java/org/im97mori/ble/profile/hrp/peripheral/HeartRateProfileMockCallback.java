@@ -16,7 +16,7 @@ import org.im97mori.ble.service.hrs.peripheral.HeartRateServiceMockCallback;
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.HEART_RATE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.HEART_RATE_SERVICE;
 
 /**
  * Heart Rate Profile for Peripheral

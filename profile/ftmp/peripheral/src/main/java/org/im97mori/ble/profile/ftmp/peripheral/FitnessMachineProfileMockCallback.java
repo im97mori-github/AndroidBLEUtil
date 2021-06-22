@@ -44,7 +44,7 @@ import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.FITNESS_MACHINE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.FITNESS_MACHINE_SERVICE;
 
 /**
  * Fitness Machine Profile for Peripheral

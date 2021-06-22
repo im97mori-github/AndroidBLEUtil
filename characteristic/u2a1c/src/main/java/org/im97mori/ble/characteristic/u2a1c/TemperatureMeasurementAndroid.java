@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_FLOAT;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TEMPERATURE_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_MEASUREMENT_CHARACTERISTIC;
 
 /**
  * Temperature Measurement (Characteristics UUID: 0x2A1C)

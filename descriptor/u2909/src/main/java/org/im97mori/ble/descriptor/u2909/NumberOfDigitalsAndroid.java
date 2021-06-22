@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
 
 /**
  * Number of Digitals (Descriptor UUID: 0x2909)

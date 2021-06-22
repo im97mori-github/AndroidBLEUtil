@@ -25,9 +25,9 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.im97mori.ble.BLEConstants.BASE_UUID;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
+import static org.im97mori.ble.BLEUtils.BASE_UUID;
+import static org.im97mori.ble.constants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;

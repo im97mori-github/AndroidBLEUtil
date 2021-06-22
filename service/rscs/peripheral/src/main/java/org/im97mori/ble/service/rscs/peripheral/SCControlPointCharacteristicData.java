@@ -16,7 +16,7 @@ import org.im97mori.ble.characteristic.u2a55.SCControlPoint;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SC_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SC_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * SC Control Point Characteristic data class

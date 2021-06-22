@@ -28,7 +28,8 @@ android {
 }
 
 dependencies {
-    api apiCoreAndroid
+    api stackLog
+    api androidxAnnotation
     androidTestImplementation apiTest
 }
 

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
 
 /**
  * Height (Characteristics UUID: 0x2A8E)

@@ -36,8 +36,8 @@ import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.USER_DATA_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
 
 /**
  * Weight Scale Profile for Central

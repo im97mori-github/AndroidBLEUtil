@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
 
 /**
  * Two Zone Heart Rate Limit (Characteristics UUID: 0x2A95)
@@ -44,7 +44,7 @@ public class TwoZoneHeartRateLimitAndroid extends TwoZoneHeartRateLimit implemen
          */
         @NonNull
         public TwoZoneHeartRateLimitAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new TwoZoneHeartRateLimitAndroid(bluetoothGattCharacteristic);
         }

@@ -30,6 +30,7 @@ android {
 dependencies {
     api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
     api apiHandler
+    api "${groupId}:${coreConstantsErrorCodeAndroid.artifactId}:${coreConstantsErrorCodeAndroid.versionName}"
     androidTestImplementation apiTestCentral
 }
 

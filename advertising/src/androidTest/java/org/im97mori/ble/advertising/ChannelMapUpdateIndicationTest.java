@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 

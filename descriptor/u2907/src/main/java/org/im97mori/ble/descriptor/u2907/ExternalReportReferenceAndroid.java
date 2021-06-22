@@ -10,7 +10,7 @@ import org.im97mori.ble.ByteArrayCreater;
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.EXTERNAL_REPORT_REFERENCE_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.EXTERNAL_REPORT_REFERENCE_DESCRIPTOR;
 
 /**
  * External Report Reference (Descriptor UUID: 0x2907)

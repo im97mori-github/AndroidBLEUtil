@@ -23,8 +23,8 @@ import org.im97mori.ble.task.DiscoverServiceTask;
 import java.util.List;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
 
 /**
  * Time Profile for Central

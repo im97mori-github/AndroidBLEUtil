@@ -9,7 +9,7 @@ import org.im97mori.ble.service.aios.peripheral.AutomationIOServiceMockCallback;
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.AUTOMATION_IO_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.AUTOMATION_IO_SERVICE;
 
 /**
  * Automation IO Profile for Peripheral

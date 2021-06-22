@@ -7,40 +7,42 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.constants.DataType;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_ADVERTISING_INTERVAL;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_APPEARANCE;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LOCAL_NAME;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INDOOR_POSITIONING;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LE_SUPPORTED_FEATURES;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_RANDOM_TARGET_ADDRESS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SHORTENED_LOCAL_NAME;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_ADVERTISING_INTERVAL;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_APPEARANCE;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_BIG_INFO;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LOCAL_NAME;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_FLAGS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INDOOR_POSITIONING;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LE_SUPPORTED_FEATURES;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_RANDOM_TARGET_ADDRESS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SHORTENED_LOCAL_NAME;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_TX_POWER_LEVEL;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
 
 /**
  * Parser for {@link ScanRecord#getBytes()}
@@ -56,7 +58,7 @@ public class AdvertisingDataParser {
          * <p>
          * All Advertising Data Type set
          *
-         * @see AdvertisingDataTypes
+         * @see DataType
          * </p>
          */
         private static final Set<Integer> ALL_DATA_TYPE_SET;
@@ -90,6 +92,7 @@ public class AdvertisingDataParser {
             set.add(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
             set.add(DATA_TYPE_LE_SUPPORTED_FEATURES);
             set.add(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
+            set.add(DATA_TYPE_BIG_INFO);
 
             ALL_DATA_TYPE_SET = Collections.unmodifiableSet(Collections.synchronizedSet(set));
         }
@@ -124,7 +127,7 @@ public class AdvertisingDataParser {
         /**
          * include Advertising Data Type
          *
-         * @param advertisingDataTypes one of {@link AdvertisingDataTypes}
+         * @param advertisingDataTypes one of {@link DataType}
          * @return myself
          */
         @NonNull
@@ -149,7 +152,7 @@ public class AdvertisingDataParser {
         /**
          * exclude Advertising Data Type
          *
-         * @param advertisingDataTypes one of {@link AdvertisingDataTypes}
+         * @param advertisingDataTypes one of {@link DataType}
          * @return myself
          */
         @NonNull
@@ -415,6 +418,11 @@ public class AdvertisingDataParser {
          * Channel Map Update Indication
          */
         private ChannelMapUpdateIndicationAndroid mChannelMapUpdateIndication;
+
+        /**
+         * BIGInfo
+         */
+        private BigInfoAndroid mBigInfo;
 
         /**
          * Constructor from {@link #parse(byte[], int, int)}
@@ -814,6 +822,14 @@ public class AdvertisingDataParser {
         }
 
         /**
+         * @return BIGInfo
+         */
+        @Nullable
+        public BigInfoAndroid getBigInfo() {
+            return mBigInfo;
+        }
+
+        /**
          * list to member
          */
         private void toMember() {
@@ -888,7 +904,10 @@ public class AdvertisingDataParser {
                     mLeSupportedFeatures = (LeSupportedFeaturesAndroid) data;
                 } else if (data instanceof ChannelMapUpdateIndicationAndroid) {
                     mChannelMapUpdateIndication = (ChannelMapUpdateIndicationAndroid) data;
+                } else if (data instanceof BigInfoAndroid) {
+                    mBigInfo = (BigInfoAndroid) data;
                 }
+
             }
         }
 
@@ -989,6 +1008,8 @@ public class AdvertisingDataParser {
                         resultList.add(new LeSupportedFeaturesAndroid(data, i, dataLength));
                     } else if (DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION == dataType) {
                         resultList.add(new ChannelMapUpdateIndicationAndroid(data, i, dataLength));
+                    } else if (DATA_TYPE_BIG_INFO == dataType) {
+                        resultList.add(new BigInfoAndroid(data, i, dataLength));
                     }
                 }
                 i += dataLength;

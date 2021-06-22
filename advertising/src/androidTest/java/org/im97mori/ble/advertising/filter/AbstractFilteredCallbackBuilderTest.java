@@ -2,6 +2,7 @@ package org.im97mori.ble.advertising.filter;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AdvertisingIntervalAndroid;
@@ -38,35 +39,36 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.APPEARANCE_VALUE_MAP;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_ADVERTISING_INTERVAL;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_APPEARANCE;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LOCAL_NAME;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INDOOR_POSITIONING;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LE_SUPPORTED_FEATURES;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_RANDOM_TARGET_ADDRESS;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SHORTENED_LOCAL_NAME;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+import static org.im97mori.ble.constants.AppearanceUUID.APPEARANCE_SUB_CATEGORY_MAPPING_128;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_ADVERTISING_INTERVAL;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_APPEARANCE;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LOCAL_NAME;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_FLAGS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_INDOOR_POSITIONING;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LE_SUPPORTED_FEATURES;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_RANDOM_TARGET_ADDRESS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SHORTENED_LOCAL_NAME;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_TX_POWER_LEVEL;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -182,8 +184,8 @@ public class AbstractFilteredCallbackBuilderTest {
 
     @Test
     public void addAppearanceFilterTest_001() {
-        Map.Entry<Integer, String> entry = APPEARANCE_VALUE_MAP.entrySet().iterator().next();
-        int key = entry.getKey();
+        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
+        int key = BLEUtils.convert128to16(entry.getKey());
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_APPEARANCE;
@@ -198,8 +200,8 @@ public class AbstractFilteredCallbackBuilderTest {
 
     @Test
     public void addAppearanceFilterTest_002() {
-        Map.Entry<Integer, String> entry = APPEARANCE_VALUE_MAP.entrySet().iterator().next();
-        int key = entry.getKey();
+        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
+        int key = BLEUtils.convert128to16(entry.getKey());
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_APPEARANCE;
@@ -214,8 +216,8 @@ public class AbstractFilteredCallbackBuilderTest {
 
     @Test
     public void addAppearanceFilterTest_003() {
-        Map.Entry<Integer, String> entry = APPEARANCE_VALUE_MAP.entrySet().iterator().next();
-        int key = entry.getKey();
+        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
+        int key = BLEUtils.convert128to16(entry.getKey());
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_APPEARANCE;

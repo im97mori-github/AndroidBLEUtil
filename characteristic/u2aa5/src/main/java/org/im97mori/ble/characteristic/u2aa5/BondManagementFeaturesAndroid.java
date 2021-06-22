@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_FEATURES_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
 
 /**
  * Bond Management Features (Characteristics UUID: 0x2AA5)
@@ -44,7 +44,7 @@ public class BondManagementFeaturesAndroid extends BondManagementFeatures implem
          */
         @NonNull
         public BondManagementFeaturesAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BOND_MANAGEMENT_FEATURES_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
         }

@@ -15,7 +15,6 @@ import android.util.Pair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
@@ -54,6 +53,7 @@ import org.im97mori.ble.characteristic.u2a9a.UserIndex;
 import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
 import org.im97mori.ble.characteristic.u2aa2.Language;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
+import org.im97mori.ble.constants.ErrorCodeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
@@ -69,41 +69,41 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.EMAIL_ADDRESS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIRST_NAME_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.GENDER_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LAST_NAME_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.USER_INDEX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.USER_DATA_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.EMAIL_ADDRESS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FIRST_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.GENDER_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LAST_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_INDEX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
 
 /**
  * User Data Service (Service UUID: 0x181C) for Peripheral
@@ -141,7 +141,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         set.add(RESTING_HEART_RATE_CHARACTERISTIC);
         set.add(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC);
         set.add(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC);
-        set.add(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC);
+        set.add(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC);
         set.add(VO2_MAX_CHARACTERISTIC);
         set.add(WAIST_CIRCUMFERENCE_CHARACTERISTIC);
         set.add(WEIGHT_CHARACTERISTIC);
@@ -1869,7 +1869,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addTwoZoneHeartRateLimit(int responseCode, long delay, @NonNull byte[] value) {
-            mTwoZoneHeartRateLimitCharacteristicData = new UDSCharacteristicData(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC
+            mTwoZoneHeartRateLimitCharacteristicData = new UDSCharacteristicData(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -2413,7 +2413,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 Integer currentUserIndex = mCurrentUserMap.get(device);
                 int responseCode;
                 if (currentUserIndex == null) {
-                    responseCode = BLEConstants.ErrorCodes.APPLICATION_ERROR_80;
+                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
                 } else {
                     responseCode = characteristicData.responseCode;
                 }
@@ -2468,7 +2468,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 int responseCode;
                 if (currentUserIndex == null) {
                     currentUserIndex = UserIndexUtils.USER_ID_UNKNOWN_USER;
-                    responseCode = BLEConstants.ErrorCodes.APPLICATION_ERROR_80;
+                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
                 } else {
                     responseCode = characteristicData.responseCode;
                 }
@@ -2516,7 +2516,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 Integer currentUserIndex = mCurrentUserMap.get(device);
                 int responseCode;
                 if (currentUserIndex == null) {
-                    responseCode = BLEConstants.ErrorCodes.APPLICATION_ERROR_80;
+                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
                 } else {
                     responseCode = udsCharacteristicData.responseCode;
                 }
@@ -2599,7 +2599,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 Integer currentUserIndex = mCurrentUserMap.get(device);
                 int responseCode;
                 if (currentUserIndex == null) {
-                    responseCode = BLEConstants.ErrorCodes.APPLICATION_ERROR_80;
+                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
                 } else {
                     responseCode = characteristicData.responseCode;
                 }
@@ -2720,7 +2720,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 delay(now, characteristicData.delay);
 
                 if (BluetoothGatt.GATT_SUCCESS == characteristicData.responseCode) {
-                    int responseCode = BLEConstants.ErrorCodes.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+                    int responseCode = ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
 
                     Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(USER_CONTROL_POINT_CHARACTERISTIC, characteristicInstanceId));
                     if (characteristicData instanceof UserControlPointCharacteristicData && descriptorDataMap != null) {
@@ -2891,7 +2891,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                 responseCode = BluetoothGatt.GATT_SUCCESS;
                                             }
                                         } else {
-                                            responseCode = BLEConstants.ErrorCodes.PROCEDURE_ALREADY_IN_PROGRESS;
+                                            responseCode = ErrorCodeAndroid.PROCEDURE_ALREADY_IN_PROGRESS;
                                         }
 
                                     } else if (userControlPoint.isOpCodeDeleteUsers(userControlPoint.getOpCode())) {
@@ -2966,7 +2966,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 Integer currentUserIndex = mCurrentUserMap.get(device);
                 int responseCode;
                 if (currentUserIndex == null) {
-                    responseCode = BLEConstants.ErrorCodes.APPLICATION_ERROR_80;
+                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
                 } else {
                     responseCode = udsCharacteristicData.responseCode;
                 }
@@ -3067,7 +3067,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
             if (bluetoothGattServer != null) {
                 if (mRegisteredUserIndicationData.timeout < SystemClock.elapsedRealtime()) {
-                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, BLEConstants.ErrorCodes.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
+                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
                     mRegisteredUserIndicationData = null;
                 } else {
                     Bundle originalArgument = argument.getBundle(KEY_ORIGINAL_ARGUMENT);
@@ -3105,7 +3105,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
             if (bluetoothGattServer != null) {
                 if (mRegisteredUserIndicationData.timeout < SystemClock.elapsedRealtime()) {
-                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, BLEConstants.ErrorCodes.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
+                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
                     mRegisteredUserIndicationData = null;
                 } else {
                     Bundle originalArgument = argument.getBundle(KEY_ORIGINAL_ARGUMENT);
@@ -3143,7 +3143,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
             if (bluetoothGattServer != null) {
                 if (mRegisteredUserIndicationData.timeout < SystemClock.elapsedRealtime()) {
-                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, BLEConstants.ErrorCodes.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
+                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
                     mRegisteredUserIndicationData = null;
                 } else {
                     Bundle originalArgument = argument.getBundle(KEY_ORIGINAL_ARGUMENT);

@@ -17,8 +17,8 @@ import org.im97mori.ble.task.WriteCharacteristicTask;
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.LINK_LOSS_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.LINK_LOSS_SERVICE;
 
 /**
  * Link Loss Service (Service UUID: 0x1803) for Central

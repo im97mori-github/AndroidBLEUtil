@@ -16,9 +16,9 @@ import org.junit.Test;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_FEATURES_CHARACTERISTIC;
-import static org.im97mori.ble.BLEConstants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -34,7 +34,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BOND_MANAGEMENT_SERVICE;
         final Integer originalServiceInstanceId = 2;
-        final UUID originalCharacteristicUUID = BOND_MANAGEMENT_FEATURES_CHARACTERISTIC;
+        final UUID originalCharacteristicUUID = BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final byte[] originalValues = new byte[3];
         final Bundle originalBundle = new Bundle();
@@ -67,7 +67,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BOND_MANAGEMENT_SERVICE;
         final Integer originalServiceInstanceId = 2;
-        final UUID originalCharacteristicUUID = BOND_MANAGEMENT_FEATURES_CHARACTERISTIC;
+        final UUID originalCharacteristicUUID = BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final int originalStatus = 4;
         final Bundle originalBundle = new Bundle();
@@ -100,7 +100,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = BOND_MANAGEMENT_SERVICE;
         final Integer originalServiceInstanceId = 2;
-        final UUID originalCharacteristicUUID = BOND_MANAGEMENT_FEATURES_CHARACTERISTIC;
+        final UUID originalCharacteristicUUID = BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final long originalTimeout = 4;
         final Bundle originalBundle = new Bundle();

@@ -23,7 +23,7 @@ import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallb
 
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.ServiceUUID.CYCLING_POWER_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.CYCLING_POWER_SERVICE;
 
 /**
  * Cycling Power Profile for Peripheral

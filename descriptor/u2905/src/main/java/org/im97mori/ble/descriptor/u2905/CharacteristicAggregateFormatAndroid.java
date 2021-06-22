@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_AGGREGATE_FORMAT_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_AGGREGATE_FORMAT_DESCRIPTOR;
 
 /**
  * Characteristic Aggregate Format (Descriptor UUID: 0x2905)
