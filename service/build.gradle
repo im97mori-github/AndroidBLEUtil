@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = serviceAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,60 +22,60 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${serviceAiosCentralAndroid.artifactId}:${serviceAiosCentralAndroid.versionName}"
-    api "${groupId}:${serviceAiosPeripheralAndroid.artifactId}:${serviceAiosPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceAnsCentralAndroid.artifactId}:${serviceAnsCentralAndroid.versionName}"
-    api "${groupId}:${serviceAnsPeripheralAndroid.artifactId}:${serviceAnsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceBasCentralAndroid.artifactId}:${serviceBasCentralAndroid.versionName}"
-    api "${groupId}:${serviceBasPeripheralAndroid.artifactId}:${serviceBasPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceBcsCentralAndroid.artifactId}:${serviceBcsCentralAndroid.versionName}"
-    api "${groupId}:${serviceBcsPeripheralAndroid.artifactId}:${serviceBcsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceBlsCentralAndroid.artifactId}:${serviceBlsCentralAndroid.versionName}"
-    api "${groupId}:${serviceBlsPeripheralAndroid.artifactId}:${serviceBlsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceBmsCentralAndroid.artifactId}:${serviceBmsCentralAndroid.versionName}"
-    api "${groupId}:${serviceBmsPeripheralAndroid.artifactId}:${serviceBmsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceCpsCentralAndroid.artifactId}:${serviceCpsCentralAndroid.versionName}"
-    api "${groupId}:${serviceCpsPeripheralAndroid.artifactId}:${serviceCpsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceCscsCentralAndroid.artifactId}:${serviceCscsCentralAndroid.versionName}"
-    api "${groupId}:${serviceCscsPeripheralAndroid.artifactId}:${serviceCscsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceCtsCentralAndroid.artifactId}:${serviceCtsCentralAndroid.versionName}"
-    api "${groupId}:${serviceCtsPeripheralAndroid.artifactId}:${serviceCtsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceDisCentralAndroid.artifactId}:${serviceDisCentralAndroid.versionName}"
-    api "${groupId}:${serviceDisPeripheralAndroid.artifactId}:${serviceDisPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceEssCentralAndroid.artifactId}:${serviceEssCentralAndroid.versionName}"
-    api "${groupId}:${serviceEssPeripheralAndroid.artifactId}:${serviceEssPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceFtmsCentralAndroid.artifactId}:${serviceFtmsCentralAndroid.versionName}"
-    api "${groupId}:${serviceFtmsPeripheralAndroid.artifactId}:${serviceFtmsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceGapCentralAndroid.artifactId}:${serviceGapCentralAndroid.versionName}"
-    api "${groupId}:${serviceGapPeripheralAndroid.artifactId}:${serviceGapPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceGattCentralAndroid.artifactId}:${serviceGattCentralAndroid.versionName}"
-    api "${groupId}:${serviceGattPeripheralAndroid.artifactId}:${serviceGattPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceHrsCentralAndroid.artifactId}:${serviceHrsCentralAndroid.versionName}"
-    api "${groupId}:${serviceHrsPeripheralAndroid.artifactId}:${serviceHrsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceHtsCentralAndroid.artifactId}:${serviceHtsCentralAndroid.versionName}"
-    api "${groupId}:${serviceHtsPeripheralAndroid.artifactId}:${serviceHtsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceIasCentralAndroid.artifactId}:${serviceIasCentralAndroid.versionName}"
-    api "${groupId}:${serviceIasPeripheralAndroid.artifactId}:${serviceIasPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceLnsCentralAndroid.artifactId}:${serviceLnsCentralAndroid.versionName}"
-    api "${groupId}:${serviceLnsPeripheralAndroid.artifactId}:${serviceLnsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceNdcsCentralAndroid.artifactId}:${serviceNdcsCentralAndroid.versionName}"
-    api "${groupId}:${serviceNdcsPeripheralAndroid.artifactId}:${serviceNdcsPeripheralAndroid.versionName}"
-    api "${groupId}:${servicePassCentralAndroid.artifactId}:${servicePassCentralAndroid.versionName}"
-    api "${groupId}:${servicePassPeripheralAndroid.artifactId}:${servicePassPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceRcsCentralAndroid.artifactId}:${serviceRcsCentralAndroid.versionName}"
-    api "${groupId}:${serviceRcsPeripheralAndroid.artifactId}:${serviceRcsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceRscsCentralAndroid.artifactId}:${serviceRscsCentralAndroid.versionName}"
-    api "${groupId}:${serviceRscsPeripheralAndroid.artifactId}:${serviceRscsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceRtusCentralAndroid.artifactId}:${serviceRtusCentralAndroid.versionName}"
-    api "${groupId}:${serviceRtusPeripheralAndroid.artifactId}:${serviceRtusPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceScpsCentralAndroid.artifactId}:${serviceScpsCentralAndroid.versionName}"
-    api "${groupId}:${serviceScpsPeripheralAndroid.artifactId}:${serviceScpsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceTpsCentralAndroid.artifactId}:${serviceTpsCentralAndroid.versionName}"
-    api "${groupId}:${serviceTpsPeripheralAndroid.artifactId}:${serviceTpsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceUdsCentralAndroid.artifactId}:${serviceUdsCentralAndroid.versionName}"
-    api "${groupId}:${serviceUdsPeripheralAndroid.artifactId}:${serviceUdsPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceWssCentralAndroid.artifactId}:${serviceWssCentralAndroid.versionName}"
-    api "${groupId}:${serviceWssPeripheralAndroid.artifactId}:${serviceWssPeripheralAndroid.versionName}"
+    api "${myGroupId}:${serviceAiosCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceAiosPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceAnsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceAnsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBasCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBasPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBcsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBcsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBlsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBlsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBmsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBmsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceCpsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceCpsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceCscsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceCscsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceCtsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceCtsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceDisCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceDisPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceEssCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceEssPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceFtmsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceFtmsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceGapCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceGapPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceGattCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceGattPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceHrsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceHrsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceHtsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceHtsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceIasCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceIasPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceLnsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceLnsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceNdcsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceNdcsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${servicePassCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${servicePassPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceRcsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceRcsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceRscsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceRscsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceRtusCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceRtusPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceScpsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceScpsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceTpsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceTpsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceUdsCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceUdsPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceWssCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceWssPeripheralAndroid.artifactId}:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {
@@ -90,9 +86,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

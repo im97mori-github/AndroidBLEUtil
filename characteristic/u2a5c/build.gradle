@@ -2,11 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = characteristicU2a5cAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
-def BASE_MODULE = target[baseModule]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -15,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,7 +27,7 @@ dependencies {
     api apiCoreConstantsCharacteristic
     api apiCharacteristicCore
     api apiCoreUtilsAndroid
-    api BASE_MODULE
+    api target['baseModule']
     api androidxAnnotation
     androidTestImplementation apiTest
 }
@@ -45,9 +40,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

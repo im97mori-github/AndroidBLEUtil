@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = serviceFtmsAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,22 +22,22 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
-    api "${groupId}:${characteristicU2accAndroid.artifactId}:${characteristicU2accAndroid.versionName}"
-    api "${groupId}:${characteristicU2acdAndroid.artifactId}:${characteristicU2acdAndroid.versionName}"
-    api "${groupId}:${characteristicU2aceAndroid.artifactId}:${characteristicU2aceAndroid.versionName}"
-    api "${groupId}:${characteristicU2acfAndroid.artifactId}:${characteristicU2acfAndroid.versionName}"
-    api "${groupId}:${characteristicU2ad0Android.artifactId}:${characteristicU2ad0Android.versionName}"
-    api "${groupId}:${characteristicU2ad1Android.artifactId}:${characteristicU2ad1Android.versionName}"
-    api "${groupId}:${characteristicU2ad2Android.artifactId}:${characteristicU2ad2Android.versionName}"
-    api "${groupId}:${characteristicU2ad3Android.artifactId}:${characteristicU2ad3Android.versionName}"
-    api "${groupId}:${characteristicU2ad4Android.artifactId}:${characteristicU2ad4Android.versionName}"
-    api "${groupId}:${characteristicU2ad5Android.artifactId}:${characteristicU2ad5Android.versionName}"
-    api "${groupId}:${characteristicU2ad6Android.artifactId}:${characteristicU2ad6Android.versionName}"
-    api "${groupId}:${characteristicU2ad7Android.artifactId}:${characteristicU2ad7Android.versionName}"
-    api "${groupId}:${characteristicU2ad8Android.artifactId}:${characteristicU2ad8Android.versionName}"
-    api "${groupId}:${characteristicU2ad9Android.artifactId}:${characteristicU2ad9Android.versionName}"
-    api "${groupId}:${characteristicU2adaAndroid.artifactId}:${characteristicU2adaAndroid.versionName}"
+    api "${myGroupId}:${descriptorU2902Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2accAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2acdAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aceAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2acfAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad0Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad1Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad2Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad3Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad4Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad5Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad6Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad7Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad8Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad9Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2adaAndroid.artifactId}:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {
@@ -52,9 +48,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

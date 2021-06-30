@@ -1,630 +1,359 @@
 ext.serviceCentralAndroid = [
         artifactId         : "ble-service-central-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.servicePeripheralAndroid = [
         artifactId         : "ble-service-peripheral-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceAiosAndroid = [
         artifactId         : "ble-service-aios-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceAiosCentralAndroid = [
         artifactId         : "ble-service-central-aios-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceAiosPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-aios-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceAnsAndroid = [
         artifactId         : "ble-service-ans-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceAnsCentralAndroid = [
         artifactId         : "ble-service-central-ans-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceAnsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-ans-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBasAndroid = [
         artifactId         : "ble-service-bas-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBasCentralAndroid = [
         artifactId         : "ble-service-central-bas-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBasPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-bas-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBcsAndroid = [
         artifactId         : "ble-service-bcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBcsCentralAndroid = [
         artifactId         : "ble-service-central-bcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBcsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-bcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBlsAndroid = [
         artifactId         : "ble-service-bls-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBlsCentralAndroid = [
         artifactId         : "ble-service-central-bls-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBlsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-bls-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBmsAndroid = [
         artifactId         : "ble-service-bms-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBmsCentralAndroid = [
         artifactId         : "ble-service-central-bms-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceBmsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-bms-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCpsAndroid = [
         artifactId         : "ble-service-cps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCpsCentralAndroid = [
         artifactId         : "ble-service-central-cps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCpsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-cps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCscsAndroid = [
         artifactId         : "ble-service-cscs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCscsCentralAndroid = [
         artifactId         : "ble-service-central-cscs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCscsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-cscs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCtsAndroid = [
         artifactId         : "ble-service-cts-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCtsCentralAndroid = [
         artifactId         : "ble-service-central-cts-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceCtsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-cts-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceDisAndroid = [
         artifactId         : "ble-service-dis-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceDisCentralAndroid = [
         artifactId         : "ble-service-central-dis-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceDisPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-dis-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceEssAndroid = [
         artifactId         : "ble-service-ess-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceEssCentralAndroid = [
         artifactId         : "ble-service-central-ess-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceEssPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-ess-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceFtmsAndroid = [
         artifactId         : "ble-service-ftms-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceFtmsCentralAndroid = [
         artifactId         : "ble-service-central-ftms-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceFtmsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-ftms-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceGapAndroid = [
         artifactId         : "ble-service-gap-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceGapCentralAndroid = [
         artifactId         : "ble-service-central-gap-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceGapPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-gap-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceGattAndroid = [
         artifactId         : "ble-service-gatt-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceGattCentralAndroid = [
         artifactId         : "ble-service-central-gatt-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceGattPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-gatt-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceHrsAndroid = [
         artifactId         : "ble-service-hrs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceHrsCentralAndroid = [
         artifactId         : "ble-service-central-hrs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceHrsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-hrs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceHtsAndroid = [
         artifactId         : "ble-service-hts-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceHtsCentralAndroid = [
         artifactId         : "ble-service-central-hts-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceHtsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-hts-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceIasAndroid = [
         artifactId         : "ble-service-ias-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceIasCentralAndroid = [
         artifactId         : "ble-service-central-ias-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceIasPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-ias-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceLlsAndroid = [
         artifactId         : "ble-service-lls-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceLlsCentralAndroid = [
         artifactId         : "ble-service-central-lls-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceLlsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-lls-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceLnsAndroid = [
         artifactId         : "ble-service-lns-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceLnsCentralAndroid = [
         artifactId         : "ble-service-central-lns-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceLnsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-lns-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceNdcsAndroid = [
         artifactId         : "ble-service-ndcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceNdcsCentralAndroid = [
         artifactId         : "ble-service-central-ndcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceNdcsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-ndcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.servicePassAndroid = [
         artifactId         : "ble-service-pass-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.servicePassCentralAndroid = [
         artifactId         : "ble-service-central-pass-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.servicePassPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-pass-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRcsAndroid = [
         artifactId         : "ble-service-rcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRcsCentralAndroid = [
         artifactId         : "ble-service-central-rcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRcsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-rcs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRscsAndroid = [
         artifactId         : "ble-service-rscs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRscsCentralAndroid = [
         artifactId         : "ble-service-central-rscs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRscsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-rscs-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRtusAndroid = [
         artifactId         : "ble-service-rtus-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRtusCentralAndroid = [
         artifactId         : "ble-service-central-rtus-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceRtusPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-rtus-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceScpsAndroid = [
         artifactId         : "ble-service-scps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceScpsCentralAndroid = [
         artifactId         : "ble-service-central-scps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceScpsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-scps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceSrcAndroid = [
         artifactId         : "ble-service-src-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceSrcCentralAndroid = [
         artifactId         : "ble-service-central-src-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceSrcPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-src-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceTpsAndroid = [
         artifactId         : "ble-service-tps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceTpsCentralAndroid = [
         artifactId         : "ble-service-central-tps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceTpsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-tps-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceUdsAndroid = [
         artifactId         : "ble-service-uds-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceUdsCentralAndroid = [
         artifactId         : "ble-service-central-uds-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceUdsPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-uds-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceWssAndroid = [
         artifactId         : "ble-service-wss-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceWssCentralAndroid = [
         artifactId         : "ble-service-central-wss-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceWssPeripheralAndroid = [
         artifactId         : "ble-service-peripheral-wss-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.serviceAndroid = [
         artifactId         : "ble-service-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
-

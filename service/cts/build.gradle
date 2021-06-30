@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = serviceCtsAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,10 +22,10 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
-    api "${groupId}:${characteristicU2a0fAndroid.artifactId}:${characteristicU2a0fAndroid.versionName}"
-    api "${groupId}:${characteristicU2a14Android.artifactId}:${characteristicU2a14Android.versionName}"
-    api "${groupId}:${characteristicU2a2bAndroid.artifactId}:${characteristicU2a2bAndroid.versionName}"
+    api "${myGroupId}:${descriptorU2902Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a0fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a14Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a2bAndroid.artifactId}:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {
@@ -40,9 +36,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

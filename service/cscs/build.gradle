@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = serviceCscsAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,11 +22,11 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
-    api "${groupId}:${characteristicU2a55Android.artifactId}:${characteristicU2a55Android.versionName}"
-    api "${groupId}:${characteristicU2a5bAndroid.artifactId}:${characteristicU2a5bAndroid.versionName}"
-    api "${groupId}:${characteristicU2a5cAndroid.artifactId}:${characteristicU2a5cAndroid.versionName}"
-    api "${groupId}:${characteristicU2a5dAndroid.artifactId}:${characteristicU2a5dAndroid.versionName}"
+    api "${myGroupId}:${descriptorU2902Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a55Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a5bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a5cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a5dAndroid.artifactId}:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {
@@ -41,9 +37,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

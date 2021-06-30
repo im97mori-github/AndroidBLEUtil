@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = descriptorAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,29 +22,29 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${descriptorU2900Android.artifactId}:${descriptorU2900Android.versionName}"
-    api "${groupId}:${descriptorU2901Android.artifactId}:${descriptorU2901Android.versionName}"
-    api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
-    api "${groupId}:${descriptorU2903Android.artifactId}:${descriptorU2903Android.versionName}"
-    api "${groupId}:${descriptorU2904Android.artifactId}:${descriptorU2904Android.versionName}"
-    api "${groupId}:${descriptorU2905Android.artifactId}:${descriptorU2905Android.versionName}"
-    api "${groupId}:${descriptorU2906Android.artifactId}:${descriptorU2906Android.versionName}"
-    api "${groupId}:${descriptorU2907Android.artifactId}:${descriptorU2907Android.versionName}"
-    api "${groupId}:${descriptorU2908Android.artifactId}:${descriptorU2908Android.versionName}"
-    api "${groupId}:${descriptorU2909Android.artifactId}:${descriptorU2909Android.versionName}"
-    api "${groupId}:${descriptorU290aAndroid.artifactId}:${descriptorU290aAndroid.versionName}"
-    api "${groupId}:${descriptorU290bAndroid.artifactId}:${descriptorU290bAndroid.versionName}"
-    api "${groupId}:${descriptorU290cAndroid.artifactId}:${descriptorU290cAndroid.versionName}"
-    api "${groupId}:${descriptorU290dAndroid.artifactId}:${descriptorU290dAndroid.versionName}"
-    api "${groupId}:${descriptorU290eAndroid.artifactId}:${descriptorU290eAndroid.versionName}"
+    api "${myGroupId}:${descriptorU2900Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2901Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2902Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2903Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2904Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2905Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2906Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2907Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2908Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2909Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU290aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU290bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU290cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU290dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU290eAndroid.artifactId}:${loadVersion}"
 }
 
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             from components.android
             pom {
                 name = 'BLE Core Utility for Android'

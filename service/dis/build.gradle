@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = serviceDisAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,15 +22,15 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${characteristicU2a23Android.artifactId}:${characteristicU2a23Android.versionName}"
-    api "${groupId}:${characteristicU2a24Android.artifactId}:${characteristicU2a24Android.versionName}"
-    api "${groupId}:${characteristicU2a25Android.artifactId}:${characteristicU2a25Android.versionName}"
-    api "${groupId}:${characteristicU2a26Android.artifactId}:${characteristicU2a26Android.versionName}"
-    api "${groupId}:${characteristicU2a27Android.artifactId}:${characteristicU2a27Android.versionName}"
-    api "${groupId}:${characteristicU2a28Android.artifactId}:${characteristicU2a28Android.versionName}"
-    api "${groupId}:${characteristicU2a29Android.artifactId}:${characteristicU2a29Android.versionName}"
-    api "${groupId}:${characteristicU2a2aAndroid.artifactId}:${characteristicU2a2aAndroid.versionName}"
-    api "${groupId}:${characteristicU2a50Android.artifactId}:${characteristicU2a50Android.versionName}"
+    api "${myGroupId}:${characteristicU2a23Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a24Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a25Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a26Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a27Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a28Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a29Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a2aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a50Android.artifactId}:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {
@@ -45,9 +41,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

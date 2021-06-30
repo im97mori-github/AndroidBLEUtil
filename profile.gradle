@@ -1,420 +1,239 @@
 ext.profileCentralAndroid = [
         artifactId         : "ble-profile-central-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profilePeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileAiopAndroid = [
         artifactId         : "ble-profile-aiop-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileAiopCentralAndroid = [
         artifactId         : "ble-profile-central-aiop-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileAiopPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-aiop-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileAnpAndroid = [
         artifactId         : "ble-profile-anp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileAnpCentralAndroid = [
         artifactId         : "ble-profile-central-anp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileAnpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-anp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileBlpAndroid = [
         artifactId         : "ble-profile-blp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileBlpCentralAndroid = [
         artifactId         : "ble-profile-central-blp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileBlpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-blp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileCppAndroid = [
         artifactId         : "ble-profile-cpp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileCppCentralAndroid = [
         artifactId         : "ble-profile-central-cpp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileCppPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-cpp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileCscpAndroid = [
         artifactId         : "ble-profile-cscp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileCscpCentralAndroid = [
         artifactId         : "ble-profile-central-cscp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileCscpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-cscp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileEspAndroid = [
         artifactId         : "ble-profile-esp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileEspCentralAndroid = [
         artifactId         : "ble-profile-central-esp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileEspPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-esp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileFmpAndroid = [
         artifactId         : "ble-profile-fmp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileFmpCentralAndroid = [
         artifactId         : "ble-profile-central-fmp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileFmpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-fmp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileFtmpAndroid = [
         artifactId         : "ble-profile-ftmp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileFtmpCentralAndroid = [
         artifactId         : "ble-profile-central-ftmp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileFtmpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-ftmp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileHrpAndroid = [
         artifactId         : "ble-profile-hrp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileHrpCentralAndroid = [
         artifactId         : "ble-profile-central-hrp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileHrpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-hrp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileHtpAndroid = [
         artifactId         : "ble-profile-htp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileHtpCentralAndroid = [
         artifactId         : "ble-profile-central-htp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileHtpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-htp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileLnpAndroid = [
         artifactId         : "ble-profile-lnp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileLnpCentralAndroid = [
         artifactId         : "ble-profile-central-lnp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileLnpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-lnp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profilePaspAndroid = [
         artifactId         : "ble-profile-pasp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profilePaspCentralAndroid = [
         artifactId         : "ble-profile-central-pasp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profilePaspPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-pasp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profilePxpAndroid = [
         artifactId         : "ble-profile-pxp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profilePxpCentralAndroid = [
         artifactId         : "ble-profile-central-pxp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profilePxpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-pxp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileRcpAndroid = [
         artifactId         : "ble-profile-rcp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileRcpCentralAndroid = [
         artifactId         : "ble-profile-central-rcp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileRcpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-rcp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileRscpAndroid = [
         artifactId         : "ble-profile-rscp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileRscpCentralAndroid = [
         artifactId         : "ble-profile-central-rscp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileRscpPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-rscp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileScppAndroid = [
         artifactId         : "ble-profile-scpp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileScppCentralAndroid = [
         artifactId         : "ble-profile-central-scpp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileScppPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-scpp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileSrcAndroid = [
         artifactId         : "ble-profile-src-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileSrcCentralAndroid = [
         artifactId         : "ble-profile-central-src-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileSrcPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-src-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileTipAndroid = [
         artifactId         : "ble-profile-tip-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileTipCentralAndroid = [
         artifactId         : "ble-profile-central-tip-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileTipPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-tip-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileWspAndroid = [
         artifactId         : "ble-profile-wsp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileWspCentralAndroid = [
         artifactId         : "ble-profile-central-wsp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileWspPeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-wsp-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.profileAndroid = [
         artifactId         : "ble-profile-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
-

@@ -33,51 +33,44 @@ ext.globalMinSdkVersion = 18
 ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 30
 
-ext.groupId = 'org.im97mori'
-ext.artifactId = 'artifactId'
-ext.versionCode = 'versionCode'
-ext.versionName = 'versionName'
-ext.uploadVersionName = 'uploadVersionName'
-ext.baseArtifactId = 'baseArtifactId'
-ext.baseVersionName = 'baseVersionName'
-ext.baseModule = 'baseModule'
+ext.myGroupId = 'org.im97mori'
+ext.loadVersion = '0.4.1'
+ext.uploadVersion = '0.4.1'
+ext.uploadVersionCode = 401
+
+ext.handlerLoadVersion = '0.2.1'
+ext.handlerUploadVersion = '0.2.1'
+ext.handlerUploadVersionCode = 201
+
+ext.centralLoadVersion = '0.7.1'
+ext.centralUploadVersion = '0.7.1'
+ext.centralUploadVersionCode = 701
+
+ext.peripheralLoadVersion = '0.3.1'
+ext.peripheralUploadVersion = '0.3.1'
+ext.peripheralUploadVersionCode = 301
 
 ext.coreConstantsErrorCodeAndroid = [
         artifactId         : 'ble-core-constants-errorcode-android'
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-core-constants-errorcode:0.4.0"
+        , baseModule       : "${myGroupId}:ble-core-constants-errorcode:${loadVersion}"
 ]
 
 ext.coreConstantsAndroid = [
         artifactId         : 'ble-core-constants-android'
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.coreUtilsAndroid = [
         artifactId         : 'ble-core-utils-android'
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-core-utils:0.4.0"
+        , baseModule       : "${myGroupId}:ble-core-utils:${loadVersion}"
 ]
 
 ext.coreAndroid = [
         artifactId         : 'ble-core-android'
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.advertisingAndroid = [
         artifactId         : 'ble-advertising-android'
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-advertising:0.4.0"
+        , baseModule       : "${myGroupId}:ble-advertising:${loadVersion}"
 ]
 
 apply from: 'descriptor.gradle'
@@ -85,23 +78,23 @@ apply from: 'characteristic.gradle'
 
 ext.handler = [
         artifactId         : 'ble-handler'
-        , versionCode      : 200
-        , versionName      : '0.2.0'
-        , uploadVersionName: '0.2.0'
+        , versionCode      : handlerUploadVersionCode
+        , versionName      : handlerLoadVersion
+        , uploadVersionName: handlerUploadVersion
 ]
 
 ext.central = [
         artifactId         : 'ble-central'
-        , versionCode      : 700
-        , versionName      : '0.7.0'
-        , uploadVersionName: '0.7.0'
+        , versionCode      : centralUploadVersionCode
+        , versionName      : centralLoadVersion
+        , uploadVersionName: centralUploadVersion
 ]
 
 ext.peripheral = [
         artifactId         : 'ble-peripheral'
-        , versionCode      : 300
-        , versionName      : '0.3.0'
-        , uploadVersionName: '0.3.0'
+        , versionCode      : peripheralUploadVersionCode
+        , versionName      : peripheralLoadVersion
+        , uploadVersionName: peripheralUploadVersion
 ]
 
 apply from: 'service.gradle'
@@ -109,51 +102,47 @@ apply from: 'profile.gradle'
 
 ext.test = [
         artifactId         : "ble-test"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.testPeripheral = [
         artifactId         : "ble-test-peripheral"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
 ext.testCentral = [
         artifactId         : "ble-test-central"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
 
-ext.apiCoreConstantsAppearance = "${groupId}:ble-core-constants-appearance:0.4.0"
-ext.apiCoreConstantsCharacteristic = "${groupId}:ble-core-constants-characteristic:0.4.0"
-ext.apiCoreConstantsCompany = "${groupId}:ble-core-constants-company:0.4.0"
-ext.apiCoreConstantsDataType = "${groupId}:ble-core-constants-datatype:0.4.0"
-ext.apiCoreConstantsDescriptor = "${groupId}:ble-core-constants-descriptor:0.4.0"
-ext.apiCoreConstantsScheme = "${groupId}:ble-core-constants-scheme:0.4.0"
-ext.apiCoreConstantsService = "${groupId}:ble-core-constants-service:0.4.0"
-ext.apiCoreConstantsUnit = "${groupId}:ble-core-constants-unit:0.4.0"
-ext.apiCoreConstantsAndroid = "${groupId}:${coreConstantsAndroid.artifactId}:${coreConstantsAndroid.versionName}"
+ext.apiCoreConstantsAppearance = "${myGroupId}:ble-core-constants-appearance:${loadVersion}"
+ext.apiCoreConstantsCharacteristic = "${myGroupId}:ble-core-constants-characteristic:${loadVersion}"
+ext.apiCoreConstantsCompany = "${myGroupId}:ble-core-constants-company:${loadVersion}"
+ext.apiCoreConstantsDataType = "${myGroupId}:ble-core-constants-datatype:${loadVersion}"
+ext.apiCoreConstantsDescriptor = "${myGroupId}:ble-core-constants-descriptor:${loadVersion}"
+ext.apiCoreConstantsErrorCodeAndroid = "${myGroupId}:${coreConstantsErrorCodeAndroid.artifactId}:${loadVersion}"
+ext.apiCoreConstantsScheme = "${myGroupId}:ble-core-constants-scheme:${loadVersion}"
+ext.apiCoreConstantsService = "${myGroupId}:ble-core-constants-service:${loadVersion}"
+ext.apiCoreConstantsUnit = "${myGroupId}:ble-core-constants-unit:${loadVersion}"
+ext.apiCoreConstantsAndroid = "${myGroupId}:${coreConstantsAndroid.artifactId}:${loadVersion}"
 
-ext.apiCoreUtilsAndroid = "${groupId}:${coreUtilsAndroid.artifactId}:${coreUtilsAndroid.versionName}"
+ext.apiCoreUtilsAndroid = "${myGroupId}:${coreUtilsAndroid.artifactId}:${loadVersion}"
 
-ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"
+ext.apiCoreAndroid = "${myGroupId}:${coreAndroid.artifactId}:${loadVersion}"
 
-ext.apiAdvertisingAndroid = "${groupId}:${advertisingAndroid.artifactId}:${advertisingAndroid.versionName}"
+ext.apiAdvertisingAndroid = "${myGroupId}:${advertisingAndroid.artifactId}:${loadVersion}"
 
-ext.apiCharacteristicCore = "${groupId}:ble-characteristic-core:0.4.0"
-ext.apiCharacteristicCoreAndroid = "${groupId}:${characteristicCoreAndroid.artifactId}:${characteristicCoreAndroid.versionName}"
+ext.apiCharacteristicCore = "${myGroupId}:ble-characteristic-core:${loadVersion}"
+ext.apiCharacteristicCoreAndroid = "${myGroupId}:${characteristicCoreAndroid.artifactId}:${loadVersion}"
 
-ext.apiCoreConstantsDescriptor = "${groupId}:ble-core-constants-descriptor:0.4.0"
-ext.apiCoreConstantsCharacteristic = "${groupId}:ble-core-constants-characteristic:0.4.0"
+ext.apiCoreConstantsDescriptor = "${myGroupId}:ble-core-constants-descriptor:${loadVersion}"
+ext.apiCoreConstantsCharacteristic = "${myGroupId}:ble-core-constants-characteristic:${loadVersion}"
 
-ext.apiHandler = "${groupId}:${handler.artifactId}:${handler.versionName}"
-ext.apiTest = "${groupId}:${test.artifactId}:${test.versionName}"
-ext.apiTestPeripheral = "${groupId}:${testPeripheral.artifactId}:${testPeripheral.versionName}"
-ext.apiTestCentral = "${groupId}:${testCentral.artifactId}:${testCentral.versionName}"
+ext.apiHandler = "${myGroupId}:${handler.artifactId}:${handlerLoadVersion}"
+ext.apiCentral = "${myGroupId}:${central.artifactId}:${centralLoadVersion}"
+ext.apiPeripheral = "${myGroupId}:${peripheral.artifactId}:${peripheralLoadVersion}"
+
+ext.apiTest = "${myGroupId}:${test.artifactId}:${loadVersion}"
+ext.apiTestPeripheral = "${myGroupId}:${testPeripheral.artifactId}:${loadVersion}"
+ext.apiTestCentral = "${myGroupId}:${testCentral.artifactId}:${loadVersion}"
+
 ext.androidxAnnotation = 'androidx.annotation:annotation:1.2.0'
 ext.androidxTestRunner = 'androidx.test:runner:1.3.0'
 ext.androidxTestCore = 'androidx.test:core:1.3.0'

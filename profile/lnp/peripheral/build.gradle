@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = profileLnpPeripheralAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalPeripheralMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,10 +24,10 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${profilePeripheralAndroid.artifactId}:${profilePeripheralAndroid.versionName}"
-    api "${groupId}:${serviceDisPeripheralAndroid.artifactId}:${serviceDisPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceBasPeripheralAndroid.artifactId}:${serviceBasPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceLnsPeripheralAndroid.artifactId}:${serviceLnsPeripheralAndroid.versionName}"
+    api "${myGroupId}:${profilePeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceDisPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceBasPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceLnsPeripheralAndroid.artifactId}:${loadVersion}"
     androidTestImplementation apiTest
 }
 
@@ -43,9 +39,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

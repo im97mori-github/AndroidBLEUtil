@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = serviceHtsAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,12 +22,12 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
-    api "${groupId}:${descriptorU2906Android.artifactId}:${descriptorU2906Android.versionName}"
-    api "${groupId}:${characteristicU2a1cAndroid.artifactId}:${characteristicU2a1cAndroid.versionName}"
-    api "${groupId}:${characteristicU2a1dAndroid.artifactId}:${characteristicU2a1dAndroid.versionName}"
-    api "${groupId}:${characteristicU2a1eAndroid.artifactId}:${characteristicU2a1eAndroid.versionName}"
-    api "${groupId}:${characteristicU2a21Android.artifactId}:${characteristicU2a21Android.versionName}"
+    api "${myGroupId}:${descriptorU2902Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2906Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a1cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a1dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a1eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a21Android.artifactId}:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {
@@ -42,9 +38,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

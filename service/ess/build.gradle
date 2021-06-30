@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = serviceEssAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,33 +22,33 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${descriptorU2901Android.artifactId}:${descriptorU2901Android.versionName}"
-    api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
-    api "${groupId}:${descriptorU2906Android.artifactId}:${descriptorU2906Android.versionName}"
-    api "${groupId}:${descriptorU290cAndroid.artifactId}:${descriptorU290cAndroid.versionName}"
-    api "${groupId}:${descriptorU290dAndroid.artifactId}:${descriptorU290dAndroid.versionName}"
-    api "${groupId}:${descriptorU290bAndroid.artifactId}:${descriptorU290bAndroid.versionName}"
-    api "${groupId}:${characteristicU2a2cAndroid.artifactId}:${characteristicU2a2cAndroid.versionName}"
-    api "${groupId}:${characteristicU2a6cAndroid.artifactId}:${characteristicU2a6cAndroid.versionName}"
-    api "${groupId}:${characteristicU2a6dAndroid.artifactId}:${characteristicU2a6dAndroid.versionName}"
-    api "${groupId}:${characteristicU2a6eAndroid.artifactId}:${characteristicU2a6eAndroid.versionName}"
-    api "${groupId}:${characteristicU2a6fAndroid.artifactId}:${characteristicU2a6fAndroid.versionName}"
-    api "${groupId}:${characteristicU2a70Android.artifactId}:${characteristicU2a70Android.versionName}"
-    api "${groupId}:${characteristicU2a71Android.artifactId}:${characteristicU2a71Android.versionName}"
-    api "${groupId}:${characteristicU2a72Android.artifactId}:${characteristicU2a72Android.versionName}"
-    api "${groupId}:${characteristicU2a73Android.artifactId}:${characteristicU2a73Android.versionName}"
-    api "${groupId}:${characteristicU2a74Android.artifactId}:${characteristicU2a74Android.versionName}"
-    api "${groupId}:${characteristicU2a75Android.artifactId}:${characteristicU2a75Android.versionName}"
-    api "${groupId}:${characteristicU2a76Android.artifactId}:${characteristicU2a76Android.versionName}"
-    api "${groupId}:${characteristicU2a77Android.artifactId}:${characteristicU2a77Android.versionName}"
-    api "${groupId}:${characteristicU2a78Android.artifactId}:${characteristicU2a78Android.versionName}"
-    api "${groupId}:${characteristicU2a79Android.artifactId}:${characteristicU2a79Android.versionName}"
-    api "${groupId}:${characteristicU2a7aAndroid.artifactId}:${characteristicU2a7aAndroid.versionName}"
-    api "${groupId}:${characteristicU2a7bAndroid.artifactId}:${characteristicU2a7bAndroid.versionName}"
-    api "${groupId}:${characteristicU2a7dAndroid.artifactId}:${characteristicU2a7dAndroid.versionName}"
-    api "${groupId}:${characteristicU2aa0Android.artifactId}:${characteristicU2aa0Android.versionName}"
-    api "${groupId}:${characteristicU2aa1Android.artifactId}:${characteristicU2aa1Android.versionName}"
-    api "${groupId}:${characteristicU2aa3Android.artifactId}:${characteristicU2aa3Android.versionName}"
+    api "${myGroupId}:${descriptorU2901Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2902Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU2906Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU290cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU290dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${descriptorU290bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a2cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a70Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a71Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a72Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a73Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a74Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a75Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a76Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a77Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a78Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a79Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a7aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a7bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a7dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa0Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa1Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa3Android.artifactId}:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {
@@ -63,9 +59,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

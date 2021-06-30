@@ -241,6 +241,10 @@
     <pattern value="org.im97mori.ble.BLEServerConnection" method="BLEServerConnection" />
     <pattern value="org.im97mori.ble.task.AbstractBLETask" method="dumpProgress" />
     <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setConnected" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateReadCharacteristicTaskId" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateReadDescriptorTaskId" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateWriteCharacteristicTaskId" />
+    <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateWriteDescriptorTaskId" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />

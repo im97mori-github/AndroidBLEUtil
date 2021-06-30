@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = profileAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
     }
 
     buildTypes {
@@ -26,42 +22,42 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${profileAiopCentralAndroid.artifactId}:${profileAiopCentralAndroid.versionName}"
-    api "${groupId}:${profileAiopPeripheralAndroid.artifactId}:${profileAiopPeripheralAndroid.versionName}"
-    api "${groupId}:${profileAnpCentralAndroid.artifactId}:${profileAnpCentralAndroid.versionName}"
-    api "${groupId}:${profileAnpPeripheralAndroid.artifactId}:${profileAnpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileBlpCentralAndroid.artifactId}:${profileBlpCentralAndroid.versionName}"
-    api "${groupId}:${profileBlpPeripheralAndroid.artifactId}:${profileBlpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileCppCentralAndroid.artifactId}:${profileCppCentralAndroid.versionName}"
-    api "${groupId}:${profileCppPeripheralAndroid.artifactId}:${profileCppPeripheralAndroid.versionName}"
-    api "${groupId}:${profileCscpCentralAndroid.artifactId}:${profileCscpCentralAndroid.versionName}"
-    api "${groupId}:${profileCscpPeripheralAndroid.artifactId}:${profileCscpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileEspCentralAndroid.artifactId}:${profileEspCentralAndroid.versionName}"
-    api "${groupId}:${profileEspPeripheralAndroid.artifactId}:${profileEspPeripheralAndroid.versionName}"
-    api "${groupId}:${profileFmpCentralAndroid.artifactId}:${profileFmpCentralAndroid.versionName}"
-    api "${groupId}:${profileFmpPeripheralAndroid.artifactId}:${profileFmpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileFtmpCentralAndroid.artifactId}:${profileFtmpCentralAndroid.versionName}"
-    api "${groupId}:${profileFtmpPeripheralAndroid.artifactId}:${profileFtmpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileHrpCentralAndroid.artifactId}:${profileHrpCentralAndroid.versionName}"
-    api "${groupId}:${profileHrpPeripheralAndroid.artifactId}:${profileHrpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileHtpCentralAndroid.artifactId}:${profileHtpCentralAndroid.versionName}"
-    api "${groupId}:${profileHtpPeripheralAndroid.artifactId}:${profileHtpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileLnpCentralAndroid.artifactId}:${profileLnpCentralAndroid.versionName}"
-    api "${groupId}:${profileLnpPeripheralAndroid.artifactId}:${profileLnpPeripheralAndroid.versionName}"
-    api "${groupId}:${profilePaspCentralAndroid.artifactId}:${profilePaspCentralAndroid.versionName}"
-    api "${groupId}:${profilePaspPeripheralAndroid.artifactId}:${profilePaspPeripheralAndroid.versionName}"
-    api "${groupId}:${profilePxpCentralAndroid.artifactId}:${profilePxpCentralAndroid.versionName}"
-    api "${groupId}:${profilePxpPeripheralAndroid.artifactId}:${profilePxpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileRcpCentralAndroid.artifactId}:${profileRcpCentralAndroid.versionName}"
-    api "${groupId}:${profileRcpPeripheralAndroid.artifactId}:${profileRcpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileRscpCentralAndroid.artifactId}:${profileRscpCentralAndroid.versionName}"
-    api "${groupId}:${profileRscpPeripheralAndroid.artifactId}:${profileRscpPeripheralAndroid.versionName}"
-    api "${groupId}:${profileScppCentralAndroid.artifactId}:${profileScppCentralAndroid.versionName}"
-    api "${groupId}:${profileScppPeripheralAndroid.artifactId}:${profileScppPeripheralAndroid.versionName}"
-    api "${groupId}:${profileTipCentralAndroid.artifactId}:${profileTipCentralAndroid.versionName}"
-    api "${groupId}:${profileTipPeripheralAndroid.artifactId}:${profileTipPeripheralAndroid.versionName}"
-    api "${groupId}:${profileWspCentralAndroid.artifactId}:${profileWspCentralAndroid.versionName}"
-    api "${groupId}:${profileWspPeripheralAndroid.artifactId}:${profileWspPeripheralAndroid.versionName}"
+    api "${myGroupId}:${profileAiopCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileAiopPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileAnpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileAnpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileBlpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileBlpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileCppCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileCppPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileCscpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileCscpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileEspCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileEspPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileFmpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileFmpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileFtmpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileFtmpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileHrpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileHrpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileHtpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileHtpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileLnpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileLnpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profilePaspCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profilePaspPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profilePxpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profilePxpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileRcpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileRcpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileRscpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileRscpPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileScppCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileScppPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileTipCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileTipPeripheralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileWspCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileWspPeripheralAndroid.artifactId}:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {
@@ -72,9 +68,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

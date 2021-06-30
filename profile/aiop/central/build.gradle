@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
 def target = profileAiopCentralAndroid
-def GROUP_ID = groupId
-def ARTIFACT_ID = target[artifactId]
-def VERSION_CODE = target[versionCode]
-def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -14,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion globalPeripheralMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode VERSION_CODE
-        versionName VERSION_NAME
+        versionCode uploadVersionCode
+        versionName uploadVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,8 +24,8 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${profileCentralAndroid.artifactId}:${profileCentralAndroid.versionName}"
-    api "${groupId}:${serviceAiosCentralAndroid.artifactId}:${serviceAiosCentralAndroid.versionName}"
+    api "${myGroupId}:${profileCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${serviceAiosCentralAndroid.artifactId}:${loadVersion}"
     androidTestImplementation apiTestCentral
 }
 
@@ -41,9 +37,9 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         mavenAar(MavenPublication) {
-            groupId GROUP_ID
-            artifactId ARTIFACT_ID
-            version VERSION_NAME
+            groupId myGroupId
+            artifactId target['artifactId']
+            version uploadVersion
             artifact(sourcesJar)
             from components.android
             pom {

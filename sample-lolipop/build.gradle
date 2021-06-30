@@ -314,12 +314,13 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.fragment:fragment:1.3.4'
+    implementation 'androidx.fragment:fragment:1.3.5'
 
-    implementation "${groupId}:${descriptorAndroid.artifactId}:${descriptorAndroid.versionName}"
-    implementation "${groupId}:${characteristicAndroid.artifactId}:${characteristicAndroid.versionName}"
-    implementation "${groupId}:${serviceAndroid.artifactId}:${serviceAndroid.versionName}"
-    implementation "${groupId}:${profileAndroid.artifactId}:${profileAndroid.versionName}"
-    androidTestImplementation "${groupId}:${testCentral.artifactId}:${testCentral.versionName}"
-    androidTestImplementation "${groupId}:${testPeripheral.artifactId}:${testPeripheral.versionName}"
+//    implementation "${myGroupId}:${descriptorAndroid.artifactId}:${loadVersion}"
+//    implementation "${myGroupId}:${characteristicAndroid.artifactId}:${loadVersion}"
+//    implementation "${myGroupId}:${serviceAndroid.artifactId}:${loadVersion}"
+    implementation "${myGroupId}:${profileAndroid.artifactId}:${loadVersion}"
+    implementation apiCoreConstantsUnit
+    implementation "${myGroupId}:ble-core-constants:${loadVersion}"
+
 }

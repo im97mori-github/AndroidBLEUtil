@@ -1,126 +1,83 @@
 ext.descriptorU2900Android = [
         artifactId         : "ble-descriptor-u2900-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2900:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2900:${loadVersion}"
 ]
 
 ext.descriptorU2901Android = [
         artifactId         : "ble-descriptor-u2901-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2901:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2901:${loadVersion}"
 ]
 
 ext.descriptorU2902Android = [
         artifactId         : "ble-descriptor-u2902-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2902:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2902:${loadVersion}"
 ]
 
 ext.descriptorU2903Android = [
         artifactId         : "ble-descriptor-u2903-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2903:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2903:${loadVersion}"
 ]
 
 ext.descriptorU2904Android = [
         artifactId         : "ble-descriptor-u2904-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2904:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2904:${loadVersion}"
 ]
 
 ext.descriptorU2905Android = [
         artifactId         : "ble-descriptor-u2905-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2905:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2905:${loadVersion}"
 ]
 
 ext.descriptorU2906Android = [
         artifactId         : "ble-descriptor-u2906-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2906:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2906:${loadVersion}"
 ]
 
 ext.descriptorU2907Android = [
         artifactId         : "ble-descriptor-u2907-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2907:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2907:${loadVersion}"
 ]
 
 ext.descriptorU2908Android = [
         artifactId         : "ble-descriptor-u2908-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2908:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2908:${loadVersion}"
 ]
 
 ext.descriptorU2909Android = [
         artifactId         : "ble-descriptor-u2909-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u2909:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u2909:${loadVersion}"
 ]
 
 ext.descriptorU290aAndroid = [
         artifactId         : "ble-descriptor-u290a-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u290a:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u290a:${loadVersion}"
 ]
 
 ext.descriptorU290bAndroid = [
         artifactId         : "ble-descriptor-u290b-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u290b:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u290b:${loadVersion}"
 ]
 
 ext.descriptorU290cAndroid = [
         artifactId         : "ble-descriptor-u290c-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u290c:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u290c:${loadVersion}"
 ]
 
 ext.descriptorU290dAndroid = [
         artifactId         : "ble-descriptor-u290d-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u290d:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u290d:${loadVersion}"
 ]
 
 ext.descriptorU290eAndroid = [
         artifactId         : "ble-descriptor-u290e-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
-        , baseModule       : "${groupId}:ble-descriptor-u290e:0.4.0"
+        , baseModule       : "${myGroupId}:ble-descriptor-u290e:${loadVersion}"
+]
+
+ext.descriptorU290fAndroid = [
+        artifactId         : "ble-descriptor-u290f-android"
+        , baseModule       : "${myGroupId}:ble-descriptor-u290f:${loadVersion}"
 ]
 
 ext.descriptorAndroid = [
         artifactId         : "ble-descriptor-android"
-        , versionCode      : 400
-        , versionName      : '0.4.0'
-        , uploadVersionName: '0.4.0'
 ]
