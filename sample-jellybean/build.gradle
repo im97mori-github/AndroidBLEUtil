@@ -213,6 +213,6 @@ dependencies {
     implementation "${myGroupId}:${descriptorAndroid.artifactId}:${loadVersion}"
     implementation "${myGroupId}:${characteristicAndroid.artifactId}:${loadVersion}"
     implementation apiCentral
-    implementation 'androidx.fragment:fragment:1.3.4'
+    implementation 'androidx.fragment:fragment:1.3.5'
     androidTestImplementation apiTestCentral
 }

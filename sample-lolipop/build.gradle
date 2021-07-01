@@ -320,7 +320,6 @@ dependencies {
 //    implementation "${myGroupId}:${characteristicAndroid.artifactId}:${loadVersion}"
 //    implementation "${myGroupId}:${serviceAndroid.artifactId}:${loadVersion}"
     implementation "${myGroupId}:${profileAndroid.artifactId}:${loadVersion}"
-    implementation apiCoreConstantsUnit
-    implementation "${myGroupId}:ble-core-constants:${loadVersion}"
+    implementation apiCoreConstantsAndroid
 
 }

@@ -34,21 +34,21 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 30
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.4.1'
-ext.uploadVersion = '0.4.1'
-ext.uploadVersionCode = 401
+ext.loadVersion = '0.4.2'
+ext.uploadVersion = '0.4.2'
+ext.uploadVersionCode = 402
 
-ext.handlerLoadVersion = '0.2.1'
-ext.handlerUploadVersion = '0.2.1'
-ext.handlerUploadVersionCode = 201
+ext.handlerLoadVersion = '0.2.2'
+ext.handlerUploadVersion = '0.2.2'
+ext.handlerUploadVersionCode = 202
 
-ext.centralLoadVersion = '0.7.1'
-ext.centralUploadVersion = '0.7.1'
-ext.centralUploadVersionCode = 701
+ext.centralLoadVersion = '0.7.2'
+ext.centralUploadVersion = '0.7.2'
+ext.centralUploadVersionCode = 702
 
-ext.peripheralLoadVersion = '0.3.1'
-ext.peripheralUploadVersion = '0.3.1'
-ext.peripheralUploadVersionCode = 301
+ext.peripheralLoadVersion = '0.3.2'
+ext.peripheralUploadVersion = '0.3.2'
+ext.peripheralUploadVersionCode = 302
 
 ext.coreConstantsErrorCodeAndroid = [
         artifactId         : 'ble-core-constants-errorcode-android'
@@ -116,9 +116,14 @@ ext.apiCoreConstantsAppearance = "${myGroupId}:ble-core-constants-appearance:${l
 ext.apiCoreConstantsCharacteristic = "${myGroupId}:ble-core-constants-characteristic:${loadVersion}"
 ext.apiCoreConstantsCompany = "${myGroupId}:ble-core-constants-company:${loadVersion}"
 ext.apiCoreConstantsDataType = "${myGroupId}:ble-core-constants-datatype:${loadVersion}"
+ext.apiCoreConstantsDeclaration = "${myGroupId}:ble-core-constants-declaration:${loadVersion}"
 ext.apiCoreConstantsDescriptor = "${myGroupId}:ble-core-constants-descriptor:${loadVersion}"
 ext.apiCoreConstantsErrorCodeAndroid = "${myGroupId}:${coreConstantsErrorCodeAndroid.artifactId}:${loadVersion}"
+ext.apiCoreConstantsMember = "${myGroupId}:ble-core-constants-member:${loadVersion}"
+ext.apiCoreConstantsProfile = "${myGroupId}:ble-core-constants-profile:${loadVersion}"
+ext.apiCoreConstantsProtocol = "${myGroupId}:ble-core-constants-protocol:${loadVersion}"
 ext.apiCoreConstantsScheme = "${myGroupId}:ble-core-constants-scheme:${loadVersion}"
+ext.apiCoreConstantsSdo = "${myGroupId}:ble-core-constants-sdo:${loadVersion}"
 ext.apiCoreConstantsService = "${myGroupId}:ble-core-constants-service:${loadVersion}"
 ext.apiCoreConstantsUnit = "${myGroupId}:ble-core-constants-unit:${loadVersion}"
 ext.apiCoreConstantsAndroid = "${myGroupId}:${coreConstantsAndroid.artifactId}:${loadVersion}"

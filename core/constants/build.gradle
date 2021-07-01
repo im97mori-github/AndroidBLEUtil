@@ -24,15 +24,8 @@ android {
 }
 
 dependencies {
-    api apiCoreConstantsAppearance
-    api apiCoreConstantsCharacteristic
-    api apiCoreConstantsCompany
-    api apiCoreConstantsDataType
-    api apiCoreConstantsDescriptor
     api apiCoreConstantsErrorCodeAndroid
-    api apiCoreConstantsScheme
-    api apiCoreConstantsService
-    api apiCoreConstantsUnit
+    api "${myGroupId}:ble-core-constants:${loadVersion}"
 }
 
 task sourcesJar(type: Jar) {

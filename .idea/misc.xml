@@ -32,6 +32,9 @@
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.test.BLETestUtilsAndroid MOCK_DEVICE_1" />
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_BUSY" />
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_FINISHED" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.constants.ErrorCodeAndroid BUSY" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.constants.ErrorCodeAndroid CANCEL" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.constants.ErrorCodeAndroid UNKNOWN" />
     </entry_points>
     <pattern value="org.im97mori.ble.advertising.filter.AdvertisingIntervalFilter" method="isMatched" />
     <pattern value="org.im97mori.ble.advertising.filter.AppearanceFilter" method="isMatched" />
@@ -245,6 +248,7 @@
     <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateReadDescriptorTaskId" />
     <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateWriteCharacteristicTaskId" />
     <pattern value="org.im97mori.ble.test.central.MockBLEConnection" method="setCreateWriteDescriptorTaskId" />
+    <pattern value="org.im97mori.ble.constants.ErrorCodeAndroid" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />
