@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.DescriptorUUID.COMPLETE_BR_EDR_TRANSPOR
 /**
  * Complete BR-EDR Transport Block Data (Descriptor UUID: 0x290F)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class CompleteBrEdrTransportBlockDataAndroid extends CompleteBrEdrTransportBlockData implements Parcelable {
 

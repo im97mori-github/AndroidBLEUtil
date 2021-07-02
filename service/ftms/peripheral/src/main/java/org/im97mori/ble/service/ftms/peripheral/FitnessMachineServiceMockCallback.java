@@ -1092,7 +1092,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                 if (fitnessMachineFeature.isFitnessMachineFeaturesCadenceNotSupported() && RowerDataUtils.isFlagsAverageStrokePresent(rowerData.getFlags())) {
                     throw new RuntimeException("Cadence not Supported");
                 }
-                if (fitnessMachineFeature.isFitnessMachineFeaturesTotalDistanceNotSupported() && RowerDataUtils.isFlagsTotalDistancePresente(rowerData.getFlags())) {
+                if (fitnessMachineFeature.isFitnessMachineFeaturesTotalDistanceNotSupported() && RowerDataUtils.isFlagsTotalDistancePresent(rowerData.getFlags())) {
                     throw new RuntimeException("Total Distance not Supported");
                 }
                 if (fitnessMachineFeature.isFitnessMachineFeaturesPaceNotSupported() && RowerDataUtils.isFlagsInstantaneousPacePresent(rowerData.getFlags())) {

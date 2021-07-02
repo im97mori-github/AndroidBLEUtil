@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ACTIVITY_GOAL_CHARAC
 /**
  * Activity Goal (Characteristics UUID: 0x2B4E)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ActivityGoalAndroid extends ActivityGoal implements Parcelable {
 

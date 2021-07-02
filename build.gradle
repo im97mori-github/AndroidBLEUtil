@@ -16,8 +16,8 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url "https://github.com/im97mori-github/maven/raw/master" }
-//        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
+//        maven { url "https://github.com/im97mori-github/maven/raw/master" }
+        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
         google()
         mavenCentral()
     }
@@ -34,21 +34,21 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 30
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.4.2'
-ext.uploadVersion = '0.4.2'
-ext.uploadVersionCode = 402
+ext.loadVersion = '0.4.3'
+ext.uploadVersion = '0.4.3'
+ext.uploadVersionCode = 403
 
-ext.handlerLoadVersion = '0.2.2'
-ext.handlerUploadVersion = '0.2.2'
-ext.handlerUploadVersionCode = 202
+ext.handlerLoadVersion = '0.2.3'
+ext.handlerUploadVersion = '0.2.3'
+ext.handlerUploadVersionCode = 203
 
-ext.centralLoadVersion = '0.7.2'
-ext.centralUploadVersion = '0.7.2'
-ext.centralUploadVersionCode = 702
+ext.centralLoadVersion = '0.7.3'
+ext.centralUploadVersion = '0.7.3'
+ext.centralUploadVersionCode = 703
 
-ext.peripheralLoadVersion = '0.3.2'
-ext.peripheralUploadVersion = '0.3.2'
-ext.peripheralUploadVersionCode = 302
+ext.peripheralLoadVersion = '0.3.3'
+ext.peripheralUploadVersion = '0.3.3'
+ext.peripheralUploadVersionCode = 303
 
 ext.coreConstantsErrorCodeAndroid = [
         artifactId         : 'ble-core-constants-errorcode-android'
