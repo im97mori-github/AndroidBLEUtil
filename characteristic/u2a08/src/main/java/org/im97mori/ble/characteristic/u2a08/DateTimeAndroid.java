@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DATE_TIME_CHARACTERI
 /**
  * Date Time (Characteristics UUID: 0x2A08)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class DateTimeAndroid extends DateTime implements Parcelable {
 
@@ -59,6 +58,20 @@ public class DateTimeAndroid extends DateTime implements Parcelable {
      */
     public DateTimeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param year      Year
+     * @param month     Month
+     * @param day       Day
+     * @param hours     Hours
+     * @param minutes   Minutes
+     * @param seconds   Seconds
+     */
+    public DateTimeAndroid(int year, int month, int day, int hours, int minutes, int seconds) {
+        super(year, month, day, hours, minutes, seconds);
     }
 
     /**
