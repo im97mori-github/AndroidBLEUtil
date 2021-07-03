@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DST_OFFSET_CHARACTER
 /**
  * DST Offset (Characteristics UUID: 0x2A0D)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class DstOffsetAndroid extends DstOffset implements Parcelable {
 
@@ -59,6 +58,15 @@ public class DstOffsetAndroid extends DstOffset implements Parcelable {
      */
     public DstOffsetAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param dstOffset DST Offset
+     */
+    public DstOffsetAndroid(int dstOffset) {
+        super(dstOffset);
     }
 
     /**
