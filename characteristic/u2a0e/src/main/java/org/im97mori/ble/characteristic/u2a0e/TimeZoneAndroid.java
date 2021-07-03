@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_ZONE_CHARACTERI
 /**
  * Time Zone (Characteristics UUID: 0x2A0E)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class TimeZoneAndroid extends TimeZone implements Parcelable {
 
@@ -59,6 +58,15 @@ public class TimeZoneAndroid extends TimeZone implements Parcelable {
      */
     public TimeZoneAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param timeZone Time Zone
+     */
+    public TimeZoneAndroid(int timeZone) {
+        super(timeZone);
     }
 
     /**

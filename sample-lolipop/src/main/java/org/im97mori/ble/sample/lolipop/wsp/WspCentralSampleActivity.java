@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi;
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.DayOfWeekUtils;
 import org.im97mori.ble.characteristic.core.ExactTime256Utils;
+import org.im97mori.ble.characteristic.core.TimeZoneUtils;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.characteristic.u2a80.Age;
@@ -255,7 +256,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.write_local_time_information == item.getItemId()) {
-            mWeightScaleProfile.setLocalTimeInformation(new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 2));
+            mWeightScaleProfile.setLocalTimeInformation(new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 2));
         } else if (R.id.menu_has_reference_time_information == item.getItemId()) {
             String text;
             Boolean result = mWeightScaleProfile.isReferenceTimeInformationCharacteristicSupported();

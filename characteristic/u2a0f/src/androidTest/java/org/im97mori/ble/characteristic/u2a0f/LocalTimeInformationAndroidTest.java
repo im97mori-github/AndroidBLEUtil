@@ -4,13 +4,12 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
 import org.im97mori.ble.characteristic.core.DstOffsetUtils;
+import org.im97mori.ble.characteristic.core.TimeZoneUtils;
 import org.junit.Test;
 
 import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class LocalTimeInformationAndroidTest {
 
@@ -18,7 +17,7 @@ public class LocalTimeInformationAndroidTest {
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[2];
-        data[ 0] = (byte) LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN;
+        data[ 0] = (byte) TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN;
         data[ 1] = (byte) DstOffsetUtils.DST_OFFSET_IS_NOT_KNOWN;
         //@formatter:on
 
@@ -26,10 +25,7 @@ public class LocalTimeInformationAndroidTest {
         bluetoothGattCharacteristic.setValue(data);
 
         LocalTimeInformationAndroid result1 = new LocalTimeInformationAndroid(bluetoothGattCharacteristic);
-        assertEquals(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, result1.getTimeZone());
-        assertTrue(result1.isTimeZoneNotKnown());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, result1.getTimeZoneOffsetMin());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN * 1000L, result1.getTimeZoneOffsetMillis());
+        assertEquals(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, result1.getTimeZone());
         assertEquals(DstOffsetUtils.DST_OFFSET_IS_NOT_KNOWN, result1.getDstOffset());
     }
 
@@ -47,9 +43,6 @@ public class LocalTimeInformationAndroidTest {
 
         LocalTimeInformationAndroid result1 = new LocalTimeInformationAndroid(bluetoothGattCharacteristic);
         assertEquals(-48, result1.getTimeZone());
-        assertFalse(result1.isTimeZoneNotKnown());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * -48, result1.getTimeZoneOffsetMin());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * -48 * 1000L, result1.getTimeZoneOffsetMillis());
         assertEquals(DstOffsetUtils.DST_OFFSET_STANDARD_TIME, result1.getDstOffset());
     }
 
@@ -66,11 +59,8 @@ public class LocalTimeInformationAndroidTest {
 
         LocalTimeInformationAndroid result1 = new LocalTimeInformationAndroid(bluetoothGattCharacteristic);
         assertEquals(56, result1.getTimeZone());
-        assertFalse(result1.isTimeZoneNotKnown());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * 56, result1.getTimeZoneOffsetMin());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * 56 * 1000L, result1.getTimeZoneOffsetMillis());
         assertEquals(DstOffsetUtils.DST_OFFSET_HALF_AN_HOUR_DAYLIGHT_TIME, result1.getDstOffset());
-     }
+    }
 
     @Test
     public void test_constructor004() {
@@ -85,9 +75,6 @@ public class LocalTimeInformationAndroidTest {
 
         LocalTimeInformationAndroid result1 = new LocalTimeInformationAndroid(bluetoothGattCharacteristic);
         assertEquals(56, result1.getTimeZone());
-        assertFalse(result1.isTimeZoneNotKnown());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * 56, result1.getTimeZoneOffsetMin());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * 56 * 1000L, result1.getTimeZoneOffsetMillis());
         assertEquals(DstOffsetUtils.DST_OFFSET_DAYLIGHT_TIME, result1.getDstOffset());
     }
 
@@ -104,9 +91,6 @@ public class LocalTimeInformationAndroidTest {
 
         LocalTimeInformationAndroid result1 = new LocalTimeInformationAndroid(bluetoothGattCharacteristic);
         assertEquals(56, result1.getTimeZone());
-        assertFalse(result1.isTimeZoneNotKnown());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * 56, result1.getTimeZoneOffsetMin());
-        assertEquals(LocalTimeInformation.TIME_ZONE_UNIT * 56 * 1000L, result1.getTimeZoneOffsetMillis());
         assertEquals(DstOffsetUtils.DST_OFFSET_DOUBLE_DAYLIGHT_TIME, result1.getDstOffset());
     }
 
@@ -138,9 +122,6 @@ public class LocalTimeInformationAndroidTest {
         LocalTimeInformationAndroid result2 = LocalTimeInformationAndroid.CREATOR.createFromParcel(parcel);
 
         assertEquals(result2.getTimeZone(), result1.getTimeZone());
-        assertEquals(result2.isTimeZoneNotKnown(), result1.isTimeZoneNotKnown());
-        assertEquals(result2.getTimeZoneOffsetMin(), result1.getTimeZoneOffsetMin());
-        assertEquals(result2.getTimeZoneOffsetMillis(), result1.getTimeZoneOffsetMillis());
         assertEquals(result2.getDstOffset(), result1.getDstOffset());
     }
 
