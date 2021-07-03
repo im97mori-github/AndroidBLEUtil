@@ -61,6 +61,15 @@ public class DayOfWeekAndroid extends DayOfWeek implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param dayOfWeek   Day of Week
+     */
+    public DayOfWeekAndroid(int dayOfWeek) {
+        super(dayOfWeek);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

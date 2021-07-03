@@ -192,6 +192,14 @@ public class DayOfWeekAndroidTest {
     }
 
     @Test
+    public void test_constructor_00101() {
+        int dayOfWeek = 1;
+
+        DayOfWeekAndroid result1 = new DayOfWeekAndroid(dayOfWeek);
+        assertEquals(dayOfWeek, result1.getDayOfWeek());
+    }
+
+    @Test
     public void test_parcelable_00001() {
         //@formatter:off
         byte[] data = new byte[1];
