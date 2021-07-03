@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DAY_OF_WEEK_CHARACTE
 /**
  * Day of Week (Characteristics UUID: 0x2A09)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class DayOfWeekAndroid extends DayOfWeek implements Parcelable {
 
