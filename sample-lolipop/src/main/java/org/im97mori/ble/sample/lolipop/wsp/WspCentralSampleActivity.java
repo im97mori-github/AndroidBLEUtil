@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.BLEUtilsAndroid;
+import org.im97mori.ble.characteristic.core.DayOfWeekUtils;
+import org.im97mori.ble.characteristic.core.ExactTime256Utils;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.characteristic.u2a80.Age;
@@ -223,8 +225,8 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
                     , calendar.get(Calendar.HOUR_OF_DAY)
                     , calendar.get(Calendar.MINUTE)
                     , calendar.get(Calendar.SECOND)
-                    , CurrentTime.DAY_OF_WEEK_IS_NOT_KNOWN
-                    , CurrentTime.FRACTIONS_256_NOT_SUPPORTED
+                    , DayOfWeekUtils.DAY_OF_WEEK_IS_NOT_KNOWN
+                    , ExactTime256Utils.FRACTIONS_256_NOT_SUPPORTED
                     , CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE));
         } else if (R.id.notify_current_time_start == item.getItemId()) {
             mWeightScaleProfile.startCurrentTimeNotification();

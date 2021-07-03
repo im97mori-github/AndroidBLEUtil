@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
+import org.im97mori.ble.characteristic.core.DayOfWeekUtils;
+import org.im97mori.ble.characteristic.core.ExactTime256Utils;
 import org.junit.Test;
 
 import static org.im97mori.ble.BLEUtils.BASE_UUID;
@@ -25,8 +27,8 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 0;
         data[ 5] = 0;
         data[ 6] = 0;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_IS_NOT_KNOWN;
-        data[ 8] = CurrentTime.FRACTIONS_256_NOT_SUPPORTED;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_IS_NOT_KNOWN;
+        data[ 8] = ExactTime256Utils.FRACTIONS_256_NOT_SUPPORTED;
         data[ 9] = CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -43,19 +45,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(0x00, result1.getHours());
         assertEquals(0x00, result1.getMinutes());
         assertEquals(0x00, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_IS_NOT_KNOWN, result1.getDayOfWeek());
-        assertTrue(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertFalse(result1.isDayOfWeekSunday());
-        assertEquals(CurrentTime.FRACTIONS_256_NOT_SUPPORTED, result1.getFractions256());
-        assertTrue(result1.isFractions256Supported());
-        assertEquals(0d, result1.getFractions256WithUnit(), 0);
-        assertEquals(0L, result1.getFractions256Millis());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_IS_NOT_KNOWN, result1.getDayOfWeek());
+        assertEquals(ExactTime256Utils.FRACTIONS_256_NOT_SUPPORTED, result1.getFractions256());
         assertEquals(CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -82,7 +73,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_MONDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_MONDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
@@ -100,19 +91,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_MONDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertTrue(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertFalse(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_MONDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -139,7 +119,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_TUESDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_TUESDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
@@ -157,19 +137,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_TUESDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertTrue(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertFalse(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_TUESDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -196,7 +165,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_WEDNESDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_WEDNESDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
@@ -214,19 +183,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_WEDNESDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertTrue(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertFalse(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_WEDNESDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -253,7 +211,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_THURSDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_THURSDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
@@ -271,19 +229,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_THURSDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertTrue(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertFalse(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_THURSDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
                         | CurrentTime.ADJUST_REASON_CHANGE_OF_TIME_ZONE
@@ -310,7 +257,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_FRIDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_FRIDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
@@ -328,19 +275,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_FRIDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertTrue(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertFalse(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_FRIDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
                         | CurrentTime.ADJUST_REASON_CHANGE_OF_TIME_ZONE
@@ -367,7 +303,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SATURDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SATURDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
@@ -385,19 +321,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SATURDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertTrue(result1.isDayOfWeekSaturday());
-        assertFalse(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SATURDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_CHANGE_OF_TIME_ZONE
@@ -424,7 +349,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
@@ -442,19 +367,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_CHANGE_OF_TIME_ZONE
@@ -481,7 +395,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
@@ -499,19 +413,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -538,7 +441,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
@@ -556,19 +459,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -595,7 +487,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
@@ -613,19 +505,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -652,7 +533,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
@@ -670,19 +551,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_TIME_ZONE
@@ -709,7 +579,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
@@ -727,19 +597,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_CHANGE_OF_TIME_ZONE
@@ -766,7 +625,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
@@ -784,19 +643,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_NO_EXTERNAL_REFEREMCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_CHANGE_OF_TIME_ZONE
@@ -823,7 +671,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
@@ -841,19 +689,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_NO_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_CHANGE_OF_TIME_ZONE
@@ -880,7 +717,7 @@ public class CurrentTimeAndroidTest {
         data[ 4] = 23;
         data[ 5] = 59;
         data[ 6] = 59;
-        data[ 7] = CurrentTime.DAY_OF_WEEK_SUNDAY;
+        data[ 7] = DayOfWeekUtils.DAY_OF_WEEK_SUNDAY;
         data[ 8] = (byte) 255;
         data[ 9] = CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                 | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
@@ -898,19 +735,8 @@ public class CurrentTimeAndroidTest {
         assertEquals(23, result1.getHours());
         assertEquals(59, result1.getMinutes());
         assertEquals(59, result1.getSeconds());
-        assertEquals(CurrentTime.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
-        assertFalse(result1.isDayOfWeekNotKnown());
-        assertFalse(result1.isDayOfWeekMonday());
-        assertFalse(result1.isDayOfWeekTuesday());
-        assertFalse(result1.isDayOfWeekWednesday());
-        assertFalse(result1.isDayOfWeekThursday());
-        assertFalse(result1.isDayOfWeekFriday());
-        assertFalse(result1.isDayOfWeekSaturday());
-        assertTrue(result1.isDayOfWeekSunday());
+        assertEquals(DayOfWeekUtils.DAY_OF_WEEK_SUNDAY, result1.getDayOfWeek());
         assertEquals(255, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
-        assertEquals(CurrentTime.FRACTIONS_256_UNIT * 255, result1.getFractions256WithUnit(), 0);
-        assertEquals((long) (CurrentTime.FRACTIONS_256_UNIT * 255 * 1000L), result1.getFractions256Millis());
         assertEquals(CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_EXTERNAL_REFERENCE_TIME_UPDATE
                         | CurrentTime.ADJUST_REASON_CHANGE_OF_TIME_ZONE
@@ -947,7 +773,6 @@ public class CurrentTimeAndroidTest {
         assertEquals(seconds, result1.getSeconds());
         assertEquals(dayOfWeek, result1.getDayOfWeek());
         assertEquals(fractions256, result1.getFractions256());
-        assertFalse(result1.isFractions256Supported());
         assertEquals(adjustReason, result1.getAdjustReason());
     }
 
@@ -983,18 +808,7 @@ public class CurrentTimeAndroidTest {
         assertEquals(result2.getMinutes(), result1.getMinutes());
         assertEquals(result2.getSeconds(), result1.getSeconds());
         assertEquals(result2.getDayOfWeek(), result1.getDayOfWeek());
-        assertEquals(result2.isDayOfWeekNotKnown(), result1.isDayOfWeekNotKnown());
-        assertEquals(result2.isDayOfWeekMonday(), result1.isDayOfWeekMonday());
-        assertEquals(result2.isDayOfWeekTuesday(), result1.isDayOfWeekTuesday());
-        assertEquals(result2.isDayOfWeekWednesday(), result1.isDayOfWeekWednesday());
-        assertEquals(result2.isDayOfWeekThursday(), result1.isDayOfWeekThursday());
-        assertEquals(result2.isDayOfWeekFriday(), result1.isDayOfWeekFriday());
-        assertEquals(result2.isDayOfWeekSaturday(), result1.isDayOfWeekSaturday());
-        assertEquals(result2.isDayOfWeekSunday(), result1.isDayOfWeekSunday());
         assertEquals(result2.getFractions256(), result1.getFractions256());
-        assertEquals(result2.isFractions256Supported(), result1.isFractions256Supported());
-        assertEquals(result2.getFractions256WithUnit(), result1.getFractions256WithUnit(), 0);
-        assertEquals(result2.getFractions256Millis(), result1.getFractions256Millis());
         assertEquals(result2.getAdjustReason(), result1.getAdjustReason());
         assertEquals(result2.isAdjustReasonNoManualTimeUpdate(), result1.isAdjustReasonNoManualTimeUpdate());
         assertEquals(result2.isAdjustReasonManualTimeUpdate(), result1.isAdjustReasonManualTimeUpdate());
