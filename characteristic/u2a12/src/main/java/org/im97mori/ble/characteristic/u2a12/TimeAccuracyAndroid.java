@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_ACCURACY_CHARAC
 /**
  * Time Accuracy (Characteristics UUID: 0x2A12)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class TimeAccuracyAndroid extends TimeAccuracy implements Parcelable {
 
@@ -59,6 +58,15 @@ public class TimeAccuracyAndroid extends TimeAccuracy implements Parcelable {
      */
     public TimeAccuracyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param accuracy Accuracy
+     */
+    public TimeAccuracyAndroid(int accuracy) {
+        super(accuracy);
     }
 
     /**
