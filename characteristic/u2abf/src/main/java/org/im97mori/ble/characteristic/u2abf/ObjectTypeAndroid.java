@@ -8,12 +8,13 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.UUID;
+
 import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_TYPE_CHARACTERISTIC;
 
 /**
- * object type (Characteristics UUID: 0x2ABF)
+ * Object Type (Characteristics UUID: 0x2ABF)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectTypeAndroid extends ObjectType implements Parcelable {
 
@@ -69,6 +70,24 @@ public class ObjectTypeAndroid extends ObjectType implements Parcelable {
     private ObjectTypeAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param uuid 16bit uuid
+     */
+    public ObjectTypeAndroid(int uuid) {
+        super(uuid);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param uuid 16bit uuid
+     */
+    public ObjectTypeAndroid(@NonNull UUID uuid) {
+        super(uuid);
     }
 
     /**
