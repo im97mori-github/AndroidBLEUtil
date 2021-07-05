@@ -11,9 +11,8 @@ import org.im97mori.ble.ByteArrayCreater;
 import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_NAME_CHARACTERISTIC;
 
 /**
- * object name (Characteristics UUID: 0x2ABE)
+ * Object Name (Characteristics UUID: 0x2ABE)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectNameAndroid extends ObjectName implements Parcelable {
 
@@ -59,6 +58,15 @@ public class ObjectNameAndroid extends ObjectName implements Parcelable {
      */
     public ObjectNameAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param objectName Object Name
+     */
+    public ObjectNameAndroid(@NonNull String objectName) {
+        super(objectName);
     }
 
     /**
