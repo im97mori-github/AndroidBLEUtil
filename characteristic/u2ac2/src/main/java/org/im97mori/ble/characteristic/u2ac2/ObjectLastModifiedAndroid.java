@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_LAST_MODIFIED
 /**
  * object last modified (Characteristics UUID: 0x2AC2)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectLastModifiedAndroid extends ObjectLastModified implements Parcelable {
 
@@ -59,6 +58,20 @@ public class ObjectLastModifiedAndroid extends ObjectLastModified implements Par
      */
     public ObjectLastModifiedAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param year    Year
+     * @param month   Month
+     * @param day     Day
+     * @param hours   Hours
+     * @param minutes Minutes
+     * @param seconds Seconds
+     */
+    public ObjectLastModifiedAndroid(int year, int month, int day, int hours, int minutes, int seconds) {
+        super(year, month, day, hours, minutes, seconds);
     }
 
     /**
