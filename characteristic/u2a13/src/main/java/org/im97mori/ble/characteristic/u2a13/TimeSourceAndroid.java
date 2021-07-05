@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_SOURCE_CHARACTE
 /**
  * Time Source (Characteristics UUID: 0x2A13)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class TimeSourceAndroid extends TimeSource implements Parcelable {
 
@@ -59,6 +58,15 @@ public class TimeSourceAndroid extends TimeSource implements Parcelable {
      */
     public TimeSourceAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param timeSource Time Source
+     */
+    public TimeSourceAndroid(int timeSource) {
+        super(timeSource);
     }
 
     /**
