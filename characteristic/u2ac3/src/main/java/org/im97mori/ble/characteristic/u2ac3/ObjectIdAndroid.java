@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_ID_CHARACTERI
 /**
  * object ID (Characteristics UUID: 0x2AC3)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectIdAndroid extends ObjectId implements Parcelable {
 
@@ -59,6 +58,15 @@ public class ObjectIdAndroid extends ObjectId implements Parcelable {
      */
     public ObjectIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param objectId Object ID
+     */
+    public ObjectIdAndroid(long objectId) {
+        super(objectId);
     }
 
     /**
