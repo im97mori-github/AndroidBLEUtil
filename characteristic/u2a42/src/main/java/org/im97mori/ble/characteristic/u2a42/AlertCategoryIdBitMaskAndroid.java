@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_CATEGORY_ID_BI
 /**
  * Alert Category ID Bit Mask (Characteristics UUID: 0x2A42)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class AlertCategoryIdBitMaskAndroid extends AlertCategoryIdBitMask implements Parcelable {
 
