@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_CHA
 /**
  * Electric Current (Characteristics UUID: 0x2AEE)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ElectricCurrentAndroid extends ElectricCurrent implements Parcelable {
 
@@ -59,6 +58,15 @@ public class ElectricCurrentAndroid extends ElectricCurrent implements Parcelabl
      */
     public ElectricCurrentAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param current Current
+     */
+    public ElectricCurrentAndroid(int current) {
+        super(current);
     }
 
     /**
