@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_CATEGORY_ID_CH
 /**
  * Alert Category ID (Characteristics UUID: 0x2A43)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class AlertCategoryIdAndroid extends AlertCategoryId implements Parcelable {
 
@@ -59,6 +58,15 @@ public class AlertCategoryIdAndroid extends AlertCategoryId implements Parcelabl
      */
     public AlertCategoryIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param categoryId Category ID
+     */
+    public AlertCategoryIdAndroid(int categoryId) {
+        super(categoryId);
     }
 
     /**
