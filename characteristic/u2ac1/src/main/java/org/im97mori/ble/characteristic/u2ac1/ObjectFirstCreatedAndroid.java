@@ -11,9 +11,8 @@ import org.im97mori.ble.ByteArrayCreater;
 import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_FIRST_CREATED_CHARACTERISTIC;
 
 /**
- * object first created (Characteristics UUID: 0x2AC1)
+ * Object First Created (Characteristics UUID: 0x2AC1)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectFirstCreatedAndroid extends ObjectFirstCreated implements Parcelable {
 
@@ -59,6 +58,20 @@ public class ObjectFirstCreatedAndroid extends ObjectFirstCreated implements Par
      */
     public ObjectFirstCreatedAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param year    Year
+     * @param month   Month
+     * @param day     Day
+     * @param hours   Hours
+     * @param minutes Minutes
+     * @param seconds Seconds
+     */
+    public ObjectFirstCreatedAndroid(int year, int month, int day, int hours, int minutes, int seconds) {
+        super(year, month, day, hours, minutes, seconds);
     }
 
     /**
