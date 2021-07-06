@@ -14,7 +14,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BOOLEAN_CHARACTERIST
  * Boolean (Characteristics UUID: 0x2AE2)
  */
 // TODO
-@SuppressWarnings({"WeakerAccess"})
 public class BLEBooleanAndroid extends BLEBoolean implements Parcelable {
 
     /**
@@ -59,6 +58,15 @@ public class BLEBooleanAndroid extends BLEBoolean implements Parcelable {
      */
     public BLEBooleanAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param booleanValue Boolean value
+     */
+    public BLEBooleanAndroid(int booleanValue) {
+        super(booleanValue);
     }
 
     /**
