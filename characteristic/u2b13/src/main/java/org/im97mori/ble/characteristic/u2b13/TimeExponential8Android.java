@@ -13,22 +13,21 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_EXPONENTIAL_8_C
 /**
  * Time Exponential 8 (Characteristics UUID: 0x2B13)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
-public class TimeExponential_8Android extends TimeExponential_8 implements Parcelable {
+public class TimeExponential8Android extends TimeExponential8 implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<TimeExponential_8Android> CREATOR = new ByteArrayCreater<TimeExponential_8Android>() {
+    public static final ByteArrayCreater<TimeExponential8Android> CREATOR = new ByteArrayCreater<TimeExponential8Android>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public TimeExponential_8Android createFromParcel(@NonNull Parcel in) {
-            return new TimeExponential_8Android(in);
+        public TimeExponential8Android createFromParcel(@NonNull Parcel in) {
+            return new TimeExponential8Android(in);
         }
 
         /**
@@ -36,18 +35,18 @@ public class TimeExponential_8Android extends TimeExponential_8 implements Parce
          */
         @Override
         @NonNull
-        public TimeExponential_8Android[] newArray(int size) {
-            return new TimeExponential_8Android[size];
+        public TimeExponential8Android[] newArray(int size) {
+            return new TimeExponential8Android[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public TimeExponential_8Android createFromByteArray(@NonNull byte[] values) {
+        public TimeExponential8Android createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_EXPONENTIAL_8_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new TimeExponential_8Android(bluetoothGattCharacteristic);
+            return new TimeExponential8Android(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,8 +56,17 @@ public class TimeExponential_8Android extends TimeExponential_8 implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B13
      */
-    public TimeExponential_8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public TimeExponential8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param timeExponential8 Time Exponential 8
+     */
+    public TimeExponential8Android(int timeExponential8) {
+        super(timeExponential8);
     }
 
     /**
@@ -66,7 +74,7 @@ public class TimeExponential_8Android extends TimeExponential_8 implements Parce
      *
      * @param in Parcel
      */
-    private TimeExponential_8Android(@NonNull Parcel in) {
+    private TimeExponential8Android(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
