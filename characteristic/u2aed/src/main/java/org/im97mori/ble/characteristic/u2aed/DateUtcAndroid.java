@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DATE_UTC_CHARACTERIS
 /**
  * Date UTC (Characteristics UUID: 0x2AED)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class DateUtcAndroid extends DateUtc implements Parcelable {
 
@@ -59,6 +58,15 @@ public class DateUtcAndroid extends DateUtc implements Parcelable {
      */
     public DateUtcAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param date Date
+     */
+    public DateUtcAndroid(int date) {
+        super(date);
     }
 
     /**
