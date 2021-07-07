@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AVERAGE_CURRENT_CHAR
 /**
  * Average Current (Characteristics UUID: 0x2AE0)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class AverageCurrentAndroid extends AverageCurrent implements Parcelable {
 
@@ -59,6 +58,16 @@ public class AverageCurrentAndroid extends AverageCurrent implements Parcelable 
      */
     public AverageCurrentAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param electricCurrentValue Electric Current Value
+     * @param sensingDuration      Sensing Duration
+     */
+    public AverageCurrentAndroid(int electricCurrentValue, int sensingDuration) {
+        super(electricCurrentValue, sensingDuration);
     }
 
     /**

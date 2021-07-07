@@ -57,26 +57,26 @@ public class TimeExponential8AndroidTest {
 
     @Test
     public void test_constructor_00101() {
-        int timeZone = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
+        int timeExponential8 = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
 
-        TimeExponential8Android result1 = new TimeExponential8Android(timeZone);
-        assertEquals(timeZone, result1.getTimeExponential8());
+        TimeExponential8Android result1 = new TimeExponential8Android(timeExponential8);
+        assertEquals(timeExponential8, result1.getTimeExponential8());
     }
 
     @Test
     public void test_constructor_00102() {
-        int timeZone = TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
+        int timeExponential8 = TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
 
-        TimeExponential8Android result1 = new TimeExponential8Android(timeZone);
-        assertEquals(timeZone, result1.getTimeExponential8());
+        TimeExponential8Android result1 = new TimeExponential8Android(timeExponential8);
+        assertEquals(timeExponential8, result1.getTimeExponential8());
     }
 
     @Test
     public void test_constructor_00103() {
-        int timeZone = TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
+        int timeExponential8 = TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
 
-        TimeExponential8Android result1 = new TimeExponential8Android(timeZone);
-        assertEquals(timeZone, result1.getTimeExponential8());
+        TimeExponential8Android result1 = new TimeExponential8Android(timeExponential8);
+        assertEquals(timeExponential8, result1.getTimeExponential8());
     }
 
     @Test
