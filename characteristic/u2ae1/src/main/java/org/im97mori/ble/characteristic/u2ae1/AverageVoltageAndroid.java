@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AVERAGE_VOLTAGE_CHAR
 /**
  * Average Voltage (Characteristics UUID: 0x2AE1)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class AverageVoltageAndroid extends AverageVoltage implements Parcelable {
 
@@ -59,6 +58,16 @@ public class AverageVoltageAndroid extends AverageVoltage implements Parcelable 
      */
     public AverageVoltageAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param voltageValue    Voltage Value
+     * @param sensingDuration Sensing Duration
+     */
+    public AverageVoltageAndroid(int voltageValue, int sensingDuration) {
+        super(voltageValue, sensingDuration);
     }
 
     /**
