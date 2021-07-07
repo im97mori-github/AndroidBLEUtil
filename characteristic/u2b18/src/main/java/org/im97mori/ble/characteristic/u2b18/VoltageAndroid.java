@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLTAGE_CHARACTERIST
 /**
  * Voltage (Characteristics UUID: 0x2B18)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class VoltageAndroid extends Voltage implements Parcelable {
 
@@ -59,6 +58,15 @@ public class VoltageAndroid extends Voltage implements Parcelable {
      */
     public VoltageAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param voltageValue Voltage Value
+     */
+    public VoltageAndroid(int voltageValue) {
+        super(voltageValue);
     }
 
     /**
