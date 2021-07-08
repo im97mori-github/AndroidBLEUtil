@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CIE13_3_1995_COLOR_R
 /**
  * CIE 13.3-1995 Color Rendering Index (Characteristics UUID: 0x2AE7)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class Cie13_3_1995ColorRenderingIndexAndroid extends Cie13_3_1995ColorRenderingIndex implements Parcelable {
 
@@ -59,6 +58,15 @@ public class Cie13_3_1995ColorRenderingIndexAndroid extends Cie13_3_1995ColorRen
      */
     public Cie13_3_1995ColorRenderingIndexAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param colorRenderingIndex Color Rendering Index
+     */
+    public Cie13_3_1995ColorRenderingIndexAndroid(int colorRenderingIndex) {
+        super(colorRenderingIndex);
     }
 
     /**
