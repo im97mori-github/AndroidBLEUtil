@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_STA
 /**
  * Electric Current Statistics (Characteristics UUID: 0x2AF1)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ElectricCurrentStatisticsAndroid extends ElectricCurrentStatistics implements Parcelable {
 
@@ -51,6 +50,18 @@ public class ElectricCurrentStatisticsAndroid extends ElectricCurrentStatistics 
         }
 
     };
+
+    /**
+     * Constructor from parameters
+     *
+     * @param averageElectricCurrentValue           Average Electric Current Value
+     * @param standardDeviationElectricCurrentValue Standard Deviation Electric Current Value
+     * @param minimumElectricCurrentValue           Minimum Electric Current Value
+     * @param maximumElectricCurrentValue           Maximum Electric Current Value
+     */
+    public ElectricCurrentStatisticsAndroid(int averageElectricCurrentValue, int standardDeviationElectricCurrentValue, int minimumElectricCurrentValue, int maximumElectricCurrentValue) {
+        super(averageElectricCurrentValue, standardDeviationElectricCurrentValue, minimumElectricCurrentValue, maximumElectricCurrentValue);
+    }
 
     /**
      * Constructor from {@link BluetoothGattCharacteristic}
