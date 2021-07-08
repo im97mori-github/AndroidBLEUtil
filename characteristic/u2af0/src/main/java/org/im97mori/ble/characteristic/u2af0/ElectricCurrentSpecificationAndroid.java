@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_SPE
 /**
  * Electric Current Specification (Characteristics UUID: 0x2AF0)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ElectricCurrentSpecificationAndroid extends ElectricCurrentSpecification implements Parcelable {
 
@@ -59,6 +58,17 @@ public class ElectricCurrentSpecificationAndroid extends ElectricCurrentSpecific
      */
     public ElectricCurrentSpecificationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param minimumElectricCurrentValue Minimum Electric Current Value
+     * @param typicalElectricCurrentValue Typical Electric Current Value
+     * @param maximumElectricCurrentValue Maximum Electric Current Value
+     */
+    public ElectricCurrentSpecificationAndroid(int minimumElectricCurrentValue, int typicalElectricCurrentValue, int maximumElectricCurrentValue) {
+        super(minimumElectricCurrentValue, typicalElectricCurrentValue, maximumElectricCurrentValue);
     }
 
     /**
