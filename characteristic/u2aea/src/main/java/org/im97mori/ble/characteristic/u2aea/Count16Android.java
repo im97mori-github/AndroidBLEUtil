@@ -15,20 +15,20 @@ import static org.im97mori.ble.constants.CharacteristicUUID.COUNT_16_CHARACTERIS
  */
 // TODO
 @SuppressWarnings({"WeakerAccess"})
-public class Count_16Android extends Count_16 implements Parcelable {
+public class Count16Android extends Count16 implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<Count_16Android> CREATOR = new ByteArrayCreater<Count_16Android>() {
+    public static final ByteArrayCreater<Count16Android> CREATOR = new ByteArrayCreater<Count16Android>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public Count_16Android createFromParcel(@NonNull Parcel in) {
-            return new Count_16Android(in);
+        public Count16Android createFromParcel(@NonNull Parcel in) {
+            return new Count16Android(in);
         }
 
         /**
@@ -36,18 +36,18 @@ public class Count_16Android extends Count_16 implements Parcelable {
          */
         @Override
         @NonNull
-        public Count_16Android[] newArray(int size) {
-            return new Count_16Android[size];
+        public Count16Android[] newArray(int size) {
+            return new Count16Android[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public Count_16Android createFromByteArray(@NonNull byte[] values) {
+        public Count16Android createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(COUNT_16_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new Count_16Android(bluetoothGattCharacteristic);
+            return new Count16Android(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,8 +57,17 @@ public class Count_16Android extends Count_16 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AEA
      */
-    public Count_16Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public Count16Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param count Count
+     */
+    public Count16Android(int count) {
+        super(count);
     }
 
     /**
@@ -66,7 +75,7 @@ public class Count_16Android extends Count_16 implements Parcelable {
      *
      * @param in Parcel
      */
-    private Count_16Android(@NonNull Parcel in) {
+    private Count16Android(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
