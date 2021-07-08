@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_RAN
 /**
  * Electric Current Range (Characteristics UUID: 0x2AEF)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ElectricCurrentRangeAndroid extends ElectricCurrentRange implements Parcelable {
 
@@ -59,6 +58,16 @@ public class ElectricCurrentRangeAndroid extends ElectricCurrentRange implements
      */
     public ElectricCurrentRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param minimumElectricCurrentValue Minimum Electric Current Value
+     * @param maximumElectricCurrentValue Maximum Electric Current Value
+     */
+    public ElectricCurrentRangeAndroid(int minimumElectricCurrentValue, int maximumElectricCurrentValue) {
+        super(minimumElectricCurrentValue, maximumElectricCurrentValue);
     }
 
     /**
