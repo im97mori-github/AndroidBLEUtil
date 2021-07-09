@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATIC_DISTANCE_F
 /**
  * Chromatic Distance From Planckian (Characteristics UUID: 0x2AE3)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ChromaticDistanceFromPlanckianAndroid extends ChromaticDistanceFromPlanckian implements Parcelable {
 
@@ -59,6 +58,15 @@ public class ChromaticDistanceFromPlanckianAndroid extends ChromaticDistanceFrom
      */
     public ChromaticDistanceFromPlanckianAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param distanceFromPlanckian Distance From Planckian
+     */
+    public ChromaticDistanceFromPlanckianAndroid(int distanceFromPlanckian) {
+        super(distanceFromPlanckian);
     }
 
     /**
