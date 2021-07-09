@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_COORDIN
 /**
  * Chromaticity Coordinate (Characteristics UUID: 0x2B1C)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ChromaticityCoordinateAndroid extends ChromaticityCoordinate implements Parcelable {
 
@@ -59,6 +58,15 @@ public class ChromaticityCoordinateAndroid extends ChromaticityCoordinate implem
      */
     public ChromaticityCoordinateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param chromaticityCoordinate Chromaticity Coordinate
+     */
+    public ChromaticityCoordinateAndroid(int chromaticityCoordinate) {
+        super(chromaticityCoordinate);
     }
 
     /**
