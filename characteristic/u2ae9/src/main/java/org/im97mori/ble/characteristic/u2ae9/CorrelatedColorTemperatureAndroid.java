@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CORRELATED_COLOR_TEM
 /**
  * Correlated Color Temperature (Characteristics UUID: 0x2AE9)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class CorrelatedColorTemperatureAndroid extends CorrelatedColorTemperature implements Parcelable {
 
@@ -59,6 +58,15 @@ public class CorrelatedColorTemperatureAndroid extends CorrelatedColorTemperatur
      */
     public CorrelatedColorTemperatureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param correlatedColorTemperature Correlated Color Temperature
+     */
+    public CorrelatedColorTemperatureAndroid(int correlatedColorTemperature) {
+        super(correlatedColorTemperature);
     }
 
     /**
