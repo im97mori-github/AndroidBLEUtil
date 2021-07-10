@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITYIN_CCT_A
 /**
  * Chromaticity in CCT And Duv Values (Characteristics UUID: 0x2AE5)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ChromaticityinCctAndDuvValuesAndroid extends ChromaticityinCctAndDuvValues implements Parcelable {
 
@@ -59,6 +58,16 @@ public class ChromaticityinCctAndDuvValuesAndroid extends ChromaticityinCctAndDu
      */
     public ChromaticityinCctAndDuvValuesAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param correlatedColorTemperature        Correlated Color Temperature
+     * @param chromaticityDistanceFromPlanckian Chromaticity Distance from Planckian
+     */
+    public ChromaticityinCctAndDuvValuesAndroid(int correlatedColorTemperature, int chromaticityDistanceFromPlanckian) {
+        super(correlatedColorTemperature, chromaticityDistanceFromPlanckian);
     }
 
     /**
