@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_TOLERAN
 /**
  * Chromaticity Tolerance (Characteristics UUID: 0x2AE6)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ChromaticityToleranceAndroid extends ChromaticityTolerance implements Parcelable {
 
@@ -59,6 +58,15 @@ public class ChromaticityToleranceAndroid extends ChromaticityTolerance implemen
      */
     public ChromaticityToleranceAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param chromaticityTolerance Chromaticity Tolerance
+     */
+    public ChromaticityToleranceAndroid(int chromaticityTolerance) {
+        super(chromaticityTolerance);
     }
 
     /**
