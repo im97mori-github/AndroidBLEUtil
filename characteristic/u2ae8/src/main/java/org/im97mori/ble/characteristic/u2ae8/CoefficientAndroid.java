@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.COEFFICIENT_CHARACTE
 /**
  * Coefficient (Characteristics UUID: 0x2AE8)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class CoefficientAndroid extends Coefficient implements Parcelable {
 
@@ -59,6 +58,24 @@ public class CoefficientAndroid extends Coefficient implements Parcelable {
      */
     public CoefficientAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param coefficient coefficient
+     */
+    public CoefficientAndroid(@NonNull Double coefficient) {
+        super(coefficient);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param isNres {@code true}:ISO/IEEE Std. 11073-20601™-2008 FLOAT NRes (Not at this Resolution), {@code false}:ISO/IEEE Std. 11073-20601™-2008 FLOAT Reserved for future use
+     */
+    public CoefficientAndroid(boolean isNres) {
+        super(isNres);
     }
 
     /**
