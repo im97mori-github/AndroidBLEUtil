@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.COUNTRY_CODE_CHARACT
 /**
  * Country Code (Characteristics UUID: 0x2AEC)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class CountryCodeAndroid extends CountryCode implements Parcelable {
 
@@ -59,6 +58,15 @@ public class CountryCodeAndroid extends CountryCode implements Parcelable {
      */
     public CountryCodeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param countryCode Country Code
+     */
+    public CountryCodeAndroid(int countryCode) {
+        super(countryCode);
     }
 
     /**
