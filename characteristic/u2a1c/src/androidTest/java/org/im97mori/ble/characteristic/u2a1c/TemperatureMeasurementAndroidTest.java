@@ -3,6 +3,7 @@ package org.im97mori.ble.characteristic.u2a1c;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_FLOAT;
 import org.im97mori.ble.characteristic.core.TemperatureMeasurementUtils;
@@ -928,6 +929,32 @@ public class TemperatureMeasurementAndroidTest {
         assertEquals(flags, result1.getFlags());
         assertEquals(temperatureMeasurementValueCelsius, result1.getTemperatureMeasurementValueCelsius());
         assertEquals(temperatureMeasurementValueFahrenheit, result1.getTemperatureMeasurementValueFahrenheit());
+        assertEquals(year, result1.getYear());
+        assertEquals(month, result1.getMonth());
+        assertEquals(day, result1.getDay());
+        assertEquals(hours, result1.getHours());
+        assertEquals(minutes, result1.getMinutes());
+        assertEquals(seconds, result1.getSeconds());
+        assertEquals(temperatureTextDescription, result1.getTemperatureTextDescription());
+    }
+
+    @Test
+    public void test_constructor212() {
+        int flags = 1;
+        double temperatureMeasurementValueCelsius = BLEUtils.createFloat(new byte[] { 2, 3, 4, 5 }, 0);
+        double temperatureMeasurementValueFahrenheit = BLEUtils.createFloat(new byte[] { 6, 7, 8, 9 }, 0);
+        int year = 10;
+        int month = 11;
+        int day = 12;
+        int hours = 13;
+        int minutes = 14;
+        int seconds = 15;
+        int temperatureTextDescription = 16;
+
+        TemperatureMeasurementAndroid result1 = new TemperatureMeasurementAndroid(flags, temperatureMeasurementValueCelsius, temperatureMeasurementValueFahrenheit, year, month, day, hours, minutes, seconds, temperatureTextDescription);
+        assertEquals(flags, result1.getFlags());
+        assertEquals(temperatureMeasurementValueCelsius, result1.getTemperatureMeasurementValueCelsius().getFloat(), 0);
+        assertEquals(temperatureMeasurementValueFahrenheit, result1.getTemperatureMeasurementValueFahrenheit().getFloat(), 0);
         assertEquals(year, result1.getYear());
         assertEquals(month, result1.getMonth());
         assertEquals(day, result1.getDay());
