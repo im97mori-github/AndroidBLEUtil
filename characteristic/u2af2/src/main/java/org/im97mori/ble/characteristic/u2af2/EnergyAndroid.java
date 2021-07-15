@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ENERGY_CHARACTERISTI
 /**
  * Energy (Characteristics UUID: 0x2AF2)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class EnergyAndroid extends Energy implements Parcelable {
 
@@ -59,6 +58,15 @@ public class EnergyAndroid extends Energy implements Parcelable {
      */
     public EnergyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param energy Energy
+     */
+    public EnergyAndroid(int energy) {
+        super(energy);
     }
 
     /**
