@@ -27,11 +27,11 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext.globalCompileSdkVersion = 30
+ext.globalCompileSdkVersion = 31
 ext.globalBuildToolsVersion = '30.0.3'
 ext.globalMinSdkVersion = 18
 ext.globalPeripheralMinSdkVersion = 21
-ext.globalTargetSdkVersion = 30
+ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
 ext.loadVersion = '0.4.4'
@@ -149,7 +149,7 @@ ext.apiTestPeripheral = "${myGroupId}:${testPeripheral.artifactId}:${loadVersion
 ext.apiTestCentral = "${myGroupId}:${testCentral.artifactId}:${loadVersion}"
 
 ext.androidxAnnotation = 'androidx.annotation:annotation:1.2.0'
-ext.androidxTestRunner = 'androidx.test:runner:1.3.0'
-ext.androidxTestCore = 'androidx.test:core:1.3.0'
+ext.androidxTestRunner = 'androidx.test:runner:1.4.0'
+ext.androidxTestCore = 'androidx.test:core:1.4.0'
 ext.stackLog = 'org.im97mori:stacklog:0.0.2'
 ext.gson = 'com.google.code.gson:gson:2.8.6'
