@@ -13,22 +13,21 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_DECIHOUR_8_CHAR
 /**
  * Time Decihour 8 (Characteristics UUID: 0x2B12)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
-public class TimeDecihour_8Android extends TimeDecihour_8 implements Parcelable {
+public class TimeDecihour8Android extends TimeDecihour8 implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<TimeDecihour_8Android> CREATOR = new ByteArrayCreater<TimeDecihour_8Android>() {
+    public static final ByteArrayCreater<TimeDecihour8Android> CREATOR = new ByteArrayCreater<TimeDecihour8Android>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public TimeDecihour_8Android createFromParcel(@NonNull Parcel in) {
-            return new TimeDecihour_8Android(in);
+        public TimeDecihour8Android createFromParcel(@NonNull Parcel in) {
+            return new TimeDecihour8Android(in);
         }
 
         /**
@@ -36,18 +35,18 @@ public class TimeDecihour_8Android extends TimeDecihour_8 implements Parcelable 
          */
         @Override
         @NonNull
-        public TimeDecihour_8Android[] newArray(int size) {
-            return new TimeDecihour_8Android[size];
+        public TimeDecihour8Android[] newArray(int size) {
+            return new TimeDecihour8Android[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public TimeDecihour_8Android createFromByteArray(@NonNull byte[] values) {
+        public TimeDecihour8Android createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_DECIHOUR_8_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new TimeDecihour_8Android(bluetoothGattCharacteristic);
+            return new TimeDecihour8Android(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,16 +56,26 @@ public class TimeDecihour_8Android extends TimeDecihour_8 implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B12
      */
-    public TimeDecihour_8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public TimeDecihour8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
     }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param timeDecihour8 Time Decihour 8
+     */
+    public TimeDecihour8Android(int timeDecihour8) {
+        super(timeDecihour8);
+    }
+
 
     /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel
      */
-    private TimeDecihour_8Android(@NonNull Parcel in) {
+    private TimeDecihour8Android(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
