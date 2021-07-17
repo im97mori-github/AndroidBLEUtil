@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ENERGY_IN_A_PERIOD_O
 /**
  * Energy In A Period Of Day (Characteristics UUID: 0x2AF3)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class EnergyInAPeriodOfDayAndroid extends EnergyInAPeriodOfDay implements Parcelable {
 
@@ -59,6 +58,17 @@ public class EnergyInAPeriodOfDayAndroid extends EnergyInAPeriodOfDay implements
      */
     public EnergyInAPeriodOfDayAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param energyValue mEnergyValue
+     * @param startTime   mStartTime
+     * @param endTime     mEndTime
+     */
+    public EnergyInAPeriodOfDayAndroid(int energyValue, int startTime, int endTime) {
+        super(energyValue, startTime, endTime);
     }
 
     /**
