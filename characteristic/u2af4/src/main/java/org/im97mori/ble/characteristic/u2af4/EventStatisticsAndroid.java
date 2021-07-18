@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.EVENT_STATISTICS_CHA
 /**
  * Event Statistics (Characteristics UUID: 0x2AF4)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class EventStatisticsAndroid extends EventStatistics implements Parcelable {
 
@@ -59,6 +58,18 @@ public class EventStatisticsAndroid extends EventStatistics implements Parcelabl
      */
     public EventStatisticsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param numberOfEvents            Number of Events
+     * @param averageEventDuration      Average Event Duration
+     * @param timeElapsedSinceLastEvent Time Elapsed Since Last Event
+     * @param sensingDuration           Sensing Duration
+     */
+    public EventStatisticsAndroid(int numberOfEvents, int averageEventDuration, int timeElapsedSinceLastEvent, int sensingDuration) {
+        super(numberOfEvents, averageEventDuration, timeElapsedSinceLastEvent, sensingDuration);
     }
 
     /**
