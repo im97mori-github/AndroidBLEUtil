@@ -13,22 +13,21 @@ import static org.im97mori.ble.constants.CharacteristicUUID.FIXED_STRING_16_CHAR
 /**
  * Fixed String 16 (Characteristics UUID: 0x2AF5)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
-public class FixedString_16Android extends FixedString_16 implements Parcelable {
+public class FixedString16Android extends FixedString16 implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<FixedString_16Android> CREATOR = new ByteArrayCreater<FixedString_16Android>() {
+    public static final ByteArrayCreater<FixedString16Android> CREATOR = new ByteArrayCreater<FixedString16Android>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public FixedString_16Android createFromParcel(@NonNull Parcel in) {
-            return new FixedString_16Android(in);
+        public FixedString16Android createFromParcel(@NonNull Parcel in) {
+            return new FixedString16Android(in);
         }
 
         /**
@@ -36,18 +35,18 @@ public class FixedString_16Android extends FixedString_16 implements Parcelable 
          */
         @Override
         @NonNull
-        public FixedString_16Android[] newArray(int size) {
-            return new FixedString_16Android[size];
+        public FixedString16Android[] newArray(int size) {
+            return new FixedString16Android[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public FixedString_16Android createFromByteArray(@NonNull byte[] values) {
+        public FixedString16Android createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FIXED_STRING_16_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new FixedString_16Android(bluetoothGattCharacteristic);
+            return new FixedString16Android(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,8 +56,17 @@ public class FixedString_16Android extends FixedString_16 implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AF5
      */
-    public FixedString_16Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public FixedString16Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param fixedString Fixed String
+     */
+    public FixedString16Android(@NonNull String fixedString) {
+        super(fixedString);
     }
 
     /**
@@ -66,7 +74,7 @@ public class FixedString_16Android extends FixedString_16 implements Parcelable 
      *
      * @param in Parcel
      */
-    private FixedString_16Android(@NonNull Parcel in) {
+    private FixedString16Android(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }

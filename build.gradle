@@ -16,8 +16,8 @@ buildscript {
 
 allprojects {
     repositories {
-//        maven { url "https://github.com/im97mori-github/maven/raw/master" }
-        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
+        maven { url "https://github.com/im97mori-github/maven/raw/master" }
+//        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
         google()
         mavenCentral()
     }
@@ -153,3 +153,4 @@ ext.androidxTestRunner = 'androidx.test:runner:1.4.0'
 ext.androidxTestCore = 'androidx.test:core:1.4.0'
 ext.stackLog = 'org.im97mori:stacklog:0.0.2'
 ext.gson = 'com.google.code.gson:gson:2.8.6'
+ext.junit = 'junit:junit:4.13.2'
