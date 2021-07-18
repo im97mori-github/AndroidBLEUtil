@@ -1,5 +1,6 @@
 package org.im97mori.ble.service.hts.peripheral;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -362,6 +363,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
         boolean result = false;

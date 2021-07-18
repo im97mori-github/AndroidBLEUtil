@@ -1,5 +1,6 @@
 package org.im97mori.ble.service.uds.peripheral;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -2392,6 +2393,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
+    @SuppressLint("MissingPermission")
     protected boolean onDatabaseChangeIncrementReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
@@ -2446,6 +2448,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
+    @SuppressLint("MissingPermission")
     protected boolean onUserIndexReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
@@ -2495,6 +2498,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
+    @SuppressLint("MissingPermission")
     protected boolean onUserDataReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
@@ -2578,6 +2582,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
+    @SuppressLint("MissingPermission")
     protected boolean onDatabaseChangeIncrementWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
@@ -2701,6 +2706,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
+    @SuppressLint("MissingPermission")
     protected boolean onUserControlPointWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
@@ -2945,6 +2951,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
+    @SuppressLint("MissingPermission")
     protected boolean onUserDataWriteRequest(@NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
@@ -3053,6 +3060,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onNotificationSuccess(@NonNull Integer taskId
             , @NonNull BLEServerConnection bleServerConnection
@@ -3091,6 +3099,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onNotificationFailed(@NonNull Integer taskId
             , @NonNull BLEServerConnection bleServerConnection
@@ -3129,6 +3138,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onNotificationTimeout(@NonNull Integer taskId
             , @NonNull BLEServerConnection bleServerConnection

@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.im97mori.ble.test.central" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.im97mori.ble.test.central">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+</manifest>

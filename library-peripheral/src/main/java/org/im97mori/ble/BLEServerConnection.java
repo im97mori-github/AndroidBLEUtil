@@ -1,5 +1,6 @@
 package org.im97mori.ble;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -119,6 +120,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * start {@link BluetoothGattServer} and {@link BluetoothLeAdvertiser}
      */
+    @SuppressLint("MissingPermission")
     public synchronized void start() {
         if (mBluetoothGattServer == null) {
 
@@ -141,6 +143,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * stop {@link BluetoothGattServer} and {@link BluetoothLeAdvertiser}
      */
+    @SuppressLint("MissingPermission")
     public synchronized void quit() {
         if (mAdvertiseCallback != null) {
             mBluetoothLeAdvertiser.stopAdvertising(mAdvertiseCallback);
@@ -228,6 +231,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onCharacteristicReadRequest(@NonNull BluetoothDevice device
             , int requestId
@@ -243,6 +247,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onCharacteristicWriteRequest(@NonNull BluetoothDevice device
             , int requestId
@@ -261,6 +266,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onDescriptorReadRequest(@NonNull BluetoothDevice device
             , int requestId
@@ -276,6 +282,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onDescriptorWriteRequest(@NonNull BluetoothDevice device
             , int requestId
@@ -294,6 +301,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onExecuteWrite(BluetoothDevice device
             , int requestId
@@ -480,6 +488,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param serviceUUID       UUID for {@link android.bluetooth.le.AdvertiseData.Builder#addServiceUuid(ParcelUuid)}
      * @return {@code true}:advertising started, {@code false}:advertising not started(allready started)
      */
+    @SuppressLint("MissingPermission")
     public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
         boolean result = false;
         if (mBluetoothLeAdvertiser == null) {
@@ -536,6 +545,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      *
      * @return {@code true}:advertising stopped, {@code false}:advertising not stopped(allready stopped)
      */
+    @SuppressLint("MissingPermission")
     public synchronized boolean stopAdvertising() {
         boolean result = false;
         if (mAdvertiseCallback != null) {

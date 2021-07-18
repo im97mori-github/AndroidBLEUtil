@@ -1,5 +1,6 @@
 package org.im97mori.ble.task;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
@@ -192,6 +193,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();

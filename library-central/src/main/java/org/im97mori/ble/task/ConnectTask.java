@@ -116,7 +116,7 @@ public class ConnectTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
-    @SuppressLint("ObsoleteSdkInt")
+    @SuppressLint({"ObsoleteSdkInt", "MissingPermission"})
     @Override
     public boolean doProcess(@NonNull Message message) {
         // if connected, finish task

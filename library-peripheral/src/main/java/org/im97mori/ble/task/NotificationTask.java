@@ -1,5 +1,6 @@
 package org.im97mori.ble.task;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattServer;
@@ -186,6 +187,7 @@ public class NotificationTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();

@@ -1,5 +1,6 @@
 package org.im97mori.ble.task;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGatt;
 import android.os.Bundle;
 import android.os.Message;
@@ -119,6 +120,7 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();

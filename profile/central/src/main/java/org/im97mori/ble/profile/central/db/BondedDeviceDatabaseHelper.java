@@ -137,12 +137,11 @@ public abstract class BondedDeviceDatabaseHelper extends SQLiteOpenHelper {
                 sqLiteDatabase.beginTransaction();
                 try (Cursor cursor = sqLiteDatabase.rawQuery("SELECT ADDRESS FROM BONDED_DEVICE_TABLE WHERE PROFILE_NAME = ?", new String[]{getProfileName()});
                      SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement("DELETE FROM BONDED_DEVICE_TABLE WHERE PROFILE_NAME = ? AND ADDRESS = ?")) {
-
                     if (cursor.moveToFirst()) {
                         BluetoothDevice currentBluetoothDevice;
                         Set<BluetoothDevice> removedBluetoothDeviceSet = new HashSet<>();
                         do {
-                            currentBluetoothDevice = bluetoothAdapter.getRemoteDevice(cursor.getString(cursor.getColumnIndex("ADDRESS")));
+                            currentBluetoothDevice = bluetoothAdapter.getRemoteDevice(cursor.getString(cursor.getColumnIndexOrThrow("ADDRESS")));
                             if (!bondedDeviceSet.contains(currentBluetoothDevice)) {
                                 removedBluetoothDeviceSet.add(currentBluetoothDevice);
                             }
@@ -181,7 +180,7 @@ public abstract class BondedDeviceDatabaseHelper extends SQLiteOpenHelper {
             try (Cursor cursor = sqLiteDatabase.rawQuery("SELECT ADDRESS FROM BONDED_DEVICE_TABLE WHERE PROFILE_NAME = ?", new String[]{getProfileName()})) {
                 if (cursor.moveToFirst()) {
                     do {
-                        bondedDeviceSet.add(bluetoothAdapter.getRemoteDevice(cursor.getString(cursor.getColumnIndex("ADDRESS"))));
+                        bondedDeviceSet.add(bluetoothAdapter.getRemoteDevice(cursor.getString(cursor.getColumnIndexOrThrow("ADDRESS"))));
                     } while (cursor.moveToNext());
                 }
             } finally {

@@ -1,5 +1,6 @@
 package org.im97mori.ble.task;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
@@ -128,6 +129,7 @@ public class AddServiceTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();

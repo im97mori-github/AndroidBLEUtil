@@ -1,5 +1,6 @@
 package org.im97mori.ble.callback;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -307,6 +308,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized boolean onCharacteristicReadRequest(@NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothDevice device
@@ -350,6 +352,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothDevice device
@@ -408,6 +411,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized boolean onDescriptorReadRequest(@NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothDevice device
@@ -452,6 +456,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized boolean onDescriptorWriteRequest(@NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothDevice device
@@ -684,6 +689,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized boolean onExecuteWrite(@NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothDevice device

@@ -1,5 +1,6 @@
 package org.im97mori.ble.service.rcs.peripheral;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -639,6 +640,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothDevice device
