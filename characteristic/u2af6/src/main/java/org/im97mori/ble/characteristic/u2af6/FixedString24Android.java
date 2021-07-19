@@ -13,22 +13,21 @@ import static org.im97mori.ble.constants.CharacteristicUUID.FIXED_STRING_24_CHAR
 /**
  * Fixed String 24 (Characteristics UUID: 0x2AF6)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
-public class FixedString_24Android extends FixedString_24 implements Parcelable {
+public class FixedString24Android extends FixedString24 implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<FixedString_24Android> CREATOR = new ByteArrayCreater<FixedString_24Android>() {
+    public static final ByteArrayCreater<FixedString24Android> CREATOR = new ByteArrayCreater<FixedString24Android>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public FixedString_24Android createFromParcel(@NonNull Parcel in) {
-            return new FixedString_24Android(in);
+        public FixedString24Android createFromParcel(@NonNull Parcel in) {
+            return new FixedString24Android(in);
         }
 
         /**
@@ -36,18 +35,18 @@ public class FixedString_24Android extends FixedString_24 implements Parcelable 
          */
         @Override
         @NonNull
-        public FixedString_24Android[] newArray(int size) {
-            return new FixedString_24Android[size];
+        public FixedString24Android[] newArray(int size) {
+            return new FixedString24Android[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public FixedString_24Android createFromByteArray(@NonNull byte[] values) {
+        public FixedString24Android createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FIXED_STRING_24_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new FixedString_24Android(bluetoothGattCharacteristic);
+            return new FixedString24Android(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,16 +56,26 @@ public class FixedString_24Android extends FixedString_24 implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AF6
      */
-    public FixedString_24Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public FixedString24Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
     }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param fixedString Fixed String
+     */
+    public FixedString24Android(@NonNull String fixedString) {
+        super(fixedString);
+    }
+
 
     /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel
      */
-    private FixedString_24Android(@NonNull Parcel in) {
+    private FixedString24Android(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
