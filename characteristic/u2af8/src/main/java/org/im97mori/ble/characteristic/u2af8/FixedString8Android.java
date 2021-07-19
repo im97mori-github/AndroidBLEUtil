@@ -13,22 +13,21 @@ import static org.im97mori.ble.constants.CharacteristicUUID.FIXED_STRING_8_CHARA
 /**
  * Fixed String 8 (Characteristics UUID: 0x2AF8)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
-public class FixedString_8Android extends FixedString_8 implements Parcelable {
+public class FixedString8Android extends FixedString8 implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<FixedString_8Android> CREATOR = new ByteArrayCreater<FixedString_8Android>() {
+    public static final ByteArrayCreater<FixedString8Android> CREATOR = new ByteArrayCreater<FixedString8Android>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public FixedString_8Android createFromParcel(@NonNull Parcel in) {
-            return new FixedString_8Android(in);
+        public FixedString8Android createFromParcel(@NonNull Parcel in) {
+            return new FixedString8Android(in);
         }
 
         /**
@@ -36,18 +35,18 @@ public class FixedString_8Android extends FixedString_8 implements Parcelable {
          */
         @Override
         @NonNull
-        public FixedString_8Android[] newArray(int size) {
-            return new FixedString_8Android[size];
+        public FixedString8Android[] newArray(int size) {
+            return new FixedString8Android[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public FixedString_8Android createFromByteArray(@NonNull byte[] values) {
+        public FixedString8Android createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FIXED_STRING_8_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new FixedString_8Android(bluetoothGattCharacteristic);
+            return new FixedString8Android(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,8 +56,17 @@ public class FixedString_8Android extends FixedString_8 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AF8
      */
-    public FixedString_8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public FixedString8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param fixedString Fixed String
+     */
+    public FixedString8Android(@NonNull String fixedString) {
+        super(fixedString);
     }
 
     /**
@@ -66,7 +74,7 @@ public class FixedString_8Android extends FixedString_8 implements Parcelable {
      *
      * @param in Parcel
      */
-    private FixedString_8Android(@NonNull Parcel in) {
+    private FixedString8Android(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
