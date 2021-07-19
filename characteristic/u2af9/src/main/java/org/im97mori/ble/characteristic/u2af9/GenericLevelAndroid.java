@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GENERIC_LEVEL_CHARAC
 /**
  * Generic Level (Characteristics UUID: 0x2AF9)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class GenericLevelAndroid extends GenericLevel implements Parcelable {
 
@@ -59,6 +58,15 @@ public class GenericLevelAndroid extends GenericLevel implements Parcelable {
      */
     public GenericLevelAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param genericLevel Generic Level
+     */
+    public GenericLevelAndroid(int genericLevel) {
+        super(genericLevel);
     }
 
     /**
