@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GLOBAL_TRADE_ITEM_NU
 /**
  * Global Trade Item Number (Characteristics UUID: 0x2AFA)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class GlobalTradeItemNumberAndroid extends GlobalTradeItemNumber implements Parcelable {
 
@@ -59,6 +58,15 @@ public class GlobalTradeItemNumberAndroid extends GlobalTradeItemNumber implemen
      */
     public GlobalTradeItemNumberAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param globalTradeItemNumber Global Trade Item Number
+     */
+    public GlobalTradeItemNumberAndroid(long globalTradeItemNumber) {
+        super(globalTradeItemNumber);
     }
 
     /**
