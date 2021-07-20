@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_ENERGY_CHAR
 /**
  * Luminous Energy (Characteristics UUID: 0x2AFD)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class LuminousEnergyAndroid extends LuminousEnergy implements Parcelable {
 
@@ -59,6 +58,15 @@ public class LuminousEnergyAndroid extends LuminousEnergy implements Parcelable 
      */
     public LuminousEnergyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param luminousEnergy Luminous Energy
+     */
+    public LuminousEnergyAndroid(int luminousEnergy) {
+        super(luminousEnergy);
     }
 
     /**
