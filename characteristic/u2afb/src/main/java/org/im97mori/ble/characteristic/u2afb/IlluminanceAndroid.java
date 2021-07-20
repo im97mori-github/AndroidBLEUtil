@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ILLUMINANCE_CHARACTE
 /**
  * Illuminance (Characteristics UUID: 0x2AFB)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class IlluminanceAndroid extends Illuminance implements Parcelable {
 
@@ -59,6 +58,15 @@ public class IlluminanceAndroid extends Illuminance implements Parcelable {
      */
     public IlluminanceAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param illuminance Illuminance
+     */
+    public IlluminanceAndroid(int illuminance) {
+        super(illuminance);
     }
 
     /**
