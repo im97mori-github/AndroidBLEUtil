@@ -47,7 +47,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -120,7 +120,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(luminousEnergy);
         assertEquals(luminousEnergy, result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(luminousEnergy * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(luminousEnergy * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -130,7 +130,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(luminousEnergy);
         assertEquals(luminousEnergy, result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(luminousEnergy * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(luminousEnergy * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -140,7 +140,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(luminousEnergy);
         assertEquals(luminousEnergy, result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(LuminousEnergy.LUMINOUS_ENERGY_VALUE_MAXIMUM, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(LuminousEnergy.LUMINOUS_ENERGY_VALUE_MAXIMUM, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -150,7 +150,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(luminousEnergy);
         assertEquals(luminousEnergy, result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(luminousEnergy * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(luminousEnergy * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -160,7 +160,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(luminousEnergy);
         assertEquals(luminousEnergy, result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(luminousEnergy * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(luminousEnergy * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
@@ -170,7 +170,7 @@ public class LuminousEnergyAndroidTest {
         LuminousEnergyAndroid result = new LuminousEnergyAndroid(luminousEnergy);
         assertEquals(luminousEnergy, result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
-        assertEquals(LuminousEnergy.LUMINOUS_ENERGY_VALUE_MINIMUM, result.getLuminousEfficacyLumenHour(), 0);
+        assertEquals(LuminousEnergy.LUMINOUS_ENERGY_VALUE_MINIMUM, result.getLuminousEnergyLumenHour(), 0);
     }
 
     @Test
