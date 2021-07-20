@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_EFFICACY_CH
 /**
  * Luminous Efficacy (Characteristics UUID: 0x2AFC)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class LuminousEfficacyAndroid extends LuminousEfficacy implements Parcelable {
 
@@ -59,6 +58,15 @@ public class LuminousEfficacyAndroid extends LuminousEfficacy implements Parcela
      */
     public LuminousEfficacyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param luminousEfficacy Luminous Efficacy
+     */
+    public LuminousEfficacyAndroid(int luminousEfficacy) {
+        super(luminousEfficacy);
     }
 
     /**
