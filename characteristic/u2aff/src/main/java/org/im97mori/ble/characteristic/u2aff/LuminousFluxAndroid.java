@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_FLUX_CHARAC
 /**
  * Luminous Flux (Characteristics UUID: 0x2AFF)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class LuminousFluxAndroid extends LuminousFlux implements Parcelable {
 
@@ -59,6 +58,15 @@ public class LuminousFluxAndroid extends LuminousFlux implements Parcelable {
      */
     public LuminousFluxAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param luminousFlux Luminous Flux
+     */
+    public LuminousFluxAndroid(int luminousFlux) {
+        super(luminousFlux);
     }
 
     /**
