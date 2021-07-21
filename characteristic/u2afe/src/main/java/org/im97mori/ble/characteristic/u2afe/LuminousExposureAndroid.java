@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_EXPOSURE_CH
 /**
  * Luminous Exposure (Characteristics UUID: 0x2AFE)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class LuminousExposureAndroid extends LuminousExposure implements Parcelable {
 
@@ -59,6 +58,15 @@ public class LuminousExposureAndroid extends LuminousExposure implements Parcela
      */
     public LuminousExposureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param luminousExposure Luminous Exposure
+     */
+    public LuminousExposureAndroid(int luminousExposure) {
+        super(luminousExposure);
     }
 
     /**
