@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_FLUX_RANGE_
 /**
  * Luminous Flux Range (Characteristics UUID: 0x2B00)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class LuminousFluxRangeAndroid extends LuminousFluxRange implements Parcelable {
 
@@ -59,6 +58,16 @@ public class LuminousFluxRangeAndroid extends LuminousFluxRange implements Parce
      */
     public LuminousFluxRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param minimumLuminousFlux Minimum Luminous Flux
+     * @param maximumLuminousFlux Maximum Luminous Flux
+     */
+    public LuminousFluxRangeAndroid(int minimumLuminousFlux, int maximumLuminousFlux) {
+        super(minimumLuminousFlux, maximumLuminousFlux);
     }
 
     /**
