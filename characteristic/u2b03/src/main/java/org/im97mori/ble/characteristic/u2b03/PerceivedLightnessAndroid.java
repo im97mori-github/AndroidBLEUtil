@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PERCEIVED_LIGHTNESS_
 /**
  * Perceived Lightness (Characteristics UUID: 0x2B03)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class PerceivedLightnessAndroid extends PerceivedLightness implements Parcelable {
 
@@ -59,6 +58,15 @@ public class PerceivedLightnessAndroid extends PerceivedLightness implements Par
      */
     public PerceivedLightnessAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param perceivedLightness Perceived Lightness
+     */
+    public PerceivedLightnessAndroid(int perceivedLightness) {
+        super(perceivedLightness);
     }
 
     /**
