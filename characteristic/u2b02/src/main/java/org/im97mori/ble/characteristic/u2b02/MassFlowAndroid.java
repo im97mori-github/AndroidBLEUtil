@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MASS_FLOW_CHARACTERI
 /**
  * Mass Flow (Characteristics UUID: 0x2B02)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class MassFlowAndroid extends MassFlow implements Parcelable {
 
@@ -59,6 +58,15 @@ public class MassFlowAndroid extends MassFlow implements Parcelable {
      */
     public MassFlowAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param massFlow Mass Flow
+     */
+    public MassFlowAndroid(int massFlow) {
+        super(massFlow);
     }
 
     /**
