@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_RUNTIME_IN_
 /**
  * Relative Runtime In A Current Range (Characteristics UUID: 0x2B07)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class RelativeRuntimeInACurrentRangeAndroid extends RelativeRuntimeInACurrentRange implements Parcelable {
 
@@ -59,6 +58,17 @@ public class RelativeRuntimeInACurrentRangeAndroid extends RelativeRuntimeInACur
      */
     public RelativeRuntimeInACurrentRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param relativeRuntimeValue Relative Runtime Value
+     * @param minimumCurrent       Minimum Current
+     * @param maximumCurrent       Maximum Current
+     */
+    public RelativeRuntimeInACurrentRangeAndroid(int relativeRuntimeValue, int minimumCurrent, int maximumCurrent) {
+        super(relativeRuntimeValue, minimumCurrent, maximumCurrent);
     }
 
     /**
