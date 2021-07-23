@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.POWER_CHARACTERISTIC
 /**
  * Power (Characteristics UUID: 0x2B05)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class PowerAndroid extends Power implements Parcelable {
 
@@ -59,6 +58,15 @@ public class PowerAndroid extends Power implements Parcelable {
      */
     public PowerAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param power Power
+     */
+    public PowerAndroid(int power) {
+        super(power);
     }
 
     /**
