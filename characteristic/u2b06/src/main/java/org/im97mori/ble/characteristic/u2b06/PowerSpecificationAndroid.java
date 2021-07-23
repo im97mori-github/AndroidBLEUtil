@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.POWER_SPECIFICATION_
 /**
  * Power Specification (Characteristics UUID: 0x2B06)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class PowerSpecificationAndroid extends PowerSpecification implements Parcelable {
 
@@ -59,6 +58,17 @@ public class PowerSpecificationAndroid extends PowerSpecification implements Par
      */
     public PowerSpecificationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param minimumPowerValue Minimum Power Value
+     * @param typicalPowerValue Typical Power Value
+     * @param maximumPowerValue Maximum Power Value
+     */
+    public PowerSpecificationAndroid(int minimumPowerValue, int typicalPowerValue, int maximumPowerValue) {
+        super(minimumPowerValue, typicalPowerValue, maximumPowerValue);
     }
 
     /**
