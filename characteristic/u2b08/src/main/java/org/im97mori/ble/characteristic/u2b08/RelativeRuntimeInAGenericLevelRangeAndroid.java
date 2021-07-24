@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_RUNTIME_IN_
 /**
  * Relative Runtime In A Generic Level Range (Characteristics UUID: 0x2B08)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class RelativeRuntimeInAGenericLevelRangeAndroid extends RelativeRuntimeInAGenericLevelRange implements Parcelable {
 
@@ -59,6 +58,17 @@ public class RelativeRuntimeInAGenericLevelRangeAndroid extends RelativeRuntimeI
      */
     public RelativeRuntimeInAGenericLevelRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param relativeValue       Relative Value
+     * @param minimumGenericLevel Minimum Generic Level
+     * @param maximumGenericLevel Maximum Generic Level
+     */
+    public RelativeRuntimeInAGenericLevelRangeAndroid(int relativeValue, int minimumGenericLevel, int maximumGenericLevel) {
+        super(relativeValue, minimumGenericLevel, maximumGenericLevel);
     }
 
     /**
