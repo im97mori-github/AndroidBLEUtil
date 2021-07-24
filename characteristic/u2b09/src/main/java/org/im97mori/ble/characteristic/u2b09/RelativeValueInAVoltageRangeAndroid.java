@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_
 /**
  * Relative Value In A Voltage Range (Characteristics UUID: 0x2B09)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class RelativeValueInAVoltageRangeAndroid extends RelativeValueInAVoltageRange implements Parcelable {
 
@@ -59,6 +58,17 @@ public class RelativeValueInAVoltageRangeAndroid extends RelativeValueInAVoltage
      */
     public RelativeValueInAVoltageRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param relativeValue  Relative Value
+     * @param minimumVoltage Minimum Voltage
+     * @param maximumVoltage Maximum Voltage
+     */
+    public RelativeValueInAVoltageRangeAndroid(int relativeValue, int minimumVoltage, int maximumVoltage) {
+        super(relativeValue, minimumVoltage, maximumVoltage);
     }
 
     /**
