@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_AN
 /**
  * Relative Value In An Illuminance Range (Characteristics UUID: 0x2B0A)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class RelativeValueInAnIlluminanceRangeAndroid extends RelativeValueInAnIlluminanceRange implements Parcelable {
 
@@ -59,6 +58,17 @@ public class RelativeValueInAnIlluminanceRangeAndroid extends RelativeValueInAnI
      */
     public RelativeValueInAnIlluminanceRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param relativeValue  Relative Value
+     * @param minimumVoltage Minimum Voltage
+     * @param maximumVoltage Maximum Voltage
+     */
+    public RelativeValueInAnIlluminanceRangeAndroid(int relativeValue, int minimumVoltage, int maximumVoltage) {
+        super(relativeValue, minimumVoltage, maximumVoltage);
     }
 
     /**
