@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_
 /**
  * Relative Value In A Temperature Range (Characteristics UUID: 0x2B0C)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class RelativeValueInATemperatureRangeAndroid extends RelativeValueInATemperatureRange implements Parcelable {
 
@@ -59,6 +58,17 @@ public class RelativeValueInATemperatureRangeAndroid extends RelativeValueInATem
      */
     public RelativeValueInATemperatureRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param relativeValue           Relative Value
+     * @param minimumTemperatureValue Minimum Temperature Value
+     * @param maximumTemperatureValue Maximum Temperature Value
+     */
+    public RelativeValueInATemperatureRangeAndroid(int relativeValue, int minimumTemperatureValue, int maximumTemperatureValue) {
+        super(relativeValue, minimumTemperatureValue, maximumTemperatureValue);
     }
 
     /**

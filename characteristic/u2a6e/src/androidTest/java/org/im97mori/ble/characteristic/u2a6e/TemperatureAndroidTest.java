@@ -57,7 +57,6 @@ public class TemperatureAndroidTest {
 
         TemperatureAndroid result1 = new TemperatureAndroid(bluetoothGattCharacteristic);
         assertEquals(0x0201, result1.getTemperature());
-        assertEquals(Temperature.TEMPERATURE_RESOLUTION * 0x0201, result1.getTemperatureDegreesCelsius(), 0);
     }
 
     @Test
