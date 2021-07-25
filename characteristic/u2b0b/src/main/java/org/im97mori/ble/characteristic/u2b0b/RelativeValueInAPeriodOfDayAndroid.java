@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_
 /**
  * Relative Value In A Period Of Day (Characteristics UUID: 0x2B0B)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class RelativeValueInAPeriodOfDayAndroid extends RelativeValueInAPeriodOfDay implements Parcelable {
 
@@ -59,6 +58,17 @@ public class RelativeValueInAPeriodOfDayAndroid extends RelativeValueInAPeriodOf
      */
     public RelativeValueInAPeriodOfDayAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param relativeValue Relative Value
+     * @param startTime     Start Time
+     * @param endTime       End Time
+     */
+    public RelativeValueInAPeriodOfDayAndroid(int relativeValue, int startTime, int endTime) {
+        super(relativeValue, startTime, endTime);
     }
 
     /**
