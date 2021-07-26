@@ -13,22 +13,21 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_8_IN_A_P
 /**
  * Temperature 8 In A Period Of Day (Characteristics UUID: 0x2B0E)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
-public class Temperature_8InAPeriodOfDayAndroid extends Temperature_8InAPeriodOfDay implements Parcelable {
+public class Temperature8InAPeriodOfDayAndroid extends Temperature8InAPeriodOfDay implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<Temperature_8InAPeriodOfDayAndroid> CREATOR = new ByteArrayCreater<Temperature_8InAPeriodOfDayAndroid>() {
+    public static final ByteArrayCreater<Temperature8InAPeriodOfDayAndroid> CREATOR = new ByteArrayCreater<Temperature8InAPeriodOfDayAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public Temperature_8InAPeriodOfDayAndroid createFromParcel(@NonNull Parcel in) {
-            return new Temperature_8InAPeriodOfDayAndroid(in);
+        public Temperature8InAPeriodOfDayAndroid createFromParcel(@NonNull Parcel in) {
+            return new Temperature8InAPeriodOfDayAndroid(in);
         }
 
         /**
@@ -36,18 +35,18 @@ public class Temperature_8InAPeriodOfDayAndroid extends Temperature_8InAPeriodOf
          */
         @Override
         @NonNull
-        public Temperature_8InAPeriodOfDayAndroid[] newArray(int size) {
-            return new Temperature_8InAPeriodOfDayAndroid[size];
+        public Temperature8InAPeriodOfDayAndroid[] newArray(int size) {
+            return new Temperature8InAPeriodOfDayAndroid[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public Temperature_8InAPeriodOfDayAndroid createFromByteArray(@NonNull byte[] values) {
+        public Temperature8InAPeriodOfDayAndroid createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_8_IN_A_PERIOD_OF_DAY_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new Temperature_8InAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+            return new Temperature8InAPeriodOfDayAndroid(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,8 +56,19 @@ public class Temperature_8InAPeriodOfDayAndroid extends Temperature_8InAPeriodOf
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B0E
      */
-    public Temperature_8InAPeriodOfDayAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public Temperature8InAPeriodOfDayAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param temperature Temperature
+     * @param startTime   Start Time
+     * @param endTime     End Time
+     */
+    public Temperature8InAPeriodOfDayAndroid(int temperature, int startTime, int endTime) {
+        super(temperature, startTime, endTime);
     }
 
     /**
@@ -66,7 +76,7 @@ public class Temperature_8InAPeriodOfDayAndroid extends Temperature_8InAPeriodOf
      *
      * @param in Parcel
      */
-    private Temperature_8InAPeriodOfDayAndroid(@NonNull Parcel in) {
+    private Temperature8InAPeriodOfDayAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
