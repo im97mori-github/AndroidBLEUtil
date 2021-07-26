@@ -13,22 +13,21 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_8_CHARAC
 /**
  * Temperature 8 (Characteristics UUID: 0x2B0D)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
-public class Temperature_8Android extends Temperature_8 implements Parcelable {
+public class Temperature8Android extends Temperature8 implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<Temperature_8Android> CREATOR = new ByteArrayCreater<Temperature_8Android>() {
+    public static final ByteArrayCreater<Temperature8Android> CREATOR = new ByteArrayCreater<Temperature8Android>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public Temperature_8Android createFromParcel(@NonNull Parcel in) {
-            return new Temperature_8Android(in);
+        public Temperature8Android createFromParcel(@NonNull Parcel in) {
+            return new Temperature8Android(in);
         }
 
         /**
@@ -36,18 +35,18 @@ public class Temperature_8Android extends Temperature_8 implements Parcelable {
          */
         @Override
         @NonNull
-        public Temperature_8Android[] newArray(int size) {
-            return new Temperature_8Android[size];
+        public Temperature8Android[] newArray(int size) {
+            return new Temperature8Android[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public Temperature_8Android createFromByteArray(@NonNull byte[] values) {
+        public Temperature8Android createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_8_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new Temperature_8Android(bluetoothGattCharacteristic);
+            return new Temperature8Android(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,8 +56,17 @@ public class Temperature_8Android extends Temperature_8 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B0D
      */
-    public Temperature_8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public Temperature8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param temperature8 Temperature 8
+     */
+    public Temperature8Android(int temperature8) {
+        super(temperature8);
     }
 
     /**
@@ -66,7 +74,7 @@ public class Temperature_8Android extends Temperature_8 implements Parcelable {
      *
      * @param in Parcel
      */
-    private Temperature_8Android(@NonNull Parcel in) {
+    private Temperature8Android(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
