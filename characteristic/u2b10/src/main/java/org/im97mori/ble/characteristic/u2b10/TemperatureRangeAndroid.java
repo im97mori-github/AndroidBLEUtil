@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_RANGE_CH
 /**
  * Temperature Range (Characteristics UUID: 0x2B10)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class TemperatureRangeAndroid extends TemperatureRange implements Parcelable {
 
@@ -59,6 +58,16 @@ public class TemperatureRangeAndroid extends TemperatureRange implements Parcela
      */
     public TemperatureRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param minimumTemperature Minimum Temperature
+     * @param maximumTemperature Maximum Temperature
+     */
+    public TemperatureRangeAndroid(int minimumTemperature, int maximumTemperature) {
+        super(minimumTemperature, maximumTemperature);
     }
 
     /**
