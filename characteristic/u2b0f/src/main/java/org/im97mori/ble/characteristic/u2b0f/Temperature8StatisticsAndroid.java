@@ -13,22 +13,21 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_8_STATIS
 /**
  * Temperature 8 Statistics (Characteristics UUID: 0x2B0F)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
-public class Temperature_8StatisticsAndroid extends Temperature_8Statistics implements Parcelable {
+public class Temperature8StatisticsAndroid extends Temperature8Statistics implements Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<Temperature_8StatisticsAndroid> CREATOR = new ByteArrayCreater<Temperature_8StatisticsAndroid>() {
+    public static final ByteArrayCreater<Temperature8StatisticsAndroid> CREATOR = new ByteArrayCreater<Temperature8StatisticsAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public Temperature_8StatisticsAndroid createFromParcel(@NonNull Parcel in) {
-            return new Temperature_8StatisticsAndroid(in);
+        public Temperature8StatisticsAndroid createFromParcel(@NonNull Parcel in) {
+            return new Temperature8StatisticsAndroid(in);
         }
 
         /**
@@ -36,18 +35,18 @@ public class Temperature_8StatisticsAndroid extends Temperature_8Statistics impl
          */
         @Override
         @NonNull
-        public Temperature_8StatisticsAndroid[] newArray(int size) {
-            return new Temperature_8StatisticsAndroid[size];
+        public Temperature8StatisticsAndroid[] newArray(int size) {
+            return new Temperature8StatisticsAndroid[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public Temperature_8StatisticsAndroid createFromByteArray(@NonNull byte[] values) {
+        public Temperature8StatisticsAndroid createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_8_STATISTICS_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new Temperature_8StatisticsAndroid(bluetoothGattCharacteristic);
+            return new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,8 +56,21 @@ public class Temperature_8StatisticsAndroid extends Temperature_8Statistics impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B0F
      */
-    public Temperature_8StatisticsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public Temperature8StatisticsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param average Average
+     * @param standardDeviationValue Standard Deviation Value
+     * @param minimumValue Minimum Value
+     * @param maximumValue Maximum Value
+     * @param sensingDuration Sensing Duration
+     */
+    public Temperature8StatisticsAndroid(int average, int standardDeviationValue, int minimumValue, int maximumValue, int sensingDuration) {
+        super(average, standardDeviationValue, minimumValue, maximumValue, sensingDuration);
     }
 
     /**
@@ -66,7 +78,7 @@ public class Temperature_8StatisticsAndroid extends Temperature_8Statistics impl
      *
      * @param in Parcel
      */
-    private Temperature_8StatisticsAndroid(@NonNull Parcel in) {
+    private Temperature8StatisticsAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
