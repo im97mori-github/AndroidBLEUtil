@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_STATISTI
 /**
  * Temperature Statistics (Characteristics UUID: 0x2B11)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class TemperatureStatisticsAndroid extends TemperatureStatistics implements Parcelable {
 
@@ -59,6 +58,19 @@ public class TemperatureStatisticsAndroid extends TemperatureStatistics implemen
      */
     public TemperatureStatisticsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param averageTemperature           Average Temperature
+     * @param standardDeviationTemperature Standard Deviation Temperature
+     * @param minimumTemperature           Minimum Temperature
+     * @param maximumTemperature           Maximum Temperature
+     * @param sensingDuration              Sensing Duration
+     */
+    public TemperatureStatisticsAndroid(int averageTemperature, int standardDeviationTemperature, int minimumTemperature, int maximumTemperature, int sensingDuration) {
+        super(averageTemperature, standardDeviationTemperature, minimumTemperature, maximumTemperature, sensingDuration);
     }
 
     /**
