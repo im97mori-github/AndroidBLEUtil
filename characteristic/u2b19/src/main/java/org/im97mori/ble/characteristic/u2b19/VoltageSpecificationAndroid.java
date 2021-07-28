@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLTAGE_SPECIFICATIO
 /**
  * Voltage Specification (Characteristics UUID: 0x2B19)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class VoltageSpecificationAndroid extends VoltageSpecification implements Parcelable {
 
@@ -59,6 +58,17 @@ public class VoltageSpecificationAndroid extends VoltageSpecification implements
      */
     public VoltageSpecificationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param minimumVoltageValue Minimum Voltage Value
+     * @param typicalVoltageValue Typical Voltage Value
+     * @param maximumVoltageValue Maximum Voltage Value
+     */
+    public VoltageSpecificationAndroid(int minimumVoltageValue, int typicalVoltageValue, int maximumVoltageValue) {
+        super(minimumVoltageValue, typicalVoltageValue, maximumVoltageValue);
     }
 
     /**
