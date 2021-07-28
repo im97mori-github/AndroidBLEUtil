@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_FLOW_CHARACTE
 /**
  * Volume Flow (Characteristics UUID: 0x2B1B)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class VolumeFlowAndroid extends VolumeFlow implements Parcelable {
 
@@ -59,6 +58,15 @@ public class VolumeFlowAndroid extends VolumeFlow implements Parcelable {
      */
     public VolumeFlowAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param volumeFlow Volume Flow
+     */
+    public VolumeFlowAndroid(int volumeFlow) {
+        super(volumeFlow);
     }
 
     /**
