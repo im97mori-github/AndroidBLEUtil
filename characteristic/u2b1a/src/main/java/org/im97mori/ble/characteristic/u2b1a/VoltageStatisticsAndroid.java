@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLTAGE_STATISTICS_C
 /**
  * Voltage Statistics (Characteristics UUID: 0x2B1A)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class VoltageStatisticsAndroid extends VoltageStatistics implements Parcelable {
 
@@ -59,6 +58,19 @@ public class VoltageStatisticsAndroid extends VoltageStatistics implements Parce
      */
     public VoltageStatisticsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param averageVoltageValue           Average Voltage Value
+     * @param standardDeviationVoltageValue Standard Deviation Voltage Value
+     * @param minimumVoltageValue           Minimum Voltage Value
+     * @param maximumVoltageValue           Maximum Voltage Value
+     * @param sensingDuration               Sensing Duration
+     */
+    public VoltageStatisticsAndroid(int averageVoltageValue, int standardDeviationVoltageValue, int minimumVoltageValue, int maximumVoltageValue, int sensingDuration) {
+        super(averageVoltageValue, standardDeviationVoltageValue, minimumVoltageValue, maximumVoltageValue, sensingDuration);
     }
 
     /**
