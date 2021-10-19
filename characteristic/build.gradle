@@ -188,6 +188,7 @@ dependencies {
     api "${myGroupId}:${characteristicU2b1fAndroid.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2b29Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2b2aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b34Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2b37Android.artifactId}:${loadVersion}"
 }
 
