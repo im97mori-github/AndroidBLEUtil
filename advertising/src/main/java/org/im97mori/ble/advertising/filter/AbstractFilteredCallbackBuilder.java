@@ -30,10 +30,10 @@ import org.im97mori.ble.advertising.ServiceData128BitUUID;
 import org.im97mori.ble.advertising.ServiceData16BitUUID;
 import org.im97mori.ble.advertising.ServiceData32BitUUID;
 import org.im97mori.ble.advertising.ShortenedLocalName;
-import org.im97mori.ble.advertising.SlaveConnectionIntervalRange;
+import org.im97mori.ble.advertising.PeripheralConnectionIntervalRange;
 import org.im97mori.ble.advertising.TransportDiscoveryData;
 import org.im97mori.ble.advertising.TxPowerLevel;
-import org.im97mori.ble.advertising.UniformRsourceIdentifier;
+import org.im97mori.ble.advertising.UniformResourceIdentifier;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -1155,51 +1155,51 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     }
 
     /**
-     * add Slave Connection Interval Range filter
+     * add Peripheral Connection Interval Range filter
      *
-     * @param data Slave Connection Interval Range array
+     * @param data Peripheral Connection Interval Range array
      * @return myself
      * @see ByteArrayCreater#createFromByteArray(byte[])
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addSlaveConnectionIntervalRangeFilter(@NonNull byte[] data) {
-        return addSlaveConnectionIntervalRangeFilter(data, 0, data[0]);
+    public AbstractFilteredCallbackBuilder<T> addPeripheralConnectionIntervalRangeFilter(@NonNull byte[] data) {
+        return addPeripheralConnectionIntervalRangeFilter(data, 0, data[0]);
     }
 
     /**
-     * add Slave Connection Interval Range filter
+     * add Peripheral Connection Interval Range filter
      *
-     * @param data   {@link SlaveConnectionIntervalRange#SlaveConnectionIntervalRange(byte[], int, int)} 1st parameter
-     * @param offset {@link SlaveConnectionIntervalRange#SlaveConnectionIntervalRange(byte[], int, int)} 2nd parameter
-     * @param length {@link SlaveConnectionIntervalRange#SlaveConnectionIntervalRange(byte[], int, int)} 3rd parameter
+     * @param data   {@link PeripheralConnectionIntervalRange#PeripheralConnectionIntervalRange(byte[], int, int)} 1st parameter
+     * @param offset {@link PeripheralConnectionIntervalRange#PeripheralConnectionIntervalRange(byte[], int, int)} 2nd parameter
+     * @param length {@link PeripheralConnectionIntervalRange#PeripheralConnectionIntervalRange(byte[], int, int)} 3rd parameter
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addSlaveConnectionIntervalRangeFilter(@NonNull byte[] data, int offset, int length) {
-        return addSlaveConnectionIntervalRangeFilter(new SlaveConnectionIntervalRange(data, offset, length));
+    public AbstractFilteredCallbackBuilder<T> addPeripheralConnectionIntervalRangeFilter(@NonNull byte[] data, int offset, int length) {
+        return addPeripheralConnectionIntervalRangeFilter(new PeripheralConnectionIntervalRange(data, offset, length));
     }
 
     /**
-     * add Slave Connection Interval Range filter
+     * add Peripheral Connection Interval Range filter
      *
-     * @param expect {@link SlaveConnectionIntervalRange} instance
+     * @param expect {@link PeripheralConnectionIntervalRange} instance
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addSlaveConnectionIntervalRangeFilter(@NonNull SlaveConnectionIntervalRange expect) {
-        mFilterList.add(new SlaveConnectionIntervalRangeFilter(expect));
+    public AbstractFilteredCallbackBuilder<T> addPeripheralConnectionIntervalRangeFilter(@NonNull PeripheralConnectionIntervalRange expect) {
+        mFilterList.add(new PeripheralConnectionIntervalRangeFilter(expect));
         return this;
     }
 
     /**
-     * add Slave Connection Interval Range filter
+     * add Peripheral Connection Interval Range filter
      *
-     * @param expectList List of {@link SlaveConnectionIntervalRange} instance
+     * @param expectList List of {@link PeripheralConnectionIntervalRange} instance
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addSlaveConnectionIntervalRangeFilter(@NonNull List<? extends SlaveConnectionIntervalRange> expectList) {
-        mFilterList.add(new SlaveConnectionIntervalRangeFilter(expectList));
+    public AbstractFilteredCallbackBuilder<T> addPeripheralConnectionIntervalRangeFilter(@NonNull List<? extends PeripheralConnectionIntervalRange> expectList) {
+        mFilterList.add(new PeripheralConnectionIntervalRangeFilter(expectList));
         return this;
     }
 
@@ -1297,44 +1297,44 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @see ByteArrayCreater#createFromByteArray(byte[])
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addUniformRsourceIdentifier(@NonNull byte[] data) {
-        return addUniformRsourceIdentifier(data, 0, data[0]);
+    public AbstractFilteredCallbackBuilder<T> addUniformResourceIdentifier(@NonNull byte[] data) {
+        return addUniformResourceIdentifier(data, 0, data[0]);
     }
 
     /**
      * add URI filter
      *
-     * @param data   {@link UniformRsourceIdentifier#UniformRsourceIdentifier(byte[], int, int)} 1st parameter
-     * @param offset {@link UniformRsourceIdentifier#UniformRsourceIdentifier(byte[], int, int)} 2nd parameter
-     * @param length {@link UniformRsourceIdentifier#UniformRsourceIdentifier(byte[], int, int)} 3rd parameter
+     * @param data   {@link UniformResourceIdentifier#UniformResourceIdentifier(byte[], int, int)} 1st parameter
+     * @param offset {@link UniformResourceIdentifier#UniformResourceIdentifier(byte[], int, int)} 2nd parameter
+     * @param length {@link UniformResourceIdentifier#UniformResourceIdentifier(byte[], int, int)} 3rd parameter
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addUniformRsourceIdentifier(@NonNull byte[] data, int offset, int length) {
-        return addUniformRsourceIdentifier(new UniformRsourceIdentifier(data, offset, length));
+    public AbstractFilteredCallbackBuilder<T> addUniformResourceIdentifier(@NonNull byte[] data, int offset, int length) {
+        return addUniformResourceIdentifier(new UniformResourceIdentifier(data, offset, length));
     }
 
     /**
      * add URI filter
      *
-     * @param expect {@link UniformRsourceIdentifier} instance
+     * @param expect {@link UniformResourceIdentifier} instance
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addUniformRsourceIdentifier(@NonNull UniformRsourceIdentifier expect) {
-        mFilterList.add(new UniformRsourceIdentifierFilter(expect));
+    public AbstractFilteredCallbackBuilder<T> addUniformResourceIdentifier(@NonNull UniformResourceIdentifier expect) {
+        mFilterList.add(new UniformResourceIdentifierFilter(expect));
         return this;
     }
 
     /**
      * add URI filter
      *
-     * @param expectList {@link UniformRsourceIdentifier} instance
+     * @param expectList {@link UniformResourceIdentifier} instance
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addUniformRsourceIdentifier(@NonNull List<? extends UniformRsourceIdentifier> expectList) {
-        mFilterList.add(new UniformRsourceIdentifierFilter(expectList));
+    public AbstractFilteredCallbackBuilder<T> addUniformResourceIdentifier(@NonNull List<? extends UniformResourceIdentifier> expectList) {
+        mFilterList.add(new UniformResourceIdentifierFilter(expectList));
         return this;
     }
 

@@ -39,7 +39,7 @@ import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_128_BIT
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_SHORTENED_LOCAL_NAME;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_TX_POWER_LEVEL;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
@@ -76,7 +76,7 @@ public class AdvertisingDataParser {
             set.add(DATA_TYPE_FLAGS);
             set.add(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA);
             set.add(DATA_TYPE_TX_POWER_LEVEL);
-            set.add(DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE);
+            set.add(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE);
             set.add(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS);
             set.add(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS);
             set.add(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS);
@@ -300,14 +300,14 @@ public class AdvertisingDataParser {
         private final List<TxPowerLevelAndroid> mTxPowerLevelList = new ArrayList<>();
 
         /**
-         * Latest Slave Connection Interval Range
+         * Latest Peripheral Connection Interval Range
          */
-        private SlaveConnectionIntervalRangeAndroid mSlaveConnectionIntervalRange;
+        private PeripheralConnectionIntervalRangeAndroid mPeripheralConnectionIntervalRange;
 
         /**
-         * All Slave Connection Interval Range List
+         * All Peripheral Connection Interval Range List
          */
-        private final List<SlaveConnectionIntervalRangeAndroid> mSlaveConnectionIntervalRangeList = new ArrayList<>();
+        private final List<PeripheralConnectionIntervalRangeAndroid> mPeripheralConnectionIntervalRangeList = new ArrayList<>();
 
         /**
          * Latest List of 16-bit Service Solicitation UUIDs
@@ -392,12 +392,12 @@ public class AdvertisingDataParser {
         /**
          * Latest URI
          */
-        private UniformRsourceIdentifierAndroid mUniformRsourceIdentifier;
+        private UniformResourceIdentifierAndroid mUniformResourceIdentifier;
 
         /**
          * All URI List
          */
-        private final List<UniformRsourceIdentifierAndroid> mUniformRsourceIdentifierList = new ArrayList<>();
+        private final List<UniformResourceIdentifierAndroid> mUniformResourceIdentifierList = new ArrayList<>();
 
         /**
          * Indoor Positioning
@@ -630,19 +630,19 @@ public class AdvertisingDataParser {
         }
 
         /**
-         * @return Latest Slave Connection Interval Range
+         * @return Latest Peripheral Connection Interval Range
          */
         @Nullable
-        public SlaveConnectionIntervalRangeAndroid getSlaveConnectionIntervalRange() {
-            return mSlaveConnectionIntervalRange;
+        public PeripheralConnectionIntervalRangeAndroid getPeripheralConnectionIntervalRange() {
+            return mPeripheralConnectionIntervalRange;
         }
 
         /**
-         * @return All All Slave Connection Interval Range List List
+         * @return All Peripheral Connection Interval Range List List
          */
         @NonNull
-        public List<SlaveConnectionIntervalRangeAndroid> getSlaveConnectionIntervalRangeList() {
-            return mSlaveConnectionIntervalRangeList;
+        public List<PeripheralConnectionIntervalRangeAndroid> getPeripheralConnectionIntervalRangeList() {
+            return mPeripheralConnectionIntervalRangeList;
         }
 
         /**
@@ -777,16 +777,16 @@ public class AdvertisingDataParser {
          * @return Latest URI
          */
         @Nullable
-        public UniformRsourceIdentifierAndroid getUniformRsourceIdentifier() {
-            return mUniformRsourceIdentifier;
+        public UniformResourceIdentifierAndroid getUniformResourceIdentifier() {
+            return mUniformResourceIdentifier;
         }
 
         /**
          * @return All URI List
          */
         @NonNull
-        public List<UniformRsourceIdentifierAndroid> getUniformRsourceIdentifierList() {
-            return mUniformRsourceIdentifierList;
+        public List<UniformResourceIdentifierAndroid> getUniformResourceIdentifierList() {
+            return mUniformResourceIdentifierList;
         }
 
         /**
@@ -864,9 +864,9 @@ public class AdvertisingDataParser {
                 } else if (data instanceof TxPowerLevelAndroid) {
                     mTxPowerLevel = (TxPowerLevelAndroid) data;
                     mTxPowerLevelList.add(mTxPowerLevel);
-                } else if (data instanceof SlaveConnectionIntervalRangeAndroid) {
-                    mSlaveConnectionIntervalRange = (SlaveConnectionIntervalRangeAndroid) data;
-                    mSlaveConnectionIntervalRangeList.add(mSlaveConnectionIntervalRange);
+                } else if (data instanceof PeripheralConnectionIntervalRangeAndroid) {
+                    mPeripheralConnectionIntervalRange = (PeripheralConnectionIntervalRangeAndroid) data;
+                    mPeripheralConnectionIntervalRangeList.add(mPeripheralConnectionIntervalRange);
                 } else if (data instanceof ListOf16BitServiceSolicitationUUIDsAndroid) {
                     mListOf16BitServiceSolicitationUUIDs = (ListOf16BitServiceSolicitationUUIDsAndroid) data;
                     mListOf16BitServiceSolicitationUUIDsList.add(mListOf16BitServiceSolicitationUUIDs);
@@ -893,9 +893,9 @@ public class AdvertisingDataParser {
                     mRandomTargetAddress = (RandomTargetAddressAndroid) data;
                 } else if (data instanceof AdvertisingInterval) {
                     mAdvertisingInterval = (AdvertisingInterval) data;
-                } else if (data instanceof UniformRsourceIdentifierAndroid) {
-                    mUniformRsourceIdentifier = (UniformRsourceIdentifierAndroid) data;
-                    mUniformRsourceIdentifierList.add(mUniformRsourceIdentifier);
+                } else if (data instanceof UniformResourceIdentifierAndroid) {
+                    mUniformResourceIdentifier = (UniformResourceIdentifierAndroid) data;
+                    mUniformResourceIdentifierList.add(mUniformResourceIdentifier);
                 } else if (data instanceof IndoorPositioningAndroid) {
                     mIndoorPositioning = (IndoorPositioningAndroid) data;
                 } else if (data instanceof TransportDiscoveryDataAndroid) {
@@ -976,8 +976,8 @@ public class AdvertisingDataParser {
                         resultList.add(new ManufacturerSpecificDataAndroid(data, i, dataLength));
                     } else if (DATA_TYPE_TX_POWER_LEVEL == dataType) {
                         resultList.add(new TxPowerLevelAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE == dataType) {
-                        resultList.add(new SlaveConnectionIntervalRangeAndroid(data, i, dataLength));
+                    } else if (DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE == dataType) {
+                        resultList.add(new PeripheralConnectionIntervalRangeAndroid(data, i, dataLength));
                     } else if (DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
                         resultList.add(new ListOf16BitServiceSolicitationUUIDsAndroid(data, i, dataLength));
                     } else if (DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
@@ -999,7 +999,7 @@ public class AdvertisingDataParser {
                     } else if (DATA_TYPE_ADVERTISING_INTERVAL == dataType) {
                         resultList.add(new AdvertisingIntervalAndroid(data, i, dataLength));
                     } else if (DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER == dataType) {
-                        resultList.add(new UniformRsourceIdentifierAndroid(data, i, dataLength));
+                        resultList.add(new UniformResourceIdentifierAndroid(data, i, dataLength));
                     } else if (DATA_TYPE_INDOOR_POSITIONING == dataType) {
                         resultList.add(new IndoorPositioningAndroid(data, i, dataLength));
                     } else if (DATA_TYPE_TRANSPORT_DISCOVERY_DATA == dataType) {

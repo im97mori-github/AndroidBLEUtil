@@ -4,22 +4,22 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.advertising.SlaveConnectionIntervalRange.SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.advertising.PeripheralConnectionIntervalRange.PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("unused")
-public class SlaveConnectionIntervalRangeTest {
+public class PeripheralConnectionIntervalRangeTest {
 
     //@formatter:off
     private static final byte[] data_00001;
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -31,7 +31,7 @@ public class SlaveConnectionIntervalRangeTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         data[2] = (byte) 0x00;
         data[3] = (byte) 0x00;
         data[4] = (byte) 0x00;
@@ -43,7 +43,7 @@ public class SlaveConnectionIntervalRangeTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         data[2] = (byte) 0x06;
         data[3] = (byte) 0x00;
         data[4] = (byte) 0x06;
@@ -55,7 +55,7 @@ public class SlaveConnectionIntervalRangeTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         data[2] = (byte) 0x80;
         data[3] = (byte) 0x0c;
         data[4] = (byte) 0x80;
@@ -94,9 +94,9 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE, result1.getDataType());
+        assertEquals(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE, result1.getDataType());
         assertFalse(result1.hasMinimum());
         assertFalse(result1.hasMaximum());
     }
@@ -105,56 +105,56 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE, result1.getDataType());
+        assertEquals(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE, result1.getDataType());
         assertTrue(result1.hasMinimum());
         assertTrue(result1.hasMaximum());
         assertEquals(0, result1.getMinimumValue());
         assertEquals(0, result1.getMaximumValue());
-        assertEquals(0 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
-        assertEquals(0 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+        assertEquals(0 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
     }
 
     @Test
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE, result1.getDataType());
+        assertEquals(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE, result1.getDataType());
         assertTrue(result1.hasMinimum());
         assertTrue(result1.hasMaximum());
         assertEquals(0x0006, result1.getMinimumValue());
         assertEquals(0x0006, result1.getMaximumValue());
-        assertEquals(0x0006 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
-        assertEquals(0x0006 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+        assertEquals(0x0006 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0x0006 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
     }
 
     @Test
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE, result1.getDataType());
+        assertEquals(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE, result1.getDataType());
         assertTrue(result1.hasMinimum());
         assertTrue(result1.hasMaximum());
         assertEquals(0x0c80, result1.getMinimumValue());
         assertEquals(0x0c80, result1.getMaximumValue());
-        assertEquals(0x0c80 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
-        assertEquals(0x0c80 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+        assertEquals(0x0c80 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0x0c80 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
     }
 
     @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        SlaveConnectionIntervalRangeAndroid result2 = SlaveConnectionIntervalRangeAndroid.CREATOR.createFromParcel(parcel);
+        PeripheralConnectionIntervalRangeAndroid result2 = PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getMinimumValue(), result2.getMinimumValue());
@@ -165,11 +165,11 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        SlaveConnectionIntervalRangeAndroid result2 = SlaveConnectionIntervalRangeAndroid.CREATOR.createFromParcel(parcel);
+        PeripheralConnectionIntervalRangeAndroid result2 = PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getMinimumValue(), result2.getMinimumValue());
@@ -180,11 +180,11 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        SlaveConnectionIntervalRangeAndroid result2 = SlaveConnectionIntervalRangeAndroid.CREATOR.createFromParcel(parcel);
+        PeripheralConnectionIntervalRangeAndroid result2 = PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getMinimumValue(), result2.getMinimumValue());
@@ -195,11 +195,11 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        SlaveConnectionIntervalRangeAndroid result2 = SlaveConnectionIntervalRangeAndroid.CREATOR.createFromParcel(parcel);
+        PeripheralConnectionIntervalRangeAndroid result2 = PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getMinimumValue(), result2.getMinimumValue());
@@ -210,7 +210,7 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -218,7 +218,7 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -226,7 +226,7 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -234,7 +234,7 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -242,8 +242,8 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
-        SlaveConnectionIntervalRangeAndroid result2 = SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result2 = PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
@@ -251,8 +251,8 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
-        SlaveConnectionIntervalRangeAndroid result2 = SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result2 = PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
@@ -260,8 +260,8 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
-        SlaveConnectionIntervalRangeAndroid result2 = SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result2 = PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
@@ -269,8 +269,8 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        SlaveConnectionIntervalRangeAndroid result1 = new SlaveConnectionIntervalRangeAndroid(data, 0, data[0]);
-        SlaveConnectionIntervalRangeAndroid result2 = SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
+        PeripheralConnectionIntervalRangeAndroid result2 = PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 

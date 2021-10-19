@@ -80,7 +80,7 @@ public class UniformResourceIdentifierTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        UniformRsourceIdentifierAndroid result1 = new UniformRsourceIdentifierAndroid(data, 0, data[0]);
+        UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
         assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result1.getDataType());
         assertEquals(new String(data, 2, data.length - 2), result1.getUriString());
@@ -91,7 +91,7 @@ public class UniformResourceIdentifierTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        UniformRsourceIdentifierAndroid result1 = new UniformRsourceIdentifierAndroid(data, 0, data[0]);
+        UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
         assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result1.getDataType());
         assertEquals(new String(data, 2, data.length - 2), result1.getUriString());
@@ -102,11 +102,11 @@ public class UniformResourceIdentifierTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        UniformRsourceIdentifierAndroid result1 = new UniformRsourceIdentifierAndroid(data, 0, data[0]);
+        UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        UniformRsourceIdentifierAndroid result2 = UniformRsourceIdentifierAndroid.CREATOR.createFromParcel(parcel);
+        UniformResourceIdentifierAndroid result2 = UniformResourceIdentifierAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getUriString(), result2.getUriString());
@@ -117,11 +117,11 @@ public class UniformResourceIdentifierTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        UniformRsourceIdentifierAndroid result1 = new UniformRsourceIdentifierAndroid(data, 0, data[0]);
+        UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        UniformRsourceIdentifierAndroid result2 = UniformRsourceIdentifierAndroid.CREATOR.createFromParcel(parcel);
+        UniformResourceIdentifierAndroid result2 = UniformResourceIdentifierAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getUriString(), result2.getUriString());
@@ -132,7 +132,7 @@ public class UniformResourceIdentifierTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        UniformRsourceIdentifierAndroid result1 = new UniformRsourceIdentifierAndroid(data, 0, data[0]);
+        UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -140,7 +140,7 @@ public class UniformResourceIdentifierTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        UniformRsourceIdentifierAndroid result1 = new UniformRsourceIdentifierAndroid(data, 0, data[0]);
+        UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -148,8 +148,8 @@ public class UniformResourceIdentifierTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        UniformRsourceIdentifierAndroid result1 = new UniformRsourceIdentifierAndroid(data, 0, data[0]);
-        UniformRsourceIdentifierAndroid result2 = UniformRsourceIdentifierAndroid.CREATOR.createFromByteArray(data);
+        UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
+        UniformResourceIdentifierAndroid result2 = UniformResourceIdentifierAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
@@ -157,8 +157,8 @@ public class UniformResourceIdentifierTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        UniformRsourceIdentifierAndroid result1 = new UniformRsourceIdentifierAndroid(data, 0, data[0]);
-        UniformRsourceIdentifierAndroid result2 = UniformRsourceIdentifierAndroid.CREATOR.createFromByteArray(data);
+        UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
+        UniformResourceIdentifierAndroid result2 = UniformResourceIdentifierAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 

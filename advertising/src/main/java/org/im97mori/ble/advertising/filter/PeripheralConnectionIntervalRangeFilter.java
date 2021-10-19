@@ -3,33 +3,33 @@ package org.im97mori.ble.advertising.filter;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.SlaveConnectionIntervalRange;
+import org.im97mori.ble.advertising.PeripheralConnectionIntervalRange;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * filter for {@link SlaveConnectionIntervalRange}
+ * filter for {@link PeripheralConnectionIntervalRange}
  */
 @SuppressWarnings({"WeakerAccess"})
-public class SlaveConnectionIntervalRangeFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
+public class PeripheralConnectionIntervalRangeFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**
-     * expected List of {@link SlaveConnectionIntervalRange} in Advertising data
+     * expected List of {@link PeripheralConnectionIntervalRange} in Advertising data
      */
-    private final List<? extends SlaveConnectionIntervalRange> mExpect;
+    private final List<? extends PeripheralConnectionIntervalRange> mExpect;
 
     /**
-     * @param expect expected List of {@link SlaveConnectionIntervalRange} in Advertising data
+     * @param expect expected List of {@link PeripheralConnectionIntervalRange} in Advertising data
      */
-    public SlaveConnectionIntervalRangeFilter(@NonNull List<? extends SlaveConnectionIntervalRange> expect) {
+    public PeripheralConnectionIntervalRangeFilter(@NonNull List<? extends PeripheralConnectionIntervalRange> expect) {
         mExpect = expect;
     }
 
     /**
-     * @see #SlaveConnectionIntervalRangeFilter(List)
+     * @see #PeripheralConnectionIntervalRangeFilter(List)
      */
-    public SlaveConnectionIntervalRangeFilter(@NonNull SlaveConnectionIntervalRange... expects) {
+    public PeripheralConnectionIntervalRangeFilter(@NonNull PeripheralConnectionIntervalRange... expects) {
         this(Arrays.asList(expects));
     }
 
@@ -39,7 +39,7 @@ public class SlaveConnectionIntervalRangeFilter implements AdvertisingDataFilter
     @Override
     public boolean isMatched(@NonNull AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
         boolean result = false;
-        List<? extends SlaveConnectionIntervalRange> actual = advertisingDataParseResult.getSlaveConnectionIntervalRangeList();
+        List<? extends PeripheralConnectionIntervalRange> actual = advertisingDataParseResult.getPeripheralConnectionIntervalRangeList();
         if (mExpect.isEmpty()) {
             if (actual.isEmpty()) {
                 result = true;
@@ -48,8 +48,8 @@ public class SlaveConnectionIntervalRangeFilter implements AdvertisingDataFilter
             if (mExpect.size() == actual.size()) {
                 result = true;
                 for (int i = 0; i < mExpect.size(); i++) {
-                    SlaveConnectionIntervalRange expectElement = mExpect.get(i);
-                    SlaveConnectionIntervalRange actualElement = actual.get(i);
+                    PeripheralConnectionIntervalRange expectElement = mExpect.get(i);
+                    PeripheralConnectionIntervalRange actualElement = actual.get(i);
                     if (expectElement.getLength() != actualElement.getLength()
                             || expectElement.getDataType() != actualElement.getDataType()
                             || expectElement.getMinimumValue() != actualElement.getMinimumValue()

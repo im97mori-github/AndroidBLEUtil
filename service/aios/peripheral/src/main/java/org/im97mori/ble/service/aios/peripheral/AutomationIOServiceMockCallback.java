@@ -1550,7 +1550,9 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             }
         }
 
+        //noinspection ComparatorCombinators
         Collections.sort(digitalList, (o1, o2) -> o1.second.compareTo(o2.second));
+        //noinspection ComparatorCombinators
         Collections.sort(analogList, (o1, o2) -> o1.second.compareTo(o2.second));
 
 

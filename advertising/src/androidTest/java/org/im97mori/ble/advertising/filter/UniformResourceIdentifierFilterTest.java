@@ -1,7 +1,7 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.UniformRsourceIdentifierAndroid;
+import org.im97mori.ble.advertising.UniformResourceIdentifierAndroid;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -11,7 +11,7 @@ import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDE
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class UniformRsourceIdentifierFilterTest {
+public class UniformResourceIdentifierFilterTest {
 
     @Test
     public void test_001() {
@@ -19,7 +19,7 @@ public class UniformRsourceIdentifierFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformRsourceIdentifierFilter();
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformResourceIdentifierFilter();
         assertTrue(filter.isMatched(result));
     }
 
@@ -39,7 +39,7 @@ public class UniformRsourceIdentifierFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformRsourceIdentifierFilter(UniformRsourceIdentifierAndroid.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformResourceIdentifierFilter(UniformResourceIdentifierAndroid.CREATOR.createFromByteArray(expectData));
         assertFalse(filter.isMatched(result));
     }
 
@@ -57,7 +57,7 @@ public class UniformRsourceIdentifierFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformRsourceIdentifierFilter();
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformResourceIdentifierFilter();
         assertFalse(filter.isMatched(result));
     }
 
@@ -77,7 +77,7 @@ public class UniformRsourceIdentifierFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformRsourceIdentifierFilter(UniformRsourceIdentifierAndroid.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformResourceIdentifierFilter(UniformResourceIdentifierAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -98,9 +98,9 @@ public class UniformRsourceIdentifierFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformRsourceIdentifierFilter(
-                new UniformRsourceIdentifierAndroid(expectData, 0, expectData.length / 2 - 1)
-                , new UniformRsourceIdentifierAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformResourceIdentifierFilter(
+                new UniformResourceIdentifierAndroid(expectData, 0, expectData.length / 2 - 1)
+                , new UniformResourceIdentifierAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
         );
         assertFalse(filter.isMatched(result));
     }
@@ -122,8 +122,8 @@ public class UniformRsourceIdentifierFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformRsourceIdentifierFilter(
-                new UniformRsourceIdentifierAndroid(expectData, 0, expectData.length - 1)
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformResourceIdentifierFilter(
+                new UniformResourceIdentifierAndroid(expectData, 0, expectData.length - 1)
         );
         assertFalse(filter.isMatched(result));
     }
@@ -145,9 +145,9 @@ public class UniformRsourceIdentifierFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformRsourceIdentifierFilter(
-                new UniformRsourceIdentifierAndroid(expectData, 0, expectData.length / 2 - 1)
-                , new UniformRsourceIdentifierAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new UniformResourceIdentifierFilter(
+                new UniformResourceIdentifierAndroid(expectData, 0, expectData.length / 2 - 1)
+                , new UniformResourceIdentifierAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
         );
         assertTrue(filter.isMatched(result));
     }

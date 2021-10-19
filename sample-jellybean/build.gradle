@@ -1,4 +1,6 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -200,6 +202,8 @@ android {
 //                    , '../characteristic/u2b1f/src/androidTest/java'
 //                    , '../characteristic/u2b29/src/androidTest/java'
 //                    , '../characteristic/u2b2a/src/androidTest/java'
+//                    , '../characteristic/u2b34/src/androidTest/java'
+//                    , '../characteristic/u2b35/src/androidTest/java'
 //                    , '../characteristic/u2b37/src/androidTest/java'
 //                    , '../library-handler/src/androidTest/java'
 //                    , '../library-central/src/androidTest/java'
@@ -213,6 +217,6 @@ dependencies {
     implementation "${myGroupId}:${descriptorAndroid.artifactId}:${loadVersion}"
     implementation "${myGroupId}:${characteristicAndroid.artifactId}:${loadVersion}"
     implementation apiCentral
-    implementation 'androidx.fragment:fragment:1.3.5'
+    implementation 'androidx.fragment:fragment:1.3.6'
     androidTestImplementation apiTestCentral
 }

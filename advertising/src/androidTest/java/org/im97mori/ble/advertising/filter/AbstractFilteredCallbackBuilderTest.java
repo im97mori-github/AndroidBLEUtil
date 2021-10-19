@@ -28,10 +28,10 @@ import org.im97mori.ble.advertising.ServiceData128BitUUIDAndroid;
 import org.im97mori.ble.advertising.ServiceData16BitUUIDAndroid;
 import org.im97mori.ble.advertising.ServiceData32BitUUIDAndroid;
 import org.im97mori.ble.advertising.ShortenedLocalNameAndroid;
-import org.im97mori.ble.advertising.SlaveConnectionIntervalRangeAndroid;
+import org.im97mori.ble.advertising.PeripheralConnectionIntervalRangeAndroid;
 import org.im97mori.ble.advertising.TransportDiscoveryDataAndroid;
 import org.im97mori.ble.advertising.TxPowerLevelAndroid;
-import org.im97mori.ble.advertising.UniformRsourceIdentifierAndroid;
+import org.im97mori.ble.advertising.UniformResourceIdentifierAndroid;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -65,7 +65,7 @@ import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_128_BIT
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_SHORTENED_LOCAL_NAME;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_TX_POWER_LEVEL;
 import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
@@ -1610,67 +1610,67 @@ public class AbstractFilteredCallbackBuilderTest {
     }
 
     @Test
-    public void addSlaveConnectionIntervalRangeFilterTest_001() {
+    public void addPeripheralConnectionIntervalRangeFilterTest_001() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
         data[5] = (byte) 0xff;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(data).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPeripheralConnectionIntervalRangeFilter(data).build();
         assertEquals(1, result.size());
-        assertTrue(result.get(0) instanceof SlaveConnectionIntervalRangeFilter);
+        assertTrue(result.get(0) instanceof PeripheralConnectionIntervalRangeFilter);
     }
 
     @Test
-    public void addSlaveConnectionIntervalRangeFilterTest_002() {
+    public void addPeripheralConnectionIntervalRangeFilterTest_002() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
         data[5] = (byte) 0xff;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(data, 0, 5).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPeripheralConnectionIntervalRangeFilter(data, 0, 5).build();
         assertEquals(1, result.size());
-        assertTrue(result.get(0) instanceof SlaveConnectionIntervalRangeFilter);
+        assertTrue(result.get(0) instanceof PeripheralConnectionIntervalRangeFilter);
     }
 
     @Test
-    public void addSlaveConnectionIntervalRangeFilterTest_003() {
+    public void addPeripheralConnectionIntervalRangeFilterTest_003() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
         data[5] = (byte) 0xff;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPeripheralConnectionIntervalRangeFilter(PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
-        assertTrue(result.get(0) instanceof SlaveConnectionIntervalRangeFilter);
+        assertTrue(result.get(0) instanceof PeripheralConnectionIntervalRangeFilter);
     }
 
     @Test
-    public void addSlaveConnectionIntervalRangeFilterTest_004() {
+    public void addPeripheralConnectionIntervalRangeFilterTest_004() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
         data[5] = (byte) 0xff;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(Collections.singletonList(SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPeripheralConnectionIntervalRangeFilter(Collections.singletonList(PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
-        assertTrue(result.get(0) instanceof SlaveConnectionIntervalRangeFilter);
+        assertTrue(result.get(0) instanceof PeripheralConnectionIntervalRangeFilter);
     }
 
     @Test
@@ -1771,7 +1771,7 @@ public class AbstractFilteredCallbackBuilderTest {
     }
 
     @Test
-    public void addUniformRsourceIdentifierTest_001() {
+    public void addUniformResourceIdentifierTest_001() {
         // http scheme
         int schemeKey = 0x000016;
         String body = "//im97mori.org/";
@@ -1784,13 +1784,13 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformRsourceIdentifier(data).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformResourceIdentifier(data).build();
         assertEquals(1, result.size());
-        assertTrue(result.get(0) instanceof UniformRsourceIdentifierFilter);
+        assertTrue(result.get(0) instanceof UniformResourceIdentifierFilter);
     }
 
     @Test
-    public void addUniformRsourceIdentifierTest_002() {
+    public void addUniformResourceIdentifierTest_002() {
         // http scheme
         int schemeKey = 0x000016;
         String body = "//im97mori.org/";
@@ -1803,13 +1803,13 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformRsourceIdentifier(data, 0, data[0]).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformResourceIdentifier(data, 0, data[0]).build();
         assertEquals(1, result.size());
-        assertTrue(result.get(0) instanceof UniformRsourceIdentifierFilter);
+        assertTrue(result.get(0) instanceof UniformResourceIdentifierFilter);
     }
 
     @Test
-    public void addUniformRsourceIdentifierTest_003() {
+    public void addUniformResourceIdentifierTest_003() {
         // http scheme
         int schemeKey = 0x000016;
         String body = "//im97mori.org/";
@@ -1822,13 +1822,13 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformRsourceIdentifier(UniformRsourceIdentifierAndroid.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformResourceIdentifier(UniformResourceIdentifierAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
-        assertTrue(result.get(0) instanceof UniformRsourceIdentifierFilter);
+        assertTrue(result.get(0) instanceof UniformResourceIdentifierFilter);
     }
 
     @Test
-    public void addUniformRsourceIdentifierTest_004() {
+    public void addUniformResourceIdentifierTest_004() {
         // http scheme
         int schemeKey = 0x000016;
         String body = "//im97mori.org/";
@@ -1841,9 +1841,9 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformRsourceIdentifier(Collections.singletonList(UniformRsourceIdentifierAndroid.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformResourceIdentifier(Collections.singletonList(UniformResourceIdentifierAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
-        assertTrue(result.get(0) instanceof UniformRsourceIdentifierFilter);
+        assertTrue(result.get(0) instanceof UniformResourceIdentifierFilter);
     }
 
 }

@@ -9,25 +9,25 @@ import org.im97mori.ble.ByteArrayCreater;
 
 /**
  * <p>
- * Slave Connection Interval Range
+ * URI
  * <p>
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class SlaveConnectionIntervalRangeAndroid extends SlaveConnectionIntervalRange implements AdvertisingDataInterfaceAndroid {
+public class UniformResourceIdentifierAndroid extends UniformResourceIdentifier implements AdvertisingDataInterfaceAndroid {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<SlaveConnectionIntervalRangeAndroid> CREATOR = new ByteArrayCreater<SlaveConnectionIntervalRangeAndroid>() {
+    public static final ByteArrayCreater<UniformResourceIdentifierAndroid> CREATOR = new ByteArrayCreater<UniformResourceIdentifierAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public SlaveConnectionIntervalRangeAndroid createFromParcel(@NonNull Parcel in) {
-            return new SlaveConnectionIntervalRangeAndroid(in);
+        public UniformResourceIdentifierAndroid createFromParcel(@NonNull Parcel in) {
+            return new UniformResourceIdentifierAndroid(in);
         }
 
         /**
@@ -35,8 +35,8 @@ public class SlaveConnectionIntervalRangeAndroid extends SlaveConnectionInterval
          */
         @Override
         @NonNull
-        public SlaveConnectionIntervalRangeAndroid[] newArray(int size) {
-            return new SlaveConnectionIntervalRangeAndroid[size];
+        public UniformResourceIdentifierAndroid[] newArray(int size) {
+            return new UniformResourceIdentifierAndroid[size];
         }
 
         /**
@@ -44,20 +44,20 @@ public class SlaveConnectionIntervalRangeAndroid extends SlaveConnectionInterval
          */
         @NonNull
         @Override
-        public SlaveConnectionIntervalRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            return new SlaveConnectionIntervalRangeAndroid(values, 0, values.length - 1);
+        public UniformResourceIdentifierAndroid createFromByteArray(@NonNull byte[] values) {
+            return new UniformResourceIdentifierAndroid(values, 0, values.length - 1);
         }
 
     };
 
     /**
-     * Constructor for Slave Connection Interval Range
+     * Constructor for URI
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public SlaveConnectionIntervalRangeAndroid(@NonNull byte[] data
+    public UniformResourceIdentifierAndroid(@NonNull byte[] data
             , int offset
             , int length) {
         super(data, offset, length);
@@ -68,7 +68,7 @@ public class SlaveConnectionIntervalRangeAndroid extends SlaveConnectionInterval
      *
      * @param in Parcel
      */
-    private SlaveConnectionIntervalRangeAndroid(@NonNull Parcel in) {
+    private UniformResourceIdentifierAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }

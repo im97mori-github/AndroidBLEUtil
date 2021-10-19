@@ -1,5 +1,7 @@
-apply plugin: 'com.android.library'
-apply plugin: 'digital.wup.android-maven-publish'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 def target = characteristicAndroid
 
@@ -10,8 +12,6 @@ android {
     defaultConfig {
         minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
-        versionCode uploadVersionCode
-        versionName uploadVersion
     }
 
     buildTypes {
@@ -22,37 +22,205 @@ android {
 }
 
 dependencies {
-
+    api "${myGroupId}:${characteristicU2a00Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a01Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a02Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a03Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a04Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a05Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a06Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a07Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a0fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a11Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a14Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a16Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a17Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a19Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a1cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a1dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a1eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a21Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a22Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a23Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a24Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a25Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a26Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a27Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a28Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a29Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a2aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a2bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a2cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a31Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a32Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a33Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a35Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a36Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a37Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a38Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a39Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a3fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a40Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a41Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a44Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a45Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a46Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a47Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a48Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a49Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a4aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a4bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a4cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a4dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a4eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a4fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a50Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a53Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a54Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a55Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a56Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a58Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a5aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a5bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a5cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a5dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a63Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a64Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a65Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a66Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a67Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a68Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a69Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a6fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a70Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a71Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a72Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a73Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a74Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a75Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a76Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a77Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a78Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a79Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a7aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a7bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a7dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a7eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a7fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a80Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a81Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a82Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a83Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a84Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a85Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a86Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a87Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a88Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a89Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a8aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a8bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a8cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a8dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a8eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a8fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a90Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a91Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a92Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a93Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a94Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a95Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a96Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a97Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a98Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a99Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a9aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a9bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a9cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a9dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a9eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a9fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa0Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa1Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa2Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa3Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa4Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa5Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aa6Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aadAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aaeAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aafAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab0Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab1Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab2Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab3Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab4Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab5Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab6Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab7Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab8Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ab9Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2abaAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2abbAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2abcAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ac9Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2accAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2acdAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2aceAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2acfAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad0Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad1Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad2Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad3Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad4Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad5Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad6Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad7Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad8Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2ad9Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2adaAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b1dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b1eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b1fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b29Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b2aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b37Android.artifactId}:${loadVersion}"
 }
 
-publishing {
-    publications {
-        mavenAar(MavenPublication) {
-            groupId myGroupId
-            artifactId target['artifactId']
-            version uploadVersion
-            from components.android
-            pom {
-                name = 'BLE Core Utility for Android'
-                url = 'https://github.com/im97mori-github/AndroidBLEUtil'
-                licenses {
-                    license {
-                        name = 'MIT License'
-                        url = 'https://opensource.org/licenses/MIT'
-                        distribution = 'repo'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = myGroupId
+                artifactId = target['artifactId']
+                version = uploadVersion
+                pom {
+                    name = 'BLE Core Utility for Android'
+                    url = 'https://github.com/im97mori-github/AndroidBLEUtil'
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'https://opensource.org/licenses/MIT'
+                            distribution = 'repo'
+                        }
                     }
-                }
-                developers {
-                    developer {
-                        email = 'github@im97mori.org'
+                    developers {
+                        developer {
+                            email = 'github@im97mori.org'
+                        }
                     }
                 }
             }
         }
-    }
-    repositories {
-        maven {
-            url System.getenv('MAVEN_REPOSITORY_URL')
+        repositories {
+            maven {
+                url System.getenv('MAVEN_REPOSITORY_URL')
+            }
         }
     }
 }

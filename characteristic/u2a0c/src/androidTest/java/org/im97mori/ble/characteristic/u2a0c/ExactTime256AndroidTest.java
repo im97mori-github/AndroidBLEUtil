@@ -390,7 +390,7 @@ public class ExactTime256AndroidTest {
         int dayOfWeek = 7;
         int fractions257 = 8;
 
-        ExactTime256 result1 = new ExactTime256(year, month, day, hours, minutes, seconds, dayOfWeek, fractions257);
+        ExactTime256Android result1 = new ExactTime256Android(year, month, day, hours, minutes, seconds, dayOfWeek, fractions257);
         assertEquals(year, result1.getYear());
         assertEquals(month, result1.getMonth());
         assertEquals(day, result1.getDay());

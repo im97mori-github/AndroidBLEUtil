@@ -1,12 +1,12 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.SlaveConnectionIntervalRangeAndroid;
+import org.im97mori.ble.advertising.PeripheralConnectionIntervalRangeAndroid;
 import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -18,7 +18,7 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter();
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PeripheralConnectionIntervalRangeFilter();
         assertTrue(filter.isMatched(result));
     }
 
@@ -26,7 +26,7 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_002() {
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        expectData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         expectData[2] = (byte) 0xff;
         expectData[3] = (byte) 0xff;
         expectData[4] = (byte) 0xff;
@@ -36,7 +36,7 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PeripheralConnectionIntervalRangeFilter(PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(expectData));
         assertFalse(filter.isMatched(result));
     }
 
@@ -44,7 +44,7 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_003() {
         byte[] actualData = new byte[6];
         actualData[0] = 5;
-        actualData[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        actualData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         actualData[2] = (byte) 0xff;
         actualData[3] = (byte) 0xff;
         actualData[4] = (byte) 0xff;
@@ -52,7 +52,7 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter();
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PeripheralConnectionIntervalRangeFilter();
         assertFalse(filter.isMatched(result));
     }
 
@@ -60,7 +60,7 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_004() {
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        expectData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         expectData[2] = (byte) 0xff;
         expectData[3] = (byte) 0xff;
         expectData[4] = (byte) 0xff;
@@ -70,7 +70,7 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PeripheralConnectionIntervalRangeFilter(PeripheralConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -78,13 +78,13 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_101() {
         byte[] expectData = new byte[12];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        expectData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         expectData[2] = (byte) 0xff;
         expectData[3] = (byte) 0xff;
         expectData[4] = (byte) 0xff;
         expectData[5] = (byte) 0xff;
         expectData[6] = 5;
-        expectData[7] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        expectData[7] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         expectData[8] = (byte) 0xff;
         expectData[9] = (byte) 0xff;
         expectData[10] = (byte) 0xff;
@@ -94,9 +94,9 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(
-                new SlaveConnectionIntervalRangeAndroid(expectData, 0, expectData.length / 2 - 1)
-                , new SlaveConnectionIntervalRangeAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PeripheralConnectionIntervalRangeFilter(
+                new PeripheralConnectionIntervalRangeAndroid(expectData, 0, expectData.length / 2 - 1)
+                , new PeripheralConnectionIntervalRangeAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
         );
         assertFalse(filter.isMatched(result));
     }
@@ -105,13 +105,13 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_102() {
         byte[] actualData = new byte[12];
         actualData[0] = 5;
-        actualData[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        actualData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         actualData[2] = (byte) 0xff;
         actualData[3] = (byte) 0xff;
         actualData[4] = (byte) 0xff;
         actualData[5] = (byte) 0xff;
         actualData[6] = 5;
-        actualData[7] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        actualData[7] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         actualData[8] = (byte) 0xff;
         actualData[9] = (byte) 0xff;
         actualData[10] = (byte) 0xff;
@@ -121,8 +121,8 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(
-                new SlaveConnectionIntervalRangeAndroid(expectData, 0, expectData.length - 1)
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PeripheralConnectionIntervalRangeFilter(
+                new PeripheralConnectionIntervalRangeAndroid(expectData, 0, expectData.length - 1)
         );
         assertFalse(filter.isMatched(result));
     }
@@ -131,13 +131,13 @@ public class SlaveConnectionIntervalRangeTest {
     public void test_103() {
         byte[] expectData = new byte[12];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        expectData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         expectData[2] = (byte) 0xff;
         expectData[3] = (byte) 0xff;
         expectData[4] = (byte) 0xff;
         expectData[5] = (byte) 0xff;
         expectData[6] = 5;
-        expectData[7] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        expectData[7] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
         expectData[8] = (byte) 0xff;
         expectData[9] = (byte) 0xff;
         expectData[10] = (byte) 0xff;
@@ -147,9 +147,9 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(
-                new SlaveConnectionIntervalRangeAndroid(expectData, 0, expectData.length / 2 - 1)
-                , new SlaveConnectionIntervalRangeAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PeripheralConnectionIntervalRangeFilter(
+                new PeripheralConnectionIntervalRangeAndroid(expectData, 0, expectData.length / 2 - 1)
+                , new PeripheralConnectionIntervalRangeAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
         );
         assertTrue(filter.isMatched(result));
     }

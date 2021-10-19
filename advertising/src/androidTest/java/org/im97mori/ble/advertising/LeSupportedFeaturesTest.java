@@ -473,7 +473,7 @@ public class LeSupportedFeaturesTest {
         assertTrue(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -498,8 +498,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -519,7 +519,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertTrue(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -544,8 +544,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -565,7 +565,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertTrue(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -590,8 +590,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -611,7 +611,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertTrue(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertTrue(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -636,8 +636,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -657,7 +657,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertTrue(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -682,8 +682,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -703,7 +703,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertTrue(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -728,8 +728,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -749,7 +749,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertTrue(result1.isLlPrivacySupported());
@@ -774,8 +774,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -795,7 +795,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -820,8 +820,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -841,7 +841,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -866,8 +866,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -887,7 +887,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -912,8 +912,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -933,7 +933,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -958,8 +958,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -979,7 +979,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1004,8 +1004,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1025,7 +1025,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1050,8 +1050,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1071,7 +1071,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1096,8 +1096,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1117,7 +1117,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1142,8 +1142,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1163,7 +1163,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1188,8 +1188,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1209,7 +1209,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1234,8 +1234,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1255,7 +1255,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1280,8 +1280,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1301,7 +1301,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1326,8 +1326,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1347,7 +1347,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1372,8 +1372,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1393,7 +1393,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1418,8 +1418,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1439,7 +1439,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1464,8 +1464,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1485,7 +1485,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1510,8 +1510,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1531,7 +1531,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1556,8 +1556,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1577,7 +1577,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1602,8 +1602,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1623,7 +1623,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1648,8 +1648,8 @@ public class LeSupportedFeaturesTest {
         assertTrue(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1669,7 +1669,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1694,8 +1694,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertTrue(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1715,7 +1715,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1740,8 +1740,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertTrue(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1761,7 +1761,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1786,8 +1786,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertTrue(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1807,7 +1807,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1832,8 +1832,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertTrue(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertTrue(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1853,7 +1853,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1878,8 +1878,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertTrue(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertTrue(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1899,7 +1899,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1924,8 +1924,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertTrue(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1945,7 +1945,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -1970,8 +1970,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertTrue(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -1991,7 +1991,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -2016,8 +2016,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertTrue(result1.isIsochronousChannelsSupported());
@@ -2037,7 +2037,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -2062,8 +2062,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -2083,7 +2083,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -2108,8 +2108,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -2129,7 +2129,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -2154,8 +2154,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());
@@ -2175,7 +2175,7 @@ public class LeSupportedFeaturesTest {
         assertTrue(result1.isLeEncryptionSupported());
         assertTrue(result1.isConnectionParametersRequestProcedureSupported());
         assertTrue(result1.isExtendedRejectIndicationSupported());
-        assertTrue(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertTrue(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertTrue(result1.isLePingSupported());
         assertTrue(result1.isLeDataPacketLengthExtensionSupported());
         assertTrue(result1.isLlPrivacySupported());
@@ -2200,8 +2200,8 @@ public class LeSupportedFeaturesTest {
         assertTrue(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertTrue(result1.isSleepClockAccuracyUpdatesSupported());
         assertTrue(result1.isRemotePublicKeyValidationSupported());
-        assertTrue(result1.isConnectedIsochronousStreamMasterSupported());
-        assertTrue(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertTrue(result1.isConnectedIsochronousStreamCentralSupported());
+        assertTrue(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertTrue(result1.isIsochronousBroadcasterSupported());
         assertTrue(result1.isSynchronizedReceiverSupported());
         assertTrue(result1.isIsochronousChannelsSupported());
@@ -2221,7 +2221,7 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
         assertFalse(result1.isExtendedRejectIndicationSupported());
-        assertFalse(result1.isSlaveInitiatedFeaturesExchangeSupported());
+        assertFalse(result1.isPeripheralInitiatedFeaturesExchangeSupported());
         assertFalse(result1.isLePingSupported());
         assertFalse(result1.isLeDataPacketLengthExtensionSupported());
         assertFalse(result1.isLlPrivacySupported());
@@ -2246,8 +2246,8 @@ public class LeSupportedFeaturesTest {
         assertFalse(result1.isPeriodicAdvertisingSyncTransferRecipientSupported());
         assertFalse(result1.isSleepClockAccuracyUpdatesSupported());
         assertFalse(result1.isRemotePublicKeyValidationSupported());
-        assertFalse(result1.isConnectedIsochronousStreamMasterSupported());
-        assertFalse(result1.isConnectedIsochronousStreamSlaveSupported());
+        assertFalse(result1.isConnectedIsochronousStreamCentralSupported());
+        assertFalse(result1.isConnectedIsochronousStreamPeripheralSupported());
         assertFalse(result1.isIsochronousBroadcasterSupported());
         assertFalse(result1.isSynchronizedReceiverSupported());
         assertFalse(result1.isIsochronousChannelsSupported());

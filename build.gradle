@@ -7,19 +7,9 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
-        classpath 'digital.wup:android-maven-publish:3.6.3'
+        classpath 'com.android.tools.build:gradle:7.0.3'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-    }
-}
-
-allprojects {
-    repositories {
-        maven { url "https://github.com/im97mori-github/maven/raw/master" }
-//        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
-        google()
-        mavenCentral()
     }
 }
 
@@ -28,27 +18,23 @@ task clean(type: Delete) {
 }
 
 ext.globalCompileSdkVersion = 31
-ext.globalBuildToolsVersion = '30.0.3'
+ext.globalBuildToolsVersion = '31.0.0'
 ext.globalMinSdkVersion = 18
 ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.4.6'
-ext.uploadVersion = '0.4.6'
-ext.uploadVersionCode = 406
+ext.loadVersion = '0.5.0'
+ext.uploadVersion = '0.5.0'
 
-ext.handlerLoadVersion = '0.2.6'
-ext.handlerUploadVersion = '0.2.6'
-ext.handlerUploadVersionCode = 206
+ext.handlerLoadVersion = '0.2.7'
+ext.handlerUploadVersion = '0.2.7'
 
-ext.centralLoadVersion = '0.7.6'
-ext.centralUploadVersion = '0.7.6'
-ext.centralUploadVersionCode = 706
+ext.centralLoadVersion = '0.7.7'
+ext.centralUploadVersion = '0.7.7'
 
-ext.peripheralLoadVersion = '0.3.6'
-ext.peripheralUploadVersion = '0.3.6'
-ext.peripheralUploadVersionCode = 306
+ext.peripheralLoadVersion = '0.3.7'
+ext.peripheralUploadVersion = '0.3.7'
 
 ext.coreConstantsErrorCodeAndroid = [
         artifactId         : 'ble-core-constants-errorcode-android'
@@ -78,22 +64,17 @@ apply from: 'characteristic.gradle'
 
 ext.handler = [
         artifactId         : 'ble-handler'
-        , versionCode      : handlerUploadVersionCode
         , versionName      : handlerLoadVersion
         , uploadVersionName: handlerUploadVersion
 ]
 
 ext.central = [
         artifactId         : 'ble-central'
-        , versionCode      : centralUploadVersionCode
-        , versionName      : centralLoadVersion
         , uploadVersionName: centralUploadVersion
 ]
 
 ext.peripheral = [
         artifactId         : 'ble-peripheral'
-        , versionCode      : peripheralUploadVersionCode
-        , versionName      : peripheralLoadVersion
         , uploadVersionName: peripheralUploadVersion
 ]
 

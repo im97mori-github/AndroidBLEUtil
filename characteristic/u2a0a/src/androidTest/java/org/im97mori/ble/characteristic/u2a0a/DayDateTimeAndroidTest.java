@@ -373,7 +373,7 @@ public class DayDateTimeAndroidTest {
         int seconds = 6;
         int dayOfWeek = 7;
 
-        DayDateTime result1 = new DayDateTime(year, month, day, hours, minutes, seconds, dayOfWeek);
+        DayDateTimeAndroid result1 = new DayDateTimeAndroid(year, month, day, hours, minutes, seconds, dayOfWeek);
         assertEquals(year, result1.getYear());
         assertEquals(month, result1.getMonth());
         assertEquals(day, result1.getDay());

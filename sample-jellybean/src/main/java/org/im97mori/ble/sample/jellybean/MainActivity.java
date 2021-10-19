@@ -49,9 +49,9 @@ import org.im97mori.ble.advertising.ServiceData128BitUUIDAndroid;
 import org.im97mori.ble.advertising.ServiceData16BitUUIDAndroid;
 import org.im97mori.ble.advertising.ServiceData32BitUUIDAndroid;
 import org.im97mori.ble.advertising.ShortenedLocalNameAndroid;
-import org.im97mori.ble.advertising.SlaveConnectionIntervalRangeAndroid;
+import org.im97mori.ble.advertising.PeripheralConnectionIntervalRangeAndroid;
 import org.im97mori.ble.advertising.TxPowerLevelAndroid;
-import org.im97mori.ble.advertising.UniformRsourceIdentifierAndroid;
+import org.im97mori.ble.advertising.UniformResourceIdentifierAndroid;
 import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
 import org.im97mori.ble.advertising.filter.FilteredLeScanCallbackInterface;
 
@@ -186,16 +186,16 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             sb.append('\n');
         }
 
-        SlaveConnectionIntervalRangeAndroid slaveConnectionIntervalRange = result.getSlaveConnectionIntervalRange();
-        if (slaveConnectionIntervalRange != null) {
-            sb.append("Slave Connection Interval Range");
-            if (slaveConnectionIntervalRange.hasMaximum()) {
+        PeripheralConnectionIntervalRangeAndroid PeripheralConnectionIntervalRange = result.getPeripheralConnectionIntervalRange();
+        if (PeripheralConnectionIntervalRange != null) {
+            sb.append("Peripheral Connection Interval Range");
+            if (PeripheralConnectionIntervalRange.hasMaximum()) {
                 sb.append("\nhas maximum\n");
-                sb.append(slaveConnectionIntervalRange.getMaximumValueMillis());
+                sb.append(PeripheralConnectionIntervalRange.getMaximumValueMillis());
             }
-            if (slaveConnectionIntervalRange.hasMinimum()) {
+            if (PeripheralConnectionIntervalRange.hasMinimum()) {
                 sb.append("\nhas minimum\n");
-                sb.append(slaveConnectionIntervalRange.getMinimumValueMillis());
+                sb.append(PeripheralConnectionIntervalRange.getMinimumValueMillis());
             }
             sb.append('\n');
             sb.append('\n');
@@ -307,13 +307,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             sb.append('\n');
         }
 
-        UniformRsourceIdentifierAndroid uniformRsourceIdentifier = result.getUniformRsourceIdentifier();
-        if (uniformRsourceIdentifier != null) {
+        UniformResourceIdentifierAndroid UniformResourceIdentifier = result.getUniformResourceIdentifier();
+        if (UniformResourceIdentifier != null) {
             sb.append("URI");
             sb.append('\n');
-            sb.append(uniformRsourceIdentifier.getUri());
+            sb.append(UniformResourceIdentifier.getUri());
             sb.append("\nURI text\n");
-            sb.append(uniformRsourceIdentifier.getUriString());
+            sb.append(UniformResourceIdentifier.getUriString());
             sb.append('\n');
             sb.append('\n');
         }
@@ -334,8 +334,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             if (leSupportedFeatures.isExtendedRejectIndicationSupported()) {
                 sb.append("Extended Reject Indication\n");
             }
-            if (leSupportedFeatures.isSlaveInitiatedFeaturesExchangeSupported()) {
-                sb.append("Slave-initiated Features Exchange\n");
+            if (leSupportedFeatures.isPeripheralInitiatedFeaturesExchangeSupported()) {
+                sb.append("Peripheral-initiated Features Exchange\n");
             }
             if (leSupportedFeatures.isLePingSupported()) {
                 sb.append("LE Ping\n");

@@ -9,25 +9,25 @@ import org.im97mori.ble.ByteArrayCreater;
 
 /**
  * <p>
- * URI
+ * Peripheral Connection Interval Range(Slave Connection Interval Range)
  * <p>
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class UniformRsourceIdentifierAndroid extends UniformRsourceIdentifier implements AdvertisingDataInterfaceAndroid {
+public class PeripheralConnectionIntervalRangeAndroid extends PeripheralConnectionIntervalRange implements AdvertisingDataInterfaceAndroid {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<UniformRsourceIdentifierAndroid> CREATOR = new ByteArrayCreater<UniformRsourceIdentifierAndroid>() {
+    public static final ByteArrayCreater<PeripheralConnectionIntervalRangeAndroid> CREATOR = new ByteArrayCreater<PeripheralConnectionIntervalRangeAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public UniformRsourceIdentifierAndroid createFromParcel(@NonNull Parcel in) {
-            return new UniformRsourceIdentifierAndroid(in);
+        public PeripheralConnectionIntervalRangeAndroid createFromParcel(@NonNull Parcel in) {
+            return new PeripheralConnectionIntervalRangeAndroid(in);
         }
 
         /**
@@ -35,8 +35,8 @@ public class UniformRsourceIdentifierAndroid extends UniformRsourceIdentifier im
          */
         @Override
         @NonNull
-        public UniformRsourceIdentifierAndroid[] newArray(int size) {
-            return new UniformRsourceIdentifierAndroid[size];
+        public PeripheralConnectionIntervalRangeAndroid[] newArray(int size) {
+            return new PeripheralConnectionIntervalRangeAndroid[size];
         }
 
         /**
@@ -44,20 +44,20 @@ public class UniformRsourceIdentifierAndroid extends UniformRsourceIdentifier im
          */
         @NonNull
         @Override
-        public UniformRsourceIdentifierAndroid createFromByteArray(@NonNull byte[] values) {
-            return new UniformRsourceIdentifierAndroid(values, 0, values.length - 1);
+        public PeripheralConnectionIntervalRangeAndroid createFromByteArray(@NonNull byte[] values) {
+            return new PeripheralConnectionIntervalRangeAndroid(values, 0, values.length - 1);
         }
 
     };
 
     /**
-     * Constructor for URI
+     * Constructor for Slave Connection Interval Range
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public UniformRsourceIdentifierAndroid(@NonNull byte[] data
+    public PeripheralConnectionIntervalRangeAndroid(@NonNull byte[] data
             , int offset
             , int length) {
         super(data, offset, length);
@@ -68,7 +68,7 @@ public class UniformRsourceIdentifierAndroid extends UniformRsourceIdentifier im
      *
      * @param in Parcel
      */
-    private UniformRsourceIdentifierAndroid(@NonNull Parcel in) {
+    private PeripheralConnectionIntervalRangeAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }

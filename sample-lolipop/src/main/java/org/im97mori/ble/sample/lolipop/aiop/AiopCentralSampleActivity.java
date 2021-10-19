@@ -114,18 +114,6 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
         return true;
     }
 
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        if (mAutomationIOProfile != null && mAutomationIOProfile.isConnected()) {
-//            menu.setGroupEnabled(R.id.pre_connected, false);
-//            menu.setGroupEnabled(R.id.connected, true);
-//        } else {
-//            menu.setGroupEnabled(R.id.pre_connected, true);
-//            menu.setGroupEnabled(R.id.connected, false);
-//        }
-//        return true;
-//    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (R.id.load_bonded_device == item.getItemId()) {

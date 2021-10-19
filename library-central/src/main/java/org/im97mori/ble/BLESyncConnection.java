@@ -1953,13 +1953,14 @@ public class BLESyncConnection implements BLECallback {
                 }
 
                 // waiting task result
+                boolean awaitResult = false;
                 do {
                     try {
-                        countDownLatch.await(end - SystemClock.elapsedRealtime(), TimeUnit.MILLISECONDS);
+                        awaitResult = countDownLatch.await(end - SystemClock.elapsedRealtime(), TimeUnit.MILLISECONDS);
                     } catch (InterruptedException e) {
                         BLELogUtils.stackLog(e);
                     }
-                } while (!mResultMap.containsKey(key) && !bleConnection.isConnected() && end < SystemClock.currentThreadTimeMillis());
+                } while (!mResultMap.containsKey(key) && !bleConnection.isConnected() && !awaitResult);
 
                 // get task result and remove lock instance
                 bleResult = mResultMap.remove(key);
