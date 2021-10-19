@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2b35;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ENHANCED_INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,13 +9,11 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ENHANCED_INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 /**
  * Enhanced Intermediate Cuff Pressure (Characteristics UUID: 0x2B35)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class EnhancedIntermediateCuffPressureAndroid extends EnhancedIntermediateCuffPressure implements Parcelable {
 
@@ -59,6 +59,28 @@ public class EnhancedIntermediateCuffPressureAndroid extends EnhancedIntermediat
      */
     public EnhancedIntermediateCuffPressureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param flags                             Flags
+     * @param intermediateCuffPressureValueMmhg Intermediate Cuff Pressure Value
+     *                                          (mmHg)
+     * @param intermediateCuffPressureValueKpa  Intermediate Cuff Pressure Value
+     *                                          (kPa) Value - Systolic (kPa)
+     * @param timeStamp                         Time Stamp
+     * @param pulseRate                         Pulse Rate
+     * @param userId                            User ID
+     * @param measurementStatus                 Measurement Status
+     * @param userFacingTime                    User Facing
+     */
+    public EnhancedIntermediateCuffPressureAndroid(int flags,
+                                            @NonNull IEEE_11073_20601_SFLOAT intermediateCuffPressureValueMmhg,
+                                            @NonNull IEEE_11073_20601_SFLOAT intermediateCuffPressureValueKpa, long timeStamp,
+                                            @NonNull IEEE_11073_20601_SFLOAT pulseRate, int userId, @NonNull byte[] measurementStatus,
+                                            long userFacingTime) {
+        super(flags, intermediateCuffPressureValueMmhg, intermediateCuffPressureValueKpa, timeStamp, pulseRate, userId, measurementStatus, userFacingTime);
     }
 
     /**
