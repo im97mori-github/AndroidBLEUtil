@@ -10,7 +10,7 @@ import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTIO
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class SlaveConnectionIntervalRangeTest {
+public class PeripheralConnectionIntervalRangeTest {
 
     @Test
     public void test_001() {

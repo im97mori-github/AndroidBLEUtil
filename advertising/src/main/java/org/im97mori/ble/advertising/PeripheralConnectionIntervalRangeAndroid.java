@@ -51,7 +51,7 @@ public class PeripheralConnectionIntervalRangeAndroid extends PeripheralConnecti
     };
 
     /**
-     * Constructor for Slave Connection Interval Range
+     * Constructor for Peripheral Connection Interval Range
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
