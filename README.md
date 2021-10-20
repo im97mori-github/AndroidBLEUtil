@@ -104,7 +104,7 @@ Begin connection
             super.onCreate(savedInstanceState);
     
             Intent intent = getIntent();
-            BluetoothDevice bluetoothDevice = intent.getParcelableExtra("device");
+            BluetoothDevice target = intent.getParcelableExtra("device");
     
             mBleConnection = BLEConnectionHolder.getInstance(this, target);
             mBleConnection.attach(mBLECallbackSample);
@@ -128,7 +128,7 @@ On fail
 On timeout(default 50sec)
 
     @Override
-    public void onBLEConnectTimeout(BluetoothDevice bluetoothDevice) {onBLEConnectTimeout(long taskId, BluetoothDevice bluetoothDevice, Bundle argument);
+    public void onBLEConnectTimeout(long taskId, BluetoothDevice bluetoothDevice, Bundle argument);
         // Timeout
     }
 
