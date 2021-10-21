@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.characteristic.core.TimeZoneUtils;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformationAndroid;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformationAndroid;
@@ -1474,7 +1475,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     @Test
     public void test_setLocalTimeInformation_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         assertNull(currentTimeService.setLocalTimeInformation(localTimeInformation));
     }
@@ -1489,7 +1490,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
             }
 
         };
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         assertNull(currentTimeService.setLocalTimeInformation(localTimeInformation));
     }
@@ -1509,7 +1510,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
             }
 
         };
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         assertNull(currentTimeService.setLocalTimeInformation(localTimeInformation));
     }
@@ -1531,7 +1532,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
             }
 
         };
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         Integer taskId = currentTimeService.setLocalTimeInformation(localTimeInformation);
         assertNotNull(taskId);

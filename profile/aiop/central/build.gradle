@@ -10,7 +10,7 @@ android {
     buildToolsVersion globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalPeripheralMinSdkVersion
+        minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -26,8 +26,8 @@ android {
 dependencies {
     api "${myGroupId}:${servicePeripheralAndroid.artifactId}:${loadVersion}"
     api "${myGroupId}:${serviceCtsAndroid.artifactId}:${loadVersion}"
-//    androidTestImplementation apiTestPeripheral
-    androidTestImplementation project(path: ':test:peripheral')
+    androidTestImplementation apiTestPeripheral
+    androidTestImplementation apiCharacteristicCore
 }
 
 task sourcesJar(type: Jar) {

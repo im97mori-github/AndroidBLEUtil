@@ -1194,15 +1194,15 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x000016;
+        int schemeKey = 0x0016;
         String body = "//im97mori.org/";
 
-        String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 2];
-        data[0] = (byte) (utf8data.length + 1);
+        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 3];
+        data[0] = (byte) (utf8data.length + 2);
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+        data[2] = (byte) schemeKey;
+        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -2647,15 +2647,15 @@ public class AdvertisingDataParserTest {
         builder.include(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x000016;
+        int schemeKey = 0x0016;
         String body = "//im97mori.org/";
 
-        String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 2];
-        data[0] = (byte) (utf8data.length + 1);
+        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 3];
+        data[0] = (byte) (utf8data.length + 2);
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+        data[2] = (byte) schemeKey;
+        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -4087,15 +4087,15 @@ public class AdvertisingDataParserTest {
         builder.exclude(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x000016;
+        int schemeKey = 0x0016;
         String body = "//im97mori.org/";
 
-        String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 2];
-        data[0] = (byte) (utf8data.length + 1);
+        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 3];
+        data[0] = (byte) (utf8data.length + 2);
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+        data[2] = (byte) schemeKey;
+        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -5542,15 +5542,15 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x000016;
+        int schemeKey = 0x0016;
         String body = "//im97mori.org/";
 
-        String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 2];
-        data[0] = (byte) (utf8data.length + 1);
+        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 3];
+        data[0] = (byte) (utf8data.length + 2);
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+        data[2] = (byte) schemeKey;
+        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -6996,15 +6996,15 @@ public class AdvertisingDataParserTest {
         builder.exclude(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x000016;
+        int schemeKey = 0x0016;
         String body = "//im97mori.org/";
 
-        String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 2];
-        data[0] = (byte) (utf8data.length + 1);
+        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 3];
+        data[0] = (byte) (utf8data.length + 2);
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+        data[2] = (byte) schemeKey;
+        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -8437,15 +8437,15 @@ public class AdvertisingDataParserTest {
         builder.include(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x000016;
+        int schemeKey = 0x0016;
         String body = "//im97mori.org/";
 
-        String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 2];
-        data[0] = (byte) (utf8data.length + 1);
+        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 3];
+        data[0] = (byte) (utf8data.length + 2);
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+        data[2] = (byte) schemeKey;
+        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -10971,8 +10971,8 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
-        byte[] data = new byte[23];
-        data[0] = 10;
+        byte[] data = new byte[24];
+        data[0] = 11;
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
         data[2] = 0x16;
         data[3] = '/';
@@ -10982,10 +10982,10 @@ public class AdvertisingDataParserTest {
         data[7] = 'o';
         data[8] = 'r';
         data[9] = 'i';
-        data[10] = '/';
-        data[11] = 11;
-        data[12] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        data[13] = (byte) 0xc2;
+        data[10] = '1';
+        data[11] = '/';
+        data[12] = 11;
+        data[13] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
         data[14] = (byte) 0xb9;
         data[15] = '/';
         data[16] = '/';
@@ -10994,7 +10994,8 @@ public class AdvertisingDataParserTest {
         data[19] = 'o';
         data[20] = 'r';
         data[21] = 'i';
-        data[22] = '/';
+        data[22] = '2';
+        data[23] = '/';
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -11026,7 +11027,7 @@ public class AdvertisingDataParserTest {
         assertEquals(2, result.getUniformResourceIdentifierList().size());
         assertNotNull(result.getUniformResourceIdentifier());
         assertEquals(result.getUniformResourceIdentifier(), result.getUniformResourceIdentifierList().get(1));
-        assertEquals(URI.create(SCHEME_MAPPING_128.get(BLEUtils.convert16to128(0xb9)) + new String(data, 15, 8)), result.getUniformResourceIdentifier().getUri());
+        assertEquals(URI.create(SCHEME_MAPPING_128.get(BLEUtils.convert16to128(data[14] & 0xff)) + new String(data, 15, 9)), result.getUniformResourceIdentifier().getUri());
         assertNull(result.getIndoorPositioning());
         assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());

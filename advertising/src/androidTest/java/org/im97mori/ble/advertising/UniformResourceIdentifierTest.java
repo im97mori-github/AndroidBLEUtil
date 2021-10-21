@@ -20,32 +20,30 @@ public class UniformResourceIdentifierTest {
     private static final byte[] data_00001;
     static {
         // http scheme
-        int schemeKey = 0x000016;
+        int schemeKey = 0x0016;
         String body = "//im97mori.org/";
-        URI uri = URI.create(SCHEME_MAPPING_128.get(BLEUtils.convert16to128(schemeKey)) + body);
 
-        String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 2];
-        data[0] = (byte) (utf8data.length + 1);
+        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 3];
+        data[0] = (byte) (utf8data.length + 2);
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+        data[2] = (byte) schemeKey;
+        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
         data_00001 = data;
     }
 
     private static final byte[] data_00002;
     static {
         // example scheme
-        int schemeKey = 0x0000B9;
+        int schemeKey = 0x00B9;
         String body = "//im97mori.org/";
-        URI uri = URI.create(SCHEME_MAPPING_128.get(BLEUtils.convert16to128(schemeKey)) + body);
 
-        String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 2];
-        data[0] = (byte) (utf8data.length + 1);
+        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 3];
+        data[0] = (byte) (utf8data.length + 2);
         data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+        data[2] = (byte) schemeKey;
+        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
         data_00002 = data;
     }
     //@formatter:on
@@ -83,7 +81,7 @@ public class UniformResourceIdentifierTest {
         UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
         assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result1.getDataType());
-        assertEquals(new String(data, 2, data.length - 2), result1.getUriString());
+        assertEquals(new String(data, 3, data.length - 3), result1.getUriString());
         assertEquals(URI.create("http://im97mori.org/"), result1.getUri());
     }
 
@@ -94,7 +92,7 @@ public class UniformResourceIdentifierTest {
         UniformResourceIdentifierAndroid result1 = new UniformResourceIdentifierAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
         assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result1.getDataType());
-        assertEquals(new String(data, 2, data.length - 2), result1.getUriString());
+        assertEquals(new String(data, 3, data.length - 3), result1.getUriString());
         assertEquals(URI.create("example://im97mori.org/"), result1.getUri());
     }
 

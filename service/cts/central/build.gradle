@@ -27,6 +27,7 @@ dependencies {
     api "${myGroupId}:${serviceCentralAndroid.artifactId}:${loadVersion}"
     api "${myGroupId}:${serviceCtsAndroid.artifactId}:${loadVersion}"
     androidTestImplementation apiTestCentral
+    androidTestImplementation apiCharacteristicCore
 }
 
 task sourcesJar(type: Jar) {

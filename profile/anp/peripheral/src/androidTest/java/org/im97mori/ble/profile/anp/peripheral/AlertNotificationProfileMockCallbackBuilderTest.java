@@ -1,5 +1,10 @@
 package org.im97mori.ble.profile.anp.peripheral;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothGattDescriptor;
 import android.content.Context;
 
@@ -13,11 +18,6 @@ import org.im97mori.ble.service.ans.peripheral.AlertNotificationServiceMockCallb
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class AlertNotificationProfileMockCallbackBuilderTest {
 

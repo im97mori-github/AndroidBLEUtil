@@ -1,20 +1,5 @@
 package org.im97mori.ble.service.cts.peripheral;
 
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattService;
-
-import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
-import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
-import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
-import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
-import org.junit.Test;
-
-import java.util.LinkedList;
-import java.util.List;
-
 import static org.im97mori.ble.constants.CharacteristicUUID.CURRENT_TIME_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_TIME_INFORMATION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.REFERENCE_TIME_INFORMATION_CHARACTERISTIC;
@@ -25,6 +10,22 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+
+import org.im97mori.ble.characteristic.core.TimeZoneUtils;
+import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
+import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
+import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.junit.Test;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
@@ -198,7 +199,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
 
     @Test
     public void test_addLocalTimeInformation_00001() {
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -231,7 +232,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
 
     @Test
     public void test_addLocalTimeInformation_00101() {
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -264,7 +265,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
 
     @Test
     public void test_addLocalTimeInformation_00201() {
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -297,7 +298,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
 
     @Test
     public void test_addLocalTimeInformation_00202() {
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -330,7 +331,7 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
 
     @Test
     public void test_removeLocalTimeInformation_00001() {
-        LocalTimeInformation localTimeInformation = new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 1);
+        LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
         Exception exception = null;
         try {

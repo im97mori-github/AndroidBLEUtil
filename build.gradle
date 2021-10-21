@@ -24,17 +24,17 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.5.0'
-ext.uploadVersion = '0.5.0'
+ext.loadVersion = '0.5.1'
+ext.uploadVersion = '0.5.1'
 
-ext.handlerLoadVersion = '0.2.7'
-ext.handlerUploadVersion = '0.2.7'
+ext.handlerLoadVersion = '0.2.8'
+ext.handlerUploadVersion = '0.2.8'
 
-ext.centralLoadVersion = '0.7.7'
-ext.centralUploadVersion = '0.7.7'
+ext.centralLoadVersion = '0.7.8'
+ext.centralUploadVersion = '0.7.8'
 
-ext.peripheralLoadVersion = '0.3.7'
-ext.peripheralUploadVersion = '0.3.7'
+ext.peripheralLoadVersion = '0.3.8'
+ext.peripheralUploadVersion = '0.3.8'
 
 ext.coreConstantsErrorCodeAndroid = [
         artifactId         : 'ble-core-constants-errorcode-android'

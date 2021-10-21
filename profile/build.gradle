@@ -10,7 +10,7 @@ android {
     buildToolsVersion globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalMinSdkVersion
+        minSdkVersion globalPeripheralMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
     }
 
