@@ -162,7 +162,7 @@ Read characteristic
     @Override
     public void onCharacteristicReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument);
         if (CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
-            DeviceName deviceName = DeviceName.CREATOR.createFromByteArray(values);
+            DeviceNameAndroid deviceName = DeviceNameAndroid.CREATOR.createFromByteArray(values);
             System.out.println(deviceName.getName());
         }
     }
@@ -231,7 +231,7 @@ Read characteristic
         , ReadCharacteristicTask.TIMEOUT_MILLIS
         , null);
     if (BLESyncConnection.BLEResult.RESULT_SUCCESS == result.getResultCode()) {
-        DeviceName deviceName = DeviceName.CREATOR.createFromByteArray(result.getValues());
+        DeviceNameAndroid deviceName = DeviceNameAndroid.CREATOR.createFromByteArray(result.getValues());
         System.out.println(deviceName.getName());
     }
 
