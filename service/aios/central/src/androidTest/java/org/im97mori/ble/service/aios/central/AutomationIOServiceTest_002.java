@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a56.DigitalAndroid;
 import org.im97mori.ble.characteristic.u2a58.AnalogAndroid;
@@ -44,6 +45,7 @@ import static org.junit.Assert.assertTrue;
 public class AutomationIOServiceTest_002 extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -74,6 +76,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -106,6 +109,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -138,6 +142,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -180,6 +185,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -223,6 +229,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -252,6 +259,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -284,6 +292,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -316,6 +325,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -358,6 +368,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -401,6 +412,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -430,6 +442,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -462,6 +475,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -494,6 +508,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -536,6 +551,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -579,6 +595,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -608,6 +625,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -640,6 +658,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -672,6 +691,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -714,6 +734,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00305() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -757,6 +778,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -794,6 +816,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -834,6 +857,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -876,6 +900,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -913,6 +938,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -953,6 +979,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -995,6 +1022,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1032,6 +1060,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00602() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1072,6 +1101,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00603() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1114,6 +1144,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1143,6 +1174,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00702() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1175,6 +1207,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00703() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1207,6 +1240,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00704() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1249,6 +1283,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00705() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1292,6 +1327,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1321,6 +1357,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00802() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1353,6 +1390,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00803() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1385,6 +1423,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00804() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1427,6 +1466,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00805() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1470,6 +1510,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1499,6 +1540,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00902() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1531,6 +1573,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00903() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1563,6 +1606,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00904() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1605,6 +1649,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00905() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1648,6 +1693,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1677,6 +1723,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1709,6 +1756,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1741,6 +1789,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1783,6 +1832,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1826,6 +1876,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1863,6 +1914,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1903,6 +1955,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1945,6 +1998,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1982,6 +2036,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2022,6 +2077,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2064,6 +2120,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2101,6 +2158,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2141,6 +2199,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2183,6 +2242,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2212,6 +2272,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2244,6 +2305,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2276,6 +2338,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2308,6 +2371,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01405() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2349,6 +2413,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2378,6 +2443,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2410,6 +2476,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2442,6 +2509,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2474,6 +2542,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01505() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2515,6 +2584,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2544,6 +2614,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01602() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2576,6 +2647,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01603() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2608,6 +2680,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01604() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2640,6 +2713,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01605() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2681,6 +2755,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2710,6 +2785,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01702() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2742,6 +2818,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01703() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2774,6 +2851,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01704() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2806,6 +2884,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_01705() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2848,6 +2927,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2877,6 +2957,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2909,6 +2990,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2941,6 +3023,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2984,6 +3067,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3028,6 +3112,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3057,6 +3142,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3089,6 +3175,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3121,6 +3208,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3164,6 +3252,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3208,6 +3297,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3237,6 +3327,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3269,6 +3360,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3301,6 +3393,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3344,6 +3437,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3388,6 +3482,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3417,6 +3512,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3449,6 +3545,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3481,6 +3578,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3524,6 +3622,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00305() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3568,6 +3667,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3605,6 +3705,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3645,6 +3746,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3687,6 +3789,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3724,6 +3827,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3764,6 +3868,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3806,6 +3911,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3843,6 +3949,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00602() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3883,6 +3990,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00603() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3925,6 +4033,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3954,6 +4063,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00702() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3986,6 +4096,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00703() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4018,6 +4129,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00704() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4061,6 +4173,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00705() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4105,6 +4218,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4134,6 +4248,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00802() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4166,6 +4281,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00803() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4198,6 +4314,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00804() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4241,6 +4358,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00805() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4285,6 +4403,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4314,6 +4433,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00902() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4346,6 +4466,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00903() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4378,6 +4499,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00904() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4421,6 +4543,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00905() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4465,6 +4588,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4494,6 +4618,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4526,6 +4651,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4558,6 +4684,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4601,6 +4728,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4645,6 +4773,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4682,6 +4811,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4722,6 +4852,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4764,6 +4895,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4801,6 +4933,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4841,6 +4974,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4883,6 +5017,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4920,6 +5055,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4960,6 +5096,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5002,6 +5139,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5031,6 +5169,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5063,6 +5202,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5095,6 +5235,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5127,6 +5268,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01405() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5169,6 +5311,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5198,6 +5341,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5230,6 +5374,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5262,6 +5407,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5294,6 +5440,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01505() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5336,6 +5483,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5365,6 +5513,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01602() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5397,6 +5546,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01603() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5429,6 +5579,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01604() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5461,6 +5612,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01605() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5503,6 +5655,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5532,6 +5685,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01702() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5564,6 +5718,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01703() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5596,6 +5751,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01704() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5628,6 +5784,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_01705() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5671,6 +5828,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5700,6 +5858,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5732,6 +5891,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5764,6 +5924,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5807,6 +5968,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5851,6 +6013,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5880,6 +6043,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5912,6 +6076,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5944,6 +6109,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5987,6 +6153,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6031,6 +6198,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6060,6 +6228,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6092,6 +6261,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6124,6 +6294,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6167,6 +6338,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6211,6 +6383,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6240,6 +6413,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6272,6 +6446,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6304,6 +6479,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6347,6 +6523,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00305() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6391,6 +6568,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6428,6 +6606,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6468,6 +6647,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6510,6 +6690,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6547,6 +6728,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6587,6 +6769,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6629,6 +6812,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6666,6 +6850,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00602() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6705,6 +6890,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00603() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6746,6 +6932,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6775,6 +6962,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00702() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6807,6 +6995,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00703() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6839,6 +7028,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00704() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6882,6 +7072,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00705() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6926,6 +7117,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6955,6 +7147,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00802() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6987,6 +7180,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00803() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7019,6 +7213,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00804() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7062,6 +7257,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00805() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7106,6 +7302,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7135,6 +7332,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00902() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7167,6 +7365,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00903() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7199,6 +7398,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00904() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7242,6 +7442,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00905() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7286,6 +7487,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7315,6 +7517,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7347,6 +7550,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7379,6 +7583,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7422,6 +7627,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7466,6 +7672,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7503,6 +7710,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7543,6 +7751,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7585,6 +7794,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7622,6 +7832,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7662,6 +7873,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7704,6 +7916,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7741,6 +7954,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7781,6 +7995,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7823,6 +8038,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7852,6 +8068,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7884,6 +8101,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7916,6 +8134,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7948,6 +8167,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01405() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7990,6 +8210,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8019,6 +8240,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8051,6 +8273,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8083,6 +8306,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8115,6 +8339,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01505() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8157,6 +8382,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8186,6 +8412,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01602() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8218,6 +8445,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01603() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8250,6 +8478,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01604() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8282,6 +8511,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01605() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8324,6 +8554,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8353,6 +8584,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01702() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8385,6 +8617,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01703() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8417,6 +8650,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01704() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8449,6 +8683,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_01705() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -8492,6 +8727,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8517,6 +8753,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8545,6 +8782,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8573,6 +8811,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8609,6 +8848,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8646,6 +8886,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8671,6 +8912,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8699,6 +8941,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8727,6 +8970,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8763,6 +9007,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8800,6 +9045,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8825,6 +9071,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8853,6 +9100,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8881,6 +9129,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8917,6 +9166,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8954,6 +9204,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -8979,6 +9230,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9007,6 +9259,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9035,6 +9288,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9071,6 +9325,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00305() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9108,6 +9363,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9133,6 +9389,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9161,6 +9418,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9189,6 +9447,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9217,6 +9476,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00405() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9253,6 +9513,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9278,6 +9539,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9306,6 +9568,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9334,6 +9597,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -9362,6 +9626,7 @@ public class AutomationIOServiceTest_002 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00505() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;

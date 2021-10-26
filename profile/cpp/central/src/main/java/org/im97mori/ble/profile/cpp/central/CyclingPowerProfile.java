@@ -1,17 +1,23 @@
 package org.im97mori.ble.profile.cpp.central;
 
+import static org.im97mori.ble.constants.ServiceUUID.BATTERY_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a66.CyclingPowerControlPoint;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.cpp.central.db.CyclingPowerProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.bas.central.BatteryService;
 import org.im97mori.ble.service.cps.central.CyclingPowerService;
@@ -19,9 +25,6 @@ import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
-
-import static org.im97mori.ble.constants.ServiceUUID.BATTERY_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 
 /**
  *Cycling Power Profile for Central
@@ -65,17 +68,6 @@ public class CyclingPowerProfile extends AbstractCentralProfile {
     public CyclingPowerProfile(@NonNull Context context, @NonNull CyclingPowerProfileCallback cyclingPowerProfileCallback) {
         super(context, cyclingPowerProfileCallback);
         mCyclingPowerProfileCallback = cyclingPowerProfileCallback;
-    }
-
-    /**
-     * find Cycling Power Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findCyclingPowerProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new CyclingPowerProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -515,6 +507,25 @@ public class CyclingPowerProfile extends AbstractCentralProfile {
             }
         }
         super.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new CyclingPowerProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new CyclingPowerProfileLeScanCallback(this, null);
     }
 
 }

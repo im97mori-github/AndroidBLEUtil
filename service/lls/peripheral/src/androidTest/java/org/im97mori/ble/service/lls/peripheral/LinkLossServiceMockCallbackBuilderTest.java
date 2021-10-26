@@ -2,6 +2,7 @@ package org.im97mori.ble.service.lls.peripheral;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
@@ -16,9 +17,14 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAlertLevel_00001() {
         Exception exception = null;
         try {
@@ -32,6 +38,8 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAlertLevel_00002() {
         AlertLevel alertLevel = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT);
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -48,6 +56,8 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAlertLevel_00003() {
         AlertLevel alertLevel = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT);
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -66,6 +76,8 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAlertLevel_00004() {
         AlertLevel alertLevel = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT);
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -85,6 +97,8 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripherallT
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAlertLevel_00005() {
         AlertLevel alertLevel = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT);
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -103,6 +117,8 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAlertLevel_00001() {
         AlertLevel alertLevel = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT);
         Exception exception = null;

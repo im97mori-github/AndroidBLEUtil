@@ -3,6 +3,7 @@ package org.im97mori.ble.service.ess.central;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u290b.EnvironmentalSensingConfiguration;
@@ -27,9 +28,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCount_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -37,6 +43,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCount_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -51,6 +59,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCount_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -68,6 +78,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCount_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -86,6 +98,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCount_00005() {
         final AtomicBoolean isStarted = new AtomicBoolean(true);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
@@ -107,6 +121,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCount_00006() {
         final AtomicBoolean isStarted = new AtomicBoolean(true);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
@@ -126,6 +142,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isTrueWindDirectionNotificatable_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -133,6 +151,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isTrueWindDirectionNotificatable_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -145,6 +165,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isTrueWindDirectionNotificatable_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -160,6 +182,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isTrueWindDirectionNotificatable_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -175,6 +199,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isTrueWindDirectionNotificatable_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -190,6 +216,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isTrueWindDirectionNotificatable_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -205,6 +233,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isTrueWindDirectionNotificatable_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -221,6 +251,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isTrueWindDirectionNotificatable_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -237,6 +269,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -244,6 +278,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -256,6 +292,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -271,6 +309,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -286,6 +326,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -303,6 +345,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -320,6 +364,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -337,6 +383,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -356,6 +404,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -363,6 +413,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -377,6 +429,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -394,6 +448,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -413,6 +469,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -433,6 +491,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -453,6 +513,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -472,6 +534,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -491,6 +555,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicEnvironmentalSensingTriggerSettingCount_00009() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -512,6 +578,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -519,6 +587,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -531,6 +601,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingConfiguration_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -546,6 +618,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingConfiguration_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -561,6 +635,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingConfiguration_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -578,6 +654,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingConfiguration_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -595,6 +673,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingConfiguration_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -612,6 +692,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicEnvironmentalSensingConfiguration_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -631,6 +713,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicCharacteristicUserDescription_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -638,6 +722,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicCharacteristicUserDescription_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -650,6 +736,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicCharacteristicUserDescription_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -665,6 +753,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicCharacteristicUserDescription_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -680,6 +770,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicCharacteristicUserDescription_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -697,6 +789,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicCharacteristicUserDescription_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -714,6 +808,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicCharacteristicUserDescription_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -731,6 +827,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicCharacteristicUserDescription_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -750,6 +848,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicValidRange_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -757,6 +857,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicValidRange_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -769,6 +871,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicValidRange_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -784,6 +888,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicValidRange_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -799,6 +905,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicValidRange_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -816,6 +924,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicValidRange_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -833,6 +943,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicValidRange_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -850,6 +962,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasTrueWindDirectionCharacteristicValidRange_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -869,6 +983,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirection_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -876,6 +992,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirection_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -888,6 +1006,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirection_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -903,6 +1023,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirection_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -920,6 +1042,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirection_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -937,6 +1061,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirection_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -954,6 +1080,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirection_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -972,6 +1100,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startTrueWindDirectionNotification_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -979,6 +1109,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startTrueWindDirectionNotification_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -991,6 +1123,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startTrueWindDirectionNotification_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1006,6 +1140,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startTrueWindDirectionNotification_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1021,6 +1157,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startTrueWindDirectionNotification_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1038,6 +1176,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startTrueWindDirectionNotification_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1055,6 +1195,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startTrueWindDirectionNotification_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1072,6 +1214,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startTrueWindDirectionNotification_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1090,6 +1234,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopTrueWindDirectionNotification_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1097,6 +1243,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopTrueWindDirectionNotification_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1109,6 +1257,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopTrueWindDirectionNotification_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1124,6 +1274,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopTrueWindDirectionNotification_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1139,6 +1291,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopTrueWindDirectionNotification_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1156,6 +1310,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopTrueWindDirectionNotification_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1173,6 +1329,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopTrueWindDirectionNotification_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1190,6 +1348,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopTrueWindDirectionNotification_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1208,6 +1368,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1215,6 +1377,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1227,6 +1391,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1242,6 +1408,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1259,6 +1427,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1278,6 +1448,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1297,6 +1469,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1316,6 +1490,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1338,6 +1514,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1346,6 +1524,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1358,6 +1538,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1373,6 +1555,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1390,6 +1574,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1409,6 +1595,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1428,6 +1616,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1447,6 +1637,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1467,6 +1659,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00009() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1488,6 +1682,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00010() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1510,6 +1706,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1518,6 +1716,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1530,6 +1730,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1545,6 +1747,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1562,6 +1766,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1581,6 +1787,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1600,6 +1808,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1619,6 +1829,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1639,6 +1851,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00009() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1660,6 +1874,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00010() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1682,6 +1898,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1689,6 +1907,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1701,6 +1921,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1716,6 +1938,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1733,6 +1957,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1752,6 +1978,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1771,6 +1999,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1790,6 +2020,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1812,6 +2044,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1819,6 +2053,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1831,6 +2067,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1846,6 +2084,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1863,6 +2103,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1882,6 +2124,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1901,6 +2145,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1920,6 +2166,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1942,6 +2190,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicUserDescription_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1949,6 +2199,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicUserDescription_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1961,6 +2213,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicUserDescription_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1976,6 +2230,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicUserDescription_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1993,6 +2249,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicUserDescription_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2012,6 +2270,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicUserDescription_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2031,6 +2291,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicUserDescription_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2050,6 +2312,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionCharacteristicUserDescription_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2072,6 +2336,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionCharacteristicUserDescription_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -2079,6 +2345,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionCharacteristicUserDescription_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2091,6 +2359,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionCharacteristicUserDescription_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2106,6 +2376,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionCharacteristicUserDescription_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2123,6 +2395,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionCharacteristicUserDescription_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2142,6 +2416,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionCharacteristicUserDescription_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2161,6 +2437,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionCharacteristicUserDescription_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2180,6 +2458,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setTrueWindDirectionCharacteristicUserDescription_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2202,6 +2482,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionValidRange_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -2209,6 +2491,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionValidRange_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2221,6 +2505,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionValidRange_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2236,6 +2522,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionValidRange_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2253,6 +2541,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionValidRange_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2272,6 +2562,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionValidRange_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2291,6 +2583,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionValidRange_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2310,6 +2604,8 @@ public class EnvironmentalSensingServiceTest_49 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getTrueWindDirectionValidRange_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);

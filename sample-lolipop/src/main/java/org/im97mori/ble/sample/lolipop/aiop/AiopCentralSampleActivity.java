@@ -25,6 +25,7 @@ import org.im97mori.ble.characteristic.u2a03.ReconnectionAddress;
 import org.im97mori.ble.characteristic.u2a56.Digital;
 import org.im97mori.ble.characteristic.u2a58.Analog;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
+import org.im97mori.ble.constants.AppearanceValues;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
 import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
@@ -41,7 +42,6 @@ import java.util.Set;
 
 import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class AiopCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
@@ -156,7 +156,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
         } else if (R.id.is_appearance_writable == item.getItemId()) {
             addRow("isDeviceNameCharacteristicWritable", mAutomationIOProfile.isAppearanceCharacteristicWritable());
         } else if (R.id.set_appearance == item.getItemId()) {
-            mAutomationIOProfile.setAppearance(new Appearance(new byte[]{Appearance.CATEGORY_UNKNOWN}));
+            mAutomationIOProfile.setAppearance(new Appearance(AppearanceValues.LOCATION_POD_APPEARANCE_SUB_CATEGORY));
         } else if (R.id.has_ppcp == item.getItemId()) {
             addRow("isPeripheralPreferredConnectionParametersCharacteristicSupported", mAutomationIOProfile.isPeripheralPreferredConnectionParametersCharacteristicSupported());
         } else if (R.id.get_ppcp == item.getItemId()) {
@@ -489,8 +489,8 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else {
             mConnectDisconnectButton.setVisibility(View.VISIBLE);
             if (mAutomationIOProfile.isConnected()) {
@@ -521,7 +521,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {
-                    mAutomationIOProfile.findAutomationIOProfileDevices(null);
+                    mAutomationIOProfile.findDevices(null);
                 } else {
                     if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
                         mAutomationIOProfile.connect(mBluetoothDevice);

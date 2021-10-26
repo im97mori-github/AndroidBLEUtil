@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid;
@@ -30,6 +31,7 @@ import static org.junit.Assert.assertTrue;
 public class ImmediateAlertServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -63,6 +65,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -88,6 +91,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -113,6 +117,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -146,6 +151,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -171,6 +177,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -196,6 +203,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -229,6 +237,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -254,6 +263,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -279,6 +289,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAlertLevel_000001() {
         ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, new MockImmediateAlertServiceCallback(), null);
 
@@ -286,6 +297,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAlertLevel_000002() {
         ImmediateAlertService immediateAlertService = new ImmediateAlertService(MOCK_BLE_CONNECTION, new MockImmediateAlertServiceCallback(), null) {
 
@@ -300,6 +312,7 @@ public class ImmediateAlertServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAlertLevel_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);

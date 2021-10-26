@@ -18,7 +18,7 @@ public class FirmwareRevisionStringAndroidTest {
         String firmwareRevision = "00.00";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
 
         FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
         assertEquals(firmwareRevision, result1.getFirmwareRevision());
@@ -29,7 +29,7 @@ public class FirmwareRevisionStringAndroidTest {
         String firmwareRevision = "99.99";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
 
         FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
         assertEquals(firmwareRevision, result1.getFirmwareRevision());
@@ -48,7 +48,7 @@ public class FirmwareRevisionStringAndroidTest {
         String firmwareRevision = "00.00";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
 
         FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -64,7 +64,7 @@ public class FirmwareRevisionStringAndroidTest {
         String firmwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
 
         FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -80,7 +80,7 @@ public class FirmwareRevisionStringAndroidTest {
         String firmwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
 
         FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
         byte[] resultData = result1.getBytes();
@@ -92,10 +92,10 @@ public class FirmwareRevisionStringAndroidTest {
         String firmwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
 
         FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
-        FirmwareRevisionStringAndroid result2 = FirmwareRevisionStringAndroid.CREATOR.createFromByteArray(firmwareRevision.getBytes(StandardCharsets.UTF_8));
+        FirmwareRevisionStringAndroid result2 = FirmwareRevisionStringAndroid.CREATOR.createFromByteArray(firmwareRevision.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }

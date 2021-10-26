@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/read_manufacturer_name"
+            android:title="@string/menu_read_manufacturer_name" />
+        <item
+            android:id="@+id/read_model_number"
+            android:title="@string/menu_read_model_number" />
+        <item
+            android:id="@+id/read_battery_level_1"
+            android:title="@string/menu_read_battery_level_1" />
+        <item
+            android:id="@+id/read_battery_level_2"
+            android:title="@string/menu_read_battery_level_2" />
+        <item
+            android:id="@+id/start_notify_battery_level"
+            android:title="@string/menu_notify_battery_level_start" />
+        <item
+            android:id="@+id/stop_notify_battery_level"
+            android:title="@string/menu_notify_battery_level_stop" />
+        <item
+            android:id="@+id/read_ln_feature"
+            android:title="@string/menu_read_ln_feature" />
+        <item
+            android:id="@+id/start_location_and_speed"
+            android:title="@string/menu_notify_location_and_speed_start" />
+        <item
+            android:id="@+id/stop_location_and_speed"
+            android:title="@string/menu_notify_location_and_speed_stop" />
+        <item
+            android:id="@+id/read_position_quality"
+            android:title="@string/menu_read_position_quality" />
+        <item
+            android:id="@+id/write_ln_control_point_1"
+            android:title="@string/menu_write_ln_control_point_1" />
+        <item
+            android:id="@+id/write_ln_control_point_2"
+            android:title="@string/menu_write_ln_control_point_2" />
+        <item
+            android:id="@+id/write_ln_control_point_3"
+            android:title="@string/menu_write_ln_control_point_3" />
+        <item
+            android:id="@+id/write_ln_control_point_4"
+            android:title="@string/menu_write_ln_control_point_4" />
+        <item
+            android:id="@+id/write_ln_control_point_5"
+            android:title="@string/menu_write_ln_control_point_5" />
+        <item
+            android:id="@+id/write_ln_control_point_6"
+            android:title="@string/menu_write_ln_control_point_6" />
+        <item
+            android:id="@+id/write_ln_control_point_7"
+            android:title="@string/menu_write_ln_control_point_7" />
+        <item
+            android:id="@+id/write_ln_control_point_8"
+            android:title="@string/menu_write_ln_control_point_8" />
+        <item
+            android:id="@+id/read_supported_new_alert_category"
+            android:title="@string/menu_read_supported_new_alert_category" />
+        <item
+            android:id="@+id/get_ln_control_point_client_characteristic_configuration"
+            android:title="@string/menu_get_ln_control_point_characteristic_configuration" />
+        <item
+            android:id="@+id/start_ln_control_point"
+            android:title="@string/menu_indicate_ln_control_point_start" />
+        <item
+            android:id="@+id/stop_ln_control_point"
+            android:title="@string/menu_indicate_ln_control_point_stop" />
+        <item
+            android:id="@+id/start_navigation"
+            android:title="@string/menu_notify_navigation_start" />
+        <item
+            android:id="@+id/stop_navigation"
+            android:title="@string/menu_notify_navigation_stop" />
+    </group>
+</menu>

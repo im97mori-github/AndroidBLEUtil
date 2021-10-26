@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INDOOR_POSITIONING;
+import static org.im97mori.ble.constants.DataType.INDOOR_POSITIONING_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -28,7 +28,7 @@ public class IndoorPositioningFilterTest {
     public void test_002() {
         byte[] expectData = new byte[2];
         expectData[0] = 1;
-        expectData[1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         byte[] actualData = new byte[0];
 
@@ -42,7 +42,7 @@ public class IndoorPositioningFilterTest {
     public void test_003() {
         byte[] actualData = new byte[2];
         actualData[0] = 1;
-        actualData[1] = DATA_TYPE_INDOOR_POSITIONING;
+        actualData[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
@@ -54,7 +54,7 @@ public class IndoorPositioningFilterTest {
     public void test_004() {
         byte[] expectData = new byte[2];
         expectData[0] = 1;
-        expectData[1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
 
@@ -77,7 +77,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[3];
         expectData[ 0] = 2;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         //@formatter:on
 
@@ -101,7 +101,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[11];
         expectData[ 0] = 10;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = 0x01;
         expectData[ 4] = 0x02;
@@ -133,7 +133,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[7];
         expectData[ 0] = 6;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = 0x01;
         expectData[ 4] = 0x02;
@@ -161,7 +161,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = 0x01;
         //@formatter:on
@@ -186,7 +186,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[5];
         expectData[ 0] = 4;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = 0x01;
         expectData[ 4] = 0x02;
@@ -212,7 +212,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = 0x01;
         //@formatter:on
@@ -237,7 +237,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = IndoorPositioningUtils.UNCERTAINTY_PRECISION_IDEAL;
         //@formatter:on
@@ -262,7 +262,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = IndoorPositioningUtils.UNCERTAINTY_PRECISION_EXCELLENT;
         //@formatter:on
@@ -287,7 +287,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = IndoorPositioningUtils.UNCERTAINTY_PRECISION_GOOD;
         //@formatter:on
@@ -312,7 +312,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = IndoorPositioningUtils.UNCERTAINTY_PRECISION_MODERATE;
         //@formatter:on
@@ -337,7 +337,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = IndoorPositioningUtils.UNCERTAINTY_PRECISION_FAIR;
         //@formatter:on
@@ -362,7 +362,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = IndoorPositioningUtils.UNCERTAINTY_PRECISION_POOR;
         //@formatter:on
@@ -387,7 +387,7 @@ public class IndoorPositioningFilterTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
         byte[] expectData = new byte[4];
         expectData[ 0] = 3;
-        expectData[ 1] = DATA_TYPE_INDOOR_POSITIONING;
+        expectData[ 1] = INDOOR_POSITIONING_DATA_TYPE;
         expectData[ 2] = (byte) flag;
         expectData[ 3] = IndoorPositioningUtils.UNCERTAINTY_PRECISION_USELESS;
         //@formatter:on

@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2a01;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,8 +9,6 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
 
 /**
  * Appearance (Characteristics UUID: 0x2A01)
@@ -58,6 +58,15 @@ public class AppearanceAndroid extends Appearance implements Parcelable {
      */
     public AppearanceAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param appearanceValue Appearance Value
+     */
+    public AppearanceAndroid(int appearanceValue) {
+        super(appearanceValue);
     }
 
     /**

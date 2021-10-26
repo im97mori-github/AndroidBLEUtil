@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothGattService;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a56.Digital;
 import org.im97mori.ble.characteristic.u2a58.Analog;
@@ -42,12 +43,14 @@ import static org.junit.Assert.assertTrue;
 public class AutomationIOServiceTest_003 extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCount_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertNull(automationIOService.getDigitalCount());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCount_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
             @Override
@@ -61,6 +64,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCount_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -78,6 +82,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCount_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -96,6 +101,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicReadable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -103,6 +109,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicReadable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -119,6 +126,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicReadable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -135,6 +143,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicReadable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -152,6 +161,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicReadable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -159,6 +169,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicReadable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -175,6 +186,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicReadable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -191,6 +203,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicReadable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -208,6 +221,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -215,6 +229,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -231,6 +246,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -247,6 +263,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -264,6 +281,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -271,6 +289,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -287,6 +306,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -303,6 +323,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -320,6 +341,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritableWithNoResponse_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -327,6 +349,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritableWithNoResponse_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -343,6 +366,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritableWithNoResponse_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -359,6 +383,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritableWithNoResponse_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -376,6 +401,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritableWithNoResponse_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -383,6 +409,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritableWithNoResponse_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -399,6 +426,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritableWithNoResponse_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -415,6 +443,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicWritableWithNoResponse_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -432,6 +461,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicNotificatable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -439,6 +469,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicNotificatable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -455,6 +486,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicNotificatable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -471,6 +503,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicNotificatable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -488,6 +521,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicNotificatable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -495,6 +529,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicNotificatable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -511,6 +546,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicNotificatable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -527,6 +563,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicNotificatable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -544,6 +581,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicIndicatable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -551,6 +589,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicIndicatable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -567,6 +606,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicIndicatable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -583,6 +623,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicIndicatable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -600,6 +641,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicIndicatable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -607,6 +649,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicIndicatable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -623,6 +666,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicIndicatable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -639,6 +683,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicIndicatable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -656,6 +701,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -663,6 +709,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -679,6 +726,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -698,6 +746,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -719,6 +768,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -726,6 +776,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -742,6 +793,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -761,6 +813,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -782,6 +835,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -789,6 +843,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -805,6 +860,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -824,6 +880,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -845,6 +902,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -852,6 +910,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -868,6 +927,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -887,6 +947,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -908,6 +969,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -915,6 +977,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -931,6 +994,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -950,6 +1014,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -970,6 +1035,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -992,6 +1058,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00006() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1014,6 +1081,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00007() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1037,6 +1105,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1044,6 +1113,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1060,6 +1130,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1079,6 +1150,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1099,6 +1171,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1121,6 +1194,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00106() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1143,6 +1217,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicCharacteristicUserDescription_00107() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1166,6 +1241,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1173,6 +1249,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1189,6 +1266,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1208,6 +1286,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1229,6 +1308,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1236,6 +1316,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1252,6 +1333,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1271,6 +1353,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1292,6 +1375,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1299,6 +1383,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1315,6 +1400,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1334,6 +1420,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1353,6 +1440,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1372,6 +1460,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00006() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1393,6 +1482,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00007() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1414,6 +1504,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1421,6 +1512,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1437,6 +1529,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1456,6 +1549,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1475,6 +1569,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1494,6 +1589,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00106() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1515,6 +1611,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00107() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1536,6 +1633,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1543,6 +1641,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1559,6 +1658,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1578,6 +1678,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1602,6 +1703,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1628,6 +1730,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1635,6 +1738,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1651,6 +1755,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1670,6 +1775,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1694,6 +1800,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1720,12 +1827,14 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCount_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertNull(automationIOService.getAnalogCount());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCount_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
             @Override
@@ -1739,6 +1848,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCount_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1756,6 +1866,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCount_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1774,6 +1885,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicReadable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1781,6 +1893,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicReadable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1797,6 +1910,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicReadable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1813,6 +1927,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicReadable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1830,6 +1945,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicReadable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1837,6 +1953,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicReadable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1853,6 +1970,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicReadable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1869,6 +1987,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicReadable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1886,6 +2005,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1893,6 +2013,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1909,6 +2030,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1925,6 +2047,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1942,6 +2065,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -1949,6 +2073,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1965,6 +2090,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1981,6 +2107,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -1998,6 +2125,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritableWithNoResponse_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2005,6 +2133,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritableWithNoResponse_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2021,6 +2150,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritableWithNoResponse_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2037,6 +2167,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritableWithNoResponse_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2054,6 +2185,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritableWithNoResponse_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2061,6 +2193,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritableWithNoResponse_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2077,6 +2210,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritableWithNoResponse_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2093,6 +2227,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicWritableWithNoResponse_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2110,6 +2245,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicNotificatable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2117,6 +2253,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicNotificatable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2133,6 +2270,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicNotificatable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2149,6 +2287,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicNotificatable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2166,6 +2305,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicNotificatable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2173,6 +2313,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicNotificatable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2189,6 +2330,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicNotificatable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2205,6 +2347,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicNotificatable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2222,6 +2365,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicIndicatable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2229,6 +2373,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicIndicatable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2245,6 +2390,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicIndicatable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2261,6 +2407,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicIndicatable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2278,6 +2425,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicIndicatable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2285,6 +2433,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicIndicatable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2301,6 +2450,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicIndicatable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2317,6 +2467,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicIndicatable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2334,6 +2485,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2341,6 +2493,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2357,6 +2510,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2376,6 +2530,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2397,6 +2552,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2404,6 +2560,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2420,6 +2577,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2439,6 +2597,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2460,6 +2619,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2467,6 +2627,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2483,6 +2644,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2502,6 +2664,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2523,6 +2686,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2530,6 +2694,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2546,6 +2711,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2565,6 +2731,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2586,6 +2753,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2593,6 +2761,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2609,6 +2778,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2628,6 +2798,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2648,6 +2819,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2670,6 +2842,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00006() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2692,6 +2865,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00007() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2715,6 +2889,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2722,6 +2897,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2738,6 +2914,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2757,6 +2934,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2777,6 +2955,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2799,6 +2978,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00106() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2821,6 +3001,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00107() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2844,6 +3025,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2851,6 +3033,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2867,6 +3050,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2886,6 +3070,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2907,6 +3092,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2914,6 +3100,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2930,6 +3117,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2949,6 +3137,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2970,6 +3159,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -2977,6 +3167,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -2993,6 +3184,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3012,6 +3204,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3031,6 +3224,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3050,6 +3244,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00006() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3071,6 +3266,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00007() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3092,6 +3288,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -3099,6 +3296,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3115,6 +3313,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3134,6 +3333,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3153,6 +3353,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3172,6 +3373,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00106() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3193,6 +3395,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00107() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3214,6 +3417,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -3221,6 +3425,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3237,6 +3442,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3256,6 +3462,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3280,6 +3487,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3306,6 +3514,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
@@ -3313,6 +3522,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3329,6 +3539,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3348,6 +3559,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3372,6 +3584,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3398,12 +3611,14 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicSupported_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAggregateSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicSupported_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3419,12 +3634,14 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicReadable_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAggregateReadable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicReadable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3440,6 +3657,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicReadable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3455,12 +3673,14 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicNotificatable_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAggregateNotificatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicNotificatable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3476,6 +3696,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicNotificatable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3491,6 +3712,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicNotificatable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3508,12 +3730,14 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicIndicatable_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAggregateIndicatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicIndicatable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3529,6 +3753,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicIndicatable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3544,6 +3769,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateCharacteristicIndicatable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -3561,6 +3787,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -3579,6 +3806,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -3587,6 +3815,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -3602,6 +3831,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00004() {
         final int originalTaskId = 1;
 
@@ -3630,6 +3860,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -3638,6 +3869,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -3653,6 +3885,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00103() {
         final int originalTaskId = 1;
 
@@ -3680,6 +3913,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00104() {
         final int originalTaskId = 1;
 
@@ -3709,6 +3943,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -3727,6 +3962,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -3735,6 +3971,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -3750,6 +3987,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00004() {
         final int originalTaskId = 1;
 
@@ -3778,6 +4016,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -3786,6 +4025,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -3801,6 +4041,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00103() {
         final int originalTaskId = 1;
 
@@ -3828,6 +4069,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00104() {
         final int originalTaskId = 1;
 
@@ -3857,6 +4099,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -3875,6 +4118,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -3883,6 +4127,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -3898,6 +4143,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00004() {
         final int originalTaskId = 1;
 
@@ -3926,6 +4172,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -3934,6 +4181,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -3949,6 +4197,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00103() {
         final int originalTaskId = 1;
 
@@ -3976,6 +4225,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00104() {
         final int originalTaskId = 1;
 
@@ -4005,6 +4255,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -4023,6 +4274,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4031,6 +4283,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4046,6 +4299,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4070,6 +4324,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00005() {
         final int originalTaskId = 1;
 
@@ -4098,6 +4353,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00006() {
         final int originalTaskId = 1;
 
@@ -4126,6 +4382,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4134,6 +4391,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4149,6 +4407,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4173,6 +4432,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00104() {
         final int originalTaskId = 1;
 
@@ -4202,6 +4462,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00105() {
         final int originalTaskId = 1;
 
@@ -4231,6 +4492,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -4249,6 +4511,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4257,6 +4520,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4272,6 +4536,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4296,6 +4561,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00005() {
         final int originalTaskId = 1;
 
@@ -4324,6 +4590,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4332,6 +4599,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4347,6 +4615,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4371,6 +4640,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00104() {
         final int originalTaskId = 1;
 
@@ -4400,6 +4670,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -4418,6 +4689,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4426,6 +4698,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4441,6 +4714,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4465,6 +4739,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00005() {
         final int originalTaskId = 1;
 
@@ -4493,6 +4768,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4501,6 +4777,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4516,6 +4793,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4540,6 +4818,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00104() {
         final int originalTaskId = 1;
 
@@ -4569,6 +4848,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -4587,6 +4867,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4595,6 +4876,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4610,6 +4892,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4634,6 +4917,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00005() {
         final int originalTaskId = 1;
 
@@ -4662,6 +4946,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4670,6 +4955,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4685,6 +4971,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4709,6 +4996,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00104() {
         final int originalTaskId = 1;
 
@@ -4738,6 +5026,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -4756,6 +5045,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4764,6 +5054,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4779,6 +5070,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4803,6 +5095,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00005() {
         final int originalTaskId = 1;
 
@@ -4831,6 +5124,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4839,6 +5133,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4854,6 +5149,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -4878,6 +5174,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00104() {
         final int originalTaskId = 1;
 
@@ -4907,6 +5204,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -4925,6 +5223,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4933,6 +5232,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -4948,6 +5248,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00004() {
         final int originalTaskId = 1;
 
@@ -4981,6 +5282,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -4989,6 +5291,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5004,6 +5307,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00103() {
         final int originalTaskId = 1;
 
@@ -5037,6 +5341,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -5055,6 +5360,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5063,6 +5369,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5078,6 +5385,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00004() {
         final int originalTaskId = 1;
 
@@ -5111,6 +5419,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5119,6 +5428,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5134,6 +5444,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00103() {
         final int originalTaskId = 1;
 
@@ -5167,6 +5478,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescriptionn_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -5185,6 +5497,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5193,6 +5506,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5208,6 +5522,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00004() {
         final int originalTaskId = 1;
 
@@ -5240,6 +5555,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00005() {
         final int originalTaskId = 1;
 
@@ -5279,6 +5595,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5287,6 +5604,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5302,6 +5620,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00103() {
         final int originalTaskId = 1;
 
@@ -5334,6 +5653,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00104() {
         final int originalTaskId = 1;
 
@@ -5373,6 +5693,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -5391,6 +5712,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5399,6 +5721,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5414,6 +5737,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00004() {
         final int originalTaskId = 1;
 
@@ -5447,6 +5771,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5455,6 +5780,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5470,6 +5796,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00103() {
         final int originalTaskId = 1;
 
@@ -5503,6 +5830,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -5521,6 +5849,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5529,6 +5858,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5544,6 +5874,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00004() {
         final int originalTaskId = 1;
 
@@ -5577,6 +5908,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5585,6 +5917,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5600,6 +5933,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00103() {
         final int originalTaskId = 1;
 
@@ -5633,6 +5967,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -5651,6 +5986,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5659,6 +5995,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5674,6 +6011,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00004() {
         final int originalTaskId = 1;
 
@@ -5707,6 +6045,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5715,6 +6054,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5730,6 +6070,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00103() {
         final int originalTaskId = 1;
 
@@ -5763,6 +6104,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -5781,6 +6123,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5789,6 +6132,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5804,6 +6148,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00004() {
         final int originalTaskId = 1;
 
@@ -5837,6 +6182,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5845,6 +6191,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5860,6 +6207,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00103() {
         final int originalTaskId = 1;
 
@@ -5893,6 +6241,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -5911,6 +6260,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5919,6 +6269,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5934,6 +6285,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00004() {
         final int originalTaskId = 1;
 
@@ -5967,6 +6319,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -5975,6 +6328,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -5990,6 +6344,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00103() {
         final int originalTaskId = 1;
 
@@ -6023,6 +6378,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -6041,6 +6397,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6049,6 +6406,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6064,6 +6422,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00004() {
         final int originalTaskId = 1;
 
@@ -6092,6 +6451,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6100,6 +6460,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6115,6 +6476,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00103() {
         final int originalTaskId = 1;
 
@@ -6143,6 +6505,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -6161,6 +6524,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6169,6 +6533,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6184,6 +6549,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00004() {
         final int originalTaskId = 1;
 
@@ -6212,6 +6578,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6220,6 +6587,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6235,6 +6603,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00103() {
         final int originalTaskId = 1;
 
@@ -6262,6 +6631,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00104() {
         final int originalTaskId = 1;
 
@@ -6291,6 +6661,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -6309,6 +6680,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6317,6 +6689,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6332,6 +6705,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00004() {
         final int originalTaskId = 1;
 
@@ -6360,6 +6734,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6368,6 +6743,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6383,6 +6759,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00103() {
         final int originalTaskId = 1;
 
@@ -6410,6 +6787,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00104() {
         final int originalTaskId = 1;
 
@@ -6439,6 +6817,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -6457,6 +6836,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6465,6 +6845,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6480,6 +6861,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00004() {
         final int originalTaskId = 1;
 
@@ -6508,6 +6890,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6516,6 +6899,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6531,6 +6915,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00103() {
         final int originalTaskId = 1;
 
@@ -6558,6 +6943,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00104() {
         final int originalTaskId = 1;
 
@@ -6587,6 +6973,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -6605,6 +6992,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6613,6 +7001,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6628,6 +7017,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -6652,6 +7042,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00005() {
         final int originalTaskId = 1;
 
@@ -6680,6 +7071,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00006() {
         final int originalTaskId = 1;
 
@@ -6708,6 +7100,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6716,6 +7109,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6731,6 +7125,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -6755,6 +7150,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00104() {
         final int originalTaskId = 1;
 
@@ -6784,6 +7180,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00105() {
         final int originalTaskId = 1;
 
@@ -6813,6 +7210,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -6831,6 +7229,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6839,6 +7238,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6854,6 +7254,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -6878,6 +7279,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00005() {
         final int originalTaskId = 1;
 
@@ -6906,6 +7308,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -6914,6 +7317,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -6929,6 +7333,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -6953,6 +7358,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00104() {
         final int originalTaskId = 1;
 
@@ -6982,6 +7388,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -7000,6 +7407,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7008,6 +7416,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7023,6 +7432,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -7047,6 +7457,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00005() {
         final int originalTaskId = 1;
 
@@ -7075,6 +7486,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7083,6 +7495,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7098,6 +7511,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -7122,6 +7536,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00104() {
         final int originalTaskId = 1;
 
@@ -7151,6 +7566,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -7169,6 +7585,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7177,6 +7594,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7192,6 +7610,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -7216,6 +7635,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00005() {
         final int originalTaskId = 1;
 
@@ -7244,6 +7664,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7252,6 +7673,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7267,6 +7689,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -7291,6 +7714,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00104() {
         final int originalTaskId = 1;
 
@@ -7320,6 +7744,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -7338,6 +7763,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7346,6 +7772,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7361,6 +7788,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -7385,6 +7813,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00005() {
         final int originalTaskId = 1;
 
@@ -7413,6 +7842,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7421,6 +7851,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7436,6 +7867,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -7460,6 +7892,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00104() {
         final int originalTaskId = 1;
 
@@ -7489,6 +7922,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -7507,6 +7941,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7515,6 +7950,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7530,6 +7966,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00004() {
         final int originalTaskId = 1;
 
@@ -7563,6 +8000,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7571,6 +8009,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7586,6 +8025,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00103() {
         final int originalTaskId = 1;
 
@@ -7619,6 +8059,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -7637,6 +8078,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7645,6 +8087,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7660,6 +8103,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00004() {
         final int originalTaskId = 1;
 
@@ -7693,6 +8137,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7701,6 +8146,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7716,6 +8162,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00103() {
         final int originalTaskId = 1;
 
@@ -7749,6 +8196,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescriptionn_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -7767,6 +8215,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7775,6 +8224,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7790,6 +8240,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00004() {
         final int originalTaskId = 1;
 
@@ -7822,6 +8273,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00005() {
         final int originalTaskId = 1;
 
@@ -7861,6 +8313,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7869,6 +8322,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7884,6 +8338,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00103() {
         final int originalTaskId = 1;
 
@@ -7916,6 +8371,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00104() {
         final int originalTaskId = 1;
 
@@ -7955,6 +8411,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -7973,6 +8430,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -7981,6 +8439,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -7996,6 +8455,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00004() {
         final int originalTaskId = 1;
 
@@ -8029,6 +8489,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8037,6 +8498,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8052,6 +8514,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00103() {
         final int originalTaskId = 1;
 
@@ -8085,6 +8548,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -8103,6 +8567,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8111,6 +8576,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8126,6 +8592,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00004() {
         final int originalTaskId = 1;
 
@@ -8159,6 +8626,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8167,6 +8635,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8182,6 +8651,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00103() {
         final int originalTaskId = 1;
 
@@ -8215,6 +8685,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -8233,6 +8704,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8241,6 +8713,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8256,6 +8729,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00004() {
         final int originalTaskId = 1;
 
@@ -8289,6 +8763,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8297,6 +8772,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8312,6 +8788,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00103() {
         final int originalTaskId = 1;
 
@@ -8345,6 +8822,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -8363,6 +8841,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8371,6 +8850,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8386,6 +8866,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00004() {
         final int originalTaskId = 1;
 
@@ -8419,6 +8900,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8427,6 +8909,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8442,6 +8925,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00103() {
         final int originalTaskId = 1;
 
@@ -8475,6 +8959,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -8493,6 +8978,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8501,6 +8987,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8516,6 +9003,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00004() {
         final int originalTaskId = 1;
 
@@ -8549,6 +9037,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8557,6 +9046,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8572,6 +9062,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00103() {
         final int originalTaskId = 1;
 
@@ -8605,6 +9096,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
@@ -8623,6 +9115,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8631,6 +9124,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00003() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8646,6 +9140,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00004() {
         final int originalTaskId = 1;
 
@@ -8674,6 +9169,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00101() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8682,6 +9178,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00102() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8697,6 +9194,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00103() {
         final int originalTaskId = 1;
 
@@ -8725,6 +9223,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregate_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8733,6 +9232,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregate_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8748,6 +9248,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregate_00003() {
         final int originalTaskId = 1;
 
@@ -8776,6 +9277,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8784,6 +9286,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8799,6 +9302,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -8823,6 +9327,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00004() {
         final int originalTaskId = 1;
 
@@ -8850,6 +9355,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00005() {
         final int originalTaskId = 1;
 
@@ -8877,6 +9383,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00006() {
         final int originalTaskId = 1;
 
@@ -8907,6 +9414,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00007() {
         final int originalTaskId = 1;
 
@@ -8937,6 +9445,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateNotification_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -8945,6 +9454,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateNotification_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -8960,6 +9470,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateNotification_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -8984,6 +9495,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateNotification_00004() {
         final int originalTaskId = 1;
 
@@ -9011,6 +9523,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateNotification_00005() {
         final int originalTaskId = 1;
 
@@ -9041,6 +9554,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateNotification_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -9049,6 +9563,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateNotification_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -9064,6 +9579,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateNotification_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -9088,6 +9604,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateNotification_00004() {
         final int originalTaskId = 1;
 
@@ -9115,6 +9632,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateNotification_00005() {
         final int originalTaskId = 1;
 
@@ -9145,6 +9663,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateIndication_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -9153,6 +9672,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateIndication_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -9168,6 +9688,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateIndication_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -9192,6 +9713,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateIndication_00004() {
         final int originalTaskId = 1;
 
@@ -9219,6 +9741,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateIndication_00005() {
         final int originalTaskId = 1;
 
@@ -9249,6 +9772,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateIndication_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
 
@@ -9257,6 +9781,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateIndication_00002() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null) {
 
@@ -9272,6 +9797,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateIndication_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
@@ -9296,6 +9822,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateIndication_00004() {
         final int originalTaskId = 1;
 
@@ -9323,6 +9850,7 @@ public class AutomationIOServiceTest_003 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateIndication_00005() {
         final int originalTaskId = 1;
 

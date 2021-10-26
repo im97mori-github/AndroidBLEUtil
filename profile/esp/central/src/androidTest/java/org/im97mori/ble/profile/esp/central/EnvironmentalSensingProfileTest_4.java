@@ -2,6 +2,7 @@ package org.im97mori.ble.profile.esp.central;
 
 import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -36,12 +37,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrend_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrend());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrend_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -62,12 +65,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrend_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrend(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrend_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -88,12 +93,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBarometricPressureTrendNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startBarometricPressureTrendNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startBarometricPressureTrendNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -114,12 +121,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBarometricPressureTrendNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startBarometricPressureTrendNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startBarometricPressureTrendNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -140,12 +149,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBarometricPressureTrendNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopBarometricPressureTrendNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBarometricPressureTrendNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -166,12 +177,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBarometricPressureTrendNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopBarometricPressureTrendNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBarometricPressureTrendNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -192,12 +205,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -218,12 +233,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -244,12 +261,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -270,12 +289,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -296,12 +317,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setBarometricPressureTrendEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -322,12 +345,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setBarometricPressureTrendEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -348,12 +373,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -374,12 +401,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -400,12 +429,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setBarometricPressureTrendEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -426,12 +457,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setBarometricPressureTrendEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -452,12 +485,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -478,12 +513,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -504,12 +541,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setBarometricPressureTrendCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -530,12 +569,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setBarometricPressureTrendCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setBarometricPressureTrendCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -556,12 +597,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -582,12 +625,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getBarometricPressureTrendValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBarometricPressureTrendValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -608,12 +653,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclination_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclination());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclination_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -634,12 +681,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclination_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclination(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclination_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -660,12 +709,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticDeclinationNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startMagneticDeclinationNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticDeclinationNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -686,12 +737,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticDeclinationNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startMagneticDeclinationNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticDeclinationNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -712,12 +765,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticDeclinationNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopMagneticDeclinationNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticDeclinationNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -738,12 +793,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticDeclinationNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopMagneticDeclinationNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticDeclinationNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -764,12 +821,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -790,12 +849,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -816,12 +877,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -842,12 +905,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -868,12 +933,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticDeclinationEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -894,12 +961,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticDeclinationEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -920,12 +989,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -946,12 +1017,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -972,12 +1045,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticDeclinationEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -998,12 +1073,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticDeclinationEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1024,12 +1101,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1050,12 +1129,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1076,12 +1157,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticDeclinationCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1102,12 +1185,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticDeclinationCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticDeclinationCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1128,12 +1213,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1154,12 +1241,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticDeclinationValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticDeclinationValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1180,12 +1269,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2D_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2D());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2D_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1206,12 +1297,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2D_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2D(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2D_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1232,12 +1325,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticFluxDensity2DNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startMagneticFluxDensity2DNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticFluxDensity2DNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1258,12 +1353,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticFluxDensity2DNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startMagneticFluxDensity2DNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticFluxDensity2DNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1284,12 +1381,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticFluxDensity2DNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopMagneticFluxDensity2DNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticFluxDensity2DNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1310,12 +1409,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticFluxDensity2DNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopMagneticFluxDensity2DNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticFluxDensity2DNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1336,12 +1437,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1362,12 +1465,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1388,12 +1493,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1414,12 +1521,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1440,12 +1549,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity2DEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1466,12 +1577,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity2DEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1492,12 +1605,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1518,12 +1633,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1544,12 +1661,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity2DEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1570,12 +1689,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity2DEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1596,12 +1717,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1622,12 +1745,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1648,12 +1773,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity2DCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1674,12 +1801,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity2DCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity2DCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1700,12 +1829,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1726,12 +1857,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity2DValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity2DValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1752,12 +1885,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3D_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3D());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3D_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1778,12 +1913,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3D_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3D(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3D_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1804,12 +1941,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticFluxDensity3DNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startMagneticFluxDensity3DNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticFluxDensity3DNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1830,12 +1969,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticFluxDensity3DNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startMagneticFluxDensity3DNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startMagneticFluxDensity3DNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1856,12 +1997,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticFluxDensity3DNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopMagneticFluxDensity3DNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticFluxDensity3DNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1882,12 +2025,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticFluxDensity3DNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopMagneticFluxDensity3DNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMagneticFluxDensity3DNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1908,12 +2053,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1934,12 +2081,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1960,12 +2109,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1986,12 +2137,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2012,12 +2165,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity3DEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2038,12 +2193,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity3DEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2064,12 +2221,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2090,12 +2249,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2116,12 +2277,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity3DEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2142,12 +2305,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity3DEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2168,12 +2333,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2194,12 +2361,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2220,12 +2389,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity3DCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2246,12 +2417,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setMagneticFluxDensity3DCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMagneticFluxDensity3DCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2272,12 +2445,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2298,12 +2473,14 @@ public class EnvironmentalSensingProfileTest_4 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getMagneticFluxDensity3DValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getMagneticFluxDensity3DValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override

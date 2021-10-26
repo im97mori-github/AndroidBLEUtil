@@ -5,6 +5,14 @@
       <configuration CONFIG_NAME="Debug" PROFILE_NAME="Debug" />
     </configurations>
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/git/AndroidBLEUtil/sample-jellybean/src/main/res/layout/activity_index.xml" value="0.21302083333333333" />
+        <entry key="..\:/git/AndroidBLEUtil/sample-jellybean/src/main/res/menu/central.xml" value="0.24739583333333334" />
+      </map>
+    </option>
+  </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0">
       <entry_point TYPE="field" FQNAME="org.im97mori.ble.service.central.AbstractCentralService KEY_STATUS" />
@@ -251,6 +259,7 @@
     <pattern value="org.im97mori.ble.constants.ErrorCodeAndroid" />
     <pattern value="org.im97mori.ble.advertising.filter.PeripheralConnectionIntervalRangeFilter" method="isMatched" />
     <pattern value="org.im97mori.ble.advertising.filter.UniformResourceIdentifierFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="setCreateAddServiceTaskBluetoothGattServiceList" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />

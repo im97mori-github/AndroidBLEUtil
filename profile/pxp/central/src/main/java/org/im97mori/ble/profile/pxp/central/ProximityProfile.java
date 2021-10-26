@@ -1,18 +1,26 @@
 package org.im97mori.ble.profile.pxp.central;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.IMMEDIATE_ALERT_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.LINK_LOSS_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.TX_POWER_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.pxp.central.db.ProximityProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.ias.central.ImmediateAlertService;
 import org.im97mori.ble.service.lls.central.LinkLossService;
@@ -21,11 +29,6 @@ import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.IMMEDIATE_ALERT_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.LINK_LOSS_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.TX_POWER_SERVICE;
 
 /**
  * Proximity Profile for Central
@@ -69,17 +72,6 @@ public class ProximityProfile extends AbstractCentralProfile {
     public ProximityProfile(@NonNull Context context, @NonNull ProximityProfileCallback proximityProfileCallback) {
         super(context, proximityProfileCallback);
         mProximityProfileCallback = proximityProfileCallback;
-    }
-
-    /**
-     * find Proximity Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findProximityProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new ProximityProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -265,6 +257,25 @@ public class ProximityProfile extends AbstractCentralProfile {
             }
         }
         super.onCharacteristicWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new ProximityProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new ProximityProfileLeScanCallback(this, null);
     }
 
 }

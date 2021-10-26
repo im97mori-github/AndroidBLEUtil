@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a05.ServiceChanged;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
@@ -26,9 +27,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -42,6 +48,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -58,6 +66,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addServiceChanged_00001() {
         ServiceChanged serviceChanged = new ServiceChanged(new byte[4]);
 
@@ -98,6 +108,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addServiceChanged_00002() {
         ServiceChanged serviceChanged = new ServiceChanged(new byte[]{1, 2, 3, 4});
 
@@ -144,6 +156,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeServiceChanged_00001() {
         ServiceChanged serviceChanged = new ServiceChanged(new byte[]{1, 2, 3, 4});
 
@@ -176,6 +190,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addClientSupportedFeatures_00001() {
         ClientSupportedFeatures clientSupportedFeatures = new ClientSupportedFeatures(new byte[]{1});
 
@@ -208,6 +224,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addClientSupportedFeatures_00002() {
         ClientSupportedFeatures clientSupportedFeatures = new ClientSupportedFeatures(new byte[]{1});
 
@@ -240,6 +258,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addClientSupportedFeatures_00003() {
         ClientSupportedFeatures clientSupportedFeatures = new ClientSupportedFeatures(new byte[]{1});
 
@@ -274,6 +294,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeClientSupportedFeatures_00001() {
         ClientSupportedFeatures clientSupportedFeatures = new ClientSupportedFeatures(new byte[]{1});
 
@@ -303,6 +325,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDatabaseHash_00001() {
         DatabaseHash databaseHash = new DatabaseHash(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16});
 
@@ -335,6 +359,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDatabaseHash_00002() {
         DatabaseHash databaseHash = new DatabaseHash(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16});
 
@@ -367,6 +393,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDatabaseHash_00003() {
         DatabaseHash databaseHash = new DatabaseHash(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16});
 
@@ -401,6 +429,8 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDatabaseHash_00001() {
         DatabaseHash databaseHash = new DatabaseHash(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16});
 

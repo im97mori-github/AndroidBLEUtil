@@ -3,6 +3,7 @@ package org.im97mori.ble.service.lns.peripheral;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a67.LocationAndSpeed;
 import org.im97mori.ble.characteristic.u2a68.Navigation;
@@ -30,9 +31,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class LocationAndNavigationServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNFeature_00001() {
         Exception exception = null;
         try {
@@ -46,6 +52,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNFeature_00101() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -116,6 +124,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNFeature_00201() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -188,6 +198,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeLNFeature_00101() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -227,6 +239,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLocationAndSpeed_00001() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -265,6 +279,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLocationAndSpeed_00101() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -342,6 +358,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLocationAndSpeed_00201() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -426,6 +444,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeLocationAndSpeed_00101() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -484,6 +504,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00001() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -552,6 +574,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00002() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -609,6 +633,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00003() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -666,6 +692,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00004() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -723,6 +751,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00005() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -780,6 +810,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00006() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -837,6 +869,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00007() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -894,6 +928,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00101() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -969,6 +1005,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPositionQuality_00201() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1047,6 +1085,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removePositionQuality_00001() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1119,6 +1159,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addNavigation_00001() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1187,6 +1229,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addNavigation_00002() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1244,6 +1288,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addNavigation_00003() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1301,6 +1347,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addNavigation_00004() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1358,6 +1406,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addNavigation_00005() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1418,6 +1468,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addNavigation_00101() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1532,6 +1584,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addNavigation_00201() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1651,6 +1705,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeNavigation_00001() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1735,6 +1791,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNControlPoint_00001() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1803,6 +1861,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNControlPoint_00002() {
         LNFeature lnFeature = new LNFeature(false
                 , true
@@ -1860,6 +1920,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNControlPoint_00003() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1917,6 +1979,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNControlPoint_00004() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -1974,6 +2038,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNControlPoint_00005() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -2031,6 +2097,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNControlPoint_00006() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -2103,6 +2171,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLNControlPoint_00101() {
         LNFeature lnFeature = new LNFeature(false
                 , false
@@ -2204,6 +2274,8 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest extends Abstrac
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeLNControlPoint_00001() {
         LNFeature lnFeature = new LNFeature(false
                 , false

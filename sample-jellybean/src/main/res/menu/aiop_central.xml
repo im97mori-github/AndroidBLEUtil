@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+        <item
+            android:id="@+id/get_digital_count"
+            android:title="@string/menu_get_digital_count" />
+        <item
+            android:id="@+id/get_analog_count"
+            android:title="@string/menu_get_analog_count" />
+    </group>
+    <group
+        android:id="@+id/gatt"
+        android:visible="false"
+        tools:ignore="UnusedIds">
+        <item
+            android:id="@+id/get_device_name"
+            android:title="@string/menu_get_device_name" />
+        <item
+            android:id="@+id/is_device_name_writable"
+            android:title="@string/menu_is_device_name_writable" />
+        <item
+            android:id="@+id/set_device_name"
+            android:title="@string/menu_set_device_name" />
+        <item
+            android:id="@+id/get_appearance"
+            android:title="@string/menu_get_appearance" />
+        <item
+            android:id="@+id/is_appearance_writable"
+            android:title="@string/menu_is_appearance_writable" />
+        <item
+            android:id="@+id/set_appearance"
+            android:title="@string/menu_set_appearance" />
+        <item
+            android:id="@+id/has_ppcp"
+            android:title="@string/menu_has_ppcp" />
+        <item
+            android:id="@+id/get_ppcp"
+            android:title="@string/menu_get_ppcp" />
+        <item
+            android:id="@+id/has_car"
+            android:title="@string/menu_has_car" />
+        <item
+            android:id="@+id/get_car"
+            android:title="@string/menu_get_car" />
+        <item
+            android:id="@+id/has_rpao"
+            android:title="@string/menu_has_rpao" />
+        <item
+            android:id="@+id/get_rpao"
+            android:title="@string/menu_get_rpao" />
+        <item
+            android:id="@+id/has_reconnection_address"
+            android:title="@string/menu_has_reconnection_address" />
+        <item
+            android:id="@+id/set_reconnection_address"
+            android:title="@string/menu_set_reconnection_address" />
+        <item
+            android:id="@+id/has_ppf"
+            android:title="@string/menu_has_ppf" />
+        <item
+            android:id="@+id/get_ppf"
+            android:title="@string/menu_get_ppf" />
+        <item
+            android:id="@+id/is_ppf_writable"
+            android:title="@string/menu_is_ppf_writable" />
+        <item
+            android:id="@+id/set_ppf"
+            android:title="@string/menu_set_ppf" />
+    </group>
+    <group
+        android:id="@+id/gap"
+        android:visible="true"
+        tools:ignore="UnusedIds">
+        <item
+            android:id="@+id/has_service_changed"
+            android:title="@string/menu_has_service_changed" />
+        <item
+            android:id="@+id/read_service_changed_characteristic_configuration"
+            android:title="@string/menu_read_service_changed_characteristic_configuration" />
+        <item
+            android:id="@+id/indicate_service_changed_start"
+            android:title="@string/menu_indicate_service_changed_start" />
+        <item
+            android:id="@+id/indicate_service_changed_stop"
+            android:title="@string/menu_indicate_service_changed_stop" />
+        <item
+            android:id="@+id/has_csf"
+            android:title="@string/menu_has_csf" />
+        <item
+            android:id="@+id/get_csf"
+            android:title="@string/menu_get_csf" />
+        <item
+            android:id="@+id/set_csf"
+            android:title="@string/menu_set_csf" />
+        <item
+            android:id="@+id/has_database_hash"
+            android:title="@string/menu_has_database_hash" />
+        <item
+            android:id="@+id/get_database_hash"
+            android:title="@string/menu_get_database_hash" />
+    </group>
+    <group
+        android:id="@+id/digital_0"
+        android:visible="false"
+        tools:ignore="UnusedIds">
+        <item
+            android:id="@+id/is_digital_readable_0"
+            android:title="@string/menu_is_digital_readable_0" />
+        <item
+            android:id="@+id/is_digital_writable_0"
+            android:title="@string/menu_is_digital_writable_0" />
+        <item
+            android:id="@+id/is_digital_writable_with_no_response_0"
+            android:title="@string/menu_is_digital_writable_with_no_response_0" />
+        <item
+            android:id="@+id/is_digital_notificatable_0"
+            android:title="@string/menu_is_digital_notificatable_0" />
+        <item
+            android:id="@+id/is_digital_indicatable_0"
+            android:title="@string/menu_is_digital_indicatable_0" />
+        <item
+            android:id="@+id/has_digital_characteristic_presentation_format_0"
+            android:title="@string/menu_has_digital_characteristic_presentation_format_0" />
+        <item
+            android:id="@+id/has_digital_characteristic_user_description_0"
+            android:title="@string/menu_has_digital_characteristic_user_description_0" />
+        <item
+            android:id="@+id/is_digital_characteristic_user_description_writable_0"
+            android:title="@string/menu_is_digital_characteristic_user_description_writable_0" />
+        <item
+            android:id="@+id/has_digital_characteristic_extended_properties_0"
+            android:title="@string/menu_has_digital_characteristic_extended_properties_0" />
+        <item
+            android:id="@+id/has_digital_value_trigger_setting_0"
+            android:title="@string/menu_has_digital_value_trigger_setting_0" />
+        <item
+            android:id="@+id/has_digital_time_trigger_setting_0"
+            android:title="@string/menu_has_digital_time_trigger_setting_0" />
+        <item
+            android:id="@+id/get_digital_0"
+            android:title="@string/menu_get_digital_0" />
+        <item
+            android:id="@+id/set_digital_0"
+            android:title="@string/menu_set_digital_0" />
+        <item
+            android:id="@+id/set_digital_with_no_response_0"
+            android:title="@string/menu_set_digital_with_no_response_0" />
+        <item
+            android:id="@+id/get_digital_client_characteristic_configuration_0"
+            android:title="@string/menu_get_digital_client_characteristic_configuration_0" />
+        <item
+            android:id="@+id/start_digital_notification_0"
+            android:title="@string/menu_start_digital_notification_0" />
+        <item
+            android:id="@+id/stop_digital_notification_0"
+            android:title="@string/menu_stop_digital_notification_0" />
+        <item
+            android:id="@+id/start_digital_indication_0"
+            android:title="@string/menu_start_digital_indication_0" />
+        <item
+            android:id="@+id/stop_digital_indication_0"
+            android:title="@string/menu_stop_digital_indication_0" />
+        <item
+            android:id="@+id/get_digital_characteristic_presentation_format_0"
+            android:title="@string/menu_get_digital_characteristic_presentation_format_0" />
+        <item
+            android:id="@+id/get_digital_characteristic_user_description_0"
+            android:title="@string/menu_get_digital_characteristic_user_description_0" />
+        <item
+            android:id="@+id/set_digital_characteristic_user_description_0"
+            android:title="@string/menu_set_digital_characteristic_user_description_0" />
+        <item
+            android:id="@+id/get_digital_characteristic_extended_properties_0"
+            android:title="@string/menu_get_digital_characteristic_extended_properties_0" />
+        <item
+            android:id="@+id/get_digital_value_trigger_setting_0"
+            android:title="@string/menu_get_digital_value_trigger_setting_0" />
+        <item
+            android:id="@+id/set_digital_value_trigger_setting_0"
+            android:title="@string/menu_set_digital_value_trigger_setting_0" />
+        <item
+            android:id="@+id/get_digital_time_trigger_setting_0"
+            android:title="@string/menu_get_digital_time_trigger_setting_0" />
+        <item
+            android:id="@+id/set_digital_time_trigger_setting_0"
+            android:title="@string/menu_set_digital_time_trigger_setting_0" />
+        <item
+            android:id="@+id/get_digital_number_of_digitals_0"
+            android:title="@string/menu_get_digital_number_of_digitals_0" />
+    </group>
+    <group
+        android:id="@+id/digital_1"
+        android:visible="false"
+        tools:ignore="UnusedIds">
+        <item
+            android:id="@+id/is_digital_readable_1"
+            android:title="@string/menu_is_digital_readable_1" />
+        <item
+            android:id="@+id/is_digital_writable_1"
+            android:title="@string/menu_is_digital_writable_1" />
+        <item
+            android:id="@+id/is_digital_writable_with_no_response_1"
+            android:title="@string/menu_is_digital_writable_with_no_response_1" />
+        <item
+            android:id="@+id/is_digital_notificatable_1"
+            android:title="@string/menu_is_digital_notificatable_1" />
+        <item
+            android:id="@+id/is_digital_indicatable_1"
+            android:title="@string/menu_is_digital_indicatable_1" />
+        <item
+            android:id="@+id/has_digital_characteristic_presentation_format_1"
+            android:title="@string/menu_has_digital_characteristic_presentation_format_1" />
+        <item
+            android:id="@+id/has_digital_characteristic_user_description_1"
+            android:title="@string/menu_has_digital_characteristic_user_description_1" />
+        <item
+            android:id="@+id/is_digital_characteristic_user_description_writable_1"
+            android:title="@string/menu_is_digital_characteristic_user_description_writable_1" />
+        <item
+            android:id="@+id/has_digital_characteristic_extended_properties_1"
+            android:title="@string/menu_has_digital_characteristic_extended_properties_1" />
+        <item
+            android:id="@+id/has_digital_value_trigger_setting_1"
+            android:title="@string/menu_has_digital_value_trigger_setting_1" />
+        <item
+            android:id="@+id/has_digital_time_trigger_setting_1"
+            android:title="@string/menu_has_digital_time_trigger_setting_1" />
+        <item
+            android:id="@+id/get_digital_1"
+            android:title="@string/menu_get_digital_1" />
+        <item
+            android:id="@+id/set_digital_1"
+            android:title="@string/menu_set_digital_1" />
+        <item
+            android:id="@+id/set_digital_with_no_response_1"
+            android:title="@string/menu_set_digital_with_no_response_1" />
+        <item
+            android:id="@+id/get_digital_client_characteristic_configuration_1"
+            android:title="@string/menu_get_digital_client_characteristic_configuration_1" />
+        <item
+            android:id="@+id/start_digital_notification_1"
+            android:title="@string/menu_start_digital_notification_1" />
+        <item
+            android:id="@+id/stop_digital_notification_1"
+            android:title="@string/menu_stop_digital_notification_1" />
+        <item
+            android:id="@+id/start_digital_indication_1"
+            android:title="@string/menu_start_digital_indication_1" />
+        <item
+            android:id="@+id/stop_digital_indication_1"
+            android:title="@string/menu_stop_digital_indication_1" />
+        <item
+            android:id="@+id/get_digital_characteristic_presentation_format_1"
+            android:title="@string/menu_get_digital_characteristic_presentation_format_1" />
+        <item
+            android:id="@+id/get_digital_characteristic_user_description_1"
+            android:title="@string/menu_get_digital_characteristic_user_description_1" />
+        <item
+            android:id="@+id/set_digital_characteristic_user_description_1"
+            android:title="@string/menu_set_digital_characteristic_user_description_1" />
+        <item
+            android:id="@+id/get_digital_characteristic_extended_properties_1"
+            android:title="@string/menu_get_digital_characteristic_extended_properties_1" />
+        <item
+            android:id="@+id/get_digital_value_trigger_setting_1"
+            android:title="@string/menu_get_digital_value_trigger_setting_1" />
+        <item
+            android:id="@+id/set_digital_value_trigger_setting_1"
+            android:title="@string/menu_set_digital_value_trigger_setting_1" />
+        <item
+            android:id="@+id/get_digital_time_trigger_setting_1"
+            android:title="@string/menu_get_digital_time_trigger_setting_1" />
+        <item
+            android:id="@+id/set_digital_time_trigger_setting_1"
+            android:title="@string/menu_set_digital_time_trigger_setting_1" />
+        <item
+            android:id="@+id/get_digital_number_of_digitals_1"
+            android:title="@string/menu_get_digital_number_of_digitals_1" />
+    </group>
+    <group
+        android:id="@+id/analog_0"
+        android:visible="false"
+        tools:ignore="UnusedIds">
+        <item
+            android:id="@+id/is_analog_readable_0"
+            android:title="@string/menu_is_analog_readable_0" />
+        <item
+            android:id="@+id/is_analog_writable_0"
+            android:title="@string/menu_is_analog_writable_0" />
+        <item
+            android:id="@+id/is_analog_writable_with_no_response_0"
+            android:title="@string/menu_is_analog_writable_with_no_response_0" />
+        <item
+            android:id="@+id/is_analog_notificatable_0"
+            android:title="@string/menu_is_analog_notificatable_0" />
+        <item
+            android:id="@+id/is_analog_indicatable_0"
+            android:title="@string/menu_is_analog_indicatable_0" />
+        <item
+            android:id="@+id/has_analog_characteristic_presentation_format_0"
+            android:title="@string/menu_has_analog_characteristic_presentation_format_0" />
+        <item
+            android:id="@+id/has_analog_characteristic_user_description_0"
+            android:title="@string/menu_has_analog_characteristic_user_description_0" />
+        <item
+            android:id="@+id/is_analog_characteristic_user_description_writable_0"
+            android:title="@string/menu_is_analog_characteristic_user_description_writable_0" />
+        <item
+            android:id="@+id/has_analog_characteristic_extended_properties_0"
+            android:title="@string/menu_has_analog_characteristic_extended_properties_0" />
+        <item
+            android:id="@+id/has_analog_value_trigger_setting_0"
+            android:title="@string/menu_has_analog_value_trigger_setting_0" />
+        <item
+            android:id="@+id/has_analog_time_trigger_setting_0"
+            android:title="@string/menu_has_analog_time_trigger_setting_0" />
+        <item
+            android:id="@+id/get_analog_0"
+            android:title="@string/menu_get_analog_0" />
+        <item
+            android:id="@+id/set_analog_0"
+            android:title="@string/menu_set_analog_0" />
+        <item
+            android:id="@+id/set_analog_with_no_response_0"
+            android:title="@string/menu_set_analog_with_no_response_0" />
+        <item
+            android:id="@+id/get_analog_client_characteristic_configuration_0"
+            android:title="@string/menu_get_analog_client_characteristic_configuration_0" />
+        <item
+            android:id="@+id/start_analog_notification_0"
+            android:title="@string/menu_start_analog_notification_0" />
+        <item
+            android:id="@+id/stop_analog_notification_0"
+            android:title="@string/menu_stop_analog_notification_0" />
+        <item
+            android:id="@+id/start_analog_indication_0"
+            android:title="@string/menu_start_analog_indication_0" />
+        <item
+            android:id="@+id/stop_analog_indication_0"
+            android:title="@string/menu_stop_analog_indication_0" />
+        <item
+            android:id="@+id/get_analog_characteristic_presentation_format_0"
+            android:title="@string/menu_get_analog_characteristic_presentation_format_0" />
+        <item
+            android:id="@+id/get_analog_characteristic_user_description_0"
+            android:title="@string/menu_get_analog_characteristic_user_description_0" />
+        <item
+            android:id="@+id/set_analog_characteristic_user_description_0"
+            android:title="@string/menu_set_analog_characteristic_user_description_0" />
+        <item
+            android:id="@+id/get_analog_characteristic_extended_properties_0"
+            android:title="@string/menu_get_analog_characteristic_extended_properties_0" />
+        <item
+            android:id="@+id/get_analog_value_trigger_setting_0"
+            android:title="@string/menu_get_analog_value_trigger_setting_0" />
+        <item
+            android:id="@+id/set_analog_value_trigger_setting_0"
+            android:title="@string/menu_set_analog_value_trigger_setting_0" />
+        <item
+            android:id="@+id/get_analog_time_trigger_setting_0"
+            android:title="@string/menu_get_analog_time_trigger_setting_0" />
+        <item
+            android:id="@+id/set_analog_time_trigger_setting_0"
+            android:title="@string/menu_set_analog_time_trigger_setting_0" />
+        <item
+            android:id="@+id/get_analog_valid_range_0"
+            android:title="@string/menu_get_analog_valid_range_0" />
+    </group>
+    <group
+        android:id="@+id/analog_1"
+        android:visible="false"
+        tools:ignore="UnusedIds">
+        <item
+            android:id="@+id/is_analog_readable_1"
+            android:title="@string/menu_is_analog_readable_1" />
+        <item
+            android:id="@+id/is_analog_writable_1"
+            android:title="@string/menu_is_analog_writable_1" />
+        <item
+            android:id="@+id/is_analog_writable_with_no_response_1"
+            android:title="@string/menu_is_analog_writable_with_no_response_1" />
+        <item
+            android:id="@+id/is_analog_notificatable_1"
+            android:title="@string/menu_is_analog_notificatable_1" />
+        <item
+            android:id="@+id/is_analog_indicatable_1"
+            android:title="@string/menu_is_analog_indicatable_1" />
+        <item
+            android:id="@+id/has_analog_characteristic_presentation_format_1"
+            android:title="@string/menu_has_analog_characteristic_presentation_format_1" />
+        <item
+            android:id="@+id/has_analog_characteristic_user_description_1"
+            android:title="@string/menu_has_analog_characteristic_user_description_1" />
+        <item
+            android:id="@+id/is_analog_characteristic_user_description_writable_1"
+            android:title="@string/menu_is_analog_characteristic_user_description_writable_1" />
+        <item
+            android:id="@+id/has_analog_characteristic_extended_properties_1"
+            android:title="@string/menu_has_analog_characteristic_extended_properties_1" />
+        <item
+            android:id="@+id/has_analog_value_trigger_setting_1"
+            android:title="@string/menu_has_analog_value_trigger_setting_1" />
+        <item
+            android:id="@+id/has_analog_time_trigger_setting_1"
+            android:title="@string/menu_has_analog_time_trigger_setting_1" />
+        <item
+            android:id="@+id/get_analog_1"
+            android:title="@string/menu_get_analog_1" />
+        <item
+            android:id="@+id/set_analog_1"
+            android:title="@string/menu_set_analog_1" />
+        <item
+            android:id="@+id/set_analog_with_no_response_1"
+            android:title="@string/menu_set_analog_with_no_response_1" />
+        <item
+            android:id="@+id/get_analog_client_characteristic_configuration_1"
+            android:title="@string/menu_get_analog_client_characteristic_configuration_1" />
+        <item
+            android:id="@+id/start_analog_notification_1"
+            android:title="@string/menu_start_analog_notification_1" />
+        <item
+            android:id="@+id/stop_analog_notification_1"
+            android:title="@string/menu_stop_analog_notification_1" />
+        <item
+            android:id="@+id/start_analog_indication_1"
+            android:title="@string/menu_start_analog_indication_1" />
+        <item
+            android:id="@+id/stop_analog_indication_1"
+            android:title="@string/menu_stop_analog_indication_1" />
+        <item
+            android:id="@+id/get_analog_characteristic_presentation_format_1"
+            android:title="@string/menu_get_analog_characteristic_presentation_format_1" />
+        <item
+            android:id="@+id/get_analog_characteristic_user_description_1"
+            android:title="@string/menu_get_analog_characteristic_user_description_1" />
+        <item
+            android:id="@+id/set_analog_characteristic_user_description_1"
+            android:title="@string/menu_set_analog_characteristic_user_description_1" />
+        <item
+            android:id="@+id/get_analog_characteristic_extended_properties_1"
+            android:title="@string/menu_get_analog_characteristic_extended_properties_1" />
+        <item
+            android:id="@+id/get_analog_value_trigger_setting_1"
+            android:title="@string/menu_get_analog_value_trigger_setting_1" />
+        <item
+            android:id="@+id/set_analog_value_trigger_setting_1"
+            android:title="@string/menu_set_analog_value_trigger_setting_1" />
+        <item
+            android:id="@+id/get_analog_time_trigger_setting_1"
+            android:title="@string/menu_get_analog_time_trigger_setting_1" />
+        <item
+            android:id="@+id/set_analog_time_trigger_setting_1"
+            android:title="@string/menu_set_analog_time_trigger_setting_1" />
+        <item
+            android:id="@+id/get_analog_valid_range_1"
+            android:title="@string/menu_get_analog_valid_range_1" />
+    </group>
+    <group
+        android:id="@+id/aggregate"
+        android:visible="true"
+        tools:ignore="UnusedIds">
+        <item
+            android:id="@+id/is_aggregate_supported"
+            android:title="@string/menu_is_aggregate_supported" />
+        <item
+            android:id="@+id/is_aggregate_readable"
+            android:title="@string/menu_is_aggregate_readable" />
+        <item
+            android:id="@+id/is_aggregate_notificatable"
+            android:title="@string/menu_is_aggregate_notificatable" />
+        <item
+            android:id="@+id/is_aggregate_indicatable"
+            android:title="@string/menu_is_aggregate_indicatable" />
+        <item
+            android:id="@+id/get_aggregate"
+            android:title="@string/menu_get_aggregate" />
+        <item
+            android:id="@+id/get_aggregate_client_characteristic_configuration"
+            android:title="@string/menu_get_aggregate_client_characteristic_configuration" />
+        <item
+            android:id="@+id/start_aggregate_notification"
+            android:title="@string/menu_start_aggregate_notification" />
+        <item
+            android:id="@+id/stop_aggregate_notification"
+            android:title="@string/menu_stop_aggregate_notification" />
+        <item
+            android:id="@+id/start_aggregate_indication"
+            android:title="@string/menu_start_aggregate_indication" />
+        <item
+            android:id="@+id/stop_aggregate_indication"
+            android:title="@string/menu_stop_aggregate_indication" />
+    </group>
+</menu>

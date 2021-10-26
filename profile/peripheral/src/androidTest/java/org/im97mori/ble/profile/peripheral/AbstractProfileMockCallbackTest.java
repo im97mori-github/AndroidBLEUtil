@@ -4,6 +4,7 @@ import android.bluetooth.le.AdvertiseSettings;
 
 import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.junit.Test;
@@ -15,6 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class AbstractProfileMockCallbackTest {
 
     @Test
@@ -32,6 +34,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_constructor_00002() throws InterruptedException {
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
             @Override
@@ -63,6 +66,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_start_00002() throws InterruptedException {
         final CountDownLatch tearDownLatch = new CountDownLatch(1);
         ProfileMockCallback profileMockCallback = new ProfileMockCallback(ApplicationProvider.getApplicationContext(), false, new BaseBLEServerCallback());
@@ -100,6 +104,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00002() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -127,6 +132,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00003() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -155,6 +161,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00004() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -188,6 +195,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00005() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -247,6 +255,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00102() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -274,6 +283,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00103() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -302,6 +312,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00104() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -335,6 +346,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00105() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -394,6 +406,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00202() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -421,6 +434,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00203() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -449,6 +463,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00204() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -482,6 +497,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_00205() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -514,6 +530,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -559,6 +576,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAdvertising_00003() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -621,6 +639,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAdvertising_00005() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -652,6 +671,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAdvertising_00006() throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback() {
@@ -686,6 +706,7 @@ public class AbstractProfileMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStarted_00002() throws InterruptedException {
         BaseBLEServerCallback baseBLEServerCallback1 = new BaseBLEServerCallback();
         ProfileMockCallback profileMockCallback = new ProfileMockCallback(ApplicationProvider.getApplicationContext(), false, baseBLEServerCallback1);

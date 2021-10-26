@@ -3,10 +3,13 @@ package org.im97mori.ble.service.ess.central;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
@@ -50,6 +53,8 @@ import static org.junit.Assert.assertTrue;
 public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -83,6 +88,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -121,6 +128,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -160,6 +169,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -189,6 +200,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -218,6 +231,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -247,6 +262,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -280,6 +297,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -318,6 +337,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -357,6 +378,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00010() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -386,6 +409,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00011() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -415,6 +440,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00012() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -444,6 +471,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -477,6 +506,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -515,6 +546,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -554,6 +587,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -583,6 +618,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -612,6 +649,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00206() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -641,6 +680,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00207() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -674,6 +715,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00208() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -712,6 +755,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00209() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -751,6 +796,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00210() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -780,6 +827,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00211() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -809,6 +858,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00212() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -838,6 +889,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -871,6 +924,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -909,6 +964,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -948,6 +1005,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -977,6 +1036,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00305() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1006,6 +1067,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00306() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1035,6 +1098,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00307() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1068,6 +1133,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00308() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1106,6 +1173,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00309() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1145,6 +1214,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00310() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1174,6 +1245,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00311() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1203,6 +1276,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00312() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1232,6 +1307,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1265,6 +1342,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1303,6 +1382,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1342,6 +1423,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1371,6 +1454,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00405() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1400,6 +1485,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00406() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1429,6 +1516,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00407() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1462,6 +1551,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00408() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1500,6 +1591,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00409() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1539,6 +1632,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00410() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1568,6 +1663,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00411() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1597,6 +1694,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00412() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1626,6 +1725,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1659,6 +1760,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1697,6 +1800,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1736,6 +1841,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1765,6 +1872,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00505() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1794,6 +1903,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00506() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1823,6 +1934,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00507() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1856,6 +1969,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00508() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1894,6 +2009,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00509() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1933,6 +2050,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00510() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1962,6 +2081,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00511() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1991,6 +2112,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00512() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2020,6 +2143,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2053,6 +2178,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00602() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2091,6 +2218,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00603() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2130,6 +2259,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00604() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2159,6 +2290,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00605() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2188,6 +2321,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00606() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2217,6 +2352,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00607() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2250,6 +2387,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00608() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2288,6 +2427,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00609() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2327,6 +2468,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00610() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2356,6 +2499,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00611() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2385,6 +2530,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00612() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2414,6 +2561,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2447,6 +2596,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00702() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2485,6 +2636,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00703() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2524,6 +2677,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00704() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2553,6 +2708,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00705() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2582,6 +2739,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00706() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2611,6 +2770,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00707() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2644,6 +2805,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00708() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2682,6 +2845,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00709() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2721,6 +2886,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00710() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2750,6 +2917,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00711() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2779,6 +2948,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00712() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2808,6 +2979,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2841,6 +3014,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00802() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2879,6 +3054,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00803() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2918,6 +3095,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00804() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2947,6 +3126,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00805() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2976,6 +3157,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00806() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3005,6 +3188,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00807() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3038,6 +3223,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00808() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3076,6 +3263,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00809() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3115,6 +3304,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00810() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3144,6 +3335,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00811() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3173,6 +3366,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00812() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3202,6 +3397,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3235,6 +3432,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00902() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3273,6 +3472,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00903() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3312,6 +3513,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00904() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3341,6 +3544,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00905() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3370,6 +3575,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00906() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3399,6 +3606,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00907() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3432,6 +3641,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00908() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3470,6 +3681,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00909() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3509,6 +3722,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00910() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3538,6 +3753,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00911() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3567,6 +3784,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_00912() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3596,6 +3815,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3629,6 +3850,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3667,6 +3890,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3706,6 +3931,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3735,6 +3962,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3764,6 +3993,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3793,6 +4024,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3826,6 +4059,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3864,6 +4099,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3903,6 +4140,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01010() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3932,6 +4171,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01011() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3961,6 +4202,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01012() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3990,6 +4233,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4023,6 +4268,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4061,6 +4308,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4100,6 +4349,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4129,6 +4380,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4158,6 +4411,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4187,6 +4442,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4220,6 +4477,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4258,6 +4517,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01109() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4297,6 +4558,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01110() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4326,6 +4589,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01111() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4355,6 +4620,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01112() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4384,6 +4651,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4417,6 +4686,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4455,6 +4726,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4494,6 +4767,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4523,6 +4798,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4552,6 +4829,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01206() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4581,6 +4860,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01207() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4614,6 +4895,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01208() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4652,6 +4935,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01209() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4691,6 +4976,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01210() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4720,6 +5007,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01211() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4749,6 +5038,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01212() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4778,6 +5069,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4811,6 +5104,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4849,6 +5144,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4888,6 +5185,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4917,6 +5216,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01305() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4946,6 +5247,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01306() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4975,6 +5278,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01307() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5008,6 +5313,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01308() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5046,6 +5353,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01309() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5085,6 +5394,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01310() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5114,6 +5425,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01311() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5143,6 +5456,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01312() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5172,6 +5487,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5205,6 +5522,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5243,6 +5562,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5282,6 +5603,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5311,6 +5634,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01405() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5340,6 +5665,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01406() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5369,6 +5696,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01407() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5402,6 +5731,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01408() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5440,6 +5771,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01409() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5479,6 +5812,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01410() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5508,6 +5843,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01411() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5537,6 +5874,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01412() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5566,6 +5905,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5599,6 +5940,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5637,6 +5980,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5676,6 +6021,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5705,6 +6052,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01505() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5734,6 +6083,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01506() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5763,6 +6114,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01507() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5796,6 +6149,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01508() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5834,6 +6189,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01509() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5873,6 +6230,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01510() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5902,6 +6261,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01511() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5931,6 +6292,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01512() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5960,6 +6323,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5993,6 +6358,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01602() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6031,6 +6398,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01603() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6070,6 +6439,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01604() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6099,6 +6470,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01605() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6128,6 +6501,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01606() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6157,6 +6532,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01607() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6190,6 +6567,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01608() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6228,6 +6607,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01609() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6267,6 +6648,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01610() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6296,6 +6679,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01611() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6325,6 +6710,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01612() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6354,6 +6741,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6387,6 +6776,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01702() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6425,6 +6816,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01703() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6464,6 +6857,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01704() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6493,6 +6888,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01705() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6522,6 +6919,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01706() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6551,6 +6950,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01707() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6584,6 +6985,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01708() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6622,6 +7025,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01709() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6661,6 +7066,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01710() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6690,6 +7097,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01711() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6719,6 +7128,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01712() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6748,6 +7159,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6781,6 +7194,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01802() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6819,6 +7234,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01803() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6858,6 +7275,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01804() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6887,6 +7306,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01805() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6916,6 +7337,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01806() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6945,6 +7368,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01807() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -6978,6 +7403,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01808() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7016,6 +7443,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01809() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7055,6 +7484,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01810() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7084,6 +7515,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01811() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7113,6 +7546,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01812() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7142,6 +7577,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7175,6 +7612,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01902() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7213,6 +7652,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01903() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7252,6 +7693,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01904() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7281,6 +7724,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01905() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7310,6 +7755,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01906() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7339,6 +7786,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01907() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7372,6 +7821,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01908() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7410,6 +7861,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01909() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7449,6 +7902,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01910() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7478,6 +7933,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01911() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7507,6 +7964,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_01912() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7536,6 +7995,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7569,6 +8030,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7607,6 +8070,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7646,6 +8111,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7675,6 +8142,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7704,6 +8173,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7733,6 +8204,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7766,6 +8239,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7804,6 +8279,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7843,6 +8320,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02010() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7872,6 +8351,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02011() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -7901,6 +8382,8 @@ public class EnvironmentalSensingServiceTest_35 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_onSetNotificationSuccess_02012() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;

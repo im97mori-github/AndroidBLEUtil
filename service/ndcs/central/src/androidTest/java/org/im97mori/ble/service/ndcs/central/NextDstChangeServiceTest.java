@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a11.TimeWithDstAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
@@ -25,6 +26,7 @@ import static org.junit.Assert.assertTrue;
 public class NextDstChangeServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -59,6 +61,7 @@ public class NextDstChangeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -92,6 +95,7 @@ public class NextDstChangeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -125,6 +129,7 @@ public class NextDstChangeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTimeWithDst_000001() {
         NextDstChangeService nextDstChangeService = new NextDstChangeService(MOCK_BLE_CONNECTION, new MockNextDstChangeServiceCallback(), null);
 
@@ -132,6 +137,7 @@ public class NextDstChangeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTimeWithDst_000002() {
         NextDstChangeService nextDstChangeService = new NextDstChangeService(MOCK_BLE_CONNECTION, new MockNextDstChangeServiceCallback(), null) {
 
@@ -146,6 +152,7 @@ public class NextDstChangeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTimeWithDst_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);

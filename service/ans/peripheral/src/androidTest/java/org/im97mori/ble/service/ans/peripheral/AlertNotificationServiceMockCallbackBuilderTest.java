@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategory;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategory;
@@ -27,9 +28,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -43,6 +49,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -58,6 +66,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -96,6 +106,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00004() {
         Exception exception = null;
         try {
@@ -135,6 +147,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00005() {
         Exception exception = null;
         try {
@@ -187,6 +201,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00006() {
         Exception exception = null;
         try {
@@ -245,6 +261,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedNewAlertCategory_00001() {
         SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
@@ -321,6 +339,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedNewAlertCategory_00101() {
         SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
@@ -397,6 +417,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedNewAlertCategory_00201() {
         SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
@@ -473,6 +495,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSupportedNewAlertCategory_00001() {
         Exception exception = null;
         try {
@@ -533,6 +557,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addNewAlert_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
@@ -615,6 +641,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeNewAlert_00001() {
         Exception exception = null;
         try {
@@ -675,6 +703,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedUnreadAlertCategory_00001() {
         SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
@@ -751,6 +781,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedUnreadAlertCategory_00101() {
         SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
@@ -827,6 +859,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedUnreadAlertCategory_00201() {
         SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
@@ -903,6 +937,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSupportedUnreadAlertCategory_00001() {
         Exception exception = null;
         try {
@@ -963,6 +999,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addUnreadAlertStatus_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
@@ -1045,6 +1083,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeUnreadAlertStatus_00001() {
         Exception exception = null;
         try {
@@ -1105,6 +1145,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAlertNotificationControlPoint_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1179,6 +1221,8 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAlertNotificationControlPoint_00001() {
         Exception exception = null;
         try {

@@ -1,11 +1,21 @@
 package org.im97mori.ble.profile.rscp.central;
 
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -21,13 +31,6 @@ import org.junit.Test;
 
 import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
 
@@ -48,13 +51,30 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findRunningSpeedAndCadenceProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
-        assertNull(runningSpeedAndCadenceProfile.findRunningSpeedAndCadenceProfileDevices(null));
+        assertTrue(runningSpeedAndCadenceProfile.createFilteredScanCallback() instanceof RunningSpeedAndCadenceProfileScanCallback);
     }
 
     @Test
-    public void test_findRunningSpeedAndCadenceProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
+        assertTrue(runningSpeedAndCadenceProfile.createFilteredLeScanCallback() instanceof RunningSpeedAndCadenceProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
+        assertNull(runningSpeedAndCadenceProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
@@ -67,18 +87,20 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
             }
         };
         runningSpeedAndCadenceProfile.start();
-        assertNotNull(runningSpeedAndCadenceProfile.findRunningSpeedAndCadenceProfileDevices(bundle));
+        assertNotNull(runningSpeedAndCadenceProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         runningSpeedAndCadenceProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.hasDeviceInformationService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -87,6 +109,7 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00003() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -97,6 +120,7 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
 
@@ -110,12 +134,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.isSensorLocationCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -124,12 +150,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.isSCControlPointCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -138,12 +166,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCFeature_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.getRSCFeature());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCFeature_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -164,12 +194,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCMeasurementClientCharacteristicConfiguration_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.getRSCMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCMeasurementClientCharacteristicConfiguration_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -190,12 +222,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRSCMeasurementNotification_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.startRSCMeasurementNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startRSCMeasurementNotification_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -216,12 +250,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRSCMeasurementNotification_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.stopRSCMeasurementNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRSCMeasurementNotification_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -242,12 +278,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.getSensorLocation());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -269,12 +307,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.setSCControlPoint(new SCControlPoint(new byte[]{SCControlPoint.OP_CODE_REQUEST_SUPPORTED_SENSOR_LOCATIONS})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -295,12 +335,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.getSCControlPointClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -321,12 +363,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.startSCControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -347,12 +391,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.stopSCControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -373,12 +419,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.hasManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -387,12 +435,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.hasModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -401,12 +451,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.getManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -427,12 +479,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertNull(runningSpeedAndCadenceProfile.getModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00002() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
             @Override
@@ -453,12 +507,14 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         assertTrue(runningSpeedAndCadenceProfile.getDatabaseHelper() instanceof RunningSpeedAndCadenceProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback()) {
@@ -476,6 +532,7 @@ public class RunningSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

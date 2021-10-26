@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -28,7 +28,7 @@ public class ServiceData32BitUUIDFilterTest {
     public void test_002() {
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         expectData[2] = 0x01;
         expectData[3] = 0x02;
         expectData[4] = 0x03;
@@ -46,7 +46,7 @@ public class ServiceData32BitUUIDFilterTest {
     public void test_003() {
         byte[] actualData = new byte[6];
         actualData[0] = 5;
-        actualData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        actualData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         actualData[2] = 0x01;
         actualData[3] = 0x02;
         actualData[4] = 0x03;
@@ -62,7 +62,7 @@ public class ServiceData32BitUUIDFilterTest {
     public void test_004() {
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         expectData[2] = 0x01;
         expectData[3] = 0x02;
         expectData[4] = 0x03;
@@ -80,13 +80,13 @@ public class ServiceData32BitUUIDFilterTest {
     public void test_101() {
         byte[] expectData = new byte[12];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         expectData[2] = 0x01;
         expectData[3] = 0x02;
         expectData[4] = 0x03;
         expectData[5] = 0x04;
         expectData[6] = 5;
-        expectData[7] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[7] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         expectData[8] = 0x05;
         expectData[9] = 0x06;
         expectData[10] = 0x07;
@@ -108,13 +108,13 @@ public class ServiceData32BitUUIDFilterTest {
     public void test_102() {
         byte[] actualData = new byte[12];
         actualData[0] = 5;
-        actualData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        actualData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         actualData[2] = 0x01;
         actualData[3] = 0x02;
         actualData[4] = 0x03;
         actualData[5] = 0x04;
         actualData[6] = 5;
-        actualData[7] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        actualData[7] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         actualData[8] = 0x05;
         actualData[9] = 0x06;
         actualData[10] = 0x07;
@@ -134,13 +134,13 @@ public class ServiceData32BitUUIDFilterTest {
     public void test_103() {
         byte[] expectData = new byte[12];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         expectData[2] = 0x01;
         expectData[3] = 0x02;
         expectData[4] = 0x03;
         expectData[5] = 0x04;
         expectData[6] = 5;
-        expectData[7] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[7] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         expectData[8] = 0x05;
         expectData[9] = 0x06;
         expectData[10] = 0x07;
@@ -170,12 +170,12 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = new byte[6];
         actualData[0] = 5;
-        actualData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        actualData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, actualData, 2, additionalData.length / 2);
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -196,12 +196,12 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] actualData = new byte[8];
         actualData[0] = 7;
-        actualData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        actualData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, actualData, 2, additionalData.length);
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length / 2);
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -222,7 +222,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -245,7 +245,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -268,7 +268,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -293,7 +293,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -320,7 +320,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -346,7 +346,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -374,7 +374,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -402,7 +402,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -427,7 +427,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -452,7 +452,7 @@ public class ServiceData32BitUUIDFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        expectData[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         System.arraycopy(additionalData, 0, expectData, 2, additionalData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);

@@ -3,6 +3,7 @@ package org.im97mori.ble.service.uds.peripheral;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimit;
@@ -83,10 +84,15 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 @SuppressWarnings("ConstantConditions")
 public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -100,6 +106,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -115,6 +123,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -131,6 +141,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00004() {
         Exception exception = null;
         try {
@@ -148,6 +160,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00005() {
         Exception exception = null;
         try {
@@ -174,6 +188,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00006() {
         Exception exception = null;
         try {
@@ -200,6 +216,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirstName_00001() {
         String firstNameString = "First Name";
         FirstName firstName = new FirstName(firstNameString);
@@ -245,6 +263,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirstName_00101() {
         String firstNameString = "First Name";
         FirstName firstName = new FirstName(firstNameString);
@@ -290,6 +310,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirstName_00201() {
         String firstNameString = "First Name";
         FirstName firstName = new FirstName(firstNameString);
@@ -335,6 +357,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirstName_00301() {
         String firstNameString = "First Name";
         FirstName firstName = new FirstName(firstNameString);
@@ -382,6 +406,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeFirstName_00001() {
         String firstNameString = "First Name";
         FirstName firstName = new FirstName(firstNameString);
@@ -413,6 +439,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLastName_00001() {
         String lastNameString = "Last Name";
         LastName lastName = new LastName(lastNameString);
@@ -458,6 +486,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLastName_00101() {
         String lastNameString = "Last Name";
         LastName lastName = new LastName(lastNameString);
@@ -503,6 +533,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLastName_00201() {
         String lastNameString = "Last Name";
         LastName lastName = new LastName(lastNameString);
@@ -548,6 +580,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLastName_00301() {
         String lastNameString = "Last Name";
         LastName lastName = new LastName(lastNameString);
@@ -595,6 +629,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeLastName_00001() {
         String lastNameString = "Last Name";
         LastName lastName = new LastName(lastNameString);
@@ -626,6 +662,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addEmailAddress_00001() {
         String emailAddressString = "Email Address";
         EmailAddress emailAddress = new EmailAddress(emailAddressString);
@@ -671,6 +709,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addEmailAddress_00101() {
         String emailAddressString = "Email Address";
         EmailAddress emailAddress = new EmailAddress(emailAddressString);
@@ -716,6 +756,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addEmailAddress_00201() {
         String emailAddressString = "Email Address";
         EmailAddress emailAddress = new EmailAddress(emailAddressString);
@@ -761,6 +803,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addEmailAddress_00301() {
         String emailAddressString = "Email Address";
         EmailAddress emailAddress = new EmailAddress(emailAddressString);
@@ -808,6 +852,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeEmailAddress_00001() {
         String emailAddressString = "Email Address";
         EmailAddress emailAddress = new EmailAddress(emailAddressString);
@@ -839,6 +885,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAge_00001() {
         int ageInt = 1;
         Age age = new Age(ageInt);
@@ -884,6 +932,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAge_00101() {
         int ageInt = 1;
         Age age = new Age(ageInt);
@@ -929,6 +979,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAge_00201() {
         int ageInt = 1;
         Age age = new Age(ageInt);
@@ -974,6 +1026,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAge_00301() {
         int ageInt = 1;
         Age age = new Age(ageInt);
@@ -1021,6 +1075,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAge_00001() {
         int ageInt = 1;
         Age age = new Age(ageInt);
@@ -1052,6 +1108,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDateOfBirth_00001() {
         int yearInt = 1;
         int monthInt = 2;
@@ -1099,6 +1157,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDateOfBirth_00101() {
         int yearInt = 1;
         int monthInt = 2;
@@ -1146,6 +1206,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDateOfBirth_00201() {
         int yearInt = 1;
         int monthInt = 2;
@@ -1193,6 +1255,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDateOfBirth_00301() {
         int yearInt = 1;
         int monthInt = 2;
@@ -1242,6 +1306,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDateOfBirth_00001() {
         int yearInt = 1;
         int monthInt = 2;
@@ -1275,6 +1341,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addGender_00001() {
         int genderInt = Gender.GENDER_MALE;
         Gender gender = new Gender(genderInt);
@@ -1320,6 +1388,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addGender_00101() {
         int genderInt = Gender.GENDER_MALE;
         Gender gender = new Gender(genderInt);
@@ -1365,6 +1435,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addGender_00201() {
         int genderInt = Gender.GENDER_MALE;
         Gender gender = new Gender(genderInt);
@@ -1410,6 +1482,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addGender_00301() {
         int genderInt = Gender.GENDER_MALE;
         Gender gender = new Gender(genderInt);
@@ -1457,6 +1531,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeGender_00001() {
         int genderInt = Gender.GENDER_MALE;
         Gender gender = new Gender(genderInt);
@@ -1488,6 +1564,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeight_00001() {
         int weightInt = 1;
         Weight weight = new Weight(weightInt);
@@ -1533,6 +1611,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeight_00101() {
         int weightInt = 1;
         Weight weight = new Weight(weightInt);
@@ -1578,6 +1658,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeight_00201() {
         int weightInt = 1;
         Weight weight = new Weight(weightInt);
@@ -1623,6 +1705,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeight_00301() {
         int weightInt = 1;
         Weight weight = new Weight(weightInt);
@@ -1670,6 +1754,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWeight_00001() {
         int weightInt = 1;
         Weight weight = new Weight(weightInt);
@@ -1701,6 +1787,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeight_00001() {
         int heightInt = 1;
         Height height = new Height(heightInt);
@@ -1746,6 +1834,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeight_00101() {
         int heightInt = 1;
         Height height = new Height(heightInt);
@@ -1791,6 +1881,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeight_00201() {
         int heightInt = 1;
         Height height = new Height(heightInt);
@@ -1836,6 +1928,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeight_00301() {
         int heightInt = 1;
         Height height = new Height(heightInt);
@@ -1883,6 +1977,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHeight_00001() {
         int heightInt = 1;
         Height height = new Height(heightInt);
@@ -1914,6 +2010,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addVO2Max_00001() {
         int vo2MaxInt = 1;
         VO2Max vo2Max = new VO2Max(vo2MaxInt);
@@ -1959,6 +2057,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addVO2Max_00101() {
         int vo2MaxInt = 1;
         VO2Max vo2Max = new VO2Max(vo2MaxInt);
@@ -2004,6 +2104,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addVO2Max_00201() {
         int vo2MaxInt = 1;
         VO2Max vo2Max = new VO2Max(vo2MaxInt);
@@ -2049,6 +2151,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addVO2Max_00301() {
         int vo2MaxInt = 1;
         VO2Max vo2Max = new VO2Max(vo2MaxInt);
@@ -2096,6 +2200,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeVO2Max_00001() {
         int vo2MaxInt = 1;
         VO2Max vo2Max = new VO2Max(vo2MaxInt);
@@ -2127,6 +2233,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateMax_00001() {
         int heartRateMaxInt = 1;
         HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
@@ -2172,6 +2280,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateMax_00101() {
         int heartRateMaxInt = 1;
         HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
@@ -2217,6 +2327,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateMax_00201() {
         int heartRateMaxInt = 1;
         HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
@@ -2262,6 +2374,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateMax_00301() {
         int heartRateMaxInt = 1;
         HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
@@ -2309,6 +2423,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHeartRateMax_00001() {
         int heartRateMaxInt = 1;
         HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
@@ -2340,6 +2456,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRestingHeartRate_00001() {
         int restingHeartRateInt = 1;
         RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
@@ -2385,6 +2503,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRestingHeartRate_00101() {
         int restingHeartRateInt = 1;
         RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
@@ -2430,6 +2550,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRestingHeartRate_00201() {
         int restingHeartRateInt = 1;
         RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
@@ -2475,6 +2597,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRestingHeartRate_00301() {
         int restingHeartRateInt = 1;
         RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
@@ -2522,6 +2646,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRestingHeartRate_00001() {
         int restingHeartRateInt = 1;
         RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
@@ -2553,6 +2679,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMaximumRecommendedHeartRate_00001() {
         int maximumRecommendedHeartRateInt = 1;
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
@@ -2598,6 +2726,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMaximumRecommendedHeartRate_00101() {
         int maximumRecommendedHeartRateInt = 1;
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
@@ -2643,6 +2773,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMaximumRecommendedHeartRate_00201() {
         int maximumRecommendedHeartRateInt = 1;
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
@@ -2688,6 +2820,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMaximumRecommendedHeartRate_00301() {
         int maximumRecommendedHeartRateInt = 1;
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
@@ -2735,6 +2869,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMaximumRecommendedHeartRate_00001() {
         int maximumRecommendedHeartRateInt = 1;
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
@@ -2766,6 +2902,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicThreshold_00001() {
         int aerobicThresholdInt = 1;
         AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
@@ -2811,6 +2949,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicThreshold_00101() {
         int aerobicThresholdInt = 1;
         AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
@@ -2856,6 +2996,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicThreshold_00201() {
         int aerobicThresholdInt = 1;
         AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
@@ -2901,6 +3043,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicThreshold_00301() {
         int aerobicThresholdInt = 1;
         AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
@@ -2948,6 +3092,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAerobicThreshold_00001() {
         int aerobicThresholdInt = 1;
         AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
@@ -2979,6 +3125,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicThreshold_00001() {
         int anaerobicThresholdInt = 1;
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
@@ -3024,6 +3172,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicThreshold_00101() {
         int anaerobicThresholdInt = 1;
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
@@ -3069,6 +3219,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicThreshold_00201() {
         int anaerobicThresholdInt = 1;
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
@@ -3114,6 +3266,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicThreshold_00301() {
         int anaerobicThresholdInt = 1;
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
@@ -3161,6 +3315,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnaerobicThreshold_00001() {
         int anaerobicThresholdInt = 1;
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
@@ -3192,6 +3348,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSportTypeForAerobicAndAnaerobicThresholds_00001() {
         int sportTypeForAerobicAndAnaerobicThresholdsInt = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UNSPECIFIED;
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
@@ -3237,6 +3395,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSportTypeForAerobicAndAnaerobicThresholds_00101() {
         int sportTypeForAerobicAndAnaerobicThresholdsInt = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UNSPECIFIED;
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
@@ -3282,6 +3442,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSportTypeForAerobicAndAnaerobicThresholds_00201() {
         int sportTypeForAerobicAndAnaerobicThresholdsInt = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UNSPECIFIED;
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
@@ -3327,6 +3489,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSportTypeForAerobicAndAnaerobicThresholds_00301() {
         int sportTypeForAerobicAndAnaerobicThresholdsInt = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UNSPECIFIED;
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
@@ -3374,6 +3538,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSportTypeForAerobicAndAnaerobicThresholds_00001() {
         int sportTypeForAerobicAndAnaerobicThresholdsInt = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UNSPECIFIED;
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
@@ -3405,6 +3571,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDateOfThresholdAssessment_00001() {
         int yearInt = 1;
         int monthInt = 2;
@@ -3452,6 +3620,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDateOfThresholdAssessment_00101() {
         int yearInt = 1;
         int monthInt = 2;
@@ -3499,6 +3669,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDateOfThresholdAssessment_00201() {
         int yearInt = 1;
         int monthInt = 2;
@@ -3546,6 +3718,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDateOfThresholdAssessment_00301() {
         int yearInt = 1;
         int monthInt = 2;
@@ -3595,6 +3769,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDateOfThresholdAssessment_00001() {
         int yearInt = 1;
         int monthInt = 2;
@@ -3628,6 +3804,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWaistCircumference_00001() {
         int waistCircumferenceInt = 1;
         WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
@@ -3673,6 +3851,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWaistCircumference_00101() {
         int waistCircumferenceInt = 1;
         WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
@@ -3718,6 +3898,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWaistCircumference_00201() {
         int waistCircumferenceInt = 1;
         WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
@@ -3763,6 +3945,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWaistCircumference_00301() {
         int waistCircumferenceInt = 1;
         WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
@@ -3810,6 +3994,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWaistCircumference00001() {
         int waistCircumferenceInt = 1;
         WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
@@ -3841,6 +4027,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHipCircumference_00001() {
         int hipCircumferenceInt = 1;
         HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
@@ -3886,6 +4074,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHipCircumference_00101() {
         int hipCircumferenceInt = 1;
         HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
@@ -3931,6 +4121,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHipCircumference_00201() {
         int hipCircumferenceInt = 1;
         HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
@@ -3976,6 +4168,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHipCircumference_00301() {
         int hipCircumferenceInt = 1;
         HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
@@ -4023,6 +4217,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHipCircumference_00001() {
         int hipCircumferenceInt = 1;
         HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
@@ -4054,6 +4250,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateLowerLimit_00001() {
         int fatBurnHeartRateLowerLimitInt = 1;
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
@@ -4099,6 +4297,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateLowerLimit_00101() {
         int fatBurnHeartRateLowerLimitInt = 1;
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
@@ -4144,6 +4344,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateLowerLimit_00201() {
         int fatBurnHeartRateLowerLimitInt = 1;
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
@@ -4189,6 +4391,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateLowerLimit_00301() {
         int fatBurnHeartRateLowerLimitInt = 1;
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
@@ -4236,6 +4440,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeFatBurnHeartRateLowerLimit_00001() {
         int fatBurnHeartRateLowerLimitInt = 1;
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
@@ -4267,6 +4473,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateUpperLimit_00001() {
         int fatBurnHeartRateUpperLimitInt = 1;
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
@@ -4312,6 +4520,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateUpperLimit_00101() {
         int fatBurnHeartRateUpperLimitInt = 1;
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
@@ -4357,6 +4567,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateUpperLimit_00201() {
         int fatBurnHeartRateUpperLimitInt = 1;
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
@@ -4402,6 +4614,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateUpperLimit_00301() {
         int fatBurnHeartRateUpperLimitInt = 1;
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
@@ -4449,6 +4663,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeFatBurnHeartRateUpperLimit_00001() {
         int fatBurnHeartRateUpperLimitInt = 1;
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
@@ -4480,6 +4696,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateLowerLimit_00001() {
         int aerobicHeartRateLowerLimitInt = 1;
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
@@ -4525,6 +4743,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateLowerLimit_00101() {
         int aerobicHeartRateLowerLimitInt = 1;
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
@@ -4570,6 +4790,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateLowerLimit_00201() {
         int aerobicHeartRateLowerLimitInt = 1;
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
@@ -4615,6 +4837,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateLowerLimit_00301() {
         int aerobicHeartRateLowerLimitInt = 1;
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
@@ -4662,6 +4886,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAerobicHeartRateLowerLimit_00001() {
         int aerobicHeartRateLowerLimitInt = 1;
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
@@ -4693,6 +4919,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateUpperLimit_00001() {
         int aerobicHeartRateUpperLimitInt = 1;
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
@@ -4738,6 +4966,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateUpperLimit_00101() {
         int aerobicHeartRateUpperLimitInt = 1;
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
@@ -4783,6 +5013,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateUpperLimit_00201() {
         int aerobicHeartRateUpperLimitInt = 1;
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
@@ -4828,6 +5060,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateUpperLimit_00301() {
         int aerobicHeartRateUpperLimitInt = 1;
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
@@ -4875,6 +5109,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAerobicHeartRateUpperLimit_00001() {
         int aerobicHeartRateUpperLimitInt = 1;
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
@@ -4906,6 +5142,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateLowerLimit_00001() {
         int anaerobicHeartRateLowerLimitInt = 1;
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
@@ -4951,6 +5189,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateLowerLimit_00101() {
         int anaerobicHeartRateLowerLimitInt = 1;
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
@@ -4996,6 +5236,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateLowerLimit_00201() {
         int anaerobicHeartRateLowerLimitInt = 1;
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
@@ -5041,6 +5283,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateLowerLimit_00301() {
         int anaerobicHeartRateLowerLimitInt = 1;
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
@@ -5088,6 +5332,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnaerobicHeartRateLowerLimit_00001() {
         int anaerobicHeartRateLowerLimitInt = 1;
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
@@ -5119,6 +5365,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateUpperLimit_00001() {
         int anaerobicHeartRateUpperLimitInt = 1;
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
@@ -5164,6 +5412,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateUpperLimit_00101() {
         int anaerobicHeartRateUpperLimitInt = 1;
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
@@ -5209,6 +5459,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateUpperLimit_00201() {
         int anaerobicHeartRateUpperLimitInt = 1;
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
@@ -5254,6 +5506,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateUpperLimit_00301() {
         int anaerobicHeartRateUpperLimitInt = 1;
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
@@ -5301,6 +5555,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnaerobicHeartRateUpperLimit_00001() {
         int anaerobicHeartRateUpperLimitInt = 1;
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
@@ -5332,6 +5588,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFiveZoneHeartRateLimits_00001() {
         int fiveZoneHeartRateLimitsVeryLightLightLimitInt = 1;
         int fiveZoneHeartRateLimitsLightModerateLimitInt = 2;
@@ -5380,6 +5638,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFiveZoneHeartRateLimits_00101() {
         int fiveZoneHeartRateLimitsVeryLightLightLimitInt = 1;
         int fiveZoneHeartRateLimitsLightModerateLimitInt = 2;
@@ -5428,6 +5688,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFiveZoneHeartRateLimits_00201() {
         int fiveZoneHeartRateLimitsVeryLightLightLimitInt = 1;
         int fiveZoneHeartRateLimitsLightModerateLimitInt = 2;
@@ -5476,6 +5738,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFiveZoneHeartRateLimits_00301() {
         int fiveZoneHeartRateLimitsVeryLightLightLimitInt = 1;
         int fiveZoneHeartRateLimitsLightModerateLimitInt = 2;
@@ -5526,6 +5790,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeFiveZoneHeartRateLimits_00001() {
         int fiveZoneHeartRateLimitsVeryLightLightLimitInt = 1;
         int fiveZoneHeartRateLimitsLightModerateLimitInt = 2;
@@ -5560,6 +5826,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addThreeZoneHeartRateLimits_00001() {
         int threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt = 1;
         int threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt = 2;
@@ -5606,6 +5874,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addThreeZoneHeartRateLimits_00101() {
         int threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt = 1;
         int threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt = 2;
@@ -5652,6 +5922,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addThreeZoneHeartRateLimits_00201() {
         int threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt = 1;
         int threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt = 2;
@@ -5698,6 +5970,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addThreeZoneHeartRateLimits_00301() {
         int threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt = 1;
         int threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt = 2;
@@ -5746,6 +6020,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeThreeZoneHeartRateLimits_00001() {
         int threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt = 1;
         int threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt = 2;
@@ -5778,6 +6054,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTwoZoneHeartRateLimit_00001() {
         int twoZoneHeartRateLimitFatBurnFitnessLimitInt = 1;
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
@@ -5823,6 +6101,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTwoZoneHeartRateLimit_00101() {
         int twoZoneHeartRateLimitFatBurnFitnessLimitInt = 1;
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
@@ -5868,6 +6148,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTwoZoneHeartRateLimit_00201() {
         int twoZoneHeartRateLimitFatBurnFitnessLimitInt = 1;
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
@@ -5913,6 +6195,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTwoZoneHeartRateLimit_00301() {
         int twoZoneHeartRateLimitFatBurnFitnessLimitInt = 1;
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
@@ -5960,6 +6244,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeTwoZoneHeartRateLimit_00001() {
         int twoZoneHeartRateLimitFatBurnFitnessLimitInt = 1;
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
@@ -5991,6 +6277,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLanguage_00001() {
         String languageString = "language";
         Language language = new Language(languageString);
@@ -6036,6 +6324,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLanguage_00101() {
         String languageString = "language";
         Language language = new Language(languageString);
@@ -6081,6 +6371,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLanguage_00201() {
         String languageString = "language";
         Language language = new Language(languageString);
@@ -6126,6 +6418,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLanguage_00301() {
         String languageString = "language";
         Language language = new Language(languageString);
@@ -6173,6 +6467,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeLanguage_00001() {
         String languageString = "language";
         Language language = new Language(languageString);
@@ -6204,6 +6500,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDatabaseChangeIncrement_00001() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -6254,6 +6552,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDatabaseChangeIncrement_00101() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -6309,6 +6609,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDatabaseChangeIncrement_00102() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -6361,6 +6663,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDatabaseChangeIncrement_00001() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -6392,6 +6696,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addUserIndex_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -6434,6 +6740,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addUserIndex_00101() {
         int responseCode = 1;
         long delay = 2;
@@ -6479,6 +6787,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeUserIndex_00001() {
         Exception exception = null;
         try {
@@ -6507,6 +6817,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRegisteredUser_00001() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -6557,6 +6869,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRegisteredUser_00101() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -6611,6 +6925,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRegisteredUser_00001() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -6642,6 +6958,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRegisteredUser_00002() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -6672,6 +6990,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addUserControlPoint_00001() {
         long characteristicDelay = 1;
         int registerNewUserResponseValue = 2;
@@ -6730,6 +7050,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeUserControlPoint_00001() {
         long characteristicDelay = 1;
         int registerNewUserResponseValue = 2;
@@ -6769,6 +7091,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00001() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
 
@@ -6776,6 +7100,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00002() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
 
@@ -6784,6 +7110,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00003() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
 
@@ -6793,6 +7121,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00004() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
 
@@ -6802,6 +7132,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00005() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
 
@@ -6811,6 +7143,8 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00006() {
         ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
 

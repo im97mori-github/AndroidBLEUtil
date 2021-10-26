@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a79.WindChill;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
@@ -32,9 +33,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWindChill_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -48,6 +54,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWindChill_00002() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -72,6 +80,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWindChill_00003() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -96,6 +106,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWindChill_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -135,6 +147,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChill_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -155,6 +169,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChill_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -189,6 +205,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsMeasurement_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -220,6 +238,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsMeasurement_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -269,6 +289,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsMeasurement_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -298,6 +320,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsMeasurement_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -326,6 +350,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsTriggerSetting_00001() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -355,6 +381,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsTriggerSetting_00002() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -384,6 +412,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsTriggerSetting_00003() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -413,6 +443,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsTriggerSetting_00004() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -439,6 +471,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsTriggerSetting_00101() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -479,6 +513,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsTriggerSetting_00102() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -519,6 +555,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsTriggerSetting_00103() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -559,6 +597,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsTriggerSetting_00104() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -607,6 +647,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsTriggerSetting_00001() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -634,6 +676,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsTriggerSetting_00002() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -661,6 +705,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsTriggerSetting_00003() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -688,6 +734,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsTriggerSetting_00004() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -715,6 +763,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsTriggerSetting_00101() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -747,6 +797,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsTriggerSetting_00102() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -779,6 +831,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsTriggerSetting_00103() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -811,6 +865,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsTriggerSetting_00104() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -847,6 +903,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsConfiguration_00001() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -880,6 +938,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsConfiguration_00002() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -915,6 +975,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsConfiguration_00101() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);
@@ -972,6 +1034,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillEsConfiguration_00102() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);
@@ -1031,6 +1095,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsConfiguration_00001() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -1059,6 +1125,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillEsConfiguration_00101() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);
@@ -1093,6 +1161,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillCharacteristicUserDescription_00001() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -1121,6 +1191,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillCharacteristicUserDescription_00002() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -1149,6 +1221,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillCharacteristicUserDescription_00101() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);
@@ -1198,6 +1272,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillCharacteristicUserDescription_00102() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);
@@ -1246,6 +1322,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillCharacteristicUserDescription_00001() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -1272,6 +1350,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillCharacteristicUserDescription_00101() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);
@@ -1318,6 +1398,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillValidRange_00001() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -1346,6 +1428,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillValidRange_00002() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -1374,6 +1458,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillValidRange_00101() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);
@@ -1422,6 +1508,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setWindChillValidRange_00102() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);
@@ -1470,6 +1558,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillValidRange_00001() {
         int characteristicIndex = 0;
         WindChill originalValue = new WindChill(1);
@@ -1496,6 +1586,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_WindChill extend
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWindChillValidRange_00101() {
         int characteristicIndex0 = 0;
         WindChill originalValue0 = new WindChill(1);

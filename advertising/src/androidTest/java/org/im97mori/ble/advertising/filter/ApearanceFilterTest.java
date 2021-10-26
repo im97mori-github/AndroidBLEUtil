@@ -1,18 +1,15 @@
 package org.im97mori.ble.advertising.filter;
 
-import org.im97mori.ble.BLEUtils;
+import static org.im97mori.ble.constants.DataType.APPEARANCE_DATA_TYPE;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AppearanceAndroid;
+import org.im97mori.ble.constants.AppearanceValues;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.UUID;
-
-import static org.im97mori.ble.constants.AppearanceUUID.APPEARANCE_SUB_CATEGORY_MAPPING_128;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_APPEARANCE;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class ApearanceFilterTest {
 
@@ -28,11 +25,10 @@ public class ApearanceFilterTest {
 
     @Test
     public void test_002() {
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] expectData = new byte[4];
         expectData[0] = 3;
-        expectData[1] = DATA_TYPE_APPEARANCE;
+        expectData[1] = APPEARANCE_DATA_TYPE;
         expectData[2] = (byte) (key & 0x00ff);
         expectData[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -46,11 +42,10 @@ public class ApearanceFilterTest {
 
     @Test
     public void test_003() {
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] actualData = new byte[4];
         actualData[0] = 3;
-        actualData[1] = DATA_TYPE_APPEARANCE;
+        actualData[1] = APPEARANCE_DATA_TYPE;
         actualData[2] = (byte) (key & 0x00ff);
         actualData[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -62,11 +57,10 @@ public class ApearanceFilterTest {
 
     @Test
     public void test_004() {
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] expectData = new byte[4];
         expectData[0] = 3;
-        expectData[1] = DATA_TYPE_APPEARANCE;
+        expectData[1] = APPEARANCE_DATA_TYPE;
         expectData[2] = (byte) (key & 0x00ff);
         expectData[3] = (byte) ((key >> 8) & 0x00ff);
 

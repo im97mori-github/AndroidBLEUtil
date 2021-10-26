@@ -5,6 +5,8 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.os.Build;
 import android.os.Parcel;
 import android.util.Log;
@@ -27,11 +29,14 @@ public class BLEUtilsAndroid extends BLEUtils {
      * @return {@code true}:bluetooth enabled, {@code false}:bluetooth disabled or no bluetooth feature
      */
     @SuppressLint("MissingPermission")
-    public static boolean isBluetoothEnabled() {
+    public static boolean isBluetoothEnabled(@NonNull Context context) {
         boolean result = false;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter != null) {
-            result = bluetoothAdapter.isEnabled();
+        BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
+        if (bluetoothManager != null) {
+            BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+            if (bluetoothAdapter != null) {
+                result = bluetoothAdapter.isEnabled();
+            }
         }
         return result;
     }
@@ -42,11 +47,14 @@ public class BLEUtilsAndroid extends BLEUtils {
      * @return return value of {@link BluetoothAdapter#enable()} or {@code false}:no bluetooth feature
      */
     @SuppressLint("MissingPermission")
-    public static boolean bluetoothEnable() {
+    public static boolean bluetoothEnable(@NonNull Context context) {
         boolean result = false;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter != null) {
-            result = bluetoothAdapter.enable();
+        BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
+        if (bluetoothManager != null) {
+            BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+            if (bluetoothAdapter != null) {
+                result = bluetoothAdapter.enable();
+            }
         }
         return result;
     }
@@ -57,11 +65,14 @@ public class BLEUtilsAndroid extends BLEUtils {
      * @return return value of {@link BluetoothAdapter#disable()} or {@code false}:no bluetooth feature
      */
     @SuppressLint("MissingPermission")
-    public static boolean bluetoothDisable() {
+    public static boolean bluetoothDisable(@NonNull Context context) {
         boolean result = false;
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter != null) {
-            result = bluetoothAdapter.disable();
+        BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
+        if (bluetoothManager != null) {
+            BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+            if (bluetoothAdapter != null) {
+                result = bluetoothAdapter.disable();
+            }
         }
         return result;
     }
@@ -83,7 +94,7 @@ public class BLEUtilsAndroid extends BLEUtils {
             parcel.readParcelable(bluetoothGattDescriptor.getClass().getClassLoader());
             descriptorInstanceId = parcel.readInt();
             parcel.recycle();
-        } else {
+        } else if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
             try {
                 Method method = BluetoothGattDescriptor.class.getDeclaredMethod("getInstanceId");
                 descriptorInstanceId = (int) method.invoke(bluetoothGattDescriptor);
@@ -91,6 +102,8 @@ public class BLEUtilsAndroid extends BLEUtils {
                 LogUtils.stackLog(Log.getStackTraceString(e));
                 descriptorInstanceId = 0;
             }
+        } else {
+            descriptorInstanceId = 0;
         }
         return descriptorInstanceId;
     }

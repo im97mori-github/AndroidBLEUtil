@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a23.SystemIdAndroid;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberStringAndroid;
@@ -47,6 +48,7 @@ import static org.junit.Assert.assertTrue;
 public class DeviceInformationServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         deviceInformationService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -63,6 +65,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -89,6 +92,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -115,6 +119,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -141,6 +146,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -172,6 +178,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -203,6 +210,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -234,6 +242,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -265,6 +274,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -296,6 +306,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -327,6 +338,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -358,6 +370,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -390,6 +403,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -421,6 +435,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -436,6 +451,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -451,6 +467,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -466,6 +483,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -481,6 +499,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -496,6 +515,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -511,6 +531,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -526,6 +547,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -542,6 +564,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00109() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -557,6 +580,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -572,6 +596,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -587,6 +612,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -602,6 +628,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -617,6 +644,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -632,6 +660,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00206() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -647,6 +676,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00207() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -662,6 +692,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00208() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -678,6 +709,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00209() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -693,6 +725,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -724,6 +757,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -755,6 +789,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -786,6 +821,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -817,6 +853,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -848,6 +885,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -879,6 +917,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -910,6 +949,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -942,6 +982,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -973,6 +1014,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -988,6 +1030,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1003,6 +1046,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1018,6 +1062,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1033,6 +1078,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1048,6 +1094,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1063,6 +1110,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1078,6 +1126,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1093,6 +1142,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00109() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1108,6 +1158,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1123,6 +1174,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1138,6 +1190,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1153,6 +1206,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1168,6 +1222,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1183,6 +1238,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00206() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1198,6 +1254,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00207() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1213,6 +1270,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00208() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1229,6 +1287,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00209() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1244,6 +1303,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1275,6 +1335,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1306,6 +1367,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1337,6 +1399,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1368,6 +1431,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1399,6 +1463,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1430,6 +1495,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1461,6 +1527,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1493,6 +1560,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1524,6 +1592,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1539,6 +1608,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1554,6 +1624,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1569,6 +1640,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1584,6 +1656,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1599,6 +1672,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1614,6 +1688,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1629,6 +1704,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1644,6 +1720,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00109() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1659,6 +1736,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1674,6 +1752,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1689,6 +1768,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1704,6 +1784,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1719,6 +1800,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1734,6 +1816,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00206() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1749,6 +1832,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00207() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1764,6 +1848,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00208() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1780,6 +1865,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00209() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         MockDeviceInformationServiceCallback mockDeviceInformationServiceCallback = new MockDeviceInformationServiceCallback() {
@@ -1795,6 +1881,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1805,6 +1892,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
 
@@ -1812,6 +1900,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1822,6 +1911,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
 
@@ -1829,6 +1919,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasSerialNumberString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1839,6 +1930,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasSerialNumberString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
 
@@ -1846,6 +1938,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasHardwareRevisionString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1856,6 +1949,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasHardwareRevisionString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
 
@@ -1863,6 +1957,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasFirmwareRevisionString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1873,6 +1968,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasFirmwareRevisionString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
 
@@ -1880,6 +1976,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasSoftwareRevisionString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1890,6 +1987,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasSoftwareRevisionString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
 
@@ -1897,6 +1995,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasSystemId_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1907,6 +2006,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasSystemId_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
 
@@ -1914,6 +2014,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasIEEE_11073_20601_RegulatoryCertificationDataList_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1924,6 +2025,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasIEEE_11073_20601_RegulatoryCertificationDataList_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
 
@@ -1931,6 +2033,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasPnpId_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
@@ -1941,18 +2044,21 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasPnpId_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertFalse(deviceInformationService.hasPnpId());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -1964,6 +2070,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -1980,6 +2087,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1999,12 +2107,14 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2016,6 +2126,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2032,6 +2143,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2050,12 +2162,14 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSerialNumberString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getSerialNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSerialNumberString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2067,6 +2181,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSerialNumberString_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2083,6 +2198,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSerialNumberString_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2101,12 +2217,14 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHardwareRevisionString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getHardwareRevisionString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getHardwareRevisionString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2118,6 +2236,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHardwareRevisionString_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2134,6 +2253,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHardwareRevisionString_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2152,12 +2272,14 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFirmwareRevisionString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getFirmwareRevisionString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getFirmwareRevisionString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2169,6 +2291,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFirmwareRevisionString_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2185,6 +2308,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFirmwareRevisionString_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2203,12 +2327,14 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSoftwareRevisionString_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getSoftwareRevisionString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSoftwareRevisionString_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2220,6 +2346,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSoftwareRevisionString_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2236,6 +2363,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSoftwareRevisionString_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2254,12 +2382,14 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSystemId_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getSystemId());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSystemId_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2271,6 +2401,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSystemId_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2287,6 +2418,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSystemId_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2305,12 +2437,14 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIEEE_11073_20601_RegulatoryCertificationDataList_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getIEEE_11073_20601_RegulatoryCertificationDataList());
     }
 
     @Test
+    @RequiresDevice
     public void test_getIEEE_11073_20601_RegulatoryCertificationDataList_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2322,6 +2456,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIEEE_11073_20601_RegulatoryCertificationDataList_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2338,6 +2473,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIEEE_11073_20601_RegulatoryCertificationDataList_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2356,12 +2492,14 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPnpId_00001() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null);
         assertNull(deviceInformationService.getPnpId());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPnpId_00002() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2373,6 +2511,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPnpId_00003() {
         DeviceInformationService deviceInformationService = new DeviceInformationService(MOCK_BLE_CONNECTION, new MockDeviceInformationServiceCallback(), null) {
             @Override
@@ -2389,6 +2528,7 @@ public class DeviceInformationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPnpId_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);

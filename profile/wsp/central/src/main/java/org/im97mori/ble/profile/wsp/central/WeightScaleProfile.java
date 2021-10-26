@@ -1,13 +1,23 @@
 package org.im97mori.ble.profile.wsp.central;
 
+import static org.im97mori.ble.constants.ServiceUUID.BATTERY_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.BODY_COMPOSITION_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.CURRENT_TIME_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.WEIGHT_SCALE_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.characteristic.u2a80.Age;
@@ -19,7 +29,6 @@ import org.im97mori.ble.characteristic.u2a99.DatabaseChangeIncrement;
 import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.wsp.central.db.WeightScaleProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.bas.central.BatteryService;
 import org.im97mori.ble.service.bcs.central.BodyCompositionService;
@@ -30,12 +39,6 @@ import org.im97mori.ble.service.wss.central.WeightScaleService;
 import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
-
-import static org.im97mori.ble.constants.ServiceUUID.BATTERY_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.BODY_COMPOSITION_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.CURRENT_TIME_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.WEIGHT_SCALE_SERVICE;
 
 /**
  * Weight Scale Profile for Central
@@ -104,17 +107,6 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     public WeightScaleProfile(@NonNull Context context, @NonNull WeightScaleProfileCallback weightScaleProfileCallback) {
         super(context, weightScaleProfileCallback);
         mWeightScaleProfileCallback = weightScaleProfileCallback;
-    }
-
-    /**
-     * find Weight Scale Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findWeightScaleProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new WeightScaleProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -1033,6 +1025,25 @@ public class WeightScaleProfile extends AbstractCentralProfile {
             }
         }
         super.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new WeightScaleProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new WeightScaleProfileLeScanCallback(this, null);
     }
 
 }

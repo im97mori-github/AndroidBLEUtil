@@ -1,19 +1,25 @@
 package org.im97mori.ble.profile.tip.central;
 
+import static org.im97mori.ble.constants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.tip.central.db.TimeProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.cts.central.CurrentTimeService;
 import org.im97mori.ble.service.ndcs.central.NextDstChangeService;
@@ -22,9 +28,6 @@ import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
 
 /**
  * Time Profile for Central
@@ -35,6 +38,11 @@ public class TimeProfile extends AbstractCentralProfile {
      * {@link TimeProfileCallback} instance
      */
     protected final TimeProfileCallback mTimeProfileCallback;
+
+    /**
+     * advertising UUID
+     */
+    protected final UUID mServiceUUId;
 
     /**
      * {@link CurrentTimeService} instance
@@ -64,22 +72,12 @@ public class TimeProfile extends AbstractCentralProfile {
     /**
      * @param context             {@link Context} instance
      * @param timeProfileCallback {@link TimeProfileCallback} instance
+     * @param serviceUUID         advertising UUID
      */
-    public TimeProfile(@NonNull Context context, @NonNull TimeProfileCallback timeProfileCallback) {
+    public TimeProfile(@NonNull Context context, @NonNull TimeProfileCallback timeProfileCallback, @NonNull UUID serviceUUID) {
         super(context, timeProfileCallback);
         mTimeProfileCallback = timeProfileCallback;
-    }
-
-    /**
-     * find Time Profile device
-     *
-     * @param serviceUUID advertising UUID
-     * @param argument    callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findTimeProfileDevices(@NonNull UUID serviceUUID, @Nullable Bundle argument) {
-        return scanDevice(new TimeProfileScanCallback(serviceUUID, this, null), ScanTask.TIMEOUT_MILLIS, argument);
+        mServiceUUId = serviceUUID;
     }
 
     /**
@@ -360,6 +358,25 @@ public class TimeProfile extends AbstractCentralProfile {
             }
         }
         super.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new TimeProfileScanCallback(mServiceUUId, this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new TimeProfileLeScanCallback(mServiceUUId, this, null);
     }
 
 }

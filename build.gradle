@@ -20,21 +20,22 @@ task clean(type: Delete) {
 ext.globalCompileSdkVersion = 31
 ext.globalBuildToolsVersion = '31.0.0'
 ext.globalMinSdkVersion = 18
+ext.globalDescriptorInstanceIdMinSdkVersion = 19
 ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.5.1'
-ext.uploadVersion = '0.5.1'
+ext.loadVersion = '0.6.0'
+ext.uploadVersion = '0.6.0'
 
-ext.handlerLoadVersion = '0.2.8'
-ext.handlerUploadVersion = '0.2.8'
+ext.handlerLoadVersion = '0.2.9'
+ext.handlerUploadVersion = '0.2.9'
 
-ext.centralLoadVersion = '0.7.8'
-ext.centralUploadVersion = '0.7.8'
+ext.centralLoadVersion = '0.7.9'
+ext.centralUploadVersion = '0.7.9'
 
-ext.peripheralLoadVersion = '0.3.8'
-ext.peripheralUploadVersion = '0.3.8'
+ext.peripheralLoadVersion = '0.3.9'
+ext.peripheralUploadVersion = '0.3.9'
 
 ext.coreConstantsErrorCodeAndroid = [
         artifactId         : 'ble-core-constants-errorcode-android'

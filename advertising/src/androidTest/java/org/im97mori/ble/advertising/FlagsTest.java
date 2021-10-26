@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_FLAGS;
+import static org.im97mori.ble.constants.DataType.FLAGS_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -18,7 +18,7 @@ public class FlagsTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
         data_00001 = data;
     }
@@ -27,7 +27,7 @@ public class FlagsTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000010;
         data_00002 = data;
     }
@@ -36,7 +36,7 @@ public class FlagsTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000100;
         data_00003 = data;
     }
@@ -45,7 +45,7 @@ public class FlagsTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00001000;
         data_00004 = data;
     }
@@ -54,7 +54,7 @@ public class FlagsTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00010000;
         data_00005 = data;
     }
@@ -63,7 +63,7 @@ public class FlagsTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data_00006 = data;
     }
@@ -72,7 +72,7 @@ public class FlagsTest {
     static {
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data_00007 = data;
     }
     //@formatter:on
@@ -109,7 +109,7 @@ public class FlagsTest {
 
         FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getFlagsList().size());
         assertEquals(0b00000001, result1.getFlagsList().get(0).intValue());
         assertTrue(result1.isLeLimitedDiscoverableMode());
@@ -125,7 +125,7 @@ public class FlagsTest {
 
         FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getFlagsList().size());
         assertEquals(0b00000010, result1.getFlagsList().get(0).intValue());
         assertFalse(result1.isLeLimitedDiscoverableMode());
@@ -141,7 +141,7 @@ public class FlagsTest {
 
         FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getFlagsList().size());
         assertEquals(0b00000100, result1.getFlagsList().get(0).intValue());
         assertFalse(result1.isLeLimitedDiscoverableMode());
@@ -157,7 +157,7 @@ public class FlagsTest {
 
         FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getFlagsList().size());
         assertEquals(0b00001000, result1.getFlagsList().get(0).intValue());
         assertFalse(result1.isLeLimitedDiscoverableMode());
@@ -173,7 +173,7 @@ public class FlagsTest {
 
         FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getFlagsList().size());
         assertEquals(0b00010000, result1.getFlagsList().get(0).intValue());
         assertFalse(result1.isLeLimitedDiscoverableMode());
@@ -189,7 +189,7 @@ public class FlagsTest {
 
         FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getFlagsList().size());
         assertEquals(0b11111111, result1.getFlagsList().get(0).intValue());
         assertTrue(result1.isLeLimitedDiscoverableMode());
@@ -205,7 +205,7 @@ public class FlagsTest {
 
         FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
         assertEquals(1, result1.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result1.getDataType());
         assertEquals(0, result1.getFlagsList().size());
         assertFalse(result1.isLeLimitedDiscoverableMode());
         assertFalse(result1.isLeGeneralDiscoverableMode());

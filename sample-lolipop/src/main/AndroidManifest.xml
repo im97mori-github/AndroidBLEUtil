@@ -41,8 +41,7 @@
         </activity>
         <activity
             android:name=".AdvertisingDataSampleActivity"
-            android:label="@string/label_advertising"
-            android:permission="" />
+            android:label="@string/label_advertising" />
         <activity
             android:name=".PeripheralSampleActivity"
             android:label="@string/label_peripheral" />

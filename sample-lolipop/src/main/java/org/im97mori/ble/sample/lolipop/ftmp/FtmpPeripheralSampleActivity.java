@@ -264,8 +264,8 @@ public class FtmpPeripheralSampleActivity extends BaseActivity implements View.O
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else if (mFitnessMachineProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {

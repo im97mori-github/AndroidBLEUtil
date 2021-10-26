@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_FLAGS;
+import static org.im97mori.ble.constants.DataType.FLAGS_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,7 +26,7 @@ public class FlagsTest {
     public void test_002() {
         byte[] expectData = new byte[3];
         expectData[0] = 2;
-        expectData[1] = DATA_TYPE_FLAGS;
+        expectData[1] = FLAGS_DATA_TYPE;
         expectData[2] = 0b00000001;
 
         byte[] actualData = new byte[0];
@@ -41,7 +41,7 @@ public class FlagsTest {
     public void test_003() {
         byte[] actualData = new byte[3];
         actualData[0] = 2;
-        actualData[1] = DATA_TYPE_FLAGS;
+        actualData[1] = FLAGS_DATA_TYPE;
         actualData[2] = 0b00000001;
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -54,7 +54,7 @@ public class FlagsTest {
     public void test_004() {
         byte[] expectData = new byte[3];
         expectData[0] = 2;
-        expectData[1] = DATA_TYPE_FLAGS;
+        expectData[1] = FLAGS_DATA_TYPE;
         expectData[2] = 0b00000001;
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);

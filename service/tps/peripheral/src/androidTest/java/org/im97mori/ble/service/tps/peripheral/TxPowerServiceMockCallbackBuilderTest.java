@@ -2,6 +2,7 @@ package org.im97mori.ble.service.tps.peripheral;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
 import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
@@ -17,9 +18,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTxPowerLevel_00001() {
         Exception exception = null;
         try {
@@ -33,6 +39,8 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTxPowerLevel_00002() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -50,6 +58,8 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTxPowerLevel_00003() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -69,6 +79,8 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTxPowerLevel_00004() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -89,6 +101,8 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripherallTe
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTxPowerLevel_00005() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -108,6 +122,8 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeTxPowerLevel_00001() {
         TxPowerLevel txPowerLevel = new TxPowerLevel(1);
         Exception exception = null;

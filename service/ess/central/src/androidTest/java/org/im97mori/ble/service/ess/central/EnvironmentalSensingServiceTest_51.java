@@ -3,6 +3,7 @@ package org.im97mori.ble.service.ess.central;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u290b.EnvironmentalSensingConfiguration;
@@ -27,8 +28,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
+
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCount_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -36,6 +43,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCount_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -50,6 +59,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCount_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -67,6 +78,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCount_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -85,6 +98,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCount_00005() {
         final AtomicBoolean isStarted = new AtomicBoolean(true);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
@@ -106,6 +121,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCount_00006() {
         final AtomicBoolean isStarted = new AtomicBoolean(true);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
@@ -125,6 +142,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isUVIndexNotificatable_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -132,6 +151,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isUVIndexNotificatable_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -144,6 +165,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isUVIndexNotificatable_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -159,6 +182,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isUVIndexNotificatable_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -174,6 +199,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isUVIndexNotificatable_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -189,6 +216,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isUVIndexNotificatable_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -204,6 +233,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isUVIndexNotificatable_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -220,6 +251,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_isUVIndexNotificatable_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -236,6 +269,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -243,6 +278,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -255,6 +292,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingMeasurement_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -270,6 +309,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingMeasurement_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -285,6 +326,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingMeasurement_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -302,6 +345,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingMeasurement_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -319,6 +364,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingMeasurement_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -336,6 +383,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingMeasurement_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -355,6 +404,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -362,6 +413,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -376,6 +429,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -393,6 +448,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -412,6 +469,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -432,6 +491,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -452,6 +513,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -471,6 +534,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -490,6 +555,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicEnvironmentalSensingTriggerSettingCount_00009() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -511,6 +578,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -518,6 +587,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -530,6 +601,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingConfiguration_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -545,6 +618,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingConfiguration_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -560,6 +635,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingConfiguration_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -577,6 +654,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingConfiguration_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -594,6 +673,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingConfiguration_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -611,6 +692,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicEnvironmentalSensingConfiguration_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -630,6 +713,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicCharacteristicUserDescription_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -637,6 +722,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicCharacteristicUserDescription_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -649,6 +736,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicCharacteristicUserDescription_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -664,6 +753,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicCharacteristicUserDescription_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -679,6 +770,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicCharacteristicUserDescription_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -696,6 +789,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicCharacteristicUserDescription_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -713,6 +808,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicCharacteristicUserDescription_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -730,6 +827,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicCharacteristicUserDescription_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -749,6 +848,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicValidRange_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -756,6 +857,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicValidRange_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -768,6 +871,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicValidRange_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -783,6 +888,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicValidRange_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -798,6 +905,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicValidRange_00005() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -815,6 +924,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicValidRange_00006() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -832,6 +943,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicValidRange_00007() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -849,6 +962,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_hasUVIndexCharacteristicValidRange_00008() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -868,6 +983,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndex_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -875,6 +992,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndex_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -887,6 +1006,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndex_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -902,6 +1023,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndex_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -919,6 +1042,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndex_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -936,6 +1061,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndex_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -953,6 +1080,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndex_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -971,6 +1100,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startUVIndexNotification_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -978,6 +1109,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startUVIndexNotification_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -990,6 +1123,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startUVIndexNotification_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1005,6 +1140,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startUVIndexNotification_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1020,6 +1157,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startUVIndexNotification_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1037,6 +1176,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startUVIndexNotification_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1054,6 +1195,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startUVIndexNotification_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1071,6 +1214,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startUVIndexNotification_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1089,6 +1234,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopUVIndexNotification_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1096,6 +1243,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopUVIndexNotification_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1108,6 +1257,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopUVIndexNotification_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1123,6 +1274,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopUVIndexNotification_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1138,6 +1291,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopUVIndexNotification_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1155,6 +1310,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopUVIndexNotification_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1172,6 +1329,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopUVIndexNotification_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1189,6 +1348,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopUVIndexNotification_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
@@ -1207,6 +1368,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1214,6 +1377,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1226,6 +1391,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingMeasurement_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1241,6 +1408,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingMeasurement_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1258,6 +1427,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingMeasurement_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1277,6 +1448,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingMeasurement_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1296,6 +1469,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingMeasurement_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1315,6 +1490,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingMeasurement_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1337,6 +1514,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1345,6 +1524,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1357,6 +1538,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1372,6 +1555,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1389,6 +1574,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1408,6 +1595,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1427,6 +1616,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1446,6 +1637,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1466,6 +1659,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00009() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1487,6 +1682,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00010() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1509,6 +1706,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1517,6 +1716,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1529,6 +1730,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1544,6 +1747,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1561,6 +1766,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1580,6 +1787,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1599,6 +1808,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1618,6 +1829,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1638,6 +1851,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00009() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1659,6 +1874,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00010() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1681,6 +1898,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1688,6 +1907,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1700,6 +1921,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingConfiguration_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1715,6 +1938,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingConfiguration_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1732,6 +1957,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingConfiguration_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1751,6 +1978,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingConfiguration_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1770,6 +1999,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingConfiguration_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1789,6 +2020,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexEnvironmentalSensingConfiguration_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1811,6 +2044,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1818,6 +2053,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1830,6 +2067,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingConfiguration_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1845,6 +2084,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingConfiguration_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1862,6 +2103,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingConfiguration_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1881,6 +2124,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingConfiguration_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1900,6 +2145,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingConfiguration_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1919,6 +2166,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexEnvironmentalSensingConfiguration_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1941,6 +2190,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicUserDescription_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -1948,6 +2199,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicUserDescription_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1960,6 +2213,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicUserDescription_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1975,6 +2230,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicUserDescription_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -1992,6 +2249,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicUserDescription_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2011,6 +2270,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicUserDescription_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2030,6 +2291,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicUserDescription_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2049,6 +2312,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexCharacteristicUserDescription_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2071,6 +2336,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexCharacteristicUserDescription_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -2078,6 +2345,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexCharacteristicUserDescription_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2090,6 +2359,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexCharacteristicUserDescription_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2105,6 +2376,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexCharacteristicUserDescription_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2122,6 +2395,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexCharacteristicUserDescription_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2141,6 +2416,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexCharacteristicUserDescription_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2160,6 +2437,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexCharacteristicUserDescription_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2179,6 +2458,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_setUVIndexCharacteristicUserDescription_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2201,6 +2482,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexValidRange_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
@@ -2208,6 +2491,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexValidRange_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2220,6 +2505,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexValidRange_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2235,6 +2522,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexValidRange_00004() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
@@ -2252,6 +2541,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexValidRange_00005() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2271,6 +2562,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexValidRange_00006() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2290,6 +2583,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexValidRange_00007() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2309,6 +2604,8 @@ public class EnvironmentalSensingServiceTest_51 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_getUVIndexValidRange_00008() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);

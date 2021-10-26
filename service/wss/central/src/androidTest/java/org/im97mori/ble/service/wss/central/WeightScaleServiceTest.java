@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurementAndroid;
@@ -37,7 +38,9 @@ import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
 public class WeightScaleServiceTest extends AbstractCentralTest {
+    
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -71,6 +74,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -96,6 +100,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -121,6 +126,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -154,6 +160,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -179,6 +186,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -204,6 +212,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -237,6 +246,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -262,6 +272,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -287,6 +298,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -323,6 +335,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -350,6 +363,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -377,6 +391,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -404,6 +419,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -440,6 +456,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -467,6 +484,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -494,6 +512,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -521,6 +540,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -557,6 +577,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -584,6 +605,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -611,6 +633,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -638,6 +661,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -674,6 +698,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -702,6 +727,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -730,6 +756,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -758,6 +785,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -794,6 +822,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -822,6 +851,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -850,6 +880,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -878,6 +909,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -915,6 +947,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -943,6 +976,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -971,6 +1005,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -999,6 +1034,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1036,6 +1072,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1064,6 +1101,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1092,6 +1130,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1120,6 +1159,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1157,6 +1197,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1185,6 +1226,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1213,6 +1255,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1241,6 +1284,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1278,6 +1322,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1306,6 +1351,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1334,6 +1380,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1362,6 +1409,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1392,6 +1440,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
@@ -1416,6 +1465,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1440,6 +1490,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1464,6 +1515,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeightScaleFeature_00001() {
         WeightScaleService weightScaleService = new WeightScaleService(MOCK_BLE_CONNECTION, new MockWeightScaleServiceCallback(), null);
 
@@ -1471,6 +1523,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeightScaleFeature_00002() {
         WeightScaleService weightScaleService = new WeightScaleService(MOCK_BLE_CONNECTION, new MockWeightScaleServiceCallback(), null) {
 
@@ -1485,6 +1538,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeightScaleFeature_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1503,6 +1557,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeightMeasurementClientCharacteristicConfiguration_00001() {
         WeightScaleService weightScaleService = new WeightScaleService(MOCK_BLE_CONNECTION, new MockWeightScaleServiceCallback(), null);
 
@@ -1510,6 +1565,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeightMeasurementClientCharacteristicConfiguration_00002() {
         WeightScaleService weightScaleService = new WeightScaleService(MOCK_BLE_CONNECTION, new MockWeightScaleServiceCallback(), null) {
 
@@ -1524,6 +1580,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeightMeasurementClientCharacteristicConfiguration_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1542,6 +1599,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startWeightMeasurementIndication_00001() {
         WeightScaleService weightScaleService = new WeightScaleService(MOCK_BLE_CONNECTION, new MockWeightScaleServiceCallback(), null);
 
@@ -1549,6 +1607,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startWeightMeasurementIndication_00002() {
         WeightScaleService weightScaleService = new WeightScaleService(MOCK_BLE_CONNECTION, new MockWeightScaleServiceCallback(), null) {
 
@@ -1563,6 +1622,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startWeightMeasurementIndication_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1581,6 +1641,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopWeightMeasurementIndication_00001() {
         WeightScaleService weightScaleService = new WeightScaleService(MOCK_BLE_CONNECTION, new MockWeightScaleServiceCallback(), null);
 
@@ -1588,6 +1649,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopWeightMeasurementIndication_00002() {
         WeightScaleService weightScaleService = new WeightScaleService(MOCK_BLE_CONNECTION, new MockWeightScaleServiceCallback(), null) {
 
@@ -1602,6 +1664,7 @@ public class WeightScaleServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopWeightMeasurementIndication_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

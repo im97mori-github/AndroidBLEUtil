@@ -18,7 +18,7 @@ public class SerialNumberStringAndroidTest {
         String serialNumber = "0000MY0000";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(serialNumber.getBytes());
 
         SerialNumberStringAndroid result1 = new SerialNumberStringAndroid(bluetoothGattCharacteristic);
         assertEquals(serialNumber, result1.getSerialNumber());
@@ -29,7 +29,7 @@ public class SerialNumberStringAndroidTest {
         String serialNumber = "39Z9MY9999";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(serialNumber.getBytes());
 
         SerialNumberStringAndroid result1 = new SerialNumberStringAndroid(bluetoothGattCharacteristic);
         assertEquals(serialNumber, result1.getSerialNumber());
@@ -48,7 +48,7 @@ public class SerialNumberStringAndroidTest {
         String serialNumber = "0000MY0000";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(serialNumber.getBytes());
 
         SerialNumberStringAndroid result1 = new SerialNumberStringAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -64,7 +64,7 @@ public class SerialNumberStringAndroidTest {
         String serialNumber = "39Z9MY9999";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(serialNumber.getBytes());
 
         SerialNumberStringAndroid result1 = new SerialNumberStringAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -80,7 +80,7 @@ public class SerialNumberStringAndroidTest {
         String serialNumber = "39Z9MY9999";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(serialNumber.getBytes());
 
         SerialNumberStringAndroid result1 = new SerialNumberStringAndroid(bluetoothGattCharacteristic);
         byte[] resultData = result1.getBytes();
@@ -92,10 +92,10 @@ public class SerialNumberStringAndroidTest {
         String serialNumber = "39Z9MY9999";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(serialNumber.getBytes());
 
         SerialNumberStringAndroid result1 = new SerialNumberStringAndroid(bluetoothGattCharacteristic);
-        SerialNumberStringAndroid result2 = SerialNumberStringAndroid.CREATOR.createFromByteArray(serialNumber.getBytes(StandardCharsets.UTF_8));
+        SerialNumberStringAndroid result2 = SerialNumberStringAndroid.CREATOR.createFromByteArray(serialNumber.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }

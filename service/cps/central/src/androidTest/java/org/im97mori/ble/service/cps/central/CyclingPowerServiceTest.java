@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.core.SensorLocationUtils;
 import org.im97mori.ble.characteristic.u2a5d.SensorLocationAndroid;
@@ -45,6 +46,7 @@ import static org.junit.Assert.assertTrue;
 public class CyclingPowerServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         cyclingPowerService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -53,6 +55,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -62,6 +65,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -71,6 +75,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -81,6 +86,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -91,6 +97,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00006() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -101,6 +108,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00007() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -111,6 +119,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00008() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -123,6 +132,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         cyclingPowerService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -131,6 +141,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -140,6 +151,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -149,6 +161,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -159,6 +172,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -169,6 +183,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00106() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -181,6 +196,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -214,6 +230,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -247,6 +264,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -280,6 +298,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -313,6 +332,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -346,6 +366,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -379,6 +400,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -412,6 +434,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -445,6 +468,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -478,6 +502,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -514,6 +539,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -550,6 +576,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -586,6 +613,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -622,6 +650,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -658,6 +687,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -694,6 +724,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -730,6 +761,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -766,6 +798,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -802,6 +835,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -838,6 +872,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -874,6 +909,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -910,6 +946,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -946,6 +983,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -982,6 +1020,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1018,6 +1057,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1055,6 +1095,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1092,6 +1133,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1129,6 +1171,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1166,6 +1209,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1203,6 +1247,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1240,6 +1285,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1277,6 +1323,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1314,6 +1361,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1351,6 +1399,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1388,6 +1437,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1425,6 +1475,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1462,6 +1513,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1492,6 +1544,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1522,6 +1575,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1552,6 +1606,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerControlPointCharacteristicSupported_00001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1559,6 +1614,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerControlPointCharacteristicSupported_00002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -1571,6 +1627,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerControlPointCharacteristicSupported_00003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -1584,6 +1641,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerVectorCharacteristicSupported_00001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1591,6 +1649,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerVectorCharacteristicSupported_00002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -1603,6 +1662,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerVectorCharacteristicSupported_00003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -1616,6 +1676,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerFeature_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1623,6 +1684,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerFeature_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1637,6 +1699,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerFeature_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1653,6 +1716,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerMeasurementClientCharacteristicConfiguration_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1660,6 +1724,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerMeasurementClientCharacteristicConfiguration_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1674,6 +1739,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerMeasurementClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1692,6 +1758,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerMeasurementNotification_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1699,6 +1766,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerMeasurementNotification_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1713,6 +1781,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1731,6 +1800,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerMeasurementNotification_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1738,6 +1808,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerMeasurementNotification_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1752,6 +1823,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1770,6 +1842,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1777,6 +1850,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1791,6 +1865,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1807,6 +1882,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCyclingPowerControlPoint_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
         CyclingPowerControlPoint cyclingPowerControlPoint = new CyclingPowerControlPoint(new byte[]{CyclingPowerControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, 0, 0, 0, 0});
@@ -1815,6 +1891,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCyclingPowerControlPoint_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1830,6 +1907,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCyclingPowerControlPoint_000003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1850,6 +1928,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCyclingPowerControlPoint_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1874,6 +1953,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerControlPointClientCharacteristicConfiguration_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1881,6 +1961,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerControlPointClientCharacteristicConfiguration_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1895,6 +1976,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerControlPointClientCharacteristicConfiguration_000003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1914,6 +1996,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerControlPointClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1937,6 +2020,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerControlPointIndication_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -1944,6 +2028,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerControlPointIndication_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1958,6 +2043,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerControlPointIndication_000003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -1977,6 +2063,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerControlPointIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2001,6 +2088,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerControlPointIndication_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -2008,6 +2096,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerControlPointIndication_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -2022,6 +2111,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerControlPointIndication_000003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -2041,6 +2131,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerControlPointIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2064,6 +2155,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerVectorClientCharacteristicConfiguration_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -2071,6 +2163,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerVectorClientCharacteristicConfiguration_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -2085,6 +2178,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerVectorClientCharacteristicConfiguration_000003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -2104,6 +2198,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerVectorClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -2127,6 +2222,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerVectorNotification_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -2134,6 +2230,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerVectorNotification_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -2148,6 +2245,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerVectorNotification_000003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -2167,6 +2265,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerVectorNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -2191,6 +2290,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerVectorNotification_000001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null);
 
@@ -2198,6 +2298,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerVectorNotification_000002() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -2212,6 +2313,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerVectorNotification_000003() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(MOCK_BLE_CONNECTION, new MockCyclingPowerServiceCallback(), null) {
 
@@ -2231,6 +2333,7 @@ public class CyclingPowerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerVectorNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

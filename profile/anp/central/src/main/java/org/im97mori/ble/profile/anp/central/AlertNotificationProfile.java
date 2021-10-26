@@ -2,16 +2,18 @@ package org.im97mori.ble.profile.anp.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.os.Bundle;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a44.AlertNotificationControlPoint;
 import org.im97mori.ble.profile.anp.central.db.AlertNotificationProfileBondedDatabaseHelper;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.service.ans.central.AlertNotificationService;
 
 /**
@@ -36,17 +38,6 @@ public class AlertNotificationProfile extends AbstractCentralProfile {
     public AlertNotificationProfile(@NonNull Context context, @NonNull AlertNotificationProfileCallback alertNotificationProfileCallback) {
         super(context, alertNotificationProfileCallback);
         mAlertNotificationProfileCallback = alertNotificationProfileCallback;
-    }
-
-    /**
-     * find Alert Notification Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findAlertNotificationProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new AlertNotificationProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -185,6 +176,25 @@ public class AlertNotificationProfile extends AbstractCentralProfile {
     public synchronized void quit() {
         super.quit();
         mAlertNotificationService = null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new AlertNotificationProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new AlertNotificationProfileLeScanCallback(this, null);
     }
 
 }

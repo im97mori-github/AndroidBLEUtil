@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a6f.Humidity;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
@@ -32,9 +33,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHumidity_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -48,6 +54,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHumidity_00002() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -72,6 +80,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHumidity_00003() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -96,6 +106,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHumidity_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -135,6 +147,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidity_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -155,6 +169,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidity_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -189,6 +205,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsMeasurement_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -220,6 +238,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsMeasurement_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -269,6 +289,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsMeasurement_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -298,6 +320,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsMeasurement_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -326,6 +350,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsTriggerSetting_00001() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -355,6 +381,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsTriggerSetting_00002() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -384,6 +412,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsTriggerSetting_00003() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -413,6 +443,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsTriggerSetting_00004() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -439,6 +471,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsTriggerSetting_00101() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -479,6 +513,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsTriggerSetting_00102() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -519,6 +555,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsTriggerSetting_00103() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -559,6 +597,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsTriggerSetting_00104() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -607,6 +647,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsTriggerSetting_00001() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -634,6 +676,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsTriggerSetting_00002() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -661,6 +705,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsTriggerSetting_00003() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -688,6 +734,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsTriggerSetting_00004() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -715,6 +763,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsTriggerSetting_00101() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -747,6 +797,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsTriggerSetting_00102() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -779,6 +831,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsTriggerSetting_00103() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -811,6 +865,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsTriggerSetting_00104() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -847,6 +903,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsConfiguration_00001() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -880,6 +938,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsConfiguration_00002() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -914,6 +974,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsConfiguration_00101() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);
@@ -971,6 +1033,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityEsConfiguration_00102() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);
@@ -1030,6 +1094,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsConfiguration_00001() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -1058,6 +1124,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityEsConfiguration_00101() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);
@@ -1092,6 +1160,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityCharacteristicUserDescription_00001() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -1120,6 +1190,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityCharacteristicUserDescription_00002() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -1148,6 +1220,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityCharacteristicUserDescription_00101() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);
@@ -1197,6 +1271,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityCharacteristicUserDescription_00102() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);
@@ -1245,6 +1321,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityCharacteristicUserDescription_00001() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -1271,6 +1349,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityCharacteristicUserDescription_00101() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);
@@ -1317,6 +1397,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityValidRange_00001() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -1345,6 +1427,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityValidRange_00002() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -1373,6 +1457,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityValidRange_00101() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);
@@ -1421,6 +1507,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setHumidityValidRange_00102() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);
@@ -1469,6 +1557,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityValidRange_00001() {
         int characteristicIndex = 0;
         Humidity originalValue = new Humidity(1);
@@ -1495,6 +1585,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_Humidity extends
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHumidityValidRange_00101() {
         int characteristicIndex0 = 0;
         Humidity originalValue0 = new Humidity(1);

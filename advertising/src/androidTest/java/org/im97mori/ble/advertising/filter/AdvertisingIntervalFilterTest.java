@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_ADVERTISING_INTERVAL;
+import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,7 +26,7 @@ public class AdvertisingIntervalFilterTest {
     public void test_002() {
         byte[] expectData = new byte[4];
         expectData[0] = 3;
-        expectData[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        expectData[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         expectData[2] = 0;
         expectData[3] = 0;
 
@@ -42,7 +42,7 @@ public class AdvertisingIntervalFilterTest {
     public void test_003() {
         byte[] actualData = new byte[4];
         actualData[0] = 3;
-        actualData[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        actualData[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         actualData[2] = 0;
         actualData[3] = 0;
 
@@ -56,7 +56,7 @@ public class AdvertisingIntervalFilterTest {
     public void test_004() {
         byte[] expectData = new byte[4];
         expectData[0] = 3;
-        expectData[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        expectData[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         expectData[2] = 0;
         expectData[3] = 0;
 

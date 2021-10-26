@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2b1d.RCFeatureAndroid;
 import org.im97mori.ble.characteristic.u2b1e.RCSettingsAndroid;
@@ -39,6 +40,7 @@ import static org.junit.Assert.assertTrue;
 public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -61,6 +63,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         reconnectionConfigurationService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -69,6 +72,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -78,6 +82,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -87,6 +92,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -97,6 +103,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -107,6 +114,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         reconnectionConfigurationService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -115,6 +123,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -124,6 +133,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -133,6 +143,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -143,6 +154,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -153,6 +165,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00106() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -165,6 +178,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00201() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         reconnectionConfigurationService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -173,6 +187,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00202() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -182,6 +197,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00203() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -191,6 +207,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00204() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -201,6 +218,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00205() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -211,6 +229,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00206() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -223,6 +242,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -256,6 +276,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -289,6 +310,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -322,6 +344,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -355,6 +378,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -388,6 +412,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -421,6 +446,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -454,6 +480,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -487,6 +514,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -520,6 +548,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -556,6 +585,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -592,6 +622,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -628,6 +659,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -664,6 +696,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -700,6 +733,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -736,6 +770,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -772,6 +807,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -808,6 +844,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -844,6 +881,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -880,6 +918,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -917,6 +956,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -954,6 +994,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -991,6 +1032,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1028,6 +1070,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1065,6 +1108,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1102,6 +1146,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1139,6 +1184,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1176,6 +1222,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1206,6 +1253,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1236,6 +1284,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicSupported_00001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1243,6 +1292,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicSupported_00002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -1254,6 +1304,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicSupported_00003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -1266,6 +1317,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicNotifySupported_00001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1273,6 +1325,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicNotifySupported_00002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -1285,6 +1338,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicNotifySupported_00003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -1298,6 +1352,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isReconnectionConfigurationControlPointCharacteristicSupported_00001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1305,6 +1360,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isReconnectionConfigurationControlPointCharacteristicSupported_00002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -1317,6 +1373,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isReconnectionConfigurationControlPointCharacteristicSupported_00003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RECONNECTION_CONFIGURATION_SERVICE, 0);
@@ -1330,6 +1387,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCFeature_000001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1337,6 +1395,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCFeature_000002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1351,6 +1410,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCFeature_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1367,6 +1427,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettings_000001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1374,6 +1435,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettings_000002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1388,6 +1450,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettings_000003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1407,6 +1470,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettings_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1428,6 +1492,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettingsClientCharacteristicConfiguration_000001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1435,6 +1500,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettingsClientCharacteristicConfiguration_000002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1449,6 +1515,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettingsClientCharacteristicConfiguration_000003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1468,6 +1535,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineControlPointClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1491,6 +1559,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRCSettingsNotification_000001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1498,6 +1567,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRCSettingsNotification_000002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1512,6 +1582,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRCSettingsNotification_000003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1531,6 +1602,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRCSettingsNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1554,6 +1626,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRCSettingsNotification_000001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1561,6 +1634,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRCSettingsNotification_000002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1575,6 +1649,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRCSettingsNotification_000003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1594,6 +1669,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRCSettingsNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1617,6 +1693,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setReconnectionConfigurationControlPoint_000001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1624,6 +1701,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setReconnectionConfigurationControlPoint_000002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1638,6 +1716,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setReconnectionConfigurationControlPoint_000003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1657,6 +1736,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setReconnectionConfigurationControlPoint_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1680,6 +1760,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReconnectionConfigurationControlPointClientCharacteristicConfiguration_00001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1687,6 +1768,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReconnectionConfigurationControlPointClientCharacteristicConfiguration_00002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1701,6 +1783,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReconnectionConfigurationControlPointClientCharacteristicConfiguration_00003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1720,6 +1803,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReconnectionConfigurationControlPointClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1743,6 +1827,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startReconnectionConfigurationControlPointIndication_00001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1750,6 +1835,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startReconnectionConfigurationControlPointIndication_00002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1764,6 +1850,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startReconnectionConfigurationControlPointIndication_00003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1783,6 +1870,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startReconnectionConfigurationControlPointIndication_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1806,6 +1894,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopReconnectionConfigurationControlPointIndication_00001() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null);
 
@@ -1813,6 +1902,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopReconnectionConfigurationControlPointIndication_00002() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1827,6 +1917,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopReconnectionConfigurationControlPointIndication_00003() {
         ReconnectionConfigurationService reconnectionConfigurationService = new ReconnectionConfigurationService(MOCK_BLE_CONNECTION, new MockReconnectionConfigurationServiceCallback(), null) {
 
@@ -1846,6 +1937,7 @@ public class ReconnectionConfigurationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopReconnectionConfigurationControlPointIndication_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

@@ -18,7 +18,7 @@ public class LanguageAndroidTest {
         String languageCode = "ja";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
 
         LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
         assertEquals(languageCode, result1.getLanguage());
@@ -29,7 +29,7 @@ public class LanguageAndroidTest {
         String languageCode = "ab";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
 
         LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
         assertEquals(languageCode, result1.getLanguage());
@@ -48,7 +48,7 @@ public class LanguageAndroidTest {
         String languageCode = "ja";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
 
         LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -64,7 +64,7 @@ public class LanguageAndroidTest {
         String languageCode = "ab";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
 
         LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -80,7 +80,7 @@ public class LanguageAndroidTest {
         String languageCode = "ab";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
 
         LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
         byte[] resultData = result1.getBytes();
@@ -92,10 +92,10 @@ public class LanguageAndroidTest {
         String languageCode = "ab";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
 
         LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
-        LanguageAndroid result2 = LanguageAndroid.CREATOR.createFromByteArray(languageCode.getBytes(StandardCharsets.UTF_8));
+        LanguageAndroid result2 = LanguageAndroid.CREATOR.createFromByteArray(languageCode.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 

@@ -1,10 +1,13 @@
 package org.im97mori.ble.profile.scpp.central;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -44,16 +47,33 @@ public class ScanParametersProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findScanParametersProfileDevices_00001() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback());
-        assertNull(scanParametersProfile.findScanParametersProfileDevices(BASE_UUID, null));
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
+        assertTrue(scanParametersProfile.createFilteredScanCallback() instanceof ScanParametersProfileScanCallback);
     }
 
     @Test
-    public void test_findScanParametersProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
+        assertTrue(scanParametersProfile.createFilteredLeScanCallback() instanceof ScanParametersProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
+        assertNull(scanParametersProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback()) {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID) {
             @Nullable
             @Override
             public synchronized Integer scanDevice(@NonNull FilteredScanCallback filteredScanCallback, long timeout, @Nullable Bundle argument) {
@@ -63,20 +83,22 @@ public class ScanParametersProfileTest extends AbstractCentralTest {
             }
         };
         scanParametersProfile.start();
-        assertNotNull(scanParametersProfile.findScanParametersProfileDevices(BASE_UUID, bundle));
+        assertNotNull(scanParametersProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         scanParametersProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_isScanRefreshCharacteristicSupported_00001() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback());
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
         assertNull(scanParametersProfile.isScanRefreshCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isScanRefreshCharacteristicSupported_00002() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback()) {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID) {
 
             @Override
             public synchronized void createServices() {
@@ -91,14 +113,16 @@ public class ScanParametersProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setScanIntervalWindow_00001() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback());
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
         assertNull(scanParametersProfile.setScanIntervalWindow(new ScanIntervalWindow(new byte[4])));
     }
 
     @Test
+    @RequiresDevice
     public void test_setScanIntervalWindow_00002() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback()) {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID) {
             @Override
             public synchronized void createServices() {
                 if (mScanParametersService == null) {
@@ -117,14 +141,16 @@ public class ScanParametersProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getScanRefreshClientCharacteristicConfiguration_00001() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback());
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
         assertNull(scanParametersProfile.getScanRefreshClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getScanRefreshClientCharacteristicConfiguration_00002() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback()) {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID) {
             @Override
             public synchronized void createServices() {
                 if (mScanParametersService == null) {
@@ -143,14 +169,16 @@ public class ScanParametersProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startScanRefreshNotification_00001() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback());
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
         assertNull(scanParametersProfile.startScanRefreshNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startScanRefreshNotification_00002() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback()) {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID) {
             @Override
             public synchronized void createServices() {
                 if (mScanParametersService == null) {
@@ -169,14 +197,16 @@ public class ScanParametersProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopScanRefreshNotification_00001() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback());
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
         assertNull(scanParametersProfile.stopScanRefreshNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopScanRefreshNotification_00002() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback()) {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID) {
             @Override
             public synchronized void createServices() {
                 if (mScanParametersService == null) {
@@ -195,15 +225,17 @@ public class ScanParametersProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback());
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
         assertTrue(scanParametersProfile.getDatabaseHelper() instanceof ScanParametersProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback()) {
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID) {
             @Override
             public synchronized void createServices() {
                 super.createServices();
@@ -217,8 +249,9 @@ public class ScanParametersProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
-        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback());
+        ScanParametersProfile scanParametersProfile = new ScanParametersProfile(ApplicationProvider.getApplicationContext(), new BaseScanParametersProfileCallback(), BASE_UUID);
         scanParametersProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         scanParametersProfile.quit();
         assertNull(scanParametersProfile.mScanParametersService);

@@ -1,26 +1,29 @@
 package org.im97mori.ble.profile.rcp.central;
 
+import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2aa4.BondManagementControlPoint;
 import org.im97mori.ble.characteristic.u2b1f.ReconnectionConfigurationControlPoint;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.rcp.central.db.ReconnectionConfigurationProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.bms.central.BondManagementService;
 import org.im97mori.ble.service.rcs.central.ReconnectionConfigurationService;
 import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
-
-import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
 
 /**
  * Reconnection Configuration Profile for Central
@@ -54,17 +57,6 @@ public class ReconnectionConfigurationProfile extends AbstractCentralProfile {
     public ReconnectionConfigurationProfile(@NonNull Context context, @NonNull ReconnectionConfigurationProfileCallback reconnectionConfigurationProfileCallback) {
         super(context, reconnectionConfigurationProfileCallback);
         mReconnectionConfigurationProfileCallback = reconnectionConfigurationProfileCallback;
-    }
-
-    /**
-     * find Reconnection Configuration Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findReconnectionConfigurationProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new ReconnectionConfigurationProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -306,6 +298,25 @@ public class ReconnectionConfigurationProfile extends AbstractCentralProfile {
             }
         }
         super.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new ReconnectionConfigurationProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new ReconnectionConfigurationProfileLeScanCallback(this, null);
     }
 
 }

@@ -1,5 +1,15 @@
 package org.im97mori.ble.service.gap.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SERVICE_CHANGED_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ATTRIBUTE_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -8,6 +18,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
@@ -24,16 +35,6 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SERVICE_CHANGED_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ATTRIBUTE_SERVICE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherallTest {
 
@@ -55,6 +56,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
     public void test_onServiceAddSuccess_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -96,6 +98,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
     public void test_onServiceRemoveSuccess_00002() {
         final AtomicInteger atomicInteger = new AtomicInteger(0);
 
@@ -141,6 +144,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
     public void test_updateGenericAttributeServiceStatus_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -197,6 +201,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
     public void test_updateGenericAttributeServiceStatus_00003() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 

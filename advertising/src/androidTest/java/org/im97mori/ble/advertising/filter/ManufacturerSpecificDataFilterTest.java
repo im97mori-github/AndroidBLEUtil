@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+import static org.im97mori.ble.constants.DataType.MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -30,7 +30,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[4];
         expectData[0] = 3;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         expectData[2] = (byte) (companyId & 0x0000ff);
         expectData[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -48,7 +48,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] actualData = new byte[4];
         actualData[0] = 3;
-        actualData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        actualData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         actualData[2] = (byte) (companyId & 0x0000ff);
         actualData[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -64,7 +64,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[4];
         expectData[0] = 3;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         expectData[2] = (byte) (companyId & 0x0000ff);
         expectData[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -82,11 +82,11 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 3;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         expectData[2] = (byte) (companyId & 0x0000ff);
         expectData[3] = (byte) ((companyId >> 8) & 0x0000ff);
         expectData[4] = 3;
-        expectData[5] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[5] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         expectData[6] = (byte) (companyId & 0x0000ff);
         expectData[7] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -108,11 +108,11 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] actualData = new byte[8];
         actualData[0] = 3;
-        actualData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        actualData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         actualData[2] = (byte) (companyId & 0x0000ff);
         actualData[3] = (byte) ((companyId >> 8) & 0x0000ff);
         actualData[4] = 3;
-        actualData[5] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        actualData[5] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         actualData[6] = (byte) (companyId & 0x0000ff);
         actualData[7] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -132,11 +132,11 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 3;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         expectData[2] = (byte) (companyId & 0x0000ff);
         expectData[3] = (byte) ((companyId >> 8) & 0x0000ff);
         expectData[4] = 3;
-        expectData[5] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[5] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         expectData[6] = (byte) (companyId & 0x0000ff);
         expectData[7] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -164,12 +164,12 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = new byte[4];
         actualData[0] = 3;
-        actualData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        actualData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, actualData, 2, specificData.length / 2);
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -190,12 +190,12 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] actualData = new byte[6];
         actualData[0] = 5;
-        actualData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        actualData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, actualData, 2, specificData.length);
 
         byte[] expectData = new byte[4];
         expectData[0] = 3;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length / 2);
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -216,7 +216,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -239,7 +239,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -262,7 +262,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -287,7 +287,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -314,7 +314,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -340,7 +340,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -368,7 +368,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -396,7 +396,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -421,7 +421,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -446,7 +446,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        expectData[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         System.arraycopy(specificData, 0, expectData, 2, specificData.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);

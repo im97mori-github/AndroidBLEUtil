@@ -2,15 +2,17 @@ package org.im97mori.ble.profile.htp.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.os.Bundle;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a21.MeasurementInterval;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.htp.central.db.HealthThermometerProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.hts.central.HealthThermometerService;
@@ -42,17 +44,6 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
     public HealthThermometerProfile(@NonNull Context context, @NonNull HealthThermometerProfileCallback healthThermometerProfileCallback) {
         super(context, healthThermometerProfileCallback);
         mHealthThermometerProfileCallback = healthThermometerProfileCallback;
-    }
-
-    /**
-     * find Health Thermometer Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findHealthThermometerProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new HealthThermometerProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -337,6 +328,25 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
         super.quit();
         mDeviceInformationService = null;
         mHealthThermometerService = null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new HealthThermometerProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new HealthThermometerProfileLeScanCallback(this, null);
     }
 
 }

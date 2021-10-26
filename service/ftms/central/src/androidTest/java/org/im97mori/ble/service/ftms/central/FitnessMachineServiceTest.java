@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2acc.FitnessMachineFeatureAndroid;
 import org.im97mori.ble.characteristic.u2acd.TreadmillData;
@@ -71,6 +72,7 @@ import static org.junit.Assert.assertTrue;
 public class FitnessMachineServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -82,6 +84,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -93,6 +96,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -104,6 +108,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00004() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -115,6 +120,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00005() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -126,6 +132,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00006() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -137,6 +144,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00007() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -148,6 +156,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00008() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -159,6 +168,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00009() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC, 0);
@@ -170,6 +180,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00010() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC, 0);
@@ -181,6 +192,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00011() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SUPPORTED_POWER_RANGE_CHARACTERISTIC, 0);
@@ -192,6 +204,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00012() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC, 0);
@@ -203,6 +216,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00013() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, 0);
@@ -214,6 +228,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00014() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_STATUS_CHARACTERISTIC, 0);
@@ -225,6 +240,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -233,6 +249,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -242,6 +259,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -251,6 +269,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -261,6 +280,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -271,6 +291,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00006() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -283,6 +304,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -291,6 +313,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -300,6 +323,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -309,6 +333,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -319,6 +344,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -329,6 +355,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00106() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -341,6 +368,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00201() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -349,6 +377,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00202() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -358,6 +387,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00203() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -367,6 +397,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00204() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -377,6 +408,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00205() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -387,6 +419,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00206() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -399,6 +432,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00301() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -407,6 +441,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00302() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -416,6 +451,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00303() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -425,6 +461,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00304() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -435,6 +472,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00305() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -445,6 +483,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00306() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -457,6 +496,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00401() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -465,6 +505,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00402() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -474,6 +515,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00403() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -483,6 +525,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00404() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -493,6 +536,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00405() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -503,6 +547,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00406() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -515,6 +560,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00501() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -523,6 +569,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00502() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -532,6 +579,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00503() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -541,6 +589,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00504() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -551,6 +600,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00505() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -561,6 +611,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00506() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -573,6 +624,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00601() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -581,6 +633,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00602() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -590,6 +643,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00603() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -599,6 +653,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00604() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -609,6 +664,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00605() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -619,6 +675,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00606() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -629,6 +686,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00607() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -639,6 +697,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00608() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -651,6 +710,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00701() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -659,6 +719,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00702() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -668,6 +729,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00703() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -677,6 +739,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00704() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -687,6 +750,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00705() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -697,6 +761,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00801() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -705,6 +770,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00802() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -714,6 +780,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00803() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -723,6 +790,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00804() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -733,6 +801,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00805() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -743,6 +812,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00901() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -751,6 +821,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00902() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -760,6 +831,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00903() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -769,6 +841,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00904() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -779,6 +852,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00905() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -789,6 +863,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -797,6 +872,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -806,6 +882,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -815,6 +892,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01004() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -825,6 +903,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01005() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -835,6 +914,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01101() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -843,6 +923,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01102() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -852,6 +933,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01103() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -861,6 +943,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01104() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -871,6 +954,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01105() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -881,6 +965,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01201() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -889,6 +974,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01202() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -898,6 +984,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01203() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -907,6 +994,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01204() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -917,6 +1005,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01205() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -927,6 +1016,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01206() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -937,6 +1027,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01207() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -947,6 +1038,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01208() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -959,6 +1051,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01301() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -967,6 +1060,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01302() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -976,6 +1070,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01303() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -985,6 +1080,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01304() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -995,6 +1091,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01305() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -1005,6 +1102,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01306() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -1017,6 +1115,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1050,6 +1149,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1083,6 +1183,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1116,6 +1217,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1149,6 +1251,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1182,6 +1285,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1215,6 +1319,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1248,6 +1353,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1281,6 +1387,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1314,6 +1421,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1347,6 +1455,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1380,6 +1489,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1413,6 +1523,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1446,6 +1557,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1479,6 +1591,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1512,6 +1625,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1545,6 +1659,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1578,6 +1693,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1611,6 +1727,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1644,6 +1761,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1677,6 +1795,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1710,6 +1829,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1743,6 +1863,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1776,6 +1897,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1809,6 +1931,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1845,6 +1968,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1881,6 +2005,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1917,6 +2042,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1953,6 +2079,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1989,6 +2116,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2025,6 +2153,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2061,6 +2190,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2097,6 +2227,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2133,6 +2264,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2169,6 +2301,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2205,6 +2338,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2241,6 +2375,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2277,6 +2412,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2313,6 +2449,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2349,6 +2486,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2385,6 +2523,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2421,6 +2560,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2457,6 +2597,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2493,6 +2634,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2529,6 +2671,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2565,6 +2708,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2601,6 +2745,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2637,6 +2782,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2673,6 +2819,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2709,6 +2856,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2745,6 +2893,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2781,6 +2930,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2817,6 +2967,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2853,6 +3004,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2889,6 +3041,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2925,6 +3078,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2961,6 +3115,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2997,6 +3152,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3033,6 +3189,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3069,6 +3226,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3105,6 +3263,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3141,6 +3300,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3177,6 +3337,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3213,6 +3374,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3249,6 +3411,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3285,6 +3448,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3321,6 +3485,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3357,6 +3522,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3393,6 +3559,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00109() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3429,6 +3596,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3466,6 +3634,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3503,6 +3672,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3540,6 +3710,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3577,6 +3748,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3614,6 +3786,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3651,6 +3824,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3688,6 +3862,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3725,6 +3900,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3762,6 +3938,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3799,6 +3976,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3836,6 +4014,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3873,6 +4052,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3910,6 +4090,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3947,6 +4128,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3984,6 +4166,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4021,6 +4204,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4058,6 +4242,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00109() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4095,6 +4280,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4132,6 +4318,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4169,6 +4356,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4206,6 +4394,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4243,6 +4432,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4280,6 +4470,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4317,6 +4508,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4354,6 +4546,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4391,6 +4584,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4428,6 +4622,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4465,6 +4660,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4502,6 +4698,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4539,6 +4736,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4576,6 +4774,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4613,6 +4812,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4650,6 +4850,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4687,6 +4888,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4724,6 +4926,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00109() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4762,6 +4965,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4792,6 +4996,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4822,6 +5027,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4852,6 +5058,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4882,6 +5089,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4912,6 +5120,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4942,6 +5151,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4972,6 +5182,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -5002,6 +5213,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00009() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -5032,6 +5244,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTreadmillDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5039,6 +5252,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTreadmillDataCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5051,6 +5265,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTreadmillDataCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5064,6 +5279,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCrossTrainerDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5071,6 +5287,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCrossTrainerDataCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5083,6 +5300,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCrossTrainerDataCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5096,6 +5314,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStepClimberDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5103,6 +5322,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStepClimberDataCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5115,6 +5335,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStepClimberDataCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5128,6 +5349,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStairClimberDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5135,6 +5357,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStairClimberDataCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5147,6 +5370,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStairClimberDataCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5160,6 +5384,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRowerDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5167,6 +5392,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRowerDataCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5179,6 +5405,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRowerDataCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5192,6 +5419,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isIndoorBikeDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5199,6 +5427,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isIndoorBikeDataCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5211,6 +5440,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isIndoorBikeDataCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5224,6 +5454,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTrainingStatusCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5231,6 +5462,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTrainingStatusCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5243,6 +5475,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTrainingStatusCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5256,6 +5489,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedSpeedRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5263,6 +5497,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedSpeedRangeCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5275,6 +5510,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedSpeedRangeCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5288,6 +5524,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedInclinationRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5295,6 +5532,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedInclinationRangeCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5307,6 +5545,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedInclinationRangeCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5320,6 +5559,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5327,6 +5567,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5339,6 +5580,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5352,6 +5594,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedPowerRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5359,6 +5602,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedPowerRangeCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5371,6 +5615,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedPowerRangeCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5384,6 +5629,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedHeartRateRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5391,6 +5637,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedHeartRateRangeCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5403,6 +5650,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSupportedHeartRateRangeCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5416,6 +5664,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFitnessMachineControlPointCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5423,6 +5672,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFitnessMachineControlPointCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5435,6 +5685,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFitnessMachineControlPointCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5448,6 +5699,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFitnessMachineStatusCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5455,6 +5707,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFitnessMachineStatusCharacteristicSupported_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5467,6 +5720,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFitnessMachineStatusCharacteristicSupported_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5480,6 +5734,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineFeature_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5487,6 +5742,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineFeature_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5501,6 +5757,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineFeature_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -5517,6 +5774,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTreadmillDataClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5524,6 +5782,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTreadmillDataClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5538,6 +5797,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTreadmillDataClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5557,6 +5817,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTreadmillDataClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5580,6 +5841,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTreadmillDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5587,6 +5849,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTreadmillDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5601,6 +5864,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTreadmillDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5620,6 +5884,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTreadmillDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5643,6 +5908,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTreadmillDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5650,6 +5916,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTreadmillDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5664,6 +5931,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTreadmillDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5683,6 +5951,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTreadmillDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5706,6 +5975,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCrossTrainerDataClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5713,6 +5983,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCrossTrainerDataClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5727,6 +5998,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCrossTrainerDataClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5746,6 +6018,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCrossTrainerDataClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5769,6 +6042,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCrossTrainerDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5776,6 +6050,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCrossTrainerDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5790,6 +6065,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCrossTrainerDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5809,6 +6085,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCrossTrainerDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5832,6 +6109,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCrossTrainerDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5839,6 +6117,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCrossTrainerDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5853,6 +6132,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCrossTrainerDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5872,6 +6152,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCrossTrainerDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5895,6 +6176,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getStepClimberDataClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5902,6 +6184,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getStepClimberDataClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5916,6 +6199,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getStepClimberDataClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5935,6 +6219,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getStepClimberDataClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5958,6 +6243,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startStepClimberDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -5965,6 +6251,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startStepClimberDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5979,6 +6266,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startStepClimberDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -5998,6 +6286,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startStepClimberDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6021,6 +6310,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopStepClimberDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6028,6 +6318,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopStepClimberDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6042,6 +6333,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopStepClimberDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6061,6 +6353,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopStepClimberDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6084,6 +6377,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getStairClimberDataClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6091,6 +6385,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getStairClimberDataClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6105,6 +6400,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getStairClimberDataClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6124,6 +6420,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getStairClimberDataClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -6147,6 +6444,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startStairClimberDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6154,6 +6452,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startStairClimberDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6168,6 +6467,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startStairClimberDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6187,6 +6487,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startStairClimberDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6210,6 +6511,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopStairClimberDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6217,6 +6519,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopStairClimberDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6231,6 +6534,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopStairClimberDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6250,6 +6554,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopStairClimberDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6273,6 +6578,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRowerDataClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6280,6 +6586,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRowerDataClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6294,6 +6601,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRowerDataClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6313,6 +6621,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRowerDataClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -6336,6 +6645,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRowerDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6343,6 +6653,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRowerDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6357,6 +6668,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRowerDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6376,6 +6688,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRowerDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6399,6 +6712,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRowerDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6406,6 +6720,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRowerDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6420,6 +6735,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRowerDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6439,6 +6755,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRowerDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6462,6 +6779,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIndoorBikeDataClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6469,6 +6787,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIndoorBikeDataClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6483,6 +6802,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIndoorBikeDataClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6502,6 +6822,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIndoorBikeDataClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -6525,6 +6846,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIndoorBikeDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6532,6 +6854,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIndoorBikeDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6546,6 +6869,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIndoorBikeDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6565,6 +6889,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIndoorBikeDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6588,6 +6913,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIndoorBikeDataNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6595,6 +6921,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIndoorBikeDataNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6609,6 +6936,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIndoorBikeDataNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6628,6 +6956,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIndoorBikeDataNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6651,6 +6980,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrainingStatus_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6658,6 +6988,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrainingStatus_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6672,6 +7003,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrainingStatus_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6691,6 +7023,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrainingStatus_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -6714,6 +7047,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrainingStatusClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6721,6 +7055,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrainingStatusClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6735,6 +7070,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrainingStatusClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6754,6 +7090,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrainingStatusClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -6777,6 +7114,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrainingStatusNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6784,6 +7122,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrainingStatusNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6798,6 +7137,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrainingStatusNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6817,6 +7157,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrainingStatusNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6840,6 +7181,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrainingStatusNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6847,6 +7189,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrainingStatusNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6861,6 +7204,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrainingStatusNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6880,6 +7224,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrainingStatusNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -6903,6 +7248,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedSpeedRange_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6910,6 +7256,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedSpeedRange_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6924,6 +7271,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedSpeedRange_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6943,6 +7291,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedSpeedRange_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -6966,6 +7315,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedInclinationRange_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -6973,6 +7323,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedInclinationRange_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -6987,6 +7338,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedInclinationRange_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7006,6 +7358,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedInclinationRange_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -7029,6 +7382,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedResistanceLevelRange_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7036,6 +7390,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedResistanceLevelRange_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7050,6 +7405,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedResistanceLevelRange_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7069,6 +7425,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedResistanceLevelRange_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -7092,6 +7449,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedPowerRange_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7099,6 +7457,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedPowerRange_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7113,6 +7472,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedPowerRange_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7132,6 +7492,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedPowerRange_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -7155,6 +7516,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedHeartRateRange_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7162,6 +7524,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedHeartRateRange_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7176,6 +7539,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedHeartRateRange_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7195,6 +7559,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedHeartRateRange_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -7218,6 +7583,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFitnessMachineControlPoint_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7225,6 +7591,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFitnessMachineControlPoint_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7239,6 +7606,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFitnessMachineControlPoint_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7258,6 +7626,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFitnessMachineControlPoint_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -7281,6 +7650,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineControlPointClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7288,6 +7658,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineControlPointClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7302,6 +7673,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineControlPointClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7321,6 +7693,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineControlPointClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -7344,6 +7717,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startFitnessMachineControlPointIndication_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7351,6 +7725,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startFitnessMachineControlPointIndication_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7365,6 +7740,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startFitnessMachineControlPointIndication_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7384,6 +7760,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startFitnessMachineControlPointIndication_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -7407,6 +7784,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopFitnessMachineControlPointIndication_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7414,6 +7792,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopFitnessMachineControlPointIndication_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7428,6 +7807,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopFitnessMachineControlPointIndication_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7447,6 +7827,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopFitnessMachineControlPointIndication_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -7470,6 +7851,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineStatusClientCharacteristicConfiguration_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7477,6 +7859,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineStatusClientCharacteristicConfiguration_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7491,6 +7874,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineStatusClientCharacteristicConfiguration_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7510,6 +7894,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFitnessMachineStatusClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -7533,6 +7918,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startFitnessMachineStatusNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7540,6 +7926,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startFitnessMachineStatusNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7554,6 +7941,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startFitnessMachineStatusNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7573,6 +7961,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startFitnessMachineStatusNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -7596,6 +7985,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopFitnessMachineStatusNotification_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null);
 
@@ -7603,6 +7993,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopFitnessMachineStatusNotification_00002() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7617,6 +8008,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopFitnessMachineStatusNotification_00003() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(MOCK_BLE_CONNECTION, new MockFitnessMachineServiceCallback(), null) {
 
@@ -7636,6 +8028,7 @@ public class FitnessMachineServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopFitnessMachineStatusNotification_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

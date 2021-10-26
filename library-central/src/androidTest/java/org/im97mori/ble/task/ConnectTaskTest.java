@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -23,6 +24,7 @@ import static org.junit.Assert.assertTrue;
 public class ConnectTaskTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_createInitialMessage001() {
         ConnectTask task = new ConnectTask(null, null, false, ConnectTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
@@ -36,6 +38,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createConnectSuccess001() {
         Object object = new Object();
         Message message = ConnectTask.createConnectSuccessMessage(object);
@@ -49,6 +52,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_doProcess_00001() {
         MOCK_BLE_CONNECTION.setConnected(false);
         ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, null, false, ConnectTask.TIMEOUT_MILLIS, null);
@@ -56,6 +60,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_doProcess_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         Looper looper = null;
@@ -77,6 +82,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_cancel_00001() {
         MOCK_BLE_CONNECTION.setConnected(false);
         Looper looper = null;
@@ -99,6 +105,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00002() {
         MOCK_BLE_CONNECTION.setConnected(false);
         Looper looper = null;
@@ -121,6 +128,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00003() {
         MOCK_BLE_CONNECTION.setConnected(false);
         Looper looper = null;

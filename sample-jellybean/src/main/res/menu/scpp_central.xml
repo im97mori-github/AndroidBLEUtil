@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/has_scan_refresh"
+            android:title="@string/menu_has_scan_refresh" />
+        <item
+            android:id="@+id/write_scan_interval_window"
+            android:title="@string/menu_write_scan_interval_window" />
+        <item
+            android:id="@+id/read_scan_refresh_characteristic_configuration"
+            android:title="@string/menu_read_scan_refresh_characteristic_configuration" />
+        <item
+            android:id="@+id/notify_scan_refresh_start"
+            android:title="@string/menu_notify_scan_refresh_start" />
+        <item
+            android:id="@+id/notify_scan_refresh_stop"
+            android:title="@string/menu_notify_scan_refresh_stop" />
+    </group>
+</menu>

@@ -2,6 +2,7 @@ package org.im97mori.ble.profile.esp.central;
 
 import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -36,12 +37,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -62,12 +65,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -88,12 +93,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startPollenConcentrationNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startPollenConcentrationNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startPollenConcentrationNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -114,12 +121,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startPollenConcentrationNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startPollenConcentrationNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startPollenConcentrationNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -140,12 +149,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopPollenConcentrationNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopPollenConcentrationNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopPollenConcentrationNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -166,12 +177,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopPollenConcentrationNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopPollenConcentrationNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopPollenConcentrationNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -192,12 +205,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -218,12 +233,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -244,12 +261,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -270,12 +289,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -296,12 +317,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPollenConcentrationEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -322,12 +345,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPollenConcentrationEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -348,12 +373,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -374,12 +401,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -400,12 +429,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPollenConcentrationEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -426,12 +457,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPollenConcentrationEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -452,12 +485,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -478,12 +513,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -504,12 +541,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPollenConcentrationCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -530,12 +569,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPollenConcentrationCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPollenConcentrationCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -556,12 +597,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -582,12 +625,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPollenConcentrationValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPollenConcentrationValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -608,12 +653,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfall_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfall());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfall_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -634,12 +681,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfall_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfall(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfall_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -660,12 +709,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRainfallNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startRainfallNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startRainfallNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -686,12 +737,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRainfallNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startRainfallNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startRainfallNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -712,12 +765,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRainfallNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopRainfallNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRainfallNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -738,12 +793,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRainfallNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopRainfallNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRainfallNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -764,12 +821,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -790,12 +849,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -816,12 +877,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -842,12 +905,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -868,12 +933,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setRainfallEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -894,12 +961,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setRainfallEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -920,12 +989,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -946,12 +1017,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -972,12 +1045,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setRainfallEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -998,12 +1073,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setRainfallEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1024,12 +1101,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1050,12 +1129,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1076,12 +1157,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setRainfallCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1102,12 +1185,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setRainfallCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setRainfallCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1128,12 +1213,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1154,12 +1241,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getRainfallValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getRainfallValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1180,12 +1269,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressure_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressure());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressure_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1206,12 +1297,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressure_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressure(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressure_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1232,12 +1325,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startPressureNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startPressureNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startPressureNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1258,12 +1353,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startPressureNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startPressureNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startPressureNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1284,12 +1381,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopPressureNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopPressureNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopPressureNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1310,12 +1409,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopPressureNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopPressureNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopPressureNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1336,12 +1437,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1362,12 +1465,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1388,12 +1493,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1414,12 +1521,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1440,12 +1549,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPressureEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1466,12 +1577,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPressureEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1492,12 +1605,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1518,12 +1633,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1544,12 +1661,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPressureEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1570,12 +1689,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPressureEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1596,12 +1717,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1622,12 +1745,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1648,12 +1773,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPressureCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1674,12 +1801,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setPressureCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setPressureCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1700,12 +1829,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1726,12 +1857,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getPressureValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getPressureValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1752,12 +1885,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperature_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperature());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperature_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1778,12 +1913,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperature_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperature(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperature_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1804,12 +1941,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startTemperatureNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1830,12 +1969,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startTemperatureNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1856,12 +1997,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTemperatureNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopTemperatureNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTemperatureNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1882,12 +2025,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTemperatureNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopTemperatureNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTemperatureNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1908,12 +2053,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1934,12 +2081,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1960,12 +2109,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -1986,12 +2137,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2012,12 +2165,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTemperatureEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2038,12 +2193,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTemperatureEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2064,12 +2221,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2090,12 +2249,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2116,12 +2277,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTemperatureEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2142,12 +2305,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTemperatureEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2168,12 +2333,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2194,12 +2361,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2220,12 +2389,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTemperatureCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2246,12 +2417,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTemperatureCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTemperatureCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2272,12 +2445,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2298,12 +2473,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTemperatureValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2324,12 +2501,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirection_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirection());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirection_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2350,12 +2529,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirection_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirection(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirection_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2376,12 +2557,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrueWindDirectionNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startTrueWindDirectionNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrueWindDirectionNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2402,12 +2585,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrueWindDirectionNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startTrueWindDirectionNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrueWindDirectionNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2428,12 +2613,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrueWindDirectionNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopTrueWindDirectionNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrueWindDirectionNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2454,12 +2641,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrueWindDirectionNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopTrueWindDirectionNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrueWindDirectionNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2480,12 +2669,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2506,12 +2697,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2532,12 +2725,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2558,12 +2753,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2584,12 +2781,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindDirectionEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2610,12 +2809,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindDirectionEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2636,12 +2837,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2662,12 +2865,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2688,12 +2893,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindDirectionEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2714,12 +2921,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindDirectionEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2740,12 +2949,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2766,12 +2977,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2792,12 +3005,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindDirectionCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2818,12 +3033,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindDirectionCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindDirectionCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2844,12 +3061,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2870,12 +3089,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindDirectionValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindDirectionValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2896,12 +3117,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeed_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeed());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeed_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2922,12 +3145,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeed_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeed(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeed_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2948,12 +3173,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrueWindSpeedNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startTrueWindSpeedNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrueWindSpeedNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -2974,12 +3201,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrueWindSpeedNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startTrueWindSpeedNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startTrueWindSpeedNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3000,12 +3229,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrueWindSpeedNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopTrueWindSpeedNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrueWindSpeedNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3026,12 +3257,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrueWindSpeedNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopTrueWindSpeedNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopTrueWindSpeedNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3052,12 +3285,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3078,12 +3313,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3104,12 +3341,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3130,12 +3369,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3156,12 +3397,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindSpeedEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3182,12 +3425,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindSpeedEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3208,12 +3453,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3234,12 +3481,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3260,12 +3509,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindSpeedEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3286,12 +3537,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindSpeedEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3312,12 +3565,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3338,12 +3593,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3364,12 +3621,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindSpeedCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3390,12 +3649,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setTrueWindSpeedCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setTrueWindSpeedCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3416,12 +3677,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3442,12 +3705,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getTrueWindSpeedValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getTrueWindSpeedValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3468,12 +3733,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndex_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndex());
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndex_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3494,12 +3761,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndex_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndex(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndex_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3520,12 +3789,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startUVIndexNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startUVIndexNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startUVIndexNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3546,12 +3817,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startUVIndexNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startUVIndexNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startUVIndexNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3572,12 +3845,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUVIndexNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopUVIndexNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUVIndexNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3598,12 +3873,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUVIndexNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopUVIndexNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUVIndexNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3624,12 +3901,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3650,12 +3929,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3676,12 +3957,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3702,12 +3985,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3728,12 +4013,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setUVIndexEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3754,12 +4041,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setUVIndexEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3780,12 +4069,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3806,12 +4097,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3832,12 +4125,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setUVIndexEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3858,12 +4153,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setUVIndexEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3884,12 +4181,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3910,12 +4209,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3936,12 +4237,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setUVIndexCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3962,12 +4265,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setUVIndexCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setUVIndexCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -3988,12 +4293,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4014,12 +4321,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getUVIndexValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getUVIndexValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4040,12 +4349,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChill_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChill());
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChill_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4066,12 +4377,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChill_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChill(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChill_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4092,12 +4405,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startWindChillNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startWindChillNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startWindChillNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4118,12 +4433,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startWindChillNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.startWindChillNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startWindChillNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4144,12 +4461,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopWindChillNotification_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopWindChillNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopWindChillNotification_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4170,12 +4489,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopWindChillNotification_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.stopWindChillNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopWindChillNotification_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4196,12 +4517,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingMeasurement_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillEnvironmentalSensingMeasurement());
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingMeasurement_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4222,12 +4545,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingMeasurement_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillEnvironmentalSensingMeasurement(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingMeasurement_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4248,12 +4573,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillEnvironmentalSensingTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4274,12 +4601,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillEnvironmentalSensingTriggerSetting(0, 0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4300,12 +4629,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillEnvironmentalSensingTriggerSetting_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setWindChillEnvironmentalSensingTriggerSetting(new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillEnvironmentalSensingTriggerSetting_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4326,12 +4657,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillEnvironmentalSensingTriggerSetting_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setWindChillEnvironmentalSensingTriggerSetting(0, 0, new EnvironmentalSensingTriggerSetting(EnvironmentalSensingTriggerSetting.CONDITIONS_TRIGGER_INACTIVE)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillEnvironmentalSensingTriggerSetting_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4352,12 +4685,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillEnvironmentalSensingConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4378,12 +4713,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillEnvironmentalSensingConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4404,12 +4741,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillEnvironmentalSensingConfiguration_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setWindChillEnvironmentalSensingConfiguration(new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillEnvironmentalSensingConfiguration_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4430,12 +4769,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillEnvironmentalSensingConfiguration_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setWindChillEnvironmentalSensingConfiguration(0, new EnvironmentalSensingConfiguration(EnvironmentalSensingConfiguration.TRIGGER_LOGIC_VALUE_BOOLAEN_AND)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillEnvironmentalSensingConfiguration_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4456,12 +4797,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4482,12 +4825,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillCharacteristicUserDescription(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4508,12 +4853,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillCharacteristicUserDescription_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setWindChillCharacteristicUserDescription(new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillCharacteristicUserDescription_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4534,12 +4881,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillCharacteristicUserDescription_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.setWindChillCharacteristicUserDescription(0, new CharacteristicUserDescription(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setWindChillCharacteristicUserDescription_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4560,12 +4909,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillValidRange_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillValidRange_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override
@@ -4586,12 +4937,14 @@ public class EnvironmentalSensingProfileTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillValidRange_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         assertNull(environmentalSensingProfile.getWindChillValidRange(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getWindChillValidRange_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback()) {
             @Override

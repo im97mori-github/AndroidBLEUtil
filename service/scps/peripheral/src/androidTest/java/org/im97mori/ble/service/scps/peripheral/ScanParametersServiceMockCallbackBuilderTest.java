@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a31.ScanRefresh;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindow;
@@ -24,9 +25,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -40,6 +46,8 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -54,6 +62,8 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addScanIntervalWindow_00001() {
         ScanIntervalWindow scanIntervalWindow = new ScanIntervalWindow(0, 1);
 
@@ -86,6 +96,8 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addScanIntervalWindow_00101() {
         ScanIntervalWindow scanIntervalWindow = new ScanIntervalWindow(0, 1);
 
@@ -118,6 +130,8 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addScanIntervalWindow_00201() {
         ScanIntervalWindow scanIntervalWindow = new ScanIntervalWindow(0, 1);
 
@@ -150,6 +164,8 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCurrentTime_00001() {
         Exception exception = null;
         try {
@@ -166,6 +182,8 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addScanRefresh_00001() {
         ScanRefresh scanRefresh = new ScanRefresh(1);
 
@@ -207,6 +225,8 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addScanRefresh_00101() {
         ScanRefresh scanRefresh = new ScanRefresh(1);
 
@@ -248,6 +268,8 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeScanRefresh_00001() {
         ScanRefresh scanRefresh = new ScanRefresh(1);
 

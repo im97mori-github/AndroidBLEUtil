@@ -3,6 +3,7 @@ package org.im97mori.ble.profile.ftmp.peripheral;
 import android.bluetooth.BluetoothDevice;
 
 import androidx.annotation.NonNull;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
@@ -57,6 +58,7 @@ public class FtmpUserDataServiceMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDeviceDisconnected_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         FtmpUserDataServiceMockCallback ftmpUserDataServiceMockCallback = new FtmpUserDataServiceMockCallback(new MockData(), false, true) {
@@ -71,6 +73,7 @@ public class FtmpUserDataServiceMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDeviceDisconnected_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         TestFtmpUserDataServiceMockCallback ftmpUserDataServiceMockCallback = new TestFtmpUserDataServiceMockCallback(new MockData(), false, true) {
@@ -86,6 +89,7 @@ public class FtmpUserDataServiceMockCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDeviceDisconnected_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final int originalUserIndex = 1;

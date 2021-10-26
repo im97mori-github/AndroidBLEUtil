@@ -30,7 +30,6 @@ import java.util.Set;
 
 import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class HrpCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
@@ -137,8 +136,8 @@ public class HrpCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else {
             mConnectDisconnectButton.setVisibility(View.VISIBLE);
             if (mHeartRateProfile.isConnected()) {
@@ -169,7 +168,7 @@ public class HrpCentralSampleActivity extends BaseActivity implements View.OnCli
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {
-                    mHeartRateProfile.findHeartRateProfileDevices(null);
+                    mHeartRateProfile.findDevices(null);
                 } else {
                     if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
                         mHeartRateProfile.connect(mBluetoothDevice);

@@ -1,10 +1,13 @@
 package org.im97mori.ble.profile.aiop.central;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -48,13 +51,30 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findAutomationIOProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.findAutomationIOProfileDevices(null));
+        assertTrue(automationIOProfile.createFilteredScanCallback() instanceof AutomationIOProfileScanCallback);
     }
 
     @Test
-    public void test_findAutomationIOProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
+        assertTrue(automationIOProfile.createFilteredLeScanCallback() instanceof AutomationIOProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
+        assertNull(automationIOProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -67,18 +87,20 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.start();
-        assertNotNull(automationIOProfile.findAutomationIOProfileDevices(bundle));
+        assertNotNull(automationIOProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         automationIOProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCount_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalCount());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCount_00002() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
@@ -99,12 +121,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalReadable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalReadable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -132,12 +156,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalReadable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalReadable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalReadable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -165,12 +191,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalWritable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalWritable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -198,12 +226,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalWritable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalWritable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -231,12 +261,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalWritableWithNoResponse_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalWritableWithNoResponse());
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalWritableWithNoResponse_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -264,12 +296,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalWritableWithNoResponse_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalWritableWithNoResponse(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalWritableWithNoResponse_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -297,12 +331,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalNotificatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalNotificatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -330,12 +366,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalNotificatable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalNotificatable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalNotificatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -363,12 +401,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalIndicatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalIndicatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -396,12 +436,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalIndicatable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalIndicatable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalIndicatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -429,12 +471,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormat_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalCharacteristicPresentationFormat());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -462,12 +506,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormat_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalCharacteristicPresentationFormat(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -495,12 +541,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicUserDescription_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -528,12 +576,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicUserDescription_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalCharacteristicUserDescription(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -561,12 +611,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicUserDescriptionWritable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalCharacteristicUserDescriptionWritable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicUserDescriptionWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -594,12 +646,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicUserDescriptionWritable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isDigitalCharacteristicUserDescriptionWritable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isDigitalCharacteristicUserDescriptionWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -627,12 +681,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicExtendedProperties_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalCharacteristicExtendedProperties());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -660,12 +716,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicExtendedProperties_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalCharacteristicExtendedProperties(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -693,12 +751,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalValueTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalValueTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -726,12 +786,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalValueTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalValueTriggerSetting(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -759,12 +821,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalTimeTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalTimeTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -792,12 +856,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalTimeTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasDigitalTimeTriggerSetting(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDigitalTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -825,12 +891,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCount_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogCount());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCount_00002() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
@@ -851,12 +919,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogReadable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogReadable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -884,12 +954,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogReadable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogReadable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogReadable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -917,12 +989,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogWritable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogWritable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -950,12 +1024,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogWritable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogWritable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -983,12 +1059,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogWritableWithNoResponse_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogWritableWithNoResponse());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogWritableWithNoResponse_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1016,12 +1094,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogWritableWithNoResponse_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogWritableWithNoResponse(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogWritableWithNoResponse_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1049,12 +1129,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogNotificatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogNotificatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1082,12 +1164,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogNotificatable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogNotificatable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogNotificatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1115,12 +1199,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogIndicatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogIndicatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1148,12 +1234,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogIndicatable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogIndicatable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogIndicatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1181,12 +1269,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormat_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogCharacteristicPresentationFormat());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1214,12 +1304,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormat_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogCharacteristicPresentationFormat(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1247,12 +1339,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicUserDescription_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1280,12 +1374,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicUserDescription_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogCharacteristicUserDescription(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1313,12 +1409,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicUserDescriptionWritable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogCharacteristicUserDescriptionWritable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicUserDescriptionWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1346,12 +1444,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicUserDescriptionWritable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAnalogCharacteristicUserDescriptionWritable(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnalogCharacteristicUserDescriptionWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1379,12 +1479,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicExtendedProperties_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogCharacteristicExtendedProperties());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1412,12 +1514,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicExtendedProperties_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogCharacteristicExtendedProperties(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1445,12 +1549,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogValueTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogValueTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1478,12 +1584,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogValueTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogValueTriggerSetting(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1511,12 +1619,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogTimeTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogTimeTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1544,12 +1654,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogTimeTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.hasAnalogTimeTriggerSetting(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_hasAnalogTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1577,12 +1689,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateSupported_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAggregateSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateSupported_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -1608,12 +1722,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateReadable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAggregateReadable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -1639,12 +1755,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateNotificatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAggregateNotificatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -1670,12 +1788,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateIndicatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.isAggregateIndicatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isAggregateIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -1701,12 +1821,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigital());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1734,12 +1856,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigital(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigital_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1767,6 +1891,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00001() {
         final Digital originalDigital = new Digital(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -1774,6 +1899,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1804,6 +1930,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00101() {
         final Digital originalDigital = new Digital(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -1811,6 +1938,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigital_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1840,6 +1968,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00001() {
         final Digital originalDigital = new Digital(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -1847,6 +1976,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1877,6 +2007,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00101() {
         final Digital originalDigital = new Digital(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -1884,6 +2015,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalWithNoResponse_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1913,12 +2045,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -1946,12 +2080,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalClientCharacteristicConfiguration(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalClientCharacteristicConfiguration_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -1979,12 +2115,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startDigitalNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2012,12 +2150,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startDigitalNotification(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalNotification_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2045,12 +2185,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopDigitalNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2078,12 +2220,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopDigitalNotification(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalNotification_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2111,12 +2255,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startDigitalIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2144,12 +2290,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startDigitalIndication(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_startDigitalIndication_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2177,12 +2325,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopDigitalIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2210,12 +2360,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopDigitalIndication(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDigitalIndication_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2243,12 +2395,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalCharacteristicPresentationFormat());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2276,12 +2430,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalCharacteristicPresentationFormat(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2309,12 +2465,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2342,12 +2500,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalCharacteristicUserDescription(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2375,6 +2535,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00001() {
         final CharacteristicUserDescription originalCharacteristicUserDescription = new CharacteristicUserDescription(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -2382,6 +2543,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2412,6 +2574,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00101() {
         final CharacteristicUserDescription originalCharacteristicUserDescription = new CharacteristicUserDescription(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -2419,6 +2582,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2448,12 +2612,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalCharacteristicExtendedProperties());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2481,12 +2647,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalCharacteristicExtendedProperties(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2514,12 +2682,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalValueTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2547,12 +2717,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalValueTriggerSetting(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2580,6 +2752,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00001() {
         final ValueTriggerSetting originalValueTriggerSetting = new ValueTriggerSetting(new byte[]{ValueTriggerSetting.NONE_0});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -2587,6 +2760,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2617,6 +2791,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00101() {
         final ValueTriggerSetting originalValueTriggerSetting = new ValueTriggerSetting(new byte[]{ValueTriggerSetting.NONE_0});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -2624,6 +2799,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2653,12 +2829,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalTimeTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2686,12 +2864,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalTimeTriggerSetting(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2719,6 +2899,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00001() {
         final TimeTriggerSetting originalTimeTriggerSetting = new TimeTriggerSetting(new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -2726,6 +2907,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2756,6 +2938,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00101() {
         final TimeTriggerSetting originalTimeTriggerSetting = new TimeTriggerSetting(new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -2763,6 +2946,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDigitalTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2792,12 +2976,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalNumberOfDigitals());
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2825,12 +3011,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getDigitalNumberOfDigitals(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getDigitalNumberOfDigitals_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2858,12 +3046,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalog());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2891,12 +3081,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalog(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalog_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2924,6 +3116,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00001() {
         final Analog originalAnalog = new Analog(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -2931,6 +3124,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -2961,6 +3155,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00101() {
         final Analog originalAnalog = new Analog(new byte[]{1, 2});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -2968,6 +3163,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalog_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2997,6 +3193,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00001() {
         final Analog originalAnalog = new Analog(new byte[]{1, 2});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -3004,6 +3201,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3034,6 +3232,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00101() {
         final Analog originalAnalog = new Analog(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -3041,6 +3240,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogWithNoResponse_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3070,12 +3270,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3103,12 +3305,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogClientCharacteristicConfiguration(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogClientCharacteristicConfiguration_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3136,12 +3340,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startAnalogNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3169,12 +3375,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startAnalogNotification(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogNotification_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3202,12 +3410,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopAnalogNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3235,12 +3445,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopAnalogNotification(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogNotification_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3268,12 +3480,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startAnalogIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3301,12 +3515,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startAnalogIndication(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_startAnalogIndication_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3334,12 +3550,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopAnalogIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3367,12 +3585,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopAnalogIndication(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAnalogIndication_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3400,12 +3620,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogCharacteristicPresentationFormat());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3433,12 +3655,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogCharacteristicPresentationFormat(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3466,12 +3690,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogCharacteristicUserDescription());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3499,12 +3725,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogCharacteristicUserDescription(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3532,6 +3760,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00001() {
         final CharacteristicUserDescription originalCharacteristicUserDescription = new CharacteristicUserDescription(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -3539,6 +3768,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3569,6 +3799,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00101() {
         final CharacteristicUserDescription originalCharacteristicUserDescription = new CharacteristicUserDescription(new byte[]{1});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -3576,6 +3807,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3605,12 +3837,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogCharacteristicExtendedProperties());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3638,12 +3872,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogCharacteristicExtendedProperties(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3671,12 +3907,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogValueTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3704,12 +3942,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogValueTriggerSetting(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3737,6 +3977,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00001() {
         final ValueTriggerSetting originalValueTriggerSetting = new ValueTriggerSetting(new byte[]{ValueTriggerSetting.NONE_0});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -3744,6 +3985,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3774,6 +4016,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00101() {
         final ValueTriggerSetting originalValueTriggerSetting = new ValueTriggerSetting(new byte[]{ValueTriggerSetting.NONE_0});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -3781,6 +4024,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3810,12 +4054,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogTimeTriggerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3843,12 +4089,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogTimeTriggerSetting(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3876,6 +4124,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00001() {
         final TimeTriggerSetting originalTimeTriggerSetting = new TimeTriggerSetting(new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -3883,6 +4132,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3913,6 +4163,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00101() {
         final TimeTriggerSetting originalTimeTriggerSetting = new TimeTriggerSetting(new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0});
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
@@ -3920,6 +4171,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnalogTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -3949,12 +4201,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
@@ -3982,12 +4236,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAnalogValidRange(1));
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnalogValidRange_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -4015,12 +4271,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregate_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAggregate());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregate_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -4046,12 +4304,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.getAggregateClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAggregateClientCharacteristicConfiguration_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -4077,12 +4337,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateNotification_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startAggregateNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -4108,12 +4370,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateNotification_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopAggregateNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateNotification_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -4139,12 +4403,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateIndication_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.startAggregateIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startAggregateIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -4170,12 +4436,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateIndication_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertNull(automationIOProfile.stopAggregateIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAggregateIndication_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -4201,12 +4469,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         assertTrue(automationIOProfile.getDatabaseHelper() instanceof AutomationIOProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -4223,6 +4493,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

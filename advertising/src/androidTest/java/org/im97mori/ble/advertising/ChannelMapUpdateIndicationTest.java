@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+import static org.im97mori.ble.constants.DataType.CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +16,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -31,7 +31,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111101;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -46,7 +46,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111011;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -61,7 +61,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11110111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -76,7 +76,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11101111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -91,7 +91,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11011111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -106,7 +106,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b10111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -121,7 +121,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b01111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -136,7 +136,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111110;
         data[4] = (byte) 0b11111111;
@@ -151,7 +151,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111101;
         data[4] = (byte) 0b11111111;
@@ -166,7 +166,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111011;
         data[4] = (byte) 0b11111111;
@@ -181,7 +181,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11110111;
         data[4] = (byte) 0b11111111;
@@ -196,7 +196,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11101111;
         data[4] = (byte) 0b11111111;
@@ -211,7 +211,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11011111;
         data[4] = (byte) 0b11111111;
@@ -226,7 +226,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b10111111;
         data[4] = (byte) 0b11111111;
@@ -241,7 +241,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b01111111;
         data[4] = (byte) 0b11111111;
@@ -256,7 +256,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111110;
@@ -271,7 +271,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111101;
@@ -286,7 +286,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111011;
@@ -301,7 +301,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11110111;
@@ -316,7 +316,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11101111;
@@ -331,7 +331,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11011111;
@@ -346,7 +346,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b10111111;
@@ -361,7 +361,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b01111111;
@@ -376,7 +376,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -391,7 +391,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -406,7 +406,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -421,7 +421,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -436,7 +436,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -451,7 +451,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -466,7 +466,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -481,7 +481,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -496,7 +496,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -511,7 +511,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -526,7 +526,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -541,7 +541,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -556,7 +556,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -571,7 +571,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -586,7 +586,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -601,7 +601,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -616,7 +616,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -631,7 +631,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -646,7 +646,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -661,7 +661,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -676,7 +676,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -691,7 +691,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -706,7 +706,7 @@ public class ChannelMapUpdateIndicationTest {
     static {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -750,7 +750,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b11111110 & 0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -770,7 +770,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b11111101 & 0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -790,7 +790,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b11111011 & 0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -810,7 +810,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b11110111 & 0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -830,7 +830,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b11101111 & 0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -850,7 +850,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b11011111 & 0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -870,7 +870,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b10111111 & 0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -890,7 +890,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b01111111 & 0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -910,7 +910,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0b11111110 & 0xff, result1.getChmList().get(1).intValue());
@@ -930,7 +930,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0b11111101 & 0xff, result1.getChmList().get(1).intValue());
@@ -950,7 +950,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0b11111011 & 0xff, result1.getChmList().get(1).intValue());
@@ -970,7 +970,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0b11110111 & 0xff, result1.getChmList().get(1).intValue());
@@ -990,7 +990,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0b11101111 & 0xff, result1.getChmList().get(1).intValue());
@@ -1010,7 +1010,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0b11011111 & 0xff, result1.getChmList().get(1).intValue());
@@ -1030,7 +1030,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0b10111111 & 0xff, result1.getChmList().get(1).intValue());
@@ -1050,7 +1050,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0b01111111 & 0xff, result1.getChmList().get(1).intValue());
@@ -1070,7 +1070,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1090,7 +1090,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1110,7 +1110,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1130,7 +1130,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1150,7 +1150,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1170,7 +1170,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1190,7 +1190,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1210,7 +1210,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1230,7 +1230,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1250,7 +1250,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1270,7 +1270,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1290,7 +1290,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1310,7 +1310,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1330,7 +1330,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1350,7 +1350,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1370,7 +1370,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1390,7 +1390,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1410,7 +1410,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1430,7 +1430,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1450,7 +1450,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1470,7 +1470,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1490,7 +1490,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1510,7 +1510,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1530,7 +1530,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1550,7 +1550,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1568,7 +1568,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0b00000000, result1.getChmList().get(0).intValue());
         assertEquals(0b00000000, result1.getChmList().get(1).intValue());
@@ -1592,7 +1592,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1610,7 +1610,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1628,7 +1628,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1646,7 +1646,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());
@@ -1664,7 +1664,7 @@ public class ChannelMapUpdateIndicationTest {
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
         assertEquals(8, result1.getLength());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result1.getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());
         assertEquals(0xff, result1.getChmList().get(0).intValue());
         assertEquals(0xff, result1.getChmList().get(1).intValue());

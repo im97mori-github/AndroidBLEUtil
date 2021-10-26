@@ -34,9 +34,9 @@ public class PeripheralPreferredConnectionParametersAndroidTest {
         assertEquals(20, result1.getMinimumConnectionIntervalMillis(), 0);
         assertEquals(0x0020, result1.getMaximumConnectionInterval());
         assertEquals(40, result1.getMaximumConnectionIntervalMillis(), 0);
-        assertEquals(4, result1.getSlaveLatency(), 0);
-        assertEquals(0x0190, result1.getConnectionSupervisionTimeoutMultiplier());
-        assertEquals(4000, result1.getConnectionSupervisionTimeoutMultiplierMillis(), 0);
+        assertEquals(4, result1.getLatency(), 0);
+        assertEquals(0x0190, result1.getTimeout());
+        assertEquals(4000, result1.getTimeoutMillis(), 0);
     }
 
     @Test
@@ -49,8 +49,8 @@ public class PeripheralPreferredConnectionParametersAndroidTest {
         PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(minimumConnectionInterval, maximumConnectionInterval, slaveLatency, connectionSupervisionTimeoutMultiplier);
         assertEquals(minimumConnectionInterval, result1.getMinimumConnectionInterval());
         assertEquals(maximumConnectionInterval, result1.getMaximumConnectionInterval());
-        assertEquals(slaveLatency, result1.getSlaveLatency());
-        assertEquals(connectionSupervisionTimeoutMultiplier, result1.getConnectionSupervisionTimeoutMultiplier());
+        assertEquals(slaveLatency, result1.getLatency());
+        assertEquals(connectionSupervisionTimeoutMultiplier, result1.getTimeout());
     }
 
     @Test
@@ -78,8 +78,8 @@ public class PeripheralPreferredConnectionParametersAndroidTest {
 
         assertEquals(result1.getMinimumConnectionInterval(), result2.getMinimumConnectionInterval());
         assertEquals(result1.getMaximumConnectionInterval(), result2.getMaximumConnectionInterval());
-        assertEquals(result1.getSlaveLatency(), result2.getSlaveLatency(), 0);
-        assertEquals(result1.getConnectionSupervisionTimeoutMultiplier(), result2.getConnectionSupervisionTimeoutMultiplier());
+        assertEquals(result1.getLatency(), result2.getLatency(), 0);
+        assertEquals(result1.getTimeout(), result2.getTimeout());
     }
 
     @Test

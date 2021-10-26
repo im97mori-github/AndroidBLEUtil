@@ -1,26 +1,5 @@
 package org.im97mori.ble.service.aios.peripheral;
 
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattService;
-
-import org.im97mori.ble.characteristic.u2a56.Digital;
-import org.im97mori.ble.characteristic.u2a58.Analog;
-import org.im97mori.ble.descriptor.u2900.CharacteristicExtendedProperties;
-import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
-import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormat;
-import org.im97mori.ble.descriptor.u2906.ValidRange;
-import org.im97mori.ble.descriptor.u2909.NumberOfDigitals;
-import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
-import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
-import org.junit.Test;
-
-import java.util.LinkedList;
-import java.util.List;
-
 import static org.im97mori.ble.constants.CharacteristicUUID.AGGREGATE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.ANALOG_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.DIGITAL_CHARACTERISTIC;
@@ -39,9 +18,36 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
+import org.im97mori.ble.characteristic.u2a56.Digital;
+import org.im97mori.ble.characteristic.u2a58.Analog;
+import org.im97mori.ble.descriptor.u2900.CharacteristicExtendedProperties;
+import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormat;
+import org.im97mori.ble.descriptor.u2906.ValidRange;
+import org.im97mori.ble.descriptor.u2909.NumberOfDigitals;
+import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
+import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.junit.Test;
+
+import java.util.LinkedList;
+import java.util.List;
+
 public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -55,6 +61,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -77,6 +85,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -100,6 +110,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00004() {
         Exception exception = null;
         try {
@@ -122,6 +134,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00101() {
         Exception exception = null;
         try {
@@ -141,6 +155,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00102() {
         Exception exception = null;
         try {
@@ -160,6 +176,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00103() {
         Exception exception = null;
         try {
@@ -179,6 +197,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00104() {
         Exception exception = null;
         try {
@@ -201,6 +221,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00105() {
         Exception exception = null;
         try {
@@ -225,6 +247,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00106() {
         Exception exception = null;
         try {
@@ -252,6 +276,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00107() {
         Exception exception = null;
         try {
@@ -271,6 +297,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00108() {
         Exception exception = null;
         try {
@@ -294,6 +322,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00109() {
         Exception exception = null;
         try {
@@ -330,6 +360,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00110() {
         Exception exception = null;
         try {
@@ -366,6 +398,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00111() {
         Exception exception = null;
         try {
@@ -402,6 +436,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00112() {
         Exception exception = null;
         try {
@@ -441,6 +477,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00113() {
         Exception exception = null;
         try {
@@ -477,6 +515,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00114() {
         Exception exception = null;
         try {
@@ -521,6 +561,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00115() {
         Exception exception = null;
         try {
@@ -565,6 +607,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00116() {
         Exception exception = null;
         try {
@@ -613,6 +657,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00117() {
         Exception exception = null;
         try {
@@ -661,6 +707,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00201() {
         Exception exception = null;
         try {
@@ -680,6 +728,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00202() {
         Exception exception = null;
         try {
@@ -699,6 +749,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00203() {
         Exception exception = null;
         try {
@@ -718,6 +770,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00204() {
         Exception exception = null;
         try {
@@ -740,6 +794,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00205() {
         Exception exception = null;
         try {
@@ -764,6 +820,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00206() {
         Exception exception = null;
         try {
@@ -791,6 +849,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00207() {
         Exception exception = null;
         try {
@@ -818,6 +878,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00208() {
         Exception exception = null;
         try {
@@ -849,6 +911,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00209() {
         Exception exception = null;
         try {
@@ -881,6 +945,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00210() {
         Exception exception = null;
         try {
@@ -917,6 +983,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00211() {
         Exception exception = null;
         try {
@@ -953,6 +1021,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00212() {
         Exception exception = null;
         try {
@@ -989,6 +1059,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00213() {
         Exception exception = null;
         try {
@@ -1028,6 +1100,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00214() {
         Exception exception = null;
         try {
@@ -1064,6 +1138,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00215() {
         Exception exception = null;
         try {
@@ -1108,6 +1184,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00216() {
         Exception exception = null;
         try {
@@ -1152,6 +1230,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00217() {
         Exception exception = null;
         try {
@@ -1200,6 +1280,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00218() {
         Exception exception = null;
         try {
@@ -1248,6 +1330,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00219() {
         Exception exception = null;
         try {
@@ -1296,6 +1380,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigital_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -1337,6 +1423,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigital_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -1378,6 +1466,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigital_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -1419,6 +1509,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigital_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -1498,6 +1590,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigital_00102() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -1577,6 +1671,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigital_00103() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -1656,6 +1752,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigital_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
 
@@ -1678,6 +1776,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigital_00101() {
         Digital digital = new Digital(new byte[]{0b00000001});
 
@@ -1706,6 +1806,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalClientCharacteristicConfiguration_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -1749,6 +1851,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalClientCharacteristicConfiguration_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -1792,6 +1896,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalClientCharacteristicConfiguration_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -1841,6 +1947,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalClientCharacteristicConfiguration_00004() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -1890,6 +1998,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalClientCharacteristicConfiguration_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -1963,6 +2073,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalClientCharacteristicConfiguration_00102() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2036,6 +2148,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalClientCharacteristicConfiguration_00103() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2116,6 +2230,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalClientCharacteristicConfiguration_00104() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2195,6 +2311,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalClientCharacteristicConfiguration_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -2245,6 +2363,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalClientCharacteristicConfiguration_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -2295,6 +2415,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalClientCharacteristicConfiguration_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -2339,6 +2461,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalClientCharacteristicConfiguration_00004() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -2383,6 +2507,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalClientCharacteristicConfiguration_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2463,6 +2589,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalClientCharacteristicConfiguration_00102() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2544,6 +2672,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalClientCharacteristicConfiguration_00103() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2618,6 +2748,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalClientCharacteristicConfiguration_00104() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2693,6 +2825,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalCharacteristicPresentationFormat_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_16_BIT_INTEGER
@@ -2745,6 +2879,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalCharacteristicPresentationFormat_00002() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2819,6 +2955,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalCharacteristicPresentationFormat_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_16_BIT_INTEGER
@@ -2869,6 +3007,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalCharacteristicPresentationFormat_00002() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -2926,6 +3066,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalCharacteristicUserDescription_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         CharacteristicUserDescription characteristicUserDescription = new CharacteristicUserDescription("a".getBytes());
@@ -2974,6 +3116,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalCharacteristicUserDescription_00002() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         CharacteristicUserDescription characteristicUserDescription1 = new CharacteristicUserDescription("a".getBytes());
@@ -3058,6 +3202,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalCharacteristicUserDescription_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         CharacteristicUserDescription characteristicUserDescription = new CharacteristicUserDescription("a".getBytes());
@@ -3104,6 +3250,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalCharacteristicUserDescription_00002() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         CharacteristicUserDescription characteristicUserDescription1 = new CharacteristicUserDescription("a".getBytes());
@@ -3186,6 +3334,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalCharacteristicExtendedProperties_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         CharacteristicExtendedProperties characteristicExtendedProperties = new CharacteristicExtendedProperties(true, false);
@@ -3234,6 +3384,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalCharacteristicExtendedProperties_00002() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         CharacteristicExtendedProperties characteristicExtendedProperties1 = new CharacteristicExtendedProperties(true, false);
@@ -3318,6 +3470,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalCharacteristicExtendedProperties_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         CharacteristicExtendedProperties characteristicExtendedProperties = new CharacteristicExtendedProperties(true, false);
@@ -3364,6 +3518,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalCharacteristicExtendedProperties_00002() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         CharacteristicExtendedProperties characteristicExtendedProperties1 = new CharacteristicExtendedProperties(true, false);
@@ -3445,6 +3601,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -3490,6 +3648,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -3538,6 +3698,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -3586,6 +3748,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00004() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -3637,6 +3801,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00005() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -3688,6 +3854,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -3769,6 +3937,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00102() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -3853,6 +4023,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00103() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -3937,6 +4109,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00104() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4023,6 +4197,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalValueTriggerSetting_00105() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4109,6 +4285,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalValueTriggerSetting_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4155,6 +4333,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalValueTriggerSetting_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4201,6 +4381,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalValueTriggerSetting_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4250,6 +4432,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalValueTriggerSetting_00004() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4299,6 +4483,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalValueTriggerSetting_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4381,6 +4567,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalValueTriggerSetting_00102() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4463,6 +4651,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalValueTriggerSetting_00103() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4547,6 +4737,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalValueTriggerSetting_00104() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4632,6 +4824,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         TimeTriggerSetting timeTriggerSetting = new TimeTriggerSetting(TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0, 0, 0);
@@ -4677,6 +4871,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         TimeTriggerSetting timeTriggerSetting = new TimeTriggerSetting(TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0, 0, 0);
@@ -4722,6 +4918,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         TimeTriggerSetting timeTriggerSetting = new TimeTriggerSetting(TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0, 0, 0);
@@ -4767,6 +4965,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00004() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4820,6 +5020,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00005() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4873,6 +5075,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00006() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4926,6 +5130,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00007() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -4982,6 +5188,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00008() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5038,6 +5246,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5123,6 +5333,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00102() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5214,6 +5426,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00103() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5308,6 +5522,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00104() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5402,6 +5618,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00105() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5496,6 +5714,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00106() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5593,6 +5813,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalTimeTriggerSetting_00107() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5690,6 +5912,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalTimeTriggerSetting_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5741,6 +5965,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalTimeTriggerSetting_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5792,6 +6018,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalTimeTriggerSetting_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5846,6 +6074,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalTimeTriggerSetting_00004() {
         Digital digital = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5900,6 +6130,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalTimeTriggerSetting_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -5992,6 +6224,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalTimeTriggerSetting_00102() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -6084,6 +6318,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalTimeTriggerSetting_00103() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -6179,6 +6415,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalTimeTriggerSetting_00104() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -6274,6 +6512,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalNumberOfDigitals_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -6317,6 +6557,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDigitalNumberOfDigitals_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -6390,6 +6632,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalNumberOfDigitals_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -6417,6 +6661,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDigitalNumberOfDigitals_00101() {
         Digital digital1 = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals1 = new NumberOfDigitals(1);
@@ -6474,6 +6720,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalog_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -6515,6 +6763,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalog_00002() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -6556,6 +6806,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalog_00003() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -6597,6 +6849,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalog_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -6676,6 +6930,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalog_00102() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -6755,6 +7011,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalog_00103() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -6834,6 +7092,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalog_00001() {
         Analog analog = new Analog(new byte[]{1, 2});
 
@@ -6856,6 +7116,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalog_00101() {
         Analog analog = new Analog(new byte[]{1, 2});
 
@@ -6884,6 +7146,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogClientCharacteristicConfiguration_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -6927,6 +7191,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogClientCharacteristicConfiguration_00002() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -6970,6 +7236,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogClientCharacteristicConfiguration_00003() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7019,6 +7287,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogClientCharacteristicConfiguration_00004() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7068,6 +7338,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogClientCharacteristicConfiguration_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7141,6 +7413,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogClientCharacteristicConfiguration_00102() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7214,6 +7488,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogClientCharacteristicConfiguration_00103() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7294,6 +7570,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogClientCharacteristicConfiguration_00104() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7373,6 +7651,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogClientCharacteristicConfiguration_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7423,6 +7703,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogClientCharacteristicConfiguration_00002() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7473,6 +7755,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogClientCharacteristicConfiguration_00003() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7517,6 +7801,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogClientCharacteristicConfiguration_00004() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7561,6 +7847,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogClientCharacteristicConfiguration_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7641,6 +7929,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogClientCharacteristicConfiguration_00102() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7722,6 +8012,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogClientCharacteristicConfiguration_00103() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7796,6 +8088,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogClientCharacteristicConfiguration_00104() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7871,6 +8165,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogCharacteristicPresentationFormat_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_16_BIT_INTEGER
@@ -7923,6 +8219,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogCharacteristicPresentationFormat_00002() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -7997,6 +8295,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogCharacteristicPresentationFormat_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_16_BIT_INTEGER
@@ -8047,6 +8347,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogCharacteristicPresentationFormat_00002() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -8104,6 +8406,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogCharacteristicUserDescription_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         CharacteristicUserDescription characteristicUserDescription = new CharacteristicUserDescription("a".getBytes());
@@ -8152,6 +8456,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogCharacteristicUserDescription_00002() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         CharacteristicUserDescription characteristicUserDescription1 = new CharacteristicUserDescription("a".getBytes());
@@ -8236,6 +8542,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogCharacteristicUserDescription_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         CharacteristicUserDescription characteristicUserDescription = new CharacteristicUserDescription("a".getBytes());
@@ -8282,6 +8590,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogCharacteristicUserDescription_00002() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         CharacteristicUserDescription characteristicUserDescription1 = new CharacteristicUserDescription("a".getBytes());
@@ -8364,6 +8674,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogCharacteristicExtendedProperties_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         CharacteristicExtendedProperties characteristicExtendedProperties = new CharacteristicExtendedProperties(true, false);
@@ -8412,6 +8724,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogCharacteristicExtendedProperties_00002() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         CharacteristicExtendedProperties characteristicExtendedProperties1 = new CharacteristicExtendedProperties(true, false);
@@ -8496,6 +8810,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogCharacteristicExtendedProperties_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         CharacteristicExtendedProperties characteristicExtendedProperties = new CharacteristicExtendedProperties(true, false);
@@ -8542,6 +8858,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogCharacteristicExtendedProperties_00002() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         CharacteristicExtendedProperties characteristicExtendedProperties1 = new CharacteristicExtendedProperties(true, false);
@@ -8623,6 +8941,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -8668,6 +8988,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00002() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -8716,6 +9038,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00003() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -8764,6 +9088,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00004() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -8815,6 +9141,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00005() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -8866,6 +9194,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -8947,6 +9277,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00102() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9031,6 +9363,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00103() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9115,6 +9449,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00104() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9201,6 +9537,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValueTriggerSetting_00105() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9287,6 +9625,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValueTriggerSetting_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9333,6 +9673,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValueTriggerSetting_00002() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9379,6 +9721,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValueTriggerSetting_00003() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9428,6 +9772,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValueTriggerSetting_00004() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9477,6 +9823,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValueTriggerSetting_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9559,6 +9907,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValueTriggerSetting_00102() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9641,6 +9991,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValueTriggerSetting_00103() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9725,6 +10077,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValueTriggerSetting_00104() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9810,6 +10164,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         TimeTriggerSetting timeTriggerSetting = new TimeTriggerSetting(TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0, 0, 0);
@@ -9855,6 +10211,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00002() {
         Analog analog = new Analog(new byte[]{1, 0});
         TimeTriggerSetting timeTriggerSetting = new TimeTriggerSetting(TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0, 0, 0);
@@ -9900,6 +10258,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00003() {
         Analog analog = new Analog(new byte[]{1, 0});
         TimeTriggerSetting timeTriggerSetting = new TimeTriggerSetting(TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 0, 0, 0);
@@ -9945,6 +10305,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00004() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -9998,6 +10360,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00005() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10052,6 +10416,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00006() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10106,6 +10472,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00007() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10163,6 +10531,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00008() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10219,6 +10589,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10304,6 +10676,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00102() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10395,6 +10769,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00103() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10489,6 +10865,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00104() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10583,6 +10961,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00105() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10677,6 +11057,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00106() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10774,6 +11156,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogTimeTriggerSetting_00107() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10871,6 +11255,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogTimeTriggerSetting_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10922,6 +11308,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogTimeTriggerSetting_00002() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -10973,6 +11361,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogTimeTriggerSetting_00003() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -11027,6 +11417,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogTimeTriggerSetting_00004() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -11081,6 +11473,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogTimeTriggerSetting_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -11173,6 +11567,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogTimeTriggerSetting_00102() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -11265,6 +11661,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogTimeTriggerSetting_00103() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -11360,6 +11758,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogTimeTriggerSetting_00104() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValueTriggerSetting valueTriggerSetting1 = new ValueTriggerSetting(ValueTriggerSetting.NONE_0, 0, new byte[0], 0, 0);
@@ -11455,6 +11855,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValidRange_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -11498,6 +11900,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnalogValidRange_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -11571,6 +11975,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValidRange_00001() {
         Analog analog = new Analog(new byte[]{1, 0});
         ValidRange validRange = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -11598,6 +12004,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAnalogValidRange_00101() {
         Analog analog1 = new Analog(new byte[]{1, 0});
         ValidRange validRange1 = new ValidRange(new byte[]{0, 0}, new byte[]{1, 0});
@@ -11655,6 +12063,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAggregate_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -11698,6 +12108,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAggregate_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -11741,6 +12153,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAggregate_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -11784,6 +12198,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAggregate_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -11825,6 +12241,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAggregateClientCharacteristicConfiguration_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -11871,6 +12289,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAggregateClientCharacteristicConfiguration_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -11917,6 +12337,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAggregateClientCharacteristicConfiguration_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -11968,6 +12390,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAggregateClientCharacteristicConfiguration_00004() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -12023,6 +12447,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAggregateClientCharacteristicConfiguration_00001() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -12075,6 +12501,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAggregateClientCharacteristicConfiguration_00002() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -12127,6 +12555,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAggregateClientCharacteristicConfiguration_00003() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);
@@ -12174,6 +12604,8 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAggregateClientCharacteristicConfiguration_00004() {
         Digital digital = new Digital(new byte[]{0b00000001});
         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(1);

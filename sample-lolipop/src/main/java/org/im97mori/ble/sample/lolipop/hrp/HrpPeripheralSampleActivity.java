@@ -99,8 +99,8 @@ public class HrpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else if (mHeartRateProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {

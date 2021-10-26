@@ -31,7 +31,6 @@ import java.util.Set;
 import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 import static org.im97mori.ble.constants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
 
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class ScppCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
@@ -45,7 +44,7 @@ public class ScppCentralSampleActivity extends BaseActivity implements View.OnCl
         super.onCreate(savedInstanceState);
 
         mScppCallbackSample = new ScppCallbackSample(this, this);
-        mScanParametersProfile = new ScanParametersProfile(this, mScppCallbackSample);
+        mScanParametersProfile = new ScanParametersProfile(this, mScppCallbackSample, SCAN_PARAMETERS_SERVICE);
         mScanParametersProfile.start();
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
@@ -138,8 +137,8 @@ public class ScppCentralSampleActivity extends BaseActivity implements View.OnCl
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else {
             mConnectDisconnectButton.setVisibility(View.VISIBLE);
             if (mScanParametersProfile.isConnected()) {
@@ -161,7 +160,7 @@ public class ScppCentralSampleActivity extends BaseActivity implements View.OnCl
     public void onClick(View v) {
         if (R.id.connectDisconnectButton == v.getId()) {
             if (mScanParametersProfile == null) {
-                mScanParametersProfile = new ScanParametersProfile(this, mScppCallbackSample);
+                mScanParametersProfile = new ScanParametersProfile(this, mScppCallbackSample, SCAN_PARAMETERS_SERVICE);
                 mScanParametersProfile.start();
             }
             if (mScanParametersProfile.isConnected()) {
@@ -170,7 +169,7 @@ public class ScppCentralSampleActivity extends BaseActivity implements View.OnCl
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {
-                    mScanParametersProfile.findScanParametersProfileDevices(SCAN_PARAMETERS_SERVICE, null);
+                    mScanParametersProfile.findDevices(null);
                 } else {
                     if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
                         mScanParametersProfile.connect(mBluetoothDevice);

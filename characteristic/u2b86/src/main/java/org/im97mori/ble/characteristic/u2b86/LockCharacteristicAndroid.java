@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LOCK_CHARACTERISTIC_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LOCK_CHARACTERISTIC;
 
 /**
  * Lock Characteristic (Characteristics UUID: 0x2B86)
@@ -45,7 +45,7 @@ public class LockCharacteristicAndroid extends LockCharacteristic implements Par
          */
         @NonNull
         public LockCharacteristicAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LOCK_CHARACTERISTIC_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LOCK_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new LockCharacteristicAndroid(bluetoothGattCharacteristic);
         }

@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a2c.MagneticDeclination;
 import org.im97mori.ble.characteristic.u2a6c.Elevation;
@@ -65,9 +66,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class EnvironmentalSensingServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -81,6 +87,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00101() {
         Exception exception = null;
         try {
@@ -95,6 +103,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00102() {
         Exception exception = null;
         try {
@@ -109,6 +119,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00201() {
         Exception exception = null;
         try {
@@ -124,6 +136,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00202() {
         Exception exception = null;
         try {
@@ -140,6 +154,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00203() {
         Exception exception = null;
         try {
@@ -156,6 +172,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00204() {
         Exception exception = null;
         try {
@@ -172,6 +190,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00205() {
         Exception exception = null;
         try {
@@ -188,6 +208,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00206() {
         Exception exception = null;
         try {
@@ -204,6 +226,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00207() {
         Exception exception = null;
         try {
@@ -221,6 +245,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00208() {
         Exception exception = null;
         try {
@@ -238,6 +264,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00209() {
         Exception exception = null;
         try {
@@ -255,6 +283,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00210() {
         Exception exception = null;
         try {
@@ -272,6 +302,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00211() {
         Exception exception = null;
         try {
@@ -289,6 +321,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00213() {
         Exception exception = null;
         try {
@@ -306,6 +340,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00212() {
         Exception exception = null;
         try {
@@ -323,6 +359,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00214() {
         Exception exception = null;
         try {
@@ -340,6 +378,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00215() {
         Exception exception = null;
         try {
@@ -357,6 +397,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00216() {
         Exception exception = null;
         try {
@@ -375,6 +417,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00217() {
         Exception exception = null;
         try {
@@ -394,6 +438,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00218() {
         Exception exception = null;
         try {
@@ -413,6 +459,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00219() {
         Exception exception = null;
         try {
@@ -432,6 +480,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00220() {
         Exception exception = null;
         try {
@@ -451,6 +501,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00221() {
         Exception exception = null;
         try {
@@ -470,6 +522,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00222() {
         Exception exception = null;
         try {
@@ -488,6 +542,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00223() {
         Exception exception = null;
         try {
@@ -504,6 +560,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00224() {
         Exception exception = null;
         try {
@@ -521,6 +579,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00301() {
         Exception exception = null;
         try {
@@ -536,6 +596,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00302() {
         Exception exception = null;
         try {
@@ -552,6 +614,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00303() {
         Exception exception = null;
         try {
@@ -568,6 +632,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00304() {
         Exception exception = null;
         try {
@@ -584,6 +650,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00305() {
         Exception exception = null;
         try {
@@ -600,6 +668,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00306() {
         Exception exception = null;
         try {
@@ -616,6 +686,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00307() {
         Exception exception = null;
         try {
@@ -633,6 +705,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00308() {
         Exception exception = null;
         try {
@@ -650,6 +724,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00309() {
         Exception exception = null;
         try {
@@ -667,6 +743,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00310() {
         Exception exception = null;
         try {
@@ -684,6 +762,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00311() {
         Exception exception = null;
         try {
@@ -701,6 +781,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00313() {
         Exception exception = null;
         try {
@@ -718,6 +800,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00312() {
         Exception exception = null;
         try {
@@ -735,6 +819,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00314() {
         Exception exception = null;
         try {
@@ -752,6 +838,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00315() {
         Exception exception = null;
         try {
@@ -769,6 +857,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00316() {
         Exception exception = null;
         try {
@@ -787,6 +877,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00317() {
         Exception exception = null;
         try {
@@ -806,6 +898,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00318() {
         Exception exception = null;
         try {
@@ -825,6 +919,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00319() {
         Exception exception = null;
         try {
@@ -844,6 +940,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00320() {
         Exception exception = null;
         try {
@@ -863,6 +961,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00321() {
         Exception exception = null;
         try {
@@ -882,6 +982,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00322() {
         Exception exception = null;
         try {
@@ -900,6 +1002,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00323() {
         Exception exception = null;
         try {
@@ -916,6 +1020,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00324() {
         Exception exception = null;
         try {
@@ -933,6 +1039,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00401() {
         Exception exception = null;
         try {
@@ -948,6 +1056,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00402() {
         Exception exception = null;
         try {
@@ -964,6 +1074,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00403() {
         Exception exception = null;
         try {
@@ -980,6 +1092,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00404() {
         Exception exception = null;
         try {
@@ -996,6 +1110,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00405() {
         Exception exception = null;
         try {
@@ -1012,6 +1128,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00406() {
         Exception exception = null;
         try {
@@ -1028,6 +1146,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00407() {
         Exception exception = null;
         try {
@@ -1045,6 +1165,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00408() {
         Exception exception = null;
         try {
@@ -1062,6 +1184,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00409() {
         Exception exception = null;
         try {
@@ -1079,6 +1203,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00410() {
         Exception exception = null;
         try {
@@ -1096,6 +1222,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00411() {
         Exception exception = null;
         try {
@@ -1113,6 +1241,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00413() {
         Exception exception = null;
         try {
@@ -1130,6 +1260,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00412() {
         Exception exception = null;
         try {
@@ -1147,6 +1279,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00414() {
         Exception exception = null;
         try {
@@ -1164,6 +1298,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00415() {
         Exception exception = null;
         try {
@@ -1181,6 +1317,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00416() {
         Exception exception = null;
         try {
@@ -1199,6 +1337,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00417() {
         Exception exception = null;
         try {
@@ -1218,6 +1358,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00418() {
         Exception exception = null;
         try {
@@ -1237,6 +1379,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00419() {
         Exception exception = null;
         try {
@@ -1256,6 +1400,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00420() {
         Exception exception = null;
         try {
@@ -1275,6 +1421,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00421() {
         Exception exception = null;
         try {
@@ -1294,6 +1442,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00422() {
         Exception exception = null;
         try {
@@ -1312,6 +1462,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00423() {
         Exception exception = null;
         try {
@@ -1328,6 +1480,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00424() {
         Exception exception = null;
         try {
@@ -1345,6 +1499,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00501() {
         Exception exception = null;
         try {
@@ -1360,6 +1516,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00502() {
         Exception exception = null;
         try {
@@ -1376,6 +1534,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00503() {
         Exception exception = null;
         try {
@@ -1392,6 +1552,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00504() {
         Exception exception = null;
         try {
@@ -1408,6 +1570,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00505() {
         Exception exception = null;
         try {
@@ -1424,6 +1588,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00506() {
         Exception exception = null;
         try {
@@ -1440,6 +1606,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00507() {
         Exception exception = null;
         try {
@@ -1457,6 +1625,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00508() {
         Exception exception = null;
         try {
@@ -1474,6 +1644,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00509() {
         Exception exception = null;
         try {
@@ -1491,6 +1663,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00510() {
         Exception exception = null;
         try {
@@ -1508,6 +1682,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00511() {
         Exception exception = null;
         try {
@@ -1525,6 +1701,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00513() {
         Exception exception = null;
         try {
@@ -1542,6 +1720,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00512() {
         Exception exception = null;
         try {
@@ -1559,6 +1739,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00514() {
         Exception exception = null;
         try {
@@ -1576,6 +1758,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00515() {
         Exception exception = null;
         try {
@@ -1593,6 +1777,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00516() {
         Exception exception = null;
         try {
@@ -1611,6 +1797,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00517() {
         Exception exception = null;
         try {
@@ -1630,6 +1818,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00518() {
         Exception exception = null;
         try {
@@ -1649,6 +1839,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00519() {
         Exception exception = null;
         try {
@@ -1668,6 +1860,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00520() {
         Exception exception = null;
         try {
@@ -1687,6 +1881,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00521() {
         Exception exception = null;
         try {
@@ -1706,6 +1902,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00522() {
         Exception exception = null;
         try {
@@ -1724,6 +1922,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00523() {
         Exception exception = null;
         try {
@@ -1740,6 +1940,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00524() {
         Exception exception = null;
         try {
@@ -1757,6 +1959,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00601() {
         Exception exception = null;
         try {
@@ -1772,6 +1976,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00602() {
         Exception exception = null;
         try {
@@ -1788,6 +1994,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00603() {
         Exception exception = null;
         try {
@@ -1804,6 +2012,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00604() {
         Exception exception = null;
         try {
@@ -1820,6 +2030,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00605() {
         Exception exception = null;
         try {
@@ -1836,6 +2048,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00606() {
         Exception exception = null;
         try {
@@ -1852,6 +2066,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00607() {
         Exception exception = null;
         try {
@@ -1869,6 +2085,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00608() {
         Exception exception = null;
         try {
@@ -1886,6 +2104,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00609() {
         Exception exception = null;
         try {
@@ -1903,6 +2123,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00610() {
         Exception exception = null;
         try {
@@ -1920,6 +2142,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00611() {
         Exception exception = null;
         try {
@@ -1937,6 +2161,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00613() {
         Exception exception = null;
         try {
@@ -1954,6 +2180,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00612() {
         Exception exception = null;
         try {
@@ -1971,6 +2199,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00614() {
         Exception exception = null;
         try {
@@ -1988,6 +2218,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00615() {
         Exception exception = null;
         try {
@@ -2005,6 +2237,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00616() {
         Exception exception = null;
         try {
@@ -2023,6 +2257,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00617() {
         Exception exception = null;
         try {
@@ -2042,6 +2278,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00618() {
         Exception exception = null;
         try {
@@ -2061,6 +2299,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00619() {
         Exception exception = null;
         try {
@@ -2080,6 +2320,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00620() {
         Exception exception = null;
         try {
@@ -2099,6 +2341,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00621() {
         Exception exception = null;
         try {
@@ -2118,6 +2362,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00622() {
         Exception exception = null;
         try {
@@ -2136,6 +2382,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00623() {
         Exception exception = null;
         try {
@@ -2152,6 +2400,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00624() {
         Exception exception = null;
         try {
@@ -2169,6 +2419,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00701() {
         Exception exception = null;
         try {
@@ -2184,6 +2436,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00702() {
         Exception exception = null;
         try {
@@ -2200,6 +2454,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00703() {
         Exception exception = null;
         try {
@@ -2216,6 +2472,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00704() {
         Exception exception = null;
         try {
@@ -2232,6 +2490,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00705() {
         Exception exception = null;
         try {
@@ -2248,6 +2508,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00706() {
         Exception exception = null;
         try {
@@ -2264,6 +2526,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00707() {
         Exception exception = null;
         try {
@@ -2281,6 +2545,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00708() {
         Exception exception = null;
         try {
@@ -2298,6 +2564,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00709() {
         Exception exception = null;
         try {
@@ -2315,6 +2583,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00710() {
         Exception exception = null;
         try {
@@ -2332,6 +2602,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00711() {
         Exception exception = null;
         try {
@@ -2349,6 +2621,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00713() {
         Exception exception = null;
         try {
@@ -2366,6 +2640,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00712() {
         Exception exception = null;
         try {
@@ -2383,6 +2659,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00714() {
         Exception exception = null;
         try {
@@ -2400,6 +2678,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00715() {
         Exception exception = null;
         try {
@@ -2417,6 +2697,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00716() {
         Exception exception = null;
         try {
@@ -2435,6 +2717,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00717() {
         Exception exception = null;
         try {
@@ -2454,6 +2738,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00718() {
         Exception exception = null;
         try {
@@ -2473,6 +2759,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00719() {
         Exception exception = null;
         try {
@@ -2492,6 +2780,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00720() {
         Exception exception = null;
         try {
@@ -2511,6 +2801,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00721() {
         Exception exception = null;
         try {
@@ -2530,6 +2822,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00722() {
         Exception exception = null;
         try {
@@ -2548,6 +2842,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00723() {
         Exception exception = null;
         try {
@@ -2564,6 +2860,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00724() {
         Exception exception = null;
         try {
@@ -2581,6 +2879,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00801() {
         Exception exception = null;
         try {
@@ -2596,6 +2896,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00802() {
         Exception exception = null;
         try {
@@ -2612,6 +2914,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00803() {
         Exception exception = null;
         try {
@@ -2628,6 +2932,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00804() {
         Exception exception = null;
         try {
@@ -2644,6 +2950,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00805() {
         Exception exception = null;
         try {
@@ -2660,6 +2968,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00806() {
         Exception exception = null;
         try {
@@ -2676,6 +2986,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00807() {
         Exception exception = null;
         try {
@@ -2693,6 +3005,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00808() {
         Exception exception = null;
         try {
@@ -2710,6 +3024,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00809() {
         Exception exception = null;
         try {
@@ -2727,6 +3043,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00810() {
         Exception exception = null;
         try {
@@ -2744,6 +3062,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00811() {
         Exception exception = null;
         try {
@@ -2761,6 +3081,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00813() {
         Exception exception = null;
         try {
@@ -2778,6 +3100,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00812() {
         Exception exception = null;
         try {
@@ -2795,6 +3119,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00814() {
         Exception exception = null;
         try {
@@ -2812,6 +3138,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00815() {
         Exception exception = null;
         try {
@@ -2829,6 +3157,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00816() {
         Exception exception = null;
         try {
@@ -2847,6 +3177,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00817() {
         Exception exception = null;
         try {
@@ -2866,6 +3198,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00818() {
         Exception exception = null;
         try {
@@ -2885,6 +3219,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00819() {
         Exception exception = null;
         try {
@@ -2904,6 +3240,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00820() {
         Exception exception = null;
         try {
@@ -2923,6 +3261,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00821() {
         Exception exception = null;
         try {
@@ -2942,6 +3282,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00822() {
         Exception exception = null;
         try {
@@ -2960,6 +3302,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00823() {
         Exception exception = null;
         try {
@@ -2976,6 +3320,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00824() {
         Exception exception = null;
         try {
@@ -2993,6 +3339,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00901() {
         Exception exception = null;
         try {
@@ -3008,6 +3356,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00902() {
         Exception exception = null;
         try {
@@ -3024,6 +3374,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00903() {
         Exception exception = null;
         try {
@@ -3040,6 +3392,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00904() {
         Exception exception = null;
         try {
@@ -3056,6 +3410,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00905() {
         Exception exception = null;
         try {
@@ -3072,6 +3428,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00906() {
         Exception exception = null;
         try {
@@ -3088,6 +3446,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00907() {
         Exception exception = null;
         try {
@@ -3105,6 +3465,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00908() {
         Exception exception = null;
         try {
@@ -3122,6 +3484,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00909() {
         Exception exception = null;
         try {
@@ -3139,6 +3503,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00910() {
         Exception exception = null;
         try {
@@ -3156,6 +3522,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00911() {
         Exception exception = null;
         try {
@@ -3173,6 +3541,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00913() {
         Exception exception = null;
         try {
@@ -3190,6 +3560,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00912() {
         Exception exception = null;
         try {
@@ -3207,6 +3579,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00914() {
         Exception exception = null;
         try {
@@ -3224,6 +3598,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00915() {
         Exception exception = null;
         try {
@@ -3241,6 +3617,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00916() {
         Exception exception = null;
         try {
@@ -3259,6 +3637,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00917() {
         Exception exception = null;
         try {
@@ -3278,6 +3658,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00918() {
         Exception exception = null;
         try {
@@ -3297,6 +3679,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00919() {
         Exception exception = null;
         try {
@@ -3316,6 +3700,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00920() {
         Exception exception = null;
         try {
@@ -3335,6 +3721,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00921() {
         Exception exception = null;
         try {
@@ -3354,6 +3742,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00922() {
         Exception exception = null;
         try {
@@ -3372,6 +3762,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00923() {
         Exception exception = null;
         try {
@@ -3388,6 +3780,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00924() {
         Exception exception = null;
         try {
@@ -3405,6 +3799,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01001() {
         Exception exception = null;
         try {
@@ -3420,6 +3816,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01002() {
         Exception exception = null;
         try {
@@ -3436,6 +3834,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01003() {
         Exception exception = null;
         try {
@@ -3452,6 +3852,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01004() {
         Exception exception = null;
         try {
@@ -3468,6 +3870,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01005() {
         Exception exception = null;
         try {
@@ -3484,6 +3888,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01006() {
         Exception exception = null;
         try {
@@ -3500,6 +3906,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01007() {
         Exception exception = null;
         try {
@@ -3517,6 +3925,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01008() {
         Exception exception = null;
         try {
@@ -3534,6 +3944,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01009() {
         Exception exception = null;
         try {
@@ -3551,6 +3963,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01010() {
         Exception exception = null;
         try {
@@ -3568,6 +3982,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01011() {
         Exception exception = null;
         try {
@@ -3585,6 +4001,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01013() {
         Exception exception = null;
         try {
@@ -3602,6 +4020,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01012() {
         Exception exception = null;
         try {
@@ -3619,6 +4039,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01014() {
         Exception exception = null;
         try {
@@ -3636,6 +4058,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01015() {
         Exception exception = null;
         try {
@@ -3653,6 +4077,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01016() {
         Exception exception = null;
         try {
@@ -3671,6 +4097,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01017() {
         Exception exception = null;
         try {
@@ -3690,6 +4118,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01018() {
         Exception exception = null;
         try {
@@ -3709,6 +4139,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01019() {
         Exception exception = null;
         try {
@@ -3728,6 +4160,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01020() {
         Exception exception = null;
         try {
@@ -3747,6 +4181,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01021() {
         Exception exception = null;
         try {
@@ -3766,6 +4202,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01022() {
         Exception exception = null;
         try {
@@ -3784,6 +4222,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01023() {
         Exception exception = null;
         try {
@@ -3800,6 +4240,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01024() {
         Exception exception = null;
         try {
@@ -3817,6 +4259,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01101() {
         Exception exception = null;
         try {
@@ -3832,6 +4276,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01102() {
         Exception exception = null;
         try {
@@ -3848,6 +4294,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01103() {
         Exception exception = null;
         try {
@@ -3864,6 +4312,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01104() {
         Exception exception = null;
         try {
@@ -3880,6 +4330,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01105() {
         Exception exception = null;
         try {
@@ -3896,6 +4348,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01106() {
         Exception exception = null;
         try {
@@ -3912,6 +4366,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01107() {
         Exception exception = null;
         try {
@@ -3929,6 +4385,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01108() {
         Exception exception = null;
         try {
@@ -3946,6 +4404,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01109() {
         Exception exception = null;
         try {
@@ -3963,6 +4423,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01110() {
         Exception exception = null;
         try {
@@ -3980,6 +4442,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01111() {
         Exception exception = null;
         try {
@@ -3997,6 +4461,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01113() {
         Exception exception = null;
         try {
@@ -4014,6 +4480,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01112() {
         Exception exception = null;
         try {
@@ -4031,6 +4499,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01114() {
         Exception exception = null;
         try {
@@ -4048,6 +4518,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01115() {
         Exception exception = null;
         try {
@@ -4065,6 +4537,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01116() {
         Exception exception = null;
         try {
@@ -4083,6 +4557,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01117() {
         Exception exception = null;
         try {
@@ -4102,6 +4578,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01118() {
         Exception exception = null;
         try {
@@ -4121,6 +4599,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01119() {
         Exception exception = null;
         try {
@@ -4140,6 +4620,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01120() {
         Exception exception = null;
         try {
@@ -4159,6 +4641,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01121() {
         Exception exception = null;
         try {
@@ -4178,6 +4662,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01122() {
         Exception exception = null;
         try {
@@ -4196,6 +4682,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01123() {
         Exception exception = null;
         try {
@@ -4212,6 +4700,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01124() {
         Exception exception = null;
         try {
@@ -4229,6 +4719,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01201() {
         Exception exception = null;
         try {
@@ -4244,6 +4736,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01202() {
         Exception exception = null;
         try {
@@ -4260,6 +4754,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01203() {
         Exception exception = null;
         try {
@@ -4276,6 +4772,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01204() {
         Exception exception = null;
         try {
@@ -4292,6 +4790,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01205() {
         Exception exception = null;
         try {
@@ -4308,6 +4808,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01206() {
         Exception exception = null;
         try {
@@ -4324,6 +4826,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01207() {
         Exception exception = null;
         try {
@@ -4341,6 +4845,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01208() {
         Exception exception = null;
         try {
@@ -4358,6 +4864,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01209() {
         Exception exception = null;
         try {
@@ -4375,6 +4883,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01210() {
         Exception exception = null;
         try {
@@ -4392,6 +4902,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01211() {
         Exception exception = null;
         try {
@@ -4409,6 +4921,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01213() {
         Exception exception = null;
         try {
@@ -4426,6 +4940,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01212() {
         Exception exception = null;
         try {
@@ -4443,6 +4959,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01214() {
         Exception exception = null;
         try {
@@ -4460,6 +4978,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01215() {
         Exception exception = null;
         try {
@@ -4477,6 +4997,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01216() {
         Exception exception = null;
         try {
@@ -4495,6 +5017,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01217() {
         Exception exception = null;
         try {
@@ -4514,6 +5038,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01218() {
         Exception exception = null;
         try {
@@ -4533,6 +5059,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01219() {
         Exception exception = null;
         try {
@@ -4552,6 +5080,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01220() {
         Exception exception = null;
         try {
@@ -4571,6 +5101,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01221() {
         Exception exception = null;
         try {
@@ -4590,6 +5122,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01222() {
         Exception exception = null;
         try {
@@ -4608,6 +5142,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01223() {
         Exception exception = null;
         try {
@@ -4624,6 +5160,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01224() {
         Exception exception = null;
         try {
@@ -4641,6 +5179,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01301() {
         Exception exception = null;
         try {
@@ -4656,6 +5196,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01302() {
         Exception exception = null;
         try {
@@ -4672,6 +5214,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01303() {
         Exception exception = null;
         try {
@@ -4688,6 +5232,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01304() {
         Exception exception = null;
         try {
@@ -4704,6 +5250,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01305() {
         Exception exception = null;
         try {
@@ -4720,6 +5268,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01306() {
         Exception exception = null;
         try {
@@ -4736,6 +5286,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01307() {
         Exception exception = null;
         try {
@@ -4753,6 +5305,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01308() {
         Exception exception = null;
         try {
@@ -4770,6 +5324,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01309() {
         Exception exception = null;
         try {
@@ -4787,6 +5343,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01310() {
         Exception exception = null;
         try {
@@ -4804,6 +5362,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01311() {
         Exception exception = null;
         try {
@@ -4821,6 +5381,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01313() {
         Exception exception = null;
         try {
@@ -4838,6 +5400,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01312() {
         Exception exception = null;
         try {
@@ -4855,6 +5419,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01314() {
         Exception exception = null;
         try {
@@ -4872,6 +5438,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01315() {
         Exception exception = null;
         try {
@@ -4889,6 +5457,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01316() {
         Exception exception = null;
         try {
@@ -4907,6 +5477,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01317() {
         Exception exception = null;
         try {
@@ -4926,6 +5498,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01318() {
         Exception exception = null;
         try {
@@ -4945,6 +5519,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01319() {
         Exception exception = null;
         try {
@@ -4964,6 +5540,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01320() {
         Exception exception = null;
         try {
@@ -4983,6 +5561,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01321() {
         Exception exception = null;
         try {
@@ -5002,6 +5582,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01322() {
         Exception exception = null;
         try {
@@ -5020,6 +5602,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01323() {
         Exception exception = null;
         try {
@@ -5036,6 +5620,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01324() {
         Exception exception = null;
         try {
@@ -5053,6 +5639,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01401() {
         Exception exception = null;
         try {
@@ -5068,6 +5656,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01402() {
         Exception exception = null;
         try {
@@ -5084,6 +5674,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01403() {
         Exception exception = null;
         try {
@@ -5100,6 +5692,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01404() {
         Exception exception = null;
         try {
@@ -5116,6 +5710,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01405() {
         Exception exception = null;
         try {
@@ -5132,6 +5728,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01406() {
         Exception exception = null;
         try {
@@ -5148,6 +5746,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01407() {
         Exception exception = null;
         try {
@@ -5165,6 +5765,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01408() {
         Exception exception = null;
         try {
@@ -5182,6 +5784,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01409() {
         Exception exception = null;
         try {
@@ -5199,6 +5803,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01410() {
         Exception exception = null;
         try {
@@ -5216,6 +5822,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01411() {
         Exception exception = null;
         try {
@@ -5233,6 +5841,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01413() {
         Exception exception = null;
         try {
@@ -5250,6 +5860,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01412() {
         Exception exception = null;
         try {
@@ -5267,6 +5879,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01414() {
         Exception exception = null;
         try {
@@ -5284,6 +5898,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01415() {
         Exception exception = null;
         try {
@@ -5301,6 +5917,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01416() {
         Exception exception = null;
         try {
@@ -5319,6 +5937,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01417() {
         Exception exception = null;
         try {
@@ -5338,6 +5958,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01418() {
         Exception exception = null;
         try {
@@ -5357,6 +5979,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01419() {
         Exception exception = null;
         try {
@@ -5376,6 +6000,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01420() {
         Exception exception = null;
         try {
@@ -5395,6 +6021,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01421() {
         Exception exception = null;
         try {
@@ -5414,6 +6042,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01422() {
         Exception exception = null;
         try {
@@ -5432,6 +6062,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01423() {
         Exception exception = null;
         try {
@@ -5448,6 +6080,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01424() {
         Exception exception = null;
         try {
@@ -5465,6 +6099,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01501() {
         Exception exception = null;
         try {
@@ -5480,6 +6116,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01502() {
         Exception exception = null;
         try {
@@ -5496,6 +6134,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01503() {
         Exception exception = null;
         try {
@@ -5512,6 +6152,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01504() {
         Exception exception = null;
         try {
@@ -5528,6 +6170,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01505() {
         Exception exception = null;
         try {
@@ -5544,6 +6188,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01506() {
         Exception exception = null;
         try {
@@ -5560,6 +6206,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01507() {
         Exception exception = null;
         try {
@@ -5577,6 +6225,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01508() {
         Exception exception = null;
         try {
@@ -5594,6 +6244,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01509() {
         Exception exception = null;
         try {
@@ -5611,6 +6263,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01510() {
         Exception exception = null;
         try {
@@ -5628,6 +6282,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01511() {
         Exception exception = null;
         try {
@@ -5645,6 +6301,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01513() {
         Exception exception = null;
         try {
@@ -5662,6 +6320,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01512() {
         Exception exception = null;
         try {
@@ -5679,6 +6339,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01514() {
         Exception exception = null;
         try {
@@ -5696,6 +6358,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01515() {
         Exception exception = null;
         try {
@@ -5713,6 +6377,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01516() {
         Exception exception = null;
         try {
@@ -5731,6 +6397,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01517() {
         Exception exception = null;
         try {
@@ -5750,6 +6418,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01518() {
         Exception exception = null;
         try {
@@ -5769,6 +6439,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01519() {
         Exception exception = null;
         try {
@@ -5788,6 +6460,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01520() {
         Exception exception = null;
         try {
@@ -5807,6 +6481,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01521() {
         Exception exception = null;
         try {
@@ -5826,6 +6502,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01522() {
         Exception exception = null;
         try {
@@ -5844,6 +6522,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01523() {
         Exception exception = null;
         try {
@@ -5860,6 +6540,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01524() {
         Exception exception = null;
         try {
@@ -5877,6 +6559,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01601() {
         Exception exception = null;
         try {
@@ -5892,6 +6576,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01602() {
         Exception exception = null;
         try {
@@ -5908,6 +6594,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01603() {
         Exception exception = null;
         try {
@@ -5924,6 +6612,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01604() {
         Exception exception = null;
         try {
@@ -5940,6 +6630,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01605() {
         Exception exception = null;
         try {
@@ -5956,6 +6648,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01606() {
         Exception exception = null;
         try {
@@ -5972,6 +6666,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01607() {
         Exception exception = null;
         try {
@@ -5989,6 +6685,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01608() {
         Exception exception = null;
         try {
@@ -6006,6 +6704,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01609() {
         Exception exception = null;
         try {
@@ -6023,6 +6723,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01610() {
         Exception exception = null;
         try {
@@ -6040,6 +6742,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01611() {
         Exception exception = null;
         try {
@@ -6057,6 +6761,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01613() {
         Exception exception = null;
         try {
@@ -6074,6 +6780,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01612() {
         Exception exception = null;
         try {
@@ -6091,6 +6799,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01614() {
         Exception exception = null;
         try {
@@ -6108,6 +6818,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01615() {
         Exception exception = null;
         try {
@@ -6125,6 +6837,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01616() {
         Exception exception = null;
         try {
@@ -6143,6 +6857,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01617() {
         Exception exception = null;
         try {
@@ -6162,6 +6878,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01618() {
         Exception exception = null;
         try {
@@ -6181,6 +6899,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01619() {
         Exception exception = null;
         try {
@@ -6200,6 +6920,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01620() {
         Exception exception = null;
         try {
@@ -6219,6 +6941,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01621() {
         Exception exception = null;
         try {
@@ -6238,6 +6962,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01622() {
         Exception exception = null;
         try {
@@ -6256,6 +6982,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01623() {
         Exception exception = null;
         try {
@@ -6272,6 +7000,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01624() {
         Exception exception = null;
         try {
@@ -6289,6 +7019,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01701() {
         Exception exception = null;
         try {
@@ -6304,6 +7036,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01702() {
         Exception exception = null;
         try {
@@ -6320,6 +7054,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01703() {
         Exception exception = null;
         try {
@@ -6336,6 +7072,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01704() {
         Exception exception = null;
         try {
@@ -6352,6 +7090,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01705() {
         Exception exception = null;
         try {
@@ -6368,6 +7108,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01706() {
         Exception exception = null;
         try {
@@ -6384,6 +7126,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01707() {
         Exception exception = null;
         try {
@@ -6401,6 +7145,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01708() {
         Exception exception = null;
         try {
@@ -6418,6 +7164,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01709() {
         Exception exception = null;
         try {
@@ -6435,6 +7183,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01710() {
         Exception exception = null;
         try {
@@ -6452,6 +7202,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01711() {
         Exception exception = null;
         try {
@@ -6469,6 +7221,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01713() {
         Exception exception = null;
         try {
@@ -6486,6 +7240,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01712() {
         Exception exception = null;
         try {
@@ -6503,6 +7259,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01714() {
         Exception exception = null;
         try {
@@ -6520,6 +7278,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01715() {
         Exception exception = null;
         try {
@@ -6537,6 +7297,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01716() {
         Exception exception = null;
         try {
@@ -6555,6 +7317,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01717() {
         Exception exception = null;
         try {
@@ -6574,6 +7338,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01718() {
         Exception exception = null;
         try {
@@ -6593,6 +7359,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01719() {
         Exception exception = null;
         try {
@@ -6612,6 +7380,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01720() {
         Exception exception = null;
         try {
@@ -6631,6 +7401,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01721() {
         Exception exception = null;
         try {
@@ -6650,6 +7422,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01722() {
         Exception exception = null;
         try {
@@ -6668,6 +7442,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01723() {
         Exception exception = null;
         try {
@@ -6684,6 +7460,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01724() {
         Exception exception = null;
         try {
@@ -6701,6 +7479,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01801() {
         Exception exception = null;
         try {
@@ -6716,6 +7496,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01802() {
         Exception exception = null;
         try {
@@ -6732,6 +7514,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01803() {
         Exception exception = null;
         try {
@@ -6748,6 +7532,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01804() {
         Exception exception = null;
         try {
@@ -6764,6 +7550,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01805() {
         Exception exception = null;
         try {
@@ -6780,6 +7568,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01806() {
         Exception exception = null;
         try {
@@ -6796,6 +7586,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01807() {
         Exception exception = null;
         try {
@@ -6813,6 +7605,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01808() {
         Exception exception = null;
         try {
@@ -6830,6 +7624,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01809() {
         Exception exception = null;
         try {
@@ -6847,6 +7643,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01810() {
         Exception exception = null;
         try {
@@ -6864,6 +7662,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01811() {
         Exception exception = null;
         try {
@@ -6881,6 +7681,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01813() {
         Exception exception = null;
         try {
@@ -6898,6 +7700,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01812() {
         Exception exception = null;
         try {
@@ -6915,6 +7719,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01814() {
         Exception exception = null;
         try {
@@ -6932,6 +7738,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01815() {
         Exception exception = null;
         try {
@@ -6949,6 +7757,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01816() {
         Exception exception = null;
         try {
@@ -6967,6 +7777,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01817() {
         Exception exception = null;
         try {
@@ -6986,6 +7798,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01818() {
         Exception exception = null;
         try {
@@ -7005,6 +7819,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01819() {
         Exception exception = null;
         try {
@@ -7024,6 +7840,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01820() {
         Exception exception = null;
         try {
@@ -7043,6 +7861,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01821() {
         Exception exception = null;
         try {
@@ -7062,6 +7882,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01822() {
         Exception exception = null;
         try {
@@ -7080,6 +7902,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01823() {
         Exception exception = null;
         try {
@@ -7096,6 +7920,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01824() {
         Exception exception = null;
         try {
@@ -7113,6 +7939,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01901() {
         Exception exception = null;
         try {
@@ -7128,6 +7956,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01902() {
         Exception exception = null;
         try {
@@ -7144,6 +7974,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01903() {
         Exception exception = null;
         try {
@@ -7160,6 +7992,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01904() {
         Exception exception = null;
         try {
@@ -7176,6 +8010,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01905() {
         Exception exception = null;
         try {
@@ -7192,6 +8028,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01906() {
         Exception exception = null;
         try {
@@ -7208,6 +8046,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01907() {
         Exception exception = null;
         try {
@@ -7225,6 +8065,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01908() {
         Exception exception = null;
         try {
@@ -7242,6 +8084,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01909() {
         Exception exception = null;
         try {
@@ -7259,6 +8103,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01910() {
         Exception exception = null;
         try {
@@ -7276,6 +8122,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01911() {
         Exception exception = null;
         try {
@@ -7293,6 +8141,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01913() {
         Exception exception = null;
         try {
@@ -7310,6 +8160,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01912() {
         Exception exception = null;
         try {
@@ -7327,6 +8179,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01914() {
         Exception exception = null;
         try {
@@ -7344,6 +8198,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01915() {
         Exception exception = null;
         try {
@@ -7361,6 +8217,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01916() {
         Exception exception = null;
         try {
@@ -7379,6 +8237,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01917() {
         Exception exception = null;
         try {
@@ -7398,6 +8258,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01918() {
         Exception exception = null;
         try {
@@ -7417,6 +8279,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01919() {
         Exception exception = null;
         try {
@@ -7436,6 +8300,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01920() {
         Exception exception = null;
         try {
@@ -7455,6 +8321,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01921() {
         Exception exception = null;
         try {
@@ -7474,6 +8342,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01922() {
         Exception exception = null;
         try {
@@ -7492,6 +8362,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01923() {
         Exception exception = null;
         try {
@@ -7508,6 +8380,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_01924() {
         Exception exception = null;
         try {
@@ -7525,6 +8399,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02001() {
         Exception exception = null;
         try {
@@ -7540,6 +8416,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02002() {
         Exception exception = null;
         try {
@@ -7556,6 +8434,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02003() {
         Exception exception = null;
         try {
@@ -7572,6 +8452,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02004() {
         Exception exception = null;
         try {
@@ -7588,6 +8470,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02005() {
         Exception exception = null;
         try {
@@ -7604,6 +8488,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02006() {
         Exception exception = null;
         try {
@@ -7620,6 +8506,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02007() {
         Exception exception = null;
         try {
@@ -7637,6 +8525,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02008() {
         Exception exception = null;
         try {
@@ -7654,6 +8544,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02009() {
         Exception exception = null;
         try {
@@ -7671,6 +8563,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02010() {
         Exception exception = null;
         try {
@@ -7688,6 +8582,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02011() {
         Exception exception = null;
         try {
@@ -7705,6 +8601,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02013() {
         Exception exception = null;
         try {
@@ -7722,6 +8620,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02012() {
         Exception exception = null;
         try {
@@ -7739,6 +8639,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02014() {
         Exception exception = null;
         try {
@@ -7756,6 +8658,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02015() {
         Exception exception = null;
         try {
@@ -7773,6 +8677,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02016() {
         Exception exception = null;
         try {
@@ -7791,6 +8697,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02017() {
         Exception exception = null;
         try {
@@ -7810,6 +8718,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02018() {
         Exception exception = null;
         try {
@@ -7829,6 +8739,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02019() {
         Exception exception = null;
         try {
@@ -7848,6 +8760,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02020() {
         Exception exception = null;
         try {
@@ -7867,6 +8781,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02021() {
         Exception exception = null;
         try {
@@ -7886,6 +8802,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02022() {
         Exception exception = null;
         try {
@@ -7904,6 +8822,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02023() {
         Exception exception = null;
         try {
@@ -7920,6 +8840,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02024() {
         Exception exception = null;
         try {
@@ -7937,6 +8859,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02101() {
         Exception exception = null;
         try {
@@ -7952,6 +8876,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02102() {
         Exception exception = null;
         try {
@@ -7968,6 +8894,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02103() {
         Exception exception = null;
         try {
@@ -7984,6 +8912,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02104() {
         Exception exception = null;
         try {
@@ -8000,6 +8930,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02105() {
         Exception exception = null;
         try {
@@ -8016,6 +8948,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02106() {
         Exception exception = null;
         try {
@@ -8032,6 +8966,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02107() {
         Exception exception = null;
         try {
@@ -8049,6 +8985,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02108() {
         Exception exception = null;
         try {
@@ -8066,6 +9004,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02109() {
         Exception exception = null;
         try {
@@ -8083,6 +9023,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02110() {
         Exception exception = null;
         try {
@@ -8100,6 +9042,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02111() {
         Exception exception = null;
         try {
@@ -8117,6 +9061,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02113() {
         Exception exception = null;
         try {
@@ -8134,6 +9080,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02112() {
         Exception exception = null;
         try {
@@ -8151,6 +9099,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02114() {
         Exception exception = null;
         try {
@@ -8168,6 +9118,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02115() {
         Exception exception = null;
         try {
@@ -8185,6 +9137,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02116() {
         Exception exception = null;
         try {
@@ -8203,6 +9157,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02117() {
         Exception exception = null;
         try {
@@ -8222,6 +9178,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02118() {
         Exception exception = null;
         try {
@@ -8241,6 +9199,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02119() {
         Exception exception = null;
         try {
@@ -8260,6 +9220,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02120() {
         Exception exception = null;
         try {
@@ -8279,6 +9241,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02121() {
         Exception exception = null;
         try {
@@ -8298,6 +9262,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02122() {
         Exception exception = null;
         try {
@@ -8316,6 +9282,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02123() {
         Exception exception = null;
         try {
@@ -8332,6 +9300,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_02124() {
         Exception exception = null;
         try {
@@ -8349,6 +9319,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDescriptorValueChanged_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -8362,6 +9334,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDescriptorValueChanged_00002() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -8387,6 +9361,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDescriptorValueChanged_00003() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -8412,6 +9388,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest extends Abstract
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDescriptorValueChanged_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();

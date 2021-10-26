@@ -1,10 +1,13 @@
 package org.im97mori.ble.profile.htp.central;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -44,13 +47,30 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findHealthThermometerProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.findHealthThermometerProfileDevices(null));
+        assertTrue(healthThermometerProfile.createFilteredScanCallback() instanceof HealthThermometerProfileScanCallback);
     }
 
     @Test
-    public void test_findHealthThermometerProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
+        assertTrue(healthThermometerProfile.createFilteredLeScanCallback() instanceof HealthThermometerProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
+        assertNull(healthThermometerProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
@@ -63,18 +83,20 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
             }
         };
         healthThermometerProfile.start();
-        assertNotNull(healthThermometerProfile.findHealthThermometerProfileDevices(bundle));
+        assertNotNull(healthThermometerProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         healthThermometerProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -95,12 +117,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -121,12 +145,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSystemId_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getSystemId());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSystemId_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -147,12 +173,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTemperatureTypeCharacteristicSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isTemperatureTypeCharacteristicSupported_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -161,12 +189,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isIntermediateTemperatureCharacteristicSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isIntermediateTemperatureCharacteristicSupported_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -175,12 +205,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicSupported_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -189,12 +221,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicIndicateSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicIndicateSupported_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -203,12 +237,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicWriteSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicWriteSupported_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -217,12 +253,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureMeasurementClientCharacteristicConfiguration_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getTemperatureMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureMeasurementClientCharacteristicConfiguration_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -243,12 +281,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureMeasurementIndication_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.startTemperatureMeasurementIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureMeasurementIndication_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -269,12 +309,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementIndication_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.stopHeartRateMeasurementIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementIndication_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -295,12 +337,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureType_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getTemperatureType());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureType_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -321,12 +365,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIntermediateTemperatureClientCharacteristicConfiguration_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getIntermediateTemperatureClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getIntermediateTemperatureClientCharacteristicConfiguration_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -347,12 +393,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIntermediateTemperatureNotification_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.startIntermediateTemperatureNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startIntermediateTemperatureNotification_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -373,12 +421,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIntermediateTemperaturNotification_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.stopIntermediateTemperaturNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIntermediateTemperaturNotification_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -399,12 +449,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementInterval_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getMeasurementInterval());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementInterval_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -425,12 +477,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMeasurementInterval_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.setMeasurementInterval(new MeasurementInterval(0)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setMeasurementInterval_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -451,12 +505,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalClientCharacteristicConfiguration_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getMeasurementIntervalClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalClientCharacteristicConfiguration_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -477,12 +533,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMeasurementIntervalInidication_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.startMeasurementIntervalInidication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startMeasurementIntervalInidication_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -503,12 +561,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMeasurementIntervalInidication_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.stopMeasurementIntervalInidication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMeasurementIntervalInidication_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -529,12 +589,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalValidRange_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertNull(healthThermometerProfile.getMeasurementIntervalValidRange());
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalValidRange_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
@@ -555,12 +617,14 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         assertTrue(healthThermometerProfile.getDatabaseHelper() instanceof HealthThermometerProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
@@ -578,6 +642,7 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

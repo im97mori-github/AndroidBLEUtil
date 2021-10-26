@@ -1,10 +1,13 @@
 package org.im97mori.ble.profile.blp.central;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -43,13 +46,30 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findBloodPressureProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
-        assertNull(bloodPressureProfile.findBloodPressureProfileDevices(null));
+        assertTrue(bloodPressureProfile.createFilteredScanCallback() instanceof BloodPressureProfileScanCallback);
     }
 
     @Test
-    public void test_findBloodPressureProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
+        assertTrue(bloodPressureProfile.createFilteredLeScanCallback() instanceof BloodPressureProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
+        assertNull(bloodPressureProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
@@ -62,18 +82,20 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
             }
         };
         bloodPressureProfile.start();
-        assertNotNull(bloodPressureProfile.findBloodPressureProfileDevices(bundle));
+        assertNotNull(bloodPressureProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         bloodPressureProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.hasManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -82,12 +104,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.hasModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -96,12 +120,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.getManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -123,12 +149,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.getModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -149,12 +177,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isIntermediateCuffPressureSupported_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.isIntermediateCuffPressureSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isIntermediateCuffPressureSupported_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -163,12 +193,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.getBloodPressureMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -189,12 +221,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBloodPressureMeasurementIndication_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.startBloodPressureMeasurementIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startBloodPressureMeasurementIndication_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -215,12 +249,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBloodPressureMeasurementIndication_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.stopBloodPressureMeasurementIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBloodPressureMeasurementIndication_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -241,12 +277,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIntermediateCuffPressureClientCharacteristicConfiguration_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.getIntermediateCuffPressureClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getIntermediateCuffPressureClientCharacteristicConfiguration_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -267,12 +305,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIntermediateCuffPressureNotification_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.startIntermediateCuffPressureNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startIntermediateCuffPressureNotification_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -293,12 +333,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIntermediateCuffPressureNotification_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.stopIntermediateCuffPressureNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIntermediateCuffPressureNotification_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -319,12 +361,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBloodPressureFeature_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertNull(bloodPressureProfile.getBloodPressureFeature());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBloodPressureFeature_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
@@ -345,12 +389,14 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         assertTrue(bloodPressureProfile.getDatabaseHelper() instanceof BloodPressureProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
@@ -368,6 +414,7 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

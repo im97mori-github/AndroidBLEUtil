@@ -3,6 +3,7 @@ package org.im97mori.ble.service.rtus.peripheral;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateState;
@@ -21,9 +22,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -37,6 +43,8 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -52,6 +60,8 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -67,6 +77,8 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTimeUpdateControlPoint_00001() {
         TimeUpdateControlPoint timeUpdateControlPoint = new TimeUpdateControlPoint(TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE);
 
@@ -100,6 +112,8 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTimeUpdateControlPoint_00002() {
         TimeUpdateControlPoint timeUpdateControlPoint = new TimeUpdateControlPoint(TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE);
 
@@ -133,6 +147,8 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCurrentTime_00001() {
         Exception exception = null;
         try {
@@ -149,6 +165,8 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTimeUpdateState_00001() {
         TimeUpdateState timeUpdateState = new TimeUpdateState(TimeUpdateState.CURRENT_STATE_IDLE, TimeUpdateState.RESULT_SUCCESSFUL);
 
@@ -182,6 +200,8 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTimeUpdateState_00101() {
         TimeUpdateState timeUpdateState = new TimeUpdateState(TimeUpdateState.CURRENT_STATE_IDLE, TimeUpdateState.RESULT_SUCCESSFUL);
 
@@ -215,6 +235,8 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeTimeUpdateState_00001() {
         Exception exception = null;
         try {

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,7 +26,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_002() {
         byte[] expectData = new byte[18];
         expectData[0] = 17;
-        expectData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[2] = 0x00;
         expectData[3] = 0x00;
         expectData[4] = 0x00;
@@ -56,7 +56,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_003() {
         byte[] actualData = new byte[18];
         actualData[0] = 17;
-        actualData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        actualData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         actualData[2] = 0x00;
         actualData[3] = 0x00;
         actualData[4] = 0x00;
@@ -84,7 +84,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_004() {
         byte[] expectData = new byte[18];
         expectData[0] = 17;
-        expectData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[2] = 0x00;
         expectData[3] = 0x00;
         expectData[4] = 0x00;
@@ -114,7 +114,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_101() {
         byte[] expectData = new byte[36];
         expectData[0] = 17;
-        expectData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[2] = 0x00;
         expectData[3] = 0x00;
         expectData[4] = 0x00;
@@ -132,7 +132,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
         expectData[16] = 0x00;
         expectData[17] = 0x00;
         expectData[18] = 17;
-        expectData[19] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[19] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[20] = 0x00;
         expectData[21] = 0x00;
         expectData[22] = 0x00;
@@ -165,7 +165,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_102() {
         byte[] actualData = new byte[36];
         actualData[0] = 17;
-        actualData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        actualData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         actualData[2] = 0x00;
         actualData[3] = 0x00;
         actualData[4] = 0x00;
@@ -183,7 +183,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
         actualData[16] = 0x00;
         actualData[17] = 0x00;
         actualData[18] = 17;
-        actualData[19] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        actualData[19] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         actualData[20] = 0x00;
         actualData[21] = 0x00;
         actualData[22] = 0x00;
@@ -215,7 +215,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_103() {
         byte[] expectData = new byte[36];
         expectData[0] = 17;
-        expectData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[2] = 0x00;
         expectData[3] = 0x00;
         expectData[4] = 0x00;
@@ -233,7 +233,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
         expectData[16] = 0x00;
         expectData[17] = 0x00;
         expectData[18] = 17;
-        expectData[19] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[19] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[20] = 0x00;
         expectData[21] = 0x00;
         expectData[22] = 0x00;
@@ -266,7 +266,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_201() {
         byte[] expectData = new byte[34];
         expectData[0] = 33;
-        expectData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[2] = 0x00;
         expectData[3] = 0x00;
         expectData[4] = 0x00;
@@ -302,7 +302,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
 
         byte[] actualData = new byte[18];
         actualData[0] = 16;
-        actualData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        actualData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         actualData[2] = 0x00;
         actualData[3] = 0x00;
         actualData[4] = 0x00;
@@ -332,7 +332,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_202() {
         byte[] actualData = new byte[34];
         actualData[0] = 33;
-        actualData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        actualData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         actualData[2] = 0x00;
         actualData[3] = 0x00;
         actualData[4] = 0x00;
@@ -368,7 +368,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
 
         byte[] expectData = new byte[18];
         expectData[0] = 16;
-        expectData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[2] = 0x00;
         expectData[3] = 0x00;
         expectData[4] = 0x00;
@@ -398,7 +398,7 @@ public class CompleteListOf128BitServiceUUIDsFilterTest {
     public void test_203() {
         byte[] expectData = new byte[34];
         expectData[0] = 33;
-        expectData[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        expectData[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         expectData[2] = 0x00;
         expectData[3] = 0x00;
         expectData[4] = 0x00;

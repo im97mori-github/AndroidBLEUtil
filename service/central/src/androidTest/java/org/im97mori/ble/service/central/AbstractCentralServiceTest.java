@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConnection;
@@ -35,6 +36,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStarted_00001() {
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
@@ -42,6 +44,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStarted_00002() {
         MOCK_BLE_CONNECTION.setConnected(true);
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
@@ -50,6 +53,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStarted_00003() {
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
         testCentralService.onDiscoverServiceSuccess(0, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -58,6 +62,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isStarted_00004() {
         MOCK_BLE_CONNECTION.setConnected(true);
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
@@ -67,6 +72,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_start_00001() {
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
@@ -74,6 +80,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_start_00002() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setConnected(true);
@@ -84,6 +91,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_start_00003() {
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
         testCentralService.onDiscoverServiceSuccess(0, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -92,6 +100,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_start_00004() {
         MOCK_BLE_CONNECTION.setConnected(true);
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
@@ -101,6 +110,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
@@ -108,6 +118,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00002() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setQuitTaskId(originalTaskId);
@@ -118,6 +129,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEConnected_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -139,6 +151,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEConnected_00002() {
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
 
@@ -147,6 +160,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEConnectFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -172,6 +186,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEConnectTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -195,6 +210,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -220,6 +236,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00002() {
         MockBLECallback bleCallback = new MockBLECallback();
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
@@ -232,6 +249,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00003() {
         MockBLECallback bleCallback = new MockBLECallback();
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, bleCallback);
@@ -244,6 +262,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -269,6 +288,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
         testCentralService.mIsServiceDiscovered = false;
@@ -278,6 +298,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         TestCentralService testCentralService = new TestCentralService(MOCK_BLE_CONNECTION, null);
         testCentralService.mIsServiceDiscovered = false;
@@ -287,6 +308,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -312,6 +334,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -337,6 +360,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onRequestMtuSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -362,6 +386,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onRequestMtuFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -387,6 +412,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onRequestMtuTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -412,6 +438,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -445,6 +472,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -480,6 +508,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -515,6 +544,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -548,6 +578,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -583,6 +614,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -618,6 +650,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -655,6 +688,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -692,6 +726,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -729,6 +764,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -766,6 +802,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -803,6 +840,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -840,6 +878,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -869,6 +908,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReadPhySuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -896,6 +936,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReadPhyFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -921,6 +962,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReadPhyTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -946,6 +988,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onSetPreferredPhySuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -975,6 +1018,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onSetPreferredPhyFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1000,6 +1044,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onSetPreferredPhyTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1025,6 +1070,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReadRemoteRssiSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1051,6 +1097,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_onReadRemoteRssiFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1076,6 +1123,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReadRemoteRssiTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1101,6 +1149,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBeginReliableWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1124,6 +1173,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBeginReliableWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1149,6 +1199,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onExecuteReliableWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1172,6 +1223,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onExecuteReliableWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1197,6 +1249,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onExecuteReliableWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1222,6 +1275,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onAbortReliableWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1245,6 +1299,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onAbortReliableWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1270,6 +1325,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onAbortReliableWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1295,6 +1351,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onSetNotificationSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1328,6 +1385,7 @@ public class AbstractCentralServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onSetNotificationFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;

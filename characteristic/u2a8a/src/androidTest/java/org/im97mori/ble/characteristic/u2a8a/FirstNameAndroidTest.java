@@ -1,12 +1,14 @@
 package org.im97mori.ble.characteristic.u2a8a;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import android.os.Parcel;
 
 import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import java.nio.charset.StandardCharsets;
 
 public class FirstNameAndroidTest {
 

@@ -3,6 +3,7 @@ package org.im97mori.ble.service.ndcs.peripheral;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a11.TimeWithDst;
 import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
@@ -19,9 +20,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class NextDstChangeServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -35,6 +41,8 @@ public class NextDstChangeServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -49,6 +57,8 @@ public class NextDstChangeServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTimeWithDst_00001() {
         TimeWithDst timeWithDst = new TimeWithDst(new byte[]{0, 1, 2, 3, 4, 5, 6, 7});
 
@@ -81,6 +91,8 @@ public class NextDstChangeServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTimeWithDst_00101() {
         TimeWithDst timeWithDst = new TimeWithDst(new byte[]{0, 1, 2, 3, 4, 5, 6, 7});
 
@@ -113,6 +125,8 @@ public class NextDstChangeServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeTimeWithDst_00001() {
         TimeWithDst timeWithDst = new TimeWithDst(new byte[]{0, 1, 2, 3, 4, 5, 6, 7});
 

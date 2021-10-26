@@ -37,9 +37,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+
 public class UserDataServiceTest_3 extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_getFirstName_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -47,6 +50,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFirstName_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -61,6 +65,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFirstName_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -80,6 +85,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFirstName_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -103,6 +109,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFirstName_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         FirstName firstName = new FirstName("a");
@@ -111,6 +118,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFirstName_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -126,6 +134,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFirstName_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -146,6 +155,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFirstName_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -170,6 +180,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLastName_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -177,6 +188,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLastName_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -191,6 +203,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLastName_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -210,6 +223,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLastName_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -233,6 +247,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLastName_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         LastName lastName = new LastName("a");
@@ -241,6 +256,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLastName_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -256,6 +272,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLastName_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -276,6 +293,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLastName_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -300,6 +318,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getEmailAddress_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -307,6 +326,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getEmailAddress_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -321,6 +341,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getEmailAddress_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -340,6 +361,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getEmailAddress_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -363,6 +385,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setEmailAddress_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         EmailAddress emailAddress = new EmailAddress("a");
@@ -371,6 +394,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setEmailAddress_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -386,6 +410,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setEmailAddress_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -406,6 +431,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setEmailAddress_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -430,6 +456,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAge_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -437,6 +464,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAge_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -451,6 +479,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAge_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -470,6 +499,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAge_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -493,6 +523,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAge_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         Age age = new Age(1);
@@ -501,6 +532,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAge_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -516,6 +548,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAge_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -536,6 +569,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAge_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -560,6 +594,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDateOfBirth_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -567,6 +602,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDateOfBirth_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -581,6 +617,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDateOfBirth_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -600,6 +637,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDateOfBirth_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -623,6 +661,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDateOfBirth_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         DateOfBirth dateOfBirth = new DateOfBirth(1, 2, 3);
@@ -631,6 +670,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDateOfBirth_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -646,6 +686,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDateOfBirth_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -666,6 +707,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDateOfBirth_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -690,6 +732,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getGender_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -697,6 +740,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getGender_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -711,6 +755,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getGender_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -730,6 +775,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getGender_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -753,6 +799,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setGender_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         Gender gender = new Gender(Gender.GENDER_MALE);
@@ -761,6 +808,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setGender_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -776,6 +824,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setGender_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -796,6 +845,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setGender_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -820,6 +870,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeight_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -827,6 +878,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeight_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -841,6 +893,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeight_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -860,6 +913,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWeight_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -883,6 +937,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWeight_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         Weight weight = new Weight(0);
@@ -891,6 +946,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWeight_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -906,6 +962,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWeight_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -926,6 +983,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWeight_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -950,6 +1008,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeight_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -957,6 +1016,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeight_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -971,6 +1031,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeight_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -990,6 +1051,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeight_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1013,6 +1075,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeight_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         Height height = new Height(0);
@@ -1021,6 +1084,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeight_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1036,6 +1100,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeight_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1056,6 +1121,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeight_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1080,6 +1146,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getVO2Max_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -1087,6 +1154,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getVO2Max_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1101,6 +1169,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getVO2Max_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1120,6 +1189,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getVO2Max_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1143,6 +1213,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setVO2Max_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         VO2Max vo2Max = new VO2Max(0);
@@ -1151,6 +1222,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setVO2Max_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1166,6 +1238,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setVO2Max_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1186,6 +1259,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setVO2Max_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1210,6 +1284,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMax_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -1217,6 +1292,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMax_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1231,6 +1307,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMax_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1250,6 +1327,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMax_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1273,6 +1351,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeartRateMax_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         HeartRateMax heartRateMax = new HeartRateMax(0);
@@ -1281,6 +1360,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeartRateMax_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1296,6 +1376,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeartRateMax_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1316,6 +1397,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeartRateMax_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1340,6 +1422,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRestingHeartRate_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -1347,6 +1430,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRestingHeartRate_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1361,6 +1445,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRestingHeartRate_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1380,6 +1465,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRestingHeartRate_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1403,6 +1489,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRestingHeartRate_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         RestingHeartRate restingHeartRate = new RestingHeartRate(0);
@@ -1411,6 +1498,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRestingHeartRate_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1426,6 +1514,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRestingHeartRate_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1446,6 +1535,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRestingHeartRate_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1470,6 +1560,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMaximumRecommendedHeartRate_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -1477,6 +1568,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMaximumRecommendedHeartRate_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1491,6 +1583,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMaximumRecommendedHeartRate_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1510,6 +1603,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMaximumRecommendedHeartRate_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1533,6 +1627,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMaximumRecommendedHeartRate_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(0);
@@ -1541,6 +1636,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMaximumRecommendedHeartRate_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1556,6 +1652,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMaximumRecommendedHeartRate_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1576,6 +1673,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMaximumRecommendedHeartRate_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1600,6 +1698,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicThreshold_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -1607,6 +1706,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicThreshold_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1621,6 +1721,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicThreshold_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1640,6 +1741,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicThreshold_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1663,6 +1765,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicThreshold_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         AerobicThreshold aerobicThreshold = new AerobicThreshold(0);
@@ -1671,6 +1774,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicThreshold_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1686,6 +1790,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicThreshold_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1706,6 +1811,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicThreshold_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1730,6 +1836,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicThreshold_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -1737,6 +1844,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicThreshold_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1751,6 +1859,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicThreshold_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1770,6 +1879,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicThreshold_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1793,6 +1903,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicThreshold_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(0);
@@ -1801,6 +1912,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicThreshold_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1816,6 +1928,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicThreshold_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1836,6 +1949,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicThreshold_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1860,6 +1974,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSportTypeForAerobicAndAnaerobicThresholds_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -1867,6 +1982,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSportTypeForAerobicAndAnaerobicThresholds_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1881,6 +1997,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSportTypeForAerobicAndAnaerobicThresholds_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1900,6 +2017,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSportTypeForAerobicAndAnaerobicThresholds_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1923,6 +2041,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSportTypeForAerobicAndAnaerobicThresholds_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(0);
@@ -1931,6 +2050,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSportTypeForAerobicAndAnaerobicThresholds_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1946,6 +2066,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSportTypeForAerobicAndAnaerobicThresholds_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -1966,6 +2087,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSportTypeForAerobicAndAnaerobicThresholds_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1990,6 +2112,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDateOfThresholdAssessment_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -1997,6 +2120,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDateOfThresholdAssessment_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2011,6 +2135,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDateOfThresholdAssessment_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2030,6 +2155,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDateOfThresholdAssessment_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2053,6 +2179,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDateOfThresholdAssessment_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         DateOfThresholdAssessment dateOfThresholdAssessment = new DateOfThresholdAssessment(0, 1, 2);
@@ -2061,6 +2188,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDateOfThresholdAssessment_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2076,6 +2204,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDateOfThresholdAssessment_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2096,6 +2225,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDateOfThresholdAssessment_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -2120,6 +2250,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWaistCircumference_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -2127,6 +2258,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWaistCircumference_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2141,6 +2273,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWaistCircumference_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2160,6 +2293,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getWaistCircumference_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2183,6 +2317,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWaistCircumference_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         WaistCircumference waistCircumference = new WaistCircumference(0);
@@ -2191,6 +2326,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWaistCircumference_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2206,6 +2342,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWaistCircumference_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2226,6 +2363,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setWaistCircumference_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -2250,6 +2388,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHipCircumference_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -2257,6 +2396,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHipCircumference_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2271,6 +2411,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHipCircumference_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2290,6 +2431,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHipCircumference_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2313,6 +2455,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHipCircumference_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         HipCircumference hipCircumference = new HipCircumference(0);
@@ -2321,6 +2464,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHipCircumference_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2336,6 +2480,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHipCircumference_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2356,6 +2501,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHipCircumference_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -2380,6 +2526,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFatBurnHeartRateLowerLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -2387,6 +2534,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFatBurnHeartRateLowerLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2401,6 +2549,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFatBurnHeartRateLowerLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2420,6 +2569,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFatBurnHeartRateLowerLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2443,6 +2593,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFatBurnHeartRateLowerLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(0);
@@ -2451,6 +2602,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFatBurnHeartRateLowerLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2466,6 +2618,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFatBurnHeartRateLowerLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2486,6 +2639,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFatBurnHeartRateLowerLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -2510,6 +2664,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFatBurnHeartRateUpperLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -2517,6 +2672,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFatBurnHeartRateUpperLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2531,6 +2687,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFatBurnHeartRateUpperLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2550,6 +2707,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFatBurnHeartRateUpperLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2573,6 +2731,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFatBurnHeartRateUpperLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(0);
@@ -2581,6 +2740,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFatBurnHeartRateUpperLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2596,6 +2756,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFatBurnHeartRateUpperLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2616,6 +2777,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFatBurnHeartRateUpperLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -2640,6 +2802,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicHeartRateLowerLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -2647,6 +2810,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicHeartRateLowerLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2661,6 +2825,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicHeartRateLowerLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2680,6 +2845,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicHeartRateLowerLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2703,6 +2869,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicHeartRateLowerLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(0);
@@ -2711,6 +2878,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicHeartRateLowerLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2726,6 +2894,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicHeartRateLowerLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2746,6 +2915,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicHeartRateLowerLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -2770,6 +2940,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicHeartRateUpperLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -2777,6 +2948,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicHeartRateUpperLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2791,6 +2963,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicHeartRateUpperLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2810,6 +2983,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAerobicHeartRateUpperLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2833,6 +3007,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicHeartRateUpperLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(0);
@@ -2841,6 +3016,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicHeartRateUpperLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2856,6 +3032,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicHeartRateUpperLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2876,6 +3053,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAerobicHeartRateUpperLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -2900,6 +3078,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicHeartRateLowerLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -2907,6 +3086,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicHeartRateLowerLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2921,6 +3101,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicHeartRateLowerLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2940,6 +3121,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicHeartRateLowerLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2963,6 +3145,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicHeartRateLowerLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(0);
@@ -2971,6 +3154,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicHeartRateLowerLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -2986,6 +3170,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicHeartRateLowerLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3006,6 +3191,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicHeartRateLowerLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -3030,6 +3216,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicHeartRateUpperLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3037,6 +3224,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicHeartRateUpperLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3051,6 +3239,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicHeartRateUpperLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3070,6 +3259,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAnaerobicHeartRateUpperLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -3093,6 +3283,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicHeartRateUpperLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(0);
@@ -3101,6 +3292,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicHeartRateUpperLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3116,6 +3308,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicHeartRateUpperLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3136,6 +3329,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAnaerobicHeartRateUpperLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -3160,6 +3354,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFiveZoneHeartRateLimits_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3167,6 +3362,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFiveZoneHeartRateLimits_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3181,6 +3377,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFiveZoneHeartRateLimits_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3200,6 +3397,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getFiveZoneHeartRateLimits_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -3223,6 +3421,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFiveZoneHeartRateLimits_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         FiveZoneHeartRateLimits fiveZoneHeartRateLimits = new FiveZoneHeartRateLimits(0, 1, 2, 3);
@@ -3231,6 +3430,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFiveZoneHeartRateLimits_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3246,6 +3446,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFiveZoneHeartRateLimits_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3266,6 +3467,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setFiveZoneHeartRateLimits_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -3290,6 +3492,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getThreeZoneHeartRateLimits_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3297,6 +3500,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getThreeZoneHeartRateLimits_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3311,6 +3515,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getThreeZoneHeartRateLimits_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3330,6 +3535,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getThreeZoneHeartRateLimits_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -3353,6 +3559,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setThreeZoneHeartRateLimits_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         ThreeZoneHeartRateLimits threeZoneHeartRateLimits = new ThreeZoneHeartRateLimits(0, 1);
@@ -3361,6 +3568,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setThreeZoneHeartRateLimits_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3376,6 +3584,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setThreeZoneHeartRateLimits_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3396,6 +3605,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setThreeZoneHeartRateLimits_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -3420,6 +3630,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTwoZoneHeartRateLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3427,6 +3638,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTwoZoneHeartRateLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3441,6 +3653,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTwoZoneHeartRateLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3460,6 +3673,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTwoZoneHeartRateLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -3483,6 +3697,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTwoZoneHeartRateLimit_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(0);
@@ -3491,6 +3706,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTwoZoneHeartRateLimit_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3506,6 +3722,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTwoZoneHeartRateLimit_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3526,6 +3743,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTwoZoneHeartRateLimit_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -3550,6 +3768,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLanguage_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3557,6 +3776,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLanguage_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3571,6 +3791,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLanguage_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3590,6 +3811,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLanguage_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -3613,6 +3835,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLanguage_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         Language language = new Language("a");
@@ -3621,6 +3844,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLanguage_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3636,6 +3860,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLanguage_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3656,6 +3881,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLanguage_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -3680,6 +3906,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseChangeIncrement_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3687,6 +3914,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseChangeIncrement_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3701,6 +3929,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseChangeIncrement_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -3719,6 +3948,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDatabaseChangeIncrement_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         DatabaseChangeIncrement databaseChangeIncrement = new DatabaseChangeIncrement(0);
@@ -3727,6 +3957,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDatabaseChangeIncrement_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3742,6 +3973,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setDatabaseChangeIncrement_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -3761,6 +3993,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseChangeIncrementClientCharacteristicConfiguration_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3768,6 +4001,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseChangeIncrementClientCharacteristicConfiguration_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3782,6 +4016,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseChangeIncrementClientCharacteristicConfiguration_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3801,6 +4036,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseChangeIncrementClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -3824,6 +4060,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDatabaseChangeIncrementNotification_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3831,6 +4068,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDatabaseChangeIncrementNotification_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3845,6 +4083,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDatabaseChangeIncrementNotification_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3864,6 +4103,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startDatabaseChangeIncrementNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -3887,6 +4127,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDatabaseChangeIncrementNotification_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3894,6 +4135,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDatabaseChangeIncrementNotification_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3908,6 +4150,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDatabaseChangeIncrementNotification_000003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3927,6 +4170,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopDatabaseChangeIncrementNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -3950,6 +4194,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUserIndex_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3957,6 +4202,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUserIndex_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -3971,6 +4217,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUserIndex_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -3989,6 +4236,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRegisteredUserClientCharacteristicConfiguration_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -3996,6 +4244,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRegisteredUserClientCharacteristicConfiguration_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -4010,6 +4259,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRegisteredUserClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -4028,6 +4278,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRegisteredUserIndication_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4035,6 +4286,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRegisteredUserIndication_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -4049,6 +4301,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRegisteredUserIndication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -4067,6 +4320,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRegisteredUserIndication_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4074,6 +4328,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRegisteredUserIndication_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -4088,6 +4343,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRegisteredUserIndication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -4106,6 +4362,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUserControlPoint_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         UserControlPoint userControlPoint = new UserControlPoint(UserControlPoint.OP_CODE_REGISTER_NEW_USER, 0, 1, 2, 3, 4);
@@ -4114,6 +4371,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUserControlPoint_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -4129,6 +4387,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setUserControlPoint_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -4148,6 +4407,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUserControlPointClientCharacteristicConfiguration_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4155,6 +4415,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUserControlPointClientCharacteristicConfiguration_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -4169,6 +4430,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUserControlPointClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -4187,6 +4449,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startUserControlPointIndication_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4194,6 +4457,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startUserControlPointIndication_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -4208,6 +4472,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startUserControlPointIndication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -4226,6 +4491,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUserControlPointIndication_000001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4233,6 +4499,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUserControlPointIndication_000002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null) {
 
@@ -4247,6 +4514,7 @@ public class UserDataServiceTest_3 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUserControlPointIndication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

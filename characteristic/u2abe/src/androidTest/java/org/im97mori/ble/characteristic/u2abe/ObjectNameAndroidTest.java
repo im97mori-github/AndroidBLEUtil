@@ -18,7 +18,7 @@ public class ObjectNameAndroidTest {
         String name = "Rbt-Sensor";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(name.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(name.getBytes());
 
         ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
         assertEquals(name, result1.getObjectName());
@@ -37,7 +37,7 @@ public class ObjectNameAndroidTest {
         String name = "Rbt-Sensor";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(name.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(name.getBytes());
 
         ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -53,7 +53,7 @@ public class ObjectNameAndroidTest {
         String name = "Rbt-Sensor";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(name.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(name.getBytes());
 
         ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
         byte[] resultData = result1.getBytes();
@@ -65,10 +65,10 @@ public class ObjectNameAndroidTest {
         String name = "Rbt-Sensor";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(name.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(name.getBytes());
 
         ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
-        ObjectNameAndroid result2 = ObjectNameAndroid.CREATOR.createFromByteArray(name.getBytes(StandardCharsets.UTF_8));
+        ObjectNameAndroid result2 = ObjectNameAndroid.CREATOR.createFromByteArray(name.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }

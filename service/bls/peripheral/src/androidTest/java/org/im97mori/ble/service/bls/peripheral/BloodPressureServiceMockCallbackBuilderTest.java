@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 import org.im97mori.ble.characteristic.u2a35.BloodPressureMeasurement;
@@ -28,10 +29,15 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 @SuppressWarnings("ConstantConditions")
 public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureMeasurement_00001() {
         Exception exception = null;
         try {
@@ -45,6 +51,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureMeasurement_00002() {
         int icpflags = 38;
         IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{39, 40, 41, 42}, 0);
@@ -80,6 +88,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureMeasurement_00003() {
         boolean isBodyMovementDetectionFeatureSupported = false;
         boolean isCuffFitDetectionSupported = false;
@@ -102,6 +112,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureMeasurement_00101() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -167,6 +179,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureMeasurement_00102() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -254,6 +268,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureMeasurement_00201() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -319,6 +335,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureMeasurement_00202() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -406,6 +424,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBloodPressureMeasurement_00001() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -443,6 +463,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIntermediateCuffPressure_00001() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -487,6 +509,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIntermediateCuffPressure_00101() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -543,6 +567,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIntermediateCuffPressure_00102() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -630,6 +656,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIntermediateCuffPressure_00201() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -686,6 +714,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIntermediateCuffPressure_00202() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -773,6 +803,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeIntermediateCuffPressure_00001() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -852,6 +884,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureFeature_00001() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -888,6 +922,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureFeature_00101() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -949,6 +985,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureFeature_00102() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -1032,6 +1070,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureFeature_00201() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -1093,6 +1133,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBloodPressureFeature_00202() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
@@ -1176,6 +1218,8 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBloodPressureFeature_00001() {
         int bpmflags = 1;
         IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);

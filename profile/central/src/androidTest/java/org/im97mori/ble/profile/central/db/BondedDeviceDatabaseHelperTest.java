@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothDevice;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import androidx.test.filters.RequiresDevice;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.im97mori.ble.test.BLETestUtilsAndroid;
@@ -44,6 +45,7 @@ public class BondedDeviceDatabaseHelperTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_addHistory_00001() {
         SQLiteDatabase sqLiteDatabase = DATABASE_HELPER.getWritableDatabase();
 
@@ -58,6 +60,7 @@ public class BondedDeviceDatabaseHelperTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_addHistory_00002() {
         SQLiteDatabase sqLiteDatabase = DATABASE_HELPER.getWritableDatabase();
 
@@ -73,17 +76,20 @@ public class BondedDeviceDatabaseHelperTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_removeHistory_00001() {
         assertFalse(DATABASE_HELPER.removeHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
     }
 
     @Test
+    @RequiresDevice
     public void test_removeHistory_00002() {
         assertNotEquals(-1, DATABASE_HELPER.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
         assertTrue(DATABASE_HELPER.removeHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
     }
 
     @Test
+    @RequiresDevice
     public void test_removeHistory_00003() {
         SQLiteDatabase sqLiteDatabase = DATABASE_HELPER.getWritableDatabase();
 
@@ -100,6 +106,7 @@ public class BondedDeviceDatabaseHelperTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_clearHistory_00001() {
         SQLiteDatabase sqLiteDatabase = DATABASE_HELPER.getWritableDatabase();
 
@@ -112,6 +119,7 @@ public class BondedDeviceDatabaseHelperTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_clearHistory_00002() {
         SQLiteDatabase sqLiteDatabase = DATABASE_HELPER.getWritableDatabase();
 
@@ -125,6 +133,7 @@ public class BondedDeviceDatabaseHelperTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_syncBondedDevice_00001() {
         assertNotEquals(-1, DATABASE_HELPER.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
 
@@ -137,6 +146,7 @@ public class BondedDeviceDatabaseHelperTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBondedDevices_00001() {
         assertNotEquals(-1, DATABASE_HELPER.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
         assertNotEquals(-1, DATABASE_HELPER.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_1));

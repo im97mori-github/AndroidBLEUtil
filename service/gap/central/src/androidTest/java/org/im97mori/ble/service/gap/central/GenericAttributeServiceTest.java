@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a05.ServiceChangedAndroid;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
@@ -39,6 +40,7 @@ import static org.junit.Assert.assertTrue;
 public class GenericAttributeServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -47,6 +49,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -56,6 +59,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -65,6 +69,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -75,6 +80,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -85,6 +91,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00006() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -97,6 +104,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -105,6 +113,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -114,6 +123,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -123,6 +133,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -133,6 +144,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -143,6 +155,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00106() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -153,6 +166,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00107() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -163,6 +177,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00201() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         genericAttributeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -171,6 +186,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00202() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -180,6 +196,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00203() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -189,6 +206,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00204() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -199,6 +217,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00205() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -209,6 +228,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -242,6 +262,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -275,6 +296,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -308,6 +330,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -341,6 +364,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -374,6 +398,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -407,6 +432,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -441,6 +467,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -474,6 +501,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -507,6 +535,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -543,6 +572,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -579,6 +609,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -615,6 +646,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -651,6 +683,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -687,6 +720,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -724,6 +758,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -761,6 +796,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -798,6 +834,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -835,6 +872,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -866,6 +904,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isServiceChangedCharacteristicSupported_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
@@ -873,6 +912,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isServiceChangedCharacteristicSupported_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -885,6 +925,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isServiceChangedCharacteristicSupported_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -898,6 +939,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isClientSupportedFeaturesCharacteristicSupported_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
@@ -905,6 +947,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isClientSupportedFeaturesCharacteristicSupported_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -916,6 +959,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isClientSupportedFeaturesCharacteristicSupported_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -928,6 +972,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDatabaseHashCharacteristicSupported_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
@@ -935,6 +980,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDatabaseHashCharacteristicSupported_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -946,6 +992,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDatabaseHashCharacteristicSupported_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -958,6 +1005,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getServiceChangedClientCharacteristicConfiguration_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
@@ -965,6 +1013,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getServiceChangedClientCharacteristicConfiguration_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -979,6 +1028,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getServiceChangedClientCharacteristicConfiguration_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -998,6 +1048,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getServiceChangedClientCharacteristicConfiguration_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1021,6 +1072,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startServiceChangedIndication_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
@@ -1028,6 +1080,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startServiceChangedIndication_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1042,6 +1095,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startServiceChangedIndication_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1061,6 +1115,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startServiceChangedIndication_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1085,6 +1140,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopServiceChangedIndication_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
@@ -1092,6 +1148,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopServiceChangedIndication_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1106,6 +1163,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopServiceChangedIndication_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1125,6 +1183,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopServiceChangedIndication_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1148,6 +1207,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getClientSupportedFeatures_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
@@ -1155,6 +1215,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getClientSupportedFeatures_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1169,6 +1230,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getClientSupportedFeatures_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1188,6 +1250,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getClientSupportedFeatures_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1211,6 +1274,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setClientSupportedFeatures_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
         ClientSupportedFeatures clientSupportedFeatures = new ClientSupportedFeatures(new byte[]{1});
@@ -1219,6 +1283,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setClientSupportedFeatures_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1234,6 +1299,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setClientSupportedFeatures_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1254,6 +1320,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setClientSupportedFeatures_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1278,6 +1345,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHash_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null);
 
@@ -1285,6 +1353,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHash_00002() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1299,6 +1368,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHash_00003() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(MOCK_BLE_CONNECTION, new MockGenericAttributeServiceCallback(), null) {
 
@@ -1318,6 +1388,7 @@ public class GenericAttributeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHash_00004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);

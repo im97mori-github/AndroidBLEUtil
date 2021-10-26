@@ -15,6 +15,10 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.core.TimeZoneUtils;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
@@ -30,6 +34,8 @@ import java.util.List;
 public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -43,6 +49,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -57,6 +65,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCurrentTime_00001() {
         CurrentTime currentTime = new CurrentTime(0, 1, 2, 3, 4, 5, 6, 7, 8);
 
@@ -97,6 +107,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCurrentTime_00101() {
         CurrentTime currentTime = new CurrentTime(0, 1, 2, 3, 4, 5, 6, 7, 8);
 
@@ -137,6 +149,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCurrentTime_00102() {
         CurrentTime currentTime = new CurrentTime(0, 1, 2, 3, 4, 5, 6, 7, 8);
 
@@ -177,6 +191,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCurrentTime_00001() {
         CurrentTime currentTime = new CurrentTime(0, 1, 2, 3, 4, 5, 6, 7, 8);
 
@@ -198,6 +214,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLocalTimeInformation_00001() {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
@@ -231,6 +249,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLocalTimeInformation_00101() {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
@@ -264,6 +284,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLocalTimeInformation_00201() {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
@@ -297,6 +319,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLocalTimeInformation_00202() {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
@@ -330,6 +354,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeLocalTimeInformation_00001() {
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
 
@@ -348,6 +374,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addReferenceTimeInformation_00001() {
         ReferenceTimeInformation referenceTimeInformation = new ReferenceTimeInformation(1, 2, 3, 4);
 
@@ -383,6 +411,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addReferenceTimeInformation_00101() {
         ReferenceTimeInformation referenceTimeInformation = new ReferenceTimeInformation(1, 2, 3, 4);
 
@@ -418,6 +448,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addReferenceTimeInformation_00201() {
         ReferenceTimeInformation referenceTimeInformation = new ReferenceTimeInformation(1, 2, 3, 4);
 
@@ -453,6 +485,8 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeReferenceTimeInformation_00001() {
         ReferenceTimeInformation referenceTimeInformation = new ReferenceTimeInformation(1, 2, 3, 4);
 

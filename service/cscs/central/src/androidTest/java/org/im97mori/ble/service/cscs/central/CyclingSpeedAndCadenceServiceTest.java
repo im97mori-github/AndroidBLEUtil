@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a55.SCControlPoint;
 import org.im97mori.ble.characteristic.u2a55.SCControlPointAndroid;
@@ -41,6 +42,7 @@ import static org.junit.Assert.assertTrue;
 public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         cyclingSpeedAndCadenceService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -49,6 +51,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -58,6 +61,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -67,6 +71,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -77,6 +82,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -87,6 +93,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         cyclingSpeedAndCadenceService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -95,6 +102,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -104,6 +112,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -113,6 +122,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -123,6 +133,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -133,6 +144,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00106() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -143,6 +155,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00107() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -153,6 +166,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00108() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -165,6 +179,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -198,6 +213,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -231,6 +247,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -264,6 +281,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -297,6 +315,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -330,6 +349,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -363,6 +383,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -396,6 +417,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -429,6 +451,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -462,6 +485,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -498,6 +522,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -534,6 +559,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -570,6 +596,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -606,6 +633,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -642,6 +670,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -678,6 +707,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -713,6 +743,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -748,6 +779,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -783,6 +815,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -818,6 +851,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -855,6 +889,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -892,6 +927,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -929,6 +965,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -966,6 +1003,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1003,6 +1041,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1040,6 +1079,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1077,6 +1117,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1114,6 +1155,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1144,6 +1186,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1174,6 +1217,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1181,6 +1225,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1193,6 +1238,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1206,6 +1252,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1213,6 +1260,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1225,6 +1273,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1238,6 +1287,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCFeature_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1245,6 +1295,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCFeature_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1259,6 +1310,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCFeature_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1275,6 +1327,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCMeasurementClientCharacteristicConfiguration_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1282,6 +1335,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCMeasurementClientCharacteristicConfiguration_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1296,6 +1350,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCMeasurementClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1314,6 +1369,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCSCMeasurementNotification_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1321,6 +1377,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCSCMeasurementNotification_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1335,6 +1392,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCSCMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1353,6 +1411,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCSCMeasurementNotification_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1360,6 +1419,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCSCMeasurementNotification_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1374,6 +1434,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCSCMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1392,6 +1453,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1399,6 +1461,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1413,6 +1476,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1432,6 +1496,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1453,6 +1518,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
         SCControlPoint scControlPoint = new SCControlPoint(new byte[]{SCControlPoint.OP_CODE_REQUEST_SUPPORTED_SENSOR_LOCATIONS});
@@ -1461,6 +1527,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1476,6 +1543,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_000003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1496,6 +1564,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1520,6 +1589,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1527,6 +1597,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1541,6 +1612,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_000003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1560,6 +1632,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1583,6 +1656,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1590,6 +1664,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1604,6 +1679,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_000003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1623,6 +1699,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1646,6 +1723,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null);
 
@@ -1653,6 +1731,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1667,6 +1746,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_000003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
@@ -1686,6 +1766,7 @@ public class CyclingSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

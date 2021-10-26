@@ -8,6 +8,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLEServerCallbackDistributer;
 import org.im97mori.ble.BLEServerConnection;
@@ -52,6 +53,7 @@ public class NotificationTaskTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createNotificationSentSuccessMessage_00001() {
         Message message = NotificationTask.createNotificationSentSuccessMessage(BLETestUtilsAndroid.MOCK_DEVICE_0);
 
@@ -65,6 +67,7 @@ public class NotificationTaskTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createNotificationSentErrorMessage_00001() {
         int status = new Random().nextInt();
         Message message = NotificationTask.createNotificationSentErrorMessage(BLETestUtilsAndroid.MOCK_DEVICE_0, status);

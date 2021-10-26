@@ -11,6 +11,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
@@ -76,6 +77,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_start_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -101,6 +103,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -138,6 +141,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onConnectionStateChange_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -155,6 +159,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onConnectionStateChange_002() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -172,6 +177,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onServiceAdded_success_001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -209,6 +215,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onServiceAdded_success_002() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -244,6 +251,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onServiceAdded_failed_001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -279,6 +287,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onServiceAdded_failed_002() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -312,6 +321,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onServiceAdded_timeout_001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -347,6 +357,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onServiceAdded_timeout_002() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -380,6 +391,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadRequest_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -397,6 +409,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteRequest_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -414,6 +427,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadRequest_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -431,6 +445,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteRequest_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -448,6 +463,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onExecuteWrite_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
@@ -465,6 +481,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onNotificationSent_success_001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -500,6 +517,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onNotificationSent_success_002() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -533,6 +551,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onNotificationSent_failed_001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -568,6 +587,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onNotificationSent_failed_002() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -601,6 +621,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onNotificationSent_timeout_001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -636,6 +657,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onNotificationSent_timeout_002() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -669,6 +691,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_001() {
         MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingIncludeDeviceName(true);
         MOCK_BLE_SERVER_CONNECTION.setStartAdvertisingIncludeUUID(false);
@@ -681,6 +704,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_002() {
         UUID firstUUID = new UUID(0, 0);
         UUID secondUUID = new UUID(0, 1);
@@ -695,6 +719,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_003() {
         UUID firstUUID = new UUID(0, 0);
         UUID secondUUID = new UUID(0, 1);
@@ -709,6 +734,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_success_001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -733,6 +759,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_failed_001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
@@ -758,6 +785,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAdvertising_failed_002() {
         MOCK_BLE_SERVER_CONNECTION.start();
         assertTrue(MOCK_BLE_SERVER_CONNECTION.startAdvertising());
@@ -765,6 +793,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAdvertising_success_001() {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 

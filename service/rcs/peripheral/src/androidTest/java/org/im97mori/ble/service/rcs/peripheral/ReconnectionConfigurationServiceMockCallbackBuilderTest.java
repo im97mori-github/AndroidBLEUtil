@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.characteristic.u2b1d.RCFeature;
@@ -27,10 +28,15 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 @SuppressWarnings("ConstantConditions")
 public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -45,6 +51,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -59,6 +67,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         int featureFlag = RCFeature.RC_FEATURES_E2E_CRC_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -79,6 +89,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00004() {
         int featureFlag = RCFeature.RC_FEATURES_E2E_CRC_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -99,6 +111,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00101() {
         int featureFlag = RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -119,6 +133,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00102() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -139,6 +155,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00103() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -160,6 +178,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00104() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -180,6 +200,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00105() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -200,6 +222,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00106() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -220,6 +244,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00107() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -241,6 +267,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00108() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -262,6 +290,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00110() {
         int featureFlag = 0;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -295,6 +325,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00111() {
         int featureFlag = RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -328,6 +360,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00112() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -361,6 +395,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00113() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -394,6 +430,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00114() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -427,6 +465,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00115() {
         int featureFlag = RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
@@ -461,6 +501,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00116() {
         int featureFlag = RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
@@ -495,6 +537,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00117() {
         int featureFlag = RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
@@ -529,6 +573,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00118() {
         int featureFlag = RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
@@ -563,6 +609,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00119() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
@@ -597,6 +645,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00120() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
@@ -631,6 +681,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00121() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
@@ -665,6 +717,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00122() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
@@ -699,6 +753,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00123() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
@@ -733,6 +789,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00124() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
@@ -767,6 +825,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00125() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
@@ -801,6 +861,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00126() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
@@ -835,6 +897,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00127() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
@@ -869,6 +933,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00128() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
@@ -903,6 +969,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00129() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
@@ -937,6 +1005,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00130() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
@@ -971,6 +1041,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00131() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
@@ -1006,6 +1078,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00132() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
@@ -1041,6 +1115,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00133() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_E2E_CRC_SUPPORTED_TRUE
@@ -1077,6 +1153,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00134() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_E2E_CRC_SUPPORTED_TRUE
@@ -1119,6 +1197,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00135() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1154,6 +1234,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00136() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1189,6 +1271,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00137() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE;
@@ -1224,6 +1308,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00138() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1259,6 +1345,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00139() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1294,6 +1382,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00140() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1329,6 +1419,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00141() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1364,6 +1456,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00142() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1399,6 +1493,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00201() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1435,6 +1531,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00202() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1471,6 +1569,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00203() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1507,6 +1607,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00204() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1543,6 +1645,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00205() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1579,6 +1683,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00206() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1615,6 +1721,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00207() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1651,6 +1759,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00208() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1687,6 +1797,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00209() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1722,6 +1834,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00210() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1757,6 +1871,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00211() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1792,6 +1908,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00212() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE;
@@ -1827,6 +1945,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00213() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1863,6 +1983,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00214() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1899,6 +2021,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00215() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1935,6 +2059,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00216() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_READY_FOR_DISCONNECT_SUPPORTED_TRUE
@@ -1971,6 +2097,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00217() {
         int featureFlag = 0;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2050,6 +2178,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00218() {
         int featureFlag = RCFeature.RC_FEATURES_ENABLE_DISCONNECT_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2129,6 +2259,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00219() {
         int featureFlag = RCFeature.RC_FEATURES_PROPOSE_RECONNECTION_TIMEOUT_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2208,6 +2340,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00220() {
         int featureFlag = RCFeature.RC_FEATURES_PROPOSE_CONNECTION_INTERVAL_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2287,6 +2421,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00221() {
         int featureFlag = RCFeature.RC_FEATURES_PROPOSE_CONNECTION_INTERVAL_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2366,6 +2502,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00222() {
         int featureFlag = RCFeature.RC_FEATURES_PROPOSE_ADVERTISEMENT_COUNT_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2445,6 +2583,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00223() {
         int featureFlag = RCFeature.RC_FEATURES_PROPOSE_SUPERVISION_TIMEOUT_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2524,6 +2664,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00224() {
         int featureFlag = RCFeature.RC_FEATURES_PROPOSE_ADVERTISEMENT_INTERVAL_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2603,6 +2745,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00225() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2695,6 +2839,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00226() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2787,6 +2933,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00227() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2879,6 +3027,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00228() {
         int featureFlag = RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -2971,6 +3121,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00229() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
@@ -3064,6 +3216,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00230() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
@@ -3157,6 +3311,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00231() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
@@ -3250,6 +3406,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00232() {
         int featureFlag = RCFeature.RC_FEATURES_UPGRADE_TO_LESC_ONLY_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
@@ -3343,6 +3501,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00233() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
@@ -3436,6 +3596,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00234() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
@@ -3529,6 +3691,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00235() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
@@ -3622,6 +3786,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00236() {
         int featureFlag = RCFeature.RC_FEATURES_NEXT_PAIRING_OOB_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
@@ -3715,6 +3881,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00237() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -3794,6 +3962,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00238() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_1_SUPPORTED_TRUE;
@@ -3887,6 +4057,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00239() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_2_SUPPORTED_TRUE;
@@ -3980,6 +4152,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00240() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_3_SUPPORTED_TRUE;
@@ -4073,6 +4247,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00241() {
         int featureFlag = RCFeature.RC_FEATURES_LIMITED_ACCESS_SUPPORTED_TRUE
                 | RCFeature.RC_FEATURES_ADVERTISEMENT_CONFIGURATION_4_SUPPORTED_TRUE;
@@ -4166,6 +4342,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00242() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4245,6 +4423,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00243() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4324,6 +4504,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00244() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4403,6 +4585,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00245() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4482,6 +4666,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00246() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4561,6 +4747,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00247() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4640,6 +4828,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00248() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4719,6 +4909,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00249() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4798,6 +4990,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00250() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4877,6 +5071,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00251() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -4956,6 +5152,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00252() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5035,6 +5233,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00253() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5114,6 +5314,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00254() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5200,6 +5402,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00255() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5286,6 +5490,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00256() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5372,6 +5578,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00257() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5458,6 +5666,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00258() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5544,6 +5754,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00259() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5630,6 +5842,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00260() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5716,6 +5930,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00261() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5802,6 +6018,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00262() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5888,6 +6106,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00263() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -5974,6 +6194,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00264() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6060,6 +6282,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00265() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6146,6 +6370,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00266() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6232,6 +6458,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00267() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6318,6 +6546,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00268() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6404,6 +6634,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00269() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6490,6 +6722,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00270() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6576,6 +6810,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00271() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6662,6 +6898,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00272() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6748,6 +6986,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00273() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6834,6 +7074,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00274() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -6920,6 +7162,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00275() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7006,6 +7250,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00276() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7092,6 +7338,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00277() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7178,6 +7426,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00278() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7264,6 +7514,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00279() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7350,6 +7602,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00280() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7436,6 +7690,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00281() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7522,6 +7778,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00282() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7608,6 +7866,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00283() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7701,6 +7961,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00284() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7794,6 +8056,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00285() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7887,6 +8151,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00286() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -7980,6 +8246,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00287() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8073,6 +8341,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00288() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8166,6 +8436,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00289() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8259,6 +8531,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00290() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8352,6 +8626,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00291() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8445,6 +8721,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00292() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8538,6 +8816,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00293() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8631,6 +8911,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00294() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8724,6 +9006,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00295() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8817,6 +9101,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00296() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -8910,6 +9196,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00297() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -9003,6 +9291,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00298() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -9099,6 +9389,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00299() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -9195,6 +9487,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_0029a() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -9293,6 +9587,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_0029b() {
         int featureFlag = RCFeature.RC_FEATURES_USE_OF_WHITE_LIST_SUPPORTED_TRUE;
         byte[] featureData = new byte[]{(byte) featureFlag
@@ -9391,6 +9687,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRCFeature_00001() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED, (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8, 0, 0, 0});
 
@@ -9423,6 +9721,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRCFeature_00002() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED, (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8, 0, 0, 0});
 
@@ -9455,6 +9755,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRCFeature_00003() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED, (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8, 0, 0, 0});
 
@@ -9487,6 +9789,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRCFeature_00001() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED, (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8, 0, 0, 0});
 
@@ -9505,6 +9809,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRCSettings_00001() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED
                 , (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8
@@ -9631,6 +9937,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRCSettings_00002() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED
                 , (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8
@@ -9762,6 +10070,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRCSettings_00003() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED
                 , (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8
@@ -9896,6 +10206,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRCSettings_00001() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED
                 , (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8
@@ -10003,6 +10315,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addReconnectionConfigurationControlPoint_00001() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED
                 , (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8
@@ -10134,6 +10448,8 @@ public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends Abs
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeReconnectionConfigurationControlPoint_00001() {
         RCFeature rcFeature = new RCFeature(new byte[]{(byte) RCFeature.E2E_CRC_NOT_SUPPORTED
                 , (byte) RCFeature.E2E_CRC_NOT_SUPPORTED >> 8

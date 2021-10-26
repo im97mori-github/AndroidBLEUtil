@@ -8,6 +8,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -26,6 +27,7 @@ import static org.junit.Assert.assertTrue;
 public class ReadPhyTaskTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_createInitialMessage_00001() {
         ReadPhyTask task = new ReadPhyTask(null, null, null, ReadPhyTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
@@ -39,6 +41,7 @@ public class ReadPhyTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createReadPhySuccessMessage_00001() {
         int txPhy = new Random().nextInt();
         int rxPhy = new Random().nextInt();
@@ -56,6 +59,7 @@ public class ReadPhyTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createReadPhyErrorMessage_00001() {
         int status = new Random().nextInt();
         Message message = ReadPhyTask.createReadPhyErrorMessage(status);
@@ -70,12 +74,14 @@ public class ReadPhyTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_doProcess_00001() {
         ReadPhyTask task = new ReadPhyTask(null, null, null, ReadPhyTask.TIMEOUT_MILLIS, null);
         assertFalse(task.doProcess(new Message()));
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00001() {
         Looper looper = null;
         try {
@@ -97,6 +103,7 @@ public class ReadPhyTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00002() {
         Looper looper = null;
         try {

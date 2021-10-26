@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a3f.AlertStatusAndroid;
 import org.im97mori.ble.characteristic.u2a40.RingerControlPoint;
@@ -33,6 +34,7 @@ import static org.junit.Assert.assertTrue;
 public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -66,6 +68,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -99,6 +102,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -132,6 +136,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -165,6 +170,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -198,6 +204,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -231,6 +238,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -264,6 +272,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -297,6 +306,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -330,6 +340,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -366,6 +377,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -402,6 +414,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -438,6 +451,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -474,6 +488,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -510,6 +525,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -546,6 +562,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -582,6 +599,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -618,6 +636,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -654,6 +673,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -690,6 +710,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -727,6 +748,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -764,6 +786,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -801,6 +824,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -838,6 +862,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -875,6 +900,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -912,6 +938,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -949,6 +976,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -986,6 +1014,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatus_000001() {
         PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
@@ -993,6 +1022,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatus_000002() {
         PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1007,6 +1037,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatus_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1023,6 +1054,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatusClientCharacteristicConfiguration_000001() {
         PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
@@ -1030,6 +1062,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatusClientCharacteristicConfiguration_000002() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1044,6 +1077,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatusClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1062,6 +1096,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAlertStatusNotification_000001() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
@@ -1069,6 +1104,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAlertStatusNotification_000002() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1083,6 +1119,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAlertStatusNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1101,6 +1138,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAlertStatusNotification_000001() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
@@ -1108,6 +1146,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAlertStatusNotification_000002() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1122,6 +1161,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAlertStatusNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1140,6 +1180,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSetting_000001() {
         PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
@@ -1147,6 +1188,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSetting_000002() {
         PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1161,6 +1203,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSetting_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1177,6 +1220,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSettingClientCharacteristicConfiguration_000001() {
         PhoneAlertStatusService phoneAlertStatusService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
@@ -1184,6 +1228,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSettingClientCharacteristicConfiguration_000002() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1198,6 +1243,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSettingClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1216,6 +1262,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRingerSettingNotification_000001() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
@@ -1223,6 +1270,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRingerSettingNotification_000002() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1237,6 +1285,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRingerSettingNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1255,6 +1304,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRingerSettingNotification_000001() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
 
@@ -1262,6 +1312,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRingerSettingNotification_000002() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1276,6 +1327,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRingerSettingNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1294,6 +1346,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRingerControlPoint_000001() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null);
         RingerControlPoint ringerControlPoint = new RingerControlPoint(0);
@@ -1302,6 +1355,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRingerControlPoint_000002() {
         PhoneAlertStatusService runningSpeedAndCadenceService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, new MockPhoneAlertStatusServiceCallback(), null) {
 
@@ -1317,6 +1371,7 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRingerControlPoint_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);

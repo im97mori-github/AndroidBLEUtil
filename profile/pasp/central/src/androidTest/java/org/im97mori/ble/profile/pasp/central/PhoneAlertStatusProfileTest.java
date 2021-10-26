@@ -1,10 +1,13 @@
 package org.im97mori.ble.profile.pasp.central;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -43,13 +46,30 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findPhoneAlertStatusProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
-        assertNull(phoneAlertStatusProfile.findPhoneAlertStatusProfileDevices(null));
+        assertTrue(phoneAlertStatusProfile.createFilteredScanCallback() instanceof PhoneAlertStatusProfileScanCallback);
     }
 
     @Test
-    public void test_findPhoneAlertStatusProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
+        assertTrue(phoneAlertStatusProfile.createFilteredLeScanCallback() instanceof PhoneAlertStatusProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
+        assertNull(phoneAlertStatusProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
@@ -62,18 +82,20 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
             }
         };
         phoneAlertStatusProfile.start();
-        assertNotNull(phoneAlertStatusProfile.findPhoneAlertStatusProfileDevices(bundle));
+        assertNotNull(phoneAlertStatusProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         phoneAlertStatusProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatus_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.getAlertStatus());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatus_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -94,12 +116,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatusClientCharacteristicConfiguration_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.getAlertStatusClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertStatusClientCharacteristicConfiguration_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -120,12 +144,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startAlertStatusNotification_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.startAlertStatusNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startAlertStatusNotification_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -146,12 +172,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAlertStatusNotification_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.stopAlertStatusNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopAlertStatusNotification_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -172,12 +200,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSetting_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.getRingerSetting());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSetting_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -198,12 +228,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSettingClientCharacteristicConfiguration_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.getRingerSettingClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRingerSettingClientCharacteristicConfiguration_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -224,12 +256,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRingerSettingNotification_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.startRingerSettingNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startRingerSettingNotification_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -250,12 +284,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRingerSettingNotification_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.stopRingerSettingNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRingerSettingNotification_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -276,12 +312,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setRingerControlPoint_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertNull(phoneAlertStatusProfile.setRingerControlPoint(new RingerControlPoint(1)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setRingerControlPoint_00002() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
             @Override
@@ -302,12 +340,14 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         assertTrue(phoneAlertStatusProfile.getDatabaseHelper() instanceof PhoneAlertStatusProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback()) {
@@ -324,6 +364,7 @@ public class PhoneAlertStatusProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         PhoneAlertStatusProfile phoneAlertStatusProfile = new PhoneAlertStatusProfile(ApplicationProvider.getApplicationContext(), new BasePhoneAlertStatusProfileCallback());
         phoneAlertStatusProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

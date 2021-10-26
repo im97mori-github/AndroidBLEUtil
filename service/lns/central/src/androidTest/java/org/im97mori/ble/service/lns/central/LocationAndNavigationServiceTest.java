@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a67.LocationAndSpeedAndroid;
 import org.im97mori.ble.characteristic.u2a68.NavigationAndroid;
@@ -46,6 +47,7 @@ import static org.junit.Assert.assertTrue;
 public class LocationAndNavigationServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -57,6 +59,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00101() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -70,6 +73,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00201() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -83,6 +87,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         locationAndNavigationService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -91,6 +96,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -100,6 +106,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -109,6 +116,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -119,6 +127,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -129,6 +138,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00006() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -139,6 +149,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00007() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -149,6 +160,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         locationAndNavigationService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -157,6 +169,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -166,6 +179,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -175,6 +189,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -185,6 +200,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -195,6 +211,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00106() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -205,6 +222,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00107() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -217,6 +235,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00108() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -229,6 +248,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00201() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         locationAndNavigationService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -237,6 +257,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00202() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -246,6 +267,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00203() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -255,6 +277,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00204() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -265,6 +288,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00205() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -275,6 +299,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00206() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -287,6 +312,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00207() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -299,6 +325,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -332,6 +359,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -357,6 +385,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -382,6 +411,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -415,6 +445,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -440,6 +471,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -465,6 +497,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -498,6 +531,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -523,6 +557,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -548,6 +583,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -581,6 +617,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -606,6 +643,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -631,6 +669,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -664,6 +703,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -689,6 +729,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -714,6 +755,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -746,6 +788,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -771,6 +814,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -796,6 +840,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -829,6 +874,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -854,6 +900,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -879,6 +926,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -912,6 +960,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -937,6 +986,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -962,6 +1012,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -995,6 +1046,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1020,6 +1072,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1045,6 +1098,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1081,6 +1135,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1108,6 +1163,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1135,6 +1191,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1162,6 +1219,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1198,6 +1256,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1225,6 +1284,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1252,6 +1312,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1279,6 +1340,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1315,6 +1377,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1342,6 +1405,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1369,6 +1433,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1396,6 +1461,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1432,6 +1498,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1459,6 +1526,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1486,6 +1554,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1513,6 +1582,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1549,6 +1619,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1576,6 +1647,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1603,6 +1675,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1630,6 +1703,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1666,6 +1740,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1693,6 +1768,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1720,6 +1796,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1747,6 +1824,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1783,6 +1861,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1810,6 +1889,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1837,6 +1917,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1864,6 +1945,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1900,6 +1982,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1927,6 +2010,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1954,6 +2038,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1981,6 +2066,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2017,6 +2103,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2044,6 +2131,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2071,6 +2159,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2098,6 +2187,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2134,6 +2224,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2162,6 +2253,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2190,6 +2282,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2218,6 +2311,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2254,6 +2348,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2282,6 +2377,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2310,6 +2406,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2338,6 +2435,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2374,6 +2472,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2402,6 +2501,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2430,6 +2530,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2458,6 +2559,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2494,6 +2596,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2522,6 +2625,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2550,6 +2654,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2578,6 +2683,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2614,6 +2720,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2642,6 +2749,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2670,6 +2778,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2698,6 +2807,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2734,6 +2844,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00206() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2762,6 +2873,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00207() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2790,6 +2902,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00208() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2818,6 +2931,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2855,6 +2969,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2883,6 +2998,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2911,6 +3027,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2939,6 +3056,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2976,6 +3094,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3004,6 +3123,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3032,6 +3152,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3060,6 +3181,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3097,6 +3219,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3125,6 +3248,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3153,6 +3277,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3181,6 +3306,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3218,6 +3344,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3246,6 +3373,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3274,6 +3402,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3302,6 +3431,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3339,6 +3469,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3367,6 +3498,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3395,6 +3527,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3423,6 +3556,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3460,6 +3594,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00206() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3488,6 +3623,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00207() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3516,6 +3652,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00208() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3544,6 +3681,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3581,6 +3719,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3609,6 +3748,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3637,6 +3777,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3665,6 +3806,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3702,6 +3844,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00006() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3730,6 +3873,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00007() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3758,6 +3902,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00008() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3786,6 +3931,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3823,6 +3969,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3851,6 +3998,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3879,6 +4027,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3907,6 +4056,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3944,6 +4094,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00106() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3972,6 +4123,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00107() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4000,6 +4152,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00108() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4028,6 +4181,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4065,6 +4219,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4093,6 +4248,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4121,6 +4277,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4149,6 +4306,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4186,6 +4344,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00206() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4214,6 +4373,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00207() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4242,6 +4402,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00208() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4270,6 +4431,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4300,6 +4462,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
@@ -4324,6 +4487,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4348,6 +4512,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4372,6 +4537,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4402,6 +4568,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
@@ -4426,6 +4593,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4450,6 +4618,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4474,6 +4643,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4504,6 +4674,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
@@ -4528,6 +4699,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4552,6 +4724,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4576,6 +4749,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isPositionQualityCharacteristicSupported_00001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4583,6 +4757,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isPositionQualityCharacteristicSupported_00002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -4593,6 +4768,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isPositionQualityCharacteristicSupported_00003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -4604,6 +4780,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLNControlPointCharacteristicSupported_00001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4611,6 +4788,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLNControlPointCharacteristicSupported_00002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -4623,6 +4801,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLNControlPointCharacteristicSupported_00003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -4636,6 +4815,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isNavigationCharacteristicSupported_00001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4643,6 +4823,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isNavigationCharacteristicSupported_00002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -4655,6 +4836,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isNavigationCharacteristicSupported_00003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
@@ -4668,6 +4850,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNFeature_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4675,6 +4858,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNFeature_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4689,6 +4873,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNFeature_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -4707,6 +4892,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocationAndSpeedClientCharacteristicConfiguration_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4714,6 +4900,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocationAndSpeedClientCharacteristicConfiguration_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4728,6 +4915,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocationAndSpeedClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -4746,6 +4934,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLocationAndSpeedNotification_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4753,6 +4942,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLocationAndSpeedNotification_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4767,6 +4957,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLocationAndSpeedNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -4785,6 +4976,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLocationAndSpeedNotification_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4792,6 +4984,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLocationAndSpeedNotification_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4806,6 +4999,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLocationAndSpeedNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -4824,6 +5018,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPositionQuality_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4831,6 +5026,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPositionQuality_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4845,6 +5041,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPositionQuality_000003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4864,6 +5061,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPositionQuality_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -4887,6 +5085,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
         LNControlPoint lnControlPoint = new LNControlPoint(new byte[]{0});
@@ -4895,6 +5094,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4910,6 +5110,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_000003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4930,6 +5131,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -4954,6 +5156,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNControlPointClientCharacteristicConfiguration_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -4961,6 +5164,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNControlPointClientCharacteristicConfiguration_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4975,6 +5179,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNControlPointClientCharacteristicConfiguration_000003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -4994,6 +5199,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNControlPointClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5017,6 +5223,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLNControlPointIndication_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -5024,6 +5231,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLNControlPointIndication_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -5038,6 +5246,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLNControlPointIndication_000003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -5057,6 +5266,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLNControlPointIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5080,6 +5290,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLNControlPointIndication_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -5087,6 +5298,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLNControlPointIndication_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -5101,6 +5313,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLNControlPointIndication_000003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -5120,6 +5333,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLNControlPointIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5143,6 +5357,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startNavigationNotification_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -5150,6 +5365,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startNavigationNotification_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -5164,6 +5380,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startNavigationNotification_000003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -5183,6 +5400,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startNavigationNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5206,6 +5424,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNavigationNotification_000001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null);
 
@@ -5213,6 +5432,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNavigationNotification_000002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -5227,6 +5447,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNavigationNotification_000003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(MOCK_BLE_CONNECTION, new MockLocationAndNavigationServiceCallback(), null) {
 
@@ -5246,6 +5467,7 @@ public class LocationAndNavigationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNavigationNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

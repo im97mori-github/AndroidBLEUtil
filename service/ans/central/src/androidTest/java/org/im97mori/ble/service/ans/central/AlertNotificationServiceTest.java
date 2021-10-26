@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a44.AlertNotificationControlPoint;
 import org.im97mori.ble.characteristic.u2a44.AlertNotificationControlPointAndroid;
@@ -40,6 +41,7 @@ import static org.junit.Assert.assertTrue;
 public class AlertNotificationServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -73,6 +75,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -106,6 +109,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -139,6 +143,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -172,6 +177,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -205,6 +211,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -238,6 +245,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -271,6 +279,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -304,6 +313,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -337,6 +347,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -373,6 +384,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -409,6 +421,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -445,6 +458,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -481,6 +495,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -517,6 +532,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -553,6 +569,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -589,6 +606,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -625,6 +643,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -661,6 +680,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -697,6 +717,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -734,6 +755,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -771,6 +793,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -808,6 +831,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -845,6 +869,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -882,6 +907,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -919,6 +945,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -956,6 +983,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -993,6 +1021,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1023,6 +1052,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1053,6 +1083,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedNewAlertCategory_000001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
@@ -1060,6 +1091,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedNewAlertCategory_000002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1074,6 +1106,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedNewAlertCategory_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1092,6 +1125,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getNewAlertClientCharacteristicConfiguration_00001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
@@ -1099,6 +1133,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getNewAlertClientCharacteristicConfiguration_00002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1113,6 +1148,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getNewAlertClientCharacteristicConfiguration_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1132,6 +1168,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startNewAlertNotification_00001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
@@ -1139,6 +1176,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startNewAlertNotification_00002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1153,6 +1191,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startNewAlertNotification_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1172,6 +1211,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNewAlertNotification_00001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
@@ -1179,6 +1219,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNewAlertNotification_00002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1193,6 +1234,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNewAlertNotification_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1211,6 +1253,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedUnreadAlertCategory_000001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
@@ -1218,6 +1261,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedUnreadAlertCategory_000002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1232,6 +1276,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSupportedUnreadAlertCategory_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1251,6 +1296,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUnreadAlertStatusClientCharacteristicConfiguration_00001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
@@ -1258,6 +1304,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUnreadAlertStatusClientCharacteristicConfiguration_00002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1272,6 +1319,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getUnreadAlertStatusClientCharacteristicConfiguration_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1290,6 +1338,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startUnreadAlertStatusNotification_00001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
@@ -1297,6 +1346,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startUnreadAlertStatusNotification_00002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1311,6 +1361,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startUnreadAlertStatusNotification_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1329,6 +1380,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUnreadAlertStatusNotification_00001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
 
@@ -1336,6 +1388,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUnreadAlertStatusNotification_00002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1350,6 +1403,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopUnreadAlertStatusNotification_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1368,6 +1422,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAlertNotificationControlPoint_00001() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null);
         AlertNotificationControlPoint alertNotificationControlPoint = new AlertNotificationControlPoint(AlertNotificationControlPoint.COMMAND_ID_ENABLE_NEW_IMCOMING_ALERT_NOTIFICATION, AlertNotificationCategoryIdUtils.CATEGORY_ID_ALL);
@@ -1376,6 +1431,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAlertNotificationControlPoint_00002() {
         AlertNotificationService alertNotificationService = new AlertNotificationService(MOCK_BLE_CONNECTION, new MockAlertNotificationServiceCallback(), null) {
 
@@ -1391,6 +1447,7 @@ public class AlertNotificationServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setAlertNotificationControlPoint_00003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);

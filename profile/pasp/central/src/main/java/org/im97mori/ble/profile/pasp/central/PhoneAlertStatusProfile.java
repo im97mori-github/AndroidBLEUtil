@@ -2,15 +2,18 @@ package org.im97mori.ble.profile.pasp.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a40.RingerControlPoint;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.pasp.central.db.PhoneAlertStatusProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.pass.central.PhoneAlertStatusService;
 import org.im97mori.ble.task.DiscoverServiceTask;
@@ -37,17 +40,6 @@ public class PhoneAlertStatusProfile extends AbstractCentralProfile {
     public PhoneAlertStatusProfile(@NonNull Context context, @NonNull PhoneAlertStatusProfileCallback phoneAlertStatusProfileCallback) {
         super(context, phoneAlertStatusProfileCallback);
         mPhoneAlertStatusProfileCallback = phoneAlertStatusProfileCallback;
-    }
-
-    /**
-     * find Phone Alert Status Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findPhoneAlertStatusProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new PhoneAlertStatusProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -197,6 +189,25 @@ public class PhoneAlertStatusProfile extends AbstractCentralProfile {
             mBLEConnection.createDiscoverServiceTask(DiscoverServiceTask.TIMEOUT_MILLIS, null, this);
         }
         super.onBLEConnected(taskId, bluetoothDevice, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new PhoneAlertStatusProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new PhoneAlertStatusProfileLeScanCallback(this, null);
     }
 
 }

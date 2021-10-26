@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LE_SUPPORTED_FEATURES;
+import static org.im97mori.ble.constants.DataType.LE_SUPPORTED_FEATURES_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -18,7 +18,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
         data_00001 = data;
     }
@@ -27,7 +27,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000010;
         data_00002 = data;
     }
@@ -36,7 +36,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000100;
         data_00003 = data;
     }
@@ -45,7 +45,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00001000;
         data_00004 = data;
     }
@@ -54,7 +54,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00010000;
         data_00005 = data;
     }
@@ -63,7 +63,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00100000;
         data_00006 = data;
     }
@@ -72,7 +72,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b01000000;
         data_00007 = data;
     }
@@ -81,7 +81,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = (byte) 0b10000000;
         data_00008 = data;
     }
@@ -90,7 +90,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000001;
         data_00009 = data;
@@ -100,7 +100,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000010;
         data_00010 = data;
@@ -110,7 +110,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000100;
         data_00011 = data;
@@ -120,7 +120,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00001000;
         data_00012 = data;
@@ -130,7 +130,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00010000;
         data_00013 = data;
@@ -140,7 +140,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00100000;
         data_00014 = data;
@@ -150,7 +150,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b01000000;
         data_00015 = data;
@@ -160,7 +160,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = (byte) 0b10000000;
         data_00016 = data;
@@ -170,7 +170,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000001;
@@ -181,7 +181,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000010;
@@ -192,7 +192,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000100;
@@ -203,7 +203,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00001000;
@@ -214,7 +214,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00010000;
@@ -225,7 +225,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00100000;
@@ -236,7 +236,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b01000000;
@@ -247,7 +247,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = (byte) 0b10000000;
@@ -258,7 +258,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -270,7 +270,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -282,7 +282,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -294,7 +294,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -306,7 +306,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -318,7 +318,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -330,7 +330,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -342,7 +342,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -354,7 +354,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -366,7 +366,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[7];
         data[0] = 6;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -379,7 +379,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[7];
         data[0] = 6;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -392,7 +392,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[7];
         data[0] = 6;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -405,7 +405,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[7];
         data[0] = 6;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000000;
         data[3] = 0b00000000;
         data[4] = 0b00000000;
@@ -418,7 +418,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[7];
         data[0] = 6;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -431,7 +431,7 @@ public class LeSupportedFeaturesTest {
     static {
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data_00101 = data;
     }
     //@formatter:on
@@ -468,7 +468,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getLeSupportedFeaturesList().size());
         assertTrue(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -514,7 +514,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertTrue(result1.isConnectionParametersRequestProcedureSupported());
@@ -560,7 +560,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -606,7 +606,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -652,7 +652,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -698,7 +698,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -744,7 +744,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -790,7 +790,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(2, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -836,7 +836,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -882,7 +882,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -928,7 +928,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -974,7 +974,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1020,7 +1020,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1066,7 +1066,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1112,7 +1112,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1158,7 +1158,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1204,7 +1204,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(3, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1250,7 +1250,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(3, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1296,7 +1296,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(3, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1342,7 +1342,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(3, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1388,7 +1388,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(3, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1434,7 +1434,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(3, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1480,7 +1480,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(3, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1526,7 +1526,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(3, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1572,7 +1572,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1618,7 +1618,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1664,7 +1664,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1710,7 +1710,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1756,7 +1756,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1802,7 +1802,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1848,7 +1848,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1894,7 +1894,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1940,7 +1940,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(4, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -1986,7 +1986,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(6, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -2032,7 +2032,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(6, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -2078,7 +2078,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(6, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -2124,7 +2124,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(6, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());
@@ -2170,7 +2170,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(6, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getLeSupportedFeaturesList().size());
         assertTrue(result1.isLeEncryptionSupported());
         assertTrue(result1.isConnectionParametersRequestProcedureSupported());
@@ -2216,7 +2216,7 @@ public class LeSupportedFeaturesTest {
 
         LeSupportedFeaturesAndroid result1 = new LeSupportedFeaturesAndroid(data, 0, data[0]);
         assertEquals(1, result1.getLength());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result1.getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result1.getDataType());
         assertEquals(0, result1.getLeSupportedFeaturesList().size());
         assertFalse(result1.isLeEncryptionSupported());
         assertFalse(result1.isConnectionParametersRequestProcedureSupported());

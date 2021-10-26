@@ -3,6 +3,7 @@ package org.im97mori.ble.service.gatt.peripheral;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a00.DeviceName;
 import org.im97mori.ble.characteristic.u2a01.Appearance;
@@ -29,9 +30,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -46,6 +52,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -61,6 +69,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -76,6 +86,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDeviceName_00001() {
         String deviceName = "deviceName";
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -96,6 +108,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDeviceName_00002() {
         String deviceName = "deviceName";
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -116,6 +130,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDeviceName_00003() {
         String deviceName = "deviceName";
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -138,6 +154,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addDeviceName_00004() {
         String deviceName = "deviceName";
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -160,6 +178,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeDeviceName_00001() {
         String deviceName = "deviceName";
 
@@ -178,6 +198,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAppearance_00001() {
         byte[] data = new byte[]{0, 1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -198,6 +220,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAppearance_00002() {
         byte[] data = new byte[]{0, 1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -218,6 +242,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAppearance_00003() {
         byte[] data = new byte[]{0, 1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -240,6 +266,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAppearance_00004() {
         byte[] data = new byte[]{0, 1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -262,6 +290,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAppearance_00001() {
         byte[] data = new byte[]{0, 1};
 
@@ -281,6 +311,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPreferredConnectionParameters_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -299,6 +331,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPreferredConnectionParameters_00002() {
         byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -320,6 +354,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPreferredConnectionParameters_00003() {
         byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -343,6 +379,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPreferredConnectionParameters_00004() {
         byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -366,6 +404,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removePeripheralPreferredConnectionParameters_00001() {
         byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -385,6 +425,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCentralAddressResolution_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -403,6 +445,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCentralAddressResolution_00002() {
         byte[] data = new byte[]{1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -424,6 +468,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCentralAddressResolution_00003() {
         byte[] data = new byte[]{1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -447,6 +493,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCentralAddressResolution_00004() {
         byte[] data = new byte[]{1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -470,6 +518,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCentralAddressResolution_00001() {
         byte[] data = new byte[]{1};
 
@@ -489,6 +539,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addResolvablePrivateAddressOnly_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -507,6 +559,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addResolvablePrivateAddressOnly_00002() {
         byte[] data = new byte[]{1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -528,6 +582,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addResolvablePrivateAddressOnly_00003() {
         byte[] data = new byte[]{1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -551,6 +607,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addResolvablePrivateAddressOnly_00004() {
         byte[] data = new byte[]{1};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -574,6 +632,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeResolvablePrivateAddressOnly_00001() {
         byte[] data = new byte[]{1};
 
@@ -593,6 +653,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addReconnectionAddress_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -612,6 +674,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeReconnectionAddress_00001() {
         Exception exception = null;
         try {
@@ -629,6 +693,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPrivacyFlag_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -647,6 +713,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPrivacyFlag_00002() {
         byte[] data = new byte[]{0};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -668,6 +736,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPrivacyFlag_00003() {
         byte[] data = new byte[]{0};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -691,6 +761,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPrivacyFlag_00004() {
         byte[] data = new byte[]{0};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -714,6 +786,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPeripheralPrivacyFlag_00005() {
         byte[] data = new byte[]{0};
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -737,6 +811,8 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removePeripheralPrivacyFlag_00001() {
         byte[] data = new byte[]{0};
 

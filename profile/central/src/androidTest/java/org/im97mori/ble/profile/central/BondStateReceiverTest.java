@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.profile.central.db.BaseBondedDeviceDatabaseHelper;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
@@ -20,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 public class BondStateReceiverTest {
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00001() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -42,6 +44,7 @@ public class BondStateReceiverTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00101() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -64,6 +67,7 @@ public class BondStateReceiverTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00102() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -86,6 +90,7 @@ public class BondStateReceiverTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00201() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -110,6 +115,7 @@ public class BondStateReceiverTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00202() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -135,6 +141,7 @@ public class BondStateReceiverTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00203() {
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
@@ -159,6 +166,7 @@ public class BondStateReceiverTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00204() {
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
@@ -183,6 +191,7 @@ public class BondStateReceiverTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00301() {
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
@@ -207,6 +216,7 @@ public class BondStateReceiverTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onReceive_00302() {
         final AtomicReference<BluetoothDevice> atomicReference1 = new AtomicReference<>(null);
         final AtomicReference<BluetoothDevice> atomicReference2 = new AtomicReference<>(null);

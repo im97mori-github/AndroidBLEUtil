@@ -1,19 +1,25 @@
 package org.im97mori.ble.profile.esp.central;
 
+import static org.im97mori.ble.constants.ServiceUUID.BATTERY_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u290b.EnvironmentalSensingConfiguration;
 import org.im97mori.ble.descriptor.u290d.EnvironmentalSensingTriggerSetting;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.esp.central.db.EnvironmentalSensingProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.bas.central.BatteryService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
@@ -21,9 +27,6 @@ import org.im97mori.ble.service.ess.central.EnvironmentalSensingService;
 import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
-
-import static org.im97mori.ble.constants.ServiceUUID.BATTERY_SERVICE;
-import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 
 /**
  * Environmental Sensing Profile for Central
@@ -67,17 +70,6 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     public EnvironmentalSensingProfile(@NonNull Context context, @NonNull EnvironmentalSensingProfileCallback environmentalSensingProfileCallback) {
         super(context, environmentalSensingProfileCallback);
         mEnvironmentalSensingProfileCallback = environmentalSensingProfileCallback;
-    }
-
-    /**
-     * find Environmental Sensing Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findEnvironmentalSensingProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new EnvironmentalSensingProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -7228,6 +7220,25 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
             }
         }
         super.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new EnvironmentalSensingProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new EnvironmentalSensingProfileLeScanCallback(this, null);
     }
 
 }

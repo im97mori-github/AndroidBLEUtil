@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SET_IDENTITY_RESOLVING_KEY_CHARACTERISTIC_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SET_IDENTITY_RESOLVING_KEY_CHARACTERISTIC;
 
 /**
  * Set Identity Resolving Key Characteristic (Characteristics UUID: 0x2B84)
@@ -45,7 +45,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroid extends SetIdentityRes
          */
         @NonNull
         public SetIdentityResolvingKeyCharacteristicAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SET_IDENTITY_RESOLVING_KEY_CHARACTERISTIC_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SET_IDENTITY_RESOLVING_KEY_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
         }

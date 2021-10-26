@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2aa0.MagneticFluxDensity2D;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
@@ -32,9 +33,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDensity2D extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMagneticFluxDensity2D_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -48,6 +54,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMagneticFluxDensity2D_00002() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -72,6 +80,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMagneticFluxDensity2D_00003() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -96,6 +106,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMagneticFluxDensity2D_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -135,6 +147,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2D_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -155,6 +169,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2D_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -189,6 +205,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsMeasurement_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -220,6 +238,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsMeasurement_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -269,6 +289,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsMeasurement_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -298,6 +320,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsMeasurement_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -326,6 +350,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsTriggerSetting_00001() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -355,6 +381,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsTriggerSetting_00002() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -384,6 +412,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsTriggerSetting_00003() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -413,6 +443,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsTriggerSetting_00004() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -439,6 +471,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsTriggerSetting_00101() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -479,6 +513,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsTriggerSetting_00102() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -519,6 +555,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsTriggerSetting_00103() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -559,6 +597,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsTriggerSetting_00104() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -607,6 +647,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsTriggerSetting_00001() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -634,6 +676,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsTriggerSetting_00002() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -661,6 +705,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsTriggerSetting_00003() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -688,6 +734,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsTriggerSetting_00004() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -715,6 +763,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsTriggerSetting_00101() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -747,6 +797,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsTriggerSetting_00102() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -779,6 +831,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsTriggerSetting_00103() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -811,6 +865,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsTriggerSetting_00104() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -847,6 +903,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsConfiguration_00001() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -880,6 +938,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsConfiguration_00002() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -914,6 +974,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsConfiguration_00101() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);
@@ -971,6 +1033,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DEsConfiguration_00102() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);
@@ -1030,6 +1094,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsConfiguration_00001() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -1058,6 +1124,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DEsConfiguration_00101() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);
@@ -1092,6 +1160,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DCharacteristicUserDescription_00001() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -1120,6 +1190,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DCharacteristicUserDescription_00002() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -1148,6 +1220,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DCharacteristicUserDescription_00101() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);
@@ -1197,6 +1271,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DCharacteristicUserDescription_00102() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);
@@ -1245,6 +1321,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DCharacteristicUserDescription_00001() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -1271,6 +1349,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DCharacteristicUserDescription_00101() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);
@@ -1317,6 +1397,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DValidRange_00001() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -1345,6 +1427,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DValidRange_00002() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -1373,6 +1457,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DValidRange_00101() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);
@@ -1421,6 +1507,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticFluxDensity2DValidRange_00102() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);
@@ -1469,6 +1557,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DValidRange_00001() {
         int characteristicIndex = 0;
         MagneticFluxDensity2D originalValue = new MagneticFluxDensity2D(1, 11);
@@ -1495,6 +1585,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticFluxDens
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticFluxDensity2DValidRange_00101() {
         int characteristicIndex0 = 0;
         MagneticFluxDensity2D originalValue0 = new MagneticFluxDensity2D(1, 11);

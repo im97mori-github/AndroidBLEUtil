@@ -2,15 +2,17 @@ package org.im97mori.ble.profile.scpp.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.os.Bundle;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindow;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.scpp.central.db.ScanParametersProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.scps.central.ScanParametersService;
 
@@ -27,6 +29,11 @@ public class ScanParametersProfile extends AbstractCentralProfile {
     protected final ScanParametersProfileCallback mScanParametersProfileCallback;
 
     /**
+     * advertising UUID
+     */
+    protected final UUID mServiceUUId;
+
+    /**
      * {@link ScanParametersService} instance
      */
     protected ScanParametersService mScanParametersService;
@@ -34,22 +41,12 @@ public class ScanParametersProfile extends AbstractCentralProfile {
     /**
      * @param context                       {@link Context} instance
      * @param scanParametersProfileCallback {@link ScanParametersProfileCallback} instance
+     * @param serviceUUID                   advertising UUID
      */
-    public ScanParametersProfile(@NonNull Context context, @NonNull ScanParametersProfileCallback scanParametersProfileCallback) {
+    public ScanParametersProfile(@NonNull Context context, @NonNull ScanParametersProfileCallback scanParametersProfileCallback, @NonNull UUID serviceUUID) {
         super(context, scanParametersProfileCallback);
         mScanParametersProfileCallback = scanParametersProfileCallback;
-    }
-
-    /**
-     * find Scan Parameters Profile device
-     *
-     * @param serviceUUID advertising UUID
-     * @param argument    callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findScanParametersProfileDevices(@NonNull UUID serviceUUID, @Nullable Bundle argument) {
-        return scanDevice(new ScanParametersProfileScanCallback(serviceUUID, this, null), ScanTask.TIMEOUT_MILLIS, argument);
+        mServiceUUId = serviceUUID;
     }
 
     /**
@@ -139,6 +136,25 @@ public class ScanParametersProfile extends AbstractCentralProfile {
     public synchronized void quit() {
         super.quit();
         mScanParametersService = null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new ScanParametersProfileScanCallback(mServiceUUId, this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new ScanParametersProfileLeScanCallback(mServiceUUId, this, null);
     }
 
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/read_manufacturer_name"
+            android:title="@string/menu_read_manufacturer_name" />
+        <item
+            android:id="@+id/read_model_number"
+            android:title="@string/menu_read_model_number" />
+        <item
+            android:id="@+id/read_read_system_id"
+            android:title="@string/menu_read_system_id" />
+        <item
+            android:id="@+id/start_indicate_temperature_measurement"
+            android:title="@string/menu_indicate_temperature_measurement_start" />
+        <item
+            android:id="@+id/stop_indicate_temperature_measurement"
+            android:title="@string/menu_indicate_temperature_measurement_stop" />
+        <item
+            android:id="@+id/read_temperature_type"
+            android:title="@string/menu_read_temperature_type" />
+        <item
+            android:id="@+id/start_notify_intermediate_temperature"
+            android:title="@string/menu_notify_intermediate_temperature_start" />
+        <item
+            android:id="@+id/stop_notify_intermediate_temperature"
+            android:title="@string/menu_notify_intermediate_temperature_stop" />
+        <item
+            android:id="@+id/read_measurement_interval"
+            android:title="@string/menu_read_measurement_interval" />
+        <item
+            android:id="@+id/write_measurement_interval_0"
+            android:title="@string/menu_write_measurement_interval_0" />
+        <item
+            android:id="@+id/write_measurement_interval_1"
+            android:title="@string/menu_write_measurement_interval_1" />
+        <item
+            android:id="@+id/write_measurement_interval_5"
+            android:title="@string/menu_write_measurement_interval_5" />
+        <item
+            android:id="@+id/write_measurement_interval_10"
+            android:title="@string/menu_write_measurement_interval_10" />
+        <item
+            android:id="@+id/start_indicate_measurement_interval"
+            android:title="@string/menu_indicate_measurement_interval_start" />
+        <item
+            android:id="@+id/stop_indicate_measurement_interval"
+            android:title="@string/menu_indicate_measurement_interval_stop" />
+        <item
+            android:id="@+id/read_measurement_interval_valid_range"
+            android:title="@string/menu_read_measurement_interval_valid_range" />
+    </group>
+</menu>

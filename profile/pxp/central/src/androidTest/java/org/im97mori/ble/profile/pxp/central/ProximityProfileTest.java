@@ -2,11 +2,14 @@ package org.im97mori.ble.profile.pxp.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -59,13 +62,30 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findProximityProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
-        assertNull(proximityProfile.findProximityProfileDevices(null));
+        assertTrue(proximityProfile.createFilteredScanCallback() instanceof ProximityProfileScanCallback);
     }
 
     @Test
-    public void test_findProximityProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
+        assertTrue(proximityProfile.createFilteredLeScanCallback() instanceof ProximityProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
+        assertNull(proximityProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
@@ -78,18 +98,20 @@ public class ProximityProfileTest extends AbstractCentralTest {
             }
         };
         proximityProfile.start();
-        assertNotNull(proximityProfile.findProximityProfileDevices(bundle));
+        assertNotNull(proximityProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         proximityProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_hasImmediateAlertService_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         assertNull(proximityProfile.hasImmediateAlertService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasImmediateAlertService_00002() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -98,6 +120,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasImmediateAlertService_00003() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -108,6 +131,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasImmediateAlertService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(IMMEDIATE_ALERT_SERVICE, 0);
 
@@ -121,12 +145,14 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasTxPowerService_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         assertNull(proximityProfile.hasTxPowerService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasTxPowerService_00002() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -135,6 +161,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasTxPowerService_00003() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -145,6 +172,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasTxPowerService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(TX_POWER_SERVICE, 0);
 
@@ -158,12 +186,14 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertLevel_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         assertNull(proximityProfile.getAlertLevel());
     }
 
     @Test
+    @RequiresDevice
     public void test_getAlertLevel_00002() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
             @Override
@@ -184,12 +214,14 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLinkLossServiceAlertLevel_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         assertNull(proximityProfile.setLinkLossServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setLinkLossServiceAlertLevel_00002() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
             @Override
@@ -210,12 +242,14 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setImmediateAlertServiceAlertLevel_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         assertNull(proximityProfile.setImmediateAlertServiceAlertLevel(new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setImmediateAlertServiceAlertLevel_00002() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
             @Override
@@ -236,12 +270,14 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTxPowerLevel_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         assertNull(proximityProfile.getTxPowerLevel());
     }
 
     @Test
+    @RequiresDevice
     public void test_getTxPowerLevel_00002() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
             @Override
@@ -262,12 +298,14 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         assertTrue(proximityProfile.getDatabaseHelper() instanceof ProximityProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback()) {
@@ -286,6 +324,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         ProximityProfile proximityProfile = new ProximityProfile(ApplicationProvider.getApplicationContext(), new BaseProximityProfileCallback());
         proximityProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -296,6 +335,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -328,6 +368,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -352,6 +393,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -376,6 +418,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -408,6 +451,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -432,6 +476,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -456,6 +501,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -488,6 +534,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -512,6 +559,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -536,6 +584,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -568,6 +617,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -592,6 +642,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -616,6 +667,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -648,6 +700,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -672,6 +725,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -696,6 +750,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -728,6 +783,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -752,6 +808,7 @@ public class ProximityProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;

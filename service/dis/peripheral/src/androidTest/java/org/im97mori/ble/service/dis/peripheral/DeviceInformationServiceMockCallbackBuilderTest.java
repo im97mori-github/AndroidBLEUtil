@@ -2,6 +2,7 @@ package org.im97mori.ble.service.dis.peripheral;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a23.SystemId;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
@@ -33,9 +34,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addManufacturerNameString_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -51,6 +57,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addManufacturerNameString_00002() {
         String manufacturerName = "manufacturerName";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -67,6 +75,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addManufacturerNameString_00003() {
         String manufacturerName = "manufacturerName";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -85,6 +95,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addManufacturerNameString_00004() {
         String manufacturerName = "manufacturerName";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -104,6 +116,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addManufacturerNameString_00005() {
         String manufacturerName = "manufacturerName";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -122,6 +136,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeManufacturerNameString_00001() {
         String manufacturerName = "manufacturerName";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -139,6 +155,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addModelNumberString_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -153,6 +171,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addModelNumberString_00002() {
         String modelNumber = "modelNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -171,6 +191,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addModelNumberString_00003() {
         String modelNumber = "modelNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -189,6 +211,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addModelNumberString_00004() {
         String modelNumber = "modelNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -207,6 +231,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addModelNumberString_00005() {
         String modelNumber = "modelNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -225,6 +251,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeModelNumberString_00001() {
         String modelNumber = "modelNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -242,6 +270,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSerialNumberString_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -256,6 +286,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSerialNumberString_00002() {
         String serialNumber = "serialNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -274,6 +306,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSerialNumberString_00003() {
         String serialNumber = "serialNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -292,6 +326,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSerialNumberString_00004() {
         String serialNumber = "serialNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -310,6 +346,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSerialNumberString_00005() {
         String serialNumber = "serialNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -328,6 +366,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSerialNumberString_00001() {
         String serialNumber = "serialNumber";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -345,6 +385,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHardwareRevisionString_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -359,6 +401,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHardwareRevisionString_00002() {
         String hardwareRevision = "hardwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -377,6 +421,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHardwareRevisionString_00003() {
         String hardwareRevision = "hardwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -395,6 +441,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHardwareRevisionString_00004() {
         String hardwareRevision = "hardwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -413,6 +461,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHardwareRevisionString_00005() {
         String hardwareRevision = "hardwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -431,6 +481,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHardwareRevisionString_00001() {
         String hardwareRevision = "hardwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -448,6 +500,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirmwareRevisionString_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -462,6 +516,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirmwareRevisionString_00002() {
         String firmwareRevision = "firmwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -480,6 +536,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirmwareRevisionString_00003() {
         String firmwareRevision = "firmwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -498,6 +556,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirmwareRevisionString_00004() {
         String firmwareRevision = "firmwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -516,6 +576,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirmwareRevisionString_00005() {
         String firmwareRevision = "firmwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -534,6 +596,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeFirmwareRevisionString_00001() {
         String firmwareRevision = "firmwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -551,6 +615,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSoftwareRevisionString_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -565,6 +631,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSoftwareRevisionString_00002() {
         String softwareRevision = "softwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -583,6 +651,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSoftwareRevisionString_00003() {
         String softwareRevision = "softwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -601,6 +671,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSoftwareRevisionString_00004() {
         String softwareRevision = "softwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -619,6 +691,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSoftwareRevisionString_00005() {
         String softwareRevision = "softwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -637,6 +711,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSoftwareRevisionString_00001() {
         String softwareRevision = "softwareRevision";
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -654,6 +730,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSystemId_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -668,6 +746,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSystemId_00002() {
         long manufacturerIdentifier = 1;
         int organizationallyUniqueIdentifier = 2;
@@ -687,6 +767,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSystemId_00003() {
         long manufacturerIdentifier = 1;
         int organizationallyUniqueIdentifier = 2;
@@ -706,6 +788,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSystemId_00004() {
         long manufacturerIdentifier = 1;
         int organizationallyUniqueIdentifier = 2;
@@ -725,6 +809,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSystemId_00005() {
         long manufacturerIdentifier = 1;
         int organizationallyUniqueIdentifier = 2;
@@ -744,6 +830,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSystemId_00001() {
         long manufacturerIdentifier = 1;
         int organizationallyUniqueIdentifier = 2;
@@ -762,6 +850,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIEEE_11073_20601_RegulatoryCertificationDataList_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -776,6 +866,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIEEE_11073_20601_RegulatoryCertificationDataList_00002() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -790,6 +882,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIEEE_11073_20601_RegulatoryCertificationDataList_00003() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -806,6 +900,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIEEE_11073_20601_RegulatoryCertificationDataList_00004() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -822,6 +918,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeIEEE_11073_20601_RegulatoryCertificationDataList_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -838,6 +936,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPnpId_00001() {
         List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -852,6 +952,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPnpId_00002() {
         int vendorIdSource = 1;
         int vendorId = 2;
@@ -873,6 +975,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPnpId_00003() {
         int vendorIdSource = 1;
         int vendorId = 2;
@@ -894,6 +998,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPnpId_00004() {
         int vendorIdSource = 1;
         int vendorId = 2;
@@ -915,6 +1021,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addPnpId_00005() {
         int vendorIdSource = 1;
         int vendorId = 2;
@@ -936,6 +1044,8 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removePnpId_00001() {
         int vendorIdSource = 1;
         int vendorId = 2;

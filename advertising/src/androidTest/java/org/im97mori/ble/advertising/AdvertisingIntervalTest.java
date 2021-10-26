@@ -5,7 +5,7 @@ import android.os.Parcel;
 import org.junit.Test;
 
 import static org.im97mori.ble.advertising.AdvertisingInterval.ADVERTISING_INTERVAL_UNIT_MILLIS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_ADVERTISING_INTERVAL;
+import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -17,7 +17,7 @@ public class AdvertisingIntervalTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data_00001 = data;
@@ -27,7 +27,7 @@ public class AdvertisingIntervalTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x7f;
         data[3] = 0x7f;
         data_00002 = data;
@@ -37,7 +37,7 @@ public class AdvertisingIntervalTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x7f;
         data_00003 = data;
@@ -47,7 +47,7 @@ public class AdvertisingIntervalTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x7f;
         data[3] = 0x00;
         data_00004 = data;
@@ -57,7 +57,7 @@ public class AdvertisingIntervalTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data_00005 = data;
@@ -67,7 +67,7 @@ public class AdvertisingIntervalTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0;
         data[3] = (byte) 0b11111111;
         data_00006 = data;
@@ -77,7 +77,7 @@ public class AdvertisingIntervalTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = 0;
         data_00007 = data;
@@ -116,7 +116,7 @@ public class AdvertisingIntervalTest {
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
         assertEquals(0, result1.getAdvertisingInterval());
         assertEquals(0 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
     }
@@ -127,7 +127,7 @@ public class AdvertisingIntervalTest {
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
         assertEquals(0x7f7f, result1.getAdvertisingInterval());
         assertEquals(0x7f7f * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
     }
@@ -138,7 +138,7 @@ public class AdvertisingIntervalTest {
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
         assertEquals(0x7f00, result1.getAdvertisingInterval());
         assertEquals(0x7f00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
     }
@@ -149,7 +149,7 @@ public class AdvertisingIntervalTest {
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
         assertEquals(0x007f, result1.getAdvertisingInterval());
         assertEquals(0x007f * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
     }
@@ -160,7 +160,7 @@ public class AdvertisingIntervalTest {
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
         assertEquals(0xffff, result1.getAdvertisingInterval());
         assertEquals(0xffff * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
     }
@@ -171,7 +171,7 @@ public class AdvertisingIntervalTest {
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
         assertEquals(0xff00, result1.getAdvertisingInterval());
         assertEquals(0xff00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
     }
@@ -182,7 +182,7 @@ public class AdvertisingIntervalTest {
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
         assertEquals(0x00ff, result1.getAdvertisingInterval());
         assertEquals(0x00ff * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
     }

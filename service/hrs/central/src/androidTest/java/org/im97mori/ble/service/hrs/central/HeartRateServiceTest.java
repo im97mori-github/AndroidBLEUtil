@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocationAndroid;
@@ -44,6 +45,7 @@ import static org.junit.Assert.assertTrue;
 public class HeartRateServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -52,6 +54,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -61,6 +64,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -70,6 +74,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -80,6 +85,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -90,6 +96,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         heartRateService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -98,6 +105,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -107,6 +115,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -116,6 +125,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -126,6 +136,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -136,6 +147,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -169,6 +181,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -194,6 +207,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -219,6 +233,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -252,6 +267,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -277,6 +293,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -302,6 +319,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -335,6 +353,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -360,6 +379,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -385,6 +405,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -418,6 +439,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -443,6 +465,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -468,6 +491,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -501,6 +525,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -526,6 +551,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -551,6 +577,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -584,6 +611,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -609,6 +637,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -634,6 +663,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -670,6 +700,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -697,6 +728,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -724,6 +756,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -751,6 +784,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -787,6 +821,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -814,6 +849,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -841,6 +877,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -868,6 +905,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -904,6 +942,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -931,6 +970,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -958,6 +998,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -985,6 +1026,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1021,6 +1063,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1049,6 +1092,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1077,6 +1121,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1105,6 +1150,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1141,6 +1187,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1169,6 +1216,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1197,6 +1245,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1225,6 +1274,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1262,6 +1312,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1290,6 +1341,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1318,6 +1370,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1346,6 +1399,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1383,6 +1437,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1411,6 +1466,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1439,6 +1495,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1467,6 +1524,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1504,6 +1562,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1532,6 +1591,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1560,6 +1620,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1588,6 +1649,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1625,6 +1687,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1653,6 +1716,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1681,6 +1745,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1709,6 +1774,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1739,6 +1805,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
@@ -1763,6 +1830,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1787,6 +1855,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1810,6 +1879,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBodySensorLocationCharacteristicSupported_00001() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
@@ -1817,6 +1887,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBodySensorLocationCharacteristicSupported_00002() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -1828,6 +1899,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBodySensorLocationCharacteristicSupported_00003() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -1840,6 +1912,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeartRateControlPointCharacteristicSupported_00001() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
@@ -1847,6 +1920,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeartRateControlPointCharacteristicSupported_00002() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -1858,6 +1932,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeartRateControlPointCharacteristicSupported_00003() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -1870,6 +1945,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_000001() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
@@ -1877,6 +1953,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_000002() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
@@ -1891,6 +1968,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1909,6 +1987,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startHeartRateMeasurementNotification_000001() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
@@ -1916,6 +1995,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startHeartRateMeasurementNotification_000002() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
@@ -1930,6 +2010,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startHeartRateMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1948,6 +2029,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementNotification_000001() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
@@ -1955,6 +2037,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementNotification_000002() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
@@ -1969,6 +2052,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1987,6 +2071,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBodySensorLocation_000001() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
 
@@ -1994,6 +2079,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBodySensorLocation_000002() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
@@ -2008,6 +2094,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBodySensorLocation_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2024,6 +2111,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBodySensorLocation_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -2047,6 +2135,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_000001() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null);
         HeartRateControlPoint heartRateControlPoint = new HeartRateControlPoint(new byte[]{0});
@@ -2055,6 +2144,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_000002() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
@@ -2070,6 +2160,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_000003() {
         HeartRateService heartRateService = new HeartRateService(MOCK_BLE_CONNECTION, new MockHeartRateServiceCallback(), null) {
 
@@ -2090,6 +2181,7 @@ public class HeartRateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);

@@ -2,6 +2,7 @@ package org.im97mori.ble.sample.lolipop.bas;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanResult;
 import android.content.BroadcastReceiver;
@@ -48,7 +49,6 @@ import java.util.Set;
 
 import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
 
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class BasCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback, FilteredScanCallbackInterface {
 
     private static final String KEY_LATEST_DEVICE = "KEY_LATEST_DEVICE";
@@ -95,7 +95,7 @@ public class BasCentralSampleActivity extends BaseActivity implements View.OnCli
 
         mConnectDisconnectButton.setOnClickListener(this);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
         if (mBluetoothAdapter != null) {
             mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
         }
@@ -156,8 +156,8 @@ public class BasCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else if (mBluetoothLeScanner == null) {
             mConnectDisconnectButton.setVisibility(View.GONE);
         } else {

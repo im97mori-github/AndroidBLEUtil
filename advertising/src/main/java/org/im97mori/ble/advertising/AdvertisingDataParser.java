@@ -15,34 +15,34 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_ADVERTISING_INTERVAL;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_APPEARANCE;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_BIG_INFO;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LOCAL_NAME;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_FLAGS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INDOOR_POSITIONING;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LE_SUPPORTED_FEATURES;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_RANDOM_TARGET_ADDRESS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SHORTENED_LOCAL_NAME;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_TX_POWER_LEVEL;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.APPEARANCE_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.BIG_INFO_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LOCAL_NAME_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.FLAGS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INDOOR_POSITIONING_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LE_SUPPORTED_FEATURES_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PUBLIC_TARGET_ADDRESS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.RANDOM_TARGET_ADDRESS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SHORTENED_LOCAL_NAME_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.TX_POWER_LEVEL_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.URI_DATA_TYPE;
 
 /**
  * Parser for {@link ScanRecord#getBytes()}
@@ -61,40 +61,40 @@ public class AdvertisingDataParser {
          * @see DataType
          * </p>
          */
-        private static final Set<Integer> ALL_DATA_TYPE_SET;
+        private static final Set<Integer> ALL_SET_DATA_TYPE;
 
         static {
             Set<Integer> set = new HashSet<>();
-            set.add(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
-            set.add(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
-            set.add(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
-            set.add(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
-            set.add(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
-            set.add(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
-            set.add(DATA_TYPE_SHORTENED_LOCAL_NAME);
-            set.add(DATA_TYPE_COMPLETE_LOCAL_NAME);
-            set.add(DATA_TYPE_FLAGS);
-            set.add(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA);
-            set.add(DATA_TYPE_TX_POWER_LEVEL);
-            set.add(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE);
-            set.add(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS);
-            set.add(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS);
-            set.add(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS);
-            set.add(DATA_TYPE_SERVICE_DATA_16_BIT_UUID);
-            set.add(DATA_TYPE_SERVICE_DATA_32_BIT_UUID);
-            set.add(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
-            set.add(DATA_TYPE_APPEARANCE);
-            set.add(DATA_TYPE_PUBLIC_TARGET_ADDRESS);
-            set.add(DATA_TYPE_RANDOM_TARGET_ADDRESS);
-            set.add(DATA_TYPE_ADVERTISING_INTERVAL);
-            set.add(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
-            set.add(DATA_TYPE_INDOOR_POSITIONING);
-            set.add(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
-            set.add(DATA_TYPE_LE_SUPPORTED_FEATURES);
-            set.add(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
-            set.add(DATA_TYPE_BIG_INFO);
+            set.add(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+            set.add(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+            set.add(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+            set.add(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+            set.add(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+            set.add(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+            set.add(SHORTENED_LOCAL_NAME_DATA_TYPE);
+            set.add(COMPLETE_LOCAL_NAME_DATA_TYPE);
+            set.add(FLAGS_DATA_TYPE);
+            set.add(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE);
+            set.add(TX_POWER_LEVEL_DATA_TYPE);
+            set.add(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE);
+            set.add(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+            set.add(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+            set.add(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+            set.add(SERVICE_DATA_16_BIT_UUID_DATA_TYPE);
+            set.add(SERVICE_DATA_32_BIT_UUID_DATA_TYPE);
+            set.add(SERVICE_DATA_128_BIT_UUID_DATA_TYPE);
+            set.add(APPEARANCE_DATA_TYPE);
+            set.add(PUBLIC_TARGET_ADDRESS_DATA_TYPE);
+            set.add(RANDOM_TARGET_ADDRESS_DATA_TYPE);
+            set.add(ADVERTISING_INTERVAL_DATA_TYPE);
+            set.add(URI_DATA_TYPE);
+            set.add(INDOOR_POSITIONING_DATA_TYPE);
+            set.add(TRANSPORT_DISCOVERY_DATA_DATA_TYPE);
+            set.add(LE_SUPPORTED_FEATURES_DATA_TYPE);
+            set.add(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE);
+            set.add(BIG_INFO_DATA_TYPE);
 
-            ALL_DATA_TYPE_SET = Collections.unmodifiableSet(Collections.synchronizedSet(set));
+            ALL_SET_DATA_TYPE = Collections.unmodifiableSet(Collections.synchronizedSet(set));
         }
 
         /**
@@ -109,7 +109,7 @@ public class AdvertisingDataParser {
          */
         public Builder(boolean isIncludeAll) {
             if (isIncludeAll) {
-                mTypeSet.addAll(ALL_DATA_TYPE_SET);
+                mTypeSet.addAll(ALL_SET_DATA_TYPE);
             }
         }
 
@@ -120,7 +120,7 @@ public class AdvertisingDataParser {
          */
         @NonNull
         public Builder includeAll() {
-            mTypeSet.addAll(ALL_DATA_TYPE_SET);
+            mTypeSet.addAll(ALL_SET_DATA_TYPE);
             return this;
         }
 
@@ -132,7 +132,7 @@ public class AdvertisingDataParser {
          */
         @NonNull
         public Builder include(int advertisingDataTypes) {
-            if (ALL_DATA_TYPE_SET.contains(advertisingDataTypes)) {
+            if (ALL_SET_DATA_TYPE.contains(advertisingDataTypes)) {
                 mTypeSet.add(advertisingDataTypes);
             }
             return this;
@@ -954,61 +954,61 @@ public class AdvertisingDataParser {
 
                 // parse only target data type
                 if (mTargetDataTypeSet.contains(dataType)) {
-                    if (DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS == dataType) {
+                    if (INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new IncompleteListOf16BitServiceUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS == dataType) {
+                    } else if (COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new CompleteListOf16BitServiceUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS == dataType) {
+                    } else if (INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new IncompleteListOf32BitServiceUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS == dataType) {
+                    } else if (COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new CompleteListOf32BitServiceUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS == dataType) {
+                    } else if (INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new IncompleteListOf128BitServiceUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS == dataType) {
+                    } else if (COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new CompleteListOf128BitServiceUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_SHORTENED_LOCAL_NAME == dataType) {
+                    } else if (SHORTENED_LOCAL_NAME_DATA_TYPE == dataType) {
                         resultList.add(new ShortenedLocalNameAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_COMPLETE_LOCAL_NAME == dataType) {
+                    } else if (COMPLETE_LOCAL_NAME_DATA_TYPE == dataType) {
                         resultList.add(new CompleteLocalNameAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_FLAGS == dataType) {
+                    } else if (FLAGS_DATA_TYPE == dataType) {
                         resultList.add(new FlagsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_MANUFACTURER_SPECIFIC_DATA == dataType) {
+                    } else if (MANUFACTURER_SPECIFIC_DATA_DATA_TYPE == dataType) {
                         resultList.add(new ManufacturerSpecificDataAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_TX_POWER_LEVEL == dataType) {
+                    } else if (TX_POWER_LEVEL_DATA_TYPE == dataType) {
                         resultList.add(new TxPowerLevelAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE == dataType) {
+                    } else if (PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE == dataType) {
                         resultList.add(new PeripheralConnectionIntervalRangeAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
+                    } else if (LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new ListOf16BitServiceSolicitationUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
+                    } else if (LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new ListOf32BitServiceSolicitationUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
+                    } else if (LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE == dataType) {
                         resultList.add(new ListOf128BitServiceSolicitationUUIDsAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_SERVICE_DATA_16_BIT_UUID == dataType) {
+                    } else if (SERVICE_DATA_16_BIT_UUID_DATA_TYPE == dataType) {
                         resultList.add(new ServiceData16BitUUIDAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_SERVICE_DATA_32_BIT_UUID == dataType) {
+                    } else if (SERVICE_DATA_32_BIT_UUID_DATA_TYPE == dataType) {
                         resultList.add(new ServiceData32BitUUIDAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_SERVICE_DATA_128_BIT_UUID == dataType) {
+                    } else if (SERVICE_DATA_128_BIT_UUID_DATA_TYPE == dataType) {
                         resultList.add(new ServiceData128BitUUIDAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_APPEARANCE == dataType) {
+                    } else if (APPEARANCE_DATA_TYPE == dataType) {
                         resultList.add(new AppearanceAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_PUBLIC_TARGET_ADDRESS == dataType) {
+                    } else if (PUBLIC_TARGET_ADDRESS_DATA_TYPE == dataType) {
                         resultList.add(new PublicTargetAddressAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_RANDOM_TARGET_ADDRESS == dataType) {
+                    } else if (RANDOM_TARGET_ADDRESS_DATA_TYPE == dataType) {
                         resultList.add(new RandomTargetAddressAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_ADVERTISING_INTERVAL == dataType) {
+                    } else if (ADVERTISING_INTERVAL_DATA_TYPE == dataType) {
                         resultList.add(new AdvertisingIntervalAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER == dataType) {
+                    } else if (URI_DATA_TYPE == dataType) {
                         resultList.add(new UniformResourceIdentifierAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_INDOOR_POSITIONING == dataType) {
+                    } else if (INDOOR_POSITIONING_DATA_TYPE == dataType) {
                         resultList.add(new IndoorPositioningAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_TRANSPORT_DISCOVERY_DATA == dataType) {
+                    } else if (TRANSPORT_DISCOVERY_DATA_DATA_TYPE == dataType) {
                         resultList.add(new TransportDiscoveryDataAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_LE_SUPPORTED_FEATURES == dataType) {
+                    } else if (LE_SUPPORTED_FEATURES_DATA_TYPE == dataType) {
                         resultList.add(new LeSupportedFeaturesAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION == dataType) {
+                    } else if (CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE == dataType) {
                         resultList.add(new ChannelMapUpdateIndicationAndroid(data, i, dataLength));
-                    } else if (DATA_TYPE_BIG_INFO == dataType) {
+                    } else if (BIG_INFO_DATA_TYPE == dataType) {
                         resultList.add(new BigInfoAndroid(data, i, dataLength));
                     }
                 }

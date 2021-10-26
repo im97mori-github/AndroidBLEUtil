@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a2c.MagneticDeclination;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
@@ -32,9 +33,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclination extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMagneticDeclination_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -48,6 +54,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMagneticDeclination_00002() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -72,6 +80,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMagneticDeclination_00003() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -96,6 +106,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMagneticDeclination_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -135,6 +147,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclination_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -155,6 +169,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclination_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -189,6 +205,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsMeasurement_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -220,6 +238,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsMeasurement_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -269,6 +289,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsMeasurement_00001() {
         int characteristicIndex = 0;
         int originalProperties = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -298,6 +320,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsMeasurement_00101() {
         int characteristicIndex0 = 0;
         int characteristicIndex1 = 1;
@@ -326,6 +350,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsTriggerSetting_00001() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -355,6 +381,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsTriggerSetting_00002() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -384,6 +412,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsTriggerSetting_00003() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -413,6 +443,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsTriggerSetting_00004() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -439,6 +471,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsTriggerSetting_00101() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -479,6 +513,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsTriggerSetting_00102() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -519,6 +555,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsTriggerSetting_00103() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -559,6 +597,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsTriggerSetting_00104() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -607,6 +647,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsTriggerSetting_00001() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -634,6 +676,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsTriggerSetting_00002() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -661,6 +705,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsTriggerSetting_00003() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -688,6 +734,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsTriggerSetting_00004() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -715,6 +763,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsTriggerSetting_00101() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -747,6 +797,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsTriggerSetting_00102() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -779,6 +831,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsTriggerSetting_00103() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -811,6 +865,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsTriggerSetting_00104() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -847,6 +903,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsConfiguration_00001() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -880,6 +938,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsConfiguration_00002() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -914,6 +974,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsConfiguration_00101() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);
@@ -971,6 +1033,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationEsConfiguration_00102() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);
@@ -1030,6 +1094,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsConfiguration_00001() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -1058,6 +1124,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationEsConfiguration_00101() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);
@@ -1092,6 +1160,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationCharacteristicUserDescription_00001() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -1120,6 +1190,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationCharacteristicUserDescription_00002() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -1148,6 +1220,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationCharacteristicUserDescription_00101() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);
@@ -1197,6 +1271,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationCharacteristicUserDescription_00102() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);
@@ -1245,6 +1321,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationCharacteristicUserDescription_00001() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -1271,6 +1349,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationCharacteristicUserDescription_00101() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);
@@ -1317,6 +1397,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationValidRange_00001() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -1345,6 +1427,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationValidRange_00002() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -1373,6 +1457,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationValidRange_00101() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);
@@ -1421,6 +1507,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setMagneticDeclinationValidRange_00102() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);
@@ -1469,6 +1557,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationValidRange_00001() {
         int characteristicIndex = 0;
         MagneticDeclination originalValue = new MagneticDeclination(1);
@@ -1495,6 +1585,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderTest_MagneticDeclinat
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeMagneticDeclinationValidRange_00101() {
         int characteristicIndex0 = 0;
         MagneticDeclination originalValue0 = new MagneticDeclination(1);

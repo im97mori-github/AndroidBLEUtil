@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+import static org.im97mori.ble.constants.DataType.CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,7 +26,7 @@ public class ChannelMapUpdateIndicationTest {
     public void test_002() {
         byte[] expectData = new byte[9];
         expectData[0] = 8;
-        expectData[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        expectData[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         expectData[2] = (byte) 0b11111110;
         expectData[3] = (byte) 0b11111111;
         expectData[4] = (byte) 0b11111111;
@@ -47,7 +47,7 @@ public class ChannelMapUpdateIndicationTest {
     public void test_003() {
         byte[] actualData = new byte[9];
         actualData[0] = 8;
-        actualData[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        actualData[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         actualData[2] = (byte) 0b11111110;
         actualData[3] = (byte) 0b11111111;
         actualData[4] = (byte) 0b11111111;
@@ -66,7 +66,7 @@ public class ChannelMapUpdateIndicationTest {
     public void test_004() {
         byte[] expectData = new byte[9];
         expectData[0] = 8;
-        expectData[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        expectData[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         expectData[2] = (byte) 0b11111110;
         expectData[3] = (byte) 0b11111111;
         expectData[4] = (byte) 0b11111111;

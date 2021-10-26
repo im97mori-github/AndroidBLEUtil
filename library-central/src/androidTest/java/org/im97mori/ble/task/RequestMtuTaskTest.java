@@ -8,6 +8,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -26,6 +27,7 @@ import static org.junit.Assert.assertTrue;
 public class RequestMtuTaskTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_createInitialMessage_00001() {
         int mtu = new Random().nextInt();
         RequestMtuTask task = new RequestMtuTask(null, null, null, mtu, RequestMtuTask.TIMEOUT_MILLIS, null);
@@ -40,6 +42,7 @@ public class RequestMtuTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createServiceDiscoverSuccessMessage_00001() {
         int mtu = new Random().nextInt();
         Message message = RequestMtuTask.createRequestMtuSuccessMessage(mtu);
@@ -54,6 +57,7 @@ public class RequestMtuTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createServiceDiscoverErrorMessage_00001() {
         Object object = new Object();
         int status = new Random().nextInt();
@@ -70,6 +74,7 @@ public class RequestMtuTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_doProcess_00001() {
         int mtu = new Random().nextInt();
         RequestMtuTask task = new RequestMtuTask(null, null, null, mtu, RequestMtuTask.TIMEOUT_MILLIS, null);
@@ -77,6 +82,7 @@ public class RequestMtuTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00001() {
         Looper looper = null;
         try {
@@ -98,6 +104,7 @@ public class RequestMtuTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00002() {
         Looper looper = null;
         try {

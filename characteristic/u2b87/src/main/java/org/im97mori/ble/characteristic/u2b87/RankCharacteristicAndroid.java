@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RANK_CHARACTERISTIC_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RANK_CHARACTERISTIC;
 
 /**
  * Rank Characteristic (Characteristics UUID: 0x2B87)
@@ -45,7 +45,7 @@ public class RankCharacteristicAndroid extends RankCharacteristic implements Par
          */
         @NonNull
         public RankCharacteristicAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RANK_CHARACTERISTIC_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RANK_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new RankCharacteristicAndroid(bluetoothGattCharacteristic);
         }

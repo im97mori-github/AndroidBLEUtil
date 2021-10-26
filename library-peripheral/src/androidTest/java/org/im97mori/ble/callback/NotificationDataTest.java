@@ -8,9 +8,12 @@ import java.util.UUID;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import androidx.test.filters.RequiresDevice;
+
 public class NotificationDataTest {
 
     @Test
+    @RequiresDevice
     public void test_constructor_00001() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;
@@ -26,6 +29,7 @@ public class NotificationDataTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hashCode_00001() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;
@@ -42,6 +46,7 @@ public class NotificationDataTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_equals_00001() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;
@@ -55,6 +60,7 @@ public class NotificationDataTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_equals_00002() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;
@@ -68,6 +74,7 @@ public class NotificationDataTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_equals_00003() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;
@@ -81,6 +88,7 @@ public class NotificationDataTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_equals_00004() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;
@@ -94,6 +102,7 @@ public class NotificationDataTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_equals_00005() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;
@@ -107,6 +116,7 @@ public class NotificationDataTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_equals_00006() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;
@@ -120,6 +130,7 @@ public class NotificationDataTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_equals_00007() {
         UUID serviceUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int serviceInstanceId = 1;

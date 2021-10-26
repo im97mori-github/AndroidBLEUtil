@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.core.TimeZoneUtils;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
@@ -40,6 +41,7 @@ import static org.junit.Assert.assertTrue;
 public class CurrentTimeServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -51,6 +53,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00101() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -62,6 +65,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00201() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -73,6 +77,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -81,6 +86,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -90,6 +96,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -100,6 +107,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -110,6 +118,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -120,6 +129,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -128,6 +138,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -137,6 +148,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -147,6 +159,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -157,6 +170,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00201() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -165,6 +179,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00202() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -174,6 +189,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00203() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -184,6 +200,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00204() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -194,6 +211,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00205() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -204,6 +222,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00206() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -214,6 +233,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00301() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         currentTimeService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -222,6 +242,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00302() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -231,6 +252,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00303() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -241,6 +263,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00304() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -251,6 +274,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -284,6 +308,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -317,6 +342,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -350,6 +376,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -383,6 +410,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -416,6 +444,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -449,6 +478,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -482,6 +512,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -515,6 +546,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -548,6 +580,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -581,6 +614,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -614,6 +648,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -647,6 +682,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -680,6 +716,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -713,6 +750,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -746,6 +784,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -782,6 +821,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -818,6 +858,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -854,6 +895,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -889,6 +931,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -924,6 +967,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -961,6 +1005,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -998,6 +1043,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1035,6 +1081,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1072,6 +1119,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1103,6 +1151,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCurrentTimeCharacteristicWritable_00001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1110,6 +1159,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCurrentTimeCharacteristicWritable_00002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -1120,6 +1170,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCurrentTimeCharacteristicWritable_00003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -1131,6 +1182,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLocalTimeInformationCharacteristicSupported_00001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1138,6 +1190,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLocalTimeInformationCharacteristicSupported_00002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -1148,6 +1201,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLocalTimeInformationCharacteristicSupported_00003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -1159,6 +1213,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isReferenceTimeInformationCharacteristicSupported_00001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1166,6 +1221,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isReferenceTimeInformationCharacteristicSupported_00002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -1176,6 +1232,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isReferenceTimeInformationCharacteristicSupported_00003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -1187,6 +1244,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCurrentTime_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1194,6 +1252,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCurrentTime_000002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1208,6 +1267,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCurrentTime_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1226,6 +1286,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCurrentTime_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         CurrentTime currentTime = new CurrentTime(0, 1, 2, 3, 4, 5, 6, 7, 8);
@@ -1234,6 +1295,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCurrentTime_000002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1249,6 +1311,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCurrentTime_000003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1269,6 +1332,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCurrentTime_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1293,6 +1357,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCurrentTimeClientCharacteristicConfiguration_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1300,6 +1365,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCurrentTimeClientCharacteristicConfiguration_000002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1314,6 +1380,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCurrentTimeClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1332,6 +1399,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCurrentTimeNotification_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1339,6 +1407,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCurrentTimeNotification_000002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1353,6 +1422,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCurrentTimeNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1371,6 +1441,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCurrentTimeNotification_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1378,6 +1449,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCurrentTimeNotification_000002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1392,6 +1464,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCurrentTimeNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1410,6 +1483,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocalTimeInformation_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1417,6 +1491,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocalTimeInformation_000002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1431,6 +1506,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocalTimeInformation_000003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1450,6 +1526,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocalTimeInformation_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1473,6 +1550,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLocalTimeInformation_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
         LocalTimeInformation localTimeInformation = new LocalTimeInformation(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, 1);
@@ -1481,6 +1559,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLocalTimeInformation_000002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1496,6 +1575,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLocalTimeInformation_000003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1516,6 +1596,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLocalTimeInformation_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1540,6 +1621,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReferenceTimeInformation_000001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null);
 
@@ -1547,6 +1629,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReferenceTimeInformation_000002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1561,6 +1644,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReferenceTimeInformation_000003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(MOCK_BLE_CONNECTION, new MockCurrentTimeServiceCallback(), null) {
 
@@ -1580,6 +1664,7 @@ public class CurrentTimeServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReferenceTimeInformation_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);

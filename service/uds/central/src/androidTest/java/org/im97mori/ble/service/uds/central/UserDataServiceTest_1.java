@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimitAndroid;
 import org.im97mori.ble.characteristic.u2a7f.AerobicThresholdAndroid;
@@ -89,6 +90,7 @@ import static org.junit.Assert.assertTrue;
 public class UserDataServiceTest_1 extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -100,6 +102,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00101() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -111,6 +114,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00201() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -122,6 +126,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00301() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -133,6 +138,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00401() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -144,6 +150,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00501() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -155,6 +162,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00601() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -166,6 +174,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00701() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -177,6 +186,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00801() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -188,6 +198,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00901() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -199,6 +210,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -210,6 +222,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01101() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -221,6 +234,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01201() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -232,6 +246,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01301() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -243,6 +258,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01401() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -254,6 +270,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01501() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -265,6 +282,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01601() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -276,6 +294,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01701() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -287,6 +306,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01801() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -298,6 +318,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_01901() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -309,6 +330,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -320,6 +342,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02101() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -331,6 +354,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02201() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -342,6 +366,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02301() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -353,6 +378,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02401() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -364,6 +390,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02501() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -375,6 +402,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02601() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -386,6 +414,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02701() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -397,6 +426,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_02801() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -410,6 +440,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -418,6 +449,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -427,6 +459,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -436,6 +469,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -446,6 +480,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -456,6 +491,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00006() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -466,6 +502,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00007() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -476,6 +513,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -484,6 +522,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -493,6 +532,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -502,6 +542,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -512,6 +553,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -522,6 +564,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00106() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -532,6 +575,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00107() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -542,6 +586,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00201() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -550,6 +595,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00202() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -559,6 +605,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00203() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -568,6 +615,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00204() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -578,6 +626,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00205() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -588,6 +637,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00206() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -598,6 +648,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00207() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -608,6 +659,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00301() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -616,6 +668,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00302() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -625,6 +678,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00303() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -634,6 +688,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00304() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -644,6 +699,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00305() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -654,6 +710,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00306() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -664,6 +721,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00307() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -674,6 +732,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00401() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -682,6 +741,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00402() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -691,6 +751,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00403() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -700,6 +761,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00404() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -710,6 +772,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00405() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -720,6 +783,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00406() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -730,6 +794,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00407() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -740,6 +805,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00501() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -748,6 +814,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00502() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -757,6 +824,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00503() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -766,6 +834,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00504() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -776,6 +845,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00505() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -786,6 +856,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00506() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -796,6 +867,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00507() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -806,6 +878,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00601() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -814,6 +887,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00602() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -823,6 +897,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00603() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -832,6 +907,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00604() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -842,6 +918,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00605() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -852,6 +929,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00606() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -862,6 +940,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00607() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -872,6 +951,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00701() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -880,6 +960,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00702() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -889,6 +970,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00703() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -898,6 +980,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00704() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -908,6 +991,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00705() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -918,6 +1002,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00706() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -928,6 +1013,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00707() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -938,6 +1024,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00801() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -946,6 +1033,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00802() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -955,6 +1043,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00803() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -964,6 +1053,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00804() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -974,6 +1064,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00805() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -984,6 +1075,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00806() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -994,6 +1086,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00807() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1004,6 +1097,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00901() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1012,6 +1106,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00902() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1021,6 +1116,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00903() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1030,6 +1126,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00904() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1040,6 +1137,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00905() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1050,6 +1148,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00906() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1060,6 +1159,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00907() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1070,6 +1170,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1078,6 +1179,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1087,6 +1189,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1096,6 +1199,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01004() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1106,6 +1210,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01005() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1116,6 +1221,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01006() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1126,6 +1232,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01007() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1136,6 +1243,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01101() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1144,6 +1252,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01102() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1153,6 +1262,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01103() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1162,6 +1272,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01104() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1172,6 +1283,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01105() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1182,6 +1294,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01106() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1192,6 +1305,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01107() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1202,6 +1316,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01201() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1210,6 +1325,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01202() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1219,6 +1335,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01203() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1228,6 +1345,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01204() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1238,6 +1356,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01205() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1248,6 +1367,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01206() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1258,6 +1378,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01207() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1268,6 +1389,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01301() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1276,6 +1398,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01302() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1285,6 +1408,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01303() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1294,6 +1418,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01304() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1304,6 +1429,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01305() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1314,6 +1440,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01306() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1324,6 +1451,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01307() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1334,6 +1462,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01401() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1342,6 +1471,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01402() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1351,6 +1481,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01403() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1360,6 +1491,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01404() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1370,6 +1502,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01405() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1380,6 +1513,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01406() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1390,6 +1524,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01407() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1400,6 +1535,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01501() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1408,6 +1544,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01502() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1417,6 +1554,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01503() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1426,6 +1564,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01504() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1436,6 +1575,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01505() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1446,6 +1586,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01506() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1456,6 +1597,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01507() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1466,6 +1608,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01601() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1474,6 +1617,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01602() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1483,6 +1627,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01603() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1492,6 +1637,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01604() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1502,6 +1648,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01605() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1512,6 +1659,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01606() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1522,6 +1670,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01607() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1532,6 +1681,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01701() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1540,6 +1690,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01702() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1549,6 +1700,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01703() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1558,6 +1710,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01704() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1568,6 +1721,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01705() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1578,6 +1732,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01706() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1588,6 +1743,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01707() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1598,6 +1754,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01801() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1606,6 +1763,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01802() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1615,6 +1773,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01803() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1624,6 +1783,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01804() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1634,6 +1794,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01805() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1644,6 +1805,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01806() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1654,6 +1816,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01807() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1664,6 +1827,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01901() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1672,6 +1836,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01902() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1681,6 +1846,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01903() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1690,6 +1856,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01904() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1700,6 +1867,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01905() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1710,6 +1878,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01906() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1720,6 +1889,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_01907() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1730,6 +1900,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1738,6 +1909,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1747,6 +1919,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1756,6 +1929,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02004() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1766,6 +1940,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02005() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1776,6 +1951,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02006() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1786,6 +1962,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02007() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1796,6 +1973,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02101() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1804,6 +1982,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02102() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1813,6 +1992,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02103() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1822,6 +2002,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02104() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1832,6 +2013,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02105() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1842,6 +2024,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02106() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1852,6 +2035,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02107() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1862,6 +2046,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02201() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1870,6 +2055,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02202() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1879,6 +2065,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02203() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1888,6 +2075,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02204() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1898,6 +2086,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02205() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1908,6 +2097,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02206() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1918,6 +2108,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02207() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1928,6 +2119,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02301() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -1936,6 +2128,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02302() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1945,6 +2138,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02303() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1954,6 +2148,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02304() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1964,6 +2159,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02305() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1974,6 +2170,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02306() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1984,6 +2181,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02307() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -1994,6 +2192,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02401() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -2002,6 +2201,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02402() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -2011,6 +2211,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02403() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2020,6 +2221,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02404() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2030,6 +2232,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02405() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2040,6 +2243,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02406() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2050,6 +2254,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02407() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2060,6 +2265,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02501() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -2068,6 +2274,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02502() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -2077,6 +2284,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02503() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2086,6 +2294,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02504() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2096,6 +2305,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02505() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2106,6 +2316,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02506() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2116,6 +2327,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02507() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2126,6 +2338,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02601() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -2134,6 +2347,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02602() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -2143,6 +2357,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02603() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2152,6 +2367,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02604() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2162,6 +2378,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02605() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2172,6 +2389,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02606() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2182,6 +2400,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02607() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2192,6 +2411,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02701() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -2200,6 +2420,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02702() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -2209,6 +2430,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02703() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2218,6 +2440,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02704() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2228,6 +2451,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02705() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2238,6 +2462,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02706() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2248,6 +2473,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02707() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2258,6 +2484,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02801() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -2266,6 +2493,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02802() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -2275,6 +2503,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02803() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2284,6 +2513,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02804() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2294,6 +2524,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02805() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2304,6 +2535,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_02806() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -2316,6 +2548,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2352,6 +2585,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2388,6 +2622,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2424,6 +2659,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2457,6 +2693,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2490,6 +2727,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2523,6 +2761,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2556,6 +2795,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2589,6 +2829,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2622,6 +2863,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2655,6 +2897,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2688,6 +2931,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2721,6 +2965,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2754,6 +2999,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2787,6 +3033,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2820,6 +3067,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2853,6 +3101,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2886,6 +3135,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2919,6 +3169,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2952,6 +3203,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_01901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2985,6 +3237,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3018,6 +3271,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3051,6 +3305,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3084,6 +3339,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3117,6 +3373,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3150,6 +3407,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3183,6 +3441,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3216,6 +3475,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3249,6 +3509,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3282,6 +3543,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_02901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3315,6 +3577,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3348,6 +3611,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3381,6 +3645,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3414,6 +3679,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3447,6 +3713,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3480,6 +3747,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3513,6 +3781,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3546,6 +3815,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3579,6 +3849,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3612,6 +3883,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3645,6 +3917,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3678,6 +3951,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3711,6 +3985,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3744,6 +4019,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3777,6 +4053,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3810,6 +4087,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3843,6 +4121,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3876,6 +4155,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3909,6 +4189,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3942,6 +4223,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_01901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3975,6 +4257,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4008,6 +4291,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4041,6 +4325,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4074,6 +4359,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4107,6 +4393,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4140,6 +4427,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4173,6 +4461,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4206,6 +4495,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4239,6 +4529,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4272,6 +4563,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_02901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4305,6 +4597,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4338,6 +4631,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4371,6 +4665,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4404,6 +4699,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4437,6 +4733,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4470,6 +4767,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4503,6 +4801,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4536,6 +4835,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4569,6 +4869,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4602,6 +4903,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4635,6 +4937,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4668,6 +4971,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4701,6 +5005,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4734,6 +5039,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4767,6 +5073,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4800,6 +5107,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4833,6 +5141,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4866,6 +5175,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4899,6 +5209,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4932,6 +5243,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_01901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4965,6 +5277,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4998,6 +5311,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5031,6 +5345,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5064,6 +5379,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5097,6 +5413,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5130,6 +5447,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5163,6 +5481,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5196,6 +5515,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5229,6 +5549,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -5262,6 +5583,7 @@ public class UserDataServiceTest_1 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_02901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;

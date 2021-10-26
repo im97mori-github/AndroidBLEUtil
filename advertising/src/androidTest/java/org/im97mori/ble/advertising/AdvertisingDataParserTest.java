@@ -1,53 +1,52 @@
 package org.im97mori.ble.advertising;
 
-import android.os.Parcel;
-
-import org.im97mori.ble.BLEUtils;
-import org.im97mori.ble.TransportDiscoveryServiceUtils;
-import org.junit.Test;
-
-import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import java.util.UUID;
-
 import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.im97mori.ble.advertising.PeripheralConnectionIntervalRange.PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
-import static org.im97mori.ble.constants.AppearanceUUID.APPEARANCE_SUB_CATEGORY_MAPPING_128;
 import static org.im97mori.ble.constants.CompanyUUID.COMPANY_MAPPING_128;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_ADVERTISING_INTERVAL;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_APPEARANCE;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_BIG_INFO;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LOCAL_NAME;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_FLAGS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INDOOR_POSITIONING;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LE_SUPPORTED_FEATURES;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_RANDOM_TARGET_ADDRESS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SHORTENED_LOCAL_NAME;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_TX_POWER_LEVEL;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-import static org.im97mori.ble.constants.SchemeUUID.SCHEME_MAPPING_128;
+import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.APPEARANCE_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.BIG_INFO_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LOCAL_NAME_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.FLAGS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INDOOR_POSITIONING_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LE_SUPPORTED_FEATURES_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PUBLIC_TARGET_ADDRESS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.RANDOM_TARGET_ADDRESS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SHORTENED_LOCAL_NAME_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.TX_POWER_LEVEL_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.URI_DATA_TYPE;
+import static org.im97mori.ble.constants.Scheme.SCHEME_MAPPING;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import android.os.Parcel;
+
+import org.im97mori.ble.BLEUtils;
+import org.im97mori.ble.TransportDiscoveryServiceUtils;
+import org.im97mori.ble.constants.AppearanceValues;
+import org.im97mori.ble.constants.Scheme;
+import org.junit.Test;
+
+import java.net.URI;
+import java.util.UUID;
 
 @SuppressWarnings("ALL")
 public class AdvertisingDataParserTest {
@@ -101,7 +100,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -147,7 +146,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -193,7 +192,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -241,7 +240,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -289,7 +288,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -349,7 +348,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -408,10 +407,10 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser parser = builder.build();
 
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -455,10 +454,10 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser parser = builder.build();
 
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -503,7 +502,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -549,7 +548,7 @@ public class AdvertisingDataParserTest {
         int companyId = 0x000000E0;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) (companyId & (0x0000ff >> 8));
 
@@ -595,7 +594,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -640,7 +639,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -688,7 +687,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -734,7 +733,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -782,7 +781,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -842,7 +841,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -888,7 +887,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -936,7 +935,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -994,11 +993,10 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -1052,7 +1050,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -1105,7 +1103,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -1150,7 +1148,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
 
@@ -1194,15 +1192,15 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x0016;
+        byte[] schemedata = Scheme.HTTP_SCHEME.toString().getBytes();
         String body = "//im97mori.org/";
 
-        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 3];
-        data[0] = (byte) (utf8data.length + 2);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        data[2] = (byte) schemeKey;
-        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
+        byte[] utf8data = body.getBytes();
+        byte[] data = new byte[utf8data.length + 2 + schemedata.length];
+        data[0] = (byte) (utf8data.length + schemedata.length + 1);
+        data[1] = URI_DATA_TYPE;
+        System.arraycopy(schemedata, 0, data, 2, schemedata.length);
+        System.arraycopy(utf8data, 0, data, 2 + schemedata.length, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -1246,7 +1244,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -1290,7 +1288,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -1337,7 +1335,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -1382,7 +1380,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -1433,7 +1431,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[35];
         data[ 0] = 34;
-        data[ 1] = DATA_TYPE_BIG_INFO;
+        data[ 1] = BIG_INFO_DATA_TYPE;
         data[ 2] = 0b00000000;
         data[ 3] = 0b00000000;
         data[ 4] = 0b00000000;
@@ -1506,11 +1504,11 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0102() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        AdvertisingDataParser parser = builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS).include(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS).build();
+        AdvertisingDataParser parser = builder.exclude(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE).include(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE).build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -1552,13 +1550,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0103() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
+        builder.exclude(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.include(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -1600,13 +1598,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0104() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
+        builder.exclude(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.include(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1650,13 +1648,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0105() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
+        builder.exclude(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.include(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1700,13 +1698,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0106() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
+        builder.exclude(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.include(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1762,13 +1760,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0107() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
+        builder.exclude(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.include(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1824,15 +1822,15 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0108() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_SHORTENED_LOCAL_NAME);
-        builder.include(DATA_TYPE_SHORTENED_LOCAL_NAME);
+        builder.exclude(SHORTENED_LOCAL_NAME_DATA_TYPE);
+        builder.include(SHORTENED_LOCAL_NAME_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -1873,15 +1871,15 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0109() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_COMPLETE_LOCAL_NAME);
-        builder.include(DATA_TYPE_COMPLETE_LOCAL_NAME);
+        builder.exclude(COMPLETE_LOCAL_NAME_DATA_TYPE);
+        builder.include(COMPLETE_LOCAL_NAME_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -1922,13 +1920,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0110() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_FLAGS);
-        builder.include(DATA_TYPE_FLAGS);
+        builder.exclude(FLAGS_DATA_TYPE);
+        builder.include(FLAGS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -1969,14 +1967,14 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0111() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA);
-        builder.include(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA);
+        builder.exclude(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE);
+        builder.include(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         int companyId = 0x000000E0;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) (companyId & (0x0000ff >> 8));
 
@@ -2018,13 +2016,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0112() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_TX_POWER_LEVEL);
-        builder.include(DATA_TYPE_TX_POWER_LEVEL);
+        builder.exclude(TX_POWER_LEVEL_DATA_TYPE);
+        builder.include(TX_POWER_LEVEL_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -2065,13 +2063,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0113() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE);
-        builder.include(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE);
+        builder.exclude(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE);
+        builder.include(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -2115,13 +2113,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0114() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS);
-        builder.include(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.exclude(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+        builder.include(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -2163,13 +2161,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0115() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS);
-        builder.include(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.exclude(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+        builder.include(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -2213,13 +2211,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0116() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS);
-        builder.include(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.exclude(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+        builder.include(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -2275,13 +2273,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0117() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_16_BIT_UUID);
-        builder.include(DATA_TYPE_SERVICE_DATA_16_BIT_UUID);
+        builder.exclude(SERVICE_DATA_16_BIT_UUID_DATA_TYPE);
+        builder.include(SERVICE_DATA_16_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -2323,13 +2321,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0118() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_32_BIT_UUID);
-        builder.include(DATA_TYPE_SERVICE_DATA_32_BIT_UUID);
+        builder.exclude(SERVICE_DATA_32_BIT_UUID_DATA_TYPE);
+        builder.include(SERVICE_DATA_32_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -2373,13 +2371,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0119() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
-        builder.include(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
+        builder.exclude(SERVICE_DATA_128_BIT_UUID_DATA_TYPE);
+        builder.include(SERVICE_DATA_128_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -2435,15 +2433,14 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0120() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_APPEARANCE);
-        builder.include(DATA_TYPE_APPEARANCE);
+        builder.exclude(APPEARANCE_DATA_TYPE);
+        builder.include(APPEARANCE_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -2485,8 +2482,8 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0121() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_PUBLIC_TARGET_ADDRESS);
-        builder.include(DATA_TYPE_PUBLIC_TARGET_ADDRESS);
+        builder.exclude(PUBLIC_TARGET_ADDRESS_DATA_TYPE);
+        builder.include(PUBLIC_TARGET_ADDRESS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] address = new byte[6];
@@ -2499,7 +2496,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -2540,8 +2537,8 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0122() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_RANDOM_TARGET_ADDRESS);
-        builder.include(DATA_TYPE_RANDOM_TARGET_ADDRESS);
+        builder.exclude(RANDOM_TARGET_ADDRESS_DATA_TYPE);
+        builder.include(RANDOM_TARGET_ADDRESS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] address = new byte[6];
@@ -2554,7 +2551,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -2595,13 +2592,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0123() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_ADVERTISING_INTERVAL);
-        builder.include(DATA_TYPE_ADVERTISING_INTERVAL);
+        builder.exclude(ADVERTISING_INTERVAL_DATA_TYPE);
+        builder.include(ADVERTISING_INTERVAL_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
 
@@ -2643,19 +2640,19 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0124() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
-        builder.include(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
+        builder.exclude(URI_DATA_TYPE);
+        builder.include(URI_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x0016;
+        byte[] schemedata = Scheme.HTTP_SCHEME.toString().getBytes();
         String body = "//im97mori.org/";
 
-        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 3];
-        data[0] = (byte) (utf8data.length + 2);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        data[2] = (byte) schemeKey;
-        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
+        byte[] utf8data = body.getBytes();
+        byte[] data = new byte[utf8data.length + 2 + schemedata.length];
+        data[0] = (byte) (utf8data.length + schemedata.length + 1);
+        data[1] = URI_DATA_TYPE;
+        System.arraycopy(schemedata, 0, data, 2, schemedata.length);
+        System.arraycopy(utf8data, 0, data, 2 + schemedata.length, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -2695,13 +2692,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0125() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_INDOOR_POSITIONING);
-        builder.include(DATA_TYPE_INDOOR_POSITIONING);
+        builder.exclude(INDOOR_POSITIONING_DATA_TYPE);
+        builder.include(INDOOR_POSITIONING_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -2741,13 +2738,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0126() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
-        builder.include(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
+        builder.exclude(TRANSPORT_DISCOVERY_DATA_DATA_TYPE);
+        builder.include(TRANSPORT_DISCOVERY_DATA_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -2790,13 +2787,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0127() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_LE_SUPPORTED_FEATURES);
-        builder.include(DATA_TYPE_LE_SUPPORTED_FEATURES);
+        builder.exclude(LE_SUPPORTED_FEATURES_DATA_TYPE);
+        builder.include(LE_SUPPORTED_FEATURES_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -2837,13 +2834,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0128() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
-        builder.include(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
+        builder.exclude(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE);
+        builder.include(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -2889,13 +2886,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0129() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_BIG_INFO);
-        builder.include(DATA_TYPE_BIG_INFO);
+        builder.exclude(BIG_INFO_DATA_TYPE);
+        builder.include(BIG_INFO_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[35];
         data[ 0] = 34;
-        data[ 1] = DATA_TYPE_BIG_INFO;
+        data[ 1] = BIG_INFO_DATA_TYPE;
         data[ 2] = 0b00000000;
         data[ 3] = 0b00000000;
         data[ 4] = 0b00000000;
@@ -2967,12 +2964,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0202() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
+        builder.exclude(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -3014,12 +3011,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0203() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
+        builder.exclude(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -3061,12 +3058,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0204() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
+        builder.exclude(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -3110,12 +3107,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0205() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
+        builder.exclude(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -3159,12 +3156,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0206() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
+        builder.exclude(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -3220,12 +3217,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0207() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
+        builder.exclude(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -3281,14 +3278,14 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0208() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_SHORTENED_LOCAL_NAME);
+        builder.exclude(SHORTENED_LOCAL_NAME_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -3329,14 +3326,14 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0209() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_COMPLETE_LOCAL_NAME);
+        builder.exclude(COMPLETE_LOCAL_NAME_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -3377,12 +3374,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0210() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_FLAGS);
+        builder.exclude(FLAGS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -3423,13 +3420,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0211() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA);
+        builder.exclude(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         int companyId = 0x000000E0;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) (companyId & (0x0000ff >> 8));
 
@@ -3471,12 +3468,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0212() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_TX_POWER_LEVEL);
+        builder.exclude(TX_POWER_LEVEL_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -3517,12 +3514,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0213() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE);
+        builder.exclude(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -3566,12 +3563,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0214() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.exclude(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -3613,12 +3610,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0215() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.exclude(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -3662,12 +3659,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0216() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.exclude(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -3723,12 +3720,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0217() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_16_BIT_UUID);
+        builder.exclude(SERVICE_DATA_16_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -3770,12 +3767,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0218() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_32_BIT_UUID);
+        builder.exclude(SERVICE_DATA_32_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -3819,12 +3816,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0219() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
+        builder.exclude(SERVICE_DATA_128_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -3880,14 +3877,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0220() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_APPEARANCE);
+        builder.exclude(APPEARANCE_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -3929,7 +3925,7 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0221() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_PUBLIC_TARGET_ADDRESS);
+        builder.exclude(PUBLIC_TARGET_ADDRESS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] address = new byte[6];
@@ -3942,7 +3938,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -3983,7 +3979,7 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0222() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_RANDOM_TARGET_ADDRESS);
+        builder.exclude(RANDOM_TARGET_ADDRESS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] address = new byte[6];
@@ -3996,7 +3992,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -4037,12 +4033,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0223() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_ADVERTISING_INTERVAL);
+        builder.exclude(ADVERTISING_INTERVAL_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
 
@@ -4084,18 +4080,18 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0224() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
+        builder.exclude(URI_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x0016;
+        byte[] schemedata = Scheme.HTTP_SCHEME.toString().getBytes();
         String body = "//im97mori.org/";
 
-        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 3];
-        data[0] = (byte) (utf8data.length + 2);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        data[2] = (byte) schemeKey;
-        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
+        byte[] utf8data = body.getBytes();
+        byte[] data = new byte[utf8data.length + 2 + schemedata.length];
+        data[0] = (byte) (utf8data.length + schemedata.length + 1);
+        data[1] = URI_DATA_TYPE;
+        System.arraycopy(schemedata, 0, data, 2, schemedata.length);
+        System.arraycopy(utf8data, 0, data, 2 + schemedata.length, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -4135,12 +4131,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0225() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_INDOOR_POSITIONING);
+        builder.exclude(INDOOR_POSITIONING_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -4181,12 +4177,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0226() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
+        builder.exclude(TRANSPORT_DISCOVERY_DATA_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -4229,12 +4225,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0227() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_LE_SUPPORTED_FEATURES);
+        builder.exclude(LE_SUPPORTED_FEATURES_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -4275,12 +4271,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0228() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
+        builder.exclude(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -4326,12 +4322,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0229() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_BIG_INFO);
+        builder.exclude(BIG_INFO_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[35];
         data[ 0] = 34;
-        data[ 1] = DATA_TYPE_BIG_INFO;
+        data[ 1] = BIG_INFO_DATA_TYPE;
         data[ 2] = 0b00000000;
         data[ 3] = 0b00000000;
         data[ 4] = 0b00000000;
@@ -4449,7 +4445,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -4495,7 +4491,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -4541,7 +4537,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -4589,7 +4585,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -4637,7 +4633,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -4697,7 +4693,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -4756,10 +4752,10 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser parser = builder.build();
 
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -4803,10 +4799,10 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser parser = builder.build();
 
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -4851,7 +4847,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -4897,7 +4893,7 @@ public class AdvertisingDataParserTest {
         int companyId = 0x000000E0;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) (companyId & (0x0000ff >> 8));
 
@@ -4943,7 +4939,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -4988,7 +4984,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -5036,7 +5032,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -5082,7 +5078,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -5130,7 +5126,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -5190,7 +5186,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -5236,7 +5232,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -5284,7 +5280,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -5342,11 +5338,10 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         AdvertisingDataParser parser = builder.build();
 
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -5400,7 +5395,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -5453,7 +5448,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -5498,7 +5493,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
 
@@ -5542,15 +5537,15 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x0016;
+        byte[] schemedata = Scheme.HTTP_SCHEME.toString().getBytes();
         String body = "//im97mori.org/";
 
-        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 3];
-        data[0] = (byte) (utf8data.length + 2);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        data[2] = (byte) schemeKey;
-        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
+        byte[] utf8data = body.getBytes();
+        byte[] data = new byte[utf8data.length + 2 + schemedata.length];
+        data[0] = (byte) (utf8data.length + schemedata.length + 1);
+        data[1] = URI_DATA_TYPE;
+        System.arraycopy(schemedata, 0, data, 2, schemedata.length);
+        System.arraycopy(utf8data, 0, data, 2 + schemedata.length, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -5594,7 +5589,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -5639,7 +5634,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -5686,7 +5681,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -5731,7 +5726,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -5781,7 +5776,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[35];
         data[ 0] = 34;
-        data[ 1] = DATA_TYPE_BIG_INFO;
+        data[ 1] = BIG_INFO_DATA_TYPE;
         data[ 2] = 0b00000000;
         data[ 3] = 0b00000000;
         data[ 4] = 0b00000000;
@@ -5853,13 +5848,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0402() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
+        builder.include(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.exclude(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -5901,13 +5896,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0403() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
+        builder.include(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.exclude(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -5949,13 +5944,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0404() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
+        builder.include(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.exclude(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -5999,13 +5994,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0405() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
+        builder.include(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.exclude(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -6049,13 +6044,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0406() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
+        builder.include(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.exclude(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -6111,13 +6106,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0407() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
-        builder.exclude(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
+        builder.include(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
+        builder.exclude(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -6173,15 +6168,15 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0408() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_SHORTENED_LOCAL_NAME);
-        builder.exclude(DATA_TYPE_SHORTENED_LOCAL_NAME);
+        builder.include(SHORTENED_LOCAL_NAME_DATA_TYPE);
+        builder.exclude(SHORTENED_LOCAL_NAME_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -6222,15 +6217,15 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0409() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_COMPLETE_LOCAL_NAME);
-        builder.exclude(DATA_TYPE_COMPLETE_LOCAL_NAME);
+        builder.include(COMPLETE_LOCAL_NAME_DATA_TYPE);
+        builder.exclude(COMPLETE_LOCAL_NAME_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -6271,13 +6266,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0410() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_FLAGS);
-        builder.exclude(DATA_TYPE_FLAGS);
+        builder.include(FLAGS_DATA_TYPE);
+        builder.exclude(FLAGS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -6318,14 +6313,14 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0411() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA);
-        builder.exclude(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA);
+        builder.include(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE);
+        builder.exclude(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         int companyId = 0x000000E0;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) (companyId & (0x0000ff >> 8));
 
@@ -6367,13 +6362,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0412() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_TX_POWER_LEVEL);
-        builder.exclude(DATA_TYPE_TX_POWER_LEVEL);
+        builder.include(TX_POWER_LEVEL_DATA_TYPE);
+        builder.exclude(TX_POWER_LEVEL_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -6414,13 +6409,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0413() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE);
-        builder.exclude(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE);
+        builder.include(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE);
+        builder.exclude(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -6464,13 +6459,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0414() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS);
-        builder.exclude(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.include(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+        builder.exclude(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -6512,13 +6507,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0415() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS);
-        builder.exclude(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.include(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+        builder.exclude(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -6562,13 +6557,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0416() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS);
-        builder.exclude(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.include(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
+        builder.exclude(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -6624,13 +6619,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0417() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_SERVICE_DATA_16_BIT_UUID);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_16_BIT_UUID);
+        builder.include(SERVICE_DATA_16_BIT_UUID_DATA_TYPE);
+        builder.exclude(SERVICE_DATA_16_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -6672,13 +6667,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0418() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_SERVICE_DATA_32_BIT_UUID);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_32_BIT_UUID);
+        builder.include(SERVICE_DATA_32_BIT_UUID_DATA_TYPE);
+        builder.exclude(SERVICE_DATA_32_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -6722,13 +6717,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0419() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
-        builder.exclude(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
+        builder.include(SERVICE_DATA_128_BIT_UUID_DATA_TYPE);
+        builder.exclude(SERVICE_DATA_128_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -6784,15 +6779,14 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0420() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_APPEARANCE);
-        builder.exclude(DATA_TYPE_APPEARANCE);
+        builder.include(APPEARANCE_DATA_TYPE);
+        builder.exclude(APPEARANCE_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -6834,8 +6828,8 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0421() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_PUBLIC_TARGET_ADDRESS);
-        builder.exclude(DATA_TYPE_PUBLIC_TARGET_ADDRESS);
+        builder.include(PUBLIC_TARGET_ADDRESS_DATA_TYPE);
+        builder.exclude(PUBLIC_TARGET_ADDRESS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] address = new byte[6];
@@ -6848,7 +6842,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -6889,8 +6883,8 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0422() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_RANDOM_TARGET_ADDRESS);
-        builder.exclude(DATA_TYPE_RANDOM_TARGET_ADDRESS);
+        builder.include(RANDOM_TARGET_ADDRESS_DATA_TYPE);
+        builder.exclude(RANDOM_TARGET_ADDRESS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] address = new byte[6];
@@ -6903,7 +6897,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -6944,13 +6938,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0423() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_ADVERTISING_INTERVAL);
-        builder.exclude(DATA_TYPE_ADVERTISING_INTERVAL);
+        builder.include(ADVERTISING_INTERVAL_DATA_TYPE);
+        builder.exclude(ADVERTISING_INTERVAL_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
 
@@ -6992,19 +6986,19 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0424() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
-        builder.exclude(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
+        builder.include(URI_DATA_TYPE);
+        builder.exclude(URI_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x0016;
+        byte[] schemedata = Scheme.HTTP_SCHEME.toString().getBytes();
         String body = "//im97mori.org/";
 
-        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 3];
-        data[0] = (byte) (utf8data.length + 2);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        data[2] = (byte) schemeKey;
-        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
+        byte[] utf8data = body.getBytes();
+        byte[] data = new byte[utf8data.length + 2 + schemedata.length];
+        data[0] = (byte) (utf8data.length + schemedata.length + 1);
+        data[1] = URI_DATA_TYPE;
+        System.arraycopy(schemedata, 0, data, 2, schemedata.length);
+        System.arraycopy(utf8data, 0, data, 2 + schemedata.length, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -7044,13 +7038,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0425() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INDOOR_POSITIONING);
-        builder.exclude(DATA_TYPE_INDOOR_POSITIONING);
+        builder.include(INDOOR_POSITIONING_DATA_TYPE);
+        builder.exclude(INDOOR_POSITIONING_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -7091,13 +7085,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0426() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INDOOR_POSITIONING);
-        builder.exclude(DATA_TYPE_INDOOR_POSITIONING);
+        builder.include(INDOOR_POSITIONING_DATA_TYPE);
+        builder.exclude(INDOOR_POSITIONING_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -7140,13 +7134,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0427() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_LE_SUPPORTED_FEATURES);
-        builder.exclude(DATA_TYPE_LE_SUPPORTED_FEATURES);
+        builder.include(LE_SUPPORTED_FEATURES_DATA_TYPE);
+        builder.exclude(LE_SUPPORTED_FEATURES_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -7187,13 +7181,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0428() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
-        builder.exclude(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
+        builder.include(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE);
+        builder.exclude(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -7239,13 +7233,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0429() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_BIG_INFO);
-        builder.exclude(DATA_TYPE_BIG_INFO);
+        builder.include(BIG_INFO_DATA_TYPE);
+        builder.exclude(BIG_INFO_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[35];
         data[ 0] = 34;
-        data[ 1] = DATA_TYPE_BIG_INFO;
+        data[ 1] = BIG_INFO_DATA_TYPE;
         data[ 2] = 0b00000000;
         data[ 3] = 0b00000000;
         data[ 4] = 0b00000000;
@@ -7317,12 +7311,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0502() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
+        builder.include(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -7364,12 +7358,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0503() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
+        builder.include(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -7411,12 +7405,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0504() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
+        builder.include(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -7460,12 +7454,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0505() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS);
+        builder.include(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -7509,12 +7503,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0506() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
+        builder.include(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -7570,12 +7564,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0507() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS);
+        builder.include(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -7631,14 +7625,14 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0508() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_SHORTENED_LOCAL_NAME);
+        builder.include(SHORTENED_LOCAL_NAME_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -7679,14 +7673,14 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0509() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_COMPLETE_LOCAL_NAME);
+        builder.include(COMPLETE_LOCAL_NAME_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -7727,12 +7721,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0510() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_FLAGS);
+        builder.include(FLAGS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -7773,13 +7767,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0511() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA);
+        builder.include(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         int companyId = 0x000000E0;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) (companyId & (0x0000ff >> 8));
 
@@ -7821,12 +7815,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0512() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_TX_POWER_LEVEL);
+        builder.include(TX_POWER_LEVEL_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -7867,12 +7861,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0513() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE);
+        builder.include(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -7916,12 +7910,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0514() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.include(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -7963,12 +7957,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0515() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.include(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -8012,12 +8006,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0516() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS);
+        builder.include(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -8073,12 +8067,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0517() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_SERVICE_DATA_16_BIT_UUID);
+        builder.include(SERVICE_DATA_16_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -8120,12 +8114,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0518() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_SERVICE_DATA_32_BIT_UUID);
+        builder.include(SERVICE_DATA_32_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -8169,12 +8163,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0519() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
+        builder.include(SERVICE_DATA_128_BIT_UUID_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -8230,14 +8224,13 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0520() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_APPEARANCE);
+        builder.include(APPEARANCE_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -8279,7 +8272,7 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0521() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_PUBLIC_TARGET_ADDRESS);
+        builder.include(PUBLIC_TARGET_ADDRESS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] address = new byte[6];
@@ -8292,7 +8285,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -8333,7 +8326,7 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0522() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_RANDOM_TARGET_ADDRESS);
+        builder.include(RANDOM_TARGET_ADDRESS_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] address = new byte[6];
@@ -8346,7 +8339,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -8387,12 +8380,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0523() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_ADVERTISING_INTERVAL);
+        builder.include(ADVERTISING_INTERVAL_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
 
@@ -8434,18 +8427,18 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0524() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
+        builder.include(URI_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
-        int schemeKey = 0x0016;
+        byte[] schemedata = Scheme.HTTP_SCHEME.toString().getBytes();
         String body = "//im97mori.org/";
 
-        byte[] utf8data = body.getBytes(StandardCharsets.UTF_8);
-        byte[] data = new byte[utf8data.length + 3];
-        data[0] = (byte) (utf8data.length + 2);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        data[2] = (byte) schemeKey;
-        System.arraycopy(utf8data, 0, data, 3, utf8data.length);
+        byte[] utf8data = body.getBytes();
+        byte[] data = new byte[utf8data.length + 2 + schemedata.length];
+        data[0] = (byte) (utf8data.length + schemedata.length + 1);
+        data[1] = URI_DATA_TYPE;
+        System.arraycopy(schemedata, 0, data, 2, schemedata.length);
+        System.arraycopy(utf8data, 0, data, 2 + schemedata.length, utf8data.length);
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -8485,12 +8478,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0525() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_INDOOR_POSITIONING);
+        builder.include(INDOOR_POSITIONING_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -8530,12 +8523,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0526() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
+        builder.include(TRANSPORT_DISCOVERY_DATA_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -8578,12 +8571,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0527() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_LE_SUPPORTED_FEATURES);
+        builder.include(LE_SUPPORTED_FEATURES_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -8624,12 +8617,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0528() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
+        builder.include(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -8675,12 +8668,12 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0529() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
-        builder.include(DATA_TYPE_BIG_INFO);
+        builder.include(BIG_INFO_DATA_TYPE);
         AdvertisingDataParser parser = builder.build();
 
         byte[] data = new byte[35];
         data[ 0] = 34;
-        data[ 1] = DATA_TYPE_BIG_INFO;
+        data[ 1] = BIG_INFO_DATA_TYPE;
         data[ 2] = 0b00000000;
         data[ 3] = 0b00000000;
         data[ 4] = 0b00000000;
@@ -8756,31 +8749,31 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[232];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
         data[4] = 3;
-        data[5] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[5] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
         data[8] = 5;
-        data[9] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[9] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[10] = 0x00;
         data[11] = 0x00;
         data[12] = 0x00;
         data[13] = 0x00;
 
         data[14] = 5;
-        data[15] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[15] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[16] = 0x00;
         data[17] = 0x00;
         data[18] = 0x00;
         data[19] = 0x00;
 
         data[20] = 17;
-        data[21] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[21] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[22] = 0x00;
         data[23] = 0x00;
         data[24] = 0x00;
@@ -8799,7 +8792,7 @@ public class AdvertisingDataParserTest {
         data[37] = 0x00;
 
         data[38] = 17;
-        data[39] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[39] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[40] = 0x00;
         data[41] = 0x00;
         data[42] = 0x00;
@@ -8818,48 +8811,48 @@ public class AdvertisingDataParserTest {
         data[55] = 0x00;
 
         data[56] = 2;
-        data[57] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[57] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         data[58] = 'a';
 
         data[59] = 3;
-        data[60] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[60] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         data[61] = 'a';
         data[62] = 'b';
 
         data[63] = 2;
-        data[64] = DATA_TYPE_FLAGS;
+        data[64] = FLAGS_DATA_TYPE;
         data[65] = 0b00000001;
 
         data[66] = 3;
-        data[67] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[67] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[68] = (byte) (0x000000E0 & 0x0000ff);
         data[69] = (byte) (0x000000E0 & (0x0000ff >> 8));
 
         data[70] = 2;
-        data[71] = DATA_TYPE_TX_POWER_LEVEL;
+        data[71] = TX_POWER_LEVEL_DATA_TYPE;
         data[72] = -127;
 
         data[73] = 5;
-        data[74] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[74] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[75] = (byte) 0xff;
         data[76] = (byte) 0xff;
         data[77] = (byte) 0xff;
         data[78] = (byte) 0xff;
 
         data[79] = 3;
-        data[80] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[80] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[81] = 0;
         data[82] = 0;
 
         data[83] = 5;
-        data[84] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[84] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[85] = 0x00;
         data[86] = 0x00;
         data[87] = 0x00;
         data[88] = 0x00;
 
         data[89] = 17;
-        data[90] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[90] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[91] = 0x00;
         data[92] = 0x00;
         data[93] = 0x00;
@@ -8878,19 +8871,19 @@ public class AdvertisingDataParserTest {
         data[106] = 0x00;
 
         data[107] = 3;
-        data[108] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[108] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[109] = 0;
         data[110] = 0;
 
         data[111] = 5;
-        data[112] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[112] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[113] = 0x00;
         data[114] = 0x00;
         data[115] = 0x00;
         data[116] = 0x00;
 
         data[117] = 17;
-        data[118] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[118] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[119] = 0x00;
         data[120] = 0x00;
         data[121] = 0x00;
@@ -8909,12 +8902,12 @@ public class AdvertisingDataParserTest {
         data[134] = 0x00;
 
         data[135] = 3;
-        data[136] = DATA_TYPE_APPEARANCE;
+        data[136] = APPEARANCE_DATA_TYPE;
         data[137] = (byte) (0x64 & 0x00ff);
         data[138] = (byte) ((0x64 >> 8) & 0x00ff);
 
         data[139] = 7;
-        data[140] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[140] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         data[141] = 0;
         data[142] = 0;
         data[143] = 0;
@@ -8923,7 +8916,7 @@ public class AdvertisingDataParserTest {
         data[146] = 0;
 
         data[147] = 7;
-        data[148] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[148] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         data[149] = 0;
         data[150] = 0;
         data[151] = 0;
@@ -8932,12 +8925,12 @@ public class AdvertisingDataParserTest {
         data[154] = 0;
 
         data[155] = 3;
-        data[156] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[156] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[157] = 0x00;
         data[158] = 0x00;
 
         data[159] = 17;
-        data[160] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[160] = URI_DATA_TYPE;
         data[161] = 0x16;
         data[162] = '/';
         data[163] = '/';
@@ -8956,21 +8949,21 @@ public class AdvertisingDataParserTest {
         data[176] = '/';
 
         data[177] = 2;
-        data[178] = DATA_TYPE_INDOOR_POSITIONING;
+        data[178] = INDOOR_POSITIONING_DATA_TYPE;
         data[179] = 0b00000000;
 
         data[180] = 4;
-        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[181] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[183] = 0;
         data[184] = 0;
 
         data[185] = 2;
-        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[186] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[187] = 0b00000001;
 
         data[188] = 8;
-        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[189] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[190] = (byte) 0b11111110;
         data[191] = (byte) 0b11111111;
         data[192] = (byte) 0b11111111;
@@ -8980,7 +8973,7 @@ public class AdvertisingDataParserTest {
         data[196] = 0b00000000;
 
         data[197] = 34;
-        data[198] = DATA_TYPE_BIG_INFO;
+        data[198] = BIG_INFO_DATA_TYPE;
         data[199] = 0b00000000;
         data[200] = 0b00000000;
         data[201] = 0b00000000;
@@ -9020,34 +9013,34 @@ public class AdvertisingDataParserTest {
         assertNotNull(result);
         assertNotNull(result.getResultList());
         assertEquals(28, result.getResultList().size());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(0).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(1).getDataType());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(2).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(3).getDataType());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result.getResultList().get(4).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result.getResultList().get(5).getDataType());
-        assertEquals(DATA_TYPE_SHORTENED_LOCAL_NAME, result.getResultList().get(6).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LOCAL_NAME, result.getResultList().get(7).getDataType());
-        assertEquals(DATA_TYPE_FLAGS, result.getResultList().get(8).getDataType());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result.getResultList().get(9).getDataType());
-        assertEquals(DATA_TYPE_TX_POWER_LEVEL, result.getResultList().get(10).getDataType());
-        assertEquals(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE, result.getResultList().get(11).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(12).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(13).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(14).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_16_BIT_UUID, result.getResultList().get(15).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result.getResultList().get(16).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_128_BIT_UUID, result.getResultList().get(17).getDataType());
-        assertEquals(DATA_TYPE_APPEARANCE, result.getResultList().get(18).getDataType());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result.getResultList().get(19).getDataType());
-        assertEquals(DATA_TYPE_RANDOM_TARGET_ADDRESS, result.getResultList().get(20).getDataType());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getResultList().get(21).getDataType());
-        assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result.getResultList().get(22).getDataType());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getResultList().get(23).getDataType());
-        assertEquals(DATA_TYPE_TRANSPORT_DISCOVERY_DATA, result.getResultList().get(24).getDataType());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result.getResultList().get(25).getDataType());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(26).getDataType());
-        assertEquals(DATA_TYPE_BIG_INFO, result.getResultList().get(27).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(0).getDataType());
+        assertEquals(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(1).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(2).getDataType());
+        assertEquals(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(3).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(4).getDataType());
+        assertEquals(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(5).getDataType());
+        assertEquals(SHORTENED_LOCAL_NAME_DATA_TYPE, result.getResultList().get(6).getDataType());
+        assertEquals(COMPLETE_LOCAL_NAME_DATA_TYPE, result.getResultList().get(7).getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result.getResultList().get(8).getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result.getResultList().get(9).getDataType());
+        assertEquals(TX_POWER_LEVEL_DATA_TYPE, result.getResultList().get(10).getDataType());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result.getResultList().get(11).getDataType());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(12).getDataType());
+        assertEquals(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(13).getDataType());
+        assertEquals(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(14).getDataType());
+        assertEquals(SERVICE_DATA_16_BIT_UUID_DATA_TYPE, result.getResultList().get(15).getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result.getResultList().get(16).getDataType());
+        assertEquals(SERVICE_DATA_128_BIT_UUID_DATA_TYPE, result.getResultList().get(17).getDataType());
+        assertEquals(APPEARANCE_DATA_TYPE, result.getResultList().get(18).getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result.getResultList().get(19).getDataType());
+        assertEquals(RANDOM_TARGET_ADDRESS_DATA_TYPE, result.getResultList().get(20).getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result.getResultList().get(21).getDataType());
+        assertEquals(URI_DATA_TYPE, result.getResultList().get(22).getDataType());
+        assertEquals(INDOOR_POSITIONING_DATA_TYPE, result.getResultList().get(23).getDataType());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result.getResultList().get(24).getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result.getResultList().get(25).getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result.getResultList().get(26).getDataType());
+        assertEquals(BIG_INFO_DATA_TYPE, result.getResultList().get(27).getDataType());
         assertNotNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getCompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getIncompleteListOf32BitServiceUUIDs());
@@ -9085,31 +9078,31 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[232];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
         data[4] = 3;
-        data[5] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[5] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
         data[8] = 5;
-        data[9] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[9] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[10] = 0x00;
         data[11] = 0x00;
         data[12] = 0x00;
         data[13] = 0x00;
 
         data[14] = 5;
-        data[15] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[15] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[16] = 0x00;
         data[17] = 0x00;
         data[18] = 0x00;
         data[19] = 0x00;
 
         data[20] = 17;
-        data[21] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[21] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[22] = 0x00;
         data[23] = 0x00;
         data[24] = 0x00;
@@ -9128,7 +9121,7 @@ public class AdvertisingDataParserTest {
         data[37] = 0x00;
 
         data[38] = 17;
-        data[39] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[39] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[40] = 0x00;
         data[41] = 0x00;
         data[42] = 0x00;
@@ -9147,48 +9140,48 @@ public class AdvertisingDataParserTest {
         data[55] = 0x00;
 
         data[56] = 2;
-        data[57] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[57] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         data[58] = 'a';
 
         data[59] = 3;
-        data[60] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[60] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         data[61] = 'a';
         data[62] = 'b';
 
         data[63] = 2;
-        data[64] = DATA_TYPE_FLAGS;
+        data[64] = FLAGS_DATA_TYPE;
         data[65] = 0b00000001;
 
         data[66] = 3;
-        data[67] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[67] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[68] = (byte) (0x000000E0 & 0x0000ff);
         data[69] = (byte) (0x000000E0 & (0x0000ff >> 8));
 
         data[70] = 2;
-        data[71] = DATA_TYPE_TX_POWER_LEVEL;
+        data[71] = TX_POWER_LEVEL_DATA_TYPE;
         data[72] = -127;
 
         data[73] = 5;
-        data[74] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[74] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[75] = (byte) 0xff;
         data[76] = (byte) 0xff;
         data[77] = (byte) 0xff;
         data[78] = (byte) 0xff;
 
         data[79] = 3;
-        data[80] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[80] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[81] = 0;
         data[82] = 0;
 
         data[83] = 5;
-        data[84] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[84] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[85] = 0x00;
         data[86] = 0x00;
         data[87] = 0x00;
         data[88] = 0x00;
 
         data[89] = 17;
-        data[90] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[90] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[91] = 0x00;
         data[92] = 0x00;
         data[93] = 0x00;
@@ -9207,19 +9200,19 @@ public class AdvertisingDataParserTest {
         data[106] = 0x00;
 
         data[107] = 3;
-        data[108] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[108] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[109] = 0;
         data[110] = 0;
 
         data[111] = 5;
-        data[112] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[112] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[113] = 0x00;
         data[114] = 0x00;
         data[115] = 0x00;
         data[116] = 0x00;
 
         data[117] = 17;
-        data[118] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[118] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[119] = 0x00;
         data[120] = 0x00;
         data[121] = 0x00;
@@ -9238,12 +9231,12 @@ public class AdvertisingDataParserTest {
         data[134] = 0x00;
 
         data[135] = 3;
-        data[136] = DATA_TYPE_APPEARANCE;
+        data[136] = APPEARANCE_DATA_TYPE;
         data[137] = (byte) (0x64 & 0x00ff);
         data[138] = (byte) ((0x64 >> 8) & 0x00ff);
 
         data[139] = 7;
-        data[140] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[140] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         data[141] = 0;
         data[142] = 0;
         data[143] = 0;
@@ -9252,7 +9245,7 @@ public class AdvertisingDataParserTest {
         data[146] = 0;
 
         data[147] = 7;
-        data[148] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[148] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         data[149] = 0;
         data[150] = 0;
         data[151] = 0;
@@ -9261,12 +9254,12 @@ public class AdvertisingDataParserTest {
         data[154] = 0;
 
         data[155] = 3;
-        data[156] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[156] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[157] = 0x00;
         data[158] = 0x00;
 
         data[159] = 17;
-        data[160] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[160] = URI_DATA_TYPE;
         data[161] = 0x16;
         data[162] = '/';
         data[163] = '/';
@@ -9285,21 +9278,21 @@ public class AdvertisingDataParserTest {
         data[176] = '/';
 
         data[177] = 2;
-        data[178] = DATA_TYPE_INDOOR_POSITIONING;
+        data[178] = INDOOR_POSITIONING_DATA_TYPE;
         data[179] = 0b00000000;
 
         data[180] = 4;
-        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[181] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[183] = 0;
         data[184] = 0;
 
         data[185] = 2;
-        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[186] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[187] = 0b00000001;
 
         data[188] = 8;
-        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[189] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[190] = (byte) 0b11111110;
         data[191] = (byte) 0b11111111;
         data[192] = (byte) 0b11111111;
@@ -9309,7 +9302,7 @@ public class AdvertisingDataParserTest {
         data[196] = 0b00000000;
 
         data[197] = 34;
-        data[198] = DATA_TYPE_BIG_INFO;
+        data[198] = BIG_INFO_DATA_TYPE;
         data[199] = 0b00000000;
         data[200] = 0b00000000;
         data[201] = 0b00000000;
@@ -9349,34 +9342,34 @@ public class AdvertisingDataParserTest {
         assertNotNull(result);
         assertNotNull(result.getResultList());
         assertEquals(28, result.getResultList().size());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(0).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(1).getDataType());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(2).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(3).getDataType());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result.getResultList().get(4).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result.getResultList().get(5).getDataType());
-        assertEquals(DATA_TYPE_SHORTENED_LOCAL_NAME, result.getResultList().get(6).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LOCAL_NAME, result.getResultList().get(7).getDataType());
-        assertEquals(DATA_TYPE_FLAGS, result.getResultList().get(8).getDataType());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result.getResultList().get(9).getDataType());
-        assertEquals(DATA_TYPE_TX_POWER_LEVEL, result.getResultList().get(10).getDataType());
-        assertEquals(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE, result.getResultList().get(11).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(12).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(13).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(14).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_16_BIT_UUID, result.getResultList().get(15).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result.getResultList().get(16).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_128_BIT_UUID, result.getResultList().get(17).getDataType());
-        assertEquals(DATA_TYPE_APPEARANCE, result.getResultList().get(18).getDataType());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result.getResultList().get(19).getDataType());
-        assertEquals(DATA_TYPE_RANDOM_TARGET_ADDRESS, result.getResultList().get(20).getDataType());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getResultList().get(21).getDataType());
-        assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result.getResultList().get(22).getDataType());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getResultList().get(23).getDataType());
-        assertEquals(DATA_TYPE_TRANSPORT_DISCOVERY_DATA, result.getResultList().get(24).getDataType());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result.getResultList().get(25).getDataType());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(26).getDataType());
-        assertEquals(DATA_TYPE_BIG_INFO, result.getResultList().get(27).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(0).getDataType());
+        assertEquals(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(1).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(2).getDataType());
+        assertEquals(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(3).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(4).getDataType());
+        assertEquals(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(5).getDataType());
+        assertEquals(SHORTENED_LOCAL_NAME_DATA_TYPE, result.getResultList().get(6).getDataType());
+        assertEquals(COMPLETE_LOCAL_NAME_DATA_TYPE, result.getResultList().get(7).getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result.getResultList().get(8).getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result.getResultList().get(9).getDataType());
+        assertEquals(TX_POWER_LEVEL_DATA_TYPE, result.getResultList().get(10).getDataType());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result.getResultList().get(11).getDataType());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(12).getDataType());
+        assertEquals(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(13).getDataType());
+        assertEquals(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(14).getDataType());
+        assertEquals(SERVICE_DATA_16_BIT_UUID_DATA_TYPE, result.getResultList().get(15).getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result.getResultList().get(16).getDataType());
+        assertEquals(SERVICE_DATA_128_BIT_UUID_DATA_TYPE, result.getResultList().get(17).getDataType());
+        assertEquals(APPEARANCE_DATA_TYPE, result.getResultList().get(18).getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result.getResultList().get(19).getDataType());
+        assertEquals(RANDOM_TARGET_ADDRESS_DATA_TYPE, result.getResultList().get(20).getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result.getResultList().get(21).getDataType());
+        assertEquals(URI_DATA_TYPE, result.getResultList().get(22).getDataType());
+        assertEquals(INDOOR_POSITIONING_DATA_TYPE, result.getResultList().get(23).getDataType());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result.getResultList().get(24).getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result.getResultList().get(25).getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result.getResultList().get(26).getDataType());
+        assertEquals(BIG_INFO_DATA_TYPE, result.getResultList().get(27).getDataType());
         assertNotNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getCompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getIncompleteListOf32BitServiceUUIDs());
@@ -9414,31 +9407,31 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[232];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
         data[4] = 3;
-        data[5] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[5] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
         data[8] = 5;
-        data[9] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[9] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[10] = 0x00;
         data[11] = 0x00;
         data[12] = 0x00;
         data[13] = 0x00;
 
         data[14] = 5;
-        data[15] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[15] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[16] = 0x00;
         data[17] = 0x00;
         data[18] = 0x00;
         data[19] = 0x00;
 
         data[20] = 17;
-        data[21] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[21] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[22] = 0x00;
         data[23] = 0x00;
         data[24] = 0x00;
@@ -9457,7 +9450,7 @@ public class AdvertisingDataParserTest {
         data[37] = 0x00;
 
         data[38] = 17;
-        data[39] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[39] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[40] = 0x00;
         data[41] = 0x00;
         data[42] = 0x00;
@@ -9476,48 +9469,48 @@ public class AdvertisingDataParserTest {
         data[55] = 0x00;
 
         data[56] = 2;
-        data[57] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[57] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         data[58] = 'a';
 
         data[59] = 3;
-        data[60] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[60] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         data[61] = 'a';
         data[62] = 'b';
 
         data[63] = 2;
-        data[64] = DATA_TYPE_FLAGS;
+        data[64] = FLAGS_DATA_TYPE;
         data[65] = 0b00000001;
 
         data[66] = 3;
-        data[67] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[67] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[68] = (byte) (0x000000E0 & 0x0000ff);
         data[69] = (byte) (0x000000E0 & (0x0000ff >> 8));
 
         data[70] = 2;
-        data[71] = DATA_TYPE_TX_POWER_LEVEL;
+        data[71] = TX_POWER_LEVEL_DATA_TYPE;
         data[72] = -127;
 
         data[73] = 5;
-        data[74] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[74] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[75] = (byte) 0xff;
         data[76] = (byte) 0xff;
         data[77] = (byte) 0xff;
         data[78] = (byte) 0xff;
 
         data[79] = 3;
-        data[80] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[80] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[81] = 0;
         data[82] = 0;
 
         data[83] = 5;
-        data[84] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[84] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[85] = 0x00;
         data[86] = 0x00;
         data[87] = 0x00;
         data[88] = 0x00;
 
         data[89] = 17;
-        data[90] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[90] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[91] = 0x00;
         data[92] = 0x00;
         data[93] = 0x00;
@@ -9536,19 +9529,19 @@ public class AdvertisingDataParserTest {
         data[106] = 0x00;
 
         data[107] = 3;
-        data[108] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[108] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[109] = 0;
         data[110] = 0;
 
         data[111] = 5;
-        data[112] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[112] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[113] = 0x00;
         data[114] = 0x00;
         data[115] = 0x00;
         data[116] = 0x00;
 
         data[117] = 17;
-        data[118] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[118] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[119] = 0x00;
         data[120] = 0x00;
         data[121] = 0x00;
@@ -9567,12 +9560,12 @@ public class AdvertisingDataParserTest {
         data[134] = 0x00;
 
         data[135] = 3;
-        data[136] = DATA_TYPE_APPEARANCE;
+        data[136] = APPEARANCE_DATA_TYPE;
         data[137] = (byte) (0x64 & 0x00ff);
         data[138] = (byte) ((0x64 >> 8) & 0x00ff);
 
         data[139] = 7;
-        data[140] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[140] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         data[141] = 0;
         data[142] = 0;
         data[143] = 0;
@@ -9581,7 +9574,7 @@ public class AdvertisingDataParserTest {
         data[146] = 0;
 
         data[147] = 7;
-        data[148] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[148] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         data[149] = 0;
         data[150] = 0;
         data[151] = 0;
@@ -9590,12 +9583,12 @@ public class AdvertisingDataParserTest {
         data[154] = 0;
 
         data[155] = 3;
-        data[156] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[156] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[157] = 0x00;
         data[158] = 0x00;
 
         data[159] = 17;
-        data[160] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[160] = URI_DATA_TYPE;
         data[161] = 0x16;
         data[162] = '/';
         data[163] = '/';
@@ -9614,21 +9607,21 @@ public class AdvertisingDataParserTest {
         data[176] = '/';
 
         data[177] = 2;
-        data[178] = DATA_TYPE_INDOOR_POSITIONING;
+        data[178] = INDOOR_POSITIONING_DATA_TYPE;
         data[179] = 0b00000000;
 
         data[180] = 4;
-        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[181] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[183] = 0;
         data[184] = 0;
 
         data[185] = 2;
-        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[186] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[187] = 0b00000001;
 
         data[188] = 8;
-        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[189] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[190] = (byte) 0b11111110;
         data[191] = (byte) 0b11111111;
         data[192] = (byte) 0b11111111;
@@ -9638,7 +9631,7 @@ public class AdvertisingDataParserTest {
         data[196] = 0b00000000;
 
         data[197] = 34;
-        data[198] = DATA_TYPE_BIG_INFO;
+        data[198] = BIG_INFO_DATA_TYPE;
         data[199] = 0b00000000;
         data[200] = 0b00000000;
         data[201] = 0b00000000;
@@ -9678,34 +9671,34 @@ public class AdvertisingDataParserTest {
         assertNotNull(result);
         assertNotNull(result.getResultList());
         assertEquals(28, result.getResultList().size());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(0).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(1).getDataType());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(2).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(3).getDataType());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result.getResultList().get(4).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result.getResultList().get(5).getDataType());
-        assertEquals(DATA_TYPE_SHORTENED_LOCAL_NAME, result.getResultList().get(6).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LOCAL_NAME, result.getResultList().get(7).getDataType());
-        assertEquals(DATA_TYPE_FLAGS, result.getResultList().get(8).getDataType());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result.getResultList().get(9).getDataType());
-        assertEquals(DATA_TYPE_TX_POWER_LEVEL, result.getResultList().get(10).getDataType());
-        assertEquals(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE, result.getResultList().get(11).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(12).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(13).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getResultList().get(14).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_16_BIT_UUID, result.getResultList().get(15).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result.getResultList().get(16).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_128_BIT_UUID, result.getResultList().get(17).getDataType());
-        assertEquals(DATA_TYPE_APPEARANCE, result.getResultList().get(18).getDataType());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result.getResultList().get(19).getDataType());
-        assertEquals(DATA_TYPE_RANDOM_TARGET_ADDRESS, result.getResultList().get(20).getDataType());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getResultList().get(21).getDataType());
-        assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result.getResultList().get(22).getDataType());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getResultList().get(23).getDataType());
-        assertEquals(DATA_TYPE_TRANSPORT_DISCOVERY_DATA, result.getResultList().get(24).getDataType());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result.getResultList().get(25).getDataType());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(26).getDataType());
-        assertEquals(DATA_TYPE_BIG_INFO, result.getResultList().get(27).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(0).getDataType());
+        assertEquals(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(1).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(2).getDataType());
+        assertEquals(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(3).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(4).getDataType());
+        assertEquals(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result.getResultList().get(5).getDataType());
+        assertEquals(SHORTENED_LOCAL_NAME_DATA_TYPE, result.getResultList().get(6).getDataType());
+        assertEquals(COMPLETE_LOCAL_NAME_DATA_TYPE, result.getResultList().get(7).getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result.getResultList().get(8).getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result.getResultList().get(9).getDataType());
+        assertEquals(TX_POWER_LEVEL_DATA_TYPE, result.getResultList().get(10).getDataType());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result.getResultList().get(11).getDataType());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(12).getDataType());
+        assertEquals(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(13).getDataType());
+        assertEquals(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result.getResultList().get(14).getDataType());
+        assertEquals(SERVICE_DATA_16_BIT_UUID_DATA_TYPE, result.getResultList().get(15).getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result.getResultList().get(16).getDataType());
+        assertEquals(SERVICE_DATA_128_BIT_UUID_DATA_TYPE, result.getResultList().get(17).getDataType());
+        assertEquals(APPEARANCE_DATA_TYPE, result.getResultList().get(18).getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result.getResultList().get(19).getDataType());
+        assertEquals(RANDOM_TARGET_ADDRESS_DATA_TYPE, result.getResultList().get(20).getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result.getResultList().get(21).getDataType());
+        assertEquals(URI_DATA_TYPE, result.getResultList().get(22).getDataType());
+        assertEquals(INDOOR_POSITIONING_DATA_TYPE, result.getResultList().get(23).getDataType());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result.getResultList().get(24).getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result.getResultList().get(25).getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result.getResultList().get(26).getDataType());
+        assertEquals(BIG_INFO_DATA_TYPE, result.getResultList().get(27).getDataType());
         assertNotNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getCompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getIncompleteListOf32BitServiceUUIDs());
@@ -9744,31 +9737,31 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[232];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
         data[4] = 3;
-        data[5] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[5] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
         data[8] = 5;
-        data[9] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[9] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[10] = 0x00;
         data[11] = 0x00;
         data[12] = 0x00;
         data[13] = 0x00;
 
         data[14] = 5;
-        data[15] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[15] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[16] = 0x00;
         data[17] = 0x00;
         data[18] = 0x00;
         data[19] = 0x00;
 
         data[20] = 17;
-        data[21] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[21] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[22] = 0x00;
         data[23] = 0x00;
         data[24] = 0x00;
@@ -9787,7 +9780,7 @@ public class AdvertisingDataParserTest {
         data[37] = 0x00;
 
         data[38] = 17;
-        data[39] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[39] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[40] = 0x00;
         data[41] = 0x00;
         data[42] = 0x00;
@@ -9806,48 +9799,48 @@ public class AdvertisingDataParserTest {
         data[55] = 0x00;
 
         data[56] = 2;
-        data[57] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[57] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         data[58] = 'a';
 
         data[59] = 3;
-        data[60] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[60] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         data[61] = 'a';
         data[62] = 'b';
 
         data[63] = 2;
-        data[64] = DATA_TYPE_FLAGS;
+        data[64] = FLAGS_DATA_TYPE;
         data[65] = 0b00000001;
 
         data[66] = 3;
-        data[67] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[67] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[68] = (byte) (0x000000E0 & 0x0000ff);
         data[69] = (byte) (0x000000E0 & (0x0000ff >> 8));
 
         data[70] = 2;
-        data[71] = DATA_TYPE_TX_POWER_LEVEL;
+        data[71] = TX_POWER_LEVEL_DATA_TYPE;
         data[72] = -127;
 
         data[73] = 5;
-        data[74] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[74] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[75] = (byte) 0xff;
         data[76] = (byte) 0xff;
         data[77] = (byte) 0xff;
         data[78] = (byte) 0xff;
 
         data[79] = 3;
-        data[80] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[80] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[81] = 0;
         data[82] = 0;
 
         data[83] = 5;
-        data[84] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[84] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[85] = 0x00;
         data[86] = 0x00;
         data[87] = 0x00;
         data[88] = 0x00;
 
         data[89] = 17;
-        data[90] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[90] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[91] = 0x00;
         data[92] = 0x00;
         data[93] = 0x00;
@@ -9866,19 +9859,19 @@ public class AdvertisingDataParserTest {
         data[106] = 0x00;
 
         data[107] = 3;
-        data[108] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[108] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[109] = 0;
         data[110] = 0;
 
         data[111] = 5;
-        data[112] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[112] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[113] = 0x00;
         data[114] = 0x00;
         data[115] = 0x00;
         data[116] = 0x00;
 
         data[117] = 17;
-        data[118] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[118] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[119] = 0x00;
         data[120] = 0x00;
         data[121] = 0x00;
@@ -9897,12 +9890,12 @@ public class AdvertisingDataParserTest {
         data[134] = 0x00;
 
         data[135] = 3;
-        data[136] = DATA_TYPE_APPEARANCE;
+        data[136] = APPEARANCE_DATA_TYPE;
         data[137] = (byte) (0x64 & 0x00ff);
         data[138] = (byte) ((0x64 >> 8) & 0x00ff);
 
         data[139] = 7;
-        data[140] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[140] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         data[141] = 0;
         data[142] = 0;
         data[143] = 0;
@@ -9911,7 +9904,7 @@ public class AdvertisingDataParserTest {
         data[146] = 0;
 
         data[147] = 7;
-        data[148] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[148] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         data[149] = 0;
         data[150] = 0;
         data[151] = 0;
@@ -9920,12 +9913,12 @@ public class AdvertisingDataParserTest {
         data[154] = 0;
 
         data[155] = 3;
-        data[156] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[156] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[157] = 0x00;
         data[158] = 0x00;
 
         data[159] = 17;
-        data[160] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[160] = URI_DATA_TYPE;
         data[161] = 0x16;
         data[162] = '/';
         data[163] = '/';
@@ -9944,21 +9937,21 @@ public class AdvertisingDataParserTest {
         data[176] = '/';
 
         data[177] = 2;
-        data[178] = DATA_TYPE_INDOOR_POSITIONING;
+        data[178] = INDOOR_POSITIONING_DATA_TYPE;
         data[179] = 0b00000000;
 
         data[180] = 4;
-        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[181] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[183] = 0;
         data[184] = 0;
 
         data[185] = 2;
-        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[186] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[187] = 0b00000001;
 
         data[188] = 8;
-        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[189] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[190] = (byte) 0b11111110;
         data[191] = (byte) 0b11111111;
         data[192] = (byte) 0b11111111;
@@ -9968,7 +9961,7 @@ public class AdvertisingDataParserTest {
         data[196] = 0b00000000;
 
         data[197] = 34;
-        data[198] = DATA_TYPE_BIG_INFO;
+        data[198] = BIG_INFO_DATA_TYPE;
         data[199] = 0b00000000;
         data[200] = 0b00000000;
         data[201] = 0b00000000;
@@ -10044,11 +10037,11 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 3;
-        data[5] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[5] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
@@ -10097,11 +10090,11 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 3;
-        data[5] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[5] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
@@ -10150,13 +10143,13 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[12];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 1;
         data[5] = 1;
         data[6] = 5;
-        data[7] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[7] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[8] = 0;
         data[9] = 0;
         data[10] = 0;
@@ -10207,13 +10200,13 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[12];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 1;
         data[5] = 1;
         data[6] = 5;
-        data[7] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[7] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[8] = 0;
         data[9] = 0;
         data[10] = 0;
@@ -10264,7 +10257,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[36];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 1;
@@ -10282,7 +10275,7 @@ public class AdvertisingDataParserTest {
         data[16] = 1;
         data[17] = 1;
         data[18] = 17;
-        data[19] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[19] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[20] = 0;
         data[21] = 0;
         data[22] = 0;
@@ -10345,7 +10338,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[36];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 1;
@@ -10363,7 +10356,7 @@ public class AdvertisingDataParserTest {
         data[16] = 1;
         data[17] = 1;
         data[18] = 17;
-        data[19] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[19] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[20] = 0;
         data[21] = 0;
         data[22] = 0;
@@ -10426,11 +10419,11 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (0x000000E0 & 0x0000ff);
         data[3] = (byte) (0x000000E0 & (0x0000ff >> 8));
         data[4] = 3;
-        data[5] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[5] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[6] = (byte) (0x00000008 & 0x0000ff);
         data[7] = (byte) (0x00000008 & (0x0000ff >> 8));
 
@@ -10480,10 +10473,10 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[6];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
         data[3] = 2;
-        data[4] = DATA_TYPE_TX_POWER_LEVEL;
+        data[4] = TX_POWER_LEVEL_DATA_TYPE;
         data[5] = 0;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
@@ -10531,13 +10524,13 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[12];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
         data[5] = (byte) 0xff;
         data[6] = 5;
-        data[7] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[7] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[8] = (byte) 0x06;
         data[9] = (byte) 0x00;
         data[10] = (byte) 0x06;
@@ -10591,11 +10584,11 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 3;
-        data[5] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[5] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
@@ -10644,13 +10637,13 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[12];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 1;
         data[5] = 1;
         data[6] = 5;
-        data[7] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[7] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[8] = 0;
         data[9] = 0;
         data[10] = 0;
@@ -10701,7 +10694,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[36];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 1;
@@ -10719,7 +10712,7 @@ public class AdvertisingDataParserTest {
         data[16] = 1;
         data[17] = 1;
         data[18] = 17;
-        data[19] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[19] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[20] = 0;
         data[21] = 0;
         data[22] = 0;
@@ -10782,11 +10775,11 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[8];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 3;
-        data[5] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[5] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
@@ -10835,13 +10828,13 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[12];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 1;
         data[5] = 1;
         data[6] = 5;
-        data[7] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[7] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[8] = 0;
         data[9] = 0;
         data[10] = 0;
@@ -10892,7 +10885,7 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[36];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 1;
         data[3] = 1;
         data[4] = 1;
@@ -10910,7 +10903,7 @@ public class AdvertisingDataParserTest {
         data[16] = 1;
         data[17] = 1;
         data[18] = 17;
-        data[19] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[19] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[20] = 0;
         data[21] = 0;
         data[22] = 0;
@@ -10971,9 +10964,9 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
-        byte[] data = new byte[24];
+        byte[] data = new byte[25];
         data[0] = 11;
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[1] = URI_DATA_TYPE;
         data[2] = 0x16;
         data[3] = '/';
         data[4] = '/';
@@ -10984,18 +10977,19 @@ public class AdvertisingDataParserTest {
         data[9] = 'i';
         data[10] = '1';
         data[11] = '/';
-        data[12] = 11;
-        data[13] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-        data[14] = (byte) 0xb9;
-        data[15] = '/';
+        data[12] = 12;
+        data[13] = URI_DATA_TYPE;
+        data[14] = (byte) 0xc2;
+        data[15] = (byte) 0xb9;
         data[16] = '/';
-        data[17] = 'i';
-        data[18] = 'm';
-        data[19] = 'o';
-        data[20] = 'r';
-        data[21] = 'i';
-        data[22] = '2';
-        data[23] = '/';
+        data[17] = '/';
+        data[18] = 'i';
+        data[19] = 'm';
+        data[20] = 'o';
+        data[21] = 'r';
+        data[22] = 'i';
+        data[23] = '2';
+        data[24] = '/';
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -11027,7 +11021,7 @@ public class AdvertisingDataParserTest {
         assertEquals(2, result.getUniformResourceIdentifierList().size());
         assertNotNull(result.getUniformResourceIdentifier());
         assertEquals(result.getUniformResourceIdentifier(), result.getUniformResourceIdentifierList().get(1));
-        assertEquals(URI.create(SCHEME_MAPPING_128.get(BLEUtils.convert16to128(data[14] & 0xff)) + new String(data, 15, 9)), result.getUniformResourceIdentifier().getUri());
+        assertEquals(URI.create(SCHEME_MAPPING.get(new String(data, 14, 2).charAt(0)) + new String(data, 16, 9)), result.getUniformResourceIdentifier().getUri());
         assertNull(result.getIndoorPositioning());
         assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
@@ -11042,31 +11036,31 @@ public class AdvertisingDataParserTest {
 
         byte[] data = new byte[232];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
         data[4] = 3;
-        data[5] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[5] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[6] = 0;
         data[7] = 0;
 
         data[8] = 5;
-        data[9] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[9] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[10] = 0x00;
         data[11] = 0x00;
         data[12] = 0x00;
         data[13] = 0x00;
 
         data[14] = 5;
-        data[15] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[15] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[16] = 0x00;
         data[17] = 0x00;
         data[18] = 0x00;
         data[19] = 0x00;
 
         data[20] = 17;
-        data[21] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[21] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[22] = 0x00;
         data[23] = 0x00;
         data[24] = 0x00;
@@ -11085,7 +11079,7 @@ public class AdvertisingDataParserTest {
         data[37] = 0x00;
 
         data[38] = 17;
-        data[39] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[39] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[40] = 0x00;
         data[41] = 0x00;
         data[42] = 0x00;
@@ -11104,48 +11098,48 @@ public class AdvertisingDataParserTest {
         data[55] = 0x00;
 
         data[56] = 2;
-        data[57] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[57] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         data[58] = 'a';
 
         data[59] = 3;
-        data[60] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[60] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         data[61] = 'a';
         data[62] = 'b';
 
         data[63] = 2;
-        data[64] = DATA_TYPE_FLAGS;
+        data[64] = FLAGS_DATA_TYPE;
         data[65] = 0b00000001;
 
         data[66] = 3;
-        data[67] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[67] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[68] = (byte) (0x000000E0 & 0x0000ff);
         data[69] = (byte) (0x000000E0 & (0x0000ff >> 8));
 
         data[70] = 2;
-        data[71] = DATA_TYPE_TX_POWER_LEVEL;
+        data[71] = TX_POWER_LEVEL_DATA_TYPE;
         data[72] = -127;
 
         data[73] = 5;
-        data[74] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[74] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[75] = (byte) 0xff;
         data[76] = (byte) 0xff;
         data[77] = (byte) 0xff;
         data[78] = (byte) 0xff;
 
         data[79] = 3;
-        data[80] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[80] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[81] = 0;
         data[82] = 0;
 
         data[83] = 5;
-        data[84] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[84] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[85] = 0x00;
         data[86] = 0x00;
         data[87] = 0x00;
         data[88] = 0x00;
 
         data[89] = 17;
-        data[90] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[90] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[91] = 0x00;
         data[92] = 0x00;
         data[93] = 0x00;
@@ -11164,19 +11158,19 @@ public class AdvertisingDataParserTest {
         data[106] = 0x00;
 
         data[107] = 3;
-        data[108] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[108] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[109] = 0;
         data[110] = 0;
 
         data[111] = 5;
-        data[112] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[112] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[113] = 0x00;
         data[114] = 0x00;
         data[115] = 0x00;
         data[116] = 0x00;
 
         data[117] = 17;
-        data[118] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[118] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[119] = 0x00;
         data[120] = 0x00;
         data[121] = 0x00;
@@ -11195,12 +11189,12 @@ public class AdvertisingDataParserTest {
         data[134] = 0x00;
 
         data[135] = 3;
-        data[136] = DATA_TYPE_APPEARANCE;
+        data[136] = APPEARANCE_DATA_TYPE;
         data[137] = (byte) (0x64 & 0x00ff);
         data[138] = (byte) ((0x64 >> 8) & 0x00ff);
 
         data[139] = 7;
-        data[140] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[140] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         data[141] = 0;
         data[142] = 0;
         data[143] = 0;
@@ -11209,7 +11203,7 @@ public class AdvertisingDataParserTest {
         data[146] = 0;
 
         data[147] = 7;
-        data[148] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[148] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         data[149] = 0;
         data[150] = 0;
         data[151] = 0;
@@ -11218,12 +11212,12 @@ public class AdvertisingDataParserTest {
         data[154] = 0;
 
         data[155] = 3;
-        data[156] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[156] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[157] = 0x00;
         data[158] = 0x00;
 
         data[159] = 17;
-        data[160] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[160] = URI_DATA_TYPE;
         data[161] = 0x16;
         data[162] = '/';
         data[163] = '/';
@@ -11242,21 +11236,21 @@ public class AdvertisingDataParserTest {
         data[176] = '/';
 
         data[177] = 2;
-        data[178] = DATA_TYPE_INDOOR_POSITIONING;
+        data[178] = INDOOR_POSITIONING_DATA_TYPE;
         data[179] = 0b00000000;
 
         data[180] = 4;
-        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[181] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[183] = 0;
         data[184] = 0;
 
         data[185] = 2;
-        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[186] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[187] = 0b00000001;
 
         data[188] = 8;
-        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[189] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[190] = (byte) 0b11111110;
         data[191] = (byte) 0b11111111;
         data[192] = (byte) 0b11111111;
@@ -11266,7 +11260,7 @@ public class AdvertisingDataParserTest {
         data[196] = 0b00000000;
 
         data[197] = 34;
-        data[198] = DATA_TYPE_BIG_INFO;
+        data[198] = BIG_INFO_DATA_TYPE;
         data[199] = 0b00000000;
         data[200] = 0b00000000;
         data[201] = 0b00000000;
@@ -11310,34 +11304,34 @@ public class AdvertisingDataParserTest {
         assertNotNull(result2);
         assertNotNull(result2.getResultList());
         assertEquals(28, result2.getResultList().size());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result2.getResultList().get(0).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result2.getResultList().get(1).getDataType());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result2.getResultList().get(2).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result2.getResultList().get(3).getDataType());
-        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result2.getResultList().get(4).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result2.getResultList().get(5).getDataType());
-        assertEquals(DATA_TYPE_SHORTENED_LOCAL_NAME, result2.getResultList().get(6).getDataType());
-        assertEquals(DATA_TYPE_COMPLETE_LOCAL_NAME, result2.getResultList().get(7).getDataType());
-        assertEquals(DATA_TYPE_FLAGS, result2.getResultList().get(8).getDataType());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result2.getResultList().get(9).getDataType());
-        assertEquals(DATA_TYPE_TX_POWER_LEVEL, result2.getResultList().get(10).getDataType());
-        assertEquals(DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE, result2.getResultList().get(11).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS, result2.getResultList().get(12).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS, result2.getResultList().get(13).getDataType());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result2.getResultList().get(14).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_16_BIT_UUID, result2.getResultList().get(15).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result2.getResultList().get(16).getDataType());
-        assertEquals(DATA_TYPE_SERVICE_DATA_128_BIT_UUID, result2.getResultList().get(17).getDataType());
-        assertEquals(DATA_TYPE_APPEARANCE, result2.getResultList().get(18).getDataType());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result2.getResultList().get(19).getDataType());
-        assertEquals(DATA_TYPE_RANDOM_TARGET_ADDRESS, result2.getResultList().get(20).getDataType());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result2.getResultList().get(21).getDataType());
-        assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result2.getResultList().get(22).getDataType());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result2.getResultList().get(23).getDataType());
-        assertEquals(DATA_TYPE_TRANSPORT_DISCOVERY_DATA, result2.getResultList().get(24).getDataType());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result2.getResultList().get(25).getDataType());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result2.getResultList().get(26).getDataType());
-        assertEquals(DATA_TYPE_BIG_INFO, result2.getResultList().get(27).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result2.getResultList().get(0).getDataType());
+        assertEquals(COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result2.getResultList().get(1).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result2.getResultList().get(2).getDataType());
+        assertEquals(COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result2.getResultList().get(3).getDataType());
+        assertEquals(INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result2.getResultList().get(4).getDataType());
+        assertEquals(COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE, result2.getResultList().get(5).getDataType());
+        assertEquals(SHORTENED_LOCAL_NAME_DATA_TYPE, result2.getResultList().get(6).getDataType());
+        assertEquals(COMPLETE_LOCAL_NAME_DATA_TYPE, result2.getResultList().get(7).getDataType());
+        assertEquals(FLAGS_DATA_TYPE, result2.getResultList().get(8).getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result2.getResultList().get(9).getDataType());
+        assertEquals(TX_POWER_LEVEL_DATA_TYPE, result2.getResultList().get(10).getDataType());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result2.getResultList().get(11).getDataType());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result2.getResultList().get(12).getDataType());
+        assertEquals(LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result2.getResultList().get(13).getDataType());
+        assertEquals(LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result2.getResultList().get(14).getDataType());
+        assertEquals(SERVICE_DATA_16_BIT_UUID_DATA_TYPE, result2.getResultList().get(15).getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result2.getResultList().get(16).getDataType());
+        assertEquals(SERVICE_DATA_128_BIT_UUID_DATA_TYPE, result2.getResultList().get(17).getDataType());
+        assertEquals(APPEARANCE_DATA_TYPE, result2.getResultList().get(18).getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result2.getResultList().get(19).getDataType());
+        assertEquals(RANDOM_TARGET_ADDRESS_DATA_TYPE, result2.getResultList().get(20).getDataType());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result2.getResultList().get(21).getDataType());
+        assertEquals(URI_DATA_TYPE, result2.getResultList().get(22).getDataType());
+        assertEquals(INDOOR_POSITIONING_DATA_TYPE, result2.getResultList().get(23).getDataType());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result2.getResultList().get(24).getDataType());
+        assertEquals(LE_SUPPORTED_FEATURES_DATA_TYPE, result2.getResultList().get(25).getDataType());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result2.getResultList().get(26).getDataType());
+        assertEquals(BIG_INFO_DATA_TYPE, result2.getResultList().get(27).getDataType());
         assertNotNull(result2.getIncompleteListOf16BitServiceUUIDs());
         assertNotNull(result2.getCompleteListOf16BitServiceUUIDs());
         assertNotNull(result2.getIncompleteListOf32BitServiceUUIDs());

@@ -1,10 +1,13 @@
 package org.im97mori.ble.advertising.filter;
 
+import static org.junit.Assert.assertEquals;
+
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
@@ -15,12 +18,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.junit.Assert.assertEquals;
-
 @SuppressWarnings("unused")
 public class FilteredScanCallbackTest {
 
     @Test
+    @RequiresDevice
     public void test_001() {
         int callbackType = 1;
         byte[] scanRecord = new byte[0];
@@ -71,6 +73,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_002() {
         int callbackType = 1;
         byte[] scanRecord = new byte[0];
@@ -119,6 +122,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_003() {
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
@@ -168,6 +172,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_004() {
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
@@ -215,6 +220,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_005() {
         final int firstValue = 0;
         final int secondValue = 1;
@@ -240,6 +246,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_101() {
         int callbackType = 1;
         byte[] scanRecord = new byte[0];
@@ -303,6 +310,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_102() {
         int callbackType = 1;
         byte[] scanRecord = new byte[0];
@@ -364,6 +372,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_103() {
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
@@ -425,6 +434,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_104() {
         byte[] scanRecord = new byte[0];
         Parcel parcel = Parcel.obtain();
@@ -481,6 +491,7 @@ public class FilteredScanCallbackTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_105() {
         final int firstValue = 0;
         final int secondValue = 1;

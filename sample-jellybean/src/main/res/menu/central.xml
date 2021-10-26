@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/discover_service"
+        android:title="@string/menu_discover_service" />
+    <item
+        android:id="@+id/discover_service_sync"
+        android:title="@string/menu_discover_service_sync" />
+    <item
+        android:id="@+id/request_mtu"
+        android:title="@string/menu_request_mtu" />
+    <item
+        android:id="@+id/request_mtu_sync"
+        android:title="@string/menu_request_mtu_sync" />
+    <item
+        android:id="@+id/read_phy"
+        android:title="@string/menu_read_phy" />
+    <item
+        android:id="@+id/read_phy_sync"
+        android:title="@string/menu_read_phy_sync" />
+    <item
+        android:id="@+id/set_preferred_phy"
+        android:title="@string/menu_set_preferred_phy" />
+    <item
+        android:id="@+id/set_preferred_phy_sync"
+        android:title="@string/menu_set_preferred_phy_sync" />
+    <item
+        android:id="@+id/read_remote_rssi"
+        android:title="@string/menu_read_remote_rssi" />
+    <item
+        android:id="@+id/read_remote_rssi_sync"
+        android:title="@string/menu_read_remote_rssi_sync" />
+    <item
+        android:id="@+id/read_characteristic"
+        android:title="@string/menu_read_characteristic" />
+    <item
+        android:id="@+id/write_characteristc"
+        android:title="@string/menu_write_characteristic" />
+    <item
+        android:id="@+id/read_descriptor"
+        android:title="@string/menu_read_descriptor" />
+    <item
+        android:id="@+id/write_notification"
+        android:title="@string/menu_write_notification" />
+    <item
+        android:id="@+id/write_indication"
+        android:title="@string/menu_write_indication" />
+    <item
+        android:id="@+id/write_notification_stop"
+        android:title="@string/menu_write_notification_stop" />
+    <item
+        android:id="@+id/write_indication_stop"
+        android:title="@string/menu_write_indication_stop" />
+    <item
+        android:id="@+id/read_characteristic_sync"
+        android:title="@string/menu_read_characteristic_sync" />
+    <item
+        android:id="@+id/write_characteristic_sync"
+        android:title="@string/menu_write_characteristic_sync" />
+
+    <item
+        android:id="@+id/write_notification_sync"
+        android:title="@string/menu_write_notification_sync" />
+
+    <item
+        android:id="@+id/write_characteristc_reliable"
+        android:title="@string/menu_write_characteristic_reliable" />
+    <item
+        android:id="@+id/write_characteristc_reliable_abort"
+        android:title="@string/menu_write_characteristic_reliable_abort" />
+    <item
+        android:id="@+id/read_multi_instance_characteristic"
+        android:title="@string/menu_read_multi_instance_characteristic" />
+
+    <item
+        android:id="@+id/set_notification_on"
+        android:title="@string/menu_set_notification_on" />
+    <item
+        android:id="@+id/set_notification_off"
+        android:title="@string/menu_set_notification_off" />
+    <item
+        android:id="@+id/set_notification_on_sync"
+        android:title="@string/menu_set_notification_on_sync" />
+    <item
+        android:id="@+id/set_notification_off_sync"
+        android:title="@string/menu_set_notification_off_sync" />
+
+    <item
+        android:id="@+id/clear"
+        android:title="@string/menu_clear" />
+</menu>

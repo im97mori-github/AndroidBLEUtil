@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/has_device_information_service"
+            android:title="@string/menu_has_device_information_service" />
+
+        <item
+            android:id="@+id/is_sensor_location_characteristic_supported"
+            android:title="@string/menu_is_sensor_location_characteristic_supported" />
+        <item
+            android:id="@+id/is_sc_control_point_characteristic_supported"
+            android:title="@string/menu_is_sc_control_point_characteristic_supported" />
+
+        <item
+            android:id="@+id/read_rsc_feature"
+            android:title="@string/menu_read_rsc_feature" />
+        <item
+            android:id="@+id/read_rsc_measurement_characteristic_configuration"
+            android:title="@string/menu_read_rsc_measurement_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_rsc_measurement"
+            android:title="@string/menu_notify_rsc_measurement_start" />
+        <item
+            android:id="@+id/stop_notificate_rsc_measurement"
+            android:title="@string/menu_notify_rsc_measurement_stop" />
+        <item
+            android:id="@+id/read_sensor_location"
+            android:title="@string/menu_read_sensor_location" />
+        <item
+            android:id="@+id/write_sc_control_point_1"
+            android:title="@string/menu_write_sc_control_point_1" />
+        <item
+            android:id="@+id/write_sc_control_point_4"
+            android:title="@string/menu_write_sc_control_point_4" />
+        <item
+            android:id="@+id/write_sc_control_point_2"
+            android:title="@string/menu_write_sc_control_point_2" />
+        <item
+            android:id="@+id/write_sc_control_point_3"
+            android:title="@string/menu_write_sc_control_point_3" />
+        <item
+            android:id="@+id/read_sc_control_point_characteristic_configuration"
+            android:title="@string/menu_read_sc_control_point_characteristic_configuration" />
+        <item
+            android:id="@+id/start_indicate_sc_control_point"
+            android:title="@string/menu_indicate_sc_control_point_start" />
+        <item
+            android:id="@+id/stop_indicate_sc_control_point"
+            android:title="@string/menu_indicate_sc_control_point_stop" />
+
+        <item
+            android:id="@+id/read_manufacturer_name"
+            android:title="@string/menu_read_manufacturer_name" />
+        <item
+            android:id="@+id/read_model_number"
+            android:title="@string/menu_read_model_number" />
+
+    </group>
+</menu>

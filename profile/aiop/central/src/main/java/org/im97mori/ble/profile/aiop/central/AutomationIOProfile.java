@@ -2,11 +2,14 @@ package org.im97mori.ble.profile.aiop.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.os.Bundle;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a56.Digital;
 import org.im97mori.ble.characteristic.u2a58.Analog;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
@@ -15,7 +18,6 @@ import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
 import org.im97mori.ble.profile.aiop.central.db.AutomationIOProfileBondedDatabaseHelper;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.service.aios.central.AutomationIOService;
 
 /**
@@ -40,17 +42,6 @@ public class AutomationIOProfile extends AbstractCentralProfile {
     public AutomationIOProfile(@NonNull Context context, @NonNull AutomationIOProfileCallback automationIOProfileCallback) {
         super(context, automationIOProfileCallback);
         mAutomationIOProfileCallback = automationIOProfileCallback;
-    }
-
-    /**
-     * find Automation IO Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findAutomationIOProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new AutomationIOProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -1296,5 +1287,19 @@ public class AutomationIOProfile extends AbstractCentralProfile {
         super.quit();
         mAutomationIOService = null;
     }
+
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new AutomationIOProfileScanCallback(this, null);
+    }
+
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new AutomationIOProfileLeScanCallback(this, null);
+    }
+
 
 }

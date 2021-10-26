@@ -2,6 +2,8 @@ package org.im97mori.ble.sample.lolipop.bls;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -70,7 +72,7 @@ public class BlsPeripheralSampleActivity extends BaseActivity implements View.On
 
         mConnectDisconnectButton.setOnClickListener(this);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
 
         mBLEServerConnection = new BLEServerConnection(this);
         Calendar calendar = Calendar.getInstance();

@@ -11,6 +11,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+
 public class BondTaskTest {
 
     @SuppressWarnings("ConstantConditions")
@@ -28,6 +30,7 @@ public class BondTaskTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createBondSuccessMessage_00001() {
         Message message = BondTask.createBondSuccessMessage(BLETestUtilsAndroid.MOCK_DEVICE_0);
 
@@ -39,6 +42,7 @@ public class BondTaskTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createBondErrorMessage_00001() {
         Message message = BondTask.createBondErrorMessage(BLETestUtilsAndroid.MOCK_DEVICE_0);
 

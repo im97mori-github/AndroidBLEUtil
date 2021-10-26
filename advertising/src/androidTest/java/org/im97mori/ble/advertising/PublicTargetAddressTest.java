@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+import static org.im97mori.ble.constants.DataType.PUBLIC_TARGET_ADDRESS_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -26,7 +26,7 @@ public class PublicTargetAddressTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
         data_00001 = data;
     }
@@ -43,7 +43,7 @@ public class PublicTargetAddressTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
         data_00002 = data;
     }
@@ -60,7 +60,7 @@ public class PublicTargetAddressTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
         data_00003 = data;
     }
@@ -77,7 +77,7 @@ public class PublicTargetAddressTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
         data_00004 = data;
     }
@@ -94,7 +94,7 @@ public class PublicTargetAddressTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
         data_00005 = data;
     }
@@ -111,7 +111,7 @@ public class PublicTargetAddressTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
         data_00006 = data;
     }
@@ -128,7 +128,7 @@ public class PublicTargetAddressTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
         data_00007 = data;
     }
@@ -137,7 +137,7 @@ public class PublicTargetAddressTest {
     static {
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         data_00008 = data;
     }
 
@@ -161,7 +161,7 @@ public class PublicTargetAddressTest {
 
         byte[] data = new byte[14];
         data[0] = 13;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address1, 0, data, 2, address1.length);
         System.arraycopy(address2, 0, data, 8, address2.length);
         data_00009 = data;
@@ -200,7 +200,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(7, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getAddressList().size());
         assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
     }
@@ -211,7 +211,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(7, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getAddressList().size());
         assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
     }
@@ -222,7 +222,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(7, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getAddressList().size());
         assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
     }
@@ -233,7 +233,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(7, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getAddressList().size());
         assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
     }
@@ -244,7 +244,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(7, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getAddressList().size());
         assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
     }
@@ -255,7 +255,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(7, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getAddressList().size());
         assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
     }
@@ -266,7 +266,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(7, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getAddressList().size());
         assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
     }
@@ -277,7 +277,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(1, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(0, result1.getAddressList().size());
     }
 
@@ -287,7 +287,7 @@ public class PublicTargetAddressTest {
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
         assertEquals(13, result1.getLength());
-        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result1.getDataType());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getAddressList().size());
         assertArrayEquals(Arrays.copyOfRange(data, 2, 8), result1.getAddressList().get(0));
         assertArrayEquals(Arrays.copyOfRange(data, 8, 14), result1.getAddressList().get(1));

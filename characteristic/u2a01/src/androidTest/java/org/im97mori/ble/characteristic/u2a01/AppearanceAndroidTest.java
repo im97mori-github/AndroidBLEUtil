@@ -1,56 +1,77 @@
 package org.im97mori.ble.characteristic.u2a01;
 
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.os.Parcel;
-
-import org.junit.Test;
-
 import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.os.Parcel;
+
+import org.im97mori.ble.constants.AppearanceValues;
+import org.junit.Test;
+
 public class AppearanceAndroidTest {
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[2];
-        data[ 0] = (byte) ((Appearance.CATEGORY_UNKNOWN) & 0xff);
-        data[ 1] = (byte) ((Appearance.CATEGORY_UNKNOWN >> 8) & 0xff);
+        data[ 0] = (byte) AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
+        data[ 1] = (byte) (AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 8);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
         AppearanceAndroid result1 = new AppearanceAndroid(bluetoothGattCharacteristic);
-        assertArrayEquals(data, result1.getCategory());
-        assertEquals(Appearance.CATEGORY_UNKNOWN, result1.getCategoryUint16());
+        assertEquals(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY,
+                result1.getAppearanceValue());
+        assertEquals((AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 6) & 0b00000011_11111111,
+                result1.getAppearanceCategory());
+        assertEquals(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY & 0b11111111_11000000,
+                result1.getAppearanceCategoryWithOffset());
+        assertEquals(
+                AppearanceValues.APPEARANCE_CATEGORY_MAPPING
+                        .get(AppearanceValues.OUTDOOR_SPORTS_ACTIVITY_APPEARANCE_CATEGORY),
+                result1.getAppearanceCategoryName());
+        assertEquals(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY & 0b00111111,
+                result1.getAppearanceSubCategory());
+        assertEquals(
+                AppearanceValues.APPEARANCE_SUB_CATEGORY_MAPPING
+                        .get(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY),
+                result1.getAppearanceSubCategoryName());
     }
 
     @Test
     public void test_constructor002() {
-        //@formatter:off
-        byte[] data = new byte[2];
-        data[ 0] = (byte) ((0x000007CF) & 0xff);
-        data[ 1] = (byte) ((0x000007CF >> 8) & 0xff);
-        //@formatter:on
+        int appearanceValue = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AppearanceAndroid result1 = new AppearanceAndroid(bluetoothGattCharacteristic);
-        assertArrayEquals(data, result1.getCategory());
-        assertEquals(0x000007CF, result1.getCategoryUint16());
+        AppearanceAndroid result1 = new AppearanceAndroid(appearanceValue);
+        assertEquals(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY,
+                result1.getAppearanceValue());
+        assertEquals((AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 6) & 0b00000011_11111111,
+                result1.getAppearanceCategory());
+        assertEquals(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY & 0b11111111_11000000,
+                result1.getAppearanceCategoryWithOffset());
+        assertEquals(
+                AppearanceValues.APPEARANCE_CATEGORY_MAPPING
+                        .get(AppearanceValues.OUTDOOR_SPORTS_ACTIVITY_APPEARANCE_CATEGORY),
+                result1.getAppearanceCategoryName());
+        assertEquals(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY & 0b00111111,
+                result1.getAppearanceSubCategory());
+        assertEquals(
+                AppearanceValues.APPEARANCE_SUB_CATEGORY_MAPPING
+                        .get(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY),
+                result1.getAppearanceSubCategoryName());
     }
 
     @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];
-        data[ 0] = (byte) ((0x000007CF) & 0xff);
-        data[ 1] = (byte) ((0x000007CF >> 8) & 0xff);
-        //@formatter:on
+        data[ 0] = (byte) AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
+        data[ 1] = (byte) (AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 8);
+        //@formatter:off
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
@@ -61,14 +82,17 @@ public class AppearanceAndroidTest {
         parcel.setDataPosition(0);
         AppearanceAndroid result2 = AppearanceAndroid.CREATOR.createFromParcel(parcel);
 
-        assertArrayEquals(result1.getCategory(), result2.getCategory());
+        assertEquals(result1.getAppearanceValue(), result2.getAppearanceValue());
+        assertEquals(result1.getAppearanceCategory(), result2.getAppearanceCategory());
+        assertEquals(result1.getAppearanceCategoryWithOffset(), result2.getAppearanceCategoryWithOffset());
+        assertEquals(result1.getAppearanceSubCategory(), result2.getAppearanceSubCategory());
     }
     @Test
     public void test_parcelable002() {
         //@formatter:off
         byte[] data = new byte[2];
-        data[ 0] = (byte) ((0x000007CF) & 0xff);
-        data[ 1] = (byte) ((0x000007CF >> 8) & 0xff);
+        data[ 0] = (byte) AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
+        data[ 1] = (byte) (AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 8);
         //@formatter:off
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -83,8 +107,8 @@ public class AppearanceAndroidTest {
     public void test_parcelable003() {
         //@formatter:off
         byte[] data = new byte[2];
-        data[ 0] = (byte) ((0x000007CF) & 0xff);
-        data[ 1] = (byte) ((0x000007CF >> 8) & 0xff);
+        data[ 0] = (byte) AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
+        data[ 1] = (byte) (AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 8);
         //@formatter:off
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);

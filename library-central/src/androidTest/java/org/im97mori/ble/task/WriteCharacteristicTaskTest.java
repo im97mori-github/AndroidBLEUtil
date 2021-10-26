@@ -9,6 +9,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -29,6 +30,7 @@ import static org.junit.Assert.assertTrue;
 public class WriteCharacteristicTaskTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_createInitialMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
@@ -58,6 +60,7 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createWriteCharacteristicSuccessMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceInstanceId = 1;
@@ -84,6 +87,7 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createWriteCharacteristicErrorMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceInstanceId = 1;
@@ -110,6 +114,7 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_doProcess_00001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
@@ -118,6 +123,7 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00001() {
         Looper looper = null;
         try {
@@ -139,6 +145,7 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00002() {
         Looper looper = null;
         try {

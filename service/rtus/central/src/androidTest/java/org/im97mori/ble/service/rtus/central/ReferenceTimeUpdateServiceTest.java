@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPointAndroid;
@@ -29,6 +30,7 @@ import static org.junit.Assert.assertTrue;
 public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -62,6 +64,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -95,6 +98,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -128,6 +132,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -161,6 +166,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -194,6 +200,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -227,6 +234,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTimeUpdateControlPoint_000001() {
         ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null);
         TimeUpdateControlPoint timeUpdateControlPoint = new TimeUpdateControlPoint(TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE);
@@ -235,6 +243,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTimeUpdateControlPoint_000002() {
         ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null) {
 
@@ -250,6 +259,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setTimeUpdateControlPoint_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -269,6 +279,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTimeUpdateState_000001() {
         ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null);
 
@@ -276,6 +287,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTimeUpdateState_000002() {
         ReferenceTimeUpdateService referenceTimeUpdateService = new ReferenceTimeUpdateService(MOCK_BLE_CONNECTION, new MockReferenceTimeUpdateServiceCallback(), null) {
 
@@ -290,6 +302,7 @@ public class ReferenceTimeUpdateServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTimeUpdateState_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);

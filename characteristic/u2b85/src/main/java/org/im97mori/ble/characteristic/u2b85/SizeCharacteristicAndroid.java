@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SIZE_CHARACTERISTIC_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SIZE_CHARACTERISTIC;
 
 /**
  * Size Characteristic (Characteristics UUID: 0x2B85)
@@ -45,7 +45,7 @@ public class SizeCharacteristicAndroid extends SizeCharacteristic implements Par
          */
         @NonNull
         public SizeCharacteristicAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SIZE_CHARACTERISTIC_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SIZE_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new SizeCharacteristicAndroid(bluetoothGattCharacteristic);
         }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/has_next_dst_change_service"
+            android:title="@string/menu_has_next_dst_change_service" />
+        <item
+            android:id="@+id/has_reference_time_update_service"
+            android:title="@string/menu_has_reference_time_update_service" />
+        <item
+            android:id="@+id/read_current_time"
+            android:title="@string/menu_read_current_time" />
+        <item
+            android:id="@+id/is_current_time_writable"
+            android:title="@string/menu_is_current_time_writable" />
+        <item
+            android:id="@+id/write_current_time"
+            android:title="@string/menu_write_current_time" />
+        <item
+            android:id="@+id/notify_current_time_start"
+            android:title="@string/menu_notify_current_time_start" />
+        <item
+            android:id="@+id/notify_current_time_stop"
+            android:title="@string/menu_notify_current_time_stop" />
+        <item
+            android:id="@+id/has_local_time_information"
+            android:title="@string/menu_has_local_time_information" />
+        <item
+            android:id="@+id/read_local_time_information"
+            android:title="@string/menu_read_local_time_information" />
+        <item
+            android:id="@+id/is_local_time_information_writable"
+            android:title="@string/menu_is_local_time_information_writable" />
+        <item
+            android:id="@+id/write_local_time_information"
+            android:title="@string/menu_write_local_time_information" />
+        <item
+            android:id="@+id/has_reference_time_information"
+            android:title="@string/menu_has_reference_time_information"
+            tools:ignore="UnusedIds" />
+        <item
+            android:id="@+id/read_reference_time_information"
+            android:title="@string/menu_read_reference_time_information" />
+        <item
+            android:id="@+id/read_time_with_dst"
+            android:title="@string/menu_read_time_with_dst" />
+        <item
+            android:id="@+id/write_time_update_control_point"
+            android:title="@string/menu_write_time_update_control_point" />
+        <item
+            android:id="@+id/read_time_update_state"
+            android:title="@string/menu_read_time_update_state" />
+    </group>
+</menu>

@@ -18,10 +18,24 @@ android {
 }
 
 dependencies {
-    implementation apiAdvertisingAndroid
-    implementation "${myGroupId}:${descriptorAndroid.artifactId}:${loadVersion}"
-    implementation "${myGroupId}:${characteristicAndroid.artifactId}:${loadVersion}"
-    implementation apiCentral
     implementation 'androidx.fragment:fragment:1.3.6'
-    androidTestImplementation apiTestCentral
+
+    api "${myGroupId}:${profileAiopCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileAnpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileBlpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileCppCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileCscpCentralAndroid.artifactId}:${loadVersion}"
+//    api "${myGroupId}:${profileEspCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileFmpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileFtmpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileHrpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileHtpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileLnpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profilePaspCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profilePxpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileRcpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileRscpCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileScppCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileTipCentralAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${profileWspCentralAndroid.artifactId}:${loadVersion}"
 }

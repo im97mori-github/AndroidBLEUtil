@@ -1,11 +1,14 @@
 package org.im97mori.ble.profile.rcp.central;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -49,13 +52,30 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findReconnectionConfigurationProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
-        assertNull(reconnectionConfigurationProfile.findReconnectionConfigurationProfileDevices(null));
+        assertTrue(reconnectionConfigurationProfile.createFilteredScanCallback() instanceof ReconnectionConfigurationProfileScanCallback);
     }
 
     @Test
-    public void test_findReconnectionConfigurationProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
+        assertTrue(reconnectionConfigurationProfile.createFilteredLeScanCallback() instanceof ReconnectionConfigurationProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
+        assertNull(reconnectionConfigurationProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
@@ -68,18 +88,20 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
             }
         };
         reconnectionConfigurationProfile.start();
-        assertNotNull(reconnectionConfigurationProfile.findReconnectionConfigurationProfileDevices(bundle));
+        assertNotNull(reconnectionConfigurationProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         reconnectionConfigurationProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBondManagementService_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.hasBondManagementService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBondManagementService_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         reconnectionConfigurationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -88,6 +110,7 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBondManagementService_00003() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         reconnectionConfigurationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -98,6 +121,7 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBondManagementService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BOND_MANAGEMENT_SERVICE, 0);
 
@@ -111,12 +135,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicSupported_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.isRCSettingsCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         reconnectionConfigurationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -125,12 +151,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicNotifySupported_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.isRCSettingsCharacteristicNotifySupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isRCSettingsCharacteristicNotifySupported_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         reconnectionConfigurationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -139,12 +167,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isReconnectionConfigurationControlPointCharacteristicSupported_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.isReconnectionConfigurationControlPointCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isReconnectionConfigurationControlPointCharacteristicSupported_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         reconnectionConfigurationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -153,12 +183,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCFeature_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.getRCFeature());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCFeature_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -179,12 +211,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettings_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.getRCSettings());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettings_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -205,12 +239,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettingsClientCharacteristicConfiguration_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.getRCSettingsClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getRCSettingsClientCharacteristicConfiguration_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -231,12 +267,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRCSettingsNotification_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.startRCSettingsNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startRCSettingsNotification_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -257,12 +295,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRCSettingsNotification_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.stopRCSettingsNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRCSettingsNotification_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -283,12 +323,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setReconnectionConfigurationControlPoint_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.setReconnectionConfigurationControlPoint(new ReconnectionConfigurationControlPoint(ReconnectionConfigurationControlPoint.OPCODE_ENABLE_DISCONNECT, new byte[0], null, 0, 0, new byte[0])));
     }
 
     @Test
+    @RequiresDevice
     public void test_setReconnectionConfigurationControlPoint_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -309,12 +351,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getReconnectionConfigurationControlPointClientCharacteristicConfiguration_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.getReconnectionConfigurationControlPointClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getReconnectionConfigurationControlPointClientCharacteristicConfiguration_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -335,12 +379,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startReconnectionConfigurationControlPointIndication_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.startReconnectionConfigurationControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startReconnectionConfigurationControlPointIndication_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -361,12 +407,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopReconnectionConfigurationControlPointIndication_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.stopReconnectionConfigurationControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopReconnectionConfigurationControlPointIndication_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -387,12 +435,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBondManagementFeatures_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.getBondManagementFeatures());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBondManagementFeatures_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -414,12 +464,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBondManagementControlPoint_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertNull(reconnectionConfigurationProfile.setBondManagementControlPoint(new BondManagementControlPoint(BondManagementControlPoint.OP_CODE_DELETE_BOND_OF_REQUESTING_DEVICE_BR_EDR_LE, "a")));
     }
 
     @Test
+    @RequiresDevice
     public void test_setBondManagementControlPoint_00002() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
             @Override
@@ -441,12 +493,14 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         assertTrue(reconnectionConfigurationProfile.getDatabaseHelper() instanceof ReconnectionConfigurationProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback()) {
@@ -464,6 +518,7 @@ public class ReconnectionConfigurationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         ReconnectionConfigurationProfile reconnectionConfigurationProfile = new ReconnectionConfigurationProfile(ApplicationProvider.getApplicationContext(), new BaseReconnectionConfigurationProfileCallback());
         reconnectionConfigurationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

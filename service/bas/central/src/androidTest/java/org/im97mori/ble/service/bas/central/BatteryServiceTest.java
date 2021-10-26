@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a19.BatteryLevelAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
@@ -39,6 +40,7 @@ import static org.junit.Assert.assertTrue;
 public class BatteryServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
         batteryService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -47,6 +49,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -56,6 +59,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
@@ -65,6 +69,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
             @Override
@@ -80,6 +85,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -114,6 +120,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -154,6 +161,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -184,6 +192,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -214,6 +223,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -244,6 +254,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -278,6 +289,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -318,6 +330,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -348,6 +361,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -378,6 +392,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -408,6 +423,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -442,6 +458,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -482,6 +499,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -512,6 +530,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -542,6 +561,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -572,6 +592,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -609,6 +630,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -654,6 +676,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -688,6 +711,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -722,6 +746,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -756,6 +781,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -793,6 +819,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -838,6 +865,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -872,6 +900,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -906,6 +935,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -940,6 +970,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -977,6 +1008,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1022,6 +1054,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1056,6 +1089,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1090,6 +1124,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1124,6 +1159,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1161,6 +1197,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1206,6 +1243,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1240,6 +1278,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1274,6 +1313,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1308,6 +1348,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1345,6 +1386,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1390,6 +1432,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1424,6 +1467,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1458,6 +1502,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1492,6 +1537,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1529,6 +1575,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1574,6 +1621,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1608,6 +1656,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1642,6 +1691,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1676,6 +1726,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1713,6 +1764,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1758,6 +1810,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1793,6 +1846,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1828,6 +1882,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1863,6 +1918,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1900,6 +1956,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1945,6 +2002,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1980,6 +2038,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2015,6 +2074,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2050,6 +2110,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2082,6 +2143,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2121,6 +2183,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2160,6 +2223,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2199,6 +2263,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2238,6 +2303,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2276,6 +2342,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2322,6 +2389,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2357,6 +2425,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2392,6 +2461,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2427,6 +2497,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2465,6 +2536,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2511,6 +2583,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2546,6 +2619,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2581,6 +2655,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2616,6 +2691,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2648,6 +2724,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2687,6 +2764,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2726,6 +2804,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2765,6 +2844,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2805,6 +2885,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2843,6 +2924,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2889,6 +2971,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2924,6 +3007,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2959,6 +3043,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2994,6 +3079,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3032,6 +3118,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3078,6 +3165,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3113,6 +3201,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3148,6 +3237,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00105() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3183,6 +3273,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3215,6 +3306,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3254,6 +3346,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3293,6 +3386,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3332,6 +3426,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00205() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3372,6 +3467,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -3402,6 +3498,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -3438,6 +3535,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -3467,6 +3565,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -3496,6 +3595,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -3525,6 +3625,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCount_00001() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
 
@@ -3532,6 +3633,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCount_00002() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3546,6 +3648,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCount_00003() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3566,6 +3669,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCount_00004() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3586,6 +3690,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
@@ -3603,6 +3708,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00002() {
         final int originalLevel = 1;
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
@@ -3619,6 +3725,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00101() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
 
@@ -3626,6 +3733,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00102() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3639,6 +3747,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00103() {
         final int originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -3662,6 +3771,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
@@ -3679,6 +3789,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00002() {
         final boolean originaNotificatable = true;
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
@@ -3694,6 +3805,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00101() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
 
@@ -3701,6 +3813,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00102() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3714,6 +3827,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00103() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3731,6 +3845,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00104() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3747,6 +3862,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00105() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3766,6 +3882,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00106() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3785,6 +3902,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00107() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3805,6 +3923,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00001() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
 
@@ -3812,6 +3931,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00002() {
         final int originalTaskId = 1;
 
@@ -3828,6 +3948,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00101() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3841,6 +3962,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00102() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3854,6 +3976,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00103() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3872,6 +3995,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00104() {
         final int originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -3896,6 +4020,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00001() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
 
@@ -3903,6 +4028,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00002() {
         final int originalTaskId = 1;
 
@@ -3919,6 +4045,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00101() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3932,6 +4059,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00102() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3945,6 +4073,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00103() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -3963,6 +4092,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00104() {
         final int originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -3986,6 +4116,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00001() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
 
@@ -3993,6 +4124,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00002() {
         final int originalTaskId = 1;
 
@@ -4010,6 +4142,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00101() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -4023,6 +4156,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00102() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -4036,6 +4170,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00103() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -4054,6 +4189,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00104() {
         final int originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -4077,6 +4213,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00001() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
 
@@ -4084,6 +4221,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00002() {
         final int originalTaskId = 1;
 
@@ -4101,6 +4239,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00101() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -4114,6 +4253,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00102() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -4127,6 +4267,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00103() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
@@ -4145,6 +4286,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00104() {
         final int originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

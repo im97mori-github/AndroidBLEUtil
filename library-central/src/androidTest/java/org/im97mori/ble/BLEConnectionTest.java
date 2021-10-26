@@ -7,6 +7,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
@@ -74,6 +75,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void connectSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -104,6 +106,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void connectSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -134,6 +137,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void connectFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -164,6 +168,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void connectFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -194,6 +199,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void connectTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -223,6 +229,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void connectTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -252,6 +259,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void disconnectedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -281,6 +289,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void disconnectedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -310,6 +319,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readCharacteristicTaskSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -339,6 +349,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readCharacteristicTaskSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -368,6 +379,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readCharacteristicTaskFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -397,6 +409,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readCharacteristicTaskFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -426,6 +439,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readCharacteristicTaskTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -455,6 +469,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readCharacteristicTaskTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -484,6 +499,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeCharacteristicTaskSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -513,6 +529,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeCharacteristicTaskSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -542,6 +559,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeCharacteristicTaskFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -571,6 +589,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeCharacteristicTaskFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -600,6 +619,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeCharacteristicTaskTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -629,6 +649,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeCharacteristicTaskTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -658,6 +679,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void discoverServiceSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -688,6 +710,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void discoverServiceSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -718,6 +741,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void discoverServiceFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -748,6 +772,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void discoverServiceFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -778,6 +803,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void discoverServiceTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -808,6 +834,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void discoverServiceTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -838,6 +865,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void notifyCharacteristicTaskSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -867,6 +895,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void readDescriptorTaskSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -896,6 +925,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readDescriptorTaskSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -925,6 +955,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readDescriptorTaskFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -954,6 +985,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readDescriptorTaskFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -983,6 +1015,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readDescriptorTaskTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1012,6 +1045,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readDescriptorTaskTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1041,6 +1075,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeDescriptorTaskSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1070,6 +1105,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeDescriptorTaskSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1099,6 +1135,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeDescriptorTaskFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1128,6 +1165,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeDescriptorTaskFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1157,6 +1195,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeDescriptorTaskTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1186,6 +1225,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void writeDescriptorTaskTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1215,6 +1255,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void notifyTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1244,6 +1285,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void requestMtuSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1274,6 +1316,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void requestMtuSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1304,6 +1347,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void requestMtuFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1334,6 +1378,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void requestMtuFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1364,6 +1409,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void requestMtuTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1394,6 +1440,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void requestMtuTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1424,6 +1471,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readPhySuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1454,6 +1502,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readPhySuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1484,6 +1533,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readPhyFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1514,6 +1564,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readPhyFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1544,6 +1595,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readPhyTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1574,6 +1626,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readPhyTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1604,6 +1657,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setPreferredPhySuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1634,6 +1688,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setPreferredPhySuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1664,6 +1719,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setPreferredPhyFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1694,6 +1750,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setPreferredPhyFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1724,6 +1781,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setPreferredTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1754,6 +1812,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setPreferredTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1784,6 +1843,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readRemoteRssiSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1814,6 +1874,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readRemoteRssiSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1844,6 +1905,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readRemoteRssiFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1874,6 +1936,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readRemoteRssiFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1904,6 +1967,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readRemoteRssiTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1934,6 +1998,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void readRemoteRssiTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1964,6 +2029,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void beginReliableWriteSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -1994,6 +2060,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void beginReliableWriteSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2024,6 +2091,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void beginReliableWriteFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2054,6 +2122,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void beginReliableWriteFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2084,6 +2153,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void executeReliableWriteSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2114,6 +2184,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void executeReliableWriteSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2144,6 +2215,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void executeReliableWriteFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2174,6 +2246,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void executeReliableWriteFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2204,6 +2277,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void executeReliableWriteTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2234,6 +2308,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void executeReliableWriteTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2264,6 +2339,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void abortReliableWriteSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2294,6 +2370,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void abortReliableWriteSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2324,6 +2401,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void abortReliableWriteFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2354,6 +2432,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void abortReliableWriteFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2384,6 +2463,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void abortReliableWriteTimeoutTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2414,6 +2494,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void abortReliableWriteTimeoutTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2444,6 +2525,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setNotificationSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2473,6 +2555,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setNotificationSuccessTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2502,6 +2585,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setNotificationFailedTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
@@ -2531,6 +2615,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void setNotificationFailedTest_002() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 

@@ -18,7 +18,7 @@ public class ModelNumberStringAndroidTest {
         String modelNumber = "2JCIE-BU01";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(modelNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(modelNumber.getBytes());
 
         ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(bluetoothGattCharacteristic);
         assertEquals(modelNumber, result1.getModelNumber());
@@ -37,7 +37,7 @@ public class ModelNumberStringAndroidTest {
         String modelNumber = "2JCIE-BU01";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(modelNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(modelNumber.getBytes());
 
         ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -54,7 +54,7 @@ public class ModelNumberStringAndroidTest {
         String modelNumber = "2JCIE-BU01";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(modelNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(modelNumber.getBytes());
 
         ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(bluetoothGattCharacteristic);
         byte[] resultData = result1.getBytes();
@@ -66,10 +66,10 @@ public class ModelNumberStringAndroidTest {
         String modelNumber = "2JCIE-BU01";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(modelNumber.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(modelNumber.getBytes());
 
         ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(bluetoothGattCharacteristic);
-        ModelNumberStringAndroid result2 = ModelNumberStringAndroid.CREATOR.createFromByteArray(modelNumber.getBytes(StandardCharsets.UTF_8));
+        ModelNumberStringAndroid result2 = ModelNumberStringAndroid.CREATOR.createFromByteArray(modelNumber.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }

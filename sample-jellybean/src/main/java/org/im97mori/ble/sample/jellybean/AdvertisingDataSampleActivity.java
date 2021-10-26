@@ -3,6 +3,8 @@ package org.im97mori.ble.sample.jellybean;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
@@ -61,7 +63,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.Locale;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, FilteredLeScanCallbackInterface {
+public class AdvertisingDataSampleActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, FilteredLeScanCallbackInterface {
 
     private static final int REQUEST_PERMISSION_LOCATION = 0;
     private static final String FRAGMENT_TAG_ALERT_DIALOG = "FRAGMENT_TAG_ALERT_DIALOG";
@@ -271,7 +273,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         if (appearance != null) {
             sb.append("Appearance");
             sb.append("\nkey\n");
-            sb.append(appearance.getAppearanceKey());
+            sb.append(appearance.getAppearance());
             sb.append("\nsubcategory\n");
             sb.append(appearance.getAppearanceSubCategory());
             sb.append('\n');
@@ -452,7 +454,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ArrayAdapter<Pair<String, String>> mAdapter;
     private ListView mListView;
 
-    private final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    private BluetoothAdapter mBluetoothAdapter;
 
     private FilteredLeScanCallback mFilteredLeScanCallback;
 
@@ -500,6 +502,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mEnableLocationButton.setOnClickListener(this);
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
     }
 
     @Override

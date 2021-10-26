@@ -3,11 +3,14 @@ package org.im97mori.ble.profile.cscp.central;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -54,13 +57,30 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findCyclingSpeedAndCadenceProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
-        assertNull(cyclingSpeedAndCadenceProfile.findCyclingSpeedAndCadenceProfileDevices(null));
+        assertTrue(cyclingSpeedAndCadenceProfile.createFilteredScanCallback() instanceof CyclingSpeedAndCadenceProfileScanCallback);
     }
 
     @Test
-    public void test_findCyclingSpeedAndCadenceProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
+        assertTrue(cyclingSpeedAndCadenceProfile.createFilteredLeScanCallback() instanceof CyclingSpeedAndCadenceProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
+        assertNull(cyclingSpeedAndCadenceProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback()) {
@@ -73,18 +93,20 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
             }
         };
         cyclingSpeedAndCadenceProfile.start();
-        assertNotNull(cyclingSpeedAndCadenceProfile.findCyclingSpeedAndCadenceProfileDevices(bundle));
+        assertNotNull(cyclingSpeedAndCadenceProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         cyclingSpeedAndCadenceProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.hasDeviceInformationService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -93,6 +115,7 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00003() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -103,6 +126,7 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
@@ -115,12 +139,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.isSensorLocationCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -129,12 +155,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.isSCControlPointCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -143,12 +171,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCFeature_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.getCSCFeature());
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCFeature_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback()) {
             @Override
@@ -169,12 +199,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCMeasurementClientCharacteristicConfiguration_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.getCSCMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getCSCMeasurementClientCharacteristicConfiguration_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback()) {
             @Override
@@ -195,12 +227,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCSCMeasurementNotification_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.startCSCMeasurementNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startCSCMeasurementNotification_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback()) {
             @Override
@@ -221,12 +255,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCSCMeasurementNotification_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.stopCSCMeasurementNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCSCMeasurementNotification_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback()) {
             @Override
@@ -247,12 +283,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.getSensorLocation());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_00002() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SENSOR_LOCATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
@@ -278,12 +316,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.setSCControlPoint(new SCControlPoint(new byte[]{SCControlPoint.OP_CODE_REQUEST_SUPPORTED_SENSOR_LOCATIONS})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_00002() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
@@ -309,12 +349,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.getSCControlPointClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_00002() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
@@ -340,12 +382,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.startSCControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_00002() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
@@ -371,12 +415,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.stopSCControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_00002() {
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -403,12 +449,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.hasManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -417,12 +465,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.hasModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -431,12 +481,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.getManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback()) {
             @Override
@@ -457,12 +509,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertNull(cyclingSpeedAndCadenceProfile.getModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00002() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback()) {
             @Override
@@ -483,12 +537,14 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         assertTrue(cyclingSpeedAndCadenceProfile.getDatabaseHelper() instanceof CyclingSpeedAndCadenceProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback()) {
@@ -506,6 +562,7 @@ public class CyclingSpeedAndCadenceProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.UUID;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -19,7 +19,7 @@ public class ServiceData32BitUUIDTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -31,7 +31,7 @@ public class ServiceData32BitUUIDTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 127;
         data[3] = 127;
         data[4] = 127;
@@ -43,7 +43,7 @@ public class ServiceData32BitUUIDTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
         data[4] = 0;
@@ -55,7 +55,7 @@ public class ServiceData32BitUUIDTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 127;
         data[3] = 0;
         data[4] = 0;
@@ -67,7 +67,7 @@ public class ServiceData32BitUUIDTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -79,7 +79,7 @@ public class ServiceData32BitUUIDTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
         data[4] = 0;
@@ -91,7 +91,7 @@ public class ServiceData32BitUUIDTest {
     static {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = (byte) 0b11111111;
         data[3] = 0;
         data[4] = 0;
@@ -106,7 +106,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -123,7 +123,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -140,7 +140,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -158,7 +158,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -176,7 +176,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -194,7 +194,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -212,7 +212,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -230,7 +230,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -248,7 +248,7 @@ public class ServiceData32BitUUIDTest {
 
         byte[] data = new byte[6 + additionalData.length];
         data[0] = (byte) (5 + additionalData.length);
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -291,7 +291,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(0, result1.getAdditionalServiceData().length);
     }
@@ -302,7 +302,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("7f7f7f7f-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(0, result1.getAdditionalServiceData().length);
     }
@@ -313,7 +313,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("7f000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(0, result1.getAdditionalServiceData().length);
     }
@@ -324,7 +324,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("0000007f-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(0, result1.getAdditionalServiceData().length);
     }
@@ -335,7 +335,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("ffffffff-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(0, result1.getAdditionalServiceData().length);
     }
@@ -346,7 +346,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("ff000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(0, result1.getAdditionalServiceData().length);
     }
@@ -357,7 +357,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("000000ff-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(0, result1.getAdditionalServiceData().length);
     }
@@ -368,7 +368,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());
@@ -380,7 +380,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());
@@ -392,7 +392,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());
@@ -404,7 +404,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());
@@ -416,7 +416,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());
@@ -428,7 +428,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());
@@ -440,7 +440,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());
@@ -452,7 +452,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());
@@ -464,7 +464,7 @@ public class ServiceData32BitUUIDTest {
 
         ServiceData32BitUUIDAndroid result1 = new ServiceData32BitUUIDAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result1.getDataType());
+        assertEquals(SERVICE_DATA_32_BIT_UUID_DATA_TYPE, result1.getDataType());
         assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuid());
         assertEquals(data[0] - 5, result1.getAdditionalServiceData().length);
         assertArrayEquals(Arrays.copyOfRange(data, 6, data.length), result1.getAdditionalServiceData());

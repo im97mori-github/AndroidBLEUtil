@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.im97mori.ble.sample.jellybean">
 
+    <!--<uses-sdk tools:overrideLibrary="org.im97mori.ble.profile.esp.central" />-->
+
     <uses-permission
         android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="30" />
@@ -29,7 +31,7 @@
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".MainActivity"
+            android:name=".IndexActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +39,66 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AdvertisingDataSampleActivity"
+            android:label="@string/label_advertising" />
+        <activity
+            android:name=".CentralSampleActivity"
+            android:label="@string/label_central" />
+        <activity
+            android:name=".blp.BlpCentralSampleActivity"
+            android:label="@string/label_blp_central" />
+        <activity
+            android:name=".lnp.LnpCentralSampleActivity"
+            android:label="@string/label_lnp_central" />
+        <activity
+            android:name=".fmp.FmpCentralSampleActivity"
+            android:label="@string/label_fmp_central" />
+        <activity
+            android:name=".pxp.PxpCentralSampleActivity"
+            android:label="@string/label_pxp_central" />
+        <activity
+            android:name=".hrp.HrpCentralSampleActivity"
+            android:label="@string/label_hrp_central" />
+        <activity
+            android:name=".htp.HtpCentralSampleActivity"
+            android:label="@string/label_htp_central" />
+        <activity
+            android:name=".wsp.WspCentralSampleActivity"
+            android:label="@string/label_wsp_central" />
+        <activity
+            android:name=".aiop.AiopCentralSampleActivity"
+            android:label="@string/label_aiop_central" />
+        <activity
+            android:name=".anp.AnpCentralSampleActivity"
+            android:label="@string/label_anp_central" />
+        <activity
+            android:name=".tip.TipCentralSampleActivity"
+            android:label="@string/label_tip_central" />
+        <activity
+            android:name=".cpp.CppCentralSampleActivity"
+            android:label="@string/label_cpp_central" />
+        <activity
+            android:name=".cscp.CscpCentralSampleActivity"
+            android:label="@string/label_cscp_central" />
+        <activity
+            android:name=".rscp.RscpCentralSampleActivity"
+            android:label="@string/label_rscp_central" />
+        <activity
+            android:name=".pasp.PaspCentralSampleActivity"
+            android:label="@string/label_pasp_central" />
+        <activity
+            android:name=".ftmp.FtmpCentralSampleActivity"
+            android:label="@string/label_ftmp_central" />
+        <!--        <activity
+                    android:name=".esp.EspCentralSampleActivity"
+                    android:label="@string/label_esp_central" />-->
+        <activity
+            android:name=".scpp.ScppCentralSampleActivity"
+            android:label="@string/label_scpp_central" />
+        <activity
+            android:name=".rcp.RcpCentralSampleActivity"
+            android:label="@string/label_rcp_central" />
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_FLOAT;
 import org.im97mori.ble.characteristic.core.TemperatureMeasurementUtils;
@@ -54,6 +55,7 @@ import static org.junit.Assert.assertTrue;
 public class HealthThermometerServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -62,6 +64,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -71,6 +74,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -80,6 +84,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -90,6 +95,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -100,6 +106,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -108,6 +115,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -117,6 +125,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -126,6 +135,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -136,6 +146,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -146,6 +157,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00201() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -154,6 +166,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00202() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -163,6 +176,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00203() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -172,6 +186,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00204() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -182,6 +197,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00205() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -192,6 +208,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00301() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -200,6 +217,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00302() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -209,6 +227,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00303() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -218,6 +237,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00304() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -228,6 +248,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00305() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -238,6 +259,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00306() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -250,6 +272,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00307() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -262,6 +285,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00401() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -270,6 +294,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00402() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -279,6 +304,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00403() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -288,6 +314,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00404() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -298,6 +325,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00405() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -308,6 +336,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00406() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -320,6 +349,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00407() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -332,6 +362,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -365,6 +396,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -390,6 +422,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -415,6 +448,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -449,6 +483,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -474,6 +509,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -499,6 +535,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -532,6 +569,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -557,6 +595,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -582,6 +621,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -615,6 +655,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -640,6 +681,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -665,6 +707,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -698,6 +741,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -723,6 +767,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -748,6 +793,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -781,6 +827,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -806,6 +853,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -831,6 +879,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -864,6 +913,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -889,6 +939,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -914,6 +965,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -947,6 +999,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -972,6 +1025,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -997,6 +1051,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1030,6 +1085,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1055,6 +1111,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1080,6 +1137,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1116,6 +1174,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1143,6 +1202,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1170,6 +1230,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1197,6 +1258,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1233,6 +1295,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1260,6 +1323,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1287,6 +1351,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1314,6 +1379,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1350,6 +1416,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1377,6 +1444,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1404,6 +1472,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1431,6 +1500,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1466,6 +1536,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1493,6 +1564,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1520,6 +1592,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1547,6 +1620,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1583,6 +1657,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1610,6 +1685,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1637,6 +1713,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1664,6 +1741,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1700,6 +1778,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1727,6 +1806,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1754,6 +1834,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1781,6 +1862,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1817,6 +1899,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1844,6 +1927,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1871,6 +1955,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1898,6 +1983,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1933,6 +2019,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1960,6 +2047,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1987,6 +2075,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2014,6 +2103,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2050,6 +2140,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2077,6 +2168,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2104,6 +2196,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2131,6 +2224,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2167,6 +2261,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2194,6 +2289,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2221,6 +2317,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2248,6 +2345,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2284,6 +2382,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2311,6 +2410,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2338,6 +2438,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2365,6 +2466,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2400,6 +2502,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2427,6 +2530,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2454,6 +2558,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2481,6 +2586,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2517,6 +2623,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2545,6 +2652,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2573,6 +2681,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2601,6 +2710,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2636,6 +2746,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2664,6 +2775,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2692,6 +2804,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2720,6 +2833,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2756,6 +2870,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2784,6 +2899,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2812,6 +2928,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2840,6 +2957,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2875,6 +2993,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2903,6 +3022,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2931,6 +3051,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2959,6 +3080,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2995,6 +3117,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3023,6 +3146,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3051,6 +3175,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3079,6 +3204,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3114,6 +3240,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3142,6 +3269,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3170,6 +3298,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3198,6 +3327,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3235,6 +3365,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3263,6 +3394,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3291,6 +3423,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3319,6 +3452,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3355,6 +3489,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3383,6 +3518,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3411,6 +3547,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3439,6 +3576,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3476,6 +3614,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3504,6 +3643,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3532,6 +3672,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3560,6 +3701,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3596,6 +3738,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3624,6 +3767,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3652,6 +3796,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3680,6 +3825,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3717,6 +3863,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3745,6 +3892,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3773,6 +3921,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3801,6 +3950,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3837,6 +3987,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3865,6 +4016,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3893,6 +4045,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3921,6 +4074,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3958,6 +4112,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3986,6 +4141,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4014,6 +4170,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4042,6 +4199,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4078,6 +4236,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4106,6 +4265,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4134,6 +4294,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4162,6 +4323,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4199,6 +4361,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4227,6 +4390,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4255,6 +4419,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4283,6 +4448,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4319,6 +4485,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00302() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4347,6 +4514,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00303() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4375,6 +4543,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00304() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4403,6 +4572,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4440,6 +4610,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00402() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4468,6 +4639,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00403() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4496,6 +4668,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00404() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4524,6 +4697,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4560,6 +4734,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00502() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4588,6 +4763,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00503() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4616,6 +4792,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00504() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4644,6 +4821,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4682,6 +4860,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
@@ -4714,6 +4893,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4746,6 +4926,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4778,6 +4959,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4816,6 +4998,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
@@ -4848,6 +5031,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00103() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4880,6 +5064,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00104() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4912,6 +5097,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4942,6 +5128,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
@@ -4966,6 +5153,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00203() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4990,6 +5178,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00204() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -5014,6 +5203,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTemperatureTypeCharacteristicSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5021,6 +5211,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTemperatureTypeCharacteristicSupported_00002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5032,6 +5223,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTemperatureTypeCharacteristicSupported_00003() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5044,6 +5236,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isIntermediateTemperatureCharacteristicSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5051,6 +5244,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isIntermediateTemperatureCharacteristicSupported_00002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5062,6 +5256,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isIntermediateTemperatureCharacteristicSupported_00003() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5074,6 +5269,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5081,6 +5277,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicSupported_00002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5092,6 +5289,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicSupported_00003() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5104,6 +5302,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicIndicateSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5111,6 +5310,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicIndicateSupported_00002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5123,6 +5323,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicIndicateSupported_00003() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5136,6 +5337,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicWriteSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5143,6 +5345,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicWriteSupported_00002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5155,6 +5358,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMeasurementIntervalCharacteristicWriteSupported_00003() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5168,6 +5372,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureMeasurementClientCharacteristicConfiguration_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5175,6 +5380,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureMeasurementClientCharacteristicConfiguration_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5189,6 +5395,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5207,6 +5414,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureMeasurementIndication_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5214,6 +5422,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureMeasurementIndication_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5228,6 +5437,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startTemperatureMeasurementIndication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5246,6 +5456,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementIndication_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5253,6 +5464,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementIndication_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5267,6 +5479,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementIndication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5285,6 +5498,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureType_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5292,6 +5506,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureType_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5306,6 +5521,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureType_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -5322,6 +5538,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getTemperatureType_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -5345,6 +5562,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIntermediateTemperatureClientCharacteristicConfiguration_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5352,6 +5570,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIntermediateTemperatureClientCharacteristicConfiguration_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5366,6 +5585,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIntermediateTemperatureClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5382,6 +5602,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getIntermediateTemperatureClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5405,6 +5626,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIntermediateTemperatureNotification_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5412,6 +5634,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIntermediateTemperatureNotification_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5426,6 +5649,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIntermediateTemperatureNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5442,6 +5666,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startIntermediateTemperatureNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5465,6 +5690,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIntermediateTemperaturNotification_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5472,6 +5698,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIntermediateTemperaturNotification_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5486,6 +5713,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIntermediateTemperaturNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5502,6 +5730,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopIntermediateTemperaturNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5525,6 +5754,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementInterval_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5532,6 +5762,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementInterval_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5546,6 +5777,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementInterval_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -5562,6 +5794,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementInterval_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -5585,6 +5818,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMeasurementInterval_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
         MeasurementInterval measurementInterval = new MeasurementInterval(0);
@@ -5593,6 +5827,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMeasurementInterval_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5608,6 +5843,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMeasurementInterval_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -5625,6 +5861,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setMeasurementInterval_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -5649,6 +5886,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalClientCharacteristicConfiguration_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5656,6 +5894,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalClientCharacteristicConfiguration_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5670,6 +5909,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5686,6 +5926,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5709,6 +5950,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMeasurementIntervalInidication_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5716,6 +5958,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMeasurementIntervalInidication_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5730,6 +5973,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMeasurementIntervalInidication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5746,6 +5990,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startMeasurementIntervalInidication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5769,6 +6014,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMeasurementIntervalInidication_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5776,6 +6022,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMeasurementIntervalInidication_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5790,6 +6037,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMeasurementIntervalInidication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5806,6 +6054,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopMeasurementIntervalInidication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -5829,6 +6078,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalValidRange_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
@@ -5836,6 +6086,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalValidRange_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
@@ -5850,6 +6101,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalValidRange_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -5866,6 +6118,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getMeasurementIntervalValidRange_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);

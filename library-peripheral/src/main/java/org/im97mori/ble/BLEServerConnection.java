@@ -1,5 +1,9 @@
 package org.im97mori.ble;
 
+import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY;
+import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_TX_POWER_HIGH;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
@@ -35,10 +39,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY;
-import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_TX_POWER_HIGH;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-
 /**
  * BLE Connection(peripheral role)
  */
@@ -49,7 +49,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * SERVICE_UUID for Advertising
      *
-     * @see org.im97mori.ble.constants.DataType#DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS
+     * @see org.im97mori.ble.constants.DataType#COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE
      */
     public static final UUID MOCK_CONTROL_SERVICE_UUID = UUID.fromString("00000000-a087-4fa3-add4-3b8a7d5d491f");
 
@@ -104,7 +104,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     public BLEServerConnection(@NonNull Context context) {
         mContext = context;
         mBluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter = mBluetoothManager.getAdapter();
         mBLEServerCallbackDistributer = new BLEServerCallbackDistributer(this);
     }
 
@@ -492,44 +492,46 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
         boolean result = false;
         if (mBluetoothLeAdvertiser == null) {
-            mBluetoothLeAdvertiser = mBluetoothAdapter.getBluetoothLeAdvertiser();
-            if (mBluetoothLeAdvertiser != null) {
-                AdvertiseSettings.Builder asBuilder = new AdvertiseSettings.Builder();
-                asBuilder.setConnectable(true);
-                asBuilder.setAdvertiseMode(ADVERTISE_MODE_LOW_LATENCY);
-                asBuilder.setTxPowerLevel(ADVERTISE_TX_POWER_HIGH);
-                asBuilder.setTimeout(0);
-                AdvertiseData.Builder adBuilder = new AdvertiseData.Builder();
-                adBuilder.setIncludeDeviceName(includeDeviceName);
-                if (includeUUID) {
-                    adBuilder.addServiceUuid(new ParcelUuid(serviceUUID == null ? MOCK_CONTROL_SERVICE_UUID : serviceUUID));
-                }
-
-                mAdvertiseCallback = new AdvertiseCallback() {
-
-                    /**
-                     * {@inheritDoc}
-                     */
-                    @Override
-                    public void onStartSuccess(AdvertiseSettings settingsInEffect) {
-                        mBLEServerCallbackDistributer.onAdvertisingStartSuccess(settingsInEffect);
+            if (mBluetoothAdapter != null) {
+                mBluetoothLeAdvertiser = mBluetoothAdapter.getBluetoothLeAdvertiser();
+                if (mBluetoothLeAdvertiser != null) {
+                    AdvertiseSettings.Builder asBuilder = new AdvertiseSettings.Builder();
+                    asBuilder.setConnectable(true);
+                    asBuilder.setAdvertiseMode(ADVERTISE_MODE_LOW_LATENCY);
+                    asBuilder.setTxPowerLevel(ADVERTISE_TX_POWER_HIGH);
+                    asBuilder.setTimeout(0);
+                    AdvertiseData.Builder adBuilder = new AdvertiseData.Builder();
+                    adBuilder.setIncludeDeviceName(includeDeviceName);
+                    if (includeUUID) {
+                        adBuilder.addServiceUuid(new ParcelUuid(serviceUUID == null ? MOCK_CONTROL_SERVICE_UUID : serviceUUID));
                     }
 
-                    /**
-                     * {@inheritDoc}
-                     */
-                    @Override
-                    public void onStartFailure(int errorCode) {
-                        synchronized (BLEServerConnection.this) {
-                            mAdvertiseCallback = null;
-                            mBLEServerCallbackDistributer.onAdvertisingStartFailed(errorCode);
+                    mAdvertiseCallback = new AdvertiseCallback() {
+
+                        /**
+                         * {@inheritDoc}
+                         */
+                        @Override
+                        public void onStartSuccess(AdvertiseSettings settingsInEffect) {
+                            mBLEServerCallbackDistributer.onAdvertisingStartSuccess(settingsInEffect);
                         }
-                    }
 
-                };
+                        /**
+                         * {@inheritDoc}
+                         */
+                        @Override
+                        public void onStartFailure(int errorCode) {
+                            synchronized (BLEServerConnection.this) {
+                                mAdvertiseCallback = null;
+                                mBLEServerCallbackDistributer.onAdvertisingStartFailed(errorCode);
+                            }
+                        }
 
-                mBluetoothLeAdvertiser.startAdvertising(asBuilder.build(), adBuilder.build(), mAdvertiseCallback);
-                result = true;
+                    };
+
+                    mBluetoothLeAdvertiser.startAdvertising(asBuilder.build(), adBuilder.build(), mAdvertiseCallback);
+                    result = true;
+                }
             }
         }
 

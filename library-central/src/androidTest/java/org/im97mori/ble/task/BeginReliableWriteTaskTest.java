@@ -6,6 +6,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -21,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class BeginReliableWriteTaskTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_createInitialMessage_00001() {
         BeginReliableWriteTask task = new BeginReliableWriteTask(null, null, null);
         Message message = task.createInitialMessage();
@@ -34,12 +36,14 @@ public class BeginReliableWriteTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_doProcess_00001() {
         BeginReliableWriteTask task = new BeginReliableWriteTask(null, null, null);
         assertFalse(task.doProcess(new Message()));
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00001() {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
@@ -50,6 +54,7 @@ public class BeginReliableWriteTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00002() {
         BaseBLECallback callback = new BaseBLECallback() {
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a53.RSCMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a54.RSCFeatureAndroid;
@@ -41,6 +42,7 @@ import static org.junit.Assert.assertTrue;
 public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -49,6 +51,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -58,6 +61,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -67,6 +71,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -77,6 +82,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -87,6 +93,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00101() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -95,6 +102,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00102() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -104,6 +112,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00103() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -113,6 +122,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00104() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -123,6 +133,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00105() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -133,6 +144,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00106() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -143,6 +155,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00107() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -153,6 +166,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00108() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -165,6 +179,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -198,6 +213,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -231,6 +247,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -264,6 +281,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -297,6 +315,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -330,6 +349,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -363,6 +383,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -396,6 +417,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -429,6 +451,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -462,6 +485,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -498,6 +522,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -534,6 +559,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -570,6 +596,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -606,6 +633,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -642,6 +670,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -678,6 +707,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -713,6 +743,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -748,6 +779,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -783,6 +815,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -818,6 +851,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -854,6 +888,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -890,6 +925,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -926,6 +962,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -962,6 +999,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -998,6 +1036,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1034,6 +1073,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1070,6 +1110,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1106,6 +1147,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1136,6 +1178,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -1166,6 +1209,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1173,6 +1217,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1185,6 +1230,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSensorLocationCharacteristicSupported_00003() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1198,6 +1244,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1205,6 +1252,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1217,6 +1265,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSCControlPointCharacteristicSupported_00003() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1230,6 +1279,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCFeature_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1237,6 +1287,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCFeature_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1251,6 +1302,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCFeature_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1267,6 +1319,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCMeasurementClientCharacteristicConfiguration_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1274,6 +1327,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCMeasurementClientCharacteristicConfiguration_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1288,6 +1342,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getRSCMeasurementClientCharacteristicConfiguration_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1306,6 +1361,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRSCMeasurementNotification_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1313,6 +1369,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRSCMeasurementNotification_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1327,6 +1384,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startRSCMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1345,6 +1403,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRSCMeasurementNotification_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1352,6 +1411,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRSCMeasurementNotification_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1366,6 +1426,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopRSCMeasurementNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1384,6 +1445,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1391,6 +1453,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1405,6 +1468,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000003() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1424,6 +1488,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -1445,6 +1510,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
         SCControlPoint scControlPoint = new SCControlPoint(new byte[]{SCControlPoint.OP_CODE_REQUEST_SUPPORTED_SENSOR_LOCATIONS});
@@ -1453,6 +1519,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1468,6 +1535,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_000003() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1488,6 +1556,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setSCControlPoint_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -1512,6 +1581,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1519,6 +1589,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1533,6 +1604,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_000003() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1552,6 +1624,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSCControlPointClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -1575,6 +1648,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1582,6 +1656,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1596,6 +1671,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_000003() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1615,6 +1691,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startSCControlPointIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -1638,6 +1715,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_000001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null);
 
@@ -1645,6 +1723,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_000002() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1659,6 +1738,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_000003() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(MOCK_BLE_CONNECTION, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
@@ -1678,6 +1758,7 @@ public class RunningSpeedAndCadenceServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopSCControlPointIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

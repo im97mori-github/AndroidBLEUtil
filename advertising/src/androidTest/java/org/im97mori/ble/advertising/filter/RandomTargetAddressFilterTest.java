@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_RANDOM_TARGET_ADDRESS;
+import static org.im97mori.ble.constants.DataType.RANDOM_TARGET_ADDRESS_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -36,7 +36,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = new byte[0];
@@ -59,7 +59,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] actualData = new byte[8];
         actualData[0] = 7;
-        actualData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        actualData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, actualData, 2, address.length);
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -80,7 +80,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -109,12 +109,12 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[14];
         expectData[0] = 13;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = new byte[8];
         actualData[0] = 7;
-        actualData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        actualData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length / 2);
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -141,12 +141,12 @@ public class RandomTargetAddressFilterTest {
 
         byte[] actualData = new byte[14];
         actualData[0] = 13;
-        actualData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        actualData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, actualData, 2, address.length);
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length / 2);
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -173,7 +173,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[14];
         expectData[0] = 13;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -196,7 +196,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -219,7 +219,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -242,7 +242,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -267,7 +267,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -294,7 +294,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -320,7 +320,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[8];
         expectData[0] = 7;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -354,7 +354,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[14];
         expectData[0] = 13;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -385,7 +385,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[14];
         expectData[0] = 13;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -414,7 +414,7 @@ public class RandomTargetAddressFilterTest {
 
         byte[] expectData = new byte[14];
         expectData[0] = 13;
-        expectData[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        expectData[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, expectData, 2, address.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);

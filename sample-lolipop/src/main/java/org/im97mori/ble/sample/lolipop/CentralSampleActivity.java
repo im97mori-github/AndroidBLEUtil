@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanResult;
 import android.content.BroadcastReceiver;
@@ -124,7 +125,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 
         mConnectDisconnectButton.setOnClickListener(this);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
         if (mBluetoothAdapter != null) {
             mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
         }
@@ -207,7 +208,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 }
             }.start();
         } else if (R.id.request_mtu == item.getItemId()) {
-            mBleConnection.createRequestMtuTask(BLEConstants.MAXIMUM_MTU / 2, DiscoverServiceTask.TIMEOUT_MILLIS, null, null);
+            mBleConnection.createRequestMtuTask(RequestMtuTask.MAXIMUM_MTU / 2, DiscoverServiceTask.TIMEOUT_MILLIS, null, null);
         } else if (R.id.request_mtu_sync == item.getItemId()) {
             new Thread() {
                 @Override
@@ -695,8 +696,8 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else if (mBluetoothLeScanner == null) {
             mConnectDisconnectButton.setVisibility(View.GONE);
         } else {

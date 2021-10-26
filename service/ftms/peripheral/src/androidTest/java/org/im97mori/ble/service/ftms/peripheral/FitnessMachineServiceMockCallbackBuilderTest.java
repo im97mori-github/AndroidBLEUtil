@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.core.CrossTrainerDataUtils;
 import org.im97mori.ble.characteristic.core.IndoorBikeDataUtils;
@@ -56,9 +57,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -73,6 +79,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00101() {
         Exception exception = null;
         try {
@@ -109,6 +117,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00102() {
         Exception exception = null;
         try {
@@ -145,6 +155,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00103() {
         Exception exception = null;
         try {
@@ -181,6 +193,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00104() {
         Exception exception = null;
         try {
@@ -218,6 +232,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00105() {
         Exception exception = null;
         try {
@@ -255,6 +271,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00106() {
         Exception exception = null;
         try {
@@ -291,6 +309,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00107() {
         Exception exception = null;
         try {
@@ -327,6 +347,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00108() {
         Exception exception = null;
         try {
@@ -363,6 +385,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00109() {
         Exception exception = null;
         try {
@@ -399,6 +423,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00110() {
         Exception exception = null;
         try {
@@ -435,6 +461,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00111() {
         Exception exception = null;
         try {
@@ -471,6 +499,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00112() {
         Exception exception = null;
         try {
@@ -507,6 +537,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00113() {
         Exception exception = null;
         try {
@@ -541,6 +573,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00201() {
         Exception exception = null;
         try {
@@ -580,6 +614,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00202() {
         Exception exception = null;
         try {
@@ -619,6 +655,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00203() {
         Exception exception = null;
         try {
@@ -658,6 +696,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00204() {
         Exception exception = null;
         try {
@@ -697,6 +737,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00205() {
         Exception exception = null;
         try {
@@ -736,6 +778,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00206() {
         Exception exception = null;
         try {
@@ -775,6 +819,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00207() {
         Exception exception = null;
         try {
@@ -814,6 +860,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00208() {
         Exception exception = null;
         try {
@@ -853,6 +901,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00209() {
         Exception exception = null;
         try {
@@ -892,6 +942,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00210() {
         Exception exception = null;
         try {
@@ -931,6 +983,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00211() {
         Exception exception = null;
         try {
@@ -970,6 +1024,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00212() {
         Exception exception = null;
         try {
@@ -1009,6 +1065,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00213() {
         Exception exception = null;
         try {
@@ -1048,6 +1106,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00214() {
         Exception exception = null;
         try {
@@ -1087,6 +1147,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00215() {
         Exception exception = null;
         try {
@@ -1123,6 +1185,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00301() {
         Exception exception = null;
         try {
@@ -1153,6 +1217,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00302() {
         Exception exception = null;
         try {
@@ -1183,6 +1249,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00303() {
         Exception exception = null;
         try {
@@ -1213,6 +1281,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00304() {
         Exception exception = null;
         try {
@@ -1243,6 +1313,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00305() {
         Exception exception = null;
         try {
@@ -1273,6 +1345,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00306() {
         Exception exception = null;
         try {
@@ -1303,6 +1377,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00307() {
         Exception exception = null;
         try {
@@ -1333,6 +1409,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00308() {
         Exception exception = null;
         try {
@@ -1363,6 +1441,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00309() {
         Exception exception = null;
         try {
@@ -1391,6 +1471,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00401() {
         Exception exception = null;
         try {
@@ -1421,6 +1503,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00402() {
         Exception exception = null;
         try {
@@ -1451,6 +1535,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00403() {
         Exception exception = null;
         try {
@@ -1481,6 +1567,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00404() {
         Exception exception = null;
         try {
@@ -1511,6 +1599,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00405() {
         Exception exception = null;
         try {
@@ -1541,6 +1631,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00406() {
         Exception exception = null;
         try {
@@ -1571,6 +1663,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00407() {
         Exception exception = null;
         try {
@@ -1601,6 +1695,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00408() {
         Exception exception = null;
         try {
@@ -1631,6 +1727,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00409() {
         Exception exception = null;
         try {
@@ -1661,6 +1759,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00410() {
         Exception exception = null;
         try {
@@ -1689,6 +1789,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00501() {
         Exception exception = null;
         try {
@@ -1723,6 +1825,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00502() {
         Exception exception = null;
         try {
@@ -1757,6 +1861,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00503() {
         Exception exception = null;
         try {
@@ -1791,6 +1897,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00504() {
         Exception exception = null;
         try {
@@ -1825,6 +1933,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00505() {
         Exception exception = null;
         try {
@@ -1859,6 +1969,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00506() {
         Exception exception = null;
         try {
@@ -1893,6 +2005,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00507() {
         Exception exception = null;
         try {
@@ -1927,6 +2041,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00508() {
         Exception exception = null;
         try {
@@ -1961,6 +2077,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00509() {
         Exception exception = null;
         try {
@@ -1995,6 +2113,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00510() {
         Exception exception = null;
         try {
@@ -2029,6 +2149,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00511() {
         Exception exception = null;
         try {
@@ -2063,6 +2185,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00512() {
         Exception exception = null;
         try {
@@ -2097,6 +2221,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00513() {
         Exception exception = null;
         try {
@@ -2129,6 +2255,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00601() {
         Exception exception = null;
         try {
@@ -2162,6 +2290,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00602() {
         Exception exception = null;
         try {
@@ -2195,6 +2325,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00603() {
         Exception exception = null;
         try {
@@ -2228,6 +2360,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00604() {
         Exception exception = null;
         try {
@@ -2261,6 +2395,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00605() {
         Exception exception = null;
         try {
@@ -2294,6 +2430,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00606() {
         Exception exception = null;
         try {
@@ -2327,6 +2465,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00607() {
         Exception exception = null;
         try {
@@ -2360,6 +2500,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00608() {
         Exception exception = null;
         try {
@@ -2393,6 +2535,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00609() {
         Exception exception = null;
         try {
@@ -2426,6 +2570,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00610() {
         Exception exception = null;
         try {
@@ -2459,6 +2605,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00611() {
         Exception exception = null;
         try {
@@ -2492,6 +2640,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00612() {
         Exception exception = null;
         try {
@@ -2525,6 +2675,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00613() {
         Exception exception = null;
         try {
@@ -2556,6 +2708,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00701() {
         Exception exception = null;
         try {
@@ -2579,6 +2733,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00702() {
         Exception exception = null;
         try {
@@ -2601,6 +2757,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00703() {
         Exception exception = null;
         try {
@@ -2623,6 +2781,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00704() {
         Exception exception = null;
         try {
@@ -2645,6 +2805,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00705() {
         Exception exception = null;
         try {
@@ -2667,6 +2829,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00801() {
         Exception exception = null;
         try {
@@ -2708,6 +2872,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00802() {
         Exception exception = null;
         try {
@@ -2753,6 +2919,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00803() {
         Exception exception = null;
         try {
@@ -2797,6 +2965,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00804() {
         Exception exception = null;
         try {
@@ -2841,6 +3011,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00805() {
         Exception exception = null;
         try {
@@ -2885,6 +3057,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00806() {
         Exception exception = null;
         try {
@@ -2929,6 +3103,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFitnessMachineFeature_00001() {
         FitnessMachineFeature fitnessMachineFeature = new FitnessMachineFeature(new byte[4]);
 
@@ -2961,6 +3137,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFitnessMachineFeature_00002() {
         FitnessMachineFeature fitnessMachineFeature = new FitnessMachineFeature(new byte[4]);
 
@@ -2993,6 +3171,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFitnessMachineFeature_00003() {
         FitnessMachineFeature fitnessMachineFeature = new FitnessMachineFeature(new byte[4]);
 
@@ -3025,6 +3205,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeFitnessMachineFeature_00001() {
         Exception exception = null;
         try {
@@ -3041,6 +3223,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTreadmillData_00001() {
         TreadmillData treadmillData = new TreadmillData(new byte[2]
                 , 0
@@ -3100,6 +3284,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTreadmillData_00002() {
         TreadmillData treadmillData = new TreadmillData(new byte[2]
                 , 0
@@ -3159,6 +3345,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeTreadmillData_00001() {
         TreadmillData treadmillData = new TreadmillData(new byte[2]
                 , 0
@@ -3210,6 +3398,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCrossTrainerData_00001() {
         CrossTrainerData crossTrainerData = new CrossTrainerData(new byte[3]
                 , 0
@@ -3271,6 +3461,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCrossTrainerData_00002() {
         CrossTrainerData crossTrainerData = new CrossTrainerData(new byte[3]
                 , 0
@@ -3332,6 +3524,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCrossTrainerData_00001() {
         CrossTrainerData crossTrainerData = new CrossTrainerData(new byte[3]
                 , 0
@@ -3385,6 +3579,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addStepClimberData_00001() {
         StepClimberData stepClimberData = new StepClimberData(new byte[2]
                 , 0
@@ -3438,6 +3634,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addStepClimberData_00002() {
         StepClimberData stepClimberData = new StepClimberData(new byte[2]
                 , 0
@@ -3491,6 +3689,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeStepClimberData_00001() {
         StepClimberData stepClimberData = new StepClimberData(new byte[2]
                 , 0
@@ -3536,6 +3736,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addStairClimberData_00001() {
         StairClimberData stairClimberData = new StairClimberData(new byte[2]
                 , 0
@@ -3589,6 +3791,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addStairClimberData_00002() {
         StairClimberData stairClimberData = new StairClimberData(new byte[2]
                 , 0
@@ -3642,6 +3846,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeStairClimberData_00001() {
         StairClimberData stairClimberData = new StairClimberData(new byte[2]
                 , 0
@@ -3687,6 +3893,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRowerData_00001() {
         RowerData rowerData = new RowerData(new byte[2]
                 , 0
@@ -3744,6 +3952,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRowerData_00002() {
         RowerData rowerData = new RowerData(new byte[2]
                 , 0
@@ -3801,6 +4011,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRowerData_00001() {
         RowerData rowerData = new RowerData(new byte[2]
                 , 0
@@ -3850,6 +4062,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIndoorBikeData_00001() {
         IndoorBikeData indoorBikeData = new IndoorBikeData(new byte[2]
                 , 0
@@ -3906,6 +4120,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addIndoorBikeData_00002() {
         IndoorBikeData indoorBikeData = new IndoorBikeData(new byte[2]
                 , 0
@@ -3962,6 +4178,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeIndoorBikeData_00001() {
         IndoorBikeData indoorBikeData = new IndoorBikeData(new byte[2]
                 , 0
@@ -4010,6 +4228,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTrainingStatus_00001() {
         TrainingStatus trainingStatus = new TrainingStatus(new byte[2]);
 
@@ -4051,6 +4271,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTrainingStatus_00002() {
         TrainingStatus trainingStatus = new TrainingStatus(new byte[2]);
 
@@ -4092,6 +4314,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeTrainingStatus_00001() {
         TrainingStatus trainingStatus = new TrainingStatus(new byte[2]);
 
@@ -4125,6 +4349,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedSpeedRange_00001() {
         SupportedSpeedRange supportedSpeedRange = new SupportedSpeedRange(new byte[6]);
 
@@ -4158,6 +4384,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedSpeedRange_00002() {
         SupportedSpeedRange supportedSpeedRange = new SupportedSpeedRange(new byte[6]);
 
@@ -4191,6 +4419,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedSpeedRange_00003() {
         SupportedSpeedRange supportedSpeedRange = new SupportedSpeedRange(new byte[6]);
 
@@ -4224,6 +4454,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSupportedSpeedRange_00001() {
         SupportedSpeedRange supportedSpeedRange = new SupportedSpeedRange(new byte[6]);
 
@@ -4254,6 +4486,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedInclinationRange_00001() {
         SupportedInclinationRange supportedInclinationRange = new SupportedInclinationRange(new byte[6]);
 
@@ -4287,6 +4521,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedInclinationRange_00002() {
         SupportedInclinationRange supportedInclinationRange = new SupportedInclinationRange(new byte[6]);
 
@@ -4320,6 +4556,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedInclinationRange_00003() {
         SupportedInclinationRange supportedInclinationRange = new SupportedInclinationRange(new byte[6]);
 
@@ -4353,6 +4591,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSupportedInclinationRange_00001() {
         SupportedInclinationRange supportedInclinationRange = new SupportedInclinationRange(new byte[6]);
 
@@ -4383,6 +4623,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedResistanceLevelRange_00001() {
         SupportedResistanceLevelRange supportedResistanceLevelRange = new SupportedResistanceLevelRange(new byte[6]);
 
@@ -4416,6 +4658,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedResistanceLevelRange_00002() {
         SupportedResistanceLevelRange supportedResistanceLevelRange = new SupportedResistanceLevelRange(new byte[6]);
 
@@ -4449,6 +4693,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedResistanceLevelRange_00003() {
         SupportedResistanceLevelRange supportedResistanceLevelRange = new SupportedResistanceLevelRange(new byte[6]);
 
@@ -4482,6 +4728,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSupportedResistanceLevelRange_00001() {
         SupportedResistanceLevelRange supportedResistanceLevelRange = new SupportedResistanceLevelRange(new byte[6]);
 
@@ -4512,6 +4760,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedPowerRange_00001() {
         SupportedPowerRange supportedPowerRange = new SupportedPowerRange(new byte[6]);
 
@@ -4545,6 +4795,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedPowerRange_00002() {
         SupportedPowerRange supportedPowerRange = new SupportedPowerRange(new byte[6]);
 
@@ -4578,6 +4830,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedPowerRange_00003() {
         SupportedPowerRange supportedPowerRange = new SupportedPowerRange(new byte[6]);
 
@@ -4611,6 +4865,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSupportedPowerRange_00001() {
         SupportedPowerRange supportedPowerRange = new SupportedPowerRange(new byte[6]);
 
@@ -4641,6 +4897,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedHeartRateRange_00001() {
         SupportedHeartRateRange supportedHeartRateRange = new SupportedHeartRateRange(new byte[3]);
 
@@ -4674,6 +4932,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedHeartRateRange_00002() {
         SupportedHeartRateRange supportedHeartRateRange = new SupportedHeartRateRange(new byte[3]);
 
@@ -4707,6 +4967,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSupportedHeartRateRange_00003() {
         SupportedHeartRateRange supportedHeartRateRange = new SupportedHeartRateRange(new byte[3]);
 
@@ -4740,6 +5002,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSupportedHeartRateRange_00001() {
         SupportedHeartRateRange supportedHeartRateRange = new SupportedHeartRateRange(new byte[3]);
 
@@ -4770,6 +5034,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFitnessMachineControlPoint_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
 
@@ -4837,6 +5103,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeFitnessMachineControlPoint_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
 
@@ -4896,6 +5164,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFitnessMachineStatus_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
 
@@ -4934,6 +5204,8 @@ public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeFitnessMachineStatus_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
 

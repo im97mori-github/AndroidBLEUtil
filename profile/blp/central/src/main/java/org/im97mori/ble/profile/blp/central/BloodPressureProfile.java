@@ -2,15 +2,17 @@ package org.im97mori.ble.profile.blp.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.os.Bundle;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.profile.blp.central.db.BloodPressureProfileBondedDatabaseHelper;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.service.bls.central.BloodPressureService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 
@@ -41,17 +43,6 @@ public class BloodPressureProfile extends AbstractCentralProfile {
     public BloodPressureProfile(@NonNull Context context, @NonNull BloodPressureProfileCallback bloodPressureProfileCallback) {
         super(context, bloodPressureProfileCallback);
         mBloodPressureProfileCallback = bloodPressureProfileCallback;
-    }
-
-    /**
-     * find Blood Pressure Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findBloodPressureProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new BloodPressureProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -230,6 +221,25 @@ public class BloodPressureProfile extends AbstractCentralProfile {
         super.quit();
         mDeviceInformationService = null;
         mBloodPressureService = null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new BloodPressureProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new BloodPressureProfileLeScanCallback(this, null);
     }
 
 }

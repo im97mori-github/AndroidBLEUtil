@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/read_manufacturer_name"
+        android:title="@string/menu_read_manufacturer_name" />
+    <item
+        android:id="@+id/read_model_number"
+        android:title="@string/menu_read_model_number" />
+    <item
+        android:id="@+id/read_serial_number"
+        android:title="@string/menu_read_serial_number" />
+    <item
+        android:id="@+id/read_hardware_revision"
+        android:title="@string/menu_read_hardware_revision" />
+    <item
+        android:id="@+id/read_firmware_revision"
+        android:title="@string/menu_read_firmware_revision" />
+    <item
+        android:id="@+id/read_software_revision"
+        android:title="@string/menu_read_software_revision" />
+    <item
+        android:id="@+id/read_system_id"
+        android:title="@string/menu_read_system_id" />
+    <item
+        android:id="@+id/read_ieee_11073_20601_regulatory_certification_data_list"
+        android:title="@string/menu_read_ieee_11073_20601_regulatory_certification_data_list" />
+    <item
+        android:id="@+id/read_pnp_id"
+        android:title="@string/menu_read_pnp_id" />
+</menu>

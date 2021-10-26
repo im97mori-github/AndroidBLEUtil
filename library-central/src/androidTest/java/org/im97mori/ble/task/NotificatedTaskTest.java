@@ -11,10 +11,13 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+
 @SuppressWarnings("ConstantConditions")
 public class NotificatedTaskTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_createInitialMessage_00001() {
         NotificatedTask task = new NotificatedTask(null
                 , null
@@ -31,6 +34,7 @@ public class NotificatedTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_doProcess_00001() {
         NotificatedTask task = new NotificatedTask(MOCK_BLE_CONNECTION
                 , null
@@ -42,6 +46,7 @@ public class NotificatedTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00001() {
         Looper looper = null;
         try {

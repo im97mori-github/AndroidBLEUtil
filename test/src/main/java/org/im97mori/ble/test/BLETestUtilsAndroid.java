@@ -1,18 +1,17 @@
 package org.im97mori.ble.test;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.bluetooth.le.ScanRecord;
-import android.bluetooth.le.ScanResult;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.ParcelUuid;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.test.core.app.ApplicationProvider;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -20,40 +19,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-@SuppressWarnings({"JavaReflectionMemberAccess", "unused"})
+@SuppressWarnings({"unused", "JavaReflectionMemberAccess"})
 public class BLETestUtilsAndroid {
 
-    public static final BluetoothDevice MOCK_DEVICE_0 = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
+    public static final BluetoothDevice MOCK_DEVICE_0 = ((BluetoothManager) ApplicationProvider.getApplicationContext().getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter().getRemoteDevice("00:11:22:33:AA:BB");
 
-    public static final BluetoothDevice MOCK_DEVICE_1 = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:CC");
-
-    public static ScanResult createScanResult(@NonNull BluetoothDevice device
-            , int eventType
-            , int primaryPhy
-            , int secondaryPhy
-            , int advertisingSid
-            , int txPower
-            , int rssi
-            , int periodicAdvertisingInterval
-            , @Nullable ScanRecord scanRecord
-            , long timestampNanos) {
-        ScanResult scanResult = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            scanResult = new ScanResult(device
-                    , eventType
-                    , primaryPhy
-                    , secondaryPhy
-                    , advertisingSid
-                    , txPower
-                    , rssi
-                    , periodicAdvertisingInterval
-                    , scanRecord
-                    , timestampNanos);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            scanResult = new ScanResult(device, scanRecord, rssi, timestampNanos);
-        }
-        return scanResult;
-    }
+    public static final BluetoothDevice MOCK_DEVICE_1 = ((BluetoothManager) ApplicationProvider.getApplicationContext().getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter().getRemoteDevice("00:11:22:33:AA:CC");
 
     public static BluetoothGattService createBluetoothGattService(@NonNull UUID serviceUUID, int instanceId, int serviceType, @NonNull List<BluetoothGattCharacteristic> characteristics) {
         BluetoothGattService bluetoothGattService = null;
@@ -133,11 +104,25 @@ public class BLETestUtilsAndroid {
             parcel.setDataPosition(0);
             bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
             parcel.recycle();
-        } else {
+        } else if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
             try {
                 Constructor<BluetoothGattDescriptor> constructor = BluetoothGattDescriptor.class.getDeclaredConstructor(BluetoothGattCharacteristic.class, UUID.class, int.class, int.class);
                 constructor.setAccessible(true);
                 bluetoothGattDescriptor = constructor.newInstance(null, descriptorUUID, instanceId, permissions);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                Constructor<BluetoothGattDescriptor> constructor = BluetoothGattDescriptor.class.getDeclaredConstructor(BluetoothGattCharacteristic.class, UUID.class, int.class);
+                constructor.setAccessible(true);
+                bluetoothGattDescriptor = constructor.newInstance(null, descriptorUUID, permissions);
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

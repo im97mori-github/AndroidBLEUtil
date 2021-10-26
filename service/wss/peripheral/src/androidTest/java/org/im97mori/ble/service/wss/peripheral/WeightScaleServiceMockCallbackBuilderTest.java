@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
@@ -24,9 +25,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightScaleFeature_00001() {
         Exception exception = null;
         try {
@@ -40,6 +46,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightScaleFeature_00101() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -77,6 +85,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightScaleFeature_00201() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -114,6 +124,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightScaleFeature_00301() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -151,6 +163,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWeightScaleFeature_00001() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -174,6 +188,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00001() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -195,6 +211,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00101() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -234,6 +252,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00102() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(true
                 , false
@@ -272,6 +292,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00103() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -305,6 +327,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00104() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , true
@@ -337,6 +361,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00105() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -372,6 +398,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00106() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -406,6 +434,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00201() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -453,6 +483,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeightMeasurement_00202() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false
@@ -500,6 +532,8 @@ public class WeightScaleServiceMockCallbackBuilderTest extends AbstractPeriphera
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeWeightMeasurement_00001() {
         WeightScaleFeature weightScaleFeature = new WeightScaleFeature(false
                 , false

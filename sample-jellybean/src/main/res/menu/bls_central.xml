@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/start_indicate_blood_pressure_mesurement"
+        android:title="@string/menu_indicate_blood_pressure_start" />
+    <item
+        android:id="@+id/stop_indicate_blood_pressure_mesurement"
+        android:title="@string/menu_indicate_blood_pressure_stop" />
+    <item
+        android:id="@+id/start_notificate_intermediate_cuff_pressure"
+        android:title="@string/menu_notify_intermediate_cuff_pressure_start" />
+    <item
+        android:id="@+id/stop_notificate_intermediate_cuff_pressure"
+        android:title="@string/menu_notify_intermediate_cuff_pressure_stop" />
+    <item
+        android:id="@+id/read_blood_pressure_feature"
+        android:title="@string/menu_read_blood_pressure_feature" />
+</menu>

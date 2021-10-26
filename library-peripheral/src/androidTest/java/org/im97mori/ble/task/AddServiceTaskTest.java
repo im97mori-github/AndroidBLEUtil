@@ -8,6 +8,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLEServerCallbackDistributer;
 import org.im97mori.ble.BLEServerConnection;
@@ -27,6 +28,7 @@ import static org.junit.Assert.assertTrue;
 public class AddServiceTaskTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
     public void test_createInitialMessage_00001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         AddServiceTask task = new AddServiceTask(MOCK_BLE_SERVER_CONNECTION

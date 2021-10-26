@@ -1,6 +1,8 @@
 package org.im97mori.ble.sample.lolipop.dis;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -48,7 +50,7 @@ public class DisPeripheralSampleActivity extends BaseActivity implements View.On
                     child = getLayoutInflater().inflate(R.layout.list_child, parent, false);
                 }
 
-                Pair<String, String > item = getItem(position);
+                Pair<String, String> item = getItem(position);
                 if (item != null) {
                     TextView textView = child.findViewById(R.id.time);
                     textView.setText(item.first);
@@ -63,7 +65,7 @@ public class DisPeripheralSampleActivity extends BaseActivity implements View.On
 
         mConnectDisconnectButton.setOnClickListener(this);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
 
         mBLEServerConnection = new BLEServerConnection(this);
         DeviceInformationServiceMockCallback deviceInformationServiceMockCallback

@@ -2,6 +2,8 @@ package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.Menu;
@@ -68,7 +70,7 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
 
         mConnectDisconnectButton.setOnClickListener(this);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
 
         mBLEServerConnection = new BLEServerConnection(this);
         mBLEServerConnection.attach(new BLECallbackSample(this, this));

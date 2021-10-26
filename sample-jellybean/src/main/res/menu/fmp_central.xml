@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/write_alert_level_no"
+            android:title="@string/menu_write_alert_level_no" />
+        <item
+            android:id="@+id/write_alert_level_mild"
+            android:title="@string/menu_write_alert_level_mild" />
+        <item
+            android:id="@+id/write_alert_level_high"
+            android:title="@string/menu_write_alert_level_high" />
+    </group>
+</menu>

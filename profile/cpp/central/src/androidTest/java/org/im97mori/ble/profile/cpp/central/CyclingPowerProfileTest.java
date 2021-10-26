@@ -1,11 +1,14 @@
 package org.im97mori.ble.profile.cpp.central;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -50,13 +53,30 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findCyclingPowerProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        assertNull(cyclingPowerProfile.findCyclingPowerProfileDevices(null));
+        assertTrue(cyclingPowerProfile.createFilteredScanCallback() instanceof CyclingPowerProfileScanCallback);
     }
 
     @Test
-    public void test_findCyclingPowerProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
+        assertTrue(cyclingPowerProfile.createFilteredLeScanCallback() instanceof CyclingPowerProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
+        assertNull(cyclingPowerProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
@@ -69,18 +89,20 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
             }
         };
         cyclingPowerProfile.start();
-        assertNotNull(cyclingPowerProfile.findCyclingPowerProfileDevices(bundle));
+        assertNotNull(cyclingPowerProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         cyclingPowerProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.hasDeviceInformationService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -89,6 +111,7 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00003() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -99,6 +122,7 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
 
@@ -112,12 +136,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBatteryService_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.hasBatteryService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBatteryService_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -126,6 +152,7 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBatteryService_00003() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -136,6 +163,7 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBatteryService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
 
@@ -149,12 +177,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerControlPointCharacteristicSupported_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerControlPointCharacteristicSupported_00002() {
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
@@ -164,12 +194,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerVectorCharacteristicSupported_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isCyclingPowerVectorCharacteristicSupported_00002() {
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
@@ -179,12 +211,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerFeature_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getCyclingPowerFeature());
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerFeature_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -205,12 +239,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerMeasurementClientCharacteristicConfiguration_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getCyclingPowerMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerMeasurementClientCharacteristicConfiguration_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -231,12 +267,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerMeasurementNotification_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.startCyclingPowerMeasurementNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerMeasurementNotification_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -257,12 +295,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerMeasurementNotification_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.stopCyclingPowerMeasurementNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerMeasurementNotification_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -283,12 +323,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getSensorLocation());
     }
 
     @Test
+    @RequiresDevice
     public void test_getSensorLocation_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -310,6 +352,7 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_setCyclingPowerControlPoint_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.setCyclingPowerControlPoint(new CyclingPowerControlPoint(new byte[]{
@@ -317,6 +360,7 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setCyclingPowerControlPoint_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -340,12 +384,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerControlPointClientCharacteristicConfiguration_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getCyclingPowerControlPointClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerControlPointClientCharacteristicConfiguration_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -367,12 +413,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerControlPointIndication_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.startCyclingPowerControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerControlPointIndication_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -394,12 +442,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerControlPointIndication_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.stopCyclingPowerControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerControlPointIndication_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -421,12 +471,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerVectorClientCharacteristicConfiguration_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getCyclingPowerVectorClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getCyclingPowerVectorClientCharacteristicConfiguration_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -448,12 +500,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerVectorNotification_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.startCyclingPowerVectorNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startCyclingPowerVectorNotification_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -475,12 +529,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerVectorNotification_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.stopCyclingPowerVectorNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopCyclingPowerVectorNotification_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -502,12 +558,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.hasManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00002() {
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
@@ -517,12 +575,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.hasModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00002() {
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
@@ -532,12 +592,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -558,12 +620,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -584,12 +648,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCount_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getBatteryLevelCount());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCount_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -610,12 +676,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getBatteryLevel());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -636,12 +704,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00101() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getBatteryLevel(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00102() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -662,12 +732,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.isBatteryLevelNotificatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -688,12 +760,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00101() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.isBatteryLevelNotificatable(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00102() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -714,12 +788,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getBatteryLevelCharacteristicPresentationFormat());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -740,12 +816,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00101() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getBatteryLevelCharacteristicPresentationFormat(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00102() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -766,12 +844,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getBatteryLevelClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -792,12 +872,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00101() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.getBatteryLevelClientCharacteristicConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00102() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -818,12 +900,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.startBatteryLevelNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -844,12 +928,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00101() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.startBatteryLevelNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00102() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -870,12 +956,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.stopBatteryLevelNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -896,12 +984,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00101() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertNull(cyclingPowerProfile.stopBatteryLevelNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00102() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
@@ -922,12 +1012,14 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         assertTrue(cyclingPowerProfile.getDatabaseHelper() instanceof CyclingPowerProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
@@ -946,6 +1038,7 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

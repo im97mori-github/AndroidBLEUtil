@@ -66,7 +66,7 @@ public class BlpCallbackSample extends BloodPressureProfileMockCallback implemen
         }
 
         @Override
-        public BloodPressureProfileMockCallback build() {
+        public BlpCallbackSample build() {
             return new BlpCallbackSample(mContext, mDeviceInformationServiceMockCallbackBuilder.build(), mBloodPressureServiceMockCallbackBuilder.build(), mSampleCallback);
         }
     }

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.constants.DataType.PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,7 +26,7 @@ public class PeripheralConnectionIntervalRangeTest {
     public void test_002() {
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        expectData[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         expectData[2] = (byte) 0xff;
         expectData[3] = (byte) 0xff;
         expectData[4] = (byte) 0xff;
@@ -44,7 +44,7 @@ public class PeripheralConnectionIntervalRangeTest {
     public void test_003() {
         byte[] actualData = new byte[6];
         actualData[0] = 5;
-        actualData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        actualData[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         actualData[2] = (byte) 0xff;
         actualData[3] = (byte) 0xff;
         actualData[4] = (byte) 0xff;
@@ -60,7 +60,7 @@ public class PeripheralConnectionIntervalRangeTest {
     public void test_004() {
         byte[] expectData = new byte[6];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        expectData[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         expectData[2] = (byte) 0xff;
         expectData[3] = (byte) 0xff;
         expectData[4] = (byte) 0xff;
@@ -78,13 +78,13 @@ public class PeripheralConnectionIntervalRangeTest {
     public void test_101() {
         byte[] expectData = new byte[12];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        expectData[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         expectData[2] = (byte) 0xff;
         expectData[3] = (byte) 0xff;
         expectData[4] = (byte) 0xff;
         expectData[5] = (byte) 0xff;
         expectData[6] = 5;
-        expectData[7] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        expectData[7] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         expectData[8] = (byte) 0xff;
         expectData[9] = (byte) 0xff;
         expectData[10] = (byte) 0xff;
@@ -105,13 +105,13 @@ public class PeripheralConnectionIntervalRangeTest {
     public void test_102() {
         byte[] actualData = new byte[12];
         actualData[0] = 5;
-        actualData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        actualData[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         actualData[2] = (byte) 0xff;
         actualData[3] = (byte) 0xff;
         actualData[4] = (byte) 0xff;
         actualData[5] = (byte) 0xff;
         actualData[6] = 5;
-        actualData[7] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        actualData[7] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         actualData[8] = (byte) 0xff;
         actualData[9] = (byte) 0xff;
         actualData[10] = (byte) 0xff;
@@ -131,13 +131,13 @@ public class PeripheralConnectionIntervalRangeTest {
     public void test_103() {
         byte[] expectData = new byte[12];
         expectData[0] = 5;
-        expectData[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        expectData[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         expectData[2] = (byte) 0xff;
         expectData[3] = (byte) 0xff;
         expectData[4] = (byte) 0xff;
         expectData[5] = (byte) 0xff;
         expectData[6] = 5;
-        expectData[7] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        expectData[7] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         expectData[8] = (byte) 0xff;
         expectData[9] = (byte) 0xff;
         expectData[10] = (byte) 0xff;

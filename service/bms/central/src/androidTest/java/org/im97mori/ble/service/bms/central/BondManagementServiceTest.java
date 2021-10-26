@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2aa4.BondManagementControlPoint;
 import org.im97mori.ble.characteristic.u2aa4.BondManagementControlPointAndroid;
@@ -28,6 +29,7 @@ import static org.junit.Assert.assertTrue;
 public class BondManagementServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -61,6 +63,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -94,6 +97,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -127,6 +131,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -160,6 +165,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -193,6 +199,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -226,6 +233,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBondManagementFeatures_000001() {
         BondManagementService bondManagementService = new BondManagementService(MOCK_BLE_CONNECTION, new MockBondManagementServiceCallback(), null);
 
@@ -234,6 +242,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
 
 
     @Test
+    @RequiresDevice
     public void test_getBondManagementFeatures_000002() {
         BondManagementService bondManagementService = new BondManagementService(MOCK_BLE_CONNECTION, new MockBondManagementServiceCallback(), null) {
 
@@ -248,6 +257,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBondManagementFeatures_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
@@ -266,6 +276,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBondManagementControlPoint_000001() {
         BondManagementService bondManagementService = new BondManagementService(MOCK_BLE_CONNECTION, new MockBondManagementServiceCallback(), null);
 
@@ -273,6 +284,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBondManagementControlPoint_000002() {
         BondManagementService bondManagementService = new BondManagementService(MOCK_BLE_CONNECTION, new MockBondManagementServiceCallback(), null) {
 
@@ -287,6 +299,7 @@ public class BondManagementServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setBondManagementControlPoint_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);

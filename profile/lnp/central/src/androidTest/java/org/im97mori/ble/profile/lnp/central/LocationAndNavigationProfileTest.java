@@ -1,11 +1,14 @@
 package org.im97mori.ble.profile.lnp.central;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -50,13 +53,30 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findLocationAndNavigationProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        assertNull(locationAndNavigationProfile.findLocationAndNavigationProfileDevices(null));
+        assertTrue(locationAndNavigationProfile.createFilteredScanCallback() instanceof LocationAndNavigationProfileScanCallback);
     }
 
     @Test
-    public void test_findLocationAndNavigationProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        assertTrue(locationAndNavigationProfile.createFilteredLeScanCallback() instanceof LocationAndNavigationProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
+        assertNull(locationAndNavigationProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
@@ -69,18 +89,20 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
             }
         };
         locationAndNavigationProfile.start();
-        assertNotNull(locationAndNavigationProfile.findLocationAndNavigationProfileDevices(bundle));
+        assertNotNull(locationAndNavigationProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         locationAndNavigationProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.hasDeviceInformationService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -89,6 +111,7 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00003() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -99,6 +122,7 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
 
@@ -112,12 +136,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBatteryService_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.hasBatteryService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBatteryService_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -126,6 +152,7 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBatteryService_00003() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -136,6 +163,7 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasBatteryService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
 
@@ -149,12 +177,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.hasManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -163,12 +193,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.hasModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasModelNumberString_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -177,12 +209,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -203,12 +237,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getModelNumberString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getModelNumberString_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -229,12 +265,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCount_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getBatteryLevelCount());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCount_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -255,12 +293,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getBatteryLevel());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -281,12 +321,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00101() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getBatteryLevel(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevel_00102() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -307,12 +349,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.isBatteryLevelNotificatable());
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -321,12 +365,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00101() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.isBatteryLevelNotificatable(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_isBatteryLevelNotificatable_00102() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -335,12 +381,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getBatteryLevelCharacteristicPresentationFormat());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -361,12 +409,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00101() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getBatteryLevelCharacteristicPresentationFormat(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelCharacteristicPresentationFormat_00102() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -387,12 +437,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getBatteryLevelClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -413,12 +465,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00101() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getBatteryLevelClientCharacteristicConfiguration(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_getBatteryLevelClientCharacteristicConfiguration_00102() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -439,12 +493,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.startBatteryLevelNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -465,12 +521,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00101() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.startBatteryLevelNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_startBatteryLevelNotification_00102() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -491,12 +549,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.stopBatteryLevelNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -517,12 +577,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00101() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.stopBatteryLevelNotification(0));
     }
 
     @Test
+    @RequiresDevice
     public void test_stopBatteryLevelNotification_00102() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -543,12 +605,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isPositionQualityCharacteristicSupported_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.isPositionQualityCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isPositionQualityCharacteristicSupported_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -557,12 +621,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLNControlPointCharacteristicSupported_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.isLNControlPointCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isLNControlPointCharacteristicSupported_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -571,12 +637,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isNavigationCharacteristicSupported_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.isNavigationCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isNavigationCharacteristicSupported_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -585,12 +653,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNFeature_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getLNFeature());
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNFeature_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -611,12 +681,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocationAndSpeedClientCharacteristicConfiguration_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getLocationAndSpeedClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getLocationAndSpeedClientCharacteristicConfiguration_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -637,12 +709,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLocationAndSpeedNotification_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.startLocationAndSpeedNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startLocationAndSpeedNotification_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -663,12 +737,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLocationAndSpeedNotification_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.stopLocationAndSpeedNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLocationAndSpeedNotification_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -689,12 +765,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getPositionQuality_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getPositionQuality());
     }
 
     @Test
+    @RequiresDevice
     public void test_getPositionQuality_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -715,12 +793,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.setLNControlPoint(new LNControlPoint(new byte[]{0})));
     }
 
     @Test
+    @RequiresDevice
     public void test_setLNControlPoint_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -741,12 +821,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNControlPointClientCharacteristicConfiguration_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.getLNControlPointClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getLNControlPointClientCharacteristicConfiguration_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -767,12 +849,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startLNControlPointIndication_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.startLNControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_startLNControlPointIndication_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -793,12 +877,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLNControlPointIndication_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.stopLNControlPointIndication());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopLNControlPointIndication_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -819,12 +905,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startNavigationNotification_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.startNavigationNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startNavigationNotification_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -845,12 +933,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNavigationNotification_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertNull(locationAndNavigationProfile.stopNavigationNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopNavigationNotification_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
             @Override
@@ -871,12 +961,14 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         assertTrue(locationAndNavigationProfile.getDatabaseHelper() instanceof LocationAndNavigationProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback()) {
@@ -895,6 +987,7 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

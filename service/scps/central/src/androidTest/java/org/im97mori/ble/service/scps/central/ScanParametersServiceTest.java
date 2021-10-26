@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a31.ScanRefreshAndroid;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindow;
@@ -37,6 +38,7 @@ import static org.junit.Assert.assertTrue;
 public class ScanParametersServiceTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onBLEDisconnected_00101() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SCAN_PARAMETERS_SERVICE, 0);
@@ -48,6 +50,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00001() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         scanParametersService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
@@ -56,6 +59,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00002() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -65,6 +69,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00003() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SCAN_PARAMETERS_SERVICE, 0);
@@ -75,6 +80,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00004() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SCAN_PARAMETERS_SERVICE, 0);
@@ -85,6 +91,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDiscoverServiceSuccess_00005() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SCAN_PARAMETERS_SERVICE, 0);
@@ -97,6 +104,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -130,6 +138,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -163,6 +172,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -196,6 +206,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -232,6 +243,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -268,6 +280,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -304,6 +317,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -339,6 +353,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -374,6 +389,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -411,6 +427,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -448,6 +465,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -485,6 +503,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -522,6 +541,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -553,6 +573,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isScanRefreshCharacteristicSupported_00001() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
 
@@ -560,6 +581,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isScanRefreshCharacteristicSupported_00002() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SCAN_PARAMETERS_SERVICE, 0);
@@ -570,6 +592,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isScanRefreshCharacteristicSupported_00003() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SCAN_PARAMETERS_SERVICE, 0);
@@ -582,6 +605,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isScanRefreshCharacteristicSupported_00004() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(SCAN_PARAMETERS_SERVICE, 0);
@@ -593,6 +617,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setScanIntervalWindow_000001() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
         ScanIntervalWindow scanIntervalWindow = new ScanIntervalWindow(0, 1);
@@ -601,6 +626,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setScanIntervalWindow_000002() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null) {
 
@@ -616,6 +642,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setScanIntervalWindow_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteCharacteristicTaskId(originalTaskId);
@@ -635,6 +662,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getScanRefreshClientCharacteristicConfiguration_000001() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
 
@@ -642,6 +670,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getScanRefreshClientCharacteristicConfiguration_000002() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null) {
 
@@ -656,6 +685,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getScanRefreshClientCharacteristicConfiguration_000003() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null) {
 
@@ -675,6 +705,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getScanRefreshClientCharacteristicConfiguration_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateReadDescriptorTaskId(originalTaskId);
@@ -698,6 +729,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startScanRefreshNotification_000001() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
 
@@ -705,6 +737,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startScanRefreshNotification_000002() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null) {
 
@@ -719,6 +752,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startScanRefreshNotification_000003() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null) {
 
@@ -738,6 +772,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startScanRefreshNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
@@ -761,6 +796,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopScanRefreshNotification_000001() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null);
 
@@ -768,6 +804,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopScanRefreshNotification_000002() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null) {
 
@@ -782,6 +819,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopScanRefreshNotification_000003() {
         ScanParametersService scanParametersService = new ScanParametersService(MOCK_BLE_CONNECTION, new MockScanParametersServiceCallback(), null) {
 
@@ -801,6 +839,7 @@ public class ScanParametersServiceTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopScanRefreshNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);

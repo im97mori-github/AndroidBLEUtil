@@ -39,7 +39,7 @@ public class AppearanceFilter implements AdvertisingDataFilter<AdvertisingDataPa
             if (actual != null
                     && mExpect.getLength() == actual.getLength()
                     && mExpect.getDataType() == actual.getDataType()
-                    && mExpect.getAppearanceKey() == actual.getAppearanceKey()) {
+                    && mExpect.getAppearance() == actual.getAppearance()) {
                 result = true;
             }
         }

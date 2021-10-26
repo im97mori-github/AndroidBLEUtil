@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LOCAL_NAME;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LOCAL_NAME_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -17,10 +17,10 @@ public class CompleteLocalNameTest {
     private static final byte[] data_00001;
     static {
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
         data_00001 = data;
     }
@@ -58,7 +58,7 @@ public class CompleteLocalNameTest {
 
         CompleteLocalNameAndroid result1 = new CompleteLocalNameAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_COMPLETE_LOCAL_NAME, result1.getDataType());
+        assertEquals(COMPLETE_LOCAL_NAME_DATA_TYPE, result1.getDataType());
         assertEquals(new String(data, 2, data.length - 2), result1.getCompleteLocalName());
     }
 

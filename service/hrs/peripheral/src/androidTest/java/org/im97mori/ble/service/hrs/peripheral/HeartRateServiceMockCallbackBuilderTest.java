@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurement;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocation;
@@ -26,9 +27,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateMeasurement_00001() {
         Exception exception = null;
         try {
@@ -42,6 +48,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateMeasurement_00101() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(0, 1, 2, 3, new int[0]);
 
@@ -82,6 +90,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateMeasurement_00201() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(0, 1, 2, 3, new int[0]);
 
@@ -122,6 +132,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBloodPressureMeasurement_00001() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(0, 1, 2, 3, new int[0]);
 
@@ -143,6 +155,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodySensorLocation_00001() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(0, 1, 2, 3, new int[0]);
 
@@ -181,6 +195,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodySensorLocation_00101() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(0, 1, 2, 3, new int[0]);
 
@@ -219,6 +235,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBodySensorLocation_00001() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(0, 1, 2, 3, new int[0]);
 
@@ -254,6 +272,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateControlPoint_00001() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_PRESENT, 1, 2, 3, new int[0]);
 
@@ -274,6 +294,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateControlPoint_00101() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_PRESENT, 1, 2, 3, new int[0]);
 
@@ -312,6 +334,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateControlPoint_00201() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_PRESENT, 1, 2, 3, new int[0]);
 
@@ -350,6 +374,8 @@ public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherall
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeHeartRateControlPoint_00001() {
         HeartRateMeasurement heartRateMeasurement = new HeartRateMeasurement(0, 1, 2, 3, new int[0]);
 

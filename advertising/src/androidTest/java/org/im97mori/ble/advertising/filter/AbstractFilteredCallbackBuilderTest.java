@@ -1,8 +1,38 @@
 package org.im97mori.ble.advertising.filter;
 
+import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.APPEARANCE_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.COMPLETE_LOCAL_NAME_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.FLAGS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.INDOOR_POSITIONING_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LE_SUPPORTED_FEATURES_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PUBLIC_TARGET_ADDRESS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.RANDOM_TARGET_ADDRESS_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.SHORTENED_LOCAL_NAME_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.TX_POWER_LEVEL_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.URI_DATA_TYPE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AdvertisingIntervalAndroid;
@@ -22,56 +52,23 @@ import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ManufacturerSpecificDataAndroid;
+import org.im97mori.ble.advertising.PeripheralConnectionIntervalRangeAndroid;
 import org.im97mori.ble.advertising.PublicTargetAddressAndroid;
 import org.im97mori.ble.advertising.RandomTargetAddressAndroid;
 import org.im97mori.ble.advertising.ServiceData128BitUUIDAndroid;
 import org.im97mori.ble.advertising.ServiceData16BitUUIDAndroid;
 import org.im97mori.ble.advertising.ServiceData32BitUUIDAndroid;
 import org.im97mori.ble.advertising.ShortenedLocalNameAndroid;
-import org.im97mori.ble.advertising.PeripheralConnectionIntervalRangeAndroid;
 import org.im97mori.ble.advertising.TransportDiscoveryDataAndroid;
 import org.im97mori.ble.advertising.TxPowerLevelAndroid;
 import org.im97mori.ble.advertising.UniformResourceIdentifierAndroid;
+import org.im97mori.ble.constants.AppearanceValues;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-import static org.im97mori.ble.constants.AppearanceUUID.APPEARANCE_SUB_CATEGORY_MAPPING_128;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_ADVERTISING_INTERVAL;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_APPEARANCE;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_COMPLETE_LOCAL_NAME;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_FLAGS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_INDOOR_POSITIONING;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LE_SUPPORTED_FEATURES;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_PUBLIC_TARGET_ADDRESS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_RANDOM_TARGET_ADDRESS;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_SHORTENED_LOCAL_NAME;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_TX_POWER_LEVEL;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
 public class AbstractFilteredCallbackBuilderTest {
@@ -144,7 +141,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addAdvertisingIntervalFilterTest_001() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x01;
         data[3] = 0x02;
 
@@ -158,7 +155,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addAdvertisingIntervalFilterTest_002() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x01;
         data[3] = 0x02;
 
@@ -172,7 +169,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addAdvertisingIntervalFilterTest_003() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[1] = ADVERTISING_INTERVAL_DATA_TYPE;
         data[2] = 0x01;
         data[3] = 0x02;
 
@@ -184,11 +181,10 @@ public class AbstractFilteredCallbackBuilderTest {
 
     @Test
     public void addAppearanceFilterTest_001() {
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -200,11 +196,10 @@ public class AbstractFilteredCallbackBuilderTest {
 
     @Test
     public void addAppearanceFilterTest_002() {
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -216,11 +211,10 @@ public class AbstractFilteredCallbackBuilderTest {
 
     @Test
     public void addAppearanceFilterTest_003() {
-        Map.Entry<UUID, String> entry = APPEARANCE_SUB_CATEGORY_MAPPING_128.entrySet().iterator().next();
-        int key = BLEUtils.convert128to16(entry.getKey());
+        int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_APPEARANCE;
+        data[1] = APPEARANCE_DATA_TYPE;
         data[2] = (byte) (key & 0x00ff);
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
@@ -234,7 +228,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addChannelMapUpdateIndicationFilterTest_001() {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -253,7 +247,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addChannelMapUpdateIndicationFilterTest_002() {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -272,7 +266,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addChannelMapUpdateIndicationFilterTest_003() {
         byte[] data = new byte[9];
         data[0] = 8;
-        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[1] = CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
         data[2] = (byte) 0b11111110;
         data[3] = (byte) 0b11111111;
         data[4] = (byte) 0b11111111;
@@ -291,7 +285,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf16BitServiceUUIDsFilterTest_001() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -305,7 +299,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf16BitServiceUUIDsFilterTest_002() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -319,7 +313,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf16BitServiceUUIDsFilterTest_003() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -333,7 +327,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf16BitServiceUUIDsFilterTest_004() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -347,7 +341,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf32BitServiceUUIDsFilterTest_001() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -363,7 +357,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf32BitServiceUUIDsFilterTest_002() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -379,7 +373,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf32BitServiceUUIDsFilterTest_003() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -395,7 +389,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf32BitServiceUUIDsFilterTest_004() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -411,7 +405,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf128BitServiceUUIDsFilterTest_001() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -439,7 +433,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf128BitServiceUUIDsFilterTest_002() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -467,7 +461,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf128BitServiceUUIDsFilterTest_003() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -495,7 +489,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addCompleteListOf128BitServiceUUIDsFilterTest_004() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -522,10 +516,10 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addCompleteLocalNameFilterTest_001() {
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -537,10 +531,10 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addCompleteLocalNameFilterTest_002() {
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -552,10 +546,10 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addCompleteLocalNameFilterTest_003() {
         String name = "complete local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[1] = COMPLETE_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -568,7 +562,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addFlagsFilterTest_001() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -581,7 +575,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addFlagsFilterTest_002() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -594,7 +588,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addFlagsFilterTest_003() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
+        data[1] = FLAGS_DATA_TYPE;
         data[2] = 0b00000001;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -607,7 +601,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf16BitServiceUUIDsFilterTest_001() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -621,7 +615,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf16BitServiceUUIDsFilterTest_002() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -635,7 +629,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf16BitServiceUUIDsFilterTest_003() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -649,7 +643,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf16BitServiceUUIDsFilterTest_004() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -663,7 +657,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf32BitServiceUUIDsFilterTest_001() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -679,7 +673,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf32BitServiceUUIDsFilterTest_002() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -695,7 +689,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf32BitServiceUUIDsFilterTest_003() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -711,7 +705,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf32BitServiceUUIDsFilterFilterTest_004() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -727,7 +721,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf128BitServiceUUIDsFilterTest_001() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -755,7 +749,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf128BitServiceUUIDsFilterTest_002() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -783,7 +777,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf128BitServiceUUIDsFilterTest_003() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -811,7 +805,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIncompleteListOf128BitServiceUUIDsFilterTest_004() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[1] = INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -839,7 +833,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIndoorPositioningFilterTest_001() {
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIndoorPositioningFilter(data).build();
@@ -851,7 +845,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIndoorPositioningFilterTest_002() {
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIndoorPositioningFilter(data, 0, 1).build();
@@ -863,7 +857,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addIndoorPositioningFilterTest_003() {
         byte[] data = new byte[2];
         data[0] = 1;
-        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+        data[1] = INDOOR_POSITIONING_DATA_TYPE;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(data)).build();
@@ -875,7 +869,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addLeSupportedFeaturesFilterTest_001() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -888,7 +882,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addLeSupportedFeaturesFilterTest_002() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -901,7 +895,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addLeSupportedFeaturesFilterTest_003() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[1] = LE_SUPPORTED_FEATURES_DATA_TYPE;
         data[2] = 0b00000001;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -914,7 +908,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf16BitServiceSolicitationUUIDsFilterTest_001() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -928,7 +922,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf16BitServiceSolicitationUUIDsFilterTest_002() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -942,7 +936,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf16BitServiceSolicitationUUIDsFilterTest_003() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -956,7 +950,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf16BitServiceSolicitationUUIDsFilterTest_004() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -970,7 +964,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf32BitServiceSolicitationUUIDsFilterTest_001() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -986,7 +980,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf32BitServiceSolicitationUUIDsFilterTest_002() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1002,7 +996,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf32BitServiceSolicitationUUIDsFilterTest_003() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1018,7 +1012,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf32BitServiceSolicitationUUIDsFilterTest_004() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1034,7 +1028,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf128BitServiceSolicitationUUIDsFilterTest_001() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1061,7 +1055,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf128BitServiceSolicitationUUIDsFilterTest_002() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1088,7 +1082,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf128BitServiceSolicitationUUIDsFilterTest_003() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1115,7 +1109,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addListOf128BitServiceSolicitationUUIDsFilterTest_004() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[1] = LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1145,7 +1139,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -1162,7 +1156,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -1179,7 +1173,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -1196,7 +1190,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (companyId & 0x0000ff);
         data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
@@ -1218,7 +1212,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1239,7 +1233,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1260,7 +1254,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[1] = PUBLIC_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1281,7 +1275,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1302,7 +1296,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1323,7 +1317,7 @@ public class AbstractFilteredCallbackBuilderTest {
 
         byte[] data = new byte[8];
         data[0] = 7;
-        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[1] = RANDOM_TARGET_ADDRESS_DATA_TYPE;
         System.arraycopy(address, 0, data, 2, address.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1336,7 +1330,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData16BitUUIDFilterTest_001() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -1350,7 +1344,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData16BitUUIDFilterTest_002() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -1364,7 +1358,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData16BitUUIDFilterTest_003() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -1378,7 +1372,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData16BitUUIDFilterTest_004() {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[1] = SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
         data[2] = 0;
         data[3] = 0;
 
@@ -1392,7 +1386,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData32BitUUIDFilterTest_001() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1408,7 +1402,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData32BitUUIDFilterTest_002() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1424,7 +1418,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData32BitUUIDFilterTest_003() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1440,7 +1434,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData32BitUUIDFilterTest_004() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[1] = SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1456,7 +1450,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData128BitUUIDFilterTest_001() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1484,7 +1478,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData128BitUUIDFilterTest_002() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1512,7 +1506,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData128BitUUIDFilterTest_003() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1540,7 +1534,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addServiceData128BitUUIDFilterTest_004() {
         byte[] data = new byte[18];
         data[0] = 17;
-        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[1] = SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
         data[2] = 0x00;
         data[3] = 0x00;
         data[4] = 0x00;
@@ -1567,10 +1561,10 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addShortenedLocalNameFilterTest_001() {
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1582,10 +1576,10 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addShortenedLocalNameFilterTest_002() {
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1597,10 +1591,10 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addShortenedLocalNameFilterTest_003() {
         String name = "shortened local name";
-        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = name.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[1] = SHORTENED_LOCAL_NAME_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1613,7 +1607,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addPeripheralConnectionIntervalRangeFilterTest_001() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -1629,7 +1623,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addPeripheralConnectionIntervalRangeFilterTest_002() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -1645,7 +1639,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addPeripheralConnectionIntervalRangeFilterTest_003() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -1661,7 +1655,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addPeripheralConnectionIntervalRangeFilterTest_004() {
         byte[] data = new byte[6];
         data[0] = 5;
-        data[1] = DATA_TYPE_PERIPHERAL_CONNECTION_INTERVAL_RANGE;
+        data[1] = PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
         data[2] = (byte) 0xff;
         data[3] = (byte) 0xff;
         data[4] = (byte) 0xff;
@@ -1677,7 +1671,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addTransportDiscoveryDataFilterTest_001() {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -1692,7 +1686,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addTransportDiscoveryDataFilterTest_002() {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -1707,7 +1701,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addTransportDiscoveryDataFilterTest_003() {
         byte[] data = new byte[5];
         data[0] = 4;
-        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[1] = TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
         data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
         data[3] = 0;
         data[4] = 0;
@@ -1722,7 +1716,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addTxPowerLevelFilterTest_001() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1735,7 +1729,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addTxPowerLevelFilterTest_002() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1748,7 +1742,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addTxPowerLevelFilterTest_003() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1761,7 +1755,7 @@ public class AbstractFilteredCallbackBuilderTest {
     public void addTxPowerLevelFilterTest_004() {
         byte[] data = new byte[3];
         data[0] = 2;
-        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[1] = TX_POWER_LEVEL_DATA_TYPE;
         data[2] = -127;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1777,10 +1771,10 @@ public class AbstractFilteredCallbackBuilderTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1796,10 +1790,10 @@ public class AbstractFilteredCallbackBuilderTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1815,10 +1809,10 @@ public class AbstractFilteredCallbackBuilderTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
@@ -1834,10 +1828,10 @@ public class AbstractFilteredCallbackBuilderTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] data = new byte[utf8data.length + 2];
         data[0] = (byte) (utf8data.length + 1);
-        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();

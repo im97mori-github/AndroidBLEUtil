@@ -13,8 +13,11 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+
 public class FilteredLeScanCallbackTest {
 
+    @RequiresDevice
     @Test
     public void test_001() {
         int rssi = 1;
@@ -41,6 +44,7 @@ public class FilteredLeScanCallbackTest {
         assertArrayEquals(scanRecord, list3.get(0));
     }
 
+    @RequiresDevice
     @Test
     public void test_002() {
         int rssi = 1;
@@ -64,6 +68,7 @@ public class FilteredLeScanCallbackTest {
         assertTrue(list3.isEmpty());
     }
 
+    @RequiresDevice
     @Test
     public void test_101() {
         int rssi = 1;
@@ -92,6 +97,7 @@ public class FilteredLeScanCallbackTest {
         assertArrayEquals(scanRecord, list3.get(0));
     }
 
+    @RequiresDevice
     @Test
     public void test_102() {
         int rssi = 1;

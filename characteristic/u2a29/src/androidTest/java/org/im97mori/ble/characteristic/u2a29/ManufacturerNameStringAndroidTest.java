@@ -18,7 +18,7 @@ public class ManufacturerNameStringAndroidTest {
         String manufactureName = "OMRON";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(manufactureName.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(manufactureName.getBytes());
 
         ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
         assertEquals(manufactureName, result1.getManufacturerName());
@@ -37,7 +37,7 @@ public class ManufacturerNameStringAndroidTest {
         String manufactureName = "OMRON";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(manufactureName.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(manufactureName.getBytes());
 
         ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -53,7 +53,7 @@ public class ManufacturerNameStringAndroidTest {
         String manufactureName = "OMRON";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(manufactureName.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(manufactureName.getBytes());
 
         ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
         byte[] resultData = result1.getBytes();
@@ -65,10 +65,10 @@ public class ManufacturerNameStringAndroidTest {
         String manufactureName = "OMRON";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(manufactureName.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(manufactureName.getBytes());
 
         ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
-        ManufacturerNameStringAndroid result2 = ManufacturerNameStringAndroid.CREATOR.createFromByteArray(manufactureName.getBytes(StandardCharsets.UTF_8));
+        ManufacturerNameStringAndroid result2 = ManufacturerNameStringAndroid.CREATOR.createFromByteArray(manufactureName.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 

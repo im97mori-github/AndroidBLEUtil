@@ -34,7 +34,6 @@ import java.util.Set;
 
 import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class RscpCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
@@ -198,8 +197,8 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else {
             mConnectDisconnectButton.setVisibility(View.VISIBLE);
             if (mRunningSpeedAndCadenceProfile.isConnected()) {
@@ -230,7 +229,7 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {
-                    mRunningSpeedAndCadenceProfile.findRunningSpeedAndCadenceProfileDevices(null);
+                    mRunningSpeedAndCadenceProfile.findDevices(null);
                 } else {
                     if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
                         mRunningSpeedAndCadenceProfile.connect(mBluetoothDevice);

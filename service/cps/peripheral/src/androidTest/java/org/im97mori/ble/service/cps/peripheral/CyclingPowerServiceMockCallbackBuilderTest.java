@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.core.SensorLocationUtils;
 import org.im97mori.ble.characteristic.u2a5d.SensorLocation;
@@ -31,9 +32,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -48,6 +54,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -63,6 +71,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -97,6 +107,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00004() {
         Exception exception = null;
         try {
@@ -131,6 +143,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00005() {
         Exception exception = null;
         try {
@@ -165,6 +179,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00006() {
         Exception exception = null;
         try {
@@ -199,6 +215,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00007() {
         Exception exception = null;
         try {
@@ -233,6 +251,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00008() {
         Exception exception = null;
         try {
@@ -267,6 +287,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00009() {
         Exception exception = null;
         try {
@@ -301,6 +323,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00010() {
         Exception exception = null;
         try {
@@ -335,6 +359,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00011() {
         Exception exception = null;
         try {
@@ -369,6 +395,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00012() {
         Exception exception = null;
         try {
@@ -403,6 +431,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00013() {
         Exception exception = null;
         try {
@@ -437,6 +467,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00014() {
         Exception exception = null;
         try {
@@ -471,6 +503,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00015() {
         Exception exception = null;
         try {
@@ -511,6 +545,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00016() {
         Exception exception = null;
         try {
@@ -551,6 +587,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00017() {
         Exception exception = null;
         try {
@@ -591,6 +629,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00018() {
         Exception exception = null;
         try {
@@ -631,6 +671,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00019() {
         Exception exception = null;
         try {
@@ -667,6 +709,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00020() {
         Exception exception = null;
         try {
@@ -707,6 +751,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00021() {
         Exception exception = null;
         try {
@@ -747,6 +793,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00022() {
         Exception exception = null;
         try {
@@ -821,6 +869,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00023() {
         Exception exception = null;
         try {
@@ -895,6 +945,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00024() {
         Exception exception = null;
         try {
@@ -974,6 +1026,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00025() {
         Exception exception = null;
         try {
@@ -1048,6 +1102,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00026() {
         Exception exception = null;
         try {
@@ -1122,6 +1178,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00027() {
         Exception exception = null;
         try {
@@ -1196,6 +1254,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00028() {
         Exception exception = null;
         try {
@@ -1270,6 +1330,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00029() {
         Exception exception = null;
         try {
@@ -1343,6 +1405,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCyclingPowerFeature_00001() {
         CyclingPowerFeature cyclingPowerFeature = new CyclingPowerFeature(new byte[4]);
 
@@ -1434,6 +1498,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCyclingPowerFeature_00002() {
         CyclingPowerFeature cyclingPowerFeature = new CyclingPowerFeature(new byte[4]);
 
@@ -1525,6 +1591,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCyclingPowerFeature_00003() {
         CyclingPowerFeature cyclingPowerFeature = new CyclingPowerFeature(new byte[4]);
 
@@ -1616,6 +1684,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCyclingPowerFeature_00001() {
         Exception exception = null;
         try {
@@ -1691,6 +1761,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCyclingPowerMeasurement_00001() {
         CyclingPowerMeasurement cyclingPowerMeasurement = new CyclingPowerMeasurement(
                 new byte[2]
@@ -1790,6 +1862,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCyclingPowerMeasurement_00002() {
         CyclingPowerMeasurement cyclingPowerMeasurement = new CyclingPowerMeasurement(
                 new byte[2]
@@ -1894,6 +1968,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCyclingPowerMeasurement_00001() {
         Exception exception = null;
         try {
@@ -1969,6 +2045,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSensorLocation_00001() {
         SensorLocation sensorLocation = new SensorLocation(SensorLocationUtils.SENSOR_LOCATION_OTHER);
 
@@ -2060,6 +2138,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSensorLocation_00002() {
         SensorLocation sensorLocation = new SensorLocation(SensorLocationUtils.SENSOR_LOCATION_OTHER);
 
@@ -2151,6 +2231,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSensorLocation_00003() {
         SensorLocation sensorLocation = new SensorLocation(SensorLocationUtils.SENSOR_LOCATION_OTHER);
 
@@ -2242,6 +2324,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSensorLocation_00001() {
         Exception exception = null;
         try {
@@ -2317,6 +2401,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCyclingPowerControlPoint_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
 
@@ -2413,6 +2499,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCyclingPowerControlPoint_00001() {
         Exception exception = null;
         try {
@@ -2488,6 +2576,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCyclingPowerVector_00001() {
         CyclingPowerVector cyclingPowerVector = new CyclingPowerVector(0
                 , 0
@@ -2587,6 +2677,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addCyclingPowerVector_00002() {
         CyclingPowerVector cyclingPowerVector = new CyclingPowerVector(0
                 , 0
@@ -2690,6 +2782,8 @@ public class CyclingPowerServiceMockCallbackBuilderTest extends AbstractPeripher
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeCyclingPowerVector_00001() {
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();

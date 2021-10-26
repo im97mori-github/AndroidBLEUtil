@@ -1,11 +1,14 @@
 package org.im97mori.ble.profile.hrp.central;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -48,13 +51,30 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
-    public void test_findHeartRateProfileDevices_00001() {
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_createFilteredScanCallback_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        assertNull(heartRateProfile.findHeartRateProfileDevices(null));
+        assertTrue(heartRateProfile.createFilteredScanCallback() instanceof HeartRateProfileScanCallback);
     }
 
     @Test
-    public void test_findHeartRateProfileDevices_00002() {
+    @RequiresDevice
+    public void test_createFilteredLeScanCallback_00001() {
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        assertTrue(heartRateProfile.createFilteredLeScanCallback() instanceof HeartRateProfileLeScanCallback);
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00001() {
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        assertNull(heartRateProfile.findDevices(null));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_findDevices_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final Bundle bundle = new Bundle();
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
@@ -67,18 +87,20 @@ public class HeartRateProfileTest extends AbstractCentralTest {
             }
         };
         heartRateProfile.start();
-        assertNotNull(heartRateProfile.findHeartRateProfileDevices(bundle));
+        assertNotNull(heartRateProfile.findDevices(bundle));
         assertTrue(atomicBoolean.get());
         heartRateProfile.quit();
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.hasDeviceInformationService());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -87,6 +109,7 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00003() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -97,6 +120,7 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasDeviceInformationService_00004() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
 
@@ -110,12 +134,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.hasManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_hasManufacturerNameString_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -125,12 +151,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.getManufacturerNameString());
     }
 
     @Test
+    @RequiresDevice
     public void test_getManufacturerNameString_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
@@ -151,12 +179,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isBodySensorLocationCharacteristicSupported_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isBodySensorLocationCharacteristicSupported_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -165,12 +195,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeartRateControlPointCharacteristicSupported_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeartRateControlPointCharacteristicSupported_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
@@ -179,12 +211,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.getHeartRateMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
+    @RequiresDevice
     public void test_getHeartRateMeasurementClientCharacteristicConfiguration_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
@@ -205,12 +239,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_startHeartRateMeasurementNotification_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.startHeartRateMeasurementNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_startHeartRateMeasurementNotification_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
@@ -231,12 +267,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementNotification_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.stopHeartRateMeasurementNotification());
     }
 
     @Test
+    @RequiresDevice
     public void test_stopHeartRateMeasurementNotification_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
@@ -257,12 +295,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getBodySensorLocation_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.getBodySensorLocation());
     }
 
     @Test
+    @RequiresDevice
     public void test_getBodySensorLocation_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
@@ -283,12 +323,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeartRateControlPoint_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertNull(heartRateProfile.setHeartRateControlPoint(new HeartRateControlPoint(HeartRateControlPoint.HEART_RATE_CONTROL_POINT_RESET_ENERGY_EXPENDED)));
     }
 
     @Test
+    @RequiresDevice
     public void test_setHeartRateControlPoint_00002() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
             @Override
@@ -309,12 +351,14 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_getDatabaseHelper_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         assertTrue(heartRateProfile.getDatabaseHelper() instanceof HeartRateProfileBondedDatabaseHelper);
     }
 
     @Test
+    @RequiresDevice
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback()) {
@@ -332,6 +376,7 @@ public class HeartRateProfileTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_quit_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         heartRateProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);

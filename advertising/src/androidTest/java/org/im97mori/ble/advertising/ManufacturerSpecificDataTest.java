@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 import static org.im97mori.ble.constants.CompanyUUID.COMPANY_MAPPING_128;
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+import static org.im97mori.ble.constants.DataType.MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +23,7 @@ public class ManufacturerSpecificDataTest {
     static {
         byte[] data = new byte[4];
         data[0] = 3;
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
         data_00001 = data;
@@ -36,7 +36,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -51,7 +51,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -66,7 +66,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -82,7 +82,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -98,7 +98,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -114,7 +114,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -130,7 +130,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -146,7 +146,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -162,7 +162,7 @@ public class ManufacturerSpecificDataTest {
 
         byte[] data = new byte[4 + additionalData.length];
         data[0] = (byte) (3 + additionalData.length);
-        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[1] = (byte) MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
         data[2] = (byte) (COMPANY_ID & 0x0000ff);
         data[3] = (byte) ((COMPANY_ID >> 8) & 0x0000ff);
 
@@ -203,7 +203,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(3, result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -216,7 +216,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -229,7 +229,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -242,7 +242,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -255,7 +255,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -268,7 +268,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -281,7 +281,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -294,7 +294,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -307,7 +307,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);
@@ -320,7 +320,7 @@ public class ManufacturerSpecificDataTest {
 
         ManufacturerSpecificDataAndroid result1 = new ManufacturerSpecificDataAndroid(data, 0, data[0]);
         assertEquals(data[0], result1.getLength());
-        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result1.getDataType());
+        assertEquals(MANUFACTURER_SPECIFIC_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(COMPANY_ID, result1.getCompanyIdentifier());
         assertEquals(COMPANY_MAPPING_128.get(BLEUtils.convert16to128(COMPANY_ID)), result1.getCompanyName());
         assertEquals(data[0] - 3, result1.getManufacturerSpecificData().length);

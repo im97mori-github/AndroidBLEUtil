@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a3f.AlertStatus;
 import org.im97mori.ble.characteristic.u2a40.RingerControlPoint;
@@ -26,9 +27,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -43,6 +49,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -58,6 +66,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -74,6 +84,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00004() {
         Exception exception = null;
         try {
@@ -90,6 +102,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAlertStatus_00001() {
         AlertStatus alertStatus = new AlertStatus(0);
 
@@ -132,6 +146,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAlertStatus_00002() {
         AlertStatus alertStatus = new AlertStatus(0);
 
@@ -180,6 +196,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeAlertStatus_00001() {
         Exception exception = null;
         try {
@@ -198,6 +216,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRingerSetting_00001() {
         RingerSetting ringerSetting = new RingerSetting(0);
 
@@ -240,6 +260,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRingerSetting_00002() {
         RingerSetting ringerSetting = new RingerSetting(0);
 
@@ -288,6 +310,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRingerSetting_00001() {
         Exception exception = null;
         try {
@@ -306,6 +330,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRingerControlPoint_00001() {
         RingerControlPoint ringerControlPoint = new RingerControlPoint(0);
 
@@ -340,6 +366,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRingerControlPoint_00002() {
         RingerControlPoint ringerControlPoint = new RingerControlPoint(0);
 
@@ -374,6 +402,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRingerControlPoint_00003() {
         RingerControlPoint ringerControlPoint = new RingerControlPoint(0);
 
@@ -410,6 +440,8 @@ public class PhoneAlertStatusServiceMockCallbackBuilderTest extends AbstractPeri
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRingerControlPoint_00001() {
         Exception exception = null;
         try {

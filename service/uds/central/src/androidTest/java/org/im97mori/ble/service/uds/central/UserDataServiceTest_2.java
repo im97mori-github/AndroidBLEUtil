@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimitAndroid;
 import org.im97mori.ble.characteristic.u2a7f.AerobicThresholdAndroid;
@@ -92,6 +93,7 @@ import static org.junit.Assert.assertTrue;
 public class UserDataServiceTest_2 extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -128,6 +130,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -164,6 +167,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -200,6 +204,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -233,6 +238,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -266,6 +272,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -299,6 +306,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -332,6 +340,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -365,6 +374,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -398,6 +408,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -431,6 +442,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -464,6 +476,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -497,6 +510,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -530,6 +544,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -563,6 +578,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -596,6 +612,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -629,6 +646,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -662,6 +680,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -695,6 +714,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -728,6 +748,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_01901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -761,6 +782,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -794,6 +816,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -827,6 +850,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -860,6 +884,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -893,6 +918,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -926,6 +952,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -959,6 +986,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -992,6 +1020,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1025,6 +1054,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1058,6 +1088,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteSuccess_02901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1093,6 +1124,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1126,6 +1158,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1159,6 +1192,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1192,6 +1226,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1225,6 +1260,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1258,6 +1294,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1291,6 +1328,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1324,6 +1362,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1357,6 +1396,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1390,6 +1430,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1423,6 +1464,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1456,6 +1498,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1489,6 +1532,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1522,6 +1566,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1555,6 +1600,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1588,6 +1634,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1621,6 +1668,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1654,6 +1702,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1687,6 +1736,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1720,6 +1770,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_01901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1753,6 +1804,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1786,6 +1838,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1819,6 +1872,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1852,6 +1906,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1885,6 +1940,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1918,6 +1974,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1951,6 +2008,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1984,6 +2042,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2017,6 +2076,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2050,6 +2110,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteFailed_02901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2083,6 +2144,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2116,6 +2178,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2149,6 +2212,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2182,6 +2246,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2215,6 +2280,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2248,6 +2314,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2281,6 +2348,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2314,6 +2382,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2347,6 +2416,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2380,6 +2450,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_00901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2413,6 +2484,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2446,6 +2518,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2479,6 +2552,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2512,6 +2586,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2545,6 +2620,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2578,6 +2654,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2611,6 +2688,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2644,6 +2722,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2677,6 +2756,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2710,6 +2790,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_01901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2743,6 +2824,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2776,6 +2858,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2809,6 +2892,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2842,6 +2926,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02301() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2875,6 +2960,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02401() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2908,6 +2994,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02501() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2941,6 +3028,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02601() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2974,6 +3062,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02701() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3007,6 +3096,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02801() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3040,6 +3130,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicWriteTimeout_02901() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3073,6 +3164,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3109,6 +3201,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3145,6 +3238,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3181,6 +3275,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3217,6 +3312,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3253,6 +3349,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3289,6 +3386,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3325,6 +3423,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3361,6 +3460,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorReadTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3397,6 +3497,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3433,6 +3534,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3469,6 +3571,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3505,6 +3608,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3541,6 +3645,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3577,6 +3682,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteSuccess_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3613,6 +3719,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3650,6 +3757,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3687,6 +3795,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3724,6 +3833,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3761,6 +3871,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3798,6 +3909,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteFailed_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3835,6 +3947,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3872,6 +3985,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3909,6 +4023,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3946,6 +4061,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00102() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -3983,6 +4099,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4020,6 +4137,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onDescriptorWriteTimeout_00202() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -4057,6 +4175,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4087,6 +4206,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00101() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4117,6 +4237,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_onCharacteristicNotified_00201() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
@@ -4150,6 +4271,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFirstNameCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4157,6 +4279,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFirstNameCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4167,6 +4290,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFirstNameCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4178,6 +4302,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLastNameCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4185,6 +4310,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLastNameCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4195,6 +4321,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLastNameCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4206,6 +4333,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isEmailAddressCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4213,6 +4341,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isEmailAddressCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4223,6 +4352,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isEmailAddressCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4234,6 +4364,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAgeCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4241,6 +4372,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAgeCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4251,6 +4383,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAgeCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4262,6 +4395,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDateOfBirthCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4269,6 +4403,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDateOfBirthCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4279,6 +4414,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDateOfBirthCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4290,6 +4426,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isGenderCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4297,6 +4434,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isGenderCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4307,6 +4445,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isGenderCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4318,6 +4457,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isWeightCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4325,6 +4465,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isWeightCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4335,6 +4476,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isWeightCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4346,6 +4488,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeightCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4353,6 +4496,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeightCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4363,6 +4507,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeightCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4374,6 +4519,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isVO2MaxCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4381,6 +4527,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isVO2MaxCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4391,6 +4538,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isVO2MaxCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4402,6 +4550,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeartRateMaxCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4409,6 +4558,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeartRateMaxCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4419,6 +4569,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHeartRateMaxCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4430,6 +4581,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRestingHeartRateCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4437,6 +4589,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRestingHeartRateCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4447,6 +4600,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isRestingHeartRateCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4458,6 +4612,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4465,6 +4620,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4475,6 +4631,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4486,6 +4643,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicThresholdCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4493,6 +4651,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicThresholdCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4503,6 +4662,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicThresholdCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4514,6 +4674,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicThresholdCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4521,6 +4682,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicThresholdCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4531,6 +4693,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicThresholdCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4542,6 +4705,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4549,6 +4713,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4559,6 +4724,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4570,6 +4736,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDateOfThresholdAssessmentCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4577,6 +4744,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDateOfThresholdAssessmentCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4587,6 +4755,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDateOfThresholdAssessmentCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4598,6 +4767,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isWaistCircumferenceCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4605,6 +4775,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isWaistCircumferenceCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4615,6 +4786,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isWaistCircumferenceCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4626,6 +4798,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHipCircumferenceCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4633,6 +4806,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHipCircumferenceCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4643,6 +4817,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isHipCircumferenceCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4654,6 +4829,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFatBurnHeartRateLowerLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4661,6 +4837,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFatBurnHeartRateLowerLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4671,6 +4848,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFatBurnHeartRateLowerLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4682,6 +4860,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFatBurnHeartRateUpperLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4689,6 +4868,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFatBurnHeartRateUpperLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4699,6 +4879,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFatBurnHeartRateUpperLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4710,6 +4891,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicHeartRateLowerLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4717,6 +4899,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicHeartRateLowerLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4727,6 +4910,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicHeartRateLowerLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4738,6 +4922,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicHeartRateUpperLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4745,6 +4930,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicHeartRateUpperLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4755,6 +4941,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAerobicHeartRateUpperLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4766,6 +4953,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4773,6 +4961,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4783,6 +4972,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4794,6 +4984,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4801,6 +4992,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4811,6 +5003,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4822,6 +5015,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4829,6 +5023,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4839,6 +5034,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4850,6 +5046,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4857,6 +5054,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4867,6 +5065,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4878,6 +5077,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4885,6 +5085,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4895,6 +5096,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4906,6 +5108,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLanguageCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4913,6 +5116,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLanguageCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4923,6 +5127,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isLanguageCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4934,6 +5139,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00001() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
 
@@ -4941,6 +5147,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00002() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
@@ -4953,6 +5160,7 @@ public class UserDataServiceTest_2 extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00003() {
         UserDataService userDataService = new UserDataService(MOCK_BLE_CONNECTION, new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);

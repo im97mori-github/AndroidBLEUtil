@@ -19,6 +19,8 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallbackInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.advertising.filter.FilteredScanCallbackInterface;
 import org.im97mori.ble.characteristic.u2a00.DeviceName;
@@ -41,7 +43,7 @@ import java.util.UUID;
  * Core Central Profile
  */
 @SuppressLint("MissingPermission")
-public abstract class AbstractCentralProfile implements FilteredScanCallbackInterface, BLECallback {
+public abstract class AbstractCentralProfile implements FilteredScanCallbackInterface, FilteredLeScanCallbackInterface, BLECallback {
 
     /**
      * {@link Context} instance
@@ -100,7 +102,6 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     /**
      * @see BondedDeviceDatabaseHelper#addHistory(BluetoothDevice)
      */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public Long addHistory(@NonNull BluetoothDevice bluetoothDevice) {
         Long result = null;
         BondedDeviceDatabaseHelper bondedDeviceDatabaseHelper = getDatabaseHelper();
@@ -113,7 +114,6 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     /**
      * @see BondedDeviceDatabaseHelper#removeHistory(BluetoothDevice)
      */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public Boolean removeHistory(@NonNull BluetoothDevice bluetoothDevice) {
         Boolean result = null;
         BondedDeviceDatabaseHelper bondedDeviceDatabaseHelper = getDatabaseHelper();
@@ -126,7 +126,6 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     /**
      * @see BondedDeviceDatabaseHelper#clearHistory()
      */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void clearHistory() {
         BondedDeviceDatabaseHelper bondedDeviceDatabaseHelper = getDatabaseHelper();
         if (bondedDeviceDatabaseHelper != null) {
@@ -137,7 +136,6 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     /**
      * @see BondedDeviceDatabaseHelper#syncBondedDevice()
      */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void syncBondedDevice() {
         BondedDeviceDatabaseHelper bondedDeviceDatabaseHelper = getDatabaseHelper();
         if (bondedDeviceDatabaseHelper != null) {
@@ -148,7 +146,6 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     /**
      * @see BondedDeviceDatabaseHelper#getBondedDevices()
      */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Nullable
     public synchronized Set<BluetoothDevice> getBondedDevices() {
         Set<BluetoothDevice> bondedDeviesSet = null;
@@ -266,6 +263,36 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     }
 
     /**
+     * find Profile device
+     *
+     * @param argument callback argument
+     * @return task id. if {@code null} returned, task was not registed
+     */
+    @Nullable
+    public synchronized Integer findDevices(@Nullable Bundle argument) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return scanDevice(createFilteredScanCallback(), ScanTask.TIMEOUT_MILLIS, argument);
+        } else {
+            return scanDevice(createFilteredLeScanCallback(), ScanTask.TIMEOUT_MILLIS, argument);
+        }
+    }
+
+    /**
+     * create Profile specific {@link FilteredScanCallback} instance
+     * @return Profile specific {@link FilteredScanCallback} instance
+     */
+    @NonNull
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    abstract protected FilteredScanCallback createFilteredScanCallback();
+
+    /**
+     * create Profile specific {@link FilteredLeScanCallback} instance
+     * @return Profile specific {@link FilteredLeScanCallback} instance
+     */
+    @NonNull
+    abstract protected FilteredLeScanCallback createFilteredLeScanCallback();
+
+    /**
      * Create scan task
      *
      * @param filteredScanCallback profile specific filter {@link FilteredScanCallback} instance
@@ -280,7 +307,28 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
             , @Nullable Bundle argument) {
         Integer taskId = null;
         if (mTaskHandler != null) {
-            ScanTask scanTask = new ScanTask(mTaskHandler, filteredScanCallback, mProfileCallback, timeout, argument);
+            ScanTask scanTask = new ScanTask(mContext, mTaskHandler, filteredScanCallback, mProfileCallback, timeout, argument);
+            taskId = scanTask.getTaskId();
+            mTaskHandler.addTask(scanTask);
+        }
+        return taskId;
+    }
+
+    /**
+     * Create scan task
+     *
+     * @param filteredLeScanCallback profile specific filter {@link FilteredLeScanCallback} instance
+     * @param timeout                timeout(millis)
+     * @param argument               callback argument
+     * @return task id. if {@code null} returned, task was not registed
+     */
+    @Nullable
+    public synchronized Integer scanDevice(@NonNull FilteredLeScanCallback filteredLeScanCallback
+            , long timeout
+            , @Nullable Bundle argument) {
+        Integer taskId = null;
+        if (mTaskHandler != null) {
+            ScanTask scanTask = new ScanTask(mContext, mTaskHandler, filteredLeScanCallback, mProfileCallback, timeout, argument);
             taskId = scanTask.getTaskId();
             mTaskHandler.addTask(scanTask);
         }
@@ -321,11 +369,21 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     /**
      * {@inheritDoc}
      */
+    @Override
+    public void onFilteredLeScan(@NonNull BluetoothDevice device, int rssi, @NonNull byte[] scanRecord, @NonNull AdvertisingDataParser.AdvertisingDataParseResult result) {
+        if (mTaskHandler != null) {
+            mTaskHandler.sendProcessingMessage(ScanTask.createDeviceFoundMessage(device));
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public synchronized void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
         if (mTaskHandler != null) {
-            mTaskHandler.sendProcessingMessage(ScanTask.createDeviceFoundMessage(results));
+            mTaskHandler.sendProcessingMessage(ScanTask.createDeviceFoundMessage(results.toArray(new ScanResult[0])));
         }
     }
 

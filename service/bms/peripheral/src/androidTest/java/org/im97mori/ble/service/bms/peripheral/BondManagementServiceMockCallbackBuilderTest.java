@@ -3,6 +3,7 @@ package org.im97mori.ble.service.bms.peripheral;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2aa5.BondManagementFeatures;
 import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
@@ -20,9 +21,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -37,6 +43,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00101() {
         Exception exception = null;
         try {
@@ -70,6 +78,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00201() {
         Exception exception = null;
         try {
@@ -85,6 +95,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00301() {
         Exception exception = null;
         try {
@@ -119,6 +131,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00302() {
         Exception exception = null;
         try {
@@ -153,6 +167,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00303() {
         Exception exception = null;
         try {
@@ -187,6 +203,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00304() {
         Exception exception = null;
         try {
@@ -221,6 +239,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00305() {
         Exception exception = null;
         try {
@@ -255,6 +275,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00306() {
         Exception exception = null;
         try {
@@ -289,6 +311,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00307() {
         Exception exception = null;
         try {
@@ -323,6 +347,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00308() {
         Exception exception = null;
         try {
@@ -357,6 +383,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00309() {
         Exception exception = null;
         try {
@@ -391,6 +419,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBondManagementControlPoint_00001() {
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -440,6 +470,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBondManagementControlPoint_00001() {
         Exception exception = null;
         try {
@@ -475,6 +507,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBondManagementFeatures_00001() {
         BondManagementFeatures bondManagementFeatures = new BondManagementFeatures(new byte[3]);
 
@@ -526,6 +560,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBondManagementFeatures_00002() {
         BondManagementFeatures bondManagementFeatures = new BondManagementFeatures(new byte[3]);
 
@@ -577,6 +613,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBondManagementFeatures_00003() {
         BondManagementFeatures bondManagementFeatures = new BondManagementFeatures(new byte[3]);
 
@@ -628,6 +666,8 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBondManagementFeatures_00001() {
         Exception exception = null;
         try {

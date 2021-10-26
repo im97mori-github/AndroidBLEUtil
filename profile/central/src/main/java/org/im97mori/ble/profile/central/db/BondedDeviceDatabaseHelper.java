@@ -3,15 +3,14 @@ package org.im97mori.ble.profile.central.db;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-import android.os.Build;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +20,6 @@ import java.util.Set;
  */
 @SuppressWarnings("SameReturnValue")
 @SuppressLint("MissingPermission")
-@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public abstract class BondedDeviceDatabaseHelper extends SQLiteOpenHelper {
 
     /**
@@ -35,10 +33,21 @@ public abstract class BondedDeviceDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     /**
+     * {@link BluetoothAdapter} instance
+     */
+    private final BluetoothAdapter mBluetoothAdapter;
+
+    /**
      * @param context {@link Context} instance for {@link SQLiteOpenHelper#SQLiteOpenHelper(Context, String, SQLiteDatabase.CursorFactory, int)} 1st parameter
      */
     public BondedDeviceDatabaseHelper(@NonNull Context context) {
         super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
+        BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
+        if (bluetoothManager == null) {
+            mBluetoothAdapter = null;
+        } else {
+            mBluetoothAdapter = bluetoothManager.getAdapter();
+        }
     }
 
     /**
@@ -129,9 +138,8 @@ public abstract class BondedDeviceDatabaseHelper extends SQLiteOpenHelper {
      * sync bonded devices with {@link BluetoothAdapter#getBondedDevices()}
      */
     public synchronized void syncBondedDevice() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter != null) {
-            Set<BluetoothDevice> bondedDeviceSet = bluetoothAdapter.getBondedDevices();
+        if (mBluetoothAdapter != null) {
+            Set<BluetoothDevice> bondedDeviceSet = mBluetoothAdapter.getBondedDevices();
             if (bondedDeviceSet != null) {
                 SQLiteDatabase sqLiteDatabase = getWritableDatabase();
                 sqLiteDatabase.beginTransaction();
@@ -141,7 +149,7 @@ public abstract class BondedDeviceDatabaseHelper extends SQLiteOpenHelper {
                         BluetoothDevice currentBluetoothDevice;
                         Set<BluetoothDevice> removedBluetoothDeviceSet = new HashSet<>();
                         do {
-                            currentBluetoothDevice = bluetoothAdapter.getRemoteDevice(cursor.getString(cursor.getColumnIndexOrThrow("ADDRESS")));
+                            currentBluetoothDevice = mBluetoothAdapter.getRemoteDevice(cursor.getString(cursor.getColumnIndexOrThrow("ADDRESS")));
                             if (!bondedDeviceSet.contains(currentBluetoothDevice)) {
                                 removedBluetoothDeviceSet.add(currentBluetoothDevice);
                             }
@@ -173,14 +181,13 @@ public abstract class BondedDeviceDatabaseHelper extends SQLiteOpenHelper {
     @NonNull
     public synchronized Set<BluetoothDevice> getBondedDevices() {
         Set<BluetoothDevice> bondedDeviceSet = new HashSet<>();
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter != null) {
+        if (mBluetoothAdapter != null) {
             SQLiteDatabase sqLiteDatabase = getReadableDatabase();
             sqLiteDatabase.beginTransaction();
             try (Cursor cursor = sqLiteDatabase.rawQuery("SELECT ADDRESS FROM BONDED_DEVICE_TABLE WHERE PROFILE_NAME = ?", new String[]{getProfileName()})) {
                 if (cursor.moveToFirst()) {
                     do {
-                        bondedDeviceSet.add(bluetoothAdapter.getRemoteDevice(cursor.getString(cursor.getColumnIndexOrThrow("ADDRESS"))));
+                        bondedDeviceSet.add(mBluetoothAdapter.getRemoteDevice(cursor.getString(cursor.getColumnIndexOrThrow("ADDRESS"))));
                     } while (cursor.moveToNext());
                 }
             } finally {

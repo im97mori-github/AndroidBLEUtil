@@ -1,15 +1,14 @@
 package org.im97mori.ble.advertising.filter;
 
+import static org.im97mori.ble.constants.DataType.URI_DATA_TYPE;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.UniformResourceIdentifierAndroid;
 import org.junit.Test;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-
-import static org.im97mori.ble.constants.DataType.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class UniformResourceIdentifierFilterTest {
 
@@ -29,10 +28,10 @@ public class UniformResourceIdentifierFilterTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] expectData = new byte[utf8data.length + 2];
         expectData[0] = (byte) (utf8data.length + 1);
-        expectData[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        expectData[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, expectData, 2, utf8data.length);
 
         byte[] actualData = new byte[0];
@@ -49,10 +48,10 @@ public class UniformResourceIdentifierFilterTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] actualData = new byte[utf8data.length + 2];
         actualData[0] = (byte) (utf8data.length + 1);
-        actualData[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        actualData[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, actualData, 2, utf8data.length);
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
@@ -67,10 +66,10 @@ public class UniformResourceIdentifierFilterTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] expectData = new byte[utf8data.length + 2];
         expectData[0] = (byte) (utf8data.length + 1);
-        expectData[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        expectData[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, expectData, 2, utf8data.length);
 
         byte[] actualData = Arrays.copyOf(expectData, expectData.length);
@@ -87,10 +86,10 @@ public class UniformResourceIdentifierFilterTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] expectData = new byte[(utf8data.length + 2) * 2];
         expectData[0] = (byte) (utf8data.length + 1);
-        expectData[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        expectData[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, expectData, 2, utf8data.length);
         System.arraycopy(expectData, 0, expectData, utf8data.length + 2, expectData.length / 2);
 
@@ -111,10 +110,10 @@ public class UniformResourceIdentifierFilterTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] actualData = new byte[(utf8data.length + 2) * 2];
         actualData[0] = (byte) (utf8data.length + 1);
-        actualData[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        actualData[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, actualData, 2, utf8data.length);
         System.arraycopy(actualData, 0, actualData, utf8data.length + 2, actualData.length / 2);
 
@@ -134,10 +133,10 @@ public class UniformResourceIdentifierFilterTest {
         String body = "//im97mori.org/";
 
         String uriString = String.valueOf(Character.toChars(schemeKey)) + body;
-        byte[] utf8data = uriString.getBytes(StandardCharsets.UTF_8);
+        byte[] utf8data = uriString.getBytes();
         byte[] expectData = new byte[(utf8data.length + 2) * 2];
         expectData[0] = (byte) (utf8data.length + 1);
-        expectData[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        expectData[1] = URI_DATA_TYPE;
         System.arraycopy(utf8data, 0, expectData, 2, utf8data.length);
         System.arraycopy(expectData, 0, expectData, utf8data.length + 2, expectData.length / 2);
 

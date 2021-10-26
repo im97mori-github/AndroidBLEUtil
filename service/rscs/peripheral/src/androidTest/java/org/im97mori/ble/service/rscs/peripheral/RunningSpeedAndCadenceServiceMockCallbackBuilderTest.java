@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.core.SensorLocationUtils;
 import org.im97mori.ble.characteristic.u2a53.RSCMeasurement;
@@ -29,9 +30,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -46,6 +52,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -61,6 +69,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -81,6 +91,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00004() {
         Exception exception = null;
         try {
@@ -102,6 +114,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00005() {
         Exception exception = null;
         try {
@@ -123,6 +137,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00006() {
         Exception exception = null;
         try {
@@ -144,6 +160,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00007() {
         Exception exception = null;
         try {
@@ -165,6 +183,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00008() {
         Exception exception = null;
         try {
@@ -187,6 +207,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00009() {
         Exception exception = null;
         try {
@@ -208,6 +230,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00010() {
         Exception exception = null;
         try {
@@ -230,6 +254,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00011() {
         Exception exception = null;
         try {
@@ -252,6 +278,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00012() {
         Exception exception = null;
         try {
@@ -275,6 +303,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00013() {
         Exception exception = null;
         try {
@@ -307,6 +337,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00014() {
         Exception exception = null;
         try {
@@ -339,6 +371,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00015() {
         Exception exception = null;
         try {
@@ -372,6 +406,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00016() {
         Exception exception = null;
         try {
@@ -413,6 +449,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
 
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRSCFeature_00001() {
         RSCFeature rscFeature = new RSCFeature(new byte[2]);
 
@@ -462,6 +500,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRSCFeature_00002() {
         RSCFeature rscFeature = new RSCFeature(new byte[2]);
 
@@ -511,6 +551,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRSCFeature_00003() {
         RSCFeature rscFeature = new RSCFeature(new byte[2]);
 
@@ -562,6 +604,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRSCFeature_00001() {
         Exception exception = null;
         try {
@@ -595,6 +639,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRSCMeasurement_00001() {
         RSCMeasurement rscMeasurement = new RSCMeasurement(
                 0
@@ -653,6 +699,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRSCMeasurement_00002() {
         RSCMeasurement rscMeasurement = new RSCMeasurement(
                 0
@@ -716,6 +764,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRSCMeasurement_00001() {
         Exception exception = null;
         try {
@@ -750,6 +800,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSensorLocation_00001() {
         SensorLocation sensorLocation = new SensorLocation(SensorLocationUtils.SENSOR_LOCATION_OTHER);
 
@@ -799,6 +851,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSensorLocation_00002() {
         SensorLocation sensorLocation = new SensorLocation(SensorLocationUtils.SENSOR_LOCATION_OTHER);
 
@@ -848,6 +902,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSensorLocation_00003() {
         SensorLocation sensorLocation = new SensorLocation(SensorLocationUtils.SENSOR_LOCATION_OTHER);
 
@@ -899,6 +955,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSensorLocation_00001() {
         Exception exception = null;
         try {
@@ -933,6 +991,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSCControlPoint_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
 
@@ -988,6 +1048,8 @@ public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeSCControlPoint_00001() {
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
 

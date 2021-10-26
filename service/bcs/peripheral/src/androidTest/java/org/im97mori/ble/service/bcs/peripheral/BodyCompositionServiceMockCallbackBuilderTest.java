@@ -1,9 +1,23 @@
 package org.im97mori.ble.service.bcs.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.BODY_COMPOSITION_SERVICE;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a9b.BodyCompositionFeature;
 import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurement;
@@ -15,19 +29,11 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.BODY_COMPOSITION_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
 public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00001() {
         Exception exception = null;
         try {
@@ -41,6 +47,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00002() {
         Exception exception = null;
         try {
@@ -56,6 +64,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_exception_00003() {
         Exception exception = null;
         try {
@@ -72,6 +82,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodyCompositionFeature_00001() {
         BodyCompositionFeature bodyCompositionFeature = new BodyCompositionFeature(new byte[4]);
 
@@ -106,6 +118,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodyCompositionFeature_00101() {
         BodyCompositionFeature bodyCompositionFeature = new BodyCompositionFeature(new byte[4]);
 
@@ -140,6 +154,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodyCompositionFeature_00201() {
         BodyCompositionFeature bodyCompositionFeature = new BodyCompositionFeature(new byte[4]);
 
@@ -174,6 +190,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBodyCompositionFeature_00001() {
         BodyCompositionFeature bodyCompositionFeature = new BodyCompositionFeature(new byte[4]);
 
@@ -194,6 +212,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodyCompositionMeasurement_00001() {
         BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})});
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
@@ -234,6 +254,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodyCompositionMeasurement_00101() {
         BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})});
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
@@ -279,6 +301,8 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRegisteredUser_00001() {
         BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})});
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;

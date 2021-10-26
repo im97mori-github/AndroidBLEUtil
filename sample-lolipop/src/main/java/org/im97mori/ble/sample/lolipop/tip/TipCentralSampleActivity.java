@@ -40,7 +40,6 @@ import java.util.Set;
 import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 import static org.im97mori.ble.constants.ServiceUUID.CURRENT_TIME_SERVICE;
 
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class TipCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
@@ -54,7 +53,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
 
         mTipCallbackSample = new TipCallbackSample(this, this);
-        mTimeProfile = new TimeProfile(this, mTipCallbackSample);
+        mTimeProfile = new TimeProfile(this, mTipCallbackSample, CURRENT_TIME_SERVICE);
         mTimeProfile.start();
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
@@ -216,8 +215,8 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled()) {
-            BLEUtilsAndroid.bluetoothEnable();
+        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
+            BLEUtilsAndroid.bluetoothEnable(this);
         } else {
             mConnectDisconnectButton.setVisibility(View.VISIBLE);
             if (mTimeProfile.isConnected()) {
@@ -239,7 +238,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
     public void onClick(View v) {
         if (R.id.connectDisconnectButton == v.getId()) {
             if (mTimeProfile == null) {
-                mTimeProfile = new TimeProfile(this, mTipCallbackSample);
+                mTimeProfile = new TimeProfile(this, mTipCallbackSample, CURRENT_TIME_SERVICE);
                 mTimeProfile.start();
             }
             if (mTimeProfile.isConnected()) {
@@ -248,7 +247,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {
-                    mTimeProfile.findTimeProfileDevices(CURRENT_TIME_SERVICE, null);
+                    mTimeProfile.findDevices(null);
                 } else {
                     if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
                         mTimeProfile.connect(mBluetoothDevice);

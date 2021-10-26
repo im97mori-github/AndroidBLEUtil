@@ -1,10 +1,12 @@
 package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanRecord;
 import android.bluetooth.le.ScanResult;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -291,7 +293,7 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
             if (appearance != null) {
                 sb.append("Appearance");
                 sb.append("\nkey\n");
-                sb.append(appearance.getAppearanceKey());
+                sb.append(appearance.getAppearance());
                 sb.append("\nsubcategory\n");
                 sb.append(appearance.getAppearanceSubCategory());
                 sb.append('\n');
@@ -504,7 +506,7 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
 
         mConnectDisconnectButton.setOnClickListener(this);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
         if (mBluetoothAdapter != null) {
             mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
         }

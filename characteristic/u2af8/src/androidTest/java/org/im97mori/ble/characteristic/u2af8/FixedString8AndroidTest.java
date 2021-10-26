@@ -19,7 +19,7 @@ public class FixedString8AndroidTest {
         String fixedString = "01234567";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         FixedString8Android result1 = new FixedString8Android(bluetoothGattCharacteristic);
         assertEquals(fixedString, result1.getFixedString());
@@ -30,7 +30,7 @@ public class FixedString8AndroidTest {
         String fixedString = "01234567 ";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         FixedString8Android result1 = new FixedString8Android(bluetoothGattCharacteristic);
         assertEquals(fixedString.substring(0, 8), result1.getFixedString());
@@ -41,7 +41,7 @@ public class FixedString8AndroidTest {
         String fixedString = "0123456";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         assertThrows(IndexOutOfBoundsException.class, (
         ) -> new FixedString8Android(bluetoothGattCharacteristic));
@@ -76,7 +76,7 @@ public class FixedString8AndroidTest {
         String fixedString = "01234567";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         FixedString8Android result1 = new FixedString8Android(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -92,7 +92,7 @@ public class FixedString8AndroidTest {
         String fixedString = "01234567 ";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         FixedString8Android result1 = new FixedString8Android(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
@@ -108,10 +108,10 @@ public class FixedString8AndroidTest {
         String fixedString = "01234567";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         FixedString8Android result1 = new FixedString8Android(bluetoothGattCharacteristic);
-        assertArrayEquals(fixedString.getBytes(StandardCharsets.UTF_8), result1.getBytes());
+        assertArrayEquals(fixedString.getBytes(), result1.getBytes());
     }
 
     @Test
@@ -119,10 +119,10 @@ public class FixedString8AndroidTest {
         String fixedString = "01234567 ";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         FixedString8Android result1 = new FixedString8Android(bluetoothGattCharacteristic);
-        assertArrayEquals(fixedString.substring(0, 8).getBytes(StandardCharsets.UTF_8), result1.getBytes());
+        assertArrayEquals(fixedString.substring(0, 8).getBytes(), result1.getBytes());
     }
 
     @Test
@@ -130,10 +130,10 @@ public class FixedString8AndroidTest {
         String fixedString = "01234567";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         FixedString8Android result1 = new FixedString8Android(bluetoothGattCharacteristic);
-        FixedString8Android result2 = FixedString8Android.CREATOR.createFromByteArray(fixedString.getBytes(StandardCharsets.UTF_8));
+        FixedString8Android result2 = FixedString8Android.CREATOR.createFromByteArray(fixedString.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
@@ -142,10 +142,10 @@ public class FixedString8AndroidTest {
         String fixedString = "01234567 ";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes(StandardCharsets.UTF_8));
+        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
 
         FixedString8Android result1 = new FixedString8Android(bluetoothGattCharacteristic);
-        FixedString8Android result2 = FixedString8Android.CREATOR.createFromByteArray(fixedString.getBytes(StandardCharsets.UTF_8));
+        FixedString8Android result2 = FixedString8Android.CREATOR.createFromByteArray(fixedString.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 

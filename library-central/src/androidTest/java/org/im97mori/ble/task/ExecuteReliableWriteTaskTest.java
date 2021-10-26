@@ -8,6 +8,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -26,6 +27,7 @@ import static org.junit.Assert.assertTrue;
 public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
 
     @Test
+    @RequiresDevice
     public void test_createInitialMessage_00001() {
         ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(null, null, null, ExecuteReliableWriteTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
@@ -39,6 +41,7 @@ public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createExecuteReliableWriteSuccessMessage_00001() {
         Message message = ExecuteReliableWriteTask.createExecuteReliableWriteSuccessMessage();
 
@@ -50,6 +53,7 @@ public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_createWriteCharacteristicErrorMessage_00001() {
         int status = new Random().nextInt();
         Message message = ExecuteReliableWriteTask.createExecuteReliableWriteErrorMessage(status);
@@ -64,12 +68,14 @@ public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_doProcess_00001() {
         ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(null, null, null, ExecuteReliableWriteTask.TIMEOUT_MILLIS, null);
         assertFalse(task.doProcess(new Message()));
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00001() {
         Looper looper = null;
         try {
@@ -91,6 +97,7 @@ public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
     }
 
     @Test
+    @RequiresDevice
     public void test_cancel_00002() {
         Looper looper = null;
         try {

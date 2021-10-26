@@ -1,25 +1,28 @@
 package org.im97mori.ble.profile.hrp.central;
 
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPoint;
 import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
-import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.hrp.central.db.HeartRateProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.hrs.central.HeartRateService;
 import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.List;
-
-import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 
 /**
  * Heart Rate Profile for Central
@@ -53,17 +56,6 @@ public class HeartRateProfile extends AbstractCentralProfile {
     public HeartRateProfile(@NonNull Context context, @NonNull HeartRateProfileCallback heartRateProfileCallback) {
         super(context, heartRateProfileCallback);
         mHeartRateProfileCallback = heartRateProfileCallback;
-    }
-
-    /**
-     * find Heart Rate Profile device
-     *
-     * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
-     */
-    @Nullable
-    public synchronized Integer findHeartRateProfileDevices(@Nullable Bundle argument) {
-        return scanDevice(new HeartRateProfileScanCallback(this, null), ScanTask.TIMEOUT_MILLIS, argument);
     }
 
     /**
@@ -253,6 +245,25 @@ public class HeartRateProfile extends AbstractCentralProfile {
             }
         }
         super.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    protected FilteredScanCallback createFilteredScanCallback() {
+        return new HeartRateProfileScanCallback(this, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @NonNull
+    @Override
+    protected FilteredLeScanCallback createFilteredLeScanCallback() {
+        return new HeartRateProfileLeScanCallback(this, null);
     }
 
 }

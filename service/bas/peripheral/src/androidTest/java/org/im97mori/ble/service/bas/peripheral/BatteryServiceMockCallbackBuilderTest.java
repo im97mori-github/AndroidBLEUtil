@@ -3,6 +3,7 @@ package org.im97mori.ble.service.bas.peripheral;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
@@ -22,9 +23,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
+
 public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBatteryLevel_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -37,6 +43,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBatteryLevel_00101() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
 
@@ -58,6 +66,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBatteryLevel_00102() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         BatteryLevel batteryLevel1 = new BatteryLevel(50);
@@ -84,6 +94,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBatteryLevel_00201() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int property1 = 2;
@@ -104,6 +116,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBatteryLevel_00202() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int property1 = 2;
@@ -132,6 +146,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBatteryLevel_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -148,6 +164,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBatteryLevel_00002() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -164,6 +182,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelCharacteristicPresentationFormat_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -182,6 +202,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelCharacteristicPresentationFormat_00002() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -214,6 +236,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelCharacteristicPresentationFormat_00101() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -232,6 +256,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelCharacteristicPresentationFormat_00102() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -264,6 +290,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBatteryLevelCharacteristicPresentationFormat_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -297,6 +325,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelClientCharacteristicConfiguration_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -319,6 +349,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelClientCharacteristicConfiguration_00002() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -338,6 +370,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelClientCharacteristicConfiguration_00003() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -357,6 +391,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelClientCharacteristicConfiguration_00004() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -379,6 +415,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelClientCharacteristicConfiguration_00101() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -401,6 +439,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelClientCharacteristicConfiguration_00102() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -420,6 +460,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelClientCharacteristicConfiguration_00103() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -439,6 +481,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_setBatteryLevelClientCharacteristicConfiguration_00104() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -461,6 +505,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBatteryLevelClientCharacteristicConfiguration_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
@@ -485,6 +531,8 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripherallTe
     }
 
     @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeBatteryLevelClientCharacteristicConfiguration_00002() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
