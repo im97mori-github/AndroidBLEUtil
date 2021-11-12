@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.UUID;
+
 /**
  * <p>
  * Service Data - 128-bit UUID
@@ -51,6 +53,15 @@ public class ServiceData128BitUUIDAndroid extends ServiceData128BitUUID implemen
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #ServiceData128BitUUIDAndroid(byte[], int, int)
+     */
+    public ServiceData128BitUUIDAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Service Data - 128-bit UUID
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +72,16 @@ public class ServiceData128BitUUIDAndroid extends ServiceData128BitUUID implemen
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param uuid                  UUID
+     * @param additionalServiceData byte array of Additional service data
+     */
+    public ServiceData128BitUUIDAndroid(@NonNull UUID uuid, @NonNull byte[] additionalServiceData) {
+        super(uuid, additionalServiceData);
     }
 
     /**

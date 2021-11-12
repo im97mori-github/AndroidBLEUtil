@@ -1,5 +1,6 @@
 package org.im97mori.ble;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
@@ -47,7 +48,6 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
  * <p>
  * Asynchronous
  */
-@SuppressWarnings("ALL")
 public class BLEConnection extends BluetoothGattCallback implements BLECallbackDistributer.SubscriberInterface {
 
     /**
@@ -115,6 +115,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param callback target callback
      * @return {@code true}:attached, {@code false}:not attached
      */
+    @SuppressWarnings("unused")
     public synchronized boolean isAttached(@NonNull BLECallback callback) {
         return mAttachedBLECallbackSet.contains(callback);
     }
@@ -263,6 +264,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * Clear all task
      */
+    @SuppressWarnings("unused")
     public synchronized void clear() {
         if (mTaskHandler != null) {
             mTaskHandler.clearTask();
@@ -274,6 +276,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      *
      * @param taskId task id
      */
+    @SuppressWarnings("unused")
     public synchronized void cancelTask(@NonNull Integer taskId) {
         if (mTaskHandler != null) {
             mTaskHandler.cancelTask(taskId);
@@ -530,6 +533,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("MissingPermission")
     @Override
     public synchronized void onDescriptorRead(BluetoothGatt gatt
             , BluetoothGattDescriptor descriptor
@@ -726,6 +730,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createReadCharacteristicTask(UUID, Integer, UUID, Integer, long, Bundle, BLECallback)
      */
+    @SuppressWarnings("unused")
     @Nullable
     public Integer createReadCharacteristicTask(@NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID
@@ -766,6 +771,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createWriteCharacteristicTask(UUID, Integer, UUID, Integer, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
+    @SuppressWarnings("unused")
     @Nullable
     public Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID
@@ -777,6 +783,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createWriteCharacteristicTask(UUID, Integer, UUID, Integer, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
+    @SuppressWarnings("unused")
     @Nullable
     public Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID
@@ -822,6 +829,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createReadDescriptorTask(UUID, Integer, UUID, Integer, UUID, Integer, long, Bundle, BLECallback)
      */
+    @SuppressWarnings("unused")
     @Nullable
     public Integer createReadDescriptorTask(@NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID
@@ -866,6 +874,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createWriteDescriptorTask(UUID, Integer, UUID, Integer, UUID, Integer, ByteArrayInterface, long, Bundle, BLECallback)
      */
+    @SuppressWarnings("unused")
     @Nullable
     public Integer createWriteDescriptorTask(@NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID

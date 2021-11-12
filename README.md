@@ -19,7 +19,7 @@ project/build.gradle
 
 project/module/build.gradle
 
-    def version = '0.6.0'
+    def version = '0.6.1'
     dependencies {
         // Core package(Constants + Utility)
         implementation 'org.im97mori:ble-core-android:${version}'
@@ -60,10 +60,10 @@ project/module/build.gradle
         implementation 'org.im97mori:ble-descriptor-u2902-android:${version}'
         
         // Central feature
-        implementation 'org.im97mori:ble-central:0.7.9'
+        implementation 'org.im97mori:ble-central:0.7.10'
         
         // Peripheral feature
-        implementation 'org.im97mori:ble-peripheral:0.3.9'
+        implementation 'org.im97mori:ble-peripheral:0.3.10'
         
         // Service package
         

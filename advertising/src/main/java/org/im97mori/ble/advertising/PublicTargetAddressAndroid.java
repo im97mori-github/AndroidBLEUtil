@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.List;
+
 /**
  * <p>
  * Public Target Address
@@ -51,6 +53,15 @@ public class PublicTargetAddressAndroid extends PublicTargetAddress implements A
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #PublicTargetAddressAndroid(byte[], int, int)
+     */
+    public PublicTargetAddressAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Public Target Address
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +72,15 @@ public class PublicTargetAddressAndroid extends PublicTargetAddress implements A
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param addressList Public Target Address list
+     */
+    public PublicTargetAddressAndroid(@NonNull List<byte[]> addressList) {
+        super(addressList);
     }
 
     /**

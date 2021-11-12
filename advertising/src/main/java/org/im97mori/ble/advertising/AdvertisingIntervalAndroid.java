@@ -51,6 +51,15 @@ public class AdvertisingIntervalAndroid extends AdvertisingInterval implements A
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #AdvertisingIntervalAndroid(byte[], int, int)
+     */
+    public AdvertisingIntervalAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Advertising Interval
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,15 @@ public class AdvertisingIntervalAndroid extends AdvertisingInterval implements A
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param advertisingInterval Advertising Interval
+     */
+    public AdvertisingIntervalAndroid(int advertisingInterval) {
+        super(advertisingInterval);
     }
 
     /**

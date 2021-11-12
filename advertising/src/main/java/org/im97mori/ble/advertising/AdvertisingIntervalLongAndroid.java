@@ -7,30 +7,27 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import java.util.List;
-
 /**
  * <p>
- * LE Supported Features
+ * Advertising Interval - long
  * <p>
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
- * Core Specification v5.1 Vol 6 Part B 4.6
  * </p>
  */
-public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements AdvertisingDataInterfaceAndroid {
+public class AdvertisingIntervalLongAndroid extends AdvertisingIntervalLong implements AdvertisingDataInterfaceAndroid {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<LeSupportedFeaturesAndroid> CREATOR = new ByteArrayCreater<LeSupportedFeaturesAndroid>() {
+    public static final ByteArrayCreater<AdvertisingIntervalLongAndroid> CREATOR = new ByteArrayCreater<AdvertisingIntervalLongAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public LeSupportedFeaturesAndroid createFromParcel(@NonNull Parcel in) {
-            return new LeSupportedFeaturesAndroid(in);
+        public AdvertisingIntervalLongAndroid createFromParcel(@NonNull Parcel in) {
+            return new AdvertisingIntervalLongAndroid(in);
         }
 
         /**
@@ -38,8 +35,8 @@ public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements A
          */
         @Override
         @NonNull
-        public LeSupportedFeaturesAndroid[] newArray(int size) {
-            return new LeSupportedFeaturesAndroid[size];
+        public AdvertisingIntervalLongAndroid[] newArray(int size) {
+            return new AdvertisingIntervalLongAndroid[size];
         }
 
         /**
@@ -47,8 +44,8 @@ public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements A
          */
         @NonNull
         @Override
-        public LeSupportedFeaturesAndroid createFromByteArray(@NonNull byte[] values) {
-            return new LeSupportedFeaturesAndroid(values, 0, values.length - 1);
+        public AdvertisingIntervalLongAndroid createFromByteArray(@NonNull byte[] values) {
+            return new AdvertisingIntervalLongAndroid(values, 0, values.length - 1);
         }
 
     };
@@ -56,20 +53,20 @@ public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements A
     /**
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @see #LeSupportedFeaturesAndroid(byte[], int, int)
+     * @see #AdvertisingIntervalLongAndroid(byte[], int, int)
      */
-    public LeSupportedFeaturesAndroid(@NonNull byte[] data, int offset) {
+    public AdvertisingIntervalLongAndroid(@NonNull byte[] data, int offset) {
         this(data, offset, data[offset]);
     }
 
     /**
-     * Constructor for LE Supported Features
+     * Constructor for Advertising Interval
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public LeSupportedFeaturesAndroid(@NonNull byte[] data
+    public AdvertisingIntervalLongAndroid(@NonNull byte[] data
             , int offset
             , int length) {
         super(data, offset, length);
@@ -78,10 +75,11 @@ public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements A
     /**
      * Constructor from parameters
      *
-     * @param leSupportedFeaturesList LE Supported Features list
+     * @param isUInt32 {@code true}:4 octets, {@code false}:3 octets
+     * @param advertisingIntervalLong Advertising Interval - long
      */
-    public LeSupportedFeaturesAndroid(@NonNull List<Integer> leSupportedFeaturesList) {
-        super(leSupportedFeaturesList);
+    public AdvertisingIntervalLongAndroid(boolean isUInt32, long advertisingIntervalLong) {
+        super(isUInt32, advertisingIntervalLong);
     }
 
     /**
@@ -89,7 +87,7 @@ public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements A
      *
      * @param in Parcel
      */
-    private LeSupportedFeaturesAndroid(Parcel in) {
+    private AdvertisingIntervalLongAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray(), 0, in.readInt());
     }

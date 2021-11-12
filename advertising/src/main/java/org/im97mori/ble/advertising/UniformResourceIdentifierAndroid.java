@@ -51,6 +51,15 @@ public class UniformResourceIdentifierAndroid extends UniformResourceIdentifier 
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #UniformResourceIdentifierAndroid(byte[], int, int)
+     */
+    public UniformResourceIdentifierAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for URI
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,16 @@ public class UniformResourceIdentifierAndroid extends UniformResourceIdentifier 
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param scheme    Scheme
+     * @param uriString URI text
+     */
+    public UniformResourceIdentifierAndroid(char scheme, @NonNull String uriString) {
+        super(scheme, uriString);
     }
 
     /**

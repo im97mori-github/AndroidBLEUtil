@@ -7,6 +7,10 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+
 /**
  * <p>
  * Complete List of 128-bit Service Class UUIDs
@@ -49,6 +53,34 @@ public class CompleteListOf128BitServiceUUIDsAndroid extends CompleteListOf128Bi
         }
 
     };
+
+    /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #CompleteListOf128BitServiceUUIDsAndroid(byte[], int, int)
+     */
+    public CompleteListOf128BitServiceUUIDsAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
+     * Constructor for Complete List of 128-bit Service Class UUIDs
+     *
+     * @param uuids UUID array
+     * @see CompleteListOf128BitServiceUUIDsAndroid#CompleteListOf128BitServiceUUIDsAndroid(List)
+     */
+    public CompleteListOf128BitServiceUUIDsAndroid(@NonNull UUID... uuids) {
+        this(Arrays.asList(uuids));
+    }
+
+    /**
+     * Constructor for Complete List of 128-bit Service Class UUIDs
+     *
+     * @param uuidList UUID list
+     */
+    public CompleteListOf128BitServiceUUIDsAndroid(@NonNull List<UUID> uuidList) {
+        super(uuidList);
+    }
 
     /**
      * Constructor for Complete List of 128-bit Service Class UUIDs

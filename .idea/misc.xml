@@ -260,6 +260,9 @@
     <pattern value="org.im97mori.ble.advertising.filter.PeripheralConnectionIntervalRangeFilter" method="isMatched" />
     <pattern value="org.im97mori.ble.advertising.filter.UniformResourceIdentifierFilter" method="isMatched" />
     <pattern value="org.im97mori.ble.test.peripheral.MockBLEServerConnection" method="setCreateAddServiceTaskBluetoothGattServiceList" />
+    <pattern value="org.im97mori.ble.advertising.filter.AdvertisingIntervalLongFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.BigInfoFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.BLEConnection" method="connect" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />

@@ -51,6 +51,15 @@ public class ShortenedLocalNameAndroid extends ShortenedLocalName implements Adv
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #ShortenedLocalNameAndroid(byte[], int, int)
+     */
+    public ShortenedLocalNameAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Shortened Local Name
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,15 @@ public class ShortenedLocalNameAndroid extends ShortenedLocalName implements Adv
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param shortenedLocalName Shortened Local Name
+     */
+    public ShortenedLocalNameAndroid(@NonNull String shortenedLocalName) {
+        super(shortenedLocalName);
     }
 
     /**

@@ -58,7 +58,7 @@ public class TxPowerLevelTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data, 0, data[0]);
@@ -68,10 +68,50 @@ public class TxPowerLevelTest {
     }
 
     @Test
-    public void test_constructor_00002() {
+    public void test_constructor_1_00002() {
         byte[] data = getData();
 
         TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data, 0, data[0]);
+        assertEquals(2, result1.getLength());
+        assertEquals(TX_POWER_LEVEL_DATA_TYPE, result1.getDataType());
+        assertEquals(127, result1.getTxPowerLevel());
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data, 0);
+        assertEquals(2, result1.getLength());
+        assertEquals(TX_POWER_LEVEL_DATA_TYPE, result1.getDataType());
+        assertEquals(-127, result1.getTxPowerLevel());
+    }
+
+    @Test
+    public void test_constructor_2_00002() {
+        byte[] data = getData();
+
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data, 0);
+        assertEquals(2, result1.getLength());
+        assertEquals(TX_POWER_LEVEL_DATA_TYPE, result1.getDataType());
+        assertEquals(127, result1.getTxPowerLevel());
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data[2]);
+        assertEquals(2, result1.getLength());
+        assertEquals(TX_POWER_LEVEL_DATA_TYPE, result1.getDataType());
+        assertEquals(-127, result1.getTxPowerLevel());
+    }
+
+    @Test
+    public void test_constructor_3_00002() {
+        byte[] data = getData();
+
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data[2]);
         assertEquals(2, result1.getLength());
         assertEquals(TX_POWER_LEVEL_DATA_TYPE, result1.getDataType());
         assertEquals(127, result1.getTxPowerLevel());

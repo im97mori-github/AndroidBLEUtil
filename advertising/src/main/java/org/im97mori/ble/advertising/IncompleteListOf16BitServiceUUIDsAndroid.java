@@ -7,6 +7,10 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+
 /**
  * <p>
  * Incomplete List of 16-bit Service Class UUIDs
@@ -51,6 +55,15 @@ public class IncompleteListOf16BitServiceUUIDsAndroid extends IncompleteListOf16
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #IncompleteListOf16BitServiceUUIDsAndroid(byte[], int, int)
+     */
+    public IncompleteListOf16BitServiceUUIDsAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Incomplete List of 16-bit Service Class UUIDs
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +74,25 @@ public class IncompleteListOf16BitServiceUUIDsAndroid extends IncompleteListOf16
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor for Incomplete List of 16-bit Service Class UUIDs
+     *
+     * @param uuids UUID array
+     * @see IncompleteListOf16BitServiceUUIDsAndroid#IncompleteListOf16BitServiceUUIDsAndroid(List)
+     */
+    public IncompleteListOf16BitServiceUUIDsAndroid(@NonNull UUID... uuids) {
+        this(Arrays.asList(uuids));
+    }
+
+    /**
+     * Constructor for Complete List of 16-bit Service Class UUIDs
+     *
+     * @param uuidList UUID list
+     */
+    public IncompleteListOf16BitServiceUUIDsAndroid(@NonNull List<UUID> uuidList) {
+        super(uuidList);
     }
 
     /**

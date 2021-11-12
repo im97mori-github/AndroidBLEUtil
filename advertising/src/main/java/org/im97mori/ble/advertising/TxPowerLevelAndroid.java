@@ -51,6 +51,15 @@ public class TxPowerLevelAndroid extends TxPowerLevel implements AdvertisingData
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #TxPowerLevelAndroid(byte[], int, int)
+     */
+    public TxPowerLevelAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Tx Power Level
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,16 @@ public class TxPowerLevelAndroid extends TxPowerLevel implements AdvertisingData
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param txPowerLevel Tx Power Level
+     */
+    public TxPowerLevelAndroid(byte txPowerLevel) {
+        super(txPowerLevel);
+
     }
 
     /**

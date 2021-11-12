@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.List;
+
 /**
  * <p>
  * Transport Discovery Data
@@ -51,6 +53,15 @@ public class TransportDiscoveryDataAndroid extends TransportDiscoveryData implem
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #TransportDiscoveryDataAndroid(byte[], int, int)
+     */
+    public TransportDiscoveryDataAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Advertising Interval
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +72,15 @@ public class TransportDiscoveryDataAndroid extends TransportDiscoveryData implem
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param transportBlockList Transport Block List
+     */
+    public TransportDiscoveryDataAndroid(@NonNull List<TransportBlock> transportBlockList) {
+        super(transportBlockList);
     }
 
     /**

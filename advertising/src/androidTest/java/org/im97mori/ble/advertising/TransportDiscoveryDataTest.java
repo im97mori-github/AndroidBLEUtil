@@ -5,7 +5,9 @@ import android.os.Parcel;
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.im97mori.ble.constants.DataType.TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
@@ -181,14 +183,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -203,14 +206,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00002() {
+    public void test_constructor_1_00002() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -225,14 +229,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00003() {
+    public void test_constructor_1_00003() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -247,14 +252,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00004() {
+    public void test_constructor_1_00004() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -269,14 +275,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00005() {
+    public void test_constructor_1_00005() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -291,14 +298,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00006() {
+    public void test_constructor_1_00006() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -313,14 +321,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00007() {
+    public void test_constructor_1_00007() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(4, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -335,14 +344,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00008() {
+    public void test_constructor_1_00008() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(5, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(1, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -358,14 +368,15 @@ public class TransportDiscoveryDataTest {
     }
 
     @Test
-    public void test_constructor_00009() {
+    public void test_constructor_1_00009() {
         byte[] data = getData();
 
         TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0, data[0]);
         assertEquals(10, result1.getLength());
         assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getTransportBlockList().size());
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG, result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG,
+                result1.getTransportBlockList().get(0).getOrganizationId());
         assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
         assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
@@ -379,7 +390,555 @@ public class TransportDiscoveryDataTest {
         assertEquals(1, result1.getTransportBlockList().get(0).getTransportDataLength());
         assertArrayEquals(Arrays.copyOfRange(data, 5, 6), result1.getTransportBlockList().get(0).getTransportData());
 
-        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING, result1.getTransportBlockList().get(1).getOrganizationId());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING,
+                result1.getTransportBlockList().get(1).getOrganizationId());
+        assertEquals(data[7], result1.getTransportBlockList().get(1).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(1).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(1).isTdsFlagsTransportDataIncompleteTrue());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsTransportStateOn());
+        assertTrue(result1.getTransportBlockList().get(1).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(2, result1.getTransportBlockList().get(1).getTransportDataLength());
+        assertArrayEquals(Arrays.copyOfRange(data, 9, 11), result1.getTransportBlockList().get(1).getTransportData());
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_2_00002() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_2_00003() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_2_00004() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_2_00005() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_2_00006() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_2_00007() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_2_00008() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(5, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(1, result1.getTransportBlockList().get(0).getTransportDataLength());
+        assertArrayEquals(Arrays.copyOfRange(data, 5, 6), result1.getTransportBlockList().get(0).getTransportData());
+    }
+
+    @Test
+    public void test_constructor_2_00009() {
+        byte[] data = getData();
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(data, 0);
+        assertEquals(10, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(2, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(1, result1.getTransportBlockList().get(0).getTransportDataLength());
+        assertArrayEquals(Arrays.copyOfRange(data, 5, 6), result1.getTransportBlockList().get(0).getTransportData());
+
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING,
+                result1.getTransportBlockList().get(1).getOrganizationId());
+        assertEquals(data[7], result1.getTransportBlockList().get(1).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(1).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(1).isTdsFlagsTransportDataIncompleteTrue());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsTransportStateOn());
+        assertTrue(result1.getTransportBlockList().get(1).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(2, result1.getTransportBlockList().get(1).getTransportDataLength());
+        assertArrayEquals(Arrays.copyOfRange(data, 9, 11), result1.getTransportBlockList().get(1).getTransportData());
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_3_00002() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_3_00003() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_3_00004() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_3_00005() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_3_00006() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_3_00007() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(4, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(0, result1.getTransportBlockList().get(0).getTransportDataLength());
+    }
+
+    @Test
+    public void test_constructor_3_00008() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(5, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(1, result1.getTransportBlockList().get(0).getTransportDataLength());
+        assertArrayEquals(Arrays.copyOfRange(data, 5, 6), result1.getTransportBlockList().get(0).getTransportData());
+    }
+
+    @Test
+    public void test_constructor_3_00009() {
+        byte[] data = getData();
+
+        List<TransportDiscoveryData.TransportBlock> transportBlockList = new ArrayList<>();
+        int index = 2;
+        do {
+            int organizationId = data[index];
+            int tdsFlags = data[index + 1];
+            int transportDataLength = data[index + 2];
+            transportBlockList.add(new TransportDiscoveryData.TransportBlock(organizationId, tdsFlags, transportDataLength,
+                    Arrays.copyOfRange(data, index + 3, index + 3 + transportDataLength)));
+            index += 3 + transportDataLength;
+        } while (index < data[0]);
+
+        TransportDiscoveryDataAndroid result1 = new TransportDiscoveryDataAndroid(transportBlockList);
+        assertEquals(10, result1.getLength());
+        assertEquals(TRANSPORT_DISCOVERY_DATA_DATA_TYPE, result1.getDataType());
+        assertEquals(2, result1.getTransportBlockList().size());
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG,
+                result1.getTransportBlockList().get(0).getOrganizationId());
+        assertEquals(data[3], result1.getTransportBlockList().get(0).getTdsFlags());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsRoleNotSpecified());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleSeekerOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleProviderOnly());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsRoleBothSeekerAndProvider());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteFalse());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportDataIncompleteTrue());
+        assertTrue(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOff());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateOn());
+        assertFalse(result1.getTransportBlockList().get(0).isTdsFlagsTransportStateTemporarilyUnavailable());
+        assertEquals(1, result1.getTransportBlockList().get(0).getTransportDataLength());
+        assertArrayEquals(Arrays.copyOfRange(data, 5, 6), result1.getTransportBlockList().get(0).getTransportData());
+
+        assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING,
+                result1.getTransportBlockList().get(1).getOrganizationId());
         assertEquals(data[7], result1.getTransportBlockList().get(1).getTdsFlags());
         assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsRoleNotSpecified());
         assertFalse(result1.getTransportBlockList().get(1).isTdsFlagsRoleSeekerOnly());

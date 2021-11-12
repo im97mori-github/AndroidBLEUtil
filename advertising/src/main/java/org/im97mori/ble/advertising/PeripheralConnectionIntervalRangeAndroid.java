@@ -51,6 +51,15 @@ public class PeripheralConnectionIntervalRangeAndroid extends PeripheralConnecti
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #PeripheralConnectionIntervalRangeAndroid(byte[], int, int)
+     */
+    public PeripheralConnectionIntervalRangeAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Peripheral Connection Interval Range
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,16 @@ public class PeripheralConnectionIntervalRangeAndroid extends PeripheralConnecti
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param minimumValue Minimum connection interval
+     * @param maximumValue Maximum connection interval
+     */
+    public PeripheralConnectionIntervalRangeAndroid(int minimumValue, int maximumValue) {
+        super(minimumValue, maximumValue);
     }
 
     /**

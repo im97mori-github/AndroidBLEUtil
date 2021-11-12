@@ -53,10 +53,30 @@ public class CompleteLocalNameTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         CompleteLocalNameAndroid result1 = new CompleteLocalNameAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(COMPLETE_LOCAL_NAME_DATA_TYPE, result1.getDataType());
+        assertEquals(new String(data, 2, data.length - 2), result1.getCompleteLocalName());
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        CompleteLocalNameAndroid result1 = new CompleteLocalNameAndroid(data, 0);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(COMPLETE_LOCAL_NAME_DATA_TYPE, result1.getDataType());
+        assertEquals(new String(data, 2, data.length - 2), result1.getCompleteLocalName());
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        CompleteLocalNameAndroid result1 = new CompleteLocalNameAndroid(new String(data, 2, data.length - 2));
         assertEquals(data[0], result1.getLength());
         assertEquals(COMPLETE_LOCAL_NAME_DATA_TYPE, result1.getDataType());
         assertEquals(new String(data, 2, data.length - 2), result1.getCompleteLocalName());

@@ -51,6 +51,15 @@ public class AppearanceAndroid extends Appearance implements AdvertisingDataInte
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #AppearanceAndroid(byte[], int, int)
+     */
+    public AppearanceAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Appearance
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,15 @@ public class AppearanceAndroid extends Appearance implements AdvertisingDataInte
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param appearance Appearance
+     */
+    public AppearanceAndroid(int appearance) {
+        super(appearance);
     }
 
     /**

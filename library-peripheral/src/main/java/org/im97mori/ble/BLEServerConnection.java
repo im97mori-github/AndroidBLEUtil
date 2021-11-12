@@ -96,15 +96,19 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * for {@link BLEServerCallbackDistributer.SubscriberInterface#getSubscriberCallbackList()}
      */
-    protected final List<BLEServerCallback> mAttachedBLEServerCallbackSet = new LinkedList<>();
+    protected final List<BLEServerCallback> mAttachedBLEServerCallbackList = new LinkedList<>();
 
     /**
      * @param context {@link Context} instance
      */
     public BLEServerConnection(@NonNull Context context) {
-        mContext = context;
+        mContext = context.getApplicationContext();
         mBluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
-        mBluetoothAdapter = mBluetoothManager.getAdapter();
+        if (mBluetoothManager == null) {
+            mBluetoothAdapter = null;
+        } else {
+            mBluetoothAdapter = mBluetoothManager.getAdapter();
+        }
         mBLEServerCallbackDistributer = new BLEServerCallbackDistributer(this);
     }
 
@@ -124,17 +128,19 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     public synchronized void start() {
         if (mBluetoothGattServer == null) {
 
-            mBluetoothGattServer = mBluetoothManager.openGattServer(mContext, this);
-            if (mBluetoothGattServer != null) {
+            if (mBluetoothManager != null) {
+                mBluetoothGattServer = mBluetoothManager.openGattServer(mContext, this);
+                if (mBluetoothGattServer != null) {
 
-                HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
-                thread.start();
-                mTaskHandler = new TaskHandler(thread.getLooper());
+                    HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
+                    thread.start();
+                    mTaskHandler = new TaskHandler(thread.getLooper());
 
-                mBLEServerCallbackDistributer.onServerStarted();
+                    mBLEServerCallbackDistributer.onServerStarted();
 
-                for (BLEServerCallback bleServerCallback : mAttachedBLEServerCallbackSet) {
-                    bleServerCallback.setup(this);
+                    for (BLEServerCallback bleServerCallback : mAttachedBLEServerCallbackList) {
+                        bleServerCallback.setup(this);
+                    }
                 }
             }
         }
@@ -171,7 +177,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param bleServerCallback {@link BLEServerCallback}
      */
     public synchronized void attach(BLEServerCallback bleServerCallback) {
-        if (mAttachedBLEServerCallbackSet.add(bleServerCallback) && mBluetoothGattServer != null) {
+        if (mAttachedBLEServerCallbackList.add(bleServerCallback) && mBluetoothGattServer != null) {
             bleServerCallback.setup(this);
         }
     }
@@ -182,7 +188,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param bleServerCallback {@link BLEServerCallback}
      */
     public synchronized void detach(BLEServerCallback bleServerCallback) {
-        if (mAttachedBLEServerCallbackSet.remove(bleServerCallback) && mBluetoothGattServer != null) {
+        if (mAttachedBLEServerCallbackList.remove(bleServerCallback) && mBluetoothGattServer != null) {
             bleServerCallback.tearDown(this);
         }
     }
@@ -194,7 +200,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @return {@code true}:attached, {@code false}:not attached
      */
     public synchronized boolean isAttached(BLEServerCallback bleServerCallback) {
-        return mAttachedBLEServerCallbackSet.contains(bleServerCallback);
+        return mAttachedBLEServerCallbackList.contains(bleServerCallback);
     }
 
     /**
@@ -344,7 +350,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      */
     @Override
     public List<BLEServerCallback> getSubscriberCallbackList() {
-        return Collections.synchronizedList(new LinkedList<>(mAttachedBLEServerCallbackSet));
+        return Collections.synchronizedList(new LinkedList<>(mAttachedBLEServerCallbackList));
     }
 
     /**
@@ -376,6 +382,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param bleServerCallback    {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService
             , long timeout
             , @Nullable Bundle argument
@@ -402,6 +409,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param bleServerCallback    {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer createRemoveServiceTask(@NonNull BluetoothGattService bluetoothGattService
             , long timeout
             , @Nullable Bundle argument
@@ -435,6 +443,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param bleServerCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer createNotificationTask(@NonNull BluetoothDevice device
             , @NonNull UUID serviceUUID
             , int serviceInstanceId

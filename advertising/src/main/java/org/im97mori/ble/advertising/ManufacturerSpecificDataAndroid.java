@@ -51,6 +51,15 @@ public class ManufacturerSpecificDataAndroid extends ManufacturerSpecificData im
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #ManufacturerSpecificDataAndroid(byte[], int, int)
+     */
+    public ManufacturerSpecificDataAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Manufacturer Specific Data
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,16 @@ public class ManufacturerSpecificDataAndroid extends ManufacturerSpecificData im
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param companyIdentifier        Company Identifier Code
+     * @param manufacturerSpecificData byte array of Manufacturer Specific Data
+     */
+    public ManufacturerSpecificDataAndroid(int companyIdentifier, @NonNull byte[] manufacturerSpecificData) {
+        super(companyIdentifier, manufacturerSpecificData);
     }
 
     /**

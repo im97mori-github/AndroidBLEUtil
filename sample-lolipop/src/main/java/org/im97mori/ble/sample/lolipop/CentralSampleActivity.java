@@ -1,5 +1,20 @@
 package org.im97mori.ble.sample.lolipop;
 
+import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATABLE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_2;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC_2;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_DESCRIPTOR;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_WRITABLE_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -30,7 +45,6 @@ import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.BLEUtilsAndroid;
@@ -61,21 +75,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-
-import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_2;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC_2;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_DESCRIPTOR;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_WRITABLE_CHARACTERISTIC;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class CentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback, FilteredScanCallbackInterface {

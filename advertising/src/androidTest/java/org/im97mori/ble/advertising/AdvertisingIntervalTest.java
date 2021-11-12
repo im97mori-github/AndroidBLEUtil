@@ -2,6 +2,7 @@ package org.im97mori.ble.advertising;
 
 import android.os.Parcel;
 
+import org.im97mori.ble.BLEUtils;
 import org.junit.Test;
 
 import static org.im97mori.ble.advertising.AdvertisingInterval.ADVERTISING_INTERVAL_UNIT_MILLIS;
@@ -111,7 +112,7 @@ public class AdvertisingIntervalTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
@@ -122,7 +123,7 @@ public class AdvertisingIntervalTest {
     }
 
     @Test
-    public void test_constructor_00002() {
+    public void test_constructor_1_00002() {
         byte[] data = getData();
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
@@ -133,7 +134,7 @@ public class AdvertisingIntervalTest {
     }
 
     @Test
-    public void test_constructor_00003() {
+    public void test_constructor_1_00003() {
         byte[] data = getData();
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
@@ -144,7 +145,7 @@ public class AdvertisingIntervalTest {
     }
 
     @Test
-    public void test_constructor_00004() {
+    public void test_constructor_1_00004() {
         byte[] data = getData();
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
@@ -155,7 +156,7 @@ public class AdvertisingIntervalTest {
     }
 
     @Test
-    public void test_constructor_00005() {
+    public void test_constructor_1_00005() {
         byte[] data = getData();
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
@@ -166,7 +167,7 @@ public class AdvertisingIntervalTest {
     }
 
     @Test
-    public void test_constructor_00006() {
+    public void test_constructor_1_00006() {
         byte[] data = getData();
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
@@ -177,10 +178,164 @@ public class AdvertisingIntervalTest {
     }
 
     @Test
-    public void test_constructor_00007() {
+    public void test_constructor_1_00007() {
         byte[] data = getData();
 
         AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0x00ff, result1.getAdvertisingInterval());
+        assertEquals(0x00ff * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0, result1.getAdvertisingInterval());
+        assertEquals(0 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00002() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0x7f7f, result1.getAdvertisingInterval());
+        assertEquals(0x7f7f * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00003() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0x7f00, result1.getAdvertisingInterval());
+        assertEquals(0x7f00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00004() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0x007f, result1.getAdvertisingInterval());
+        assertEquals(0x007f * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00005() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0xffff, result1.getAdvertisingInterval());
+        assertEquals(0xffff * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00006() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0xff00, result1.getAdvertisingInterval());
+        assertEquals(0xff00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00007() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0x00ff, result1.getAdvertisingInterval());
+        assertEquals(0x00ff * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(BLEUtils.createUInt16(data, 2));
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0, result1.getAdvertisingInterval());
+        assertEquals(0 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00002() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(BLEUtils.createUInt16(data, 2));
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0x7f7f, result1.getAdvertisingInterval());
+        assertEquals(0x7f7f * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00003() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(BLEUtils.createUInt16(data, 2));
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0x7f00, result1.getAdvertisingInterval());
+        assertEquals(0x7f00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00004() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(BLEUtils.createUInt16(data, 2));
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0x007f, result1.getAdvertisingInterval());
+        assertEquals(0x007f * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00005() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(BLEUtils.createUInt16(data, 2));
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0xffff, result1.getAdvertisingInterval());
+        assertEquals(0xffff * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00006() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(BLEUtils.createUInt16(data, 2));
+        assertEquals(3, result1.getLength());
+        assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
+        assertEquals(0xff00, result1.getAdvertisingInterval());
+        assertEquals(0xff00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00007() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(BLEUtils.createUInt16(data, 2));
         assertEquals(3, result1.getLength());
         assertEquals(ADVERTISING_INTERVAL_DATA_TYPE, result1.getDataType());
         assertEquals(0x00ff, result1.getAdvertisingInterval());

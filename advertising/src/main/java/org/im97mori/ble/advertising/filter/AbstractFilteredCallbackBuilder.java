@@ -8,7 +8,9 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AdvertisingInterval;
+import org.im97mori.ble.advertising.AdvertisingIntervalLong;
 import org.im97mori.ble.advertising.Appearance;
+import org.im97mori.ble.advertising.BigInfo;
 import org.im97mori.ble.advertising.ChannelMapUpdateIndication;
 import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDs;
 import org.im97mori.ble.advertising.CompleteListOf16BitServiceUUIDs;
@@ -24,13 +26,13 @@ import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDs;
 import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDs;
 import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDs;
 import org.im97mori.ble.advertising.ManufacturerSpecificData;
+import org.im97mori.ble.advertising.PeripheralConnectionIntervalRange;
 import org.im97mori.ble.advertising.PublicTargetAddress;
 import org.im97mori.ble.advertising.RandomTargetAddress;
 import org.im97mori.ble.advertising.ServiceData128BitUUID;
 import org.im97mori.ble.advertising.ServiceData16BitUUID;
 import org.im97mori.ble.advertising.ServiceData32BitUUID;
 import org.im97mori.ble.advertising.ShortenedLocalName;
-import org.im97mori.ble.advertising.PeripheralConnectionIntervalRange;
 import org.im97mori.ble.advertising.TransportDiscoveryData;
 import org.im97mori.ble.advertising.TxPowerLevel;
 import org.im97mori.ble.advertising.UniformResourceIdentifier;
@@ -150,6 +152,43 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     }
 
     /**
+     * add Advertising Interval - long filter
+     *
+     * @param data Advertising Interval data array
+     * @return myself
+     * @see ByteArrayCreater#createFromByteArray(byte[])
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addAdvertisingIntervalLongFilter(@NonNull byte[] data) {
+        return addAdvertisingIntervalLongFilter(data, 0, data[0]);
+    }
+
+    /**
+     * add Advertising Interval - long filter
+     *
+     * @param data   {@link AdvertisingIntervalLong#AdvertisingIntervalLong(byte[], int, int)} 1st parameter
+     * @param offset {@link AdvertisingIntervalLong#AdvertisingIntervalLong(byte[], int, int)} 2nd parameter
+     * @param length {@link AdvertisingIntervalLong#AdvertisingIntervalLong(byte[], int, int)} 3rd parameter
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addAdvertisingIntervalLongFilter(@NonNull byte[] data, int offset, int length) {
+        return addAdvertisingIntervalLongFilter(new AdvertisingIntervalLong(data, offset, length));
+    }
+
+    /**
+     * add Advertising Interval - long filter
+     *
+     * @param expect {@link AdvertisingIntervalLong} instance
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addAdvertisingIntervalLongFilter(@NonNull AdvertisingIntervalLong expect) {
+        mFilterList.add(new AdvertisingIntervalLongFilter(expect));
+        return this;
+    }
+
+    /**
      * add Appearance filter
      *
      * @param data Appearance data array
@@ -172,6 +211,43 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addAppearanceFilter(@NonNull byte[] data, int offset, int length) {
         return addAppearanceFilter(new Appearance(data, offset, length));
+    }
+
+    /**
+     * add Appearance filter
+     *
+     * @param expect {@link BigInfo} instance
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addBigInfoFilter(@NonNull BigInfo expect) {
+        mFilterList.add(new BigInfoFilter(expect));
+        return this;
+    }
+
+    /**
+     * add Appearance filter
+     *
+     * @param data Appearance data array
+     * @return myself
+     * @see ByteArrayCreater#createFromByteArray(byte[])
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addBigInfoFilter(@NonNull byte[] data) {
+        return addBigInfoFilter(data, 0, data[0]);
+    }
+
+    /**
+     * add Appearance filter
+     *
+     * @param data   {@link Appearance#Appearance(byte[], int, int)} 1st parameter
+     * @param offset {@link Appearance#Appearance(byte[], int, int)} 2nd parameter
+     * @param length {@link Appearance#Appearance(byte[], int, int)} 3rd parameter
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addBigInfoFilter(@NonNull byte[] data, int offset, int length) {
+        return addBigInfoFilter(new BigInfo(data, offset, length));
     }
 
     /**

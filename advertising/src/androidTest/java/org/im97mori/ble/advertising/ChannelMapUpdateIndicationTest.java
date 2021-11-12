@@ -2,11 +2,15 @@ package org.im97mori.ble.advertising;
 
 import android.os.Parcel;
 
+import org.im97mori.ble.BLEUtils;
 import org.junit.Test;
 
 import static org.im97mori.ble.constants.DataType.CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class ChannelMapUpdateIndicationTest {
@@ -745,7 +749,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -765,7 +769,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00002() {
+    public void test_constructor_1_00002() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -785,7 +789,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00003() {
+    public void test_constructor_1_00003() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -805,7 +809,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00004() {
+    public void test_constructor_1_00004() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -825,7 +829,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00005() {
+    public void test_constructor_1_00005() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -845,7 +849,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00006() {
+    public void test_constructor_1_00006() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -865,7 +869,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00007() {
+    public void test_constructor_1_00007() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -885,7 +889,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00008() {
+    public void test_constructor_1_00008() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -905,7 +909,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00009() {
+    public void test_constructor_1_00009() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -925,7 +929,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00010() {
+    public void test_constructor_1_00010() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -945,7 +949,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00011() {
+    public void test_constructor_1_00011() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -965,7 +969,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00012() {
+    public void test_constructor_1_00012() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -985,7 +989,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00013() {
+    public void test_constructor_1_00013() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1005,7 +1009,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00014() {
+    public void test_constructor_1_00014() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1025,7 +1029,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00015() {
+    public void test_constructor_1_00015() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1045,7 +1049,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00016() {
+    public void test_constructor_1_00016() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1065,7 +1069,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00017() {
+    public void test_constructor_1_00017() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1085,7 +1089,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00018() {
+    public void test_constructor_1_00018() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1105,7 +1109,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00019() {
+    public void test_constructor_1_00019() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1125,7 +1129,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00020() {
+    public void test_constructor_1_00020() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1145,7 +1149,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00021() {
+    public void test_constructor_1_00021() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1165,7 +1169,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00022() {
+    public void test_constructor_1_00022() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1185,7 +1189,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00023() {
+    public void test_constructor_1_00023() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1205,7 +1209,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00024() {
+    public void test_constructor_1_00024() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1225,7 +1229,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00025() {
+    public void test_constructor_1_00025() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1245,7 +1249,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00026() {
+    public void test_constructor_1_00026() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1265,7 +1269,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00027() {
+    public void test_constructor_1_00027() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1285,7 +1289,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00028() {
+    public void test_constructor_1_00028() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1305,7 +1309,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00029() {
+    public void test_constructor_1_00029() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1325,7 +1329,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00030() {
+    public void test_constructor_1_00030() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1345,7 +1349,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00031() {
+    public void test_constructor_1_00031() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1365,7 +1369,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00032() {
+    public void test_constructor_1_00032() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1385,7 +1389,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00033() {
+    public void test_constructor_1_00033() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1405,7 +1409,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00034() {
+    public void test_constructor_1_00034() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1425,7 +1429,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00035() {
+    public void test_constructor_1_00035() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1445,7 +1449,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00036() {
+    public void test_constructor_1_00036() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1465,7 +1469,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00037() {
+    public void test_constructor_1_00037() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1485,7 +1489,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00038() {
+    public void test_constructor_1_00038() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1505,7 +1509,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00039() {
+    public void test_constructor_1_00039() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1525,7 +1529,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00040() {
+    public void test_constructor_1_00040() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1545,7 +1549,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00041() {
+    public void test_constructor_1_00041() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1563,7 +1567,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00042() {
+    public void test_constructor_1_00042() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1587,7 +1591,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00043() {
+    public void test_constructor_1_00043() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1605,7 +1609,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00044() {
+    public void test_constructor_1_00044() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1623,7 +1627,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00045() {
+    public void test_constructor_1_00045() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1641,7 +1645,7 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00046() {
+    public void test_constructor_1_00046() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
@@ -1659,10 +1663,2242 @@ public class ChannelMapUpdateIndicationTest {
     }
 
     @Test
-    public void test_constructor_00047() {
+    public void test_constructor_1_00047() {
         byte[] data = getData();
 
         ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0, data[0]);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b11111111_11111111, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(1, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2404, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00002() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(2, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2406, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00003() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(3, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2408, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00004() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(4, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2410, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00005() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(5, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2412, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00006() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(6, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2414, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00007() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(7, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2416, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00008() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(8, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2418, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00009() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(9, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2420, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00010() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(10, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2422, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00011() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(11, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2424, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00012() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(13, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2428, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00013() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(14, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2430, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00014() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(15, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2432, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00015() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(16, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2434, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00016() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(17, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2436, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00017() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(18, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2438, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00018() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(19, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2440, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00019() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(20, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2442, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00020() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(21, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2444, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00021() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(22, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2446, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00022() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(23, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2448, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00023() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(24, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2450, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00024() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(25, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2452, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00025() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(26, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2454, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00026() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(27, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2456, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00027() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(28, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2458, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00028() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(29, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2460, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00029() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(30, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2462, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00030() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(31, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2464, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00031() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(32, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2466, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00032() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(33, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2468, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00033() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(34, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2470, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00034() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(35, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2472, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00035() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(36, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2474, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00036() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(37, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2476, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00037() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(38, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2478, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00038() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2402, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00039() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(12, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2426, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00040() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(39, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2480, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00041() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00042() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b00000000, result1.getChmList().get(0).intValue());
+        assertEquals(0b00000000, result1.getChmList().get(1).intValue());
+        assertEquals(0b00000000, result1.getChmList().get(2).intValue());
+        assertEquals(0b00000000, result1.getChmList().get(3).intValue());
+        assertEquals(0b00000000, result1.getChmList().get(4).intValue());
+        assertEquals(40, result1.getUnusedPhyChannelList().size());
+        for (int i = 0; i < 40; i++) {
+            assertEquals(i, result1.getUnusedPhyChannelList().get(i).intValue());
+        }
+        assertEquals(40, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        for (int i = 0; i < 40; i++) {
+            assertEquals(2400 + (i + 1) * 2, result1.getUnusedPhyChannelRfCenterFrequencyList().get(i).intValue());
+        }
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00043() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b00000000_00000001, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00044() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b00000000_10000000, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00045() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b00000001_00000000, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00046() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b10000000_00000000, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_2_00047() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b11111111_11111111, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(1, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2404, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00002() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(2, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2406, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00003() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(3, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2408, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00004() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(4, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2410, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00005() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(5, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2412, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00006() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(6, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2414, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00007() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(7, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2416, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00008() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(8, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2418, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00009() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(9, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2420, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00010() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(10, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2422, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00011() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(11, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2424, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00012() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(13, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2428, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00013() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(14, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2430, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00014() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(15, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2432, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00015() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(16, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2434, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00016() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(17, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2436, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00017() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(18, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2438, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00018() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(19, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2440, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00019() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(20, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2442, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00020() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(21, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2444, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00021() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(22, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2446, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00022() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(23, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2448, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00023() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(24, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2450, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00024() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(25, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2452, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00025() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(26, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2454, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00026() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(27, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2456, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00027() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(28, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2458, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00028() {
+        byte[] data = getData();
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(data, 0);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(29, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2460, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00029() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(30, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2462, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00030() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(31, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2464, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00031() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(32, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2466, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00032() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(33, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2468, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00033() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11111110 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(34, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2470, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00034() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11111101 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(35, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2472, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00035() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11111011 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(36, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2474, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00036() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11110111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(37, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2476, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00037() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11101111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(38, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2478, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00038() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b11011111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2402, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00039() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b10111111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(12, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2426, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00040() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0b01111111 & 0xff, result1.getChmList().get(4).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelList().size());
+        assertEquals(39, result1.getUnusedPhyChannelList().get(0).intValue());
+        assertEquals(1, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(2480, result1.getUnusedPhyChannelRfCenterFrequencyList().get(0).intValue());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00041() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00042() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0b00000000, result1.getChmList().get(0).intValue());
+        assertEquals(0b00000000, result1.getChmList().get(1).intValue());
+        assertEquals(0b00000000, result1.getChmList().get(2).intValue());
+        assertEquals(0b00000000, result1.getChmList().get(3).intValue());
+        assertEquals(0b00000000, result1.getChmList().get(4).intValue());
+        assertEquals(40, result1.getUnusedPhyChannelList().size());
+        for (int i = 0; i < 40; i++) {
+            assertEquals(i, result1.getUnusedPhyChannelList().get(i).intValue());
+        }
+        assertEquals(40, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        for (int i = 0; i < 40; i++) {
+            assertEquals(2400 + (i + 1) * 2, result1.getUnusedPhyChannelRfCenterFrequencyList().get(i).intValue());
+        }
+        assertEquals(0, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00043() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b00000000_00000001, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00044() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b00000000_10000000, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00045() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b00000001_00000000, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00046() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
+        assertEquals(8, result1.getLength());
+        assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
+        assertEquals(5, result1.getChmList().size());
+        assertEquals(0xff, result1.getChmList().get(0).intValue());
+        assertEquals(0xff, result1.getChmList().get(1).intValue());
+        assertEquals(0xff, result1.getChmList().get(2).intValue());
+        assertEquals(0xff, result1.getChmList().get(3).intValue());
+        assertEquals(0xff, result1.getChmList().get(4).intValue());
+        assertEquals(0, result1.getUnusedPhyChannelList().size());
+        assertEquals(0, result1.getUnusedPhyChannelRfCenterFrequencyList().size());
+        assertEquals(0b10000000_00000000, result1.getInstant());
+    }
+
+    @Test
+    public void test_constructor_3_00047() {
+        byte[] data = getData();
+
+        List<Integer> chmList = new ArrayList<>();
+        chmList.add(data[2] & 0xff);
+        chmList.add(data[3] & 0xff);
+        chmList.add(data[4] & 0xff);
+        chmList.add(data[5] & 0xff);
+        chmList.add(data[6] & 0xff);
+        int instant = BLEUtils.createUInt16(data, 7);
+
+        ChannelMapUpdateIndicationAndroid result1 = new ChannelMapUpdateIndicationAndroid(chmList, instant);
         assertEquals(8, result1.getLength());
         assertEquals(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE, result1.getDataType());
         assertEquals(5, result1.getChmList().size());

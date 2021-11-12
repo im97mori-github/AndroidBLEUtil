@@ -7,6 +7,10 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+
 /**
  * <p>
  * List of 16-bit Service Solicitation UUIDs
@@ -51,6 +55,15 @@ public class ListOf16BitServiceSolicitationUUIDsAndroid extends ListOf16BitServi
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #ListOf16BitServiceSolicitationUUIDsAndroid(byte[], int, int)
+     */
+    public ListOf16BitServiceSolicitationUUIDsAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Complete List of 16-bit Service Class UUIDs
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +74,25 @@ public class ListOf16BitServiceSolicitationUUIDsAndroid extends ListOf16BitServi
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor for List of 128-bit Service Solicitation UUIDs
+     *
+     * @param uuids UUID array
+     * @see ListOf16BitServiceSolicitationUUIDsAndroid#ListOf16BitServiceSolicitationUUIDsAndroid(List)
+     */
+    public ListOf16BitServiceSolicitationUUIDsAndroid(@NonNull UUID... uuids) {
+        this(Arrays.asList(uuids));
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param uuidList UUID list
+     */
+    public ListOf16BitServiceSolicitationUUIDsAndroid(@NonNull List<UUID> uuidList) {
+        super(uuidList);
     }
 
     /**

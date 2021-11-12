@@ -2,6 +2,7 @@ package org.im97mori.ble.advertising;
 
 import android.os.Parcel;
 
+import org.im97mori.ble.BLEUtils;
 import org.junit.Test;
 
 import static org.im97mori.ble.advertising.PeripheralConnectionIntervalRange.PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
@@ -91,7 +92,7 @@ public class PeripheralConnectionIntervalRangeTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
@@ -102,7 +103,7 @@ public class PeripheralConnectionIntervalRangeTest {
     }
 
     @Test
-    public void test_constructor_00002() {
+    public void test_constructor_1_00002() {
         byte[] data = getData();
 
         PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
@@ -117,7 +118,7 @@ public class PeripheralConnectionIntervalRangeTest {
     }
 
     @Test
-    public void test_constructor_00003() {
+    public void test_constructor_1_00003() {
         byte[] data = getData();
 
         PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
@@ -132,10 +133,130 @@ public class PeripheralConnectionIntervalRangeTest {
     }
 
     @Test
-    public void test_constructor_00004() {
+    public void test_constructor_1_00004() {
         byte[] data = getData();
 
         PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0, data[0]);
+        assertEquals(5, result1.getLength());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
+        assertTrue(result1.hasMinimum());
+        assertTrue(result1.hasMaximum());
+        assertEquals(0x0c80, result1.getMinimumValue());
+        assertEquals(0x0c80, result1.getMaximumValue());
+        assertEquals(0x0c80 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0x0c80 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0);
+        assertEquals(5, result1.getLength());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
+        assertFalse(result1.hasMinimum());
+        assertFalse(result1.hasMaximum());
+    }
+
+    @Test
+    public void test_constructor_2_00002() {
+        byte[] data = getData();
+
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0);
+        assertEquals(5, result1.getLength());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
+        assertTrue(result1.hasMinimum());
+        assertTrue(result1.hasMaximum());
+        assertEquals(0, result1.getMinimumValue());
+        assertEquals(0, result1.getMaximumValue());
+        assertEquals(0 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00003() {
+        byte[] data = getData();
+
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0);
+        assertEquals(5, result1.getLength());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
+        assertTrue(result1.hasMinimum());
+        assertTrue(result1.hasMaximum());
+        assertEquals(0x0006, result1.getMinimumValue());
+        assertEquals(0x0006, result1.getMaximumValue());
+        assertEquals(0x0006 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0x0006 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_2_00004() {
+        byte[] data = getData();
+
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(data, 0);
+        assertEquals(5, result1.getLength());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
+        assertTrue(result1.hasMinimum());
+        assertTrue(result1.hasMaximum());
+        assertEquals(0x0c80, result1.getMinimumValue());
+        assertEquals(0x0c80, result1.getMaximumValue());
+        assertEquals(0x0c80 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0x0c80 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        int minimumValue = BLEUtils.createUInt16(data, 2);
+        int maximumValue = BLEUtils.createUInt16(data, 4);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(minimumValue, maximumValue);
+        assertEquals(5, result1.getLength());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
+        assertFalse(result1.hasMinimum());
+        assertFalse(result1.hasMaximum());
+    }
+
+    @Test
+    public void test_constructor_3_00002() {
+        byte[] data = getData();
+
+        int minimumValue = BLEUtils.createUInt16(data, 2);
+        int maximumValue = BLEUtils.createUInt16(data, 4);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(minimumValue, maximumValue);
+        assertEquals(5, result1.getLength());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
+        assertTrue(result1.hasMinimum());
+        assertTrue(result1.hasMaximum());
+        assertEquals(0, result1.getMinimumValue());
+        assertEquals(0, result1.getMaximumValue());
+        assertEquals(0 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00003() {
+        byte[] data = getData();
+
+        int minimumValue = BLEUtils.createUInt16(data, 2);
+        int maximumValue = BLEUtils.createUInt16(data, 4);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(minimumValue, maximumValue);
+        assertEquals(5, result1.getLength());
+        assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
+        assertTrue(result1.hasMinimum());
+        assertTrue(result1.hasMaximum());
+        assertEquals(0x0006, result1.getMinimumValue());
+        assertEquals(0x0006, result1.getMaximumValue());
+        assertEquals(0x0006 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMinimumValueMillis(), 0);
+        assertEquals(0x0006 * PERIPHERAL_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result1.getMaximumValueMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_3_00004() {
+        byte[] data = getData();
+
+        int minimumValue = BLEUtils.createUInt16(data, 2);
+        int maximumValue = BLEUtils.createUInt16(data, 4);
+        PeripheralConnectionIntervalRangeAndroid result1 = new PeripheralConnectionIntervalRangeAndroid(minimumValue, maximumValue);
         assertEquals(5, result1.getLength());
         assertEquals(PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE, result1.getDataType());
         assertTrue(result1.hasMinimum());

@@ -4,7 +4,9 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.im97mori.ble.constants.DataType.PUBLIC_TARGET_ADDRESS_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
@@ -195,7 +197,7 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
@@ -206,7 +208,7 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00002() {
+    public void test_constructor_1_00002() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
@@ -217,7 +219,7 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00003() {
+    public void test_constructor_1_00003() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
@@ -228,7 +230,7 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00004() {
+    public void test_constructor_1_00004() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
@@ -239,7 +241,7 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00005() {
+    public void test_constructor_1_00005() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
@@ -250,7 +252,7 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00006() {
+    public void test_constructor_1_00006() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
@@ -261,7 +263,7 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00007() {
+    public void test_constructor_1_00007() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
@@ -272,7 +274,7 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00008() {
+    public void test_constructor_1_00008() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
@@ -282,10 +284,271 @@ public class PublicTargetAddressTest {
     }
 
     @Test
-    public void test_constructor_00009() {
+    public void test_constructor_1_00009() {
         byte[] data = getData();
 
         PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0, data[0]);
+        assertEquals(13, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(2, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, 8), result1.getAddressList().get(0));
+        assertArrayEquals(Arrays.copyOfRange(data, 8, 14), result1.getAddressList().get(1));
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00002() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00003() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00004() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00005() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00006() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00007() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00008() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(1, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(0, result1.getAddressList().size());
+    }
+
+    @Test
+    public void test_constructor_2_00009() {
+        byte[] data = getData();
+
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(data, 0);
+        assertEquals(13, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(2, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, 8), result1.getAddressList().get(0));
+        assertArrayEquals(Arrays.copyOfRange(data, 8, 14), result1.getAddressList().get(1));
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00002() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00003() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00004() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00005() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00006() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00007() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
+        assertEquals(7, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getAddressList().size());
+        assertArrayEquals(Arrays.copyOfRange(data, 2, data.length), result1.getAddressList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00008() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
+        assertEquals(1, result1.getLength());
+        assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
+        assertEquals(0, result1.getAddressList().size());
+    }
+
+    @Test
+    public void test_constructor_3_00009() {
+        byte[] data = getData();
+
+        List<byte[]> addressList = new ArrayList<>();
+        byte[] address;
+        for (int i = 2; i < data[0] - 1; i += 6) {
+            address = new byte[6];
+            System.arraycopy(data, i, address, 0, 6);
+            addressList.add(address);
+        }
+        PublicTargetAddressAndroid result1 = new PublicTargetAddressAndroid(addressList);
         assertEquals(13, result1.getLength());
         assertEquals(PUBLIC_TARGET_ADDRESS_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getAddressList().size());

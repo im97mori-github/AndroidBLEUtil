@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 import android.os.Parcel;
 
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.constants.AppearanceValues;
 import org.junit.Test;
 
@@ -51,10 +52,54 @@ public class AppearanceTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         AppearanceAndroid result1 = new AppearanceAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(APPEARANCE_DATA_TYPE, result1.getDataType());
+        long key = (data[2] & 0xff) | ((data[3] & 0xff) << 8);
+        assertEquals(key, result1.getAppearance());
+        assertEquals((key >> 6) & 0b00000011_11111111, result1.getAppearanceCategory());
+        assertEquals(key & 0b11111111_11000000, result1.getAppearanceCategoryWithOffset());
+        assertEquals(
+                AppearanceValues.APPEARANCE_CATEGORY_MAPPING
+                        .get(AppearanceValues.OUTDOOR_SPORTS_ACTIVITY_APPEARANCE_CATEGORY),
+                result1.getAppearanceCategoryName());
+        assertEquals(key & 0b00111111, result1.getAppearanceSubCategory());
+        assertEquals(
+                AppearanceValues.APPEARANCE_SUB_CATEGORY_MAPPING
+                        .get(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY),
+                result1.getAppearanceSubCategoryName());
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        AppearanceAndroid result1 = new AppearanceAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(APPEARANCE_DATA_TYPE, result1.getDataType());
+        long key = (data[2] & 0xff) | ((data[3] & 0xff) << 8);
+        assertEquals(key, result1.getAppearance());
+        assertEquals((key >> 6) & 0b00000011_11111111, result1.getAppearanceCategory());
+        assertEquals(key & 0b11111111_11000000, result1.getAppearanceCategoryWithOffset());
+        assertEquals(
+                AppearanceValues.APPEARANCE_CATEGORY_MAPPING
+                        .get(AppearanceValues.OUTDOOR_SPORTS_ACTIVITY_APPEARANCE_CATEGORY),
+                result1.getAppearanceCategoryName());
+        assertEquals(key & 0b00111111, result1.getAppearanceSubCategory());
+        assertEquals(
+                AppearanceValues.APPEARANCE_SUB_CATEGORY_MAPPING
+                        .get(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY),
+                result1.getAppearanceSubCategoryName());
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        AppearanceAndroid result1 = new AppearanceAndroid(BLEUtils.createUInt16(data, 2));
         assertEquals(3, result1.getLength());
         assertEquals(APPEARANCE_DATA_TYPE, result1.getDataType());
         long key = (data[2] & 0xff) | ((data[3] & 0xff) << 8);

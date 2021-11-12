@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.List;
+
 /**
  * <p>
  * Channel Map Update Indication
@@ -49,6 +51,25 @@ public class ChannelMapUpdateIndicationAndroid extends ChannelMapUpdateIndicatio
         }
 
     };
+
+    /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #ChannelMapUpdateIndicationAndroid(byte[], int, int)
+     */
+    public ChannelMapUpdateIndicationAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param chmList	ChM list
+     * @param instant	Instant
+     */
+    public ChannelMapUpdateIndicationAndroid(@NonNull List<Integer> chmList, int instant) {
+        super(chmList, instant);
+    }
 
     /**
      * Constructor for Channel Map Update Indication

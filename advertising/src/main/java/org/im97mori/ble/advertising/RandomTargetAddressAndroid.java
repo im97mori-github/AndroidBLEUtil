@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.List;
+
 /**
  * <p>
  * Random Target Address
@@ -51,6 +53,15 @@ public class RandomTargetAddressAndroid extends RandomTargetAddress implements A
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #RandomTargetAddressAndroid(byte[], int, int)
+     */
+    public RandomTargetAddressAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Random Target Address
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -62,6 +73,15 @@ public class RandomTargetAddressAndroid extends RandomTargetAddress implements A
             , int length) {
         super(data, offset, length);
     }
+    /**
+     * Constructor from parameters
+     *
+     * @param addressList Random Target Address list
+     */
+    public RandomTargetAddressAndroid(@NonNull List<byte[]> addressList) {
+        super(addressList);
+    }
+
 
     /**
      * Constructor from {@link Parcel}

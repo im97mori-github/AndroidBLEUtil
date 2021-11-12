@@ -4,8 +4,12 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
+import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.im97mori.ble.constants.DataType.LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -132,7 +136,7 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
@@ -143,7 +147,7 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00002() {
+    public void test_constructor_1_00002() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
@@ -154,7 +158,7 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00003() {
+    public void test_constructor_1_00003() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
@@ -165,7 +169,7 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00004() {
+    public void test_constructor_1_00004() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
@@ -176,7 +180,7 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00005() {
+    public void test_constructor_1_00005() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
@@ -187,7 +191,7 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00006() {
+    public void test_constructor_1_00006() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
@@ -198,7 +202,7 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00007() {
+    public void test_constructor_1_00007() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
@@ -209,7 +213,7 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00008() {
+    public void test_constructor_1_00008() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
@@ -219,10 +223,334 @@ public class ListOf16BitServiceSolicitationUUIDsTest {
     }
 
     @Test
-    public void test_constructor_00009() {
+    public void test_constructor_1_00009() {
         byte[] data = getData();
 
         ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(5, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(2, result1.getUuidList().size());
+        assertEquals(UUID.fromString("00000201-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+        assertEquals(UUID.fromString("00000403-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(1));
+    }
+
+    @Test
+    public void test_constructor_1_00101() {
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid();
+        assertEquals(1, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(0, result1.getUuidList().size());
+    }
+
+    @Test
+    public void test_constructor_1_00102() {
+        UUID uuid1 = UUID.randomUUID();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuid1);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(uuid1, result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_1_00103() {
+        UUID uuid1 = UUID.randomUUID();
+        UUID uuid2 = UUID.randomUUID();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuid1, uuid2);
+        assertEquals(5, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(2, result1.getUuidList().size());
+        assertEquals(uuid1, result1.getUuidList().get(0));
+        assertEquals(uuid2, result1.getUuidList().get(1));
+    }
+
+    @Test
+    public void test_constructor_1_00104() {
+        UUID uuid1 = UUID.randomUUID();
+        UUID uuid2 = UUID.randomUUID();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(Arrays.asList(uuid1, uuid2));
+        assertEquals(5, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(2, result1.getUuidList().size());
+        assertEquals(uuid1, result1.getUuidList().get(0));
+        assertEquals(uuid2, result1.getUuidList().get(1));
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00002() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("00007f7f-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00003() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("00007f00-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00004() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("0000007f-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00005() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("0000ffff-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00006() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("0000ff00-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00007() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("000000ff-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_2_00008() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(1, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(0, result1.getUuidList().size());
+    }
+
+    @Test
+    public void test_constructor_2_00009() {
+        byte[] data = getData();
+
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(data, 0);
+        assertEquals(5, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(2, result1.getUuidList().size());
+        assertEquals(UUID.fromString("00000201-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+        assertEquals(UUID.fromString("00000403-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(1));
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("00000000-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00002() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("00007f7f-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00003() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("00007f00-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00004() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("0000007f-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00005() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("0000ffff-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00006() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("0000ff00-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00007() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
+        assertEquals(3, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(1, result1.getUuidList().size());
+        assertEquals(UUID.fromString("000000ff-0000-1000-8000-00805F9B34FB"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_3_00008() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
+        assertEquals(1, result1.getLength());
+        assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
+        assertEquals(0, result1.getUuidList().size());
+    }
+
+    @Test
+    public void test_constructor_3_00009() {
+        byte[] data = getData();
+
+        long lsb = BASE_UUID.getLeastSignificantBits();
+        long msb = BASE_UUID.getMostSignificantBits();
+        List<UUID> uuidList = new ArrayList<>();
+        for (int i = 2; i < data[0] + 1; i += 2) {
+            long target = data[i] & 0xff;
+            target |= (data[i + 1] & 0xff) << 8;
+            target = target << 32;
+            uuidList.add(new UUID(msb | target, lsb));
+        }
+        ListOf16BitServiceSolicitationUUIDsAndroid result1 = new ListOf16BitServiceSolicitationUUIDsAndroid(uuidList);
         assertEquals(5, result1.getLength());
         assertEquals(LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE, result1.getDataType());
         assertEquals(2, result1.getUuidList().size());

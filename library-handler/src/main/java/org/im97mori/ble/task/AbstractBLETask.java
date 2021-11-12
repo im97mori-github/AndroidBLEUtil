@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 /**
  * Base task class
  */
-@SuppressWarnings({"WeakerAccess"})
+@SuppressWarnings({"WeakerAccess", "unused"})
 public abstract class AbstractBLETask {
 
     /**

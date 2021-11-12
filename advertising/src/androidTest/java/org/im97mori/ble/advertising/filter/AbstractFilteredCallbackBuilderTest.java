@@ -1,7 +1,9 @@
 package org.im97mori.ble.advertising.filter;
 
 import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_LONG_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.APPEARANCE_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.BIG_INFO_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
@@ -36,7 +38,9 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AdvertisingIntervalAndroid;
+import org.im97mori.ble.advertising.AdvertisingIntervalLongAndroid;
 import org.im97mori.ble.advertising.AppearanceAndroid;
+import org.im97mori.ble.advertising.BigInfoAndroid;
 import org.im97mori.ble.advertising.ChannelMapUpdateIndicationAndroid;
 import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDsAndroid;
 import org.im97mori.ble.advertising.CompleteListOf16BitServiceUUIDsAndroid;
@@ -65,7 +69,6 @@ import org.im97mori.ble.advertising.UniformResourceIdentifierAndroid;
 import org.im97mori.ble.constants.AppearanceValues;
 import org.junit.Test;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -180,6 +183,51 @@ public class AbstractFilteredCallbackBuilderTest {
     }
 
     @Test
+    public void addAdvertisingIntervalLongFilterTest_001() {
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = ADVERTISING_INTERVAL_LONG_DATA_TYPE;
+        data[2] = 0x01;
+        data[3] = 0x02;
+        data[4] = 0x03;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addAdvertisingIntervalLongFilter(data).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof AdvertisingIntervalLongFilter);
+    }
+
+    @Test
+    public void addAdvertisingIntervalLongFilterTest_002() {
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = ADVERTISING_INTERVAL_LONG_DATA_TYPE;
+        data[2] = 0x01;
+        data[3] = 0x02;
+        data[4] = 0x03;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addAdvertisingIntervalLongFilter(data, 0, 3).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof AdvertisingIntervalLongFilter);
+    }
+
+    @Test
+    public void addAdvertisingIntervalLongFilterTest_003() {
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = ADVERTISING_INTERVAL_LONG_DATA_TYPE;
+        data[2] = 0x01;
+        data[3] = 0x02;
+        data[4] = 0x03;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addAdvertisingIntervalLongFilter(AdvertisingIntervalLongAndroid.CREATOR.createFromByteArray(data)).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof AdvertisingIntervalLongFilter);
+    }
+
+    @Test
     public void addAppearanceFilterTest_001() {
         int key = AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY;
         byte[] data = new byte[4];
@@ -222,6 +270,141 @@ public class AbstractFilteredCallbackBuilderTest {
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addAppearanceFilter(AppearanceAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof AppearanceFilter);
+    }
+
+    @Test
+    public void addBigInfoFilterTest_001() {
+        byte[] data = new byte[35];
+        data[ 0] = 34;
+        data[ 1] = BIG_INFO_DATA_TYPE;
+        data[ 2] = 0b00000000;
+        data[ 3] = 0b00000000;
+        data[ 4] = 0b00000000;
+        data[ 5] = 0b00000000;
+        data[ 6] = 0b00000000;
+        data[ 7] = 0b00000000;
+        data[ 8] = 0b00000000;
+        data[ 9] = 0b00000000;
+        data[10] = 0b00000000;
+        data[11] = 0b00000000;
+        data[12] = 0b00000000;
+        data[13] = 0b00000000;
+        data[14] = 0b00000000;
+        data[15] = 0b00000000;
+        data[16] = 0b00000000;
+        data[17] = 0b00000000;
+        data[18] = 0b00000000;
+        data[19] = 0b00000000;
+        data[20] = 0b00000000;
+        data[21] = 0b00000000;
+        data[22] = 0b00000000;
+        data[23] = 0b00000000;
+        data[24] = 0b00000000;
+        data[25] = 0b00000000;
+        data[26] = 0b00000000;
+        data[27] = 0b00000000;
+        data[28] = 0b00000000;
+        data[29] = 0b00000000;
+        data[30] = 0b00000000;
+        data[31] = 0b00000000;
+        data[32] = 0b00000000;
+        data[33] = 0b00000000;
+        data[34] = 0b00000000;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addBigInfoFilter(data).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof BigInfoFilter);
+    }
+
+    @Test
+    public void addBigInfoFilterTest_002() {
+        byte[] data = new byte[35];
+        data[ 0] = 34;
+        data[ 1] = BIG_INFO_DATA_TYPE;
+        data[ 2] = 0b00000000;
+        data[ 3] = 0b00000000;
+        data[ 4] = 0b00000000;
+        data[ 5] = 0b00000000;
+        data[ 6] = 0b00000000;
+        data[ 7] = 0b00000000;
+        data[ 8] = 0b00000000;
+        data[ 9] = 0b00000000;
+        data[10] = 0b00000000;
+        data[11] = 0b00000000;
+        data[12] = 0b00000000;
+        data[13] = 0b00000000;
+        data[14] = 0b00000000;
+        data[15] = 0b00000000;
+        data[16] = 0b00000000;
+        data[17] = 0b00000000;
+        data[18] = 0b00000000;
+        data[19] = 0b00000000;
+        data[20] = 0b00000000;
+        data[21] = 0b00000000;
+        data[22] = 0b00000000;
+        data[23] = 0b00000000;
+        data[24] = 0b00000000;
+        data[25] = 0b00000000;
+        data[26] = 0b00000000;
+        data[27] = 0b00000000;
+        data[28] = 0b00000000;
+        data[29] = 0b00000000;
+        data[30] = 0b00000000;
+        data[31] = 0b00000000;
+        data[32] = 0b00000000;
+        data[33] = 0b00000000;
+        data[34] = 0b00000000;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addBigInfoFilter(data, 0, 3).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof BigInfoFilter);
+    }
+
+    @Test
+    public void addaddBigInfoFilterTest_003() {
+        byte[] data = new byte[35];
+        data[ 0] = 34;
+        data[ 1] = BIG_INFO_DATA_TYPE;
+        data[ 2] = 0b00000000;
+        data[ 3] = 0b00000000;
+        data[ 4] = 0b00000000;
+        data[ 5] = 0b00000000;
+        data[ 6] = 0b00000000;
+        data[ 7] = 0b00000000;
+        data[ 8] = 0b00000000;
+        data[ 9] = 0b00000000;
+        data[10] = 0b00000000;
+        data[11] = 0b00000000;
+        data[12] = 0b00000000;
+        data[13] = 0b00000000;
+        data[14] = 0b00000000;
+        data[15] = 0b00000000;
+        data[16] = 0b00000000;
+        data[17] = 0b00000000;
+        data[18] = 0b00000000;
+        data[19] = 0b00000000;
+        data[20] = 0b00000000;
+        data[21] = 0b00000000;
+        data[22] = 0b00000000;
+        data[23] = 0b00000000;
+        data[24] = 0b00000000;
+        data[25] = 0b00000000;
+        data[26] = 0b00000000;
+        data[27] = 0b00000000;
+        data[28] = 0b00000000;
+        data[29] = 0b00000000;
+        data[30] = 0b00000000;
+        data[31] = 0b00000000;
+        data[32] = 0b00000000;
+        data[33] = 0b00000000;
+        data[34] = 0b00000000;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addBigInfoFilter(BigInfoAndroid.CREATOR.createFromByteArray(data)).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof BigInfoFilter);
     }
 
     @Test

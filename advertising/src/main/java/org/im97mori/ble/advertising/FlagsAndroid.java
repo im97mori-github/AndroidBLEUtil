@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.List;
+
 /**
  * <p>
  * Flags
@@ -51,6 +53,15 @@ public class FlagsAndroid extends Flags implements AdvertisingDataInterfaceAndro
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #FlagsAndroid(byte[], int, int)
+     */
+    public FlagsAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Flags
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +72,15 @@ public class FlagsAndroid extends Flags implements AdvertisingDataInterfaceAndro
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param flagsList Flags list
+     */
+    public FlagsAndroid(@NonNull List<Integer> flagsList) {
+        super(flagsList);
     }
 
     /**

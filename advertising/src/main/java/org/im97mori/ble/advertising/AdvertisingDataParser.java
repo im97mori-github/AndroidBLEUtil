@@ -1,21 +1,7 @@
 package org.im97mori.ble.advertising;
 
-import android.bluetooth.le.ScanRecord;
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.im97mori.ble.constants.DataType;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.ADVERTISING_INTERVAL_LONG_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.APPEARANCE_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.BIG_INFO_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE;
@@ -33,16 +19,31 @@ import static org.im97mori.ble.constants.DataType.LIST_OF_128_BIT_SERVICE_SOLICI
 import static org.im97mori.ble.constants.DataType.LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.PUBLIC_TARGET_ADDRESS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.RANDOM_TARGET_ADDRESS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.SERVICE_DATA_128_BIT_UUID_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.SERVICE_DATA_16_BIT_UUID_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.SERVICE_DATA_32_BIT_UUID_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.SHORTENED_LOCAL_NAME_DATA_TYPE;
-import static org.im97mori.ble.constants.DataType.PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.TRANSPORT_DISCOVERY_DATA_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.TX_POWER_LEVEL_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.URI_DATA_TYPE;
+
+import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import org.im97mori.ble.constants.DataType;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Parser for {@link ScanRecord#getBytes()}
@@ -87,6 +88,7 @@ public class AdvertisingDataParser {
             set.add(PUBLIC_TARGET_ADDRESS_DATA_TYPE);
             set.add(RANDOM_TARGET_ADDRESS_DATA_TYPE);
             set.add(ADVERTISING_INTERVAL_DATA_TYPE);
+            set.add(ADVERTISING_INTERVAL_LONG_DATA_TYPE);
             set.add(URI_DATA_TYPE);
             set.add(INDOOR_POSITIONING_DATA_TYPE);
             set.add(TRANSPORT_DISCOVERY_DATA_DATA_TYPE);
@@ -388,6 +390,11 @@ public class AdvertisingDataParser {
          * Advertising Interval
          */
         private AdvertisingInterval mAdvertisingInterval;
+
+        /**
+         * Advertising Interval - long
+         */
+        private AdvertisingIntervalLong mAdvertisingIntervalLong;
 
         /**
          * Latest URI
@@ -774,6 +781,14 @@ public class AdvertisingDataParser {
         }
 
         /**
+         * @return Advertising Interval - long
+         */
+        @Nullable
+        public AdvertisingIntervalLong getAdvertisingIntervalLong() {
+            return mAdvertisingIntervalLong;
+        }
+
+        /**
          * @return Latest URI
          */
         @Nullable
@@ -893,6 +908,8 @@ public class AdvertisingDataParser {
                     mRandomTargetAddress = (RandomTargetAddressAndroid) data;
                 } else if (data instanceof AdvertisingInterval) {
                     mAdvertisingInterval = (AdvertisingInterval) data;
+                } else if (data instanceof AdvertisingIntervalLong) {
+                    mAdvertisingIntervalLong = (AdvertisingIntervalLong) data;
                 } else if (data instanceof UniformResourceIdentifierAndroid) {
                     mUniformResourceIdentifier = (UniformResourceIdentifierAndroid) data;
                     mUniformResourceIdentifierList.add(mUniformResourceIdentifier);
@@ -998,6 +1015,8 @@ public class AdvertisingDataParser {
                         resultList.add(new RandomTargetAddressAndroid(data, i, dataLength));
                     } else if (ADVERTISING_INTERVAL_DATA_TYPE == dataType) {
                         resultList.add(new AdvertisingIntervalAndroid(data, i, dataLength));
+                    } else if (ADVERTISING_INTERVAL_LONG_DATA_TYPE == dataType) {
+                        resultList.add(new AdvertisingIntervalLongAndroid(data, i, dataLength));
                     } else if (URI_DATA_TYPE == dataType) {
                         resultList.add(new UniformResourceIdentifierAndroid(data, i, dataLength));
                     } else if (INDOOR_POSITIONING_DATA_TYPE == dataType) {

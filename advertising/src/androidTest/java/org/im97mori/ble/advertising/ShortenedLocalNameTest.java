@@ -1,14 +1,12 @@
 package org.im97mori.ble.advertising;
 
-import android.os.Parcel;
-
-import org.junit.Test;
-
-import java.nio.charset.StandardCharsets;
-
 import static org.im97mori.ble.constants.DataType.SHORTENED_LOCAL_NAME_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+
+import android.os.Parcel;
+
+import org.junit.Test;
 
 @SuppressWarnings("unused")
 public class ShortenedLocalNameTest {
@@ -54,10 +52,30 @@ public class ShortenedLocalNameTest {
     }
 
     @Test
-    public void test_constructor_00001() {
+    public void test_constructor_1_00001() {
         byte[] data = getData();
 
         ShortenedLocalNameAndroid result1 = new ShortenedLocalNameAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(SHORTENED_LOCAL_NAME_DATA_TYPE, result1.getDataType());
+        assertEquals(new String(data, 2, data.length - 2), result1.getShortenedLocalName());
+    }
+
+    @Test
+    public void test_constructor_2_00001() {
+        byte[] data = getData();
+
+        ShortenedLocalNameAndroid result1 = new ShortenedLocalNameAndroid(data, 0);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(SHORTENED_LOCAL_NAME_DATA_TYPE, result1.getDataType());
+        assertEquals(new String(data, 2, data.length - 2), result1.getShortenedLocalName());
+    }
+
+    @Test
+    public void test_constructor_3_00001() {
+        byte[] data = getData();
+
+        ShortenedLocalNameAndroid result1 = new ShortenedLocalNameAndroid(new String(data, 2, data.length - 2));
         assertEquals(data[0], result1.getLength());
         assertEquals(SHORTENED_LOCAL_NAME_DATA_TYPE, result1.getDataType());
         assertEquals(new String(data, 2, data.length - 2), result1.getShortenedLocalName());

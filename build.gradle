@@ -25,17 +25,17 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.6.0'
-ext.uploadVersion = '0.6.0'
+ext.loadVersion = '0.6.1'
+ext.uploadVersion = '0.6.1'
 
-ext.handlerLoadVersion = '0.2.9'
-ext.handlerUploadVersion = '0.2.9'
+ext.handlerLoadVersion = '0.2.10'
+ext.handlerUploadVersion = '0.2.10'
 
-ext.centralLoadVersion = '0.7.9'
-ext.centralUploadVersion = '0.7.9'
+ext.centralLoadVersion = '0.7.10'
+ext.centralUploadVersion = '0.7.10'
 
-ext.peripheralLoadVersion = '0.3.9'
-ext.peripheralUploadVersion = '0.3.9'
+ext.peripheralLoadVersion = '0.3.10'
+ext.peripheralUploadVersion = '0.3.10'
 
 ext.coreConstantsErrorCodeAndroid = [
         artifactId         : 'ble-core-constants-errorcode-android'
@@ -130,9 +130,24 @@ ext.apiTest = "${myGroupId}:${test.artifactId}:${loadVersion}"
 ext.apiTestPeripheral = "${myGroupId}:${testPeripheral.artifactId}:${loadVersion}"
 ext.apiTestCentral = "${myGroupId}:${testCentral.artifactId}:${loadVersion}"
 
-ext.androidxAnnotation = 'androidx.annotation:annotation:1.2.0'
+ext.androidxAnnotation = 'androidx.annotation:annotation:1.3.0'
 ext.androidxTestRunner = 'androidx.test:runner:1.4.0'
 ext.androidxTestCore = 'androidx.test:core:1.4.0'
 ext.stackLog = 'org.im97mori:stacklog:0.0.2'
 ext.gson = 'com.google.code.gson:gson:2.8.6'
 ext.junit = 'junit:junit:4.13.2'
+
+
+// check extra library version for lint
+configurations {
+    checkExtraLibraryVersion
+}
+
+dependencies {
+    checkExtraLibraryVersion 'androidx.annotation:annotation:1.3.0'
+    checkExtraLibraryVersion 'androidx.test:runner:1.4.0'
+    checkExtraLibraryVersion 'androidx.test:core:1.4.0'
+    checkExtraLibraryVersion 'org.im97mori:stacklog:0.0.2'
+    checkExtraLibraryVersion 'com.google.code.gson:gson:2.8.6'
+    checkExtraLibraryVersion 'junit:junit:4.13.2'
+}

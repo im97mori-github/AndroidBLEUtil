@@ -51,6 +51,15 @@ public class IndoorPositioningAndroid extends IndoorPositioning implements Adver
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #IndoorPositioningAndroid(byte[], int, int)
+     */
+    public IndoorPositioningAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Indoor Positioning
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,39 @@ public class IndoorPositioningAndroid extends IndoorPositioning implements Adver
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param indoorPositioningConfiguration Indoor Positioning Configuration
+     * @param globalCoorinatesLatitude       Global Coordinates (Latitude)
+     * @param globalCoorinatesLongitude      Global Coordinates (Longitude)
+     * @param localCoordinatesNorth          Local Coordinates (North)
+     * @param localCoordinatesEast           Local Coordinates (East)
+     * @param txPower                        Tx Power
+     * @param floorNumber                    Floor Number
+     * @param altitude                       Altitude
+     * @param uncertainty                    Uncertainty
+     */
+    public IndoorPositioningAndroid(int indoorPositioningConfiguration
+            , int globalCoorinatesLatitude
+            , int globalCoorinatesLongitude
+            , int localCoordinatesNorth
+            , int localCoordinatesEast
+            , int txPower
+            , int floorNumber
+            , int altitude
+            , int uncertainty) {
+        super(indoorPositioningConfiguration
+                , globalCoorinatesLatitude
+                , globalCoorinatesLongitude
+                , localCoordinatesNorth
+                , localCoordinatesEast
+                , txPower
+                , floorNumber
+                , altitude
+                , uncertainty);
     }
 
     /**

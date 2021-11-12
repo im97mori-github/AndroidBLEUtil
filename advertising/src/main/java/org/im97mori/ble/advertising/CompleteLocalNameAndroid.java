@@ -51,6 +51,15 @@ public class CompleteLocalNameAndroid extends CompleteLocalName implements Adver
     };
 
     /**
+     * @param data   byte array from {@link ScanRecord#getBytes()}
+     * @param offset data offset
+     * @see #CompleteLocalNameAndroid(byte[], int, int)
+     */
+    public CompleteLocalNameAndroid(@NonNull byte[] data, int offset) {
+        this(data, offset, data[offset]);
+    }
+
+    /**
      * Constructor for Complete Local Name
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
@@ -61,6 +70,15 @@ public class CompleteLocalNameAndroid extends CompleteLocalName implements Adver
             , int offset
             , int length) {
         super(data, offset, length);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param completeLocalName Complete Local Name
+     */
+    public CompleteLocalNameAndroid(@NonNull String completeLocalName) {
+        super(completeLocalName);
     }
 
     /**
