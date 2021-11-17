@@ -36,8 +36,8 @@ public class RequestMtuTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_REQUEST_MTU_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(RequestMtuTask.KEY_NEXT_PROGRESS));
+        assertEquals(RequestMtuTask.PROGRESS_REQUEST_MTU_START, bundle.getString(RequestMtuTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -50,10 +50,10 @@ public class RequestMtuTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_REQUEST_MTU_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_MTU));
-        assertEquals(mtu, bundle.getInt(AbstractBLETask.KEY_MTU));
+        assertTrue(bundle.containsKey(RequestMtuTask.KEY_NEXT_PROGRESS));
+        assertEquals(RequestMtuTask.PROGRESS_REQUEST_MTU_SUCCESS, bundle.getString(RequestMtuTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(RequestMtuTask.KEY_MTU));
+        assertEquals(mtu, bundle.getInt(RequestMtuTask.KEY_MTU));
     }
 
     @Test
@@ -66,10 +66,10 @@ public class RequestMtuTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DISCOVER_SERVICE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
+        assertTrue(bundle.containsKey(RequestMtuTask.KEY_NEXT_PROGRESS));
+        assertEquals(RequestMtuTask.PROGRESS_REQUEST_MTU_ERROR, bundle.getString(RequestMtuTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(RequestMtuTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(RequestMtuTask.KEY_STATUS));
         assertEquals(object, message.obj);
     }
 

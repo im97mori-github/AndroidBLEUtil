@@ -25,8 +25,8 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.6.1'
-ext.uploadVersion = '0.6.1'
+ext.loadVersion = '0.6.2'
+ext.uploadVersion = '0.6.2'
 
 ext.handlerLoadVersion = '0.2.10'
 ext.handlerUploadVersion = '0.2.10'
@@ -82,16 +82,17 @@ ext.peripheral = [
 apply from: 'service.gradle'
 apply from: 'profile.gradle'
 
-ext.test = [
-        artifactId         : "ble-test"
+ext.testUtilAndroid = [
+        artifactId         : 'ble-test-android'
+        , baseModule       : "${myGroupId}:ble-test:${loadVersion}"
 ]
 
 ext.testPeripheral = [
-        artifactId         : "ble-test-peripheral"
+        artifactId         : 'ble-test-peripheral'
 ]
 
 ext.testCentral = [
-        artifactId         : "ble-test-central"
+        artifactId         : 'ble-test-central'
 ]
 
 ext.apiCoreConstantsAppearance = "${myGroupId}:ble-core-constants-appearance:${loadVersion}"
@@ -126,7 +127,7 @@ ext.apiHandler = "${myGroupId}:${handler.artifactId}:${handlerLoadVersion}"
 ext.apiCentral = "${myGroupId}:${central.artifactId}:${centralLoadVersion}"
 ext.apiPeripheral = "${myGroupId}:${peripheral.artifactId}:${peripheralLoadVersion}"
 
-ext.apiTest = "${myGroupId}:${test.artifactId}:${loadVersion}"
+ext.apiTestUtilAndroid = "${myGroupId}:${testUtilAndroid.artifactId}:${loadVersion}"
 ext.apiTestPeripheral = "${myGroupId}:${testPeripheral.artifactId}:${loadVersion}"
 ext.apiTestCentral = "${myGroupId}:${testCentral.artifactId}:${loadVersion}"
 

@@ -113,7 +113,7 @@ public class BlsPeripheralSampleActivity extends BaseActivity implements View.On
                         , new IEEE_11073_20601_SFLOAT(new byte[2], 0)
                         , 0
                         , new byte[2]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
-                .addBloodPressureFeature(new BloodPressureFeature(false, false, false, false, false, false))
+                .addBloodPressureFeature(new BloodPressureFeature(false, false, false, false, false, false, false, false, false))
                 .build();
         mBLEServerConnection.attach(bloodPressureServiceMockCallback);
     }

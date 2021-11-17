@@ -1,5 +1,9 @@
 package org.im97mori.ble.task;
 
+import static org.im97mori.ble.constants.ErrorCodeAndroid.BUSY;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -19,16 +23,47 @@ import org.im97mori.ble.TaskHandler;
 import java.util.List;
 import java.util.UUID;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.BUSY;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * Notification / Indication task
  * <p>
  * for peripheral role
  */
 public class NotificationTask extends AbstractBLETask {
+
+    /**
+     * KEY:STATUS
+     */
+    public static final String KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * KEY:BLUETOOTH_DEVICE
+     */
+    public static final String KEY_BLUETOOTH_DEVICE = "KEY_BLUETOOTH_DEVICE";
+
+    /**
+     * PROGRESS:NOTIFICATION_START
+     */
+    public static final String PROGRESS_NOTIFICATION_START = "PROGRESS_NOTIFICATION_START";
+
+    /**
+     * PROGRESS:NOTIFICATION_SUCCESS
+     */
+    public static final String PROGRESS_NOTIFICATION_SUCCESS = "PROGRESS_NOTIFICATION_SUCCESS";
+
+    /**
+     * PROGRESS:NOTIFICATION_ERROR
+     */
+    public static final String PROGRESS_NOTIFICATION_ERROR = "PROGRESS_NOTIFICATION_ERROR";
+
+    /**
+     * PROGRESS:BUSY
+     */
+    public static final String PROGRESS_BUSY = "PROGRESS_BUSY";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
 
     /**
      * Default timeout(millis) for read:30sec
@@ -45,7 +80,7 @@ public class NotificationTask extends AbstractBLETask {
     public static Message createNotificationSentSuccessMessage(BluetoothDevice bluetoothDevice) {
         Bundle bundle = new Bundle();
         bundle.putParcelable(KEY_BLUETOOTH_DEVICE, bluetoothDevice);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_NOTIFICATION_SUCCESS);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_NOTIFICATION_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -63,7 +98,7 @@ public class NotificationTask extends AbstractBLETask {
         Bundle bundle = new Bundle();
         bundle.putParcelable(KEY_BLUETOOTH_DEVICE, bluetoothDevice);
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_NOTIFICATION_ERROR);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_NOTIFICATION_ERROR);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -177,7 +212,7 @@ public class NotificationTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(AbstractBLETask.KEY_NEXT_PROGRESS, AbstractBLETask.PROGRESS_NOTIFICATION_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_NOTIFICATION_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -192,15 +227,15 @@ public class NotificationTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            int nextProgress = bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+            if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
                 mBLEServerConnection.getBLEServerCallback().onNotificationTimeout(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
-            } else if (AbstractBLETask.PROGRESS_INIT == mCurrentProgress) {
+            } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 // current:init, next:notification start
-                if (this == message.obj && AbstractBLETask.PROGRESS_NOTIFICATION_START == nextProgress) {
+                if (this == message.obj && PROGRESS_NOTIFICATION_START.equals(nextProgress)) {
                     BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
                     boolean result = false;
                     BluetoothGattService bluetoothGattService = null;
@@ -237,22 +272,22 @@ public class NotificationTask extends AbstractBLETask {
                         mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
                     } else {
                         if (bluetoothGattCharacteristic == null) {
-                            nextProgress = AbstractBLETask.PROGRESS_FINISHED;
+                            nextProgress = PROGRESS_FINISHED;
                             mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, UNKNOWN, mArgument);
                         } else {
-                            nextProgress = AbstractBLETask.PROGRESS_BUSY;
+                            nextProgress = PROGRESS_BUSY;
                             mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, BUSY, mArgument);
                         }
                     }
 
                     mCurrentProgress = nextProgress;
                 }
-            } else if (PROGRESS_NOTIFICATION_START == mCurrentProgress) {
-                if (AbstractBLETask.PROGRESS_NOTIFICATION_SUCCESS == nextProgress) {
+            } else if (PROGRESS_NOTIFICATION_START.equals(mCurrentProgress)) {
+                if (PROGRESS_NOTIFICATION_SUCCESS.equals(nextProgress)) {
                     // current:notification start, next:notification success
 
                     mBLEServerConnection.getBLEServerCallback().onNotificationSuccess(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mByteArray, mArgument);
-                } else if (AbstractBLETask.PROGRESS_NOTIFICATION_ERROR == nextProgress) {
+                } else if (PROGRESS_NOTIFICATION_ERROR.equals(nextProgress)) {
                     // current:notification start, next:notification error
 
                     mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, bundle.getInt(KEY_STATUS), mArgument);
@@ -264,7 +299,7 @@ public class NotificationTask extends AbstractBLETask {
             }
         }
 
-        return AbstractBLETask.PROGRESS_FINISHED == mCurrentProgress || AbstractBLETask.PROGRESS_BUSY == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_BUSY.equals(mCurrentProgress);
     }
 
     /**
@@ -272,7 +307,7 @@ public class NotificationTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return AbstractBLETask.PROGRESS_BUSY == mCurrentProgress;
+        return PROGRESS_BUSY.equals(mCurrentProgress);
     }
 
     /**
@@ -281,7 +316,7 @@ public class NotificationTask extends AbstractBLETask {
     @Override
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
-        mCurrentProgress = AbstractBLETask.PROGRESS_FINISHED;
+        mCurrentProgress = PROGRESS_FINISHED;
         mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, CANCEL, mArgument);
     }
 }

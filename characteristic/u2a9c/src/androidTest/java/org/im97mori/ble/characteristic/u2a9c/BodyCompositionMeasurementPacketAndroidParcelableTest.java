@@ -3751,7 +3751,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         //@formatter:on
 
         BodyCompositionMeasurementPacketAndroid bodyCompositionMeasurementPacket = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
-        BodyCompositionMeasurementAndroid result1 = new BodyCompositionMeasurementAndroid(new BodyCompositionMeasurementPacketAndroid[]{bodyCompositionMeasurementPacket});
+        BodyCompositionMeasurementAndroid result1 = new BodyCompositionMeasurementAndroid(bodyCompositionMeasurementPacket);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3832,7 +3832,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         //@formatter:on
 
         BodyCompositionMeasurementPacketAndroid bodyCompositionMeasurementPacket = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
-        BodyCompositionMeasurementAndroid result1 = new BodyCompositionMeasurementAndroid(new BodyCompositionMeasurementPacketAndroid[]{bodyCompositionMeasurementPacket});
+        BodyCompositionMeasurementAndroid result1 = new BodyCompositionMeasurementAndroid(bodyCompositionMeasurementPacket);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);

@@ -108,7 +108,7 @@ public class BlpPeripheralSampleActivity extends BaseActivity implements View.On
                                 , 0
                                 , new byte[2])
                         , new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
-                .addBloodPressureFeature(new BloodPressureFeature(false, false, false, false, false, false))
+                .addBloodPressureFeature(new BloodPressureFeature(false, false, false, false, false, false, false, false, false))
                 .build();
     }
 

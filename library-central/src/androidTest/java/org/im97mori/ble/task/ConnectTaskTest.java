@@ -32,8 +32,8 @@ public class ConnectTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_CONNECT, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ConnectTask.KEY_NEXT_PROGRESS));
+        assertEquals(ConnectTask.PROGRESS_CONNECT, bundle.getString(ConnectTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -46,8 +46,8 @@ public class ConnectTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_CONNECT_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ConnectTask.KEY_NEXT_PROGRESS));
+        assertEquals(ConnectTask.PROGRESS_CONNECT_SUCCESS, bundle.getString(ConnectTask.KEY_NEXT_PROGRESS));
         assertEquals(object, message.obj);
     }
 

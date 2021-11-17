@@ -44,20 +44,6 @@ import java.util.UUID;
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class RcpCallbackSample implements ReconnectionConfigurationProfileCallback {
 
-    public static class Builder {
-
-        private final SampleCallback mSampleCallback;
-
-        public Builder(SampleCallback sampleCallback) {
-            mSampleCallback = sampleCallback;
-        }
-
-        public RcpCallbackSample build() {
-            return new RcpCallbackSample(
-                    mSampleCallback);
-        }
-    }
-
     private final SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
 
     private final SampleCallback mSampleCallback;

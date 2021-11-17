@@ -39,7 +39,7 @@ public class RemoveServiceTaskTest extends AbstractPeripherallTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_REMOVE_SERVICE, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(RemoveServiceTask.PROGRESS_REMOVE_SERVICE_START, bundle.getString(RemoveServiceTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 

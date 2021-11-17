@@ -1,9 +1,14 @@
 package org.im97mori.ble.service.rcs.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
-
-import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 
@@ -18,13 +23,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
 public class ReconnectionConfigurationControlPointCharacteristicDataTest {
@@ -6986,22 +6984,22 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
         int enableDisconnectResultCodes = 3;
         int getActualCommunicationParametersResultCodes = 4;
         int proposeSettingsResultCodes = 5;
-        @NonNull int proposeSettingsError = 6;
+        int proposeSettingsError = 6;
         int activateStoredSettingsResultCodes = 7;
         int getMaxValuesResultCodes = 8;
-        @NonNull byte[] maxValues = new byte[]{9};
+        byte[] maxValues = new byte[]{9};
         int getMinValuesResultCodes = 10;
-        @NonNull byte[] minValues = new byte[]{11};
+        byte[] minValues = new byte[]{11};
         int getStoredValuesResultCodes = 12;
-        @NonNull byte[] getStoredValuesOperand = new byte[]{13};
+        byte[] getStoredValuesOperand = new byte[]{13};
         int setWhiteListTimerResultCodes = 14;
         int getWhiteListTimerResultCodes = 15;
-        @NonNull byte[] getWhiteListTimerOperand = new byte[]{16};
+        byte[] getWhiteListTimerOperand = new byte[]{16};
         int setAdvertisementConfigurationResultCodes = 17;
         int upgradeToLescOnlyResultCodes = 18;
         int switchOobPairingResultCodes = 19;
         int limitedAccessResultCodes = 20;
-        @NonNull byte[] currentSetting = new byte[]{21};
+        byte[] currentSetting = new byte[]{21};
         boolean isRcFeaturesE2eCrcSupported = true;
 
         ReconnectionConfigurationControlPointCharacteristicData result1 = new ReconnectionConfigurationControlPointCharacteristicData(descriptorDataList
@@ -7070,22 +7068,22 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
         int enableDisconnectResultCodes = 3;
         int getActualCommunicationParametersResultCodes = 4;
         int proposeSettingsResultCodes = 5;
-        @NonNull int proposeSettingsError = 6;
+        int proposeSettingsError = 6;
         int activateStoredSettingsResultCodes = 7;
         int getMaxValuesResultCodes = 8;
-        @NonNull byte[] maxValues = new byte[]{9};
+        byte[] maxValues = new byte[]{9};
         int getMinValuesResultCodes = 10;
-        @NonNull byte[] minValues = new byte[]{11};
+        byte[] minValues = new byte[]{11};
         int getStoredValuesResultCodes = 12;
-        @NonNull byte[] getStoredValuesOperand = new byte[]{13};
+        byte[] getStoredValuesOperand = new byte[]{13};
         int setWhiteListTimerResultCodes = 14;
         int getWhiteListTimerResultCodes = 15;
-        @NonNull byte[] getWhiteListTimerOperand = new byte[]{16};
+        byte[] getWhiteListTimerOperand = new byte[]{16};
         int setAdvertisementConfigurationResultCodes = 17;
         int upgradeToLescOnlyResultCodes = 18;
         int switchOobPairingResultCodes = 19;
         int limitedAccessResultCodes = 20;
-        @NonNull byte[] currentSetting = new byte[]{21};
+        byte[] currentSetting = new byte[]{21};
         boolean isRcFeaturesE2eCrcSupported = true;
         byte[] currentData = new byte[]{26};
         byte[] temporaryData = new byte[]{27};

@@ -16,7 +16,6 @@ import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
-import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroidLolipop;
 import org.junit.Test;
@@ -37,8 +36,8 @@ public class ScanTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_SCAN_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ScanTask.KEY_NEXT_PROGRESS));
+        assertEquals(ScanTask.PROGRESS_SCAN_START, bundle.getString(ScanTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -51,8 +50,8 @@ public class ScanTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_SCAN_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ScanTask.KEY_NEXT_PROGRESS));
+        assertEquals(ScanTask.PROGRESS_SCAN_START, bundle.getString(ScanTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -65,8 +64,8 @@ public class ScanTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_SCAN_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        ArrayList<BluetoothDevice> list = bundle.getParcelableArrayList(AbstractBLETask.KEY_BLUETOOTH_DEVICE);
+        assertEquals(ScanTask.PROGRESS_SCAN_FINISHED, bundle.getString(ScanTask.KEY_NEXT_PROGRESS));
+        ArrayList<BluetoothDevice> list = bundle.getParcelableArrayList(ScanTask.KEY_BLUETOOTH_DEVICE);
         assertNotNull(list);
         assertArrayEquals(Collections.singletonList(BLETestUtilsAndroid.MOCK_DEVICE_0).toArray(), list.toArray());
     }
@@ -81,8 +80,8 @@ public class ScanTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_SCAN_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        ArrayList<BluetoothDevice> list = bundle.getParcelableArrayList(AbstractBLETask.KEY_BLUETOOTH_DEVICE);
+        assertEquals(ScanTask.PROGRESS_SCAN_FINISHED, bundle.getString(ScanTask.KEY_NEXT_PROGRESS));
+        ArrayList<BluetoothDevice> list = bundle.getParcelableArrayList(ScanTask.KEY_BLUETOOTH_DEVICE);
         assertNotNull(list);
         assertArrayEquals(Arrays.asList(BLETestUtilsAndroid.MOCK_DEVICE_0, BLETestUtilsAndroid.MOCK_DEVICE_1).toArray(), list.toArray());
     }
@@ -96,8 +95,8 @@ public class ScanTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_SCAN_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        ArrayList<BluetoothDevice> list = bundle.getParcelableArrayList(AbstractBLETask.KEY_BLUETOOTH_DEVICE);
+        assertEquals(ScanTask.PROGRESS_SCAN_FINISHED, bundle.getString(ScanTask.KEY_NEXT_PROGRESS));
+        ArrayList<BluetoothDevice> list = bundle.getParcelableArrayList(ScanTask.KEY_BLUETOOTH_DEVICE);
         assertNotNull(list);
         assertArrayEquals(Collections.singletonList(bluetoothDevice).toArray(), list.toArray());
     }
@@ -112,8 +111,8 @@ public class ScanTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_SCAN_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        ArrayList<BluetoothDevice> list = bundle.getParcelableArrayList(AbstractBLETask.KEY_BLUETOOTH_DEVICE);
+        assertEquals(ScanTask.PROGRESS_SCAN_FINISHED, bundle.getString(ScanTask.KEY_NEXT_PROGRESS));
+        ArrayList<BluetoothDevice> list = bundle.getParcelableArrayList(ScanTask.KEY_BLUETOOTH_DEVICE);
         assertNotNull(list);
         assertArrayEquals(Arrays.asList(bluetoothDevice1, bluetoothDevice2).toArray(), list.toArray());
     }
@@ -126,8 +125,8 @@ public class ScanTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_SCAN_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
+        assertEquals(ScanTask.PROGRESS_SCAN_ERROR, bundle.getString(ScanTask.KEY_NEXT_PROGRESS));
+        assertEquals(status, bundle.getInt(ScanTask.KEY_STATUS));
     }
 
 }

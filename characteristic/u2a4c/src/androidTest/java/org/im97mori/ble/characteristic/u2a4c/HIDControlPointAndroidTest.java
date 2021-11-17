@@ -105,6 +105,7 @@ public class HIDControlPointAndroidTest {
         assertEquals(result1.getHidControlPointCommand(), result2.getHidControlPointCommand());
     }
 
+    @Test
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 

@@ -35,8 +35,8 @@ public class ReadPhyTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadPhyTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadPhyTask.PROGRESS_READ_PHY_START, bundle.getString(ReadPhyTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -50,12 +50,12 @@ public class ReadPhyTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_TX_PHY));
-        assertEquals(txPhy, bundle.getInt(AbstractBLETask.KEY_TX_PHY));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_RX_PHY));
-        assertEquals(rxPhy, bundle.getInt(AbstractBLETask.KEY_RX_PHY));
+        assertTrue(bundle.containsKey(ReadPhyTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadPhyTask.PROGRESS_READ_PHY_SUCCESS, bundle.getString(ReadPhyTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadPhyTask.KEY_TX_PHY));
+        assertEquals(txPhy, bundle.getInt(ReadPhyTask.KEY_TX_PHY));
+        assertTrue(bundle.containsKey(ReadPhyTask.KEY_RX_PHY));
+        assertEquals(rxPhy, bundle.getInt(ReadPhyTask.KEY_RX_PHY));
     }
 
     @Test
@@ -67,10 +67,10 @@ public class ReadPhyTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
+        assertTrue(bundle.containsKey(ReadPhyTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadPhyTask.PROGRESS_READ_PHY_ERROR, bundle.getString(ReadPhyTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadPhyTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(ReadPhyTask.KEY_STATUS));
     }
 
     @Test

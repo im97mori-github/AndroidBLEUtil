@@ -71,7 +71,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
         try {
             new BodyCompositionServiceMockCallback.Builder<>()
                     .addBodyCompositionFeature(new BodyCompositionFeature(new byte[4]))
-                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})})
+                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff}))
                             , new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
         } catch (RuntimeException e) {
@@ -94,7 +94,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
         try {
             BodyCompositionServiceMockCallback callback = new BodyCompositionServiceMockCallback.Builder<>()
                     .addBodyCompositionFeature(bodyCompositionFeature)
-                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})})
+                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff}))
                             , new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
             callback.setup(MOCK_BLE_SERVER_CONNECTION);
@@ -130,7 +130,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
         try {
             BodyCompositionServiceMockCallback callback = new BodyCompositionServiceMockCallback.Builder<>()
                     .addBodyCompositionFeature(bodyCompositionFeature.getBytes())
-                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})})
+                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff}))
                             , new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
             callback.setup(MOCK_BLE_SERVER_CONNECTION);
@@ -166,7 +166,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
         try {
             BodyCompositionServiceMockCallback callback = new BodyCompositionServiceMockCallback.Builder<>()
                     .addBodyCompositionFeature(BluetoothGatt.GATT_SUCCESS, 0, bodyCompositionFeature.getBytes())
-                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})})
+                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff}))
                             , new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .build();
             callback.setup(MOCK_BLE_SERVER_CONNECTION);
@@ -199,7 +199,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
         try {
             new BodyCompositionServiceMockCallback.Builder<>()
                     .addBodyCompositionFeature(bodyCompositionFeature)
-                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})})
+                    .addBodyCompositionMeasurement(new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff}))
                             , new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .removeBodyCompositionFeature()
                     .build();
@@ -215,7 +215,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodyCompositionMeasurement_00001() {
-        BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})});
+        BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff}));
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 
@@ -257,7 +257,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addBodyCompositionMeasurement_00101() {
-        BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})});
+        BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff}));
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
         int characteristicResponseCode = 1;
@@ -304,7 +304,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest extends AbstractPerip
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_removeRegisteredUser_00001() {
-        BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})});
+        BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff}));
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
 

@@ -27,7 +27,7 @@ dependencies {
     api target['baseModule']
     api stackLog
     api androidxAnnotation
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestUtilAndroid
 }
 
 task sourcesJar(type: Jar) {

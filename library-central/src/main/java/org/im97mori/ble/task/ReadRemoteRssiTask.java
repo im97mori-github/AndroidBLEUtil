@@ -1,5 +1,8 @@
 package org.im97mori.ble.task;
 
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGatt;
 import android.os.Bundle;
@@ -11,15 +14,47 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * Read remote rssi task
  * <p>
  * for central role
  */
 public class ReadRemoteRssiTask extends AbstractBLETask {
+
+    /**
+     * KEY:RSSI
+     */
+    public static final String  KEY_RSSI = "KEY_RSSI";
+
+    /**
+     * KEY:STATUS
+     */
+    public static final String  KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * PROGRESS:READ_REMOTE_RSSI_START
+     */
+    public static final String  PROGRESS_READ_REMOTE_RSSI_START = "PROGRESS_READ_REMOTE_RSSI_START";
+
+    /**
+     * PROGRESS:READ_REMOTE_RSSI_SUCCESS
+     */
+    public static final String  PROGRESS_READ_REMOTE_RSSI_SUCCESS = "PROGRESS_READ_REMOTE_RSSI_SUCCESS";
+
+    /**
+     * PROGRESS:READ_REMOTE_RSSI_ERROR
+     */
+    public static final String  PROGRESS_READ_REMOTE_RSSI_ERROR = "PROGRESS_READ_REMOTE_RSSI_ERROR";
+
+    /**
+     * PROGRESS:BUSY
+     */
+    public static final String  PROGRESS_BUSY = "PROGRESS_BUSY";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
 
     /**
      * Default timeout(millis) for read remote rssi:30sec
@@ -35,7 +70,7 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
     @NonNull
     public static Message createReadRemoteRssiSuccessMessage(int rssi) {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_SUCCESS);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_SUCCESS);
         bundle.putInt(KEY_RSSI, rssi);
         Message message = new Message();
         message.setData(bundle);
@@ -52,7 +87,7 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
     public static Message createReadRemoteRssiErrorMessage(int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_ERROR);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_ERROR);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -110,7 +145,7 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -125,14 +160,14 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+            if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
                 mBLEConnection.getBLECallback().onReadRemoteRssiTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
-            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-                if (PROGRESS_READ_REMOTE_RSSI_START == nextProgress) {
+            } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
+                if (PROGRESS_READ_REMOTE_RSSI_START.equals(nextProgress)) {
                     // current:init, next:read remote rssi start
 
                     if (mBluetoothGatt.readRemoteRssi()) {
@@ -148,15 +183,15 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
                         mCurrentProgress = PROGRESS_BUSY;
                     }
                 }
-            } else if (PROGRESS_READ_REMOTE_RSSI_START == mCurrentProgress) {
-                if (PROGRESS_READ_REMOTE_RSSI_SUCCESS == nextProgress) {
+            } else if (PROGRESS_READ_REMOTE_RSSI_START.equals(mCurrentProgress)) {
+                if (PROGRESS_READ_REMOTE_RSSI_SUCCESS.equals(nextProgress)) {
                     // current:read remote rssi start, next:read remote rssi success
 
                     // callback
                     mBLEConnection.getBLECallback().onReadRemoteRssiSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_RSSI), mArgument);
 
 
-                } else if (PROGRESS_READ_REMOTE_RSSI_ERROR == nextProgress) {
+                } else if (PROGRESS_READ_REMOTE_RSSI_ERROR.equals(nextProgress)) {
                     // current:read remote rssi start, next:read remote rssi failed
 
                     mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
@@ -169,7 +204,7 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_BUSY.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
@@ -177,7 +212,7 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_BUSY.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

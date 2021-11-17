@@ -29,7 +29,7 @@ dependencies {
     api apiCoreUtilsAndroid
     api target['baseModule']
     api androidxAnnotation
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestUtilAndroid
 }
 
 task sourcesJar(type: Jar) {

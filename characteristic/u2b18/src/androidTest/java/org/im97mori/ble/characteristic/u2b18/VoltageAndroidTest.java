@@ -4,7 +4,6 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
 import org.im97mori.ble.BLEUtils;
-import org.im97mori.ble.characteristic.core.TimeExponential8Utils;
 import org.im97mori.ble.characteristic.core.VoltageUtils;
 import org.junit.Test;
 
@@ -12,7 +11,6 @@ import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"ConstantConditions"})
 public class VoltageAndroidTest {
 
     @Test

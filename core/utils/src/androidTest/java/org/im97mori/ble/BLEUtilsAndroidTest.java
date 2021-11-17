@@ -57,6 +57,7 @@ public class BLEUtilsAndroidTest {
             assertTrue(bluetoothAdapter.disable());
 
             try {
+                //noinspection ResultOfMethodCallIgnored
                 countDownLatch.await(10000, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -88,6 +89,7 @@ public class BLEUtilsAndroidTest {
         assertTrue(bluetoothAdapter.enable());
 
         try {
+            //noinspection ResultOfMethodCallIgnored
             countDownLatch.await(10000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -128,6 +130,7 @@ public class BLEUtilsAndroidTest {
             assertTrue(bluetoothAdapter.enable());
 
             try {
+                //noinspection ResultOfMethodCallIgnored
                 countDownLatch.await(10000, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -159,6 +162,7 @@ public class BLEUtilsAndroidTest {
         assertTrue(bluetoothAdapter.disable());
 
         try {
+            //noinspection ResultOfMethodCallIgnored
             countDownLatch.await(10000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -199,6 +203,7 @@ public class BLEUtilsAndroidTest {
             assertTrue(BLEUtilsAndroid.bluetoothDisable(context));
 
             try {
+                //noinspection ResultOfMethodCallIgnored
                 countDownLatch.await(10000, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -230,6 +235,7 @@ public class BLEUtilsAndroidTest {
         assertTrue(BLEUtilsAndroid.bluetoothEnable(context));
 
         try {
+            //noinspection ResultOfMethodCallIgnored
             countDownLatch.await(10000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -270,6 +276,7 @@ public class BLEUtilsAndroidTest {
             assertTrue(BLEUtilsAndroid.bluetoothEnable(context));
 
             try {
+                //noinspection ResultOfMethodCallIgnored
                 countDownLatch.await(10000, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -301,6 +308,7 @@ public class BLEUtilsAndroidTest {
         assertTrue(BLEUtilsAndroid.bluetoothDisable(context));
 
         try {
+            //noinspection ResultOfMethodCallIgnored
             countDownLatch.await(10000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();

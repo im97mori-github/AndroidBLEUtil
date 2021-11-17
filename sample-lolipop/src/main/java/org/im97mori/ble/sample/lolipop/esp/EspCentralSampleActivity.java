@@ -1,7 +1,6 @@
 package org.im97mori.ble.sample.lolipop.esp;
 
 import android.bluetooth.BluetoothDevice;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.Menu;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;

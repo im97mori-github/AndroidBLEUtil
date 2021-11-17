@@ -1,17 +1,16 @@
 package org.im97mori.ble.profile.central.task;
 
-import android.os.Bundle;
-import android.os.Message;
-
-import org.im97mori.ble.task.AbstractBLETask;
-import org.im97mori.ble.test.BLETestUtilsAndroid;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import android.os.Bundle;
+import android.os.Message;
+
 import androidx.test.filters.RequiresDevice;
+
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.junit.Test;
 
 public class BondTaskTest {
 
@@ -24,8 +23,8 @@ public class BondTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_BOND_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(BondTask.KEY_NEXT_PROGRESS));
+        assertEquals(BondTask.PROGRESS_BOND_START, bundle.getString(BondTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -37,8 +36,8 @@ public class BondTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_BOND_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BondTask.PROGRESS_BOND_SUCCESS, bundle.getString(BondTask.KEY_NEXT_PROGRESS));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(BondTask.KEY_BLUETOOTH_DEVICE));
     }
 
     @Test
@@ -49,8 +48,8 @@ public class BondTaskTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_BOND_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BondTask.PROGRESS_BOND_ERROR, bundle.getString(BondTask.KEY_NEXT_PROGRESS));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(BondTask.KEY_BLUETOOTH_DEVICE));
     }
 
 }

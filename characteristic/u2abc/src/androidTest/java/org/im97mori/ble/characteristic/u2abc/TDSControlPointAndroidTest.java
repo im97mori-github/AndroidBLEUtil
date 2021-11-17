@@ -110,6 +110,7 @@ public class TDSControlPointAndroidTest {
         assertArrayEquals(Arrays.copyOfRange(data, 2, 4), result1.getParameter());
     }
 
+    @Test
     public void test_constructor_00004() {
         int opCode = 1;
         int organizationId = 2;

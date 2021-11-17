@@ -53,7 +53,7 @@ public class FirstNameAndroid extends FirstName implements Parcelable {
      *
      * @param registeredUsers first to last Registered User Data array
      */
-    public FirstNameAndroid(@NonNull RegisteredUser[] registeredUsers) {
+    public FirstNameAndroid(@NonNull RegisteredUser... registeredUsers) {
         super(registeredUsers);
     }
 
@@ -73,7 +73,7 @@ public class FirstNameAndroid extends FirstName implements Parcelable {
      */
     private FirstNameAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
-        super(new RegisteredUser[]{new RegisteredUser(in.createByteArray())});
+        super(new RegisteredUser(in.createByteArray()));
     }
 
     /**

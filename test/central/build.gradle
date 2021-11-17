@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    api apiTest
+    api apiTestUtilAndroid
     compileOnly apiCentral
 }
 

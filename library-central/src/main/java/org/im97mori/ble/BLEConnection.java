@@ -230,6 +230,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #quit(Bundle, BLECallback)
      */
+    @SuppressWarnings("UnusedReturnValue")
     @Nullable
     public Integer quit() {
         return quit(null, null);
@@ -251,7 +252,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     public synchronized Integer quit(@Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             mTaskHandler.clearTask();
 
             DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, UNKNOWN, BLECallbackDistributer.wrapArgument(argument, bleCallback));
@@ -818,7 +819,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, byteArrayInterface.getBytes(), writeType, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
@@ -863,7 +864,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
@@ -911,7 +912,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, byteArrayInterface.getBytes(), timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
@@ -933,7 +934,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             ReadPhyTask task = new ReadPhyTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
@@ -961,7 +962,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             SetPreferredPhyTask task = new SetPreferredPhyTask(this, mBluetoothGatt, mTaskHandler, txPhy, rxPhy, phyOptions, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
@@ -982,7 +983,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             ReadRemoteRssiTask task = new ReadRemoteRssiTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
@@ -1001,7 +1002,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     public synchronized Integer createBeginReliableWriteTask(@Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             BeginReliableWriteTask task = new BeginReliableWriteTask(this, mBluetoothGatt, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
@@ -1022,7 +1023,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
@@ -1043,7 +1044,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
-        if (mBluetoothGatt != null) {
+        if (isConnected()) {
             AbortReliableWriteTask task = new AbortReliableWriteTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();

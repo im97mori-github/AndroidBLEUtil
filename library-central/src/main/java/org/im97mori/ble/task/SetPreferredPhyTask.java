@@ -1,5 +1,7 @@
 package org.im97mori.ble.task;
 
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGatt;
 import android.os.Build;
@@ -13,8 +15,6 @@ import androidx.annotation.RequiresApi;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-
 /**
  * Set preferred phy task
  * <p>
@@ -22,6 +22,46 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
  */
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class SetPreferredPhyTask extends AbstractBLETask {
+
+    /**
+     * KEY:TX_PHY
+     */
+    public static final String  KEY_TX_PHY = "KEY_TX_PHY";
+
+    /**
+     * KEY:RX_PHY
+     */
+    public static final String  KEY_RX_PHY = "KEY_RX_PHY";
+
+    /**
+     * KEY:STATUS
+     */
+    public static final String  KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * KEY:PHY_OPTIONS
+     */
+    public static final String  KEY_PHY_OPTIONS = "KEY_PHY_OPTIONS";
+
+    /**
+     * PROGRESS:SET_PREFERRED_PHY_START
+     */
+    public static final String  PROGRESS_SET_PREFERRED_PHY_START = "PROGRESS_SET_PREFERRED_PHY_START";
+
+    /**
+     * PROGRESS:SET_PREFERRED_PHY_SUCCESS
+     */
+    public static final String  PROGRESS_SET_PREFERRED_PHY_SUCCESS = "PROGRESS_SET_PREFERRED_PHY_SUCCESS";
+
+    /**
+     * PROGRESS:SET_PREFERRED_PHY_ERROR
+     */
+    public static final String  PROGRESS_SET_PREFERRED_PHY_ERROR = "PROGRESS_SET_PREFERRED_PHY_ERROR";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
 
     /**
      * Default timeout(millis) for set preferred phy:30sec
@@ -40,7 +80,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_TX_PHY, txPhy);
         bundle.putInt(KEY_RX_PHY, rxPhy);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SET_PREFERRED_PHY_SUCCESS);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_SET_PREFERRED_PHY_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -56,7 +96,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
     public static Message createSetPreferredPhyErrorMessage(int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SET_PREFERRED_PHY_ERROR);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_SET_PREFERRED_PHY_ERROR);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -137,7 +177,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SET_PREFERRED_PHY_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_SET_PREFERRED_PHY_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -152,14 +192,14 @@ public class SetPreferredPhyTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (message.obj == this && PROGRESS_TIMEOUT == nextProgress) {
+            if (message.obj == this && PROGRESS_TIMEOUT.equals(nextProgress)) {
                 mBLEConnection.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgumemnt);
                 mCurrentProgress = nextProgress;
-            } else if (PROGRESS_INIT == mCurrentProgress) {
-                if (message.obj == this && PROGRESS_SET_PREFERRED_PHY_START == nextProgress) {
+            } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
+                if (message.obj == this && PROGRESS_SET_PREFERRED_PHY_START.equals(nextProgress)) {
                     // current:init, next:set preferred phy start
                     mBluetoothGatt.setPreferredPhy(mTxPhy, mRxPhy, mPhyOptions);
 
@@ -167,11 +207,11 @@ public class SetPreferredPhyTask extends AbstractBLETask {
                     mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     mCurrentProgress = nextProgress;
                 }
-            } else if (PROGRESS_SET_PREFERRED_PHY_START == mCurrentProgress) {
+            } else if (PROGRESS_SET_PREFERRED_PHY_START.equals(mCurrentProgress)) {
                 // current:set preferred phy start, next:set preferred phy success
-                if (PROGRESS_SET_PREFERRED_PHY_SUCCESS == nextProgress) {
+                if (PROGRESS_SET_PREFERRED_PHY_SUCCESS.equals(nextProgress)) {
                     mBLEConnection.getBLECallback().onSetPreferredPhySuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), bundle.getInt(KEY_PHY_OPTIONS), mArgumemnt);
-                } else if (PROGRESS_SET_PREFERRED_PHY_ERROR == nextProgress) {
+                } else if (PROGRESS_SET_PREFERRED_PHY_ERROR.equals(nextProgress)) {
                     // current:set preferred phy start, next:set preferred phy error
                     mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_STATUS), mArgumemnt);
                 }
@@ -182,7 +222,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
@@ -190,7 +230,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

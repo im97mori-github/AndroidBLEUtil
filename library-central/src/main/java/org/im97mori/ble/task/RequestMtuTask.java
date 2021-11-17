@@ -25,6 +25,41 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 public class RequestMtuTask extends AbstractBLETask {
 
     /**
+     * KEY:MTU
+     */
+    public static final String  KEY_MTU = "KEY_MTU";
+
+    /**
+     * KEY:STATUS
+     */
+    public static final String  KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * PROGRESS:REQUEST_MTU_START
+     */
+    public static final String  PROGRESS_REQUEST_MTU_START = "PROGRESS_REQUEST_MTU_START";
+    
+    /**
+     * PROGRESS:REQUEST_MTU_SUCCESS
+     */
+    public static final String  PROGRESS_REQUEST_MTU_SUCCESS = "PROGRESS_REQUEST_MTU_SUCCESS";
+
+    /**
+     * PROGRESS:REQUEST_MTU_ERROR
+     */
+    public static final String  PROGRESS_REQUEST_MTU_ERROR = "PROGRESS_REQUEST_MTU_ERROR";
+
+    /**
+     * PROGRESS:BUSY
+     */
+    public static final String  PROGRESS_BUSY = "PROGRESS_BUSY";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
+    
+    /**
      * Maximum MTU size
      * <p>
      * Core Specification v5.3 Vol 3 Part F 3.2.9
@@ -46,7 +81,7 @@ public class RequestMtuTask extends AbstractBLETask {
     public static Message createRequestMtuSuccessMessage(int mtu) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_MTU, mtu);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_SUCCESS);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -63,7 +98,7 @@ public class RequestMtuTask extends AbstractBLETask {
     public static Message createRequestMtuErrorMessage(Object obj, int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DISCOVER_SERVICE_ERROR);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_ERROR);
         Message message = new Message();
         message.setData(bundle);
         message.obj = obj;
@@ -129,7 +164,7 @@ public class RequestMtuTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -144,16 +179,16 @@ public class RequestMtuTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+            if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
 
                 mBLEConnection.getBLECallback().onRequestMtuTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
 
                 mCurrentProgress = nextProgress;
-            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-                if (PROGRESS_REQUEST_MTU_START == nextProgress) {
+            } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
+                if (PROGRESS_REQUEST_MTU_START.equals(nextProgress)) {
                     // current:init, next:request mtu start
 
                     // success
@@ -168,14 +203,14 @@ public class RequestMtuTask extends AbstractBLETask {
 
                     mCurrentProgress = nextProgress;
                 }
-            } else if (PROGRESS_REQUEST_MTU_START == mCurrentProgress) {
-                if (PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
+            } else if (PROGRESS_REQUEST_MTU_START.equals(mCurrentProgress)) {
+                if (PROGRESS_REQUEST_MTU_SUCCESS.equals(nextProgress)) {
                     // current:request mtu start, next:request mtu success
 
                     // callback
                     mBLEConnection.getBLECallback().onRequestMtuSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_MTU), mArgument);
 
-                } else if (PROGRESS_REQUEST_MTU_ERROR == nextProgress) {
+                } else if (PROGRESS_REQUEST_MTU_ERROR.equals(nextProgress)) {
                     // current:request mtu start, next:request mtu failed
 
                     mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
@@ -188,7 +223,7 @@ public class RequestMtuTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_BUSY.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
@@ -196,7 +231,7 @@ public class RequestMtuTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_BUSY.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

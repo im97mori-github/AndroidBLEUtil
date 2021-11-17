@@ -34,8 +34,8 @@ public class DiscoverServiceTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DISCOVER_SERVICE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(DiscoverServiceTask.KEY_NEXT_PROGRESS));
+        assertEquals(DiscoverServiceTask.PROGRESS_DISCOVER_SERVICE_START, bundle.getString(DiscoverServiceTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -48,8 +48,8 @@ public class DiscoverServiceTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DISCOVER_SERVICE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(DiscoverServiceTask.KEY_NEXT_PROGRESS));
+        assertEquals(DiscoverServiceTask.PROGRESS_DISCOVER_SERVICE_SUCCESS, bundle.getString(DiscoverServiceTask.KEY_NEXT_PROGRESS));
         assertEquals(object, message.obj);
     }
 
@@ -63,10 +63,10 @@ public class DiscoverServiceTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DISCOVER_SERVICE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
+        assertTrue(bundle.containsKey(DiscoverServiceTask.KEY_NEXT_PROGRESS));
+        assertEquals(DiscoverServiceTask.PROGRESS_DISCOVER_SERVICE_ERROR, bundle.getString(DiscoverServiceTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(DiscoverServiceTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(DiscoverServiceTask.KEY_STATUS));
         assertEquals(object, message.obj);
     }
 

@@ -30,8 +30,8 @@ public class DisconnectTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DISCONNECT, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(DisconnectTask.KEY_NEXT_PROGRESS));
+        assertEquals(DisconnectTask.PROGRESS_DISCONNECT, bundle.getString(DisconnectTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 

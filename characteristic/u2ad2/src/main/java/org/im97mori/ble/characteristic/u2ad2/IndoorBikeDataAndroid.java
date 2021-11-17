@@ -53,7 +53,7 @@ public class IndoorBikeDataAndroid extends IndoorBikeData implements Parcelable 
      *
      * @param indoorBikeDataPackets 1 or more Indoor Bike Data packet array
      */
-    public IndoorBikeDataAndroid(@NonNull IndoorBikeDataPacketAndroid[] indoorBikeDataPackets) {
+    public IndoorBikeDataAndroid(@NonNull IndoorBikeDataPacketAndroid... indoorBikeDataPackets) {
         super(indoorBikeDataPackets);
     }
 

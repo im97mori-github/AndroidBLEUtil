@@ -8,6 +8,7 @@ import android.text.format.DateUtils;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.task.AbstractBLETask;
+import org.im97mori.ble.task.AbstractBLETaskBase;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -22,12 +23,7 @@ public class TaskHandlerTest {
     @Test
     public void test_addTask_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -35,15 +31,6 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-
-            }
         };
 
         HandlerThread thread = new HandlerThread(this.getClass().getName());
@@ -65,12 +52,7 @@ public class TaskHandlerTest {
     @Test
     public void test_addTask_00002() {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
-        AbstractBLETask task = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -78,15 +60,6 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-
-            }
         };
 
         HandlerThread thread = new HandlerThread(this.getClass().getName());
@@ -109,12 +82,7 @@ public class TaskHandlerTest {
     @Test
     public void test_addHighPriorityTask_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -122,15 +90,6 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-
-            }
         };
 
         HandlerThread thread = new HandlerThread(this.getClass().getName());
@@ -152,12 +111,7 @@ public class TaskHandlerTest {
     @Test
     public void test_addHighPriorityTask_00002() {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
-        AbstractBLETask task = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -165,15 +119,6 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-
-            }
         };
 
         HandlerThread thread = new HandlerThread(this.getClass().getName());
@@ -196,12 +141,7 @@ public class TaskHandlerTest {
     @Test
     public void test_cancelTask_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task1 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task1 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -213,33 +153,15 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-            }
         };
         final AtomicInteger atomicInteger = new AtomicInteger(0);
-        AbstractBLETask task2 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task2 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 atomicInteger.set(1);
                 countDownLatch.countDown();
                 return true;
-            }
-
-            @Override
-            public boolean isBusy() {
-                return false;
             }
 
             @Override
@@ -258,6 +180,7 @@ public class TaskHandlerTest {
         taskHandler.cancelTask(task2.getTaskId());
 
         try {
+            //noinspection ResultOfMethodCallIgnored
             countDownLatch.await(2, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -271,12 +194,7 @@ public class TaskHandlerTest {
     @Test
     public void test_cancelTask_00002() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task1 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task1 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -288,22 +206,9 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-            }
         };
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
-        AbstractBLETask task2 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task2 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -312,33 +217,18 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
             public void cancel() {
                 atomicInteger1.set(2);
             }
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
-        AbstractBLETask task3 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task3 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 atomicInteger2.set(1);
                 countDownLatch.countDown();
                 return true;
-            }
-
-            @Override
-            public boolean isBusy() {
-                return false;
             }
 
             @Override
@@ -372,12 +262,7 @@ public class TaskHandlerTest {
     @Test
     public void test_cancelTask_00101() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task1 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task1 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -389,33 +274,15 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-            }
         };
         final AtomicInteger atomicInteger = new AtomicInteger(0);
-        AbstractBLETask task2 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task2 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 atomicInteger.set(1);
                 countDownLatch.countDown();
                 return true;
-            }
-
-            @Override
-            public boolean isBusy() {
-                return false;
             }
 
             @Override
@@ -434,6 +301,7 @@ public class TaskHandlerTest {
         taskHandler.cancelTask(task2.getTaskId());
 
         try {
+            //noinspection ResultOfMethodCallIgnored
             countDownLatch.await(2, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -447,12 +315,7 @@ public class TaskHandlerTest {
     @Test
     public void test_cancelTask_00102() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task1 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task1 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -464,22 +327,9 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-            }
         };
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
-        AbstractBLETask task2 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task2 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -488,33 +338,18 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
             public void cancel() {
                 atomicInteger1.set(2);
             }
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
-        AbstractBLETask task3 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task3 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 atomicInteger2.set(1);
                 countDownLatch.countDown();
                 return true;
-            }
-
-            @Override
-            public boolean isBusy() {
-                return false;
             }
 
             @Override
@@ -548,12 +383,7 @@ public class TaskHandlerTest {
     @Test
     public void test_clearTask_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task1 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task1 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -565,22 +395,9 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-            }
         };
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
-        AbstractBLETask task2 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task2 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -589,22 +406,12 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
             public void cancel() {
                 atomicInteger1.set(2);
             }
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
-        AbstractBLETask task3 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task3 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -613,33 +420,18 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
             public void cancel() {
                 atomicInteger2.set(2);
             }
         };
         final AtomicInteger atomicInteger3 = new AtomicInteger(0);
-        AbstractBLETask task4 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task4 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 atomicInteger3.set(1);
                 countDownLatch.countDown();
                 return true;
-            }
-
-            @Override
-            public boolean isBusy() {
-                return false;
             }
 
             @Override
@@ -673,12 +465,7 @@ public class TaskHandlerTest {
     @Test
     public void test_clearTask_00101() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task1 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task1 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -690,22 +477,9 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-            }
         };
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
-        AbstractBLETask task2 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task2 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -714,22 +488,12 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
             public void cancel() {
                 atomicInteger1.set(2);
             }
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
-        AbstractBLETask task3 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task3 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -738,33 +502,18 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
             public void cancel() {
                 atomicInteger2.set(2);
             }
         };
         final AtomicInteger atomicInteger3 = new AtomicInteger(0);
-        AbstractBLETask task4 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task4 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 atomicInteger3.set(1);
                 countDownLatch.countDown();
                 return true;
-            }
-
-            @Override
-            public boolean isBusy() {
-                return false;
             }
 
             @Override
@@ -799,12 +548,7 @@ public class TaskHandlerTest {
     @Test
     public void test_clearBusy_00001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task1 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task1 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -816,17 +560,8 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public void cancel() {
-
-            }
         };
-        AbstractBLETask task2 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task2 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -834,37 +569,14 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-
-            }
         };
-        AbstractBLETask task3 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task3 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-
-            }
         };
         HandlerThread thread = new HandlerThread(this.getClass().getName());
         thread.start();
@@ -899,12 +611,7 @@ public class TaskHandlerTest {
     @Test
     public void test_clearBusy_00002() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        AbstractBLETask task1 = new AbstractBLETask() {
-            @NonNull
-            @Override
-            public Message createInitialMessage() {
-                return new Message();
-            }
+        AbstractBLETask task1 = new AbstractBLETaskBase() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -916,12 +623,9 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public void cancel() {
-
-            }
         };
-        AbstractBLETask task2 = new AbstractBLETask() {
+        AbstractBLETask task2 = new AbstractBLETaskBase() {
+
             @NonNull
             @Override
             public Message createInitialMessage() {
@@ -934,15 +638,6 @@ public class TaskHandlerTest {
                 return true;
             }
 
-            @Override
-            public boolean isBusy() {
-                return false;
-            }
-
-            @Override
-            public void cancel() {
-
-            }
         };
         HandlerThread thread = new HandlerThread(this.getClass().getName());
         thread.start();

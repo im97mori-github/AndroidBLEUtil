@@ -52,7 +52,7 @@ public class TreadmillDataAndroid extends TreadmillData implements Parcelable {
      *
      * @param treadmillDataPackets 1 or more Treadmill Data packet array
      */
-    public TreadmillDataAndroid(@NonNull TreadmillDataPacketAndroid[] treadmillDataPackets) {
+    public TreadmillDataAndroid(@NonNull TreadmillDataPacketAndroid... treadmillDataPackets) {
         super(treadmillDataPackets);
     }
 

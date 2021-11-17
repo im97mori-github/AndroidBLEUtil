@@ -39,12 +39,12 @@ public class ReadCharacteristicTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadCharacteristicTask.PROGRESS_CHARACTERISTIC_READ_START, bundle.getString(ReadCharacteristicTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -61,18 +61,18 @@ public class ReadCharacteristicTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertEquals(serviceInstanceId, bundle.getInt(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertEquals(characteristicInstanceId, bundle.getInt(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
-        assertArrayEquals(original, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_READ_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getInt(ReadCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getInt(ReadCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_VALUES));
+        assertArrayEquals(original, bundle.getByteArray(ReadCharacteristicTask.KEY_VALUES));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadCharacteristicTask.PROGRESS_CHARACTERISTIC_READ_SUCCESS, bundle.getString(ReadCharacteristicTask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -88,18 +88,18 @@ public class ReadCharacteristicTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertEquals(serviceInstanceId, bundle.getInt(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertEquals(characteristicInstanceId, bundle.getInt(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_READ_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getInt(ReadCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getInt(ReadCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(ReadCharacteristicTask.KEY_STATUS));
+        assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadCharacteristicTask.PROGRESS_CHARACTERISTIC_READ_ERROR, bundle.getString(ReadCharacteristicTask.KEY_NEXT_PROGRESS));
     }
 
     @Test

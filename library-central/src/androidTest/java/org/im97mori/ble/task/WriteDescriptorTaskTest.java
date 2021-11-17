@@ -40,12 +40,12 @@ public class WriteDescriptorTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
-        assertEquals(descriptorUUID, bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, bundle.getSerializable(WriteDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertEquals(descriptorUUID, bundle.getSerializable(WriteDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_NEXT_PROGRESS));
+        assertEquals(WriteDescriptorTask.PROGRESS_DESCRIPTOR_WRITE_START, bundle.getString(WriteDescriptorTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -64,21 +64,21 @@ public class WriteDescriptorTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceInstanceId, bundle.getInt(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertEquals(characteristicInstanceId, bundle.getInt(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
-        assertEquals(descriptorUUID, bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_INSTANCE_ID));
-        assertEquals(descriptorInstanceId, bundle.getInt(AbstractBLETask.KEY_DESCRIPTOR_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
-        assertArrayEquals(values, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, bundle.getSerializable(WriteDescriptorTask.KEY_SERVICE_UUID));
+        assertEquals(serviceInstanceId, bundle.getInt(WriteDescriptorTask.KEY_SERVICE_INSTANCE_ID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, bundle.getSerializable(WriteDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getInt(WriteDescriptorTask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertEquals(descriptorUUID, bundle.getSerializable(WriteDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_DESCRIPTOR_INSTANCE_ID));
+        assertEquals(descriptorInstanceId, bundle.getInt(WriteDescriptorTask.KEY_DESCRIPTOR_INSTANCE_ID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_VALUES));
+        assertArrayEquals(values, bundle.getByteArray(WriteDescriptorTask.KEY_VALUES));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_NEXT_PROGRESS));
+        assertEquals(WriteDescriptorTask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getString(WriteDescriptorTask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -96,22 +96,22 @@ public class WriteDescriptorTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertEquals(serviceInstanceId, bundle.getInt(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertEquals(characteristicInstanceId, bundle.getInt(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
-        assertEquals(descriptorUUID, bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_INSTANCE_ID));
-        assertEquals(descriptorInstanceId, bundle.getInt(AbstractBLETask.KEY_DESCRIPTOR_INSTANCE_ID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, bundle.getSerializable(WriteDescriptorTask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getInt(WriteDescriptorTask.KEY_SERVICE_INSTANCE_ID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, bundle.getSerializable(WriteDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getInt(WriteDescriptorTask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertEquals(descriptorUUID, bundle.getSerializable(WriteDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_DESCRIPTOR_INSTANCE_ID));
+        assertEquals(descriptorInstanceId, bundle.getInt(WriteDescriptorTask.KEY_DESCRIPTOR_INSTANCE_ID));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(WriteDescriptorTask.KEY_STATUS));
+        assertTrue(bundle.containsKey(WriteDescriptorTask.KEY_NEXT_PROGRESS));
+        assertEquals(WriteDescriptorTask.PROGRESS_DESCRIPTOR_WRITE_ERROR, bundle.getString(WriteDescriptorTask.KEY_NEXT_PROGRESS));
     }
 
     @Test

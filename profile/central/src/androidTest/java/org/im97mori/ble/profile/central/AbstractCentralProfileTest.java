@@ -179,6 +179,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         assertNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
         assertTrue(baseAbstractCentralProfile.isConnected());
         baseAbstractCentralProfile.quit();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -201,6 +202,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         BLEConnectionHolder.addInstance(MOCK_BLE_CONNECTION, true);
         assertNull(baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0));
         baseAbstractCentralProfile.quit();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -238,6 +240,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, baseAbstractCentralProfile.getCurrentBluetoothDevice());
         baseAbstractCentralProfile.disconnect();
         assertNull(baseAbstractCentralProfile.getCurrentBluetoothDevice());
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -261,6 +264,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         assertNotNull(baseAbstractCentralProfile.mGenericAccessService);
         assertNotNull(baseAbstractCentralProfile.mGenericAttributeService);
         assertTrue(atomicBoolean.get());
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -275,6 +279,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.quit();
         assertNull(baseAbstractCentralProfile.mGenericAccessService);
         assertNull(baseAbstractCentralProfile.mGenericAttributeService);
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -412,6 +417,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isDeviceNameCharacteristicWritable());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -431,6 +437,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isAppearanceCharacteristicWritable());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -450,6 +457,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isPeripheralPreferredConnectionParametersCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -469,6 +477,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isCentralAddressResolutionCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -488,6 +497,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isResolvablePrivateAddressOnlyCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -507,6 +517,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isReconnectionAddressCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -526,6 +537,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isPeripheralPrivacyFlagCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -545,6 +557,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isPeripheralPrivacyFlagCharacteristicWritable());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -564,6 +577,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isServiceChangedCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -583,6 +597,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isClientSupportedFeaturesCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -602,6 +617,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.isDatabaseHashCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -640,6 +656,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getDeviceName());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -683,6 +700,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setDeviceName(new DeviceName("")));
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -721,6 +739,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getAppearance());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -764,6 +783,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setAppearance(new Appearance(new byte[]{0, 1})));
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -807,6 +827,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getPeripheralPreferredConnectionParameters());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -850,6 +871,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getCentralAddressResolutionParameters());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -893,6 +915,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getResolvablePrivateAddressOnly());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -936,6 +959,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setReconnectionAddress(new ReconnectionAddress(new byte[]{0, 1, 2, 3, 4, 5})));
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -979,6 +1003,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getPeripheralPrivacyFlag());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -1022,6 +1047,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setPeripheralPrivacyFlag(new PeripheralPrivacyFlag(new byte[]{0})));
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -1065,6 +1091,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getServiceChangedClientCharacteristicConfiguration());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -1108,6 +1135,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.startServiceChangedIndication());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -1151,6 +1179,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.stopServiceChangedIndication());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -1194,6 +1223,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getClientSupportedFeatures());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -1237,6 +1267,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.setClientSupportedFeatures(new ClientSupportedFeatures(new byte[]{})));
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
     @Test
@@ -1280,6 +1311,7 @@ public class AbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(baseAbstractCentralProfile.getDatabaseHash());
         baseAbstractCentralProfile.disconnect();
+        MOCK_BLE_CONNECTION.setConnected(false);
     }
 
 }

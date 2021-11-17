@@ -26,7 +26,7 @@ android {
 dependencies {
     api stackLog
     api androidxAnnotation
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestUtilAndroid
 }
 
 task sourcesJar(type: Jar) {

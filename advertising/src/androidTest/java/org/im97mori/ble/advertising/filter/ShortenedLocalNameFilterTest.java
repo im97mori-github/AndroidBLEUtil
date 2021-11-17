@@ -4,7 +4,6 @@ import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.ShortenedLocalNameAndroid;
 import org.junit.Test;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import static org.im97mori.ble.constants.DataType.SHORTENED_LOCAL_NAME_DATA_TYPE;

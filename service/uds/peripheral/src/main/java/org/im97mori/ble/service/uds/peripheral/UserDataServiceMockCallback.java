@@ -2839,7 +2839,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                             if (firstNameData != null) {
                                                                 CharacteristicData userFirstNameData = firstNameData.getUserData(userIndex);
                                                                 if (userFirstNameData != null) {
-                                                                    registerdUserName.append(new FirstName(new RegisteredUser[]{new RegisteredUser(userFirstNameData.getBytes())}).getFirstName());
+                                                                    registerdUserName.append(new FirstName(new RegisteredUser(userFirstNameData.getBytes())).getFirstName());
                                                                 }
                                                             }
                                                             if (lastNameData != null) {
@@ -2848,7 +2848,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                                 }
                                                                 CharacteristicData userLastNameData = lastNameData.getUserData(userIndex);
                                                                 if (userLastNameData != null) {
-                                                                    registerdUserName.append(new FirstName(new RegisteredUser[]{new RegisteredUser(userLastNameData.getBytes())}).getFirstName());
+                                                                    registerdUserName.append(new FirstName(new RegisteredUser(userLastNameData.getBytes())).getFirstName());
                                                                 }
                                                             }
                                                             byte[] nameData = registerdUserName.toString().getBytes();

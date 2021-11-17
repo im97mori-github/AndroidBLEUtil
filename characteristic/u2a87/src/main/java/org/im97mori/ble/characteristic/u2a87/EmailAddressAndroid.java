@@ -53,7 +53,7 @@ public class EmailAddressAndroid extends EmailAddress implements Parcelable {
      *
      * @param registeredUsers first to last Registered User Data array
      */
-    public EmailAddressAndroid(@NonNull RegisteredUser[] registeredUsers) {
+    public EmailAddressAndroid(@NonNull RegisteredUser... registeredUsers) {
         super(registeredUsers);
     }
 
@@ -73,7 +73,7 @@ public class EmailAddressAndroid extends EmailAddress implements Parcelable {
      */
     private EmailAddressAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
-        super(new RegisteredUser[]{new RegisteredUser(in.createByteArray())});
+        super(new RegisteredUser(in.createByteArray()));
     }
 
     /**

@@ -334,6 +334,12 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
         }
     }
 
+    @Override
+    public void onMtuChanged(BluetoothDevice device, int mtu) {
+        BLEPeripheralLogUtils.stackLog(device, mtu);
+
+    }
+
     /**
      * @return {@link BLEServerCallback} instance
      */

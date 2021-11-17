@@ -40,6 +40,36 @@ import java.util.Set;
 public class ScanTask extends AbstractBLETask {
 
     /**
+     * KEY:STATUS
+     */
+    public static final String KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * KEY:BLUETOOTH_DEVICE
+     */
+    public static final String KEY_BLUETOOTH_DEVICE = "KEY_BLUETOOTH_DEVICE";
+
+    /**
+     * PROGRESS:SCAN_START
+     */
+    public static final String PROGRESS_SCAN_START = "PROGRESS_SCAN_START";
+
+    /**
+     * PROGRESS:SCAN_FINISHED
+     */
+    public static final String PROGRESS_SCAN_FINISHED = "PROGRESS_SCAN_FINISHED";
+
+    /**
+     * PROGRESS:SCAN_ERROR
+     */
+    public static final String PROGRESS_SCAN_ERROR = "PROGRESS_SCAN_ERROR";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
+
+    /**
      * Default timeout(millis) for scan device:10sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
@@ -75,7 +105,7 @@ public class ScanTask extends AbstractBLETask {
     public static Message createDeviceFoundMessage(@NonNull List<BluetoothDevice> deviceList) {
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList(KEY_BLUETOOTH_DEVICE, new ArrayList<>(deviceList));
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SCAN_FINISHED);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_SCAN_FINISHED);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -91,7 +121,7 @@ public class ScanTask extends AbstractBLETask {
     public static Message createDeviceScanErrorMessage(int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SCAN_ERROR);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_SCAN_ERROR);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -201,7 +231,7 @@ public class ScanTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SCAN_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_SCAN_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -214,10 +244,10 @@ public class ScanTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
         // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+        if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mBluetoothLeScanner.stopScan(mFilteredScanCallback);
             } else {
@@ -225,9 +255,9 @@ public class ScanTask extends AbstractBLETask {
             }
             mProfileCallback.onScanFinished(mFoundDeviceSet, mTimeout, mArgument);
             mCurrentProgress = PROGRESS_TIMEOUT;
-        } else if (PROGRESS_INIT == mCurrentProgress) {
+        } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
             // current:init, next:scan start
-            if (this == message.obj && PROGRESS_SCAN_START == nextProgress) {
+            if (this == message.obj && PROGRESS_SCAN_START.equals(nextProgress)) {
                 BluetoothManager bluetoothManager = (BluetoothManager) mContext.getSystemService(Context.BLUETOOTH_SERVICE);
                 if (bluetoothManager == null) {
                     nextProgress = PROGRESS_FINISHED;
@@ -262,14 +292,14 @@ public class ScanTask extends AbstractBLETask {
 
                 mCurrentProgress = nextProgress;
             }
-        } else if (PROGRESS_SCAN_START == mCurrentProgress) {
+        } else if (PROGRESS_SCAN_START.equals(mCurrentProgress)) {
             // current:scan start, next:device found
-            if (PROGRESS_SCAN_FINISHED == nextProgress) {
+            if (PROGRESS_SCAN_FINISHED.equals(nextProgress)) {
                 List<BluetoothDevice> bluetoothDeviceList = bundle.getParcelableArrayList(KEY_BLUETOOTH_DEVICE);
                 if (bluetoothDeviceList != null) {
                     mFoundDeviceSet.addAll(bluetoothDeviceList);
                 }
-            } else if (PROGRESS_SCAN_ERROR == nextProgress) {
+            } else if (PROGRESS_SCAN_ERROR.equals(nextProgress)) {
                 // current:scan start, next:scan error
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     mBluetoothLeScanner.stopScan(mFilteredScanCallback);
@@ -282,7 +312,7 @@ public class ScanTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

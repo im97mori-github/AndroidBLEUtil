@@ -1,22 +1,5 @@
 package org.im97mori.ble.service.bls.peripheral;
 
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattService;
-import android.os.Build;
-
-import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
-import org.im97mori.ble.characteristic.u2a35.BloodPressureMeasurement;
-import org.im97mori.ble.characteristic.u2a36.IntermediateCuffPressure;
-import org.im97mori.ble.characteristic.u2a49.BloodPressureFeature;
-import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
-import org.junit.Test;
-
-import java.util.LinkedList;
-import java.util.List;
-
 import static org.im97mori.ble.constants.CharacteristicUUID.BLOOD_PRESSURE_FEATURE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
@@ -29,8 +12,25 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.os.Build;
+
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
+
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
+import org.im97mori.ble.characteristic.u2a35.BloodPressureMeasurement;
+import org.im97mori.ble.characteristic.u2a36.IntermediateCuffPressure;
+import org.im97mori.ble.characteristic.u2a49.BloodPressureFeature;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.junit.Test;
+
+import java.util.LinkedList;
+import java.util.List;
 
 @SuppressWarnings("ConstantConditions")
 public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
@@ -97,7 +97,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         Exception exception = null;
         try {
@@ -142,7 +145,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -230,7 +236,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -298,7 +307,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -386,7 +398,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -493,7 +508,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         Exception exception = null;
         try {
@@ -539,7 +557,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -618,7 +639,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -686,7 +710,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -765,7 +792,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -854,7 +884,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -952,7 +985,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1036,7 +1072,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1100,7 +1139,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1184,7 +1226,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1248,7 +1293,10 @@ public class BloodPressureServiceMockCallbackBuilderTest extends AbstractPeriphe
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         Exception exception = null;
         try {

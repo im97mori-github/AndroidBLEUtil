@@ -35,8 +35,8 @@ public class ReadRemoteRssiTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadRemoteRssiTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadRemoteRssiTask.PROGRESS_READ_REMOTE_RSSI_START, bundle.getString(ReadRemoteRssiTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -49,10 +49,10 @@ public class ReadRemoteRssiTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_RSSI));
-        assertEquals(rssi, bundle.getInt(AbstractBLETask.KEY_RSSI));
+        assertTrue(bundle.containsKey(ReadRemoteRssiTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadRemoteRssiTask.PROGRESS_READ_REMOTE_RSSI_SUCCESS, bundle.getString(ReadRemoteRssiTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadRemoteRssiTask.KEY_RSSI));
+        assertEquals(rssi, bundle.getInt(ReadRemoteRssiTask.KEY_RSSI));
     }
 
     @Test
@@ -64,10 +64,10 @@ public class ReadRemoteRssiTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
+        assertTrue(bundle.containsKey(ReadRemoteRssiTask.KEY_NEXT_PROGRESS));
+        assertEquals(ReadRemoteRssiTask.PROGRESS_READ_REMOTE_RSSI_ERROR, bundle.getString(ReadRemoteRssiTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ReadRemoteRssiTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(ReadRemoteRssiTask.KEY_STATUS));
     }
 
     @Test

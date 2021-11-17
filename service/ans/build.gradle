@@ -30,7 +30,7 @@ dependencies {
     api "${myGroupId}:${characteristicU2a46Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2a47Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2a48Android.artifactId}:${loadVersion}"
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestUtilAndroid
 }
 
 task sourcesJar(type: Jar) {

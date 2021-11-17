@@ -52,7 +52,7 @@ public class BodyCompositionMeasurementAndroid extends BodyCompositionMeasuremen
      *
      * @param bodyCompositionMeasurementPackets 1 or 2 Body Composition Measurement packet array
      */
-    public BodyCompositionMeasurementAndroid(@NonNull BodyCompositionMeasurementPacketAndroid[] bodyCompositionMeasurementPackets) {
+    public BodyCompositionMeasurementAndroid(@NonNull BodyCompositionMeasurementPacketAndroid... bodyCompositionMeasurementPackets) {
         super(bodyCompositionMeasurementPackets);
     }
 

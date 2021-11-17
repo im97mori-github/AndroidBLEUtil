@@ -24,6 +24,31 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 public class RemoveServiceTask extends AbstractBLETask {
 
     /**
+     * KEY:STATUS
+     */
+    public static final String KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * PROGRESS:REMOVE_SERVICE_START
+     */
+    public static final String PROGRESS_REMOVE_SERVICE_START = "PROGRESS_REMOVE_SERVICE_START";
+
+    /**
+     * PROGRESS:REMOVE_SERVICE_SUCCESS
+     */
+    public static final String PROGRESS_REMOVE_SERVICE_SUCCESS = "PROGRESS_REMOVE_SERVICE_SUCCESS";
+
+    /**
+     * PROGRESS:REMOVE_SERVICE_ERROR
+     */
+    public static final String PROGRESS_REMOVE_SERVICE_ERROR = "PROGRESS_REMOVE_SERVICE_ERROR";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
+    
+    /**
      * Default timeout(millis) for remove service:30sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
@@ -85,7 +110,7 @@ public class RemoveServiceTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(AbstractBLETask.KEY_NEXT_PROGRESS, AbstractBLETask.PROGRESS_REMOVE_SERVICE);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_REMOVE_SERVICE_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -101,15 +126,15 @@ public class RemoveServiceTask extends AbstractBLETask {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
             BluetoothGattService bluetoothGattService;
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+            if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
                 mBLEServerConnection.getBLEServerCallback().onServiceRemoveTimeout(getTaskId(), mBLEServerConnection, mBluetoothGattService, mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
-            } else if (PROGRESS_INIT == mCurrentProgress) {
+            } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 // current:init, next:remove service start
-                if (this == message.obj && PROGRESS_REMOVE_SERVICE == nextProgress) {
+                if (this == message.obj && PROGRESS_REMOVE_SERVICE_START.equals(nextProgress)) {
                     if (mBluetoothGattServer.removeService(mBluetoothGattService)) {
                         mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     } else {
@@ -118,14 +143,14 @@ public class RemoveServiceTask extends AbstractBLETask {
                     }
                     mCurrentProgress = nextProgress;
                 }
-            } else if (PROGRESS_REMOVE_SERVICE == mCurrentProgress) {
+            } else if (PROGRESS_REMOVE_SERVICE_START.equals(mCurrentProgress)) {
                 if (message.obj instanceof BluetoothGattService) {
                     bluetoothGattService = (BluetoothGattService) message.obj;
                     if (mBluetoothGattService.getUuid().equals(bluetoothGattService.getUuid()) && mBluetoothGattService.getType() == bluetoothGattService.getType()) {
                         // current:remove service start, next:remove service success
-                        if (PROGRESS_REMOVE_SERVICE_SUCCESS == nextProgress) {
+                        if (PROGRESS_REMOVE_SERVICE_SUCCESS.equals(nextProgress)) {
                             mBLEServerConnection.getBLEServerCallback().onServiceRemoveSuccess(getTaskId(), mBLEServerConnection, bluetoothGattService, mArgument);
-                        } else if (PROGRESS_REMOVE_SERVICE_ERROR == nextProgress) {
+                        } else if (PROGRESS_REMOVE_SERVICE_ERROR.equals(nextProgress)) {
                             // current:remove service start, next:remove service error
                             mBLEServerConnection.getBLEServerCallback().onServiceRemoveFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, bundle.getInt(KEY_STATUS), mArgument);
                         }
@@ -137,7 +162,7 @@ public class RemoveServiceTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
@@ -145,7 +170,7 @@ public class RemoveServiceTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

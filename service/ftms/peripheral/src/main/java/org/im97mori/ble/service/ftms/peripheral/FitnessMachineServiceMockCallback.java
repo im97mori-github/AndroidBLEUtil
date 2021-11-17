@@ -940,7 +940,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             FitnessMachineFeature fitnessMachineFeature = new FitnessMachineFeature(mFitnessMachineFeatureData.getBytes());
 
             if (mTreadmillDataData != null) {
-                TreadmillData treadmillData = new TreadmillData(new TreadmillDataPacket[]{new TreadmillDataPacket(mTreadmillDataData.getBytes())});
+                TreadmillData treadmillData = new TreadmillData(new TreadmillDataPacket(mTreadmillDataData.getBytes()));
                 if (fitnessMachineFeature.isFitnessMachineFeaturesAverageSpeedNotSupported() && TreadmillDataUtils.isFlagsAverageSpeedPresent(treadmillData.getFlags())) {
                     throw new RuntimeException("Average Speed not Supported");
                 }
@@ -981,7 +981,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             }
 
             if (mCrossTrainerDataData != null) {
-                CrossTrainerData crossTrainerData = new CrossTrainerData(new CrossTrainerDataPacket[]{new CrossTrainerDataPacket(mCrossTrainerDataData.getBytes())});
+                CrossTrainerData crossTrainerData = new CrossTrainerData(new CrossTrainerDataPacket(mCrossTrainerDataData.getBytes()));
                 if (fitnessMachineFeature.isFitnessMachineFeaturesAverageSpeedNotSupported() && CrossTrainerDataUtils.isFlagsAverageSpeedPresent(crossTrainerData.getFlags())) {
                     throw new RuntimeException("Average Speed not Supported");
                 }
@@ -1028,7 +1028,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             }
 
             if (mStepClimberDataData != null) {
-                StepClimberData stepClimberData = new StepClimberData(new StepClimberDataPacket[]{new StepClimberDataPacket(mStepClimberDataData.getBytes())});
+                StepClimberData stepClimberData = new StepClimberData(new StepClimberDataPacket(mStepClimberDataData.getBytes()));
                 if (fitnessMachineFeature.isFitnessMachineFeaturesStepCountNotSupported() && StepClimberDataUtils.isFlagsStepPerMinutePresent(stepClimberData.getFlags())) {
                     throw new RuntimeException("Step Count not Supported");
                 }
@@ -1057,7 +1057,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             }
 
             if (mStairClimberDataData != null) {
-                StairClimberData stairClimberData = new StairClimberData(new StairClimberDataPacket[]{new StairClimberDataPacket(mStairClimberDataData.getBytes())});
+                StairClimberData stairClimberData = new StairClimberData(new StairClimberDataPacket(mStairClimberDataData.getBytes()));
                 if (fitnessMachineFeature.isFitnessMachineFeaturesStepCountNotSupported() && StairClimberDataUtils.isFlagsStepPerMinutePresent(stairClimberData.getFlags())) {
                     throw new RuntimeException("Step Count not Supported");
                 }
@@ -1089,7 +1089,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             }
 
             if (mRowerDataData != null) {
-                RowerData rowerData = new RowerData(new RowerDataPacket[]{new RowerDataPacket(mRowerDataData.getBytes())});
+                RowerData rowerData = new RowerData(new RowerDataPacket(mRowerDataData.getBytes()));
                 if (fitnessMachineFeature.isFitnessMachineFeaturesCadenceNotSupported() && RowerDataUtils.isFlagsAverageStrokePresent(rowerData.getFlags())) {
                     throw new RuntimeException("Cadence not Supported");
                 }
@@ -1130,7 +1130,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             }
 
             if (mIndoorBikeDataData != null) {
-                IndoorBikeData indoorBikeData = new IndoorBikeData(new IndoorBikeDataPacket[]{new IndoorBikeDataPacket(mIndoorBikeDataData.getBytes())});
+                IndoorBikeData indoorBikeData = new IndoorBikeData(new IndoorBikeDataPacket(mIndoorBikeDataData.getBytes()));
                 if (fitnessMachineFeature.isFitnessMachineFeaturesAverageSpeedNotSupported() && IndoorBikeDataUtils.isFlagsAverageSpeedPresent(indoorBikeData.getFlags())) {
                     throw new RuntimeException("Average Speed not Supported");
                 }
@@ -1703,37 +1703,37 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
             TreadmillData treadmillData = null;
             CharacteristicData treadMillDataCharacteristicData = findCharacteristicData(FITNESS_MACHINE_SERVICE, TREADMILL_DATA_CHARACTERISTIC, CharacteristicData.class);
             if (treadMillDataCharacteristicData != null) {
-                treadmillData = new TreadmillData(new TreadmillDataPacket[]{new TreadmillDataPacket(treadMillDataCharacteristicData.getBytes())});
+                treadmillData = new TreadmillData(new TreadmillDataPacket(treadMillDataCharacteristicData.getBytes()));
             }
 
             CrossTrainerData crossTrainerData = null;
             CharacteristicData crossTrainerDataCharacteristicData = findCharacteristicData(FITNESS_MACHINE_SERVICE, CROSS_TRAINER_DATA_CHARACTERISTIC, CharacteristicData.class);
             if (crossTrainerDataCharacteristicData != null) {
-                crossTrainerData = new CrossTrainerData(new CrossTrainerDataPacket[]{new CrossTrainerDataPacket(crossTrainerDataCharacteristicData.getBytes())});
+                crossTrainerData = new CrossTrainerData(new CrossTrainerDataPacket(crossTrainerDataCharacteristicData.getBytes()));
             }
 
             StepClimberData stepClimberData = null;
             CharacteristicData stepClimberDataCharacteristicData = findCharacteristicData(FITNESS_MACHINE_SERVICE, STEP_CLIMBER_DATA_CHARACTERISTIC, CharacteristicData.class);
             if (stepClimberDataCharacteristicData != null) {
-                stepClimberData = new StepClimberData(new StepClimberDataPacket[]{new StepClimberDataPacket(stepClimberDataCharacteristicData.getBytes())});
+                stepClimberData = new StepClimberData(new StepClimberDataPacket(stepClimberDataCharacteristicData.getBytes()));
             }
 
             StairClimberData stairClimberData = null;
             CharacteristicData stairClimberDataCharacteristicData = findCharacteristicData(FITNESS_MACHINE_SERVICE, STAIR_CLIMBER_DATA_CHARACTERISTIC, CharacteristicData.class);
             if (stairClimberDataCharacteristicData != null) {
-                stairClimberData = new StairClimberData(new StairClimberDataPacket[]{new StairClimberDataPacket(stairClimberDataCharacteristicData.getBytes())});
+                stairClimberData = new StairClimberData(new StairClimberDataPacket(stairClimberDataCharacteristicData.getBytes()));
             }
 
             RowerData rowerData = null;
             CharacteristicData rowerDataCharacteristicData = findCharacteristicData(FITNESS_MACHINE_SERVICE, ROWER_DATA_CHARACTERISTIC, CharacteristicData.class);
             if (rowerDataCharacteristicData != null) {
-                rowerData = new RowerData(new RowerDataPacket[]{new RowerDataPacket(rowerDataCharacteristicData.getBytes())});
+                rowerData = new RowerData(new RowerDataPacket(rowerDataCharacteristicData.getBytes()));
             }
 
             IndoorBikeData indoorBikeData = null;
             CharacteristicData indoorBikeDataCharacteristicData = findCharacteristicData(FITNESS_MACHINE_SERVICE, INDOOR_BIKE_DATA_CHARACTERISTIC, CharacteristicData.class);
             if (indoorBikeDataCharacteristicData != null) {
-                indoorBikeData = new IndoorBikeData(new IndoorBikeDataPacket[]{new IndoorBikeDataPacket(indoorBikeDataCharacteristicData.getBytes())});
+                indoorBikeData = new IndoorBikeData(new IndoorBikeDataPacket(indoorBikeDataCharacteristicData.getBytes()));
             }
 
             if (treadmillData != null) {

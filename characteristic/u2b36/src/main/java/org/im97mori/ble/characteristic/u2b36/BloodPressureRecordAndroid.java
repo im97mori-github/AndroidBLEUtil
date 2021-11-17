@@ -5,22 +5,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-import org.im97mori.ble.ByteArrayCreater;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.BLOOD_PRESSURE_RECORD_CHARACTERISTIC;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 
 /**
  * Blood Pressure Record (Characteristics UUID: 0x2B36)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class BloodPressureRecordAndroid extends BloodPressureRecord implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see MultiplePacketCreater
      */
-    public static final ByteArrayCreater<BloodPressureRecordAndroid> CREATOR = new ByteArrayCreater<BloodPressureRecordAndroid>() {
+    public static final MultiplePacketCreater<BloodPressureRecordAndroid, BloodPressureRecordPacketAndroid> CREATOR = new MultiplePacketCreater<BloodPressureRecordAndroid, BloodPressureRecordPacketAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -44,10 +42,9 @@ public class BloodPressureRecordAndroid extends BloodPressureRecord implements P
          * {@inheritDoc}
          */
         @NonNull
-        public BloodPressureRecordAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BLOOD_PRESSURE_RECORD_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BloodPressureRecordAndroid(bluetoothGattCharacteristic);
+        @Override
+        public BloodPressureRecordAndroid createFromMultiplePacketArray(@NonNull BloodPressureRecordPacketAndroid[] multiplePacketArray) {
+            return new BloodPressureRecordAndroid(multiplePacketArray);
         }
 
     };
@@ -55,10 +52,25 @@ public class BloodPressureRecordAndroid extends BloodPressureRecord implements P
     /**
      * Constructor from {@link BluetoothGattCharacteristic}
      *
-     * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B36
+     * @param bloodPressureRecordPackets 1 or more Blood Pressure Record packet array
      */
-    public BloodPressureRecordAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        super(bluetoothGattCharacteristic.getValue());
+    public BloodPressureRecordAndroid(@NonNull BloodPressureRecordPacketAndroid... bloodPressureRecordPackets) {
+        super(bloodPressureRecordPackets);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param sequenceNumber         Sequence Number
+     * @param uuid                   UUID
+     * @param recordedCharacteristic Recorded Characteristic
+     * @param crc                    E2E-CRC
+     */
+    public BloodPressureRecordAndroid(int sequenceNumber
+            , int uuid
+            , @NonNull byte[] recordedCharacteristic
+            , @Nullable byte[] crc) {
+        super(sequenceNumber, uuid, recordedCharacteristic, crc);
     }
 
     /**
@@ -68,7 +80,7 @@ public class BloodPressureRecordAndroid extends BloodPressureRecord implements P
      */
     private BloodPressureRecordAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(new BloodPressureRecordPacketAndroid[]{BloodPressureRecordPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }
 
     /**

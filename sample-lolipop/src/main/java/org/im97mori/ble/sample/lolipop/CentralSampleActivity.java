@@ -328,7 +328,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                             } else if (RESULT_FAILED == result.getResultCode()) {
                                 mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
                             } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                                mBLECallbackSample.onReadRemoteRssiTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                                mBLECallbackSample.onReadRemoteRssiTimeout(0, target.getBluetoothDevice(), ReadRemoteRssiTask.TIMEOUT_MILLIS, result.getArgument());
                             }
                         }
                     }

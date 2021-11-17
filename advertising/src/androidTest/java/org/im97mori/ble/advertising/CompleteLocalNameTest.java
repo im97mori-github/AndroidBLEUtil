@@ -4,8 +4,6 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
-import java.nio.charset.StandardCharsets;
-
 import static org.im97mori.ble.constants.DataType.COMPLETE_LOCAL_NAME_DATA_TYPE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;

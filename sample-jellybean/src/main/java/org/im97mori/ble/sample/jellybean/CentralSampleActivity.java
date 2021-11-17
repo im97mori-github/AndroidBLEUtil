@@ -66,7 +66,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class CentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback, FilteredLeScanCallbackInterface {
 
     public static final UUID MOCK_CONTROL_SERVICE_UUID = UUID.fromString("00000000-a087-4fa3-add4-3b8a7d5d491f");
@@ -79,13 +79,13 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 
     public static final UUID SAMPLE_WRITABLE_CHARACTERISTIC = UUID.fromString("00000020-a087-4fa3-add4-3b8a7d5d4921");
 
-    public static final UUID SAMPLE_WRITABLE_DESCRIPTOR = UUID.fromString("00000200-a087-4fa3-add4-3b8a7d5d4921");
+//    public static final UUID SAMPLE_WRITABLE_DESCRIPTOR = UUID.fromString("00000200-a087-4fa3-add4-3b8a7d5d4921");
 
     public static final UUID SAMPLE_NOTIFICATABLE_CHARACTERISTIC = UUID.fromString("00000030-a087-4fa3-add4-3b8a7d5d4921");
 
     public static final UUID SAMPLE_INDICATABLE_CHARACTERISTIC = UUID.fromString("00000040-a087-4fa3-add4-3b8a7d5d4921");
 
-    public static final UUID SAMPLE_WRITE_CHARACTERISTIC_RELIABLE = UUID.fromString("00000050-a087-4fa3-add4-3b8a7d5d4921");
+//    public static final UUID SAMPLE_WRITE_CHARACTERISTIC_RELIABLE = UUID.fromString("00000050-a087-4fa3-add4-3b8a7d5d4921");
 
     public static final UUID SAMPLE_PRIMARY_SERVICE_2 = UUID.fromString("00000002-a087-4fa3-add4-3b8a7d5d4922");
 
@@ -215,34 +215,38 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 }
             }.start();
         } else if (R.id.request_mtu == item.getItemId()) {
-            mBleConnection.createRequestMtuTask(RequestMtuTask.MAXIMUM_MTU / 2, DiscoverServiceTask.TIMEOUT_MILLIS, null, null);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mBleConnection.createRequestMtuTask(RequestMtuTask.MAXIMUM_MTU / 2, DiscoverServiceTask.TIMEOUT_MILLIS, null, null);
+            }
         } else if (R.id.request_mtu_sync == item.getItemId()) {
-            new Thread() {
-                @Override
-                public void run() {
-                    BLEConnection target = mBleConnection;
-                    if (target != null) {
-                        BLESyncConnection.BLEResult result = BLESyncConnection.createRequestMtuTask(target
-                                , 100
-                                , RequestMtuTask.TIMEOUT_MILLIS
-                                , RequestMtuTask.TIMEOUT_MILLIS
-                                , null
-                                , false);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        BLEConnection target = mBleConnection;
+                        if (target != null) {
+                            BLESyncConnection.BLEResult result = BLESyncConnection.createRequestMtuTask(target
+                                    , 100
+                                    , RequestMtuTask.TIMEOUT_MILLIS
+                                    , RequestMtuTask.TIMEOUT_MILLIS
+                                    , null
+                                    , false);
 
-                        if (result == null) {
-                            mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
-                        } else {
-                            if (RESULT_SUCCESS == result.getResultCode()) {
-                                mBLECallbackSample.onRequestMtuSuccess(0, target.getBluetoothDevice(), result.getMtu(), result.getArgument());
-                            } else if (RESULT_FAILED == result.getResultCode()) {
-                                mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
-                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                                mBLECallbackSample.onRequestMtuTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                            if (result == null) {
+                                mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
+                            } else {
+                                if (RESULT_SUCCESS == result.getResultCode()) {
+                                    mBLECallbackSample.onRequestMtuSuccess(0, target.getBluetoothDevice(), result.getMtu(), result.getArgument());
+                                } else if (RESULT_FAILED == result.getResultCode()) {
+                                    mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
+                                } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                                    mBLECallbackSample.onRequestMtuTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                                }
                             }
                         }
                     }
-                }
-            }.start();
+                }.start();
+            }
         } else if (R.id.read_phy == item.getItemId()) {
             if (Build.VERSION_CODES.O <= Build.VERSION.SDK_INT) {
                 mBleConnection.createReadPhyTask(ReadPhyTask.TIMEOUT_MILLIS, null, null);
@@ -336,7 +340,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                             } else if (RESULT_FAILED == result.getResultCode()) {
                                 mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
                             } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                                mBLECallbackSample.onReadRemoteRssiTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                                mBLECallbackSample.onReadRemoteRssiTimeout(0, target.getBluetoothDevice(), ReadRemoteRssiTask.TIMEOUT_MILLIS, result.getArgument());
                             }
                         }
                     }
@@ -514,12 +518,14 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     , WriteCharacteristicTask.TIMEOUT_MILLIS);
             mBleConnection.createExecuteReliableWriteTask(ExecuteReliableWriteTask.TIMEOUT_MILLIS, null, null);
         } else if (R.id.write_characteristc_reliable_abort == item.getItemId()) {
-            mBleConnection.createBeginReliableWriteTask(null, null);
-            mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
-                    , SAMPLE_WRITABLE_CHARACTERISTIC
-                    , () -> new byte[]{0x00, 0x00, 0x00, 0x00, 0x00}
-                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
-            mBleConnection.createAbortReliableWriteTask(AbortReliableWriteTask.TIMEOUT_MILLIS, null, null);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                mBleConnection.createBeginReliableWriteTask(null, null);
+                mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
+                        , SAMPLE_WRITABLE_CHARACTERISTIC
+                        , () -> new byte[]{0x00, 0x00, 0x00, 0x00, 0x00}
+                        , WriteCharacteristicTask.TIMEOUT_MILLIS);
+                mBleConnection.createAbortReliableWriteTask(AbortReliableWriteTask.TIMEOUT_MILLIS, null, null);
+            }
         } else if (R.id.read_multi_instance_characteristic == item.getItemId()) {
             new Thread() {
                 @Override
@@ -844,36 +850,38 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     CentralSampleActivity.this.mBleConnection.attach(CentralSampleActivity.this.mBLECallbackSample);
                     CentralSampleActivity.this.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
                 } else {
-                    CentralSampleActivity.this.mReceiver = new BroadcastReceiver() {
-                        @Override
-                        public void onReceive(Context context, Intent intent) {
-                            try {
-                                String action = intent.getAction();
-                                BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
-                                if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
-                                    int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
-                                    if (BluetoothDevice.BOND_BONDED == state) {
-                                        CentralSampleActivity.this.getPreferences(Context.MODE_PRIVATE).edit().putString(KEY_LATEST_DEVICE, device.getAddress()).apply();
-                                        CentralSampleActivity.this.mBleConnection = BLEConnectionHolder.getInstance(device);
-                                        if (CentralSampleActivity.this.mBleConnection == null) {
-                                            CentralSampleActivity.this.mBleConnection = new BLEConnection(CentralSampleActivity.this, device, null);
-                                            BLEConnectionHolder.addInstance(CentralSampleActivity.this.mBleConnection, true);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        CentralSampleActivity.this.mReceiver = new BroadcastReceiver() {
+                            @Override
+                            public void onReceive(Context context, Intent intent) {
+                                try {
+                                    String action = intent.getAction();
+                                    BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
+                                    if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
+                                        int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
+                                        if (BluetoothDevice.BOND_BONDED == state) {
+                                            CentralSampleActivity.this.getPreferences(Context.MODE_PRIVATE).edit().putString(KEY_LATEST_DEVICE, device.getAddress()).apply();
+                                            CentralSampleActivity.this.mBleConnection = BLEConnectionHolder.getInstance(device);
+                                            if (CentralSampleActivity.this.mBleConnection == null) {
+                                                CentralSampleActivity.this.mBleConnection = new BLEConnection(CentralSampleActivity.this, device, null);
+                                                BLEConnectionHolder.addInstance(CentralSampleActivity.this.mBleConnection, true);
+                                            }
+                                            CentralSampleActivity.this.mBleConnection.attach(CentralSampleActivity.this.mBLECallbackSample);
+                                            CentralSampleActivity.this.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                                            CentralSampleActivity.this.unregisterReceiver(CentralSampleActivity.this.mReceiver);
+                                            CentralSampleActivity.this.mReceiver = null;
                                         }
-                                        CentralSampleActivity.this.mBleConnection.attach(CentralSampleActivity.this.mBLECallbackSample);
-                                        CentralSampleActivity.this.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
-                                        CentralSampleActivity.this.unregisterReceiver(CentralSampleActivity.this.mReceiver);
-                                        CentralSampleActivity.this.mReceiver = null;
                                     }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
 
-                        }
-                    };
-                    IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-                    CentralSampleActivity.this.registerReceiver(CentralSampleActivity.this.mReceiver, intentFilter);
-                    device.createBond();
+                            }
+                        };
+                        IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
+                        CentralSampleActivity.this.registerReceiver(CentralSampleActivity.this.mReceiver, intentFilter);
+                        device.createBond();
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();

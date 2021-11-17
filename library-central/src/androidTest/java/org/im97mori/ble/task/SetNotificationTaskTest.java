@@ -37,12 +37,8 @@ public class SetNotificationTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_SET_NOTIFICATION_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(SetNotificationTask.KEY_NEXT_PROGRESS));
+        assertEquals(SetNotificationTask.PROGRESS_SET_NOTIFICATION_START, bundle.getString(SetNotificationTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 

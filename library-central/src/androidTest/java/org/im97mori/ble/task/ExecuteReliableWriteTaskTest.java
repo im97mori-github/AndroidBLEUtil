@@ -1,5 +1,10 @@
 package org.im97mori.ble.task;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.os.HandlerThread;
@@ -18,11 +23,6 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 @SuppressWarnings("ConstantConditions")
 public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
 
@@ -35,8 +35,8 @@ public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_EXECUTE_RELIABLE_WRITE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ExecuteReliableWriteTask.KEY_NEXT_PROGRESS));
+        assertEquals(ExecuteReliableWriteTask.PROGRESS_EXECUTE_RELIABLE_WRITE_START, bundle.getString(ExecuteReliableWriteTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -48,8 +48,8 @@ public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ExecuteReliableWriteTask.KEY_NEXT_PROGRESS));
+        assertEquals(ExecuteReliableWriteTask.PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS, bundle.getString(ExecuteReliableWriteTask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -61,10 +61,10 @@ public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(ExecuteReliableWriteTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(ExecuteReliableWriteTask.KEY_STATUS));
+        assertTrue(bundle.containsKey(ExecuteReliableWriteTask.KEY_NEXT_PROGRESS));
+        assertEquals(ExecuteReliableWriteTask.PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR, bundle.getString(ExecuteReliableWriteTask.KEY_NEXT_PROGRESS));
     }
 
     @Test

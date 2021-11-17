@@ -53,7 +53,7 @@ public class StepClimberDataAndroid extends StepClimberData implements Parcelabl
      *
      * @param stepClimberDataPackets 1 or more Step Climber Data packet array
      */
-    public StepClimberDataAndroid(@NonNull StepClimberDataPacket[] stepClimberDataPackets) {
+    public StepClimberDataAndroid(@NonNull StepClimberDataPacket... stepClimberDataPackets) {
         super(stepClimberDataPackets);
     }
 

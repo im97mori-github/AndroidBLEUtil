@@ -30,8 +30,8 @@ public class BeginReliableWriteTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_BEGIN_RELIABLE_WRITE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(BeginReliableWriteTask.KEY_NEXT_PROGRESS));
+        assertEquals(BeginReliableWriteTask.PROGRESS_BEGIN_RELIABLE_WRITE_START, bundle.getString(BeginReliableWriteTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 

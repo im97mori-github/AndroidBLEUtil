@@ -27,7 +27,7 @@ dependencies {
     api apiCoreConstantsDescriptor
     api target['baseModule']
     api apiCoreUtilsAndroid
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestUtilAndroid
 }
 
 task sourcesJar(type: Jar) {

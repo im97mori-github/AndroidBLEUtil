@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-def target = test
+def target = testUtilAndroid
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -22,6 +22,7 @@ android {
 }
 
 dependencies {
+    api target['baseModule']
     api androidxTestRunner
     api androidxTestCore
 }

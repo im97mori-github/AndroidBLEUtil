@@ -29,6 +29,46 @@ public class ConnectTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DiscoverServiceTask.TIMEOUT_MILLIS;
 
     /**
+     * KEY:STATUS
+     */
+    public static final String KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * PROGRESS:CONNECT
+     */
+    public static final String PROGRESS_CONNECT = "PROGRESS_CONNECT";
+
+    /**
+     * PROGRESS:CONNECT_SUCCESS
+     */
+    public static final String PROGRESS_CONNECT_SUCCESS = "PROGRESS_CONNECT_SUCCESS";
+
+    /**
+     * PROGRESS:DISCOVER_SERVICE_SUCCESS
+     */
+    public static final String PROGRESS_DISCOVER_SERVICE_SUCCESS = "PROGRESS_DISCOVER_SERVICE_SUCCESS";
+
+    /**
+     * PROGRESS:DISCOVER_SERVICE_ERROR
+     */
+    public static final String PROGRESS_DISCOVER_SERVICE_ERROR = "PROGRESS_DISCOVER_SERVICE_ERROR";
+
+    /**
+     * PROGRESS:REQUEST_MTU_SUCCESS
+     */
+    public static final String PROGRESS_REQUEST_MTU_SUCCESS = "PROGRESS_REQUEST_MTU_SUCCESS";
+
+    /**
+     * PROGRESS:REQUEST_MTU_ERROR
+     */
+    public static final String PROGRESS_REQUEST_MTU_ERROR = "PROGRESS_REQUEST_MTU_ERROR";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
+
+    /**
      * create connect success message
      *
      * @param obj current {@link BluetoothGatt} instance
@@ -37,7 +77,7 @@ public class ConnectTask extends AbstractBLETask {
     @NonNull
     public static Message createConnectSuccessMessage(@NonNull Object obj) {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_CONNECT_SUCCESS);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_CONNECT_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         message.obj = obj;
@@ -106,7 +146,7 @@ public class ConnectTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_CONNECT);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_CONNECT);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -126,10 +166,10 @@ public class ConnectTask extends AbstractBLETask {
         } else {
             Bundle bundle = message.getData();
             if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-                int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+                String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
                 // timeout
-                if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
 
                     // disconnect current target
                     if (mBluetoothGatt != null) {
@@ -148,9 +188,9 @@ public class ConnectTask extends AbstractBLETask {
                     mBLEConnection.onConnectTimeout(getTaskId(), mArgument);
 
                     mCurrentProgress = nextProgress;
-                } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
                     // current:init, next:connect
-                    if (PROGRESS_CONNECT == nextProgress) {
+                    if (PROGRESS_CONNECT.equals(nextProgress)) {
 
                         // create gatt connection
                         try {
@@ -171,8 +211,8 @@ public class ConnectTask extends AbstractBLETask {
                             mCurrentProgress = nextProgress;
                         }
                     }
-                } else if (PROGRESS_CONNECT == mCurrentProgress) {
-                    if (mBluetoothGatt == message.obj && PROGRESS_CONNECT_SUCCESS == nextProgress) {
+                } else if (PROGRESS_CONNECT.equals(mCurrentProgress)) {
+                    if (mBluetoothGatt == message.obj && PROGRESS_CONNECT_SUCCESS.equals(nextProgress)) {
                         // current:connect, next:discover service
 
                         // start discover services
@@ -191,8 +231,8 @@ public class ConnectTask extends AbstractBLETask {
                         }
                         mCurrentProgress = nextProgress;
                     }
-                } else if (PROGRESS_CONNECT_SUCCESS == mCurrentProgress) {
-                    if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_SUCCESS == nextProgress) {
+                } else if (PROGRESS_CONNECT_SUCCESS.equals(mCurrentProgress)) {
+                    if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_SUCCESS.equals(nextProgress)) {
                         // current:connect, next:service discovered
 
                         // auto mtu setting
@@ -204,7 +244,7 @@ public class ConnectTask extends AbstractBLETask {
                             nextProgress = PROGRESS_FINISHED;
                         }
 
-                        if (PROGRESS_FINISHED == nextProgress) {
+                        if (PROGRESS_FINISHED.equals(nextProgress)) {
                             // callback
                             mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
 
@@ -212,7 +252,7 @@ public class ConnectTask extends AbstractBLETask {
                             mTaskHandler.removeCallbacksAndMessages(this);
                         }
                         mCurrentProgress = nextProgress;
-                    } else if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_ERROR == nextProgress) {
+                    } else if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_ERROR.equals(nextProgress)) {
                         // failed
 
                         int status = bundle.getInt(KEY_STATUS);
@@ -225,14 +265,14 @@ public class ConnectTask extends AbstractBLETask {
                         DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, status, mArgument);
                         mTaskHandler.addTask(task);
                     }
-                } else if (PROGRESS_DISCOVER_SERVICE_SUCCESS == mCurrentProgress) {
-                    if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
+                } else if (PROGRESS_DISCOVER_SERVICE_SUCCESS.equals(mCurrentProgress)) {
+                    if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_SUCCESS.equals(nextProgress)) {
                         // current:service discovered, next:finish(connected)
 
                         // callback
                         mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
 
-                    } else if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_ERROR == nextProgress) {
+                    } else if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_ERROR.equals(nextProgress)) {
                         // failed
 
                         mBLEConnection.onConnectFailed(getTaskId(), bundle.getInt(KEY_STATUS), mArgument);
@@ -246,7 +286,7 @@ public class ConnectTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

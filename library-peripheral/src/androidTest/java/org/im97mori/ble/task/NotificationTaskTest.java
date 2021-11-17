@@ -48,7 +48,7 @@ public class NotificationTaskTest extends AbstractPeripherallTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(NotificationTask.PROGRESS_NOTIFICATION_START, bundle.getString(NotificationTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -60,10 +60,10 @@ public class NotificationTaskTest extends AbstractPeripherallTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(NotificationTask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(NotificationTask.KEY_BLUETOOTH_DEVICE));
+        assertTrue(bundle.containsKey(NotificationTask.KEY_NEXT_PROGRESS));
+        assertEquals(NotificationTask.PROGRESS_NOTIFICATION_SUCCESS, bundle.getString(NotificationTask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -75,12 +75,12 @@ public class NotificationTaskTest extends AbstractPeripherallTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(NotificationTask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(NotificationTask.KEY_BLUETOOTH_DEVICE));
+        assertTrue(bundle.containsKey(NotificationTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(NotificationTask.KEY_STATUS));
+        assertTrue(bundle.containsKey(NotificationTask.KEY_NEXT_PROGRESS));
+        assertEquals(NotificationTask.PROGRESS_NOTIFICATION_ERROR, bundle.getString(NotificationTask.KEY_NEXT_PROGRESS));
     }
 
     @Test

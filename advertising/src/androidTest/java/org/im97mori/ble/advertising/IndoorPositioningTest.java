@@ -22,22 +22,6 @@ public class IndoorPositioningTest {
         data_00001 = data;
     }
 
-//    private static final byte[] data_00002;
-//    static {
-//        int flag = IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_NOT_PRESENT
-//                | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_COORDINATE_SYSTEM_USED_IN_ADVERTISING_PACKETS_WGS84_COORDINATE_SYSTEM
-//                | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_TX_POWER_FIELD_IN_ADVERTISING_PACKETS_TX_POWER_IS_NOT_PRESENT
-//                | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_ALTITUDE_FIELD_IN_ADVERTISING_PACKETS_ALTITUDE_IS_NOT_PRESENT
-//                | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_FLOOR_NUMBER_IN_ADVERTISING_PACKETS_FLOOR_NUMBER_IS_NOT_PRESENT
-//                | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_UNCERTAINTY_IN_ADVERTISING_PACKETS_UNCERTAINTY_IS_NOT_PRESENT
-//                | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
-//        byte[] data = new byte[3];
-//        data[ 0] = 2;
-//        data[ 1] = INDOOR_POSITIONING_DATA_TYPE;
-//        data[ 2] = (byte) flag;
-//        data_00002 = data;
-//    }
-
     private static final byte[] data_00101;
     static {
         int flag = IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_PRESENT
@@ -290,16 +274,6 @@ public class IndoorPositioningTest {
         assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
     }
 
-//    @Test
-//    public void test_constructor_1_00002() {
-//        byte[] data = getData();
-//
-//        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
-//        assertEquals(data[0], result1.getLength());
-//        assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
-//        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
-//    }
-
     @Test
     public void test_constructor_1_00101() {
         byte[] data = getData();
@@ -443,16 +417,6 @@ public class IndoorPositioningTest {
         assertEquals(0, result1.getIndoorPositioningConfiguration());
         assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
     }
-
-//    @Test
-//    public void test_constructor_2_00002() {
-//        byte[] data = getData();
-//
-//        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0);
-//        assertEquals(data[0], result1.getLength());
-//        assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
-//        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
-//    }
 
     @Test
     public void test_constructor_2_00101() {
@@ -668,87 +632,6 @@ public class IndoorPositioningTest {
         assertEquals(0, result1.getIndoorPositioningConfiguration());
         assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
     }
-
-//    @Test
-//    public void test_constructor_3_00002() {
-//        byte[] data = getData();
-//
-//        int indoorPositioningConfiguration;
-//		int globalCoorinatesLatitude;
-//		int globalCoorinatesLongitude;
-//		int localCoordinatesNorth;
-//		int localCoordinatesEast;
-//		int txPower;
-//		int floorNumber;
-//		int altitude;
-//		int uncertainty;
-//        int index = 2;
-//        if (data[0] > 1) {
-//        	indoorPositioningConfiguration = (data[index++] & 0xff);
-//        } else {
-//        	indoorPositioningConfiguration = 0;
-//        }
-//
-//        if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
-//            if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-//            	globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
-//                index += 4;
-//                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
-//                index += 4;
-//                localCoordinatesNorth = 0;
-//                localCoordinatesEast = 0;
-//            } else {
-//            	globalCoorinatesLatitude = 0;
-//            	globalCoorinatesLongitude = 0;
-//            	localCoordinatesNorth = BLEUtils.createSInt16(data, index);
-//                index += 2;
-//                localCoordinatesEast = BLEUtils.createSInt16(data, index);
-//                index += 2;
-//            }
-//        } else {
-//        	globalCoorinatesLatitude = 0;
-//        	globalCoorinatesLongitude = 0;
-//            localCoordinatesNorth = 0;
-//            localCoordinatesEast = 0;
-//        }
-//
-//        if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfTxPowerFieldInAdvertisingPacketsTxPowerIsPresent(indoorPositioningConfiguration)) {
-//        	txPower = BLEUtils.createSInt8(data, index++);
-//        } else {
-//        	txPower = 0;
-//        }
-//
-//        if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfFloorNumberInAdvertisingPacketsFloorNumberIsPresent(indoorPositioningConfiguration)) {
-//        	floorNumber = BLEUtils.createUInt8(data, index++);
-//        } else {
-//        	floorNumber = 0;
-//        }
-//
-//        if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfAltitudeFieldInAdvertisingPacketsAltitudeIsPresent(indoorPositioningConfiguration)) {
-//        	altitude = BLEUtils.createUInt16(data, index);
-//            index += 2;
-//        } else {
-//        	altitude = 0;
-//        }
-//
-//        if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfUncertaintyInAdvertisingPacketsUncertaintyIsPresent(indoorPositioningConfiguration)) {
-//        	uncertainty = BLEUtils.createUInt8(data, index);
-//        } else {
-//        	uncertainty = 0;
-//        }
-//        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-//    			, globalCoorinatesLatitude
-//    			, globalCoorinatesLongitude
-//    			, localCoordinatesNorth
-//    			, localCoordinatesEast
-//    			, txPower
-//    			, floorNumber
-//    			, altitude
-//    			, uncertainty);
-//        assertEquals(data[0], result1.getLength());
-//        assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
-//        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
-//    }
 
     @Test
     public void test_constructor_3_00101() {
@@ -1758,28 +1641,6 @@ public class IndoorPositioningTest {
         assertEquals(result1.getUncertainty(), result2.getUncertainty());
     }
 
-//    @Test
-//    public void test_parcelable_1_00002() {
-//        byte[] data = getData();
-//
-//        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
-//        Parcel parcel = Parcel.obtain();
-//        result1.writeToParcel(parcel, 0);
-//        parcel.setDataPosition(0);
-//        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
-//        assertEquals(result1.getLength(), result2.getLength());
-//        assertEquals(result1.getDataType(), result2.getDataType());
-//        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-//        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-//        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
-//        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
-//        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
-//        assertEquals(result1.getTxPower(), result2.getTxPower());
-//        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
-//        assertEquals(result1.getAltitude(), result2.getAltitude());
-//        assertEquals(result1.getUncertainty(), result2.getUncertainty());
-//    }
-
     @Test
     public void test_parcelable_1_00101() {
         byte[] data = getData();
@@ -2052,14 +1913,6 @@ public class IndoorPositioningTest {
         assertArrayEquals(data, result1.getBytes());
     }
 
-//    @Test
-//    public void test_parcelable_2_00002() {
-//        byte[] data = getData();
-//
-//        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
-//        assertArrayEquals(data, result1.getBytes());
-//    }
-
     @Test
     public void test_parcelable_2_00101() {
         byte[] data = getData();
@@ -2164,15 +2017,6 @@ public class IndoorPositioningTest {
         IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
-
-//    @Test
-//    public void test_parcelable_3_00002() {
-//        byte[] data = getData();
-//
-//        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
-//        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
-//        assertArrayEquals(result1.getBytes(), result2.getBytes());
-//    }
 
     @Test
     public void test_parcelable_3_00101() {

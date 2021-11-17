@@ -27,6 +27,21 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 public class SetNotificationTask extends AbstractBLETask {
 
     /**
+     * PROGRESS:SET_NOTIFICATION_START
+     */
+    public static final String  PROGRESS_SET_NOTIFICATION_START = "PROGRESS_SET_NOTIFICATION_START";
+
+    /**
+     * PROGRESS:BUSY
+     */
+    public static final String  PROGRESS_BUSY = "PROGRESS_BUSY";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
+    
+    /**
      * task target {@link BLEConnection} instance
      */
     private final BLEConnection mBLEConnection;
@@ -109,9 +124,7 @@ public class SetNotificationTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SET_NOTIFICATION_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_SET_NOTIFICATION_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -126,11 +139,11 @@ public class SetNotificationTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
-            if (PROGRESS_INIT == mCurrentProgress) {
+            if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 // current:init, next:set notification start
-                if (message.obj == this && PROGRESS_SET_NOTIFICATION_START == nextProgress) {
+                if (message.obj == this && PROGRESS_SET_NOTIFICATION_START.equals(nextProgress)) {
                     boolean result = false;
                     BluetoothGattService bluetoothGattService = null;
                     if (mServiceInstanceId == null) {
@@ -180,7 +193,7 @@ public class SetNotificationTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress | PROGRESS_BUSY == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) | PROGRESS_BUSY.equals(mCurrentProgress);
     }
 
     /**
@@ -188,7 +201,7 @@ public class SetNotificationTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_BUSY == mCurrentProgress;
+        return PROGRESS_BUSY.equals(mCurrentProgress);
     }
 
     /**

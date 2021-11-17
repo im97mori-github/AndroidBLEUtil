@@ -25,7 +25,7 @@ android {
 
 dependencies {
     api "${myGroupId}:${servicePeripheralAndroid.artifactId}:${loadVersion}"
-    androidTestImplementation apiTest
+    androidTestImplementation apiTestUtilAndroid
 }
 
 task sourcesJar(type: Jar) {

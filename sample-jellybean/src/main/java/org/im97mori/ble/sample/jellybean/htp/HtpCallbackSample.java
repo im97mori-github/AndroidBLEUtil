@@ -52,19 +52,6 @@ import java.util.UUID;
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class HtpCallbackSample implements HealthThermometerProfileCallback {
 
-    public static class Builder {
-
-        private final SampleCallback mSampleCallback;
-
-        public Builder(SampleCallback sampleCallback) {
-            mSampleCallback = sampleCallback;
-        }
-
-        public HtpCallbackSample build() {
-            return new HtpCallbackSample(mSampleCallback);
-        }
-    }
-
     private final SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
 
     private final SampleCallback mSampleCallback;

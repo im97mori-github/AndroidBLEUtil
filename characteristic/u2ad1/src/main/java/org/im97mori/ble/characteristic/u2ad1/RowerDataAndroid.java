@@ -53,7 +53,7 @@ public class RowerDataAndroid extends RowerData implements Parcelable {
      *
      * @param rowerDataPackets 1 or more Rower Data packet array
      */
-    public RowerDataAndroid(@NonNull RowerDataPacketAndroid[] rowerDataPackets) {
+    public RowerDataAndroid(@NonNull RowerDataPacketAndroid... rowerDataPackets) {
         super(rowerDataPackets);
     }
 

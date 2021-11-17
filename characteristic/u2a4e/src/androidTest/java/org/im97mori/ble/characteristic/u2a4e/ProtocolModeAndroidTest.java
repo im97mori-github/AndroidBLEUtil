@@ -105,6 +105,7 @@ public class ProtocolModeAndroidTest {
         assertEquals(result1.getProtocolModeValue(), result2.getProtocolModeValue());
     }
 
+    @Test
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 

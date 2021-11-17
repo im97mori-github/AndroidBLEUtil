@@ -8,8 +8,6 @@ import android.os.Parcel;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 import org.junit.Test;
 
-import java.nio.charset.StandardCharsets;
-
 public class EmailAddressAndroidTest {
 
     @Test

@@ -1,5 +1,10 @@
 package org.im97mori.ble;
 
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -42,11 +47,6 @@ import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
-
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 /**
  * BLE connection(central role)
@@ -615,7 +615,7 @@ public class BLESyncConnection implements BLECallback {
             , boolean isBroadcast) {
         BLEResult bleResult = null;
         if (mBLEConnection != null) {
-            bleResult = createTaskSynchronous(mBLEConnection, DisconnectTask.class, null, null, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, 0, 0, 0, 0, DisconnectTask.PROGRESS_TIMEOUT + 1, DisconnectTask.PROGRESS_TIMEOUT, false, argument, isBroadcast);
+            bleResult = createTaskSynchronous(mBLEConnection, DisconnectTask.class, null, null, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, 0, 0, 0, 0, ConnectTask.TIMEOUT_MILLIS, ConnectTask.TIMEOUT_MILLIS, false, argument, isBroadcast);
             mLockMap.clear();
             mBLEConnection = null;
         }
@@ -671,6 +671,7 @@ public class BLESyncConnection implements BLECallback {
         if (bleConnection.isConnected()) {
             BLESyncConnection bleSyncConnection = new BLESyncConnection();
             bleSyncConnection.mBLEConnection = bleConnection;
+
             bleResult = bleSyncConnection.createReadCharacteristicTask(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, taskTimeout, bleTimeout, argument, isBroadcast);
         }
         return bleResult;

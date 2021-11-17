@@ -1,5 +1,8 @@
 package org.im97mori.ble.task;
 
+import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
@@ -13,15 +16,37 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * Add service task
  * <p>
  * for peripheral role
  */
 public class AddServiceTask extends AbstractBLETask {
+
+    /**
+     * KEY:STATUS
+     */
+    public static final String KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * PROGRESS:ADD_SERVICE_START
+     */
+    public static final String PROGRESS_ADD_SERVICE_START = "PROGRESS_ADD_SERVICE_START";
+
+    /**
+     * PROGRESS:ADD_SERVICE_SUCCESS
+     */
+    public static final String PROGRESS_ADD_SERVICE_SUCCESS = "PROGRESS_ADD_SERVICE_SUCCESS";
+
+    /**
+     * PROGRESS:ADD_SERVICE_ERROR
+     */
+    public static final String PROGRESS_ADD_SERVICE_ERROR = "PROGRESS_ADD_SERVICE_ERROR";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
 
     /**
      * Default timeout(millis) for add service:30sec
@@ -37,7 +62,7 @@ public class AddServiceTask extends AbstractBLETask {
     @NonNull
     public static Message createAddServiceSuccessMessage(@NonNull BluetoothGattService bluetoothGattService) {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_ADD_SERVICE_SUCCESS);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_ADD_SERVICE_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         message.obj = bluetoothGattService;
@@ -54,7 +79,7 @@ public class AddServiceTask extends AbstractBLETask {
     @NonNull
     public static Message createAddServiceErrorMessage(@NonNull BluetoothGattService bluetoothGattService, int status) {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_ADD_SERVICE_ERROR);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_ADD_SERVICE_ERROR);
         bundle.putInt(KEY_STATUS, status);
         Message message = new Message();
         message.setData(bundle);
@@ -119,7 +144,7 @@ public class AddServiceTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(AbstractBLETask.KEY_NEXT_PROGRESS, AbstractBLETask.PROGRESS_ADD_SERVICE);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_ADD_SERVICE_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -135,15 +160,15 @@ public class AddServiceTask extends AbstractBLETask {
         Bundle bundle = message.getData();
         BluetoothGattService bluetoothGattService;
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+            if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
                 mBLEServerConnection.getBLEServerCallback().onServiceAddTimeout(getTaskId(), mBLEServerConnection, mBluetoothGattService, mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
-            } else if (PROGRESS_INIT == mCurrentProgress) {
+            } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 // current:init, next:add service start
-                if (this == message.obj && PROGRESS_ADD_SERVICE == nextProgress) {
+                if (this == message.obj && PROGRESS_ADD_SERVICE_START.equals(nextProgress)) {
 
                     if (mBluetoothGattServer.addService(mBluetoothGattService)) {
                         mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
@@ -153,16 +178,16 @@ public class AddServiceTask extends AbstractBLETask {
                     }
                     mCurrentProgress = nextProgress;
                 }
-            } else if (PROGRESS_ADD_SERVICE == mCurrentProgress) {
+            } else if (PROGRESS_ADD_SERVICE_START.equals(mCurrentProgress)) {
                 if (message.obj instanceof BluetoothGattService) {
                     bluetoothGattService = (BluetoothGattService) message.obj;
                     if (mBluetoothGattService.getUuid().equals(bluetoothGattService.getUuid()) && mBluetoothGattService.getType() == bluetoothGattService.getType()) {
                         // current:add service start, next:add service success
-                        if (PROGRESS_ADD_SERVICE_SUCCESS == nextProgress) {
+                        if (PROGRESS_ADD_SERVICE_SUCCESS.equals(nextProgress)) {
                             if (!mBLEServerConnection.getBLEServerCallback().onServiceAddSuccess(getTaskId(), mBLEServerConnection, bluetoothGattService, mArgument)) {
                                 mBLEServerConnection.createRemoveServiceTask(bluetoothGattService, RemoveServiceTask.TIMEOUT_MILLIS, null, null);
                             }
-                        } else if (PROGRESS_ADD_SERVICE_ERROR == nextProgress) {
+                        } else if (PROGRESS_ADD_SERVICE_ERROR.equals(nextProgress)) {
                             // current:add service start, next:add service error
                             mBLEServerConnection.getBLEServerCallback().onServiceAddFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, bundle.getInt(KEY_STATUS), mArgument);
                         }
@@ -174,7 +199,7 @@ public class AddServiceTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
@@ -182,7 +207,7 @@ public class AddServiceTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

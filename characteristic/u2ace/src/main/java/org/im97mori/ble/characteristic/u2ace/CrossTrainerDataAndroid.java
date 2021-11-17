@@ -53,7 +53,7 @@ public class CrossTrainerDataAndroid extends CrossTrainerData implements Parcela
      *
      * @param crossTrainerDataPackets 1 or more Cross Trainer Data packet array
      */
-    public CrossTrainerDataAndroid(@NonNull CrossTrainerDataPacket[] crossTrainerDataPackets) {
+    public CrossTrainerDataAndroid(@NonNull CrossTrainerDataPacket... crossTrainerDataPackets) {
         super(crossTrainerDataPackets);
     }
 

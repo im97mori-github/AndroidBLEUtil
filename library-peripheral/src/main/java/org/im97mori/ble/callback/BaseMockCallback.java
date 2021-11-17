@@ -1,5 +1,8 @@
 package org.im97mori.ble.callback;
 
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -36,9 +39,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
 
 /**
  * MockCallback base class
@@ -332,12 +332,13 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 if (characteristicData != null) {
                     delay(now, characteristicData.delay);
 
+
                     byte[] data = characteristicData.getBytes();
-                    result = bluetoothGattServer.sendResponse(device
-                            , requestId
-                            , characteristicData.responseCode
-                            , offset
-                            , Arrays.copyOfRange(data, offset, data.length));
+                        result = bluetoothGattServer.sendResponse(device
+                                , requestId
+                                , characteristicData.responseCode
+                                , offset
+                                , Arrays.copyOfRange(data, offset, data.length));
                 }
             }
 

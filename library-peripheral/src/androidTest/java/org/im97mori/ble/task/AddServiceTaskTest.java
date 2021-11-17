@@ -41,7 +41,7 @@ public class AddServiceTaskTest extends AbstractPeripherallTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_ADD_SERVICE, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AddServiceTask.PROGRESS_ADD_SERVICE_START, bundle.getString(AddServiceTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -54,8 +54,8 @@ public class AddServiceTaskTest extends AbstractPeripherallTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertEquals(bluetoothGattService, message.obj);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_ADD_SERVICE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(AddServiceTask.KEY_NEXT_PROGRESS));
+        assertEquals(AddServiceTask.PROGRESS_ADD_SERVICE_SUCCESS, bundle.getString(AddServiceTask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -68,10 +68,10 @@ public class AddServiceTaskTest extends AbstractPeripherallTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertEquals(bluetoothGattService, message.obj);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_ADD_SERVICE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(AddServiceTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(AddServiceTask.KEY_STATUS));
+        assertTrue(bundle.containsKey(AddServiceTask.KEY_NEXT_PROGRESS));
+        assertEquals(AddServiceTask.PROGRESS_ADD_SERVICE_ERROR, bundle.getString(AddServiceTask.KEY_NEXT_PROGRESS));
     }
 
     @Test

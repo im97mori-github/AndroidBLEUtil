@@ -24,6 +24,21 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 public class AbortReliableWriteTask extends AbstractBLETask {
 
     /**
+     * KEY:STATUS
+     */
+    public static final String KEY_STATUS = "KEY_STATUS";
+    
+    /**
+     * PROGRESS:ABORT_RELIABLE_WRITE_START
+     */
+    public static final String PROGRESS_ABORT_RELIABLE_WRITE_START = "PROGRESS_ABORT_RELIABLE_WRITE_START";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
+
+    /**
      * Default timeout(millis) for request mtu:30sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
@@ -79,7 +94,7 @@ public class AbortReliableWriteTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_ABORT_RELIABLE_WRITE_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_ABORT_RELIABLE_WRITE_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -94,31 +109,35 @@ public class AbortReliableWriteTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (message.obj == this && PROGRESS_TIMEOUT == nextProgress) {
+            if (message.obj == this && PROGRESS_TIMEOUT.equals(nextProgress)) {
                 mBLEConnection.getBLECallback().onAbortReliableWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
-            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-                if (PROGRESS_ABORT_RELIABLE_WRITE_START == nextProgress) {
+            } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
+                if (PROGRESS_ABORT_RELIABLE_WRITE_START.equals(nextProgress)) {
                     // current:init, next:abort reliable write start
 
-                    mBluetoothGatt.abortReliableWrite();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        mBluetoothGatt.abortReliableWrite();
+                    } else {
+                        mBluetoothGatt.abortReliableWrite(mBluetoothGatt.getDevice());
+                    }
 
                     // set timeout message
                     mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
 
                     mCurrentProgress = nextProgress;
                 }
-            } else if (PROGRESS_ABORT_RELIABLE_WRITE_START == mCurrentProgress) {
-                if (PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS == nextProgress) {
+            } else if (PROGRESS_ABORT_RELIABLE_WRITE_START.equals(mCurrentProgress)) {
+                if (ExecuteReliableWriteTask.PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS.equals(nextProgress)) {
                     // current:abort reliable write start, next:abort reliable write success
 
                     // callback
                     mBLEConnection.getBLECallback().onAbortReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
 
-                } else if (PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR == nextProgress) {
+                } else if (ExecuteReliableWriteTask.PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR.equals(nextProgress)) {
                     // current:abort reliable write start, next:abort reliable write failed
 
                     mBLEConnection.getBLECallback().onAbortReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
@@ -131,7 +150,7 @@ public class AbortReliableWriteTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
@@ -139,7 +158,7 @@ public class AbortReliableWriteTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

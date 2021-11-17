@@ -24,6 +24,41 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 public class ReadPhyTask extends AbstractBLETask {
 
     /**
+     * KEY:TX_PHY
+     */
+    public static final String  KEY_TX_PHY = "KEY_TX_PHY";
+
+    /**
+     * KEY:RX_PHY
+     */
+    public static final String  KEY_RX_PHY = "KEY_RX_PHY";
+    
+    /**
+     * KEY:STATUS
+     */
+    public static final String  KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * PROGRESS:READ_PHY_START
+     */
+    public static final String  PROGRESS_READ_PHY_START = "PROGRESS_READ_PHY_START";
+    
+    /**
+     * PROGRESS:READ_PHY_SUCCESS
+     */
+    public static final String  PROGRESS_READ_PHY_SUCCESS = "PROGRESS_READ_PHY_SUCCESS";
+
+    /**
+     * PROGRESS:READ_PHY_ERROR
+     */
+    public static final String  PROGRESS_READ_PHY_ERROR = "PROGRESS_READ_PHY_ERROR";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
+    
+    /**
      * Default timeout(millis) for read phy:30sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
@@ -40,7 +75,7 @@ public class ReadPhyTask extends AbstractBLETask {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_TX_PHY, txPhy);
         bundle.putInt(KEY_RX_PHY, rxPhy);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_SUCCESS);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -56,7 +91,7 @@ public class ReadPhyTask extends AbstractBLETask {
     public static Message createReadPhyErrorMessage(int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_ERROR);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_ERROR);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -113,7 +148,7 @@ public class ReadPhyTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -128,14 +163,14 @@ public class ReadPhyTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+            if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
                 mBLEConnection.getBLECallback().onReadPhyTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
-            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-                if (PROGRESS_READ_PHY_START == nextProgress) {
+            } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
+                if (PROGRESS_READ_PHY_START.equals(nextProgress)) {
                     // current:init, next:read phy start
 
                     mBluetoothGatt.readPhy();
@@ -144,13 +179,13 @@ public class ReadPhyTask extends AbstractBLETask {
                     mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     mCurrentProgress = nextProgress;
                 }
-            } else if (PROGRESS_READ_PHY_START == mCurrentProgress) {
-                if (PROGRESS_READ_PHY_SUCCESS == nextProgress) {
+            } else if (PROGRESS_READ_PHY_START.equals(mCurrentProgress)) {
+                if (PROGRESS_READ_PHY_SUCCESS.equals(nextProgress)) {
                     // current:read phy start, next:read phy success
 
                     // callback
                     mBLEConnection.getBLECallback().onReadPhySuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), mArgument);
-                } else if (PROGRESS_READ_PHY_ERROR == nextProgress) {
+                } else if (PROGRESS_READ_PHY_ERROR.equals(nextProgress)) {
                     // current:read phy start, next:read phy failed
 
                     mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
@@ -163,7 +198,7 @@ public class ReadPhyTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
@@ -171,7 +206,7 @@ public class ReadPhyTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**

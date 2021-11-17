@@ -35,8 +35,8 @@ public class SetPreferredPhyTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_SET_PREFERRED_PHY_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(SetPreferredPhyTask.KEY_NEXT_PROGRESS));
+        assertEquals(SetPreferredPhyTask.PROGRESS_SET_PREFERRED_PHY_START, bundle.getString(SetPreferredPhyTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -50,12 +50,12 @@ public class SetPreferredPhyTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_SET_PREFERRED_PHY_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_TX_PHY));
-        assertEquals(txPhy, bundle.getInt(AbstractBLETask.KEY_TX_PHY));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_RX_PHY));
-        assertEquals(rxPhy, bundle.getInt(AbstractBLETask.KEY_RX_PHY));
+        assertTrue(bundle.containsKey(SetPreferredPhyTask.KEY_NEXT_PROGRESS));
+        assertEquals(SetPreferredPhyTask.PROGRESS_SET_PREFERRED_PHY_SUCCESS, bundle.getString(SetPreferredPhyTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(SetPreferredPhyTask.KEY_TX_PHY));
+        assertEquals(txPhy, bundle.getInt(SetPreferredPhyTask.KEY_TX_PHY));
+        assertTrue(bundle.containsKey(SetPreferredPhyTask.KEY_RX_PHY));
+        assertEquals(rxPhy, bundle.getInt(SetPreferredPhyTask.KEY_RX_PHY));
     }
 
     @Test
@@ -67,10 +67,10 @@ public class SetPreferredPhyTaskTest extends AbstractCentralTest {
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_SET_PREFERRED_PHY_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
+        assertTrue(bundle.containsKey(SetPreferredPhyTask.KEY_NEXT_PROGRESS));
+        assertEquals(SetPreferredPhyTask.PROGRESS_SET_PREFERRED_PHY_ERROR, bundle.getString(SetPreferredPhyTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(SetPreferredPhyTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(SetPreferredPhyTask.KEY_STATUS));
     }
 
     @Test

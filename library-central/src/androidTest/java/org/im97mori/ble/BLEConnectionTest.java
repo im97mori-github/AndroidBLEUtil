@@ -21,6 +21,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("BusyWait")
@@ -320,32 +322,80 @@ public class BLEConnectionTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void readCharacteristicTaskSuccessTest_001() {
+    public void quitSuccessTest_001() {
+        MOCK_BLE_CONNECTION.setConnected(true);
+        assertNotNull(MOCK_BLE_CONNECTION.quit());
+    }
+
+    @Test
+    @RequiresDevice
+    public void quitSuccessTest_002() {
+        MOCK_BLE_CONNECTION.setConnected(true);
+        final Bundle original = new Bundle();
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull byte[] values, Bundle argument) {
+            public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+                assertEquals(original, argument);
+                result.set(true);
+            }
+        };
+
+        assertNotNull(MOCK_BLE_CONNECTION.quit(original, firstCallback));
+    }
+
+    @Test
+    @RequiresDevice
+    public void quitSuccessTest_101() {
+        MOCK_BLE_CONNECTION.setConnected(true);
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 result.set(true);
             }
         };
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull byte[] values, Bundle argument) {
+            public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 result.set(true);
             }
         };
+
         final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, new byte[0], argument);
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
                 isProccesing.set(false);
                 return true;
             }
         };
 
         check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    @RequiresDevice
+    public void quitFailedTest_001() {
+        assertNull(MOCK_BLE_CONNECTION.quit());
+    }
+
+    @Test
+    @RequiresDevice
+    public void quitFailedTest_002() {
+        final Bundle original = new Bundle();
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+                assertEquals(original, argument);
+                result.set(true);
+            }
+        };
+
+        assertNull(MOCK_BLE_CONNECTION.quit(original, firstCallback));
     }
 
     @Test

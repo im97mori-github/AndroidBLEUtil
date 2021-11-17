@@ -11,7 +11,7 @@ import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"PointlessBitwiseExpression", "ConstantConditions"})
+@SuppressWarnings({"PointlessBitwiseExpression"})
 public class ElectricCurrentRangeAndroidTest {
 
     @Test

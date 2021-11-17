@@ -1,5 +1,18 @@
 package org.im97mori.ble.service.pass.central;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_SETTING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ATTRIBUTE_SERVICE;
+import static org.im97mori.ble.constants.ServiceUUID.PHONE_ALERT_STATUS_SERVICE;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 
@@ -18,17 +31,6 @@ import org.junit.Test;
 
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_SETTING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.PHONE_ALERT_STATUS_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
 public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
@@ -1011,6 +1013,218 @@ public class PhoneAlertStatusServiceTest extends AbstractCentralTest {
         phoneAlertStatusService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicNotified_00001() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{4};
+        MockPhoneAlertStatusServiceCallback mockLocationAndNavigationServiceCallback = new MockPhoneAlertStatusServiceCallback() {
+
+            @Override
+            public void onAlertStatusNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AlertStatusAndroid alertStatusAndroid) {
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertArrayEquals(originalValues, alertStatusAndroid.getBytes());
+                isCalled.set(true);
+            }
+
+        };
+
+        PhoneAlertStatusService locationAndNavigationService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockLocationAndNavigationServiceCallback, null);
+        locationAndNavigationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicNotified_00002() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
+        final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{4};
+        MockPhoneAlertStatusServiceCallback mockLocationAndNavigationServiceCallback = new MockPhoneAlertStatusServiceCallback() {
+
+            @Override
+            public void onAlertStatusNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AlertStatusAndroid alertStatusAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+
+        PhoneAlertStatusService locationAndNavigationService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockLocationAndNavigationServiceCallback, null);
+        locationAndNavigationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicNotified_00003() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = ALERT_STATUS_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{4};
+        MockPhoneAlertStatusServiceCallback mockLocationAndNavigationServiceCallback = new MockPhoneAlertStatusServiceCallback() {
+
+            @Override
+            public void onAlertStatusNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AlertStatusAndroid alertStatusAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+
+        PhoneAlertStatusService locationAndNavigationService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockLocationAndNavigationServiceCallback, null);
+        locationAndNavigationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicNotified_00004() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = RINGER_CONTROL_POINT_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{4};
+        MockPhoneAlertStatusServiceCallback mockLocationAndNavigationServiceCallback = new MockPhoneAlertStatusServiceCallback() {
+
+            @Override
+            public void onAlertStatusNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AlertStatusAndroid alertStatusAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+
+        PhoneAlertStatusService locationAndNavigationService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockLocationAndNavigationServiceCallback, null);
+        locationAndNavigationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicNotified_00101() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{4};
+        MockPhoneAlertStatusServiceCallback mockLocationAndNavigationServiceCallback = new MockPhoneAlertStatusServiceCallback() {
+
+            @Override
+            public void onRingerSettingNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RingerSettingAndroid ringerSettingAndroid) {
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertArrayEquals(originalValues, ringerSettingAndroid.getBytes());
+                isCalled.set(true);
+            }
+
+        };
+
+        PhoneAlertStatusService locationAndNavigationService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockLocationAndNavigationServiceCallback, null);
+        locationAndNavigationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicNotified_00102() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_1;
+        final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{4};
+        MockPhoneAlertStatusServiceCallback mockLocationAndNavigationServiceCallback = new MockPhoneAlertStatusServiceCallback() {
+
+            @Override
+            public void onRingerSettingNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RingerSettingAndroid ringerSettingAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+
+        PhoneAlertStatusService locationAndNavigationService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockLocationAndNavigationServiceCallback, null);
+        locationAndNavigationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicNotified_00103() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = RINGER_SETTING_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{4};
+        MockPhoneAlertStatusServiceCallback mockLocationAndNavigationServiceCallback = new MockPhoneAlertStatusServiceCallback() {
+
+            @Override
+            public void onRingerSettingNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RingerSettingAndroid ringerSettingAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+
+        PhoneAlertStatusService locationAndNavigationService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockLocationAndNavigationServiceCallback, null);
+        locationAndNavigationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicNotified_00104() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = PHONE_ALERT_STATUS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = RINGER_CONTROL_POINT_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{4};
+        MockPhoneAlertStatusServiceCallback mockLocationAndNavigationServiceCallback = new MockPhoneAlertStatusServiceCallback() {
+
+            @Override
+            public void onRingerSettingNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RingerSettingAndroid ringerSettingAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+
+        PhoneAlertStatusService locationAndNavigationService = new PhoneAlertStatusService(MOCK_BLE_CONNECTION, mockLocationAndNavigationServiceCallback, null);
+        locationAndNavigationService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertFalse(isCalled.get());
     }
 
     @Test

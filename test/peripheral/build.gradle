@@ -22,8 +22,8 @@ android {
 }
 
 dependencies {
-    api apiTest
-    compileOnly "${myGroupId}:${peripheral.artifactId}:${peripheralLoadVersion}"
+    api apiTestUtilAndroid
+    compileOnly apiPeripheral
 }
 
 task sourcesJar(type: Jar) {

@@ -1429,7 +1429,7 @@ public class BodyCompositionServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        final byte[] originalValues = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})}).getBytes();
+        final byte[] originalValues = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})).getBytes();
 
         MockBodyCompositionServiceCallback mockBodyCompositionServiceCallback = new MockBodyCompositionServiceCallback() {
 
@@ -1460,7 +1460,7 @@ public class BodyCompositionServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        final byte[] originalValues = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})}).getBytes();
+        final byte[] originalValues = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})).getBytes();
 
         MockBodyCompositionServiceCallback mockBodyCompositionServiceCallback = new MockBodyCompositionServiceCallback() {
 
@@ -1486,7 +1486,7 @@ public class BodyCompositionServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        final byte[] originalValues = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})}).getBytes();
+        final byte[] originalValues = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})).getBytes();
 
         MockBodyCompositionServiceCallback mockBodyCompositionServiceCallback = new MockBodyCompositionServiceCallback() {
 
@@ -1512,7 +1512,7 @@ public class BodyCompositionServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        final byte[] originalValues = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})}).getBytes();
+        final byte[] originalValues = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})).getBytes();
 
         MockBodyCompositionServiceCallback mockBodyCompositionServiceCallback = new MockBodyCompositionServiceCallback() {
 

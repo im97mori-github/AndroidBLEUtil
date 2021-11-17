@@ -4,9 +4,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
 import org.im97mori.ble.BLEUtils;
-import org.im97mori.ble.characteristic.core.Percentage8Utils;
 import org.im97mori.ble.characteristic.core.Temperature8Utils;
-import org.im97mori.ble.characteristic.core.TemperatureUtils;
 import org.im97mori.ble.characteristic.core.TimeDecihour8Utils;
 import org.junit.Test;
 

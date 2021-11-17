@@ -53,7 +53,7 @@ public class StairClimberDataAndroid extends StairClimberData implements Parcela
      *
      * @param stairClimberDataPackets 1 or more Stair Climber Data packet array
      */
-    public StairClimberDataAndroid(@NonNull StairClimberDataPacketAndroid[] stairClimberDataPackets) {
+    public StairClimberDataAndroid(@NonNull StairClimberDataPacketAndroid... stairClimberDataPackets) {
         super(stairClimberDataPackets);
     }
 

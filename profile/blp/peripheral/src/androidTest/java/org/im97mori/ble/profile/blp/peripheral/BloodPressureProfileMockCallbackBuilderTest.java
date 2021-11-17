@@ -511,7 +511,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        final BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         Context context = ApplicationProvider.getApplicationContext();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -541,7 +544,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        final BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         final int originalResponseCode = 1;
         final long originalDelay = 2;
@@ -749,7 +755,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         boolean isPulseRateRangeDetectionSupported = false;
         boolean isMeasurementPositionDetectionSupported = false;
         boolean isMultipleBondDetectionSupported = false;
-        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+        boolean isE2eCrcSupported = false;
+        boolean isUserDataServiceSupported = false;
+        boolean isUserFacingTimeSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported, isE2eCrcSupported, isUserDataServiceSupported, isUserFacingTimeSupported);
 
         BloodPressureProfileMockCallback callback = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
                 .addManufacturerNameString("")

@@ -666,7 +666,7 @@ public class IndoorBikeDataAndroidTest {
         data[29] = 0x1c;
         //@formatter:on
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertEquals(0x0201, result1.getInstantaneousSpeed());
         assertEquals(0x0403, result1.getAverageSpeed());
@@ -766,7 +766,7 @@ public class IndoorBikeDataAndroidTest {
         data2[29] = 0x38;
         //@formatter:on
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data1), IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data2)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data1), IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data2));
         assertArrayEquals(Arrays.copyOfRange(data2, 0, 2), result1.getFlags());
         assertEquals(0x1e1d, result1.getInstantaneousSpeed());
         assertEquals(0x201f, result1.getAverageSpeed());
@@ -830,7 +830,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -860,7 +860,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -890,7 +890,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -920,7 +920,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -950,7 +950,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -980,7 +980,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1010,7 +1010,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1040,7 +1040,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1070,7 +1070,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1100,7 +1100,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1130,7 +1130,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1160,7 +1160,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1190,7 +1190,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1220,7 +1220,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1250,7 +1250,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1280,7 +1280,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1310,7 +1310,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1340,7 +1340,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1370,7 +1370,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1400,7 +1400,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1430,7 +1430,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1460,7 +1460,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1490,7 +1490,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1520,7 +1520,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1550,7 +1550,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1580,7 +1580,7 @@ public class IndoorBikeDataAndroidTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1607,7 +1607,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1615,7 +1615,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1623,7 +1623,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1631,7 +1631,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1639,7 +1639,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1647,7 +1647,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1655,7 +1655,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1663,7 +1663,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1671,7 +1671,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1679,7 +1679,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1687,7 +1687,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1695,7 +1695,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1703,7 +1703,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1711,7 +1711,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1719,7 +1719,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1727,7 +1727,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1735,7 +1735,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1743,7 +1743,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1751,7 +1751,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1759,7 +1759,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1767,7 +1767,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1775,7 +1775,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1783,7 +1783,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1791,7 +1791,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1799,7 +1799,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1807,7 +1807,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1815,7 +1815,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1824,7 +1824,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1833,7 +1833,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1842,7 +1842,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1851,7 +1851,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1860,7 +1860,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1869,7 +1869,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1878,7 +1878,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1887,7 +1887,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1896,7 +1896,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1905,7 +1905,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1914,7 +1914,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1923,7 +1923,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1932,7 +1932,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1941,7 +1941,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1950,7 +1950,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1959,7 +1959,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1968,7 +1968,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1977,7 +1977,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1986,7 +1986,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1995,7 +1995,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2004,7 +2004,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2013,7 +2013,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2022,7 +2022,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2031,7 +2031,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2040,7 +2040,7 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
+        IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         IndoorBikeDataAndroid result2 = IndoorBikeDataAndroid.CREATOR.createFromMultiplePacketArray(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data)});
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

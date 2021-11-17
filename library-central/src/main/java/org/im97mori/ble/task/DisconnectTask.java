@@ -21,6 +21,21 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 public class DisconnectTask extends AbstractBLETask {
 
     /**
+     * KEY:STATUS
+     */
+    public static final String  KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * PROGRESS:DISCONNECT
+     */
+    public static final String  PROGRESS_DISCONNECT = "PROGRESS_DISCONNECT";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
+
+    /**
      * task target {@link BLEConnection} instance
      */
     private final BLEConnection mBLEConnection;
@@ -63,7 +78,7 @@ public class DisconnectTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DISCONNECT);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DISCONNECT);
         bundle.putInt(KEY_STATUS, mStatus);
         Message message = new Message();
         message.setData(bundle);
@@ -83,11 +98,11 @@ public class DisconnectTask extends AbstractBLETask {
         } else {
             Bundle bundle = message.getData();
             if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-                int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+                String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
                 // current:init, next:disconnect
-                if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-                    if (PROGRESS_DISCONNECT == nextProgress) {
+                if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
+                    if (PROGRESS_DISCONNECT.equals(nextProgress)) {
                         // target is newest one
                         if (mBLEConnection.isCurrentConnectionTarget(mBluetoothGatt)) {
                             try {
@@ -108,7 +123,7 @@ public class DisconnectTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_DISCONNECT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_DISCONNECT.equals(mCurrentProgress);
     }
 
     /**

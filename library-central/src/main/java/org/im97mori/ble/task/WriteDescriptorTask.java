@@ -34,6 +34,71 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 public class WriteDescriptorTask extends AbstractBLETask {
 
     /**
+     * KEY:SERVICE_UUID
+     */
+    public static final String  KEY_SERVICE_UUID = "KEY_SERVICE_UUID";
+
+    /**
+     * KEY:SERVICE_INSTANCE_ID
+     */
+    public static final String  KEY_SERVICE_INSTANCE_ID = "KEY_SERVICE_INSTANCE_ID";
+
+    /**
+     * KEY:CHARACTERISTIC_UUID
+     */
+    public static final String  KEY_CHARACTERISTIC_UUID = "KEY_CHARACTERISTIC_UUID";
+
+    /**
+     * KEY:CHARACTERISTIC_INSTANCE_ID
+     */
+    public static final String  KEY_CHARACTERISTIC_INSTANCE_ID = "KEY_CHARACTERISTIC_INSTANCE_ID";
+
+    /**
+     * KEY:DESCRIPTOR_UUID
+     */
+    public static final String  KEY_DESCRIPTOR_UUID = "KEY_DESCRIPTOR_UUID";
+
+    /**
+     * KEY:DESCRIPTOR_INSTANCE_ID
+     */
+    public static final String  KEY_DESCRIPTOR_INSTANCE_ID = "KEY_DESCRIPTOR_INSTANCE_ID";
+
+    /**
+     * KEY:VALUES
+     */
+    public static final String  KEY_VALUES = "KEY_VALUES";
+
+    /**
+     * KEY:STATUS
+     */
+    public static final String  KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * PROGRESS:DESCRIPTOR_WRITE_START
+     */
+    public static final String  PROGRESS_DESCRIPTOR_WRITE_START = "PROGRESS_DESCRIPTOR_WRITE_START";
+    
+    /**
+     * PROGRESS:DESCRIPTOR_WRITE_SUCCESS
+     */
+    public static final String  PROGRESS_DESCRIPTOR_WRITE_SUCCESS = "PROGRESS_DESCRIPTOR_WRITE_SUCCESS";
+
+    /**
+     * PROGRESS:DESCRIPTOR_WRITE_ERROR
+     */
+    public static final String  PROGRESS_DESCRIPTOR_WRITE_ERROR = "PROGRESS_DESCRIPTOR_WRITE_ERROR";
+
+    /**
+     * PROGRESS:BUSY
+     */
+    public static final String  PROGRESS_BUSY = "PROGRESS_BUSY";
+
+    /**
+     * PROGRESS:FINISHED
+     */
+    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
+    
+    /**
      * Default timeout(millis) for write descriptor:30sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
@@ -60,7 +125,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
         bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
         bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
         bundle.putByteArray(KEY_VALUES, values);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_SUCCESS);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -88,7 +153,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
         bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
         bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_ERROR);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_ERROR);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -204,7 +269,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
         bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
         bundle.putSerializable(KEY_DESCRIPTOR_UUID, mDescriptorUUID);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_START);
+        bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -225,15 +290,15 @@ public class WriteDescriptorTask extends AbstractBLETask {
             int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
             UUID descriptorUUID = (UUID) bundle.getSerializable(KEY_DESCRIPTOR_UUID);
             int descriptorInstanceId = bundle.getInt(KEY_DESCRIPTOR_INSTANCE_ID);
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
             // timeout
-            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+            if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
                 mBLEConnection.getBLECallback().onDescriptorWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, mTimeout, mArgumemnt);
                 mCurrentProgress = PROGRESS_TIMEOUT;
-            } else if (PROGRESS_INIT == mCurrentProgress) {
+            } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 // current:init, next:write descriptor start
-                if (message.obj == this && PROGRESS_DESCRIPTOR_WRITE_START == nextProgress) {
+                if (message.obj == this && PROGRESS_DESCRIPTOR_WRITE_START.equals(nextProgress)) {
 
                     BluetoothGattDescriptor bluetoothGattDescriptor = null;
                     boolean result = false;
@@ -318,7 +383,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
                     }
                     mCurrentProgress = nextProgress;
                 }
-            } else if (PROGRESS_DESCRIPTOR_WRITE_START == mCurrentProgress) {
+            } else if (PROGRESS_DESCRIPTOR_WRITE_START.equals(mCurrentProgress)) {
                 if (mServiceUUID.equals(serviceUUID)
                         && mServiceInstanceId == serviceInstanceId
                         && mCharacteristicUUID.equals(characteristicUUID)
@@ -326,14 +391,14 @@ public class WriteDescriptorTask extends AbstractBLETask {
                         && mDescriptorUUID.equals(descriptorUUID)
                         && mDescriptorInstanceId == descriptorInstanceId) {
                     // current:write descriptor start, next:write descriptor success
-                    if (PROGRESS_DESCRIPTOR_WRITE_SUCCESS == nextProgress) {
+                    if (PROGRESS_DESCRIPTOR_WRITE_SUCCESS.equals(nextProgress)) {
                         byte[] value = bundle.getByteArray(KEY_VALUES);
                         if (value == null) {
                             mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, UNKNOWN, mArgumemnt);
                         } else {
                             mBLEConnection.getBLECallback().onDescriptorWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, value, mArgumemnt);
                         }
-                    } else if (PROGRESS_DESCRIPTOR_WRITE_ERROR == nextProgress) {
+                    } else if (PROGRESS_DESCRIPTOR_WRITE_ERROR.equals(nextProgress)) {
                         // current:write descriptor start, next:write descriptor error
                         mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, bundle.getInt(KEY_STATUS), mArgumemnt);
                     }
@@ -344,7 +409,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
             }
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED.equals(mCurrentProgress) || PROGRESS_BUSY.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
@@ -352,7 +417,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_BUSY.equals(mCurrentProgress) || PROGRESS_TIMEOUT.equals(mCurrentProgress);
     }
 
     /**
