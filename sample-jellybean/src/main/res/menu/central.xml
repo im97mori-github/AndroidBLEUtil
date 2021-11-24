@@ -86,6 +86,10 @@
         android:title="@string/menu_set_notification_off_sync" />
 
     <item
+        android:id="@+id/menu_add_task_sync"
+        android:title="@string/menu_add_task_sync" />
+
+    <item
         android:id="@+id/clear"
         android:title="@string/menu_clear" />
 </menu>

@@ -25,26 +25,8 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.6.2'
-ext.uploadVersion = '0.6.2'
-
-ext.handlerLoadVersion = '0.2.10'
-ext.handlerUploadVersion = '0.2.10'
-
-ext.centralLoadVersion = '0.7.10'
-ext.centralUploadVersion = '0.7.10'
-
-ext.peripheralLoadVersion = '0.3.10'
-ext.peripheralUploadVersion = '0.3.10'
-
-ext.coreConstantsErrorCodeAndroid = [
-        artifactId         : 'ble-core-constants-errorcode-android'
-        , baseModule       : "${myGroupId}:ble-core-constants-errorcode:${loadVersion}"
-]
-
-ext.coreConstantsAndroid = [
-        artifactId         : 'ble-core-constants-android'
-]
+ext.loadVersion = '0.8.0'
+ext.uploadVersion = '0.8.0'
 
 ext.coreUtilsAndroid = [
         artifactId         : 'ble-core-utils-android'
@@ -65,18 +47,14 @@ apply from: 'characteristic.gradle'
 
 ext.handler = [
         artifactId         : 'ble-handler'
-        , versionName      : handlerLoadVersion
-        , uploadVersionName: handlerUploadVersion
 ]
 
 ext.central = [
         artifactId         : 'ble-central'
-        , uploadVersionName: centralUploadVersion
 ]
 
 ext.peripheral = [
         artifactId         : 'ble-peripheral'
-        , uploadVersionName: peripheralUploadVersion
 ]
 
 apply from: 'service.gradle'
@@ -101,7 +79,7 @@ ext.apiCoreConstantsCompany = "${myGroupId}:ble-core-constants-company:${loadVer
 ext.apiCoreConstantsDataType = "${myGroupId}:ble-core-constants-datatype:${loadVersion}"
 ext.apiCoreConstantsDeclaration = "${myGroupId}:ble-core-constants-declaration:${loadVersion}"
 ext.apiCoreConstantsDescriptor = "${myGroupId}:ble-core-constants-descriptor:${loadVersion}"
-ext.apiCoreConstantsErrorCodeAndroid = "${myGroupId}:${coreConstantsErrorCodeAndroid.artifactId}:${loadVersion}"
+ext.apiCoreConstantsErrorCode = "${myGroupId}:ble-core-constants-errorcode:${loadVersion}"
 ext.apiCoreConstantsMember = "${myGroupId}:ble-core-constants-member:${loadVersion}"
 ext.apiCoreConstantsProfile = "${myGroupId}:ble-core-constants-profile:${loadVersion}"
 ext.apiCoreConstantsProtocol = "${myGroupId}:ble-core-constants-protocol:${loadVersion}"
@@ -109,7 +87,6 @@ ext.apiCoreConstantsScheme = "${myGroupId}:ble-core-constants-scheme:${loadVersi
 ext.apiCoreConstantsSdo = "${myGroupId}:ble-core-constants-sdo:${loadVersion}"
 ext.apiCoreConstantsService = "${myGroupId}:ble-core-constants-service:${loadVersion}"
 ext.apiCoreConstantsUnit = "${myGroupId}:ble-core-constants-unit:${loadVersion}"
-ext.apiCoreConstantsAndroid = "${myGroupId}:${coreConstantsAndroid.artifactId}:${loadVersion}"
 
 ext.apiCoreUtilsAndroid = "${myGroupId}:${coreUtilsAndroid.artifactId}:${loadVersion}"
 
@@ -123,9 +100,9 @@ ext.apiCharacteristicCoreAndroid = "${myGroupId}:${characteristicCoreAndroid.art
 ext.apiCoreConstantsDescriptor = "${myGroupId}:ble-core-constants-descriptor:${loadVersion}"
 ext.apiCoreConstantsCharacteristic = "${myGroupId}:ble-core-constants-characteristic:${loadVersion}"
 
-ext.apiHandler = "${myGroupId}:${handler.artifactId}:${handlerLoadVersion}"
-ext.apiCentral = "${myGroupId}:${central.artifactId}:${centralLoadVersion}"
-ext.apiPeripheral = "${myGroupId}:${peripheral.artifactId}:${peripheralLoadVersion}"
+ext.apiHandler = "${myGroupId}:${handler.artifactId}:${loadVersion}"
+ext.apiCentral = "${myGroupId}:${central.artifactId}:${loadVersion}"
+ext.apiPeripheral = "${myGroupId}:${peripheral.artifactId}:${loadVersion}"
 
 ext.apiTestUtilAndroid = "${myGroupId}:${testUtilAndroid.artifactId}:${loadVersion}"
 ext.apiTestPeripheral = "${myGroupId}:${testPeripheral.artifactId}:${loadVersion}"

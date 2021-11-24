@@ -417,8 +417,6 @@
             <option value="$PROJECT_DIR$/characteristic/u2bd8" />
             <option value="$PROJECT_DIR$/characteristic/u2bd9" />
             <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/core/constants" />
-            <option value="$PROJECT_DIR$/core/constants/errorcode" />
             <option value="$PROJECT_DIR$/core/utils" />
             <option value="$PROJECT_DIR$/descriptor" />
             <option value="$PROJECT_DIR$/descriptor/u2900" />

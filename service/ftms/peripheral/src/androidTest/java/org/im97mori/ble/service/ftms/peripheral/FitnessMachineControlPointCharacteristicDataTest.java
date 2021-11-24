@@ -12,7 +12,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC;
@@ -2228,7 +2230,8 @@ public class FitnessMachineControlPointCharacteristicDataTest {
         byte[] spinDownControlResultParameter = new byte[]{22};
         int setTargetedCadenceResultCode = 23;
         byte[] currentData = new byte[]{28};
-        byte[] temporaryData = new byte[]{29};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(29, new byte[]{30});
 
         FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(descriptorDataList
                 , delay
@@ -2256,8 +2259,107 @@ public class FitnessMachineControlPointCharacteristicDataTest {
                 , setTargetedCadenceResultCode);
 
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
 
+        assertNotEquals(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE).hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PERMISSION_WRITE).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(BluetoothGatt.GATT_SUCCESS).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode((byte[]) null)
+                        ^ Integer.valueOf(0).hashCode()
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(requestControlResultCode).hashCode()
+                        ^ Integer.valueOf(resetResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetSpeedResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetInclinationResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetResistanceLevelResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetPowerResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetHeartRateResultCode).hashCode()
+                        ^ Integer.valueOf(startOrResumeResultCode).hashCode()
+                        ^ Integer.valueOf(stopOrPauseResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetedExpendedEnergyResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetedNumberOfStepsResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetedNumberOfStridesResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetedDistanceResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetedTrainingTimeResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetedTimeInTwoHeartRateZonesResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetedTimeInThreeHeartRateZonesResultCode).hashCode()
+                        ^ Integer.valueOf(setTargetedTimeInFiveHeartRateZonesResultCode).hashCode()
+                        ^ Integer.valueOf(setIndoorBikeSimulationParametersResultCode).hashCode()
+                        ^ Integer.valueOf(setWheelCircumferenceResultCode).hashCode()
+                        ^ Integer.valueOf(spinDownControlResultCode).hashCode()
+                        ^ Arrays.hashCode(spinDownControlResultParameter)
+                        ^ Integer.valueOf(setTargetedCadenceResultCode).hashCode()
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 24, 25, 26, new byte[]{27}));
+        long delay = 1;
+        int requestControlResultCode = 2;
+        int resetResultCode = 3;
+        int setTargetSpeedResultCode = 4;
+        int setTargetInclinationResultCode = 5;
+        int setTargetResistanceLevelResultCode = 6;
+        int setTargetPowerResultCode = 7;
+        int setTargetHeartRateResultCode = 8;
+        int startOrResumeResultCode = 9;
+        int stopOrPauseResultCode = 10;
+        int setTargetedExpendedEnergyResultCode = 11;
+        int setTargetedNumberOfStepsResultCode = 12;
+        int setTargetedNumberOfStridesResultCode = 13;
+        int setTargetedDistanceResultCode = 14;
+        int setTargetedTrainingTimeResultCode = 15;
+        int setTargetedTimeInTwoHeartRateZonesResultCode = 16;
+        int setTargetedTimeInThreeHeartRateZonesResultCode = 17;
+        int setTargetedTimeInFiveHeartRateZonesResultCode = 18;
+        int setIndoorBikeSimulationParametersResultCode = 19;
+        int setWheelCircumferenceResultCode = 20;
+        int spinDownControlResultCode = 21;
+        byte[] spinDownControlResultParameter = new byte[]{22};
+        int setTargetedCadenceResultCode = 23;
+        byte[] currentData = new byte[]{28};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(29, new byte[]{30});
+
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData(descriptorDataList
+                , delay
+                , requestControlResultCode
+                , resetResultCode
+                , setTargetSpeedResultCode
+                , setTargetInclinationResultCode
+                , setTargetResistanceLevelResultCode
+                , setTargetPowerResultCode
+                , setTargetHeartRateResultCode
+                , startOrResumeResultCode
+                , stopOrPauseResultCode
+                , setTargetedExpendedEnergyResultCode
+                , setTargetedNumberOfStepsResultCode
+                , setTargetedNumberOfStridesResultCode
+                , setTargetedDistanceResultCode
+                , setTargetedTrainingTimeResultCode
+                , setTargetedTimeInTwoHeartRateZonesResultCode
+                , setTargetedTimeInThreeHeartRateZonesResultCode
+                , setTargetedTimeInFiveHeartRateZonesResultCode
+                , setIndoorBikeSimulationParametersResultCode
+                , setWheelCircumferenceResultCode
+                , spinDownControlResultCode
+                , spinDownControlResultParameter
+                , setTargetedCadenceResultCode);
+
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE).hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PERMISSION_WRITE).hashCode()
@@ -2267,7 +2369,7 @@ public class FitnessMachineControlPointCharacteristicDataTest {
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Integer.valueOf(0).hashCode()
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(requestControlResultCode).hashCode()
                         ^ Integer.valueOf(resetResultCode).hashCode()
                         ^ Integer.valueOf(setTargetSpeedResultCode).hashCode()

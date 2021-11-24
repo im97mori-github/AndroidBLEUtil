@@ -27,7 +27,7 @@ android {
 
 dependencies {
     api apiCoreConstantsDescriptor
-    api apiCoreConstantsErrorCodeAndroid
+    api apiCoreConstantsErrorCode
     api apiAdvertisingAndroid
     api apiHandler
     api gson
@@ -46,7 +46,7 @@ afterEvaluate {
                 from components.release
                 groupId = myGroupId
                 artifactId = target['artifactId']
-                version = peripheralUploadVersion
+                version = uploadVersion
                 artifact(sourcesJar)
                 pom {
                     name = 'BLE Core Utility for Android'

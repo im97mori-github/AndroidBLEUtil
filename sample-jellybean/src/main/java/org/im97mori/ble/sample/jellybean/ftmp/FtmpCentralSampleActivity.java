@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.ftmp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -64,7 +64,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mFtmpCallbackSample = new FtmpCallbackSample( this);
+        mFtmpCallbackSample = new FtmpCallbackSample(this);
         mFtmpCallbackSample.mFtmpCentralSampleActivity = this;
         mFitnessMachineProfile = new FitnessMachineProfile(this, mFtmpCallbackSample);
         mFitnessMachineProfile.start();
@@ -684,7 +684,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             }
             if (mFitnessMachineProfile.isConnected()) {
                 mFitnessMachineProfile.disconnect();
-                mFtmpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mFtmpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
                 mLastRegisteredUserIndex = null;
             } else {

@@ -438,16 +438,7 @@ public class CyclingPowerControlPointCharacteristicData extends CharacteristicDa
      */
     @Override
     public int hashCode() {
-        return uuid.hashCode()
-                ^ Integer.valueOf(property).hashCode()
-                ^ Integer.valueOf(permission).hashCode()
-                ^ Arrays.hashCode(descriptorDataList.toArray())
-                ^ Integer.valueOf(responseCode).hashCode()
-                ^ Long.valueOf(delay).hashCode()
-                ^ Arrays.hashCode(data)
-                ^ Integer.valueOf(notificationCount).hashCode()
-                ^ Arrays.hashCode(currentData)
-                ^ Arrays.hashCode(temporaryData)
+        return super.hashCode()
                 ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
                 ^ Integer.valueOf(updateSensorLocationResponseValue).hashCode()
                 ^ Integer.valueOf(requestSupportedSensorLocationsResponseValue).hashCode()
@@ -483,16 +474,7 @@ public class CyclingPowerControlPointCharacteristicData extends CharacteristicDa
         boolean result = false;
         if (obj instanceof CyclingPowerControlPointCharacteristicData) {
             CyclingPowerControlPointCharacteristicData target = (CyclingPowerControlPointCharacteristicData) obj;
-            result = uuid.equals(target.uuid)
-                    && property == target.property
-                    && permission == target.permission
-                    && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
-                    && responseCode == target.responseCode
-                    && delay == target.delay
-                    && Arrays.equals(data, target.data)
-                    && Arrays.equals(currentData, target.currentData)
-                    && Arrays.equals(temporaryData, target.temporaryData)
-                    && notificationCount == target.notificationCount
+            result = super.equals(target)
                     && setCumulativeValueResponseValue == target.setCumulativeValueResponseValue
                     && updateSensorLocationResponseValue == target.updateSensorLocationResponseValue
                     && requestSupportedSensorLocationsResponseValue == target.requestSupportedSensorLocationsResponseValue

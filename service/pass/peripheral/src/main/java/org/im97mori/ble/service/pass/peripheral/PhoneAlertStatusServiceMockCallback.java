@@ -1,5 +1,12 @@
 package org.im97mori.ble.service.pass.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_SETTING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.PHONE_ALERT_STATUS_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -32,13 +39,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_SETTING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.PHONE_ALERT_STATUS_SERVICE;
 
 /**
  * Phone Alert Status Service (Service UUID: 0x180E) for Peripheral
@@ -287,7 +287,7 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
                     delay(now, characteristicData.delay);
 
                     if (responseNeeded) {
-                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
+                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, preparedWrite ? value : null);
                     } else {
                         result = true;
                     }
@@ -296,7 +296,7 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
                         mIsReliable |= preparedWrite;
 
                         if (mIsReliable) {
-                            characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
+                            characteristicData.temporaryData.put(offset, value);
                         } else {
                             characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
 

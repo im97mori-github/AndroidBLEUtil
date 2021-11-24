@@ -24,7 +24,6 @@ android {
 }
 
 dependencies {
-    api apiCoreConstantsErrorCodeAndroid
     api apiHandler
     api "${myGroupId}:${descriptorU2902Android.artifactId}:${loadVersion}"
     androidTestImplementation apiTestCentral
@@ -42,7 +41,7 @@ afterEvaluate {
                 from components.release
                 groupId = myGroupId
                 artifactId = target['artifactId']
-                version = centralUploadVersion
+                version = uploadVersion
                 artifact(sourcesJar)
                 pom {
                     name = 'BLE Core Utility for Android'

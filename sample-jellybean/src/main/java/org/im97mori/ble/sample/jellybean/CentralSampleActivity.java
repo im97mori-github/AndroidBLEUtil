@@ -4,7 +4,6 @@ import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -201,7 +200,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , false);
 
                         if (result == null) {
-                            mBLECallbackSample.onDiscoverServiceFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
+                            mBLECallbackSample.onDiscoverServiceFailed(0, target.getBluetoothDevice(), BLESyncConnection.BLEResult.RESULT_FAILED, null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
                                 mBLECallbackSample.onDiscoverServiceSuccess(0, target.getBluetoothDevice(), Objects.requireNonNull(result.getServiceList()), result.getArgument());
@@ -233,7 +232,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , false);
 
                             if (result == null) {
-                                mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
+                                mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), BLESyncConnection.BLEResult.RESULT_FAILED, null);
                             } else {
                                 if (RESULT_SUCCESS == result.getResultCode()) {
                                     mBLECallbackSample.onRequestMtuSuccess(0, target.getBluetoothDevice(), result.getMtu(), result.getArgument());
@@ -265,7 +264,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , false);
 
                             if (result == null) {
-                                mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
+                                mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), BLESyncConnection.BLEResult.RESULT_FAILED, null);
                             } else {
                                 if (RESULT_SUCCESS == result.getResultCode()) {
                                     mBLECallbackSample.onReadPhySuccess(0, target.getBluetoothDevice(), result.getTxPhy(), result.getRxPhy(), result.getArgument());
@@ -304,7 +303,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , false);
 
                             if (result == null) {
-                                mBLECallbackSample.onSetPreferredPhyFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
+                                mBLECallbackSample.onSetPreferredPhyFailed(0, target.getBluetoothDevice(), BLESyncConnection.BLEResult.RESULT_FAILED, null);
                             } else {
                                 if (RESULT_SUCCESS == result.getResultCode()) {
                                     mBLECallbackSample.onSetPreferredPhySuccess(0, target.getBluetoothDevice(), result.getTxPhy(), result.getRxPhy(), result.getPhyOptions(), result.getArgument());
@@ -333,7 +332,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , false);
 
                         if (result == null) {
-                            mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), UNKNOWN, null);
+                            mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), BLESyncConnection.BLEResult.RESULT_FAILED, null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
                                 mBLECallbackSample.onReadRemoteRssiSuccess(0, target.getBluetoothDevice(), result.getRssi(), result.getArgument());
@@ -423,7 +422,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , null
                                     , SAMPLE_READABLE_CHARACTERISTIC
                                     , null
-                                    , UNKNOWN
+                                    , BLESyncConnection.BLEResult.RESULT_FAILED
                                     , null);
                         } else {
                             byte[] value = result.getValues();
@@ -478,7 +477,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , false);
 
                         if (result == null) {
-                            mBLECallbackSample.onCharacteristicWriteFailed(0, target.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, null, SAMPLE_WRITABLE_CHARACTERISTIC, null, UNKNOWN, null);
+                            mBLECallbackSample.onCharacteristicWriteFailed(0, target.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, null, SAMPLE_WRITABLE_CHARACTERISTIC, null, BLESyncConnection.BLEResult.RESULT_FAILED, null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
                                 mBLECallbackSample.onCharacteristicWriteSuccess(0, target.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, Objects.requireNonNull(result.getServiceInstanceId()), SAMPLE_WRITABLE_CHARACTERISTIC, Objects.requireNonNull(result.getCharacteristicInstanceId()), value, result.getArgument());
@@ -624,7 +623,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                                     , null
                                     , true
-                                    , UNKNOWN
+                                    , BLESyncConnection.BLEResult.RESULT_FAILED
                                     , null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
@@ -675,7 +674,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                                     , null
                                     , true
-                                    , UNKNOWN
+                                    , BLESyncConnection.BLEResult.RESULT_FAILED
                                     , null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
@@ -702,8 +701,36 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                 }
             }.start();
+        } else if (R.id.menu_add_task_sync == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BLEConnection target = mBleConnection;
+                    if (target != null) {
+                        BLESyncConnection bleSyncConnection = new BLESyncConnection(CentralSampleActivity.this, target.getBluetoothDevice(), target);
+                        Bundle bundle = BLESyncConnection.wrapArgument(null, bleSyncConnection);
+                        ReadRemoteRssiTask task = new ReadRemoteRssiTask(target, target.getBluetoothGatt(), target.getTaskHandler(), ReadRemoteRssiTask.TIMEOUT_MILLIS, bundle);
+                        BLESyncConnection.BLEResult result = bleSyncConnection.createTask(task
+                                , ReadRemoteRssiTask.TIMEOUT_MILLIS
+                                , bundle);
+
+                        if (result == null) {
+                            mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), BLESyncConnection.BLEResult.RESULT_FAILED, null);
+                        } else {
+                            if (RESULT_SUCCESS == result.getResultCode()) {
+                                mBLECallbackSample.onReadRemoteRssiSuccess(0, target.getBluetoothDevice(), result.getRssi(), result.getArgument());
+                            } else if (RESULT_FAILED == result.getResultCode()) {
+                                mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
+                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                                mBLECallbackSample.onReadRemoteRssiTimeout(0, target.getBluetoothDevice(), ReadRemoteRssiTask.TIMEOUT_MILLIS, result.getArgument());
+                            }
+                        }
+                    }
+                }
+            }.start();
         } else if (R.id.clear == item.getItemId()) {
             mBleConnection.clear();
+            mAdapter.clear();
         }
         return true;
     }

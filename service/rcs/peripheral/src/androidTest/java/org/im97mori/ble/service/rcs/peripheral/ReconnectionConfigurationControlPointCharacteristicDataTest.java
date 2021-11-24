@@ -21,7 +21,9 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @SuppressWarnings("ConstantConditions")
@@ -7086,7 +7088,8 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
         byte[] currentSetting = new byte[]{21};
         boolean isRcFeaturesE2eCrcSupported = true;
         byte[] currentData = new byte[]{26};
-        byte[] temporaryData = new byte[]{27};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(27, new byte[]{28});
 
         ReconnectionConfigurationControlPointCharacteristicData result1 = new ReconnectionConfigurationControlPointCharacteristicData(descriptorDataList
                 , responseCode
@@ -7113,8 +7116,103 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
                 , isRcFeaturesE2eCrcSupported);
 
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
 
+        assertNotEquals(RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC.hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE).hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PERMISSION_WRITE).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(responseCode).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode((byte[]) null)
+                        ^ Integer.valueOf(0).hashCode()
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(enableDisconnectResultCodes).hashCode()
+                        ^ Integer.valueOf(getActualCommunicationParametersResultCodes).hashCode()
+                        ^ Integer.valueOf(proposeSettingsResultCodes).hashCode()
+                        ^ Integer.valueOf(proposeSettingsError).hashCode()
+                        ^ Integer.valueOf(activateStoredSettingsResultCodes).hashCode()
+                        ^ Integer.valueOf(getMaxValuesResultCodes).hashCode()
+                        ^ Arrays.hashCode(maxValues)
+                        ^ Integer.valueOf(getMinValuesResultCodes).hashCode()
+                        ^ Arrays.hashCode(minValues)
+                        ^ Integer.valueOf(getStoredValuesResultCodes).hashCode()
+                        ^ Arrays.hashCode(getStoredValuesOperand)
+                        ^ Integer.valueOf(setWhiteListTimerResultCodes).hashCode()
+                        ^ Integer.valueOf(getWhiteListTimerResultCodes).hashCode()
+                        ^ Arrays.hashCode(getWhiteListTimerOperand)
+                        ^ Integer.valueOf(setAdvertisementConfigurationResultCodes).hashCode()
+                        ^ Integer.valueOf(upgradeToLescOnlyResultCodes).hashCode()
+                        ^ Integer.valueOf(switchOobPairingResultCodes).hashCode()
+                        ^ Integer.valueOf(limitedAccessResultCodes).hashCode()
+                        ^ Arrays.hashCode(currentSetting)
+                        ^ Boolean.valueOf(isRcFeaturesE2eCrcSupported).hashCode()
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 22, 23, 24, new byte[]{25}));
+        int responseCode = 1;
+        long delay = 2;
+        int enableDisconnectResultCodes = 3;
+        int getActualCommunicationParametersResultCodes = 4;
+        int proposeSettingsResultCodes = 5;
+        int proposeSettingsError = 6;
+        int activateStoredSettingsResultCodes = 7;
+        int getMaxValuesResultCodes = 8;
+        byte[] maxValues = new byte[]{9};
+        int getMinValuesResultCodes = 10;
+        byte[] minValues = new byte[]{11};
+        int getStoredValuesResultCodes = 12;
+        byte[] getStoredValuesOperand = new byte[]{13};
+        int setWhiteListTimerResultCodes = 14;
+        int getWhiteListTimerResultCodes = 15;
+        byte[] getWhiteListTimerOperand = new byte[]{16};
+        int setAdvertisementConfigurationResultCodes = 17;
+        int upgradeToLescOnlyResultCodes = 18;
+        int switchOobPairingResultCodes = 19;
+        int limitedAccessResultCodes = 20;
+        byte[] currentSetting = new byte[]{21};
+        boolean isRcFeaturesE2eCrcSupported = true;
+        byte[] currentData = new byte[]{26};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(27, new byte[]{28});
+
+        ReconnectionConfigurationControlPointCharacteristicData result1 = new ReconnectionConfigurationControlPointCharacteristicData(descriptorDataList
+                , responseCode
+                , delay
+                , enableDisconnectResultCodes
+                , getActualCommunicationParametersResultCodes
+                , proposeSettingsResultCodes
+                , proposeSettingsError
+                , activateStoredSettingsResultCodes
+                , getMaxValuesResultCodes
+                , maxValues
+                , getMinValuesResultCodes
+                , minValues
+                , getStoredValuesResultCodes
+                , getStoredValuesOperand
+                , setWhiteListTimerResultCodes
+                , getWhiteListTimerResultCodes
+                , getWhiteListTimerOperand
+                , setAdvertisementConfigurationResultCodes
+                , upgradeToLescOnlyResultCodes
+                , switchOobPairingResultCodes
+                , limitedAccessResultCodes
+                , currentSetting
+                , isRcFeaturesE2eCrcSupported);
+
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC.hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE).hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PERMISSION_WRITE).hashCode()
@@ -7124,7 +7222,7 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Integer.valueOf(0).hashCode()
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(enableDisconnectResultCodes).hashCode()
                         ^ Integer.valueOf(getActualCommunicationParametersResultCodes).hashCode()
                         ^ Integer.valueOf(proposeSettingsResultCodes).hashCode()
@@ -9223,7 +9321,7 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
                 , currentSetting
                 , isRcFeaturesE2eCrcSupported);
 
-        result2.temporaryData = new byte[]{27};
+        result2.temporaryData.put(27, new byte[]{28});
 
         assertNotEquals(result1, result2);
     }

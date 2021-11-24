@@ -1,5 +1,12 @@
 package org.im97mori.ble;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Parcel;
 
 import com.google.gson.Gson;
@@ -8,16 +15,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-@SuppressWarnings("UnnecessaryLocalVariable")
 public class CharacteristicDataTest {
 
     @Test
@@ -194,8 +196,7 @@ public class CharacteristicDataTest {
         CharacteristicData characteristicData = new CharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
         assertArrayEquals(firstData, characteristicData.getBytes());
 
-        byte[] secondData = new byte[1];
-        characteristicData.temporaryData = secondData;
+        characteristicData.temporaryData.put(1, new byte[]{2});
         assertArrayEquals(firstData, characteristicData.getBytes());
     }
 
@@ -235,7 +236,10 @@ public class CharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertArrayEquals(result1.currentData, result2.currentData);
-        assertArrayEquals(result1.temporaryData, result2.temporaryData);
+        assertEquals(result1.temporaryData.size(), result2.temporaryData.size());
+        for (Integer key : result1.temporaryData.keySet()) {
+            assertArrayEquals(result1.temporaryData.get(key), result2.temporaryData.get(key));
+        }
         assertEquals(result1.notificationCount, result2.notificationCount);
     }
 
@@ -245,7 +249,7 @@ public class CharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, new byte[]{5, 6}, 7);
         result1.currentData = new byte[]{8};
-        result1.temporaryData = new byte[]{9};
+        result1.temporaryData.put(9, new byte[]{10});
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -263,7 +267,10 @@ public class CharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertArrayEquals(result1.currentData, result2.currentData);
-        assertArrayEquals(result1.temporaryData, result2.temporaryData);
+        assertEquals(result1.temporaryData.size(), result2.temporaryData.size());
+        for (Integer key : result1.temporaryData.keySet()) {
+            assertArrayEquals(result1.temporaryData.get(key), result2.temporaryData.get(key));
+        }
         assertEquals(result1.notificationCount, result2.notificationCount);
     }
 
@@ -304,12 +311,50 @@ public class CharacteristicDataTest {
         long delay = 4;
         byte[] data = new byte[]{5, 6};
         byte[] currentData = new byte[]{7, 8};
-        byte[] temporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(9, new byte[]{10});
         int notificationCount = 11;
 
         CharacteristicData result1 = new CharacteristicData(uuid, property, permission, descriptorDataList, responseCode, delay, data, notificationCount);
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
+        assertNotEquals(uuid.hashCode()
+                        ^ Integer.valueOf(property).hashCode()
+                        ^ Integer.valueOf(permission).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(responseCode).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode(data)
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(notificationCount).hashCode()
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        UUID uuid = UUID.randomUUID();
+        int property = 1;
+        int permission = 2;
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int responseCode = 3;
+        long delay = 4;
+        byte[] data = new byte[]{5, 6};
+        byte[] currentData = new byte[]{7, 8};
+        HashMap<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(9, new byte[]{10});
+        int notificationCount = 11;
+
+        CharacteristicData result1 = new CharacteristicData(uuid, property, permission, descriptorDataList, responseCode, delay, data, notificationCount);
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(uuid.hashCode()
                         ^ Integer.valueOf(property).hashCode()
                         ^ Integer.valueOf(permission).hashCode()
@@ -318,7 +363,7 @@ public class CharacteristicDataTest {
                         ^ Long.valueOf(delay).hashCode()
                         ^ Arrays.hashCode(data)
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(notificationCount).hashCode()
                 , result1.hashCode());
     }
@@ -520,15 +565,16 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertEquals(result1, result2);
     }
 
@@ -543,17 +589,18 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         UUID secondUUID = UUID.fromString("00000000-0000-0000-0000-000000000001");
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(secondUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -568,17 +615,18 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         int secondProperty = 12;
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, secondProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -593,17 +641,18 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         int secondPermission = 22;
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, secondPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -618,7 +667,8 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
 
@@ -627,10 +677,10 @@ public class CharacteristicDataTest {
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, secondDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -645,17 +695,18 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         int secondResponseCode = 33;
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, secondResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -670,17 +721,18 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         long secondDelay = 44;
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, secondDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -695,17 +747,18 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         byte[] secondData = new byte[]{55, 66};
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, secondData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -720,17 +773,18 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         byte[] secondCurrentData = new byte[]{77, 88};
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = secondCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -745,17 +799,19 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
-        byte[] secondTemporaryData = new byte[]{99, 110};
+        HashMap<Integer, byte[]> secondTemporaryData = new HashMap<>();
+        secondTemporaryData.put(99, new byte[]{110});
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = secondTemporaryData;
+        result2.temporaryData.putAll(secondTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -770,17 +826,18 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         int secondNotificationCount = 77;
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, secondNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -795,13 +852,182 @@ public class CharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
         int firstNotificationCount = 11;
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(null, result1);
+    }
+
+    @Test
+    public void test_equals_00201() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        HashMap<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10});
+        int firstNotificationCount = 11;
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData.putAll(firstTemporaryData);
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData.putAll(firstTemporaryData);
+        assertEquals(result1, result2);
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00001() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+
+        assertTrue(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00002() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[0]);
+
+        assertTrue(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00003() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[1]);
+
+        assertTrue(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00004() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[1]);
+        result1.temporaryData.put(1, new byte[0]);
+
+        assertTrue(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00005() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[1]);
+        result1.temporaryData.put(1, new byte[1]);
+
+        assertTrue(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00006() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[1]);
+        result1.temporaryData.put(1, new byte[1]);
+        result1.temporaryData.put(2, new byte[0]);
+
+        assertTrue(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00007() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[1]);
+        result1.temporaryData.put(1, new byte[1]);
+        result1.temporaryData.put(2, new byte[1]);
+
+        assertTrue(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00008() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(1, new byte[0]);
+
+        assertFalse(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00009() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[0]);
+        result1.temporaryData.put(1, new byte[0]);
+
+        assertFalse(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00010() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[2]);
+        result1.temporaryData.put(1, new byte[0]);
+
+        assertFalse(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_isTemporaryDataValid_00011() {
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5);
+        result1.temporaryData.put(0, new byte[1]);
+        result1.temporaryData.put(1, new byte[1]);
+        result1.temporaryData.put(3, new byte[0]);
+
+        assertFalse(result1.isTemporaryDataValid());
+    }
+
+    @Test
+    public void test_executeReliableWrite_00001() {
+        byte[] data = new byte[]{0};
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, data, 5);
+
+        assertTrue(result1.executeReliableWrite());
+        assertArrayEquals(new byte[0], result1.getBytes());
+        assertTrue(result1.temporaryData.isEmpty());
+    }
+
+    @Test
+    public void test_executeReliableWrite_00002() {
+        byte[] data = new byte[]{0};
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, data, 5);
+
+        byte[] newData = new byte[]{1};
+        result1.temporaryData.put(0, newData);
+        assertTrue(result1.executeReliableWrite());
+        assertArrayEquals(newData, result1.getBytes());
+        assertTrue(result1.temporaryData.isEmpty());
+    }
+
+    @Test
+    public void test_executeReliableWrite_00003() {
+        byte[] data = new byte[]{0};
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, data, 5);
+
+        byte[] newData = new byte[]{1, 2};
+        result1.temporaryData.put(0, Arrays.copyOfRange(newData, 0, 1));
+        result1.temporaryData.put(1, Arrays.copyOfRange(newData, 1, 2));
+        assertTrue(result1.executeReliableWrite());
+        assertArrayEquals(newData, result1.getBytes());
+        assertTrue(result1.temporaryData.isEmpty());
+    }
+
+    @Test
+    public void test_executeReliableWrite_00004() {
+        byte[] data = new byte[]{0};
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, data, 5);
+
+        byte[] newData = new byte[]{1};
+        result1.temporaryData.put(1, newData);
+        assertFalse(result1.executeReliableWrite());
+        assertArrayEquals(data, result1.getBytes());
+        assertTrue(result1.temporaryData.isEmpty());
     }
 
 }

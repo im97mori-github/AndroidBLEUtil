@@ -82,7 +82,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onFirstNameReadFailed(@NonNull Integer taskId
@@ -145,7 +148,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onFirstNameWriteFailed(@NonNull Integer taskId
@@ -208,7 +214,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onLastNameReadFailed(@NonNull Integer taskId
@@ -271,7 +280,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onLastNameWriteFailed(@NonNull Integer taskId
@@ -334,7 +346,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onEmailAddressReadFailed(@NonNull Integer taskId
@@ -397,7 +412,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onEmailAddressWriteFailed(@NonNull Integer taskId
@@ -460,7 +478,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onAgeReadFailed(@NonNull Integer taskId
@@ -523,7 +544,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onAgeWriteFailed(@NonNull Integer taskId
@@ -586,7 +610,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onDateOfBirthReadFailed(@NonNull Integer taskId
@@ -649,7 +676,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onDateOfBirthWriteFailed(@NonNull Integer taskId
@@ -712,7 +742,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onGenderReadFailed(@NonNull Integer taskId
@@ -775,7 +808,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onGenderWriteFailed(@NonNull Integer taskId
@@ -838,7 +874,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onWeightReadFailed(@NonNull Integer taskId
@@ -901,7 +940,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onWeightWriteFailed(@NonNull Integer taskId
@@ -964,7 +1006,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onHeightReadFailed(@NonNull Integer taskId
@@ -1027,7 +1072,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onHeightWriteFailed(@NonNull Integer taskId
@@ -1090,7 +1138,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onVO2MaxReadFailed(@NonNull Integer taskId
@@ -1153,7 +1204,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onVO2MaxWriteFailed(@NonNull Integer taskId
@@ -1216,7 +1270,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onHeartRateMaxReadFailed(@NonNull Integer taskId
@@ -1279,7 +1336,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onHeartRateMaxWriteFailed(@NonNull Integer taskId
@@ -1342,7 +1402,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onRestingHeartRateReadFailed(@NonNull Integer taskId
@@ -1405,7 +1468,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onRestingHeartRateWriteFailed(@NonNull Integer taskId
@@ -1468,7 +1534,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onMaximumRecommendedHeartRateReadFailed(@NonNull Integer taskId
@@ -1531,7 +1600,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onMaximumRecommendedHeartRateWriteFailed(@NonNull Integer taskId
@@ -1594,7 +1666,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onAerobicThresholdReadFailed(@NonNull Integer taskId
@@ -1657,7 +1732,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onAerobicThresholdWriteFailed(@NonNull Integer taskId
@@ -1720,7 +1798,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onAnaerobicThresholdReadFailed(@NonNull Integer taskId
@@ -1783,7 +1864,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onAnaerobicThresholdWriteFailed(@NonNull Integer taskId
@@ -1846,7 +1930,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onSportTypeForAerobicAndAnaerobicThresholdsReadFailed(@NonNull Integer taskId
@@ -1909,7 +1996,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onSportTypeForAerobicAndAnaerobicThresholdsWriteFailed(@NonNull Integer taskId
@@ -1972,7 +2062,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onDateOfThresholdAssessmentReadFailed(@NonNull Integer taskId
@@ -2035,7 +2128,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onDateOfThresholdAssessmentWriteFailed(@NonNull Integer taskId
@@ -2098,7 +2194,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onWaistCircumferenceReadFailed(@NonNull Integer taskId
@@ -2161,7 +2260,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onWaistCircumferenceWriteFailed(@NonNull Integer taskId
@@ -2224,7 +2326,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onHipCircumferenceReadFailed(@NonNull Integer taskId
@@ -2287,7 +2392,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onHipCircumferenceWriteFailed(@NonNull Integer taskId
@@ -2350,7 +2458,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onFatBurnHeartRateLowerLimitReadFailed(@NonNull Integer taskId
@@ -2413,7 +2524,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onFatBurnHeartRateLowerLimitWriteFailed(@NonNull Integer taskId
@@ -2476,7 +2590,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onFatBurnHeartRateUpperLimitReadFailed(@NonNull Integer taskId
@@ -2539,7 +2656,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onFatBurnHeartRateUpperLimitWriteFailed(@NonNull Integer taskId
@@ -2602,7 +2722,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onAerobicHeartRateLowerLimitReadFailed(@NonNull Integer taskId
@@ -2665,7 +2788,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onAerobicHeartRateLowerLimitWriteFailed(@NonNull Integer taskId
@@ -2728,7 +2854,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onAerobicHeartRateUpperLimitReadFailed(@NonNull Integer taskId
@@ -2791,7 +2920,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onAerobicHeartRateUpperLimitWriteFailed(@NonNull Integer taskId
@@ -2854,7 +2986,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onAnaerobicHeartRateLowerLimitReadFailed(@NonNull Integer taskId
@@ -2917,7 +3052,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onAnaerobicHeartRateLowerLimitWriteFailed(@NonNull Integer taskId
@@ -2980,7 +3118,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onAnaerobicHeartRateUpperLimitReadFailed(@NonNull Integer taskId
@@ -3043,7 +3184,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onAnaerobicHeartRateUpperLimitWriteFailed(@NonNull Integer taskId
@@ -3106,7 +3250,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onFiveZoneHeartRateLimitsReadFailed(@NonNull Integer taskId
@@ -3169,7 +3316,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onFiveZoneHeartRateLimitsWriteFailed(@NonNull Integer taskId
@@ -3232,7 +3382,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onThreeZoneHeartRateLimitsReadFailed(@NonNull Integer taskId
@@ -3295,7 +3448,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onThreeZoneHeartRateLimitsWriteFailed(@NonNull Integer taskId
@@ -3358,7 +3514,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onTwoZoneHeartRateLimitReadFailed(@NonNull Integer taskId
@@ -3421,7 +3580,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onTwoZoneHeartRateLimitWriteFailed(@NonNull Integer taskId
@@ -3484,7 +3646,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onLanguageReadFailed(@NonNull Integer taskId
@@ -3547,7 +3712,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onLanguageWriteFailed(@NonNull Integer taskId
@@ -3610,7 +3778,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onDatabaseChangeIncrementReadFailed(@NonNull Integer taskId
@@ -3673,7 +3844,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onDatabaseChangeIncrementWriteFailed(@NonNull Integer taskId
@@ -3739,7 +3913,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_READ_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onDatabaseChangeIncrementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId
@@ -3806,7 +3983,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onDatabaseChangeIncrementNotifyStartFailed(@NonNull Integer taskId
@@ -3873,7 +4053,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onDatabaseChangeIncrementNotifyStopFailed(@NonNull Integer taskId
@@ -3956,7 +4139,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onUserIndexReadFailed(@NonNull Integer taskId
@@ -4019,7 +4205,10 @@ public interface UserDataServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onUserControlPointWriteFailed(@NonNull Integer taskId
@@ -4085,7 +4274,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_READ_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onUserControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId
@@ -4153,7 +4345,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onUserControlPointIndicateStartFailed(@NonNull Integer taskId
@@ -4220,7 +4415,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onUserControlPointIndicateStopFailed(@NonNull Integer taskId
@@ -4306,7 +4504,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_READ_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onRegisteredUserClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId
@@ -4374,7 +4575,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onRegisteredUserIndicateStartFailed(@NonNull Integer taskId
@@ -4441,7 +4645,10 @@ public interface UserDataServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onRegisteredUserIndicateStopFailed(@NonNull Integer taskId

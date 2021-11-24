@@ -1,5 +1,12 @@
 package org.im97mori.ble.service.bms.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_80;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_81;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -20,7 +27,6 @@ import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2aa4.BondManagementControlPoint;
 import org.im97mori.ble.characteristic.u2aa5.BondManagementFeatures;
-import org.im97mori.ble.constants.ErrorCodeAndroid;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
 import java.util.ArrayList;
@@ -30,11 +36,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Pattern;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
 
 /**
  * Bond Management Service (Service UUID: 0x181e) for Peripheral
@@ -282,7 +283,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                     delay(now, characteristicData.delay);
 
                     if (BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                        int responseCode = ErrorCodeAndroid.APPLICATION_ERROR_81;
+                        int responseCode = APPLICATION_ERROR_81;
 
                         if (characteristicData instanceof BondManagementControlPointCharacteristicData) {
                             BondManagementControlPointCharacteristicData bondManagementControlPointCharacteristicData = (BondManagementControlPointCharacteristicData) characteristicData;
@@ -293,7 +294,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                 String operand = bondManagementControlPoint.getOperand();
                                 if (bondManagementControlPoint.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrLeNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrLeAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode != null
@@ -306,7 +307,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                     }
                                 } else if (bondManagementControlPoint.isOpCodeDeleteBondOfRequestingDeviceBrEdr()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceBrEdrAuthorizationCode != null
@@ -319,7 +320,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                     }
                                 } else if (bondManagementControlPoint.isOpCodeDeleteBondOfRequestingDeviceLe()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesDeleteBondOfCurrentConnectionLeNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesDeleteBondOfCurrentConnectionLeAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceLeAuthorizationCode != null
@@ -332,7 +333,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                     }
                                 } else if (bondManagementControlPoint.isOpCodeDeleteAllBondsOnServerBrEdrLe()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrLeNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrLeAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteAllBondsOnServerBrEdrLeAuthorizationCode != null
@@ -345,7 +346,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                     }
                                 } else if (bondManagementControlPoint.isOpCodeDeleteAllBondsOnServerBrEdr()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteAllBondsOnServerBrEdrAuthorizationCode != null
@@ -358,7 +359,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                     }
                                 } else if (bondManagementControlPoint.isOpCodeDeleteAllBondsOnServerLe()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesRemoveAllBondsOnServerLeNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesRemoveAllBondsOnServerLeAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteAllBondsOnServerLeAuthorizationCode != null
@@ -371,7 +372,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                     }
                                 } else if (bondManagementControlPoint.isOpCodeDeleteAllButTheActiveBondOnServerBrEdrLe()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrLeNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrLeAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerBrEdrLeAuthorizationCode != null
@@ -384,7 +385,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                     }
                                 } else if (bondManagementControlPoint.isOpCodeDeleteAllButTheActiveBondOnServerBrEdr()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode != null
@@ -397,7 +398,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                     }
                                 } else if (bondManagementControlPoint.isOpCodeDeleteAllButTheActiveBondOnServerLe()) {
                                     if (bondManagementFeatures.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerLeNotSupported()) {
-                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                        responseCode = APPLICATION_ERROR_80;
                                     } else {
                                         if (bondManagementFeatures.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerLeAuthorizationCodeRequired()) {
                                             if (bondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerLeAuthorizationCode != null
@@ -411,10 +412,10 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                                 }
                             }
                         }
-                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                     } else {
                         if (responseNeeded) {
-                            result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
+                            result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, preparedWrite ? value : null);
                         } else {
                             result = true;
                         }
@@ -423,7 +424,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                             mIsReliable |= preparedWrite;
 
                             if (mIsReliable) {
-                                characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
+                                characteristicData.temporaryData.put(offset, value);
                             } else {
                                 characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
                             }

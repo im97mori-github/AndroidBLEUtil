@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.lnp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -249,7 +249,7 @@ public class LnpCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mLocationAndNavigationProfile.isConnected()) {
                 mLocationAndNavigationProfile.disconnect();
-                mLnpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mLnpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

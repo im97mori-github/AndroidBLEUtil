@@ -1,5 +1,7 @@
 package org.im97mori.ble.service.ftms.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -12,10 +14,7 @@ import com.google.gson.annotations.SerializedName;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
 
-import java.util.Arrays;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
 
 /**
  * Fitness Machine Status Characteristic data class
@@ -95,16 +94,7 @@ public class FitnessMachineStatusCharacteristicData extends CharacteristicData {
      */
     @Override
     public int hashCode() {
-        return uuid.hashCode()
-                ^ Integer.valueOf(property).hashCode()
-                ^ Integer.valueOf(permission).hashCode()
-                ^ Arrays.hashCode(descriptorDataList.toArray())
-                ^ Integer.valueOf(responseCode).hashCode()
-                ^ Long.valueOf(delay).hashCode()
-                ^ Arrays.hashCode(data)
-                ^ Integer.valueOf(notificationCount).hashCode()
-                ^ Arrays.hashCode(currentData)
-                ^ Arrays.hashCode(temporaryData)
+        return super.hashCode()
                 ^ Integer.valueOf(spinDownStatusValue).hashCode();
     }
 
@@ -116,16 +106,7 @@ public class FitnessMachineStatusCharacteristicData extends CharacteristicData {
         boolean result = false;
         if (obj instanceof FitnessMachineStatusCharacteristicData) {
             FitnessMachineStatusCharacteristicData target = (FitnessMachineStatusCharacteristicData) obj;
-            result = uuid.equals(target.uuid)
-                    && property == target.property
-                    && permission == target.permission
-                    && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
-                    && responseCode == target.responseCode
-                    && delay == target.delay
-                    && Arrays.equals(data, target.data)
-                    && Arrays.equals(currentData, target.currentData)
-                    && Arrays.equals(temporaryData, target.temporaryData)
-                    && notificationCount == target.notificationCount
+            result = super.equals(target)
                     && spinDownStatusValue == target.spinDownStatusValue;
         }
         return result;

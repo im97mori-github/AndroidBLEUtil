@@ -1,5 +1,7 @@
 package org.im97mori.ble.service.ans.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -12,10 +14,7 @@ import com.google.gson.annotations.SerializedName;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
 
-import java.util.Arrays;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
 
 /**
  * Unread Alert Status Characteristic data class
@@ -215,15 +214,7 @@ public class UnreadAlertStatusCharacteristicData extends CharacteristicData {
         boolean result = false;
         if (obj instanceof UnreadAlertStatusCharacteristicData) {
             UnreadAlertStatusCharacteristicData target = (UnreadAlertStatusCharacteristicData) obj;
-            result = uuid.equals(target.uuid)
-                    && property == target.property
-                    && permission == target.permission
-                    && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
-                    && responseCode == target.responseCode
-                    && delay == target.delay
-                    && Arrays.equals(data, target.data)
-                    && Arrays.equals(currentData, target.currentData)
-                    && Arrays.equals(temporaryData, target.temporaryData)
+            result = super.equals(target)
                     && notificationCount == target.notificationCount
                     && simpleAlertUnreadCount == target.simpleAlertUnreadCount
                     && emailUnreadCount == target.emailUnreadCount

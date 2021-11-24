@@ -1,7 +1,5 @@
 package org.im97mori.ble.task;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGatt;
 import android.os.Build;
@@ -24,44 +22,49 @@ import org.im97mori.ble.TaskHandler;
 public class SetPreferredPhyTask extends AbstractBLETask {
 
     /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
      * KEY:TX_PHY
      */
-    public static final String  KEY_TX_PHY = "KEY_TX_PHY";
+    public static final String KEY_TX_PHY = "KEY_TX_PHY";
 
     /**
      * KEY:RX_PHY
      */
-    public static final String  KEY_RX_PHY = "KEY_RX_PHY";
+    public static final String KEY_RX_PHY = "KEY_RX_PHY";
 
     /**
      * KEY:STATUS
      */
-    public static final String  KEY_STATUS = "KEY_STATUS";
+    public static final String KEY_STATUS = "KEY_STATUS";
 
     /**
      * KEY:PHY_OPTIONS
      */
-    public static final String  KEY_PHY_OPTIONS = "KEY_PHY_OPTIONS";
+    public static final String KEY_PHY_OPTIONS = "KEY_PHY_OPTIONS";
 
     /**
      * PROGRESS:SET_PREFERRED_PHY_START
      */
-    public static final String  PROGRESS_SET_PREFERRED_PHY_START = "PROGRESS_SET_PREFERRED_PHY_START";
+    public static final String PROGRESS_SET_PREFERRED_PHY_START = "PROGRESS_SET_PREFERRED_PHY_START";
 
     /**
      * PROGRESS:SET_PREFERRED_PHY_SUCCESS
      */
-    public static final String  PROGRESS_SET_PREFERRED_PHY_SUCCESS = "PROGRESS_SET_PREFERRED_PHY_SUCCESS";
+    public static final String PROGRESS_SET_PREFERRED_PHY_SUCCESS = "PROGRESS_SET_PREFERRED_PHY_SUCCESS";
 
     /**
      * PROGRESS:SET_PREFERRED_PHY_ERROR
      */
-    public static final String  PROGRESS_SET_PREFERRED_PHY_ERROR = "PROGRESS_SET_PREFERRED_PHY_ERROR";
+    public static final String PROGRESS_SET_PREFERRED_PHY_ERROR = "PROGRESS_SET_PREFERRED_PHY_ERROR";
 
     /**
      * PROGRESS:FINISHED
      */
-    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
 
     /**
      * Default timeout(millis) for set preferred phy:30sec
@@ -196,7 +199,10 @@ public class SetPreferredPhyTask extends AbstractBLETask {
 
             // timeout
             if (message.obj == this && PROGRESS_TIMEOUT.equals(nextProgress)) {
-                mBLEConnection.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgumemnt);
+                mBLEConnection.getBLECallback().onSetPreferredPhyTimeout(getTaskId()
+                        , mBLEConnection.getBluetoothDevice()
+                        , mTimeout
+                        , mArgumemnt);
                 mCurrentProgress = nextProgress;
             } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 if (message.obj == this && PROGRESS_SET_PREFERRED_PHY_START.equals(nextProgress)) {
@@ -210,10 +216,18 @@ public class SetPreferredPhyTask extends AbstractBLETask {
             } else if (PROGRESS_SET_PREFERRED_PHY_START.equals(mCurrentProgress)) {
                 // current:set preferred phy start, next:set preferred phy success
                 if (PROGRESS_SET_PREFERRED_PHY_SUCCESS.equals(nextProgress)) {
-                    mBLEConnection.getBLECallback().onSetPreferredPhySuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), bundle.getInt(KEY_PHY_OPTIONS), mArgumemnt);
+                    mBLEConnection.getBLECallback().onSetPreferredPhySuccess(getTaskId()
+                            , mBLEConnection.getBluetoothDevice()
+                            , bundle.getInt(KEY_TX_PHY)
+                            , bundle.getInt(KEY_RX_PHY)
+                            , bundle.getInt(KEY_PHY_OPTIONS)
+                            , mArgumemnt);
                 } else if (PROGRESS_SET_PREFERRED_PHY_ERROR.equals(nextProgress)) {
                     // current:set preferred phy start, next:set preferred phy error
-                    mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_STATUS), mArgumemnt);
+                    mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId()
+                            , mBLEConnection.getBluetoothDevice()
+                            , bundle.getInt(KEY_STATUS)
+                            , mArgumemnt);
                 }
 
                 mCurrentProgress = PROGRESS_FINISHED;
@@ -240,7 +254,10 @@ public class SetPreferredPhyTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgumemnt);
+        mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , STATUS_CANCEL
+                , mArgumemnt);
     }
 
 }

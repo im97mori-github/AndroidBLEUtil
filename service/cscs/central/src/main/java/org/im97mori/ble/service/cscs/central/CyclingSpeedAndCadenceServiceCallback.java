@@ -55,7 +55,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onCSCFeatureReadFailed(@NonNull Integer taskId
@@ -121,7 +124,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_READ_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onCSCMeasurementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId
@@ -188,7 +194,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onCSCMeasurementNotificateStartFailed(@NonNull Integer taskId
@@ -255,7 +264,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onCSCMeasurementNotificateStopFailed(@NonNull Integer taskId
@@ -338,7 +350,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
      */
     void onSensorLocationReadFailed(@NonNull Integer taskId
@@ -401,7 +416,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onSCControlPointWriteFailed(@NonNull Integer taskId
@@ -467,7 +485,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_READ_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onSCControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId
@@ -534,7 +555,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onSCControlPointIndicateStartFailed(@NonNull Integer taskId
@@ -601,7 +625,10 @@ public interface CyclingSpeedAndCadenceServiceCallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
     void onSCControlPointIndicateStopFailed(@NonNull Integer taskId

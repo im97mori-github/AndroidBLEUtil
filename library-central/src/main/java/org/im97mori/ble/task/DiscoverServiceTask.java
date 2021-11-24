@@ -11,9 +11,6 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * Discover service task
  * <p>
@@ -22,35 +19,45 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 public class DiscoverServiceTask extends AbstractBLETask {
 
     /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:DISCOVER_SERVICES_FAILED
+     */
+    public static final int STATUS_DISCOVER_SERVICES_FAILED = -2;
+
+    /**
      * KEY:STATUS
      */
-    public static final String  KEY_STATUS = "KEY_STATUS";
+    public static final String KEY_STATUS = "KEY_STATUS";
 
     /**
      * PROGRESS:BUSY
      */
-    public static final String  PROGRESS_BUSY = "PROGRESS_BUSY";
-    
+    public static final String PROGRESS_BUSY = "PROGRESS_BUSY";
+
     /**
      * PROGRESS:DISCOVER_SERVICE_START
      */
-    public static final String  PROGRESS_DISCOVER_SERVICE_START = "PROGRESS_DISCOVER_SERVICE_START";
-    
+    public static final String PROGRESS_DISCOVER_SERVICE_START = "PROGRESS_DISCOVER_SERVICE_START";
+
     /**
      * PROGRESS:DISCOVER_SERVICE_SUCCESS
      */
-    public static final String  PROGRESS_DISCOVER_SERVICE_SUCCESS = "PROGRESS_DISCOVER_SERVICE_SUCCESS";
+    public static final String PROGRESS_DISCOVER_SERVICE_SUCCESS = "PROGRESS_DISCOVER_SERVICE_SUCCESS";
 
     /**
      * PROGRESS:DISCOVER_SERVICE_ERROR
      */
-    public static final String  PROGRESS_DISCOVER_SERVICE_ERROR = "PROGRESS_DISCOVER_SERVICE_ERROR";
+    public static final String PROGRESS_DISCOVER_SERVICE_ERROR = "PROGRESS_DISCOVER_SERVICE_ERROR";
 
     /**
      * PROGRESS:FINISHED
      */
-    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
-    
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
+
     /**
      * Default timeout(millis) for discover service:30sec
      */
@@ -160,7 +167,10 @@ public class DiscoverServiceTask extends AbstractBLETask {
 
             // timeout
             if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
-                mBLEConnection.getBLECallback().onDiscoverServiceTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
+                mBLEConnection.getBLECallback().onDiscoverServiceTimeout(getTaskId()
+                        , mBluetoothGatt.getDevice()
+                        , mTimeout
+                        , mArgument);
                 mCurrentProgress = nextProgress;
             } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
                 if (PROGRESS_DISCOVER_SERVICE_START.equals(nextProgress)) {
@@ -174,7 +184,10 @@ public class DiscoverServiceTask extends AbstractBLETask {
                     } else {
                         // failed
 
-                        mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                        mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId()
+                                , mBluetoothGatt.getDevice()
+                                , STATUS_DISCOVER_SERVICES_FAILED
+                                , mArgument);
                         mCurrentProgress = PROGRESS_BUSY;
                     }
                 }
@@ -183,13 +196,19 @@ public class DiscoverServiceTask extends AbstractBLETask {
                     // current:discover service start, next:discover service success
 
                     // callback
-                    mBLEConnection.getBLECallback().onDiscoverServiceSuccess(getTaskId(), mBluetoothGatt.getDevice(), mBluetoothGatt.getServices(), mArgument);
+                    mBLEConnection.getBLECallback().onDiscoverServiceSuccess(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , mBluetoothGatt.getServices()
+                            , mArgument);
 
 
                 } else if (PROGRESS_DISCOVER_SERVICE_ERROR.equals(nextProgress)) {
                     // current:discover service start, next:discover service failed
 
-                    mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                    mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_STATUS)
+                            , mArgument);
                 }
 
                 // remove timeout message
@@ -217,7 +236,10 @@ public class DiscoverServiceTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.blp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -169,7 +169,7 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mBloodPressureProfile.isConnected()) {
                 mBloodPressureProfile.disconnect();
-                mBlpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mBlpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

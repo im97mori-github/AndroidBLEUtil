@@ -79,6 +79,7 @@
     <string name="menu_write_characteristic_sync">Write Characteristic(Synchronous)</string>
     <string name="menu_write_notification_sync">Write CCCD Notification(Synchronous)</string>
     <string name="menu_write_characteristic_reliable">Write Characteristic(Reliable)</string>
+    <string name="menu_write_characteristic_reliable_2">Write Characteristic(Reliable)2</string>
     <string name="menu_write_characteristic_reliable_abort">Write Characteristic(Reliable abort)</string>
     <string name="menu_read_multi_instance_characteristic">Read Multi Instance Characteristic</string>
     <string name="menu_set_notification_on">Set Notification on</string>
@@ -88,6 +89,8 @@
 
     <string name="menu_notification">Notification</string>
     <string name="menu_indication">Indication</string>
+
+    <string name="menu_add_task_sync">Add Task(Synchronous)</string>
 
     <string name="menu_read_manufacturer_name">Read Manufacturer Name</string>
     <string name="menu_read_model_number">Read Model Number</string>

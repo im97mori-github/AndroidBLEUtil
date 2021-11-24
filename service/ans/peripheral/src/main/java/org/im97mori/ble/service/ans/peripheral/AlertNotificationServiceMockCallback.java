@@ -1,5 +1,15 @@
 package org.im97mori.ble.service.ans.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ErrorCode.COMMAND_NOT_SUPPORTED;
+import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -38,16 +48,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.COMMAND_NOT_SUPPORTED;
-import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
 
 /**
  * Alert Notification Service (Service UUID: 0x1811) for Peripheral
@@ -553,7 +553,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                         delay(now, alertNotificationControlPointCharacteristicData.delay);
 
                         if (responseNeeded) {
-                            result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                            result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                         } else {
                             result = true;
                         }

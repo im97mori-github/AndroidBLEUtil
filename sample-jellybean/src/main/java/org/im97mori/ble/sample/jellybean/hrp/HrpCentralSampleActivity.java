@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.hrp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -165,7 +165,7 @@ public class HrpCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mHeartRateProfile.isConnected()) {
                 mHeartRateProfile.disconnect();
-                mHrpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mHrpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

@@ -9,9 +9,6 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
-import org.im97mori.ble.constants.ErrorCodeAndroid;
-
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 
 /**
  * Disconnect from {@link BluetoothGatt} task
@@ -21,19 +18,29 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 public class DisconnectTask extends AbstractBLETask {
 
     /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:MANUAL_DISCONNECT
+     */
+    public static final int STATUS_MANUAL_DISCONNECT = -2;
+
+    /**
      * KEY:STATUS
      */
-    public static final String  KEY_STATUS = "KEY_STATUS";
+    public static final String KEY_STATUS = "KEY_STATUS";
 
     /**
      * PROGRESS:DISCONNECT
      */
-    public static final String  PROGRESS_DISCONNECT = "PROGRESS_DISCONNECT";
+    public static final String PROGRESS_DISCONNECT = "PROGRESS_DISCONNECT";
 
     /**
      * PROGRESS:FINISHED
      */
-    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
 
     /**
      * task target {@link BLEConnection} instance
@@ -46,7 +53,9 @@ public class DisconnectTask extends AbstractBLETask {
     private final BluetoothGatt mBluetoothGatt;
 
     /**
-     * {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodeAndroid#UNKNOWN}
+     * {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter
+     * {@link #STATUS_CANCEL}
+     * {@link #STATUS_MANUAL_DISCONNECT}
      */
     private final int mStatus;
 
@@ -58,7 +67,21 @@ public class DisconnectTask extends AbstractBLETask {
     /**
      * @param bleConnection task target {@link BLEConnection} instance
      * @param bluetoothGatt task target {@link BluetoothGatt} instance
-     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodeAndroid#UNKNOWN}
+     * @param argument      callback argument
+     * @see DisconnectTask#DisconnectTask(BLEConnection, BluetoothGatt, int, Bundle)
+     */
+    public DisconnectTask(@NonNull BLEConnection bleConnection
+            , @NonNull BluetoothGatt bluetoothGatt
+            , @NonNull Bundle argument) {
+        this(bleConnection, bluetoothGatt, STATUS_MANUAL_DISCONNECT, argument);
+    }
+
+    /**
+     * @param bleConnection task target {@link BLEConnection} instance
+     * @param bluetoothGatt task target {@link BluetoothGatt} instance
+     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter
+     *                      {@link #STATUS_CANCEL}
+     *                      {@link #STATUS_MANUAL_DISCONNECT}
      * @param argument      callback argument
      */
     public DisconnectTask(@NonNull BLEConnection bleConnection
@@ -115,7 +138,10 @@ public class DisconnectTask extends AbstractBLETask {
                             } catch (Exception e) {
                                 BLELogUtils.stackLog(e);
                             }
-                            mBLEConnection.onDisconnected(getTaskId(), mBluetoothGatt, bundle.getInt(KEY_STATUS), mArgument);
+                            mBLEConnection.onDisconnected(getTaskId()
+                                    , mBluetoothGatt
+                                    , bundle.getInt(KEY_STATUS)
+                                    , mArgument);
                         }
                         mCurrentProgress = nextProgress;
                     }
@@ -140,7 +166,10 @@ public class DisconnectTask extends AbstractBLETask {
     @Override
     public void cancel() {
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.onDisconnected(getTaskId(), mBluetoothGatt, CANCEL, mArgument);
+        mBLEConnection.onDisconnected(getTaskId()
+                , mBluetoothGatt
+                , STATUS_CANCEL
+                , mArgument);
     }
 
     /**

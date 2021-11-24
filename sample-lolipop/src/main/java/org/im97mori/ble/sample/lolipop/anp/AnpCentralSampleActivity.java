@@ -1,5 +1,7 @@
 package org.im97mori.ble.sample.lolipop.anp;
 
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.util.Pair;
@@ -26,8 +28,6 @@ import org.im97mori.ble.service.ans.AlertNotificationCategoryIdUtils;
 
 import java.util.LinkedList;
 import java.util.Set;
-
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 public class AnpCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
@@ -364,7 +364,7 @@ public class AnpCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mAlertNotificationProfile.isConnected()) {
                 mAlertNotificationProfile.disconnect();
-                mAnpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mAnpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

@@ -10,7 +10,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LN_CONTROL_POINT_CHARACTERISTIC;
@@ -562,17 +564,18 @@ public class LNControlPointCharacteristicDataTest {
         int responseCode = 3;
         long delay = 4;
         byte[] currentData = new byte[]{5, 6};
-        byte[] temporaryData = new byte[]{7, 8};
-        int setCumulativeValueResponseValue = 9;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 10;
-        int navigationControlResponseValue = 11;
-        int requestNumberOfRoutesResponseValue = 12;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{13};
-        int requestNameOfRouteResponseValue = 14;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{15};
-        int selectRouteResponseValue = 16;
-        int setFixRateResponseValue = 17;
-        int setElevationResponseValue = 18;
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(7, new byte[]{8, 9});
+        int setCumulativeValueResponseValue = 10;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 11;
+        int navigationControlResponseValue = 12;
+        int requestNumberOfRoutesResponseValue = 13;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{14};
+        int requestNameOfRouteResponseValue = 15;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{16};
+        int selectRouteResponseValue = 17;
+        int setFixRateResponseValue = 18;
+        int setElevationResponseValue = 19;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -591,7 +594,75 @@ public class LNControlPointCharacteristicDataTest {
                 , setFixRateResponseValue
                 , setElevationResponseValue);
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
+        assertNotEquals(LN_CONTROL_POINT_CHARACTERISTIC.hashCode()
+                        ^ Integer.valueOf(property).hashCode()
+                        ^ Integer.valueOf(permission).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(responseCode).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode(new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes())
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
+                        ^ Integer.valueOf(maskLocationAndSpeedCharacteristicContentResponseValue).hashCode()
+                        ^ Integer.valueOf(navigationControlResponseValue).hashCode()
+                        ^ Integer.valueOf(requestNumberOfRoutesResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestNumberOfRoutesResponseParameter)
+                        ^ Integer.valueOf(requestNameOfRouteResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestNameOfRouteResponseParameter)
+                        ^ Integer.valueOf(selectRouteResponseValue).hashCode()
+                        ^ Integer.valueOf(setFixRateResponseValue).hashCode()
+                        ^ Integer.valueOf(setElevationResponseValue).hashCode()
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        int property = 1;
+        int permission = 2;
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 19, 20, 21, null));
+        int responseCode = 3;
+        long delay = 4;
+        byte[] currentData = new byte[]{5, 6};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(7, new byte[]{8, 9});
+        int setCumulativeValueResponseValue = 10;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 11;
+        int navigationControlResponseValue = 12;
+        int requestNumberOfRoutesResponseValue = 13;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{14};
+        int requestNameOfRouteResponseValue = 15;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{16};
+        int selectRouteResponseValue = 17;
+        int setFixRateResponseValue = 18;
+        int setElevationResponseValue = 19;
+
+        LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
+                property
+                , permission
+                , descriptorDataList
+                , responseCode
+                , delay
+                , setCumulativeValueResponseValue
+                , maskLocationAndSpeedCharacteristicContentResponseValue
+                , navigationControlResponseValue
+                , requestNumberOfRoutesResponseValue
+                , requestNumberOfRoutesResponseParameter
+                , requestNameOfRouteResponseValue
+                , requestNameOfRouteResponseParameter
+                , selectRouteResponseValue
+                , setFixRateResponseValue
+                , setElevationResponseValue);
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(LN_CONTROL_POINT_CHARACTERISTIC.hashCode()
                         ^ Integer.valueOf(property).hashCode()
                         ^ Integer.valueOf(permission).hashCode()
@@ -600,7 +671,7 @@ public class LNControlPointCharacteristicDataTest {
                         ^ Long.valueOf(delay).hashCode()
                         ^ Arrays.hashCode(new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes())
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
                         ^ Integer.valueOf(maskLocationAndSpeedCharacteristicContentResponseValue).hashCode()
                         ^ Integer.valueOf(navigationControlResponseValue).hashCode()

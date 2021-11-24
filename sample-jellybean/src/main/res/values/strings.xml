@@ -64,6 +64,8 @@
     <string name="menu_set_notification_on_sync">Set Notification on(Synchronous)</string>
     <string name="menu_set_notification_off_sync">Set Notification off(Synchronous)</string>
 
+    <string name="menu_add_task_sync">Add Task(Synchronous)</string>
+
     <string name="menu_read_manufacturer_name">Read Manufacturer Name</string>
     <string name="menu_read_model_number">Read Model Number</string>
     <string name="menu_read_system_id">Read System ID</string>

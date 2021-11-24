@@ -2,7 +2,7 @@ package org.im97mori.ble;
 
 import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY;
 import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_TX_POWER_HIGH;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

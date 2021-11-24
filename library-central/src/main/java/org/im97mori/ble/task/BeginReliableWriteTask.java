@@ -9,15 +9,22 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.BLEConnection;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * Begin reliable write task
  * <p>
  * for central role
  */
 public class BeginReliableWriteTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:BEGIN_RELIABLE_WRITE_FAILED
+     */
+    public static final int STATUS_BEGIN_RELIABLE_WRITE_FAILED = -2;
 
     /**
      * PROGRESS:BEGIN_RELIABLE_WRITE_START
@@ -87,9 +94,14 @@ public class BeginReliableWriteTask extends AbstractBLETask {
 
                     // success
                     if (mBluetoothGatt.beginReliableWrite()) {
-                        mBLEConnection.getBLECallback().onBeginReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
+                        mBLEConnection.getBLECallback().onBeginReliableWriteSuccess(getTaskId()
+                                , mBluetoothGatt.getDevice()
+                                , mArgument);
                     } else {
-                        mBLEConnection.getBLECallback().onBeginReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                        mBLEConnection.getBLECallback().onBeginReliableWriteFailed(getTaskId()
+                                , mBluetoothGatt.getDevice()
+                                , STATUS_BEGIN_RELIABLE_WRITE_FAILED
+                                , mArgument);
                     }
 
                     mCurrentProgress = PROGRESS_FINISHED;
@@ -114,7 +126,10 @@ public class BeginReliableWriteTask extends AbstractBLETask {
     @Override
     public void cancel() {
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onBeginReliableWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onBeginReliableWriteFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

@@ -1,5 +1,10 @@
 package org.im97mori.ble.task;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.os.Message;
@@ -12,19 +17,13 @@ import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class DisconnectTaskTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
     public void test_createInitialMessage_00001() {
-        DisconnectTask task = new DisconnectTask(null, null, UNKNOWN, null);
+        DisconnectTask task = new DisconnectTask(null, null, DisconnectTask.STATUS_MANUAL_DISCONNECT, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
@@ -39,7 +38,7 @@ public class DisconnectTaskTest extends AbstractCentralTest {
     @RequiresDevice
     public void test_doProcess_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
-        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, UNKNOWN, null);
+        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, null);
         assertFalse(task.doProcess(new Message()));
     }
 
@@ -47,7 +46,7 @@ public class DisconnectTaskTest extends AbstractCentralTest {
     @RequiresDevice
     public void test_doProcess_00101() {
         MOCK_BLE_CONNECTION.setConnected(false);
-        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, UNKNOWN, null);
+        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, null);
 
         assertTrue(task.doProcess(null));
     }
@@ -60,7 +59,7 @@ public class DisconnectTaskTest extends AbstractCentralTest {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
 
-        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, UNKNOWN, BLECallbackDistributer.wrapArgument(null, null));
+        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributer.wrapArgument(null, null));
         task.cancel();
         assertTrue(task.doProcess(message));
     }
@@ -81,7 +80,7 @@ public class DisconnectTaskTest extends AbstractCentralTest {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
 
-        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, UNKNOWN, BLECallbackDistributer.wrapArgument(null, null));
+        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributer.wrapArgument(null, null));
         task.cancel();
         assertTrue(task.doProcess(message));
         assertTrue(callback.result.get());

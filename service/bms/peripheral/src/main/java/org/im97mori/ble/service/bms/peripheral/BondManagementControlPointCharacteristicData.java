@@ -1,5 +1,7 @@
 package org.im97mori.ble.service.bms.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -12,10 +14,7 @@ import com.google.gson.annotations.SerializedName;
 
 import org.im97mori.ble.CharacteristicData;
 
-import java.util.Arrays;
 import java.util.Collections;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * Bond Management Control Point Characteristic data class
@@ -282,16 +281,7 @@ public class BondManagementControlPointCharacteristicData extends Characteristic
      */
     @Override
     public int hashCode() {
-        return uuid.hashCode()
-                ^ Integer.valueOf(property).hashCode()
-                ^ Integer.valueOf(permission).hashCode()
-                ^ Arrays.hashCode(descriptorDataList.toArray())
-                ^ Integer.valueOf(responseCode).hashCode()
-                ^ Long.valueOf(delay).hashCode()
-                ^ Arrays.hashCode(data)
-                ^ Integer.valueOf(notificationCount).hashCode()
-                ^ Arrays.hashCode(currentData)
-                ^ Arrays.hashCode(temporaryData)
+        return super.hashCode()
                 ^ Integer.valueOf(deleteBondOfRequestingDeviceBrEdrLeResponseCode).hashCode()
                 ^ deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode.hashCode()
                 ^ Integer.valueOf(deleteBondOfRequestingDeviceBrEdrResponseCode).hashCode()
@@ -320,16 +310,7 @@ public class BondManagementControlPointCharacteristicData extends Characteristic
         boolean result = false;
         if (obj instanceof BondManagementControlPointCharacteristicData) {
             BondManagementControlPointCharacteristicData target = (BondManagementControlPointCharacteristicData) obj;
-            result = uuid.equals(target.uuid)
-                    && property == target.property
-                    && permission == target.permission
-                    && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
-                    && responseCode == target.responseCode
-                    && delay == target.delay
-                    && Arrays.equals(data, target.data)
-                    && Arrays.equals(currentData, target.currentData)
-                    && Arrays.equals(temporaryData, target.temporaryData)
-                    && notificationCount == target.notificationCount
+            result = super.equals(target)
                     && deleteBondOfRequestingDeviceBrEdrLeResponseCode == target.deleteBondOfRequestingDeviceBrEdrLeResponseCode
                     && deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode.equals(target.deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode)
                     && deleteBondOfRequestingDeviceBrEdrResponseCode == target.deleteBondOfRequestingDeviceBrEdrResponseCode

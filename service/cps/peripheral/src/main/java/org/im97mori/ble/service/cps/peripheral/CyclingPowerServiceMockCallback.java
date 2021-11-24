@@ -1,5 +1,14 @@
 package org.im97mori.ble.service.cps.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_VECTOR_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SENSOR_LOCATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.CYCLING_POWER_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -39,15 +48,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_VECTOR_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SENSOR_LOCATION_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.CYCLING_POWER_SERVICE;
 
 /**
  * Cycling Power Service (Service UUID: 0x1818) for Peripheral
@@ -536,7 +536,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                     delay(now, characteristicData.delay);
 
                     if (responseNeeded) {
-                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
+                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, preparedWrite ? value : null);
                     } else {
                         result = true;
                     }
@@ -545,7 +545,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                         mIsReliable |= preparedWrite;
 
                         if (mIsReliable) {
-                            characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
+                            characteristicData.temporaryData.put(offset, value);
                         } else {
                             characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
 

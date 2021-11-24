@@ -13,8 +13,6 @@ import androidx.annotation.RequiresApi;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-
 /**
  * Read phy task
  * <p>
@@ -22,6 +20,11 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
  */
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class ReadPhyTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
 
     /**
      * KEY:TX_PHY
@@ -167,7 +170,9 @@ public class ReadPhyTask extends AbstractBLETask {
 
             // timeout
             if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
-                mBLEConnection.getBLECallback().onReadPhyTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
+                mBLEConnection.getBLECallback().onReadPhyTimeout(getTaskId()
+                        , mBluetoothGatt.getDevice()
+                        , mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
             } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
                 if (PROGRESS_READ_PHY_START.equals(nextProgress)) {
@@ -184,11 +189,18 @@ public class ReadPhyTask extends AbstractBLETask {
                     // current:read phy start, next:read phy success
 
                     // callback
-                    mBLEConnection.getBLECallback().onReadPhySuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), mArgument);
+                    mBLEConnection.getBLECallback().onReadPhySuccess(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_TX_PHY)
+                            , bundle.getInt(KEY_RX_PHY)
+                            , mArgument);
                 } else if (PROGRESS_READ_PHY_ERROR.equals(nextProgress)) {
                     // current:read phy start, next:read phy failed
 
-                    mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                    mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_STATUS)
+                            , mArgument);
                 }
 
                 // remove timeout message
@@ -216,7 +228,10 @@ public class ReadPhyTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

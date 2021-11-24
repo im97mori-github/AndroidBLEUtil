@@ -66,6 +66,9 @@
         android:id="@+id/write_characteristc_reliable"
         android:title="@string/menu_write_characteristic_reliable" />
     <item
+        android:id="@+id/write_characteristc_reliable_2"
+        android:title="@string/menu_write_characteristic_reliable_2" />
+    <item
         android:id="@+id/write_characteristc_reliable_abort"
         android:title="@string/menu_write_characteristic_reliable_abort" />
     <item
@@ -84,6 +87,10 @@
     <item
         android:id="@+id/set_notification_off_sync"
         android:title="@string/menu_set_notification_off_sync" />
+
+    <item
+        android:id="@+id/menu_add_task_sync"
+        android:title="@string/menu_add_task_sync" />
 
     <item
         android:id="@+id/clear"

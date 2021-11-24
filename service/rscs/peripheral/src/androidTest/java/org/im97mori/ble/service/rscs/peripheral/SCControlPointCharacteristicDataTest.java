@@ -11,7 +11,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SC_CONTROL_POINT_CHARACTERISTIC;
@@ -522,7 +524,8 @@ public class SCControlPointCharacteristicDataTest {
         int requestSupportedSensorLocationsResponseValue = 6;
         byte[] requestSupportedSensorLocationsResponseParameter = new byte[]{7};
         byte[] currentData = new byte[]{28};
-        byte[] temporaryData = new byte[]{29};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(29, new byte[]{30});
 
         SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(descriptorDataList
                 , responseCode
@@ -534,8 +537,58 @@ public class SCControlPointCharacteristicDataTest {
                 , requestSupportedSensorLocationsResponseParameter);
 
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
 
+        assertNotEquals(SC_CONTROL_POINT_CHARACTERISTIC.hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE).hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PERMISSION_WRITE).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(responseCode).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode((byte[]) null)
+                        ^ Integer.valueOf(0).hashCode()
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
+                        ^ Integer.valueOf(startSensorCalibrationResponseValue).hashCode()
+                        ^ Integer.valueOf(updateSensorLocationResponseValue).hashCode()
+                        ^ Integer.valueOf(requestSupportedSensorLocationsResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestSupportedSensorLocationsResponseParameter)
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+        int responseCode = 1;
+        long delay = 2;
+        int setCumulativeValueResponseValue = 3;
+        int startSensorCalibrationResponseValue = 4;
+        int updateSensorLocationResponseValue = 5;
+        int requestSupportedSensorLocationsResponseValue = 6;
+        byte[] requestSupportedSensorLocationsResponseParameter = new byte[]{7};
+        byte[] currentData = new byte[]{28};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(29, new byte[]{30});
+
+        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(descriptorDataList
+                , responseCode
+                , delay
+                , setCumulativeValueResponseValue
+                , startSensorCalibrationResponseValue
+                , updateSensorLocationResponseValue
+                , requestSupportedSensorLocationsResponseValue
+                , requestSupportedSensorLocationsResponseParameter);
+
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(SC_CONTROL_POINT_CHARACTERISTIC.hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE).hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PERMISSION_WRITE).hashCode()
@@ -545,7 +598,7 @@ public class SCControlPointCharacteristicDataTest {
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Integer.valueOf(0).hashCode()
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
                         ^ Integer.valueOf(startSensorCalibrationResponseValue).hashCode()
                         ^ Integer.valueOf(updateSensorLocationResponseValue).hashCode()

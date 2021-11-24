@@ -22,14 +22,14 @@ public interface ImmediateAlertServiceCallback {
     /**
      * Write Alert Level success callback
      *
-     * @param taskId                      task id
-     * @param bluetoothDevice             BLE device
-     * @param serviceUUID                 service {@link UUID}
-     * @param serviceInstanceId           task target service incetanceId {@link BluetoothGattService#getInstanceId()}
-     * @param characteristicUUID          characteristic {@link UUID}
-     * @param characteristicInstanceId    task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param alertLevelAndroid {@link org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid}
-     * @param argument                    callback argument
+     * @param taskId                   task id
+     * @param bluetoothDevice          BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param alertLevelAndroid        {@link org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid}
+     * @param argument                 callback argument
      */
     void onAlertLevelWriteSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
@@ -49,7 +49,10 @@ public interface ImmediateAlertServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
     void onAlertLevelWriteFailed(@NonNull Integer taskId

@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.rscp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -47,7 +47,7 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mRscpCallbackSample = new RscpCallbackSample( this);
+        mRscpCallbackSample = new RscpCallbackSample(this);
         mRunningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(this, mRscpCallbackSample);
         mRunningSpeedAndCadenceProfile.start();
 
@@ -226,7 +226,7 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
             }
             if (mRunningSpeedAndCadenceProfile.isConnected()) {
                 mRunningSpeedAndCadenceProfile.disconnect();
-                mRscpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mRscpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

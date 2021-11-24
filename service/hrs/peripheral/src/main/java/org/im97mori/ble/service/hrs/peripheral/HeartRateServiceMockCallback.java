@@ -1,5 +1,12 @@
 package org.im97mori.ble.service.hrs.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.BODY_SENSOR_LOCATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.HEART_RATE_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -31,13 +38,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.BODY_SENSOR_LOCATION_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MEASUREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.HEART_RATE_SERVICE;
 
 /**
  * Heart Rate Service (Service UUID: 0x180D) for Peripheral
@@ -272,7 +272,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
                     if (characteristicData != null) {
                         delay(now, characteristicData.delay);
 
-                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
+                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, preparedWrite ? value : null);
 
                         if (result && BluetoothGatt.GATT_SUCCESS == characteristicData.responseCode && new HeartRateControlPoint(value).isHeartRateControlPointResetEnergyExpended()) {
                             characteristicData.currentData = value;

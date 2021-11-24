@@ -83,7 +83,12 @@ public class NotificatedTask extends AbstractBLETask {
      */
     @Override
     public boolean doProcess(@NonNull Message message) {
-        mBLEConnection.getBLECallback().onCharacteristicNotified(mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mByteArray);
+        mBLEConnection.getBLECallback().onCharacteristicNotified(mBLEConnection.getBluetoothDevice()
+                , mServiceUUID
+                , mServiceInstanceId
+                , mCharacteristicUUID
+                , mCharacteristicInstanceId
+                , mByteArray);
         return true;
     }
 

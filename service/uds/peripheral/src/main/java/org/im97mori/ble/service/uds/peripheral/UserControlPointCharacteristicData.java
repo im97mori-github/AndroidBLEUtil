@@ -1,5 +1,7 @@
 package org.im97mori.ble.service.uds.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.os.Parcel;
@@ -12,10 +14,7 @@ import com.google.gson.annotations.SerializedName;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
 
-import java.util.Arrays;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * User Control Point Characteristic data class
@@ -145,16 +144,7 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
      */
     @Override
     public int hashCode() {
-        return uuid.hashCode()
-                ^ Integer.valueOf(property).hashCode()
-                ^ Integer.valueOf(permission).hashCode()
-                ^ Arrays.hashCode(descriptorDataList.toArray())
-                ^ Integer.valueOf(responseCode).hashCode()
-                ^ Long.valueOf(delay).hashCode()
-                ^ Arrays.hashCode(data)
-                ^ Integer.valueOf(notificationCount).hashCode()
-                ^ Arrays.hashCode(currentData)
-                ^ Arrays.hashCode(temporaryData)
+        return super.hashCode()
                 ^ Integer.valueOf(registerNewUserResponseValue).hashCode()
                 ^ Integer.valueOf(consentResponseValue).hashCode()
                 ^ Integer.valueOf(deleteUserDataResponseValue).hashCode()
@@ -170,16 +160,7 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
         boolean result = false;
         if (obj instanceof UserControlPointCharacteristicData) {
             UserControlPointCharacteristicData target = (UserControlPointCharacteristicData) obj;
-            result = uuid.equals(target.uuid)
-                    && property == target.property
-                    && permission == target.permission
-                    && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
-                    && responseCode == target.responseCode
-                    && delay == target.delay
-                    && Arrays.equals(data, target.data)
-                    && Arrays.equals(currentData, target.currentData)
-                    && Arrays.equals(temporaryData, target.temporaryData)
-                    && notificationCount == target.notificationCount
+            result = super.equals(target)
                     && registerNewUserResponseValue == target.registerNewUserResponseValue
                     && consentResponseValue == target.consentResponseValue
                     && deleteUserDataResponseValue == target.deleteUserDataResponseValue

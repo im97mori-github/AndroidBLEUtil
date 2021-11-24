@@ -1,5 +1,7 @@
 package org.im97mori.ble.sample.lolipop.cpp;
 
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.util.Pair;
@@ -26,8 +28,6 @@ import org.im97mori.ble.sample.lolipop.SampleCallback;
 
 import java.util.LinkedList;
 import java.util.Set;
-
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 public class CppCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
@@ -270,7 +270,7 @@ public class CppCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mCyclingPowerProfile.isConnected()) {
                 mCyclingPowerProfile.disconnect();
-                mCppCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mCppCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

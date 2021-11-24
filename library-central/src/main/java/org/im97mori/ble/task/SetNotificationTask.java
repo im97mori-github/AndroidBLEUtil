@@ -16,9 +16,6 @@ import org.im97mori.ble.TaskHandler;
 import java.util.List;
 import java.util.UUID;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.BUSY;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-
 /**
  * Set notification task
  * <p>
@@ -27,20 +24,30 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
 public class SetNotificationTask extends AbstractBLETask {
 
     /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:CHARACTERISTIC_NOT_FOUND
+     */
+    public static final int STATUS_CHARACTERISTIC_NOT_FOUND = -2;
+
+    /**
      * PROGRESS:SET_NOTIFICATION_START
      */
-    public static final String  PROGRESS_SET_NOTIFICATION_START = "PROGRESS_SET_NOTIFICATION_START";
+    public static final String PROGRESS_SET_NOTIFICATION_START = "PROGRESS_SET_NOTIFICATION_START";
 
     /**
      * PROGRESS:BUSY
      */
-    public static final String  PROGRESS_BUSY = "PROGRESS_BUSY";
+    public static final String PROGRESS_BUSY = "PROGRESS_BUSY";
 
     /**
      * PROGRESS:FINISHED
      */
-    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
-    
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
+
     /**
      * task target {@link BLEConnection} instance
      */
@@ -183,10 +190,25 @@ public class SetNotificationTask extends AbstractBLETask {
 
                     if (result) {
                         nextProgress = PROGRESS_FINISHED;
-                        mBLEConnection.getBLECallback().onSetNotificationSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mNotificationStatus, mArgumemnt);
+                        mBLEConnection.getBLECallback().onSetNotificationSuccess(getTaskId()
+                                , mBLEConnection.getBluetoothDevice()
+                                , mServiceUUID
+                                , mServiceInstanceId
+                                , mCharacteristicUUID
+                                , mCharacteristicInstanceId
+                                , mNotificationStatus
+                                , mArgumemnt);
                     } else {
                         nextProgress = PROGRESS_BUSY;
-                        mBLEConnection.getBLECallback().onSetNotificationFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mNotificationStatus, BUSY, mArgumemnt);
+                        mBLEConnection.getBLECallback().onSetNotificationFailed(getTaskId()
+                                , mBLEConnection.getBluetoothDevice()
+                                , mServiceUUID
+                                , mServiceInstanceId
+                                , mCharacteristicUUID
+                                , mCharacteristicInstanceId
+                                , mNotificationStatus
+                                , STATUS_CHARACTERISTIC_NOT_FOUND
+                                , mArgumemnt);
                     }
                 }
                 mCurrentProgress = nextProgress;
@@ -211,7 +233,15 @@ public class SetNotificationTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onSetNotificationFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mNotificationStatus, CANCEL, mArgumemnt);
+        mBLEConnection.getBLECallback().onSetNotificationFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , mServiceUUID
+                , mServiceInstanceId
+                , mCharacteristicUUID
+                , mCharacteristicInstanceId
+                , mNotificationStatus
+                , STATUS_CANCEL
+                , mArgumemnt);
     }
 
 }

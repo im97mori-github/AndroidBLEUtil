@@ -8,8 +8,6 @@ dependencyResolutionManagement {
     }
 }
 
-include ':core:constants:errorcode'
-include ':core:constants'
 include ':core:utils'
 include ':core'
 include ':advertising'

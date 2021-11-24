@@ -1,8 +1,5 @@
 package org.im97mori.ble.task;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
@@ -22,6 +19,16 @@ import org.im97mori.ble.TaskHandler;
  * for peripheral role
  */
 public class AddServiceTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:ADD_SERVICE_FAILED
+     */
+    public static final int STATUS_ADD_SERVICE_FAILED = -2;
 
     /**
      * KEY:STATUS
@@ -46,7 +53,7 @@ public class AddServiceTask extends AbstractBLETask {
     /**
      * PROGRESS:FINISHED
      */
-    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
 
     /**
      * Default timeout(millis) for add service:30sec
@@ -164,7 +171,11 @@ public class AddServiceTask extends AbstractBLETask {
 
             // timeout
             if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
-                mBLEServerConnection.getBLEServerCallback().onServiceAddTimeout(getTaskId(), mBLEServerConnection, mBluetoothGattService, mTimeout, mArgument);
+                mBLEServerConnection.getBLEServerCallback().onServiceAddTimeout(getTaskId()
+                        , mBLEServerConnection
+                        , mBluetoothGattService
+                        , mTimeout
+                        , mArgument);
                 mCurrentProgress = nextProgress;
             } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 // current:init, next:add service start
@@ -174,7 +185,11 @@ public class AddServiceTask extends AbstractBLETask {
                         mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     } else {
                         nextProgress = PROGRESS_FINISHED;
-                        mBLEServerConnection.getBLEServerCallback().onServiceAddFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, UNKNOWN, mArgument);
+                        mBLEServerConnection.getBLEServerCallback().onServiceAddFailed(getTaskId()
+                                , mBLEServerConnection
+                                , mBluetoothGattService
+                                , STATUS_ADD_SERVICE_FAILED
+                                , mArgument);
                     }
                     mCurrentProgress = nextProgress;
                 }
@@ -184,12 +199,19 @@ public class AddServiceTask extends AbstractBLETask {
                     if (mBluetoothGattService.getUuid().equals(bluetoothGattService.getUuid()) && mBluetoothGattService.getType() == bluetoothGattService.getType()) {
                         // current:add service start, next:add service success
                         if (PROGRESS_ADD_SERVICE_SUCCESS.equals(nextProgress)) {
-                            if (!mBLEServerConnection.getBLEServerCallback().onServiceAddSuccess(getTaskId(), mBLEServerConnection, bluetoothGattService, mArgument)) {
+                            if (!mBLEServerConnection.getBLEServerCallback().onServiceAddSuccess(getTaskId()
+                                    , mBLEServerConnection
+                                    , bluetoothGattService
+                                    , mArgument)) {
                                 mBLEServerConnection.createRemoveServiceTask(bluetoothGattService, RemoveServiceTask.TIMEOUT_MILLIS, null, null);
                             }
                         } else if (PROGRESS_ADD_SERVICE_ERROR.equals(nextProgress)) {
                             // current:add service start, next:add service error
-                            mBLEServerConnection.getBLEServerCallback().onServiceAddFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, bundle.getInt(KEY_STATUS), mArgument);
+                            mBLEServerConnection.getBLEServerCallback().onServiceAddFailed(getTaskId()
+                                    , mBLEServerConnection
+                                    , mBluetoothGattService
+                                    , bundle.getInt(KEY_STATUS)
+                                    , mArgument);
                         }
                         mCurrentProgress = PROGRESS_FINISHED;
                         // remove timeout message
@@ -217,6 +239,10 @@ public class AddServiceTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEServerConnection.getBLEServerCallback().onServiceAddFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, CANCEL, mArgument);
+        mBLEServerConnection.getBLEServerCallback().onServiceAddFailed(getTaskId()
+                , mBLEServerConnection
+                , mBluetoothGattService
+                , STATUS_CANCEL
+                , mArgument);
     }
 }

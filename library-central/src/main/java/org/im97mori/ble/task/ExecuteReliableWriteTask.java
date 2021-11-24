@@ -1,8 +1,5 @@
 package org.im97mori.ble.task;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGatt;
 import android.os.Bundle;
@@ -20,6 +17,16 @@ import org.im97mori.ble.TaskHandler;
  * for central role
  */
 public class ExecuteReliableWriteTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:EXECUTE_RELIABLE_WRITE_FAILED
+     */
+    public static final int STATUS_EXECUTE_RELIABLE_WRITE_FAILED = -2;
 
     /**
      * KEY:STATUS
@@ -157,7 +164,10 @@ public class ExecuteReliableWriteTask extends AbstractBLETask {
 
             // timeout
             if (message.obj == this && PROGRESS_TIMEOUT.equals(nextProgress)) {
-                mBLEConnection.getBLECallback().onExecuteReliableWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgument);
+                mBLEConnection.getBLECallback().onExecuteReliableWriteTimeout(getTaskId()
+                        , mBLEConnection.getBluetoothDevice()
+                        , mTimeout
+                        , mArgument);
                 mCurrentProgress = nextProgress;
             } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
                 if (PROGRESS_EXECUTE_RELIABLE_WRITE_START.equals(nextProgress)) {
@@ -168,7 +178,10 @@ public class ExecuteReliableWriteTask extends AbstractBLETask {
                         // set timeout message
                         mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     } else {
-                        mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                        mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId()
+                                , mBluetoothGatt.getDevice()
+                                , STATUS_EXECUTE_RELIABLE_WRITE_FAILED
+                                , mArgument);
                         nextProgress = PROGRESS_BUSY;
                     }
 
@@ -179,12 +192,16 @@ public class ExecuteReliableWriteTask extends AbstractBLETask {
                     // current:execute reliable write start, next:execute reliable write success
 
                     // callback
-                    mBLEConnection.getBLECallback().onExecuteReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
-
+                    mBLEConnection.getBLECallback().onExecuteReliableWriteSuccess(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , mArgument);
                 } else if (PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR.equals(nextProgress)) {
                     // current:execute reliable write start, next:execute reliable write failed
 
-                    mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                    mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_STATUS)
+                            , mArgument);
                 }
 
                 // remove timeout message
@@ -211,7 +228,10 @@ public class ExecuteReliableWriteTask extends AbstractBLETask {
     @Override
     public void cancel() {
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

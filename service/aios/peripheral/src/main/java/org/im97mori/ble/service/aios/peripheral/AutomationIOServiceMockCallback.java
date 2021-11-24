@@ -1,5 +1,19 @@
 package org.im97mori.ble.service.aios.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.AGGREGATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANALOG_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DIGITAL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ServiceUUID.AUTOMATION_IO_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -45,20 +59,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.AGGREGATE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.ANALOG_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.DIGITAL_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.AUTOMATION_IO_SERVICE;
 
 /**
  * Automation IO Service (Service UUID: 0x1815) for Peripheral
@@ -193,14 +193,11 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                     || ((property & BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE) == BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE)) {
                 permission |= BluetoothGattCharacteristic.PERMISSION_WRITE;
             }
-            mDigitalMap.put(index, new CharacteristicData(DIGITAL_CHARACTERISTIC
-                    , property
+            mDigitalMap.put(index, new DigitalCharacteristicData(property
                     , permission
-                    , new ArrayList<>()
                     , responseCode
                     , delay
-                    , value
-                    , -1));
+                    , value));
             return this;
         }
 
@@ -935,7 +932,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(descriptorData.getBytes());
                         int bits = numberOfDigitals.getNoOfDigitals() * 2;
                         if (bits <= characteristicData.data.length * 8) {
-                            characteristicData.data = AutomationIOServiceMockCallback.sanitizeDigitalData(characteristicData.data, numberOfDigitals);
+                            characteristicData.data = AutomationIOServiceMockCallback.sanitizeDigitalData(characteristicData.data, numberOfDigitals.getNoOfDigitals());
                             characteristicData.descriptorDataList.add(descriptorData);
                         } else {
                             throw new RuntimeException("Data size not match. index:" + index);
@@ -1074,8 +1071,8 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
      * @return sanitized digital data
      */
     @NonNull
-    private static byte[] sanitizeDigitalData(@NonNull byte[] data, @NonNull NumberOfDigitals numberOfDigitals) {
-        int bits = numberOfDigitals.getNoOfDigitals() * 2;
+    static byte[] sanitizeDigitalData(@NonNull byte[] data, int numberOfDigitals) {
+        int bits = numberOfDigitals * 2;
         int byteLength = bits / 8 + 1;
         byte[] resultData = Arrays.copyOfRange(data, 0, byteLength);
         if ((bits % 8) != 0) {
@@ -1242,7 +1239,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                             }
 
                             if (responseNeeded) {
-                                result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                                result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                             } else {
                                 result = true;
                             }
@@ -1250,11 +1247,10 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                             if (result) {
                                 mIsReliable |= preparedWrite;
 
-                                byte[] digitalData = sanitizeDigitalData(value, numberOfDigitals);
                                 if (mIsReliable) {
-                                    characteristicData.temporaryData = digitalData;
+                                    characteristicData.temporaryData.put(offset, value);
                                 } else {
-                                    characteristicData.currentData = digitalData;
+                                    characteristicData.currentData = sanitizeDigitalData(value, numberOfDigitals.getNoOfDigitals());
                                 }
                             }
 
@@ -1381,7 +1377,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                             }
 
                             if (responseNeeded) {
-                                result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                                result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                             } else {
                                 result = true;
                             }
@@ -1390,7 +1386,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                 mIsReliable |= preparedWrite;
 
                                 if (mIsReliable) {
-                                    characteristicData.temporaryData = Arrays.copyOfRange(value, offset, 2);
+                                    characteristicData.temporaryData.put(offset, value);
                                 } else {
                                     characteristicData.currentData = Arrays.copyOfRange(value, offset, 2);
                                 }
@@ -1417,7 +1413,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                         responseCode = characteristicData.responseCode;
 
                         if (responseNeeded) {
-                            result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                            result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                         } else {
                             result = true;
                         }
@@ -1426,7 +1422,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                             mIsReliable |= preparedWrite;
 
                             if (mIsReliable) {
-                                characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
+                                characteristicData.temporaryData.put(offset, value);
                             } else {
                                 characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
                             }
@@ -1471,7 +1467,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                     delay(now, descriptorData.delay);
 
                     if (responseNeeded) {
-                        result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, null);
+                        result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, preparedWrite ? value : null);
                     } else {
                         result = true;
                     }
@@ -1480,7 +1476,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                         mIsReliable |= preparedWrite;
 
                         if (mIsReliable) {
-                            descriptorData.temporaryData = value;
+                            descriptorData.temporaryData.put(offset, value);
                         } else {
                             byte[] oldData = descriptorData.getBytes();
                             descriptorData.currentData = value;

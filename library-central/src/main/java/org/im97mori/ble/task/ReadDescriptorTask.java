@@ -20,10 +20,6 @@ import org.im97mori.ble.TaskHandler;
 import java.util.List;
 import java.util.UUID;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.BUSY;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * Read descriptor task
  * <p>
@@ -32,70 +28,85 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 public class ReadDescriptorTask extends AbstractBLETask {
 
     /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:DESCRIPTOR_NOT_FOUND
+     */
+    public static final int STATUS_DESCRIPTOR_NOT_FOUND = -2;
+
+    /**
+     * STATUS:READ_DESCRIPTOR_FAILED
+     */
+    public static final int STATUS_READ_DESCRIPTOR_FAILED = -3;
+
+    /**
      * KEY:SERVICE_UUID
      */
-    public static final String  KEY_SERVICE_UUID = "KEY_SERVICE_UUID";
+    public static final String KEY_SERVICE_UUID = "KEY_SERVICE_UUID";
 
     /**
      * KEY:SERVICE_INSTANCE_ID
      */
-    public static final String  KEY_SERVICE_INSTANCE_ID = "KEY_SERVICE_INSTANCE_ID";
+    public static final String KEY_SERVICE_INSTANCE_ID = "KEY_SERVICE_INSTANCE_ID";
 
     /**
      * KEY:CHARACTERISTIC_UUID
      */
-    public static final String  KEY_CHARACTERISTIC_UUID = "KEY_CHARACTERISTIC_UUID";
+    public static final String KEY_CHARACTERISTIC_UUID = "KEY_CHARACTERISTIC_UUID";
 
     /**
      * KEY:CHARACTERISTIC_INSTANCE_ID
      */
-    public static final String  KEY_CHARACTERISTIC_INSTANCE_ID = "KEY_CHARACTERISTIC_INSTANCE_ID";
+    public static final String KEY_CHARACTERISTIC_INSTANCE_ID = "KEY_CHARACTERISTIC_INSTANCE_ID";
 
     /**
      * KEY:DESCRIPTOR_UUID
      */
-    public static final String  KEY_DESCRIPTOR_UUID = "KEY_DESCRIPTOR_UUID";
+    public static final String KEY_DESCRIPTOR_UUID = "KEY_DESCRIPTOR_UUID";
 
     /**
      * KEY:DESCRIPTOR_INSTANCE_ID
      */
-    public static final String  KEY_DESCRIPTOR_INSTANCE_ID = "KEY_DESCRIPTOR_INSTANCE_ID";
+    public static final String KEY_DESCRIPTOR_INSTANCE_ID = "KEY_DESCRIPTOR_INSTANCE_ID";
 
     /**
      * KEY:VALUES
      */
-    public static final String  KEY_VALUES = "KEY_VALUES";
+    public static final String KEY_VALUES = "KEY_VALUES";
 
     /**
      * KEY:STATUS
      */
-    public static final String  KEY_STATUS = "KEY_STATUS";
+    public static final String KEY_STATUS = "KEY_STATUS";
 
     /**
      * PROGRESS:DESCRIPTOR_READ_START
      */
-    public static final String  PROGRESS_DESCRIPTOR_READ_START = "PROGRESS_DESCRIPTOR_READ_START";
-    
+    public static final String PROGRESS_DESCRIPTOR_READ_START = "PROGRESS_DESCRIPTOR_READ_START";
+
     /**
      * PROGRESS:DESCRIPTOR_READ_SUCCESS
      */
-    public static final String  PROGRESS_DESCRIPTOR_READ_SUCCESS = "PROGRESS_DESCRIPTOR_READ_SUCCESS";
+    public static final String PROGRESS_DESCRIPTOR_READ_SUCCESS = "PROGRESS_DESCRIPTOR_READ_SUCCESS";
 
     /**
      * PROGRESS:DESCRIPTOR_READ_ERROR
      */
-    public static final String  PROGRESS_DESCRIPTOR_READ_ERROR = "PROGRESS_DESCRIPTOR_READ_ERROR";
+    public static final String PROGRESS_DESCRIPTOR_READ_ERROR = "PROGRESS_DESCRIPTOR_READ_ERROR";
 
     /**
      * PROGRESS:BUSY
      */
-    public static final String  PROGRESS_BUSY = "PROGRESS_BUSY";
+    public static final String PROGRESS_BUSY = "PROGRESS_BUSY";
 
     /**
      * PROGRESS:FINISHED
      */
-    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
-    
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
+
     /**
      * Default timeout(millis) for read descriptor:30sec
      */
@@ -284,7 +295,16 @@ public class ReadDescriptorTask extends AbstractBLETask {
 
             // timeout
             if (this == message.obj && PROGRESS_TIMEOUT.equals(nextProgress)) {
-                mBLEConnection.getBLECallback().onDescriptorReadTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, mTimeout, mArgument);
+                mBLEConnection.getBLECallback().onDescriptorReadTimeout(getTaskId()
+                        , mBLEConnection.getBluetoothDevice()
+                        , mServiceUUID
+                        , mServiceInstanceId
+                        , mCharacteristicUUID
+                        , mCharacteristicInstanceId
+                        , mDescriptorUUID
+                        , mDescriptorInstanceId
+                        , mTimeout
+                        , mArgument);
                 mCurrentProgress = PROGRESS_TIMEOUT;
             } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 // current:init, next:read descriptor start
@@ -353,10 +373,28 @@ public class ReadDescriptorTask extends AbstractBLETask {
                     } else {
                         if (bluetoothGattDescriptor == null) {
                             nextProgress = PROGRESS_FINISHED;
-                            mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, UNKNOWN, mArgument);
+                            mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId()
+                                    , mBLEConnection.getBluetoothDevice()
+                                    , mServiceUUID
+                                    , mServiceInstanceId
+                                    , mCharacteristicUUID
+                                    , mCharacteristicInstanceId
+                                    , mDescriptorUUID
+                                    , mDescriptorInstanceId
+                                    , STATUS_DESCRIPTOR_NOT_FOUND
+                                    , mArgument);
                         } else {
                             nextProgress = PROGRESS_BUSY;
-                            mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, BUSY, mArgument);
+                            mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId()
+                                    , mBLEConnection.getBluetoothDevice()
+                                    , mServiceUUID
+                                    , mServiceInstanceId
+                                    , mCharacteristicUUID
+                                    , mCharacteristicInstanceId
+                                    , mDescriptorUUID
+                                    , mDescriptorInstanceId
+                                    , STATUS_READ_DESCRIPTOR_FAILED
+                                    , mArgument);
                         }
                     }
                     mCurrentProgress = nextProgress;
@@ -371,14 +409,29 @@ public class ReadDescriptorTask extends AbstractBLETask {
                     // current:read descriptor start, next:read descriptor success
                     if (PROGRESS_DESCRIPTOR_READ_SUCCESS.equals(nextProgress)) {
                         byte[] value = bundle.getByteArray(KEY_VALUES);
-                        if (value == null) {
-                            mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, UNKNOWN, mArgument);
-                        } else {
-                            mBLEConnection.getBLECallback().onDescriptorReadSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, value, mArgument);
-                        }
+                        //noinspection ConstantConditions
+                        mBLEConnection.getBLECallback().onDescriptorReadSuccess(getTaskId()
+                                , mBLEConnection.getBluetoothDevice()
+                                , mServiceUUID
+                                , mServiceInstanceId
+                                , mCharacteristicUUID
+                                , mCharacteristicInstanceId
+                                , mDescriptorUUID
+                                , mDescriptorInstanceId
+                                , value
+                                , mArgument);
                     } else if (PROGRESS_DESCRIPTOR_READ_ERROR.equals(nextProgress)) {
                         // current:read descriptor start, next:read descriptor error
-                        mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, bundle.getInt(KEY_STATUS), mArgument);
+                        mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId()
+                                , mBLEConnection.getBluetoothDevice()
+                                , mServiceUUID
+                                , mServiceInstanceId
+                                , mCharacteristicUUID
+                                , mCharacteristicInstanceId
+                                , mDescriptorUUID
+                                , mDescriptorInstanceId
+                                , bundle.getInt(KEY_STATUS)
+                                , mArgument);
                     }
 
                     mCurrentProgress = PROGRESS_FINISHED;
@@ -406,7 +459,16 @@ public class ReadDescriptorTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mDescriptorInstanceId, CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , mServiceUUID
+                , mServiceInstanceId
+                , mCharacteristicUUID
+                , mCharacteristicInstanceId
+                , mDescriptorUUID
+                , mDescriptorInstanceId
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

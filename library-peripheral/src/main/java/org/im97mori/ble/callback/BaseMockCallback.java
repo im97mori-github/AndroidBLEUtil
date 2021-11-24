@@ -1,7 +1,7 @@
 package org.im97mori.ble.callback;
 
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
@@ -151,7 +151,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             bluetoothGattService = new BluetoothGattService(serviceData.uuid, serviceData.type);
             for (CharacteristicData characteristicData : serviceData.characteristicDataList) {
                 characteristicData.currentData = null;
-                characteristicData.temporaryData = null;
+                characteristicData.temporaryData.clear();
                 bluetoothGattCharacteristic = new BluetoothGattCharacteristic(
                         characteristicData.uuid
                         , characteristicData.property
@@ -334,11 +334,11 @@ public abstract class BaseMockCallback implements BLEServerCallback {
 
 
                     byte[] data = characteristicData.getBytes();
-                        result = bluetoothGattServer.sendResponse(device
-                                , requestId
-                                , characteristicData.responseCode
-                                , offset
-                                , Arrays.copyOfRange(data, offset, data.length));
+                    result = bluetoothGattServer.sendResponse(device
+                            , requestId
+                            , characteristicData.responseCode
+                            , offset
+                            , Arrays.copyOfRange(data, offset, data.length));
                 }
             }
 
@@ -385,7 +385,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                     delay(now, characteristicData.delay);
 
                     if (responseNeeded) {
-                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
+                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, preparedWrite ? value : null);
                     } else {
                         result = true;
                     }
@@ -394,7 +394,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         mIsReliable |= preparedWrite;
 
                         if (mIsReliable) {
-                            characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
+                            characteristicData.temporaryData.put(offset, value);
                         } else {
                             characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
                         }
@@ -491,7 +491,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                     delay(now, descriptorData.delay);
 
                     if (responseNeeded) {
-                        result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, null);
+                        result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, preparedWrite ? value : null);
                     } else {
                         result = true;
                     }
@@ -500,7 +500,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         mIsReliable |= preparedWrite;
 
                         if (mIsReliable) {
-                            descriptorData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
+                            descriptorData.temporaryData.put(offset, value);
                         } else {
                             byte[] oldData = descriptorData.getBytes();
                             descriptorData.currentData = Arrays.copyOfRange(value, offset, value.length);
@@ -700,16 +700,42 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         boolean result = false;
         BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
         if (bluetoothGattServer != null) {
+            int status = BluetoothGatt.GATT_SUCCESS;
+            boolean isTempraryValid = true;
+            for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
+                for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : serviceEntry.getValue().entrySet()) {
+                    CharacteristicData characteristicData = characteristicEntry.getValue();
+                    isTempraryValid = characteristicData.isTemporaryDataValid();
+                    if (!isTempraryValid) {
+                        break;
+                    }
+                }
+                if (!isTempraryValid) {
+                    break;
+                }
+            }
+
+            if (isTempraryValid) {
+                for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, DescriptorData>> characteristicEntry : mRemappedCharacteristicDescriptorMap.entrySet()) {
+                    for (DescriptorData descriptorData : characteristicEntry.getValue().values()) {
+                        isTempraryValid = descriptorData.isTemporaryDataValid();
+                        if (!isTempraryValid) {
+                            break;
+                        }
+                    }
+                    if (!isTempraryValid) {
+                        break;
+                    }
+                }
+            }
 
             for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
                 for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : serviceEntry.getValue().entrySet()) {
                     CharacteristicData characteristicData = characteristicEntry.getValue();
-                    if (execute) {
-                        if (characteristicData.temporaryData != null) {
-                            characteristicData.currentData = characteristicData.temporaryData;
-                        }
+                    if (execute && isTempraryValid) {
+                        characteristicData.executeReliableWrite();
                     }
-                    characteristicData.temporaryData = null;
+                    characteristicData.temporaryData.clear();
                 }
             }
 
@@ -718,31 +744,34 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorEntry : characteristicEntry.getValue().entrySet()) {
                     Pair<UUID, Integer> descriptorKey = descriptorEntry.getKey();
                     DescriptorData descriptorData = descriptorEntry.getValue();
-                    if (execute) {
-                        if (descriptorData.temporaryData != null) {
-                            if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorData.uuid)) {
-                                for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
-                                    CharacteristicData characteristicData = serviceEntry.getValue().get(characteristicKey);
-                                    if (characteristicData != null) {
-                                        if (!Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.temporaryData)
-                                                && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
-                                            startNotification(null, bleServerConnection, null, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second, descriptorKey.second, 0, characteristicData.notificationCount, null);
-                                        } else if (Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.temporaryData)
-                                                && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
-                                            mActivatedNotificationMap.remove(new NotificationData(device, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second));
-                                        }
+                    if (execute && isTempraryValid) {
+                        byte[] before = descriptorData.getBytes();
+                        descriptorData.executeReliableWrite();
+                        byte[] after = descriptorData.getBytes();
+                        if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorData.uuid)) {
+                            for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
+                                CharacteristicData characteristicData = serviceEntry.getValue().get(characteristicKey);
+                                if (characteristicData != null) {
+                                    if (!Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, after)
+                                            && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, before)) {
+                                        startNotification(null, bleServerConnection, null, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second, descriptorKey.second, 0, characteristicData.notificationCount, null);
+                                    } else if (Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, after)
+                                            && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, before)) {
+                                        mActivatedNotificationMap.remove(new NotificationData(device, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second));
                                     }
                                 }
                             }
-                            descriptorData.currentData = descriptorData.temporaryData;
                         }
                     }
-
-                    descriptorData.temporaryData = null;
+                    descriptorData.temporaryData.clear();
                 }
             }
+
+            if (!isTempraryValid) {
+                status = APPLICATION_ERROR_9F;
+            }
             mIsReliable = false;
-            result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, null);
+            result = bluetoothGattServer.sendResponse(device, requestId, status, 0, null);
         }
         return result;
     }

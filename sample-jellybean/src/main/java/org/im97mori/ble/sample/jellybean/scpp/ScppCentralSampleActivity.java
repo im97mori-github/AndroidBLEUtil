@@ -1,7 +1,7 @@
 package org.im97mori.ble.sample.jellybean.scpp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 import static org.im97mori.ble.constants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -44,7 +44,7 @@ public class ScppCentralSampleActivity extends BaseActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mScppCallbackSample = new ScppCallbackSample( this);
+        mScppCallbackSample = new ScppCallbackSample(this);
         mScanParametersProfile = new ScanParametersProfile(this, mScppCallbackSample, SCAN_PARAMETERS_SERVICE);
         mScanParametersProfile.start();
 
@@ -166,7 +166,7 @@ public class ScppCentralSampleActivity extends BaseActivity implements View.OnCl
             }
             if (mScanParametersProfile.isConnected()) {
                 mScanParametersProfile.disconnect();
-                mScppCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mScppCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

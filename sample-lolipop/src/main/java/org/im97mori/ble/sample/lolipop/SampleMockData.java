@@ -1,5 +1,7 @@
 package org.im97mori.ble.sample.lolipop;
 
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -13,8 +15,6 @@ import org.im97mori.ble.ServiceData;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 
 @SuppressWarnings("WeakerAccess")
 public class SampleMockData extends MockData {
@@ -129,12 +129,12 @@ public class SampleMockData extends MockData {
             descriptorDataList = new LinkedList<>();
             characteristicData = new CharacteristicData();
             characteristicData.uuid = SAMPLE_WRITE_CHARACTERISTIC_RELIABLE;
-            characteristicData.property = BluetoothGattCharacteristic.PROPERTY_WRITE;
-            characteristicData.permission = BluetoothGattCharacteristic.PERMISSION_WRITE;
+            characteristicData.property = BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_READ;
+            characteristicData.permission = BluetoothGattCharacteristic.PERMISSION_WRITE | BluetoothGattCharacteristic.PERMISSION_READ;
             characteristicData.descriptorDataList = descriptorDataList;
             characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
             characteristicData.delay = 0;
-            characteristicData.data = null;
+            characteristicData.data = new byte[]{1, 2, 3, 4};
             characteristicDataList.add(characteristicData);
             serviceData = new ServiceData();
             serviceData.uuid = SAMPLE_PRIMARY_SERVICE_1;

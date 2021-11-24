@@ -1,8 +1,5 @@
 package org.im97mori.ble.profile.central.task;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -30,6 +27,21 @@ import org.im97mori.ble.task.AbstractBLETask;
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 @SuppressLint("MissingPermission")
 public class BondTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:CREATE_BOND_FAILED
+     */
+    public static final int STATUS_CREATE_BOND_FAILED = -2;
+
+    /**
+     * STATUS:BOND_FAILED
+     */
+    public static final int STATUS_BOND_FAILED = -3;
 
     /**
      * KEY:BLUETOOTH_DEVICE
@@ -191,7 +203,9 @@ public class BondTask extends AbstractBLETask {
                     mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                 } else {
                     mContext.unregisterReceiver(mBondStateReceiver);
-                    mProfileCallback.onBondFailed(mTargetBluetoothDevice, UNKNOWN, mArgument);
+                    mProfileCallback.onBondFailed(mTargetBluetoothDevice
+                            , STATUS_CREATE_BOND_FAILED
+                            , mArgument);
                     nextProgress = PROGRESS_FINISHED;
                 }
                 mCurrentProgress = nextProgress;
@@ -202,13 +216,16 @@ public class BondTask extends AbstractBLETask {
                 // current:bond start, next:bond success
                 if (PROGRESS_BOND_SUCCESS.equals(nextProgress)) {
                     mContext.unregisterReceiver(mBondStateReceiver);
-                    mProfileCallback.onBondSuccess(mTargetBluetoothDevice, mArgument);
+                    mProfileCallback.onBondSuccess(mTargetBluetoothDevice
+                            , mArgument);
                     mTaskHandler.removeCallbacksAndMessages(this);
                     mCurrentProgress = PROGRESS_FINISHED;
                 } else if (PROGRESS_BOND_ERROR.equals(nextProgress)) {
                     // current:bond start, next:bond error
                     mContext.unregisterReceiver(mBondStateReceiver);
-                    mProfileCallback.onBondFailed(mTargetBluetoothDevice, UNKNOWN, mArgument);
+                    mProfileCallback.onBondFailed(mTargetBluetoothDevice
+                            , STATUS_BOND_FAILED
+                            , mArgument);
                     mTaskHandler.removeCallbacksAndMessages(this);
                     mCurrentProgress = PROGRESS_FINISHED;
                 }
@@ -234,7 +251,9 @@ public class BondTask extends AbstractBLETask {
         if (PROGRESS_BOND_START.equals(mCurrentProgress)) {
             mContext.unregisterReceiver(mBondStateReceiver);
         }
-        mProfileCallback.onBondFailed(mTargetBluetoothDevice, CANCEL, mArgument);
+        mProfileCallback.onBondFailed(mTargetBluetoothDevice
+                , STATUS_CANCEL
+                , mArgument);
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
     }

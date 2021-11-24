@@ -1,5 +1,7 @@
 package org.im97mori.ble.service.ans.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -12,10 +14,7 @@ import com.google.gson.annotations.SerializedName;
 
 import org.im97mori.ble.CharacteristicData;
 
-import java.util.Arrays;
 import java.util.Collections;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
 
 /**
  * Alert Notification Control Point Characteristic data class
@@ -167,16 +166,7 @@ public class AlertNotificationControlPointCharacteristicData extends Characteris
         boolean result = false;
         if (obj instanceof AlertNotificationControlPointCharacteristicData) {
             AlertNotificationControlPointCharacteristicData target = (AlertNotificationControlPointCharacteristicData) obj;
-            result = uuid.equals(target.uuid)
-                    && property == target.property
-                    && permission == target.permission
-                    && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
-                    && responseCode == target.responseCode
-                    && delay == target.delay
-                    && Arrays.equals(data, target.data)
-                    && Arrays.equals(currentData, target.currentData)
-                    && Arrays.equals(temporaryData, target.temporaryData)
-                    && notificationCount == target.notificationCount
+            result = super.equals(target)
                     && enableNewAlertNotificationResponseValue == target.enableNewAlertNotificationResponseValue
                     && enableUnreadAlertStatusNotificationResponseValue == target.enableUnreadAlertStatusNotificationResponseValue
                     && disableNewAlertNotificationResponseValue == target.disableNewAlertNotificationResponseValue

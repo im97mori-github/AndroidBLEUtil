@@ -1,5 +1,7 @@
 package org.im97mori.ble.sample.lolipop.htp;
 
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.util.Pair;
@@ -25,8 +27,6 @@ import org.im97mori.ble.sample.lolipop.SampleCallback;
 
 import java.util.LinkedList;
 import java.util.Set;
-
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 public class HtpCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
@@ -184,7 +184,7 @@ public class HtpCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mHealthThermometerProfile.isConnected()) {
                 mHealthThermometerProfile.disconnect();
-                mHtpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mHtpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

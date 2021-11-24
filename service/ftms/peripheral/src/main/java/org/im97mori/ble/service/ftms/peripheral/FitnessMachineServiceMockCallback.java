@@ -1,5 +1,25 @@
 package org.im97mori.ble.service.ftms.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.CROSS_TRAINER_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.INDOOR_BIKE_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ROWER_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.STAIR_CLIMBER_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.STEP_CLIMBER_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_POWER_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_SPEED_RANGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TRAINING_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TREADMILL_DATA_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ErrorCode.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+import static org.im97mori.ble.constants.ServiceUUID.FITNESS_MACHINE_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -48,7 +68,6 @@ import org.im97mori.ble.characteristic.u2ad7.SupportedHeartRateRange;
 import org.im97mori.ble.characteristic.u2ad8.SupportedPowerRange;
 import org.im97mori.ble.characteristic.u2ad9.FitnessMachineControlPoint;
 import org.im97mori.ble.characteristic.u2ada.FitnessMachineStatus;
-import org.im97mori.ble.constants.ErrorCodeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
@@ -58,25 +77,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.CROSS_TRAINER_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.INDOOR_BIKE_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.ROWER_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.STAIR_CLIMBER_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.STEP_CLIMBER_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_POWER_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_SPEED_RANGE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.TRAINING_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.TREADMILL_DATA_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.FITNESS_MACHINE_SERVICE;
 
 /**
  * Fitness Machine Service (Service UUID: 0x1826) for Peripheral
@@ -1319,7 +1319,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                     delay(now, characteristicData.delay);
 
                     if (FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                        int responseCode = ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+                        int responseCode = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
 
                         Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, characteristicInstanceId));
                         if (characteristicData instanceof FitnessMachineControlPointCharacteristicData && descriptorDataMap != null) {
@@ -1650,7 +1650,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                                             fitnessMachineControlPointCharacteristicData.highPriorityResponseData = new FitnessMachineControlPoint(FitnessMachineControlPoint.OP_CODE_RESPONSE_CODE, new byte[0], requestFitnessMachineControlPoint.getOpCode(), FitnessMachineControlPoint.RESULT_CODE_CONTROL_NOT_PERMITTED, new byte[0]).getBytes();
                                         }
                                     }
-                                    result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                                    result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                                     if (result && BluetoothGatt.GATT_SUCCESS == characteristicData.responseCode) {
                                         characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
 
@@ -1669,11 +1669,11 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                                 }
                             }
                         } else {
-                            result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                            result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                         }
                     } else {
                         if (responseNeeded) {
-                            result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
+                            result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, preparedWrite ? value : null);
                         } else {
                             result = true;
                         }
@@ -1682,7 +1682,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                             mIsReliable |= preparedWrite;
 
                             if (mIsReliable) {
-                                characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
+                                characteristicData.temporaryData.put(offset, value);
                             } else {
                                 characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
                             }

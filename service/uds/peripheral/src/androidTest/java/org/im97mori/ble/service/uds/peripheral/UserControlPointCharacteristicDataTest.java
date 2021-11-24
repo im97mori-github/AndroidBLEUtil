@@ -1,5 +1,12 @@
 package org.im97mori.ble.service.uds.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothGatt;
 import android.os.Parcel;
 
@@ -10,15 +17,10 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class UserControlPointCharacteristicDataTest {
 
@@ -323,7 +325,8 @@ public class UserControlPointCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long delay = 3;
         byte[] currentData = new byte[]{11, 12};
-        byte[] temporaryData = new byte[]{13, 14};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(13, new byte[]{14, 15});
         int notificationCount = 0;
         int registerNewUserResponseValue = 5;
         int consentResponseValue = 6;
@@ -343,8 +346,62 @@ public class UserControlPointCharacteristicDataTest {
                 , deleteUsersResponseValue);
 
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
 
+        assertNotEquals(USER_CONTROL_POINT_CHARACTERISTIC.hashCode()
+                        ^ Integer.valueOf(property).hashCode()
+                        ^ Integer.valueOf(permission).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(BluetoothGatt.GATT_SUCCESS).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode(new byte[0])
+                        ^ Integer.valueOf(notificationCount).hashCode()
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(registerNewUserResponseValue).hashCode()
+                        ^ Integer.valueOf(consentResponseValue).hashCode()
+                        ^ Integer.valueOf(deleteUserDataResponseValue).hashCode()
+                        ^ Integer.valueOf(listAllUsersResponseValue).hashCode()
+                        ^ Integer.valueOf(deleteUsersResponseValue).hashCode()
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        int property = 1;
+        int permission = 2;
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        long delay = 3;
+        byte[] currentData = new byte[]{11, 12};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(13, new byte[]{14, 15});
+        int notificationCount = 0;
+        int registerNewUserResponseValue = 5;
+        int consentResponseValue = 6;
+        int deleteUserDataResponseValue = 7;
+        int listAllUsersResponseValue = 8;
+        int deleteUsersResponseValue = 9;
+
+        UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(
+                property
+                , permission
+                , descriptorDataList
+                , delay
+                , registerNewUserResponseValue
+                , consentResponseValue
+                , deleteUserDataResponseValue
+                , listAllUsersResponseValue
+                , deleteUsersResponseValue);
+
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(USER_CONTROL_POINT_CHARACTERISTIC.hashCode()
                         ^ Integer.valueOf(property).hashCode()
                         ^ Integer.valueOf(permission).hashCode()
@@ -354,7 +411,7 @@ public class UserControlPointCharacteristicDataTest {
                         ^ Arrays.hashCode(new byte[0])
                         ^ Integer.valueOf(notificationCount).hashCode()
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(registerNewUserResponseValue).hashCode()
                         ^ Integer.valueOf(consentResponseValue).hashCode()
                         ^ Integer.valueOf(deleteUserDataResponseValue).hashCode()

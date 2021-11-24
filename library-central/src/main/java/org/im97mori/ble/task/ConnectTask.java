@@ -13,15 +13,27 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * Connect to {@link BluetoothDevice} task
  * <p>
  * for central role
  */
 public class ConnectTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:CONNECT_GATT_FAILED
+     */
+    public static final int STATUS_CONNECT_GATT_FAILED = -2;
+
+    /**
+     * STATUS:DISCOVER_SERVICES_FAILED
+     */
+    public static final int STATUS_DISCOVER_SERVICES_FAILED = -3;
 
     /**
      * Default timeout(millis) for connect:30sec
@@ -201,7 +213,9 @@ public class ConnectTask extends AbstractBLETask {
 
                         // connect failed
                         if (mBluetoothGatt == null) {
-                            mBLEConnection.onConnectFailed(getTaskId(), UNKNOWN, mArgument);
+                            mBLEConnection.onConnectFailed(getTaskId()
+                                    , STATUS_CONNECT_GATT_FAILED
+                                    , mArgument);
                             mCurrentProgress = PROGRESS_FINISHED;
                         } else {
                             // connecting
@@ -219,12 +233,14 @@ public class ConnectTask extends AbstractBLETask {
                         if (!mBluetoothGatt.discoverServices()) {
                             // failed
 
-                            mBLEConnection.onConnectFailed(getTaskId(), UNKNOWN, mArgument);
+                            mBLEConnection.onConnectFailed(getTaskId()
+                                    , STATUS_DISCOVER_SERVICES_FAILED
+                                    , mArgument);
                             // remove timeout message
                             mTaskHandler.removeCallbacksAndMessages(this);
 
                             // add disconnect task
-                            DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, UNKNOWN, mArgument);
+                            DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, mArgument);
                             mTaskHandler.addTask(task);
 
                             nextProgress = PROGRESS_FINISHED;
@@ -246,7 +262,9 @@ public class ConnectTask extends AbstractBLETask {
 
                         if (PROGRESS_FINISHED.equals(nextProgress)) {
                             // callback
-                            mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
+                            mBLEConnection.onConnected(getTaskId()
+                                    , mBluetoothGatt
+                                    , mArgument);
 
                             // remove timeout message
                             mTaskHandler.removeCallbacksAndMessages(this);
@@ -256,7 +274,9 @@ public class ConnectTask extends AbstractBLETask {
                         // failed
 
                         int status = bundle.getInt(KEY_STATUS);
-                        mBLEConnection.onConnectFailed(getTaskId(), status, mArgument);
+                        mBLEConnection.onConnectFailed(getTaskId()
+                                , status
+                                , mArgument);
 
                         // remove timeout message
                         mTaskHandler.removeCallbacksAndMessages(this);
@@ -270,12 +290,16 @@ public class ConnectTask extends AbstractBLETask {
                         // current:service discovered, next:finish(connected)
 
                         // callback
-                        mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
+                        mBLEConnection.onConnected(getTaskId()
+                                , mBluetoothGatt
+                                , mArgument);
 
                     } else if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_ERROR.equals(nextProgress)) {
                         // failed
 
-                        mBLEConnection.onConnectFailed(getTaskId(), bundle.getInt(KEY_STATUS), mArgument);
+                        mBLEConnection.onConnectFailed(getTaskId()
+                                , bundle.getInt(KEY_STATUS)
+                                , mArgument);
                     }
 
                     // remove timeout message
@@ -304,7 +328,9 @@ public class ConnectTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.onConnectFailed(getTaskId(), CANCEL, mArgument);
+        mBLEConnection.onConnectFailed(getTaskId()
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

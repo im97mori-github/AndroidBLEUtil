@@ -41,7 +41,7 @@ afterEvaluate {
                 from components.release
                 groupId = myGroupId
                 artifactId = target['artifactId']
-                version = handlerUploadVersion
+                version = uploadVersion
                 artifact(sourcesJar)
                 pom {
                     name = 'BLE Core Utility for Android'

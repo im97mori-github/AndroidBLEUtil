@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.anp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -367,7 +367,7 @@ public class AnpCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mAlertNotificationProfile.isConnected()) {
                 mAlertNotificationProfile.disconnect();
-                mAnpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mAnpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

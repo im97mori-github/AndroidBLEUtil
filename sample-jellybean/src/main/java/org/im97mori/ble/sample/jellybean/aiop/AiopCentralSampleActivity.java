@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.aiop;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -518,7 +518,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             }
             if (mAutomationIOProfile.isConnected()) {
                 mAutomationIOProfile.disconnect();
-                mAiopCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mAiopCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

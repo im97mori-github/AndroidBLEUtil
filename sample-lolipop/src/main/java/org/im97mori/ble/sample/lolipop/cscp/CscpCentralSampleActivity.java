@@ -1,5 +1,7 @@
 package org.im97mori.ble.sample.lolipop.cscp;
 
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.util.Pair;
@@ -29,8 +31,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Set;
-
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 public class CscpCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
@@ -216,7 +216,7 @@ public class CscpCentralSampleActivity extends BaseActivity implements View.OnCl
             }
             if (mCyclingSpeedAndCadenceProfile.isConnected()) {
                 mCyclingSpeedAndCadenceProfile.disconnect();
-                mCscpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mCscpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

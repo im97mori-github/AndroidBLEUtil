@@ -13,9 +13,6 @@ import androidx.annotation.RequiresApi;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * Request mtu task
  * <p>
@@ -25,40 +22,49 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 public class RequestMtuTask extends AbstractBLETask {
 
     /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:REQUEST_MTU_FAILED
+     */
+    public static final int STATUS_REQUEST_MTU_FAILED = -2;
+    /**
      * KEY:MTU
      */
-    public static final String  KEY_MTU = "KEY_MTU";
+    public static final String KEY_MTU = "KEY_MTU";
 
     /**
      * KEY:STATUS
      */
-    public static final String  KEY_STATUS = "KEY_STATUS";
+    public static final String KEY_STATUS = "KEY_STATUS";
 
     /**
      * PROGRESS:REQUEST_MTU_START
      */
-    public static final String  PROGRESS_REQUEST_MTU_START = "PROGRESS_REQUEST_MTU_START";
-    
+    public static final String PROGRESS_REQUEST_MTU_START = "PROGRESS_REQUEST_MTU_START";
+
     /**
      * PROGRESS:REQUEST_MTU_SUCCESS
      */
-    public static final String  PROGRESS_REQUEST_MTU_SUCCESS = "PROGRESS_REQUEST_MTU_SUCCESS";
+    public static final String PROGRESS_REQUEST_MTU_SUCCESS = "PROGRESS_REQUEST_MTU_SUCCESS";
 
     /**
      * PROGRESS:REQUEST_MTU_ERROR
      */
-    public static final String  PROGRESS_REQUEST_MTU_ERROR = "PROGRESS_REQUEST_MTU_ERROR";
+    public static final String PROGRESS_REQUEST_MTU_ERROR = "PROGRESS_REQUEST_MTU_ERROR";
 
     /**
      * PROGRESS:BUSY
      */
-    public static final String  PROGRESS_BUSY = "PROGRESS_BUSY";
+    public static final String PROGRESS_BUSY = "PROGRESS_BUSY";
 
     /**
      * PROGRESS:FINISHED
      */
-    public static final String  PROGRESS_FINISHED = "PROGRESS_FINISHED";
-    
+    public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
+
     /**
      * Maximum MTU size
      * <p>
@@ -197,7 +203,10 @@ public class RequestMtuTask extends AbstractBLETask {
                         mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     } else {
                         // failed
-                        mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                        mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId()
+                                , mBluetoothGatt.getDevice()
+                                , STATUS_REQUEST_MTU_FAILED
+                                , mArgument);
                         nextProgress = PROGRESS_BUSY;
                     }
 
@@ -208,12 +217,18 @@ public class RequestMtuTask extends AbstractBLETask {
                     // current:request mtu start, next:request mtu success
 
                     // callback
-                    mBLEConnection.getBLECallback().onRequestMtuSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_MTU), mArgument);
+                    mBLEConnection.getBLECallback().onRequestMtuSuccess(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_MTU)
+                            , mArgument);
 
                 } else if (PROGRESS_REQUEST_MTU_ERROR.equals(nextProgress)) {
                     // current:request mtu start, next:request mtu failed
 
-                    mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                    mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_STATUS)
+                            , mArgument);
                 }
 
                 // remove timeout message
@@ -241,7 +256,10 @@ public class RequestMtuTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

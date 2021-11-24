@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.wsp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -60,7 +60,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mWspCallbackSample = new WspCallbackSample( this);
+        mWspCallbackSample = new WspCallbackSample(this);
 
         mWeightScaleProfile = new WeightScaleProfile(this, mWspCallbackSample);
         mWeightScaleProfile.start();
@@ -432,7 +432,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mWeightScaleProfile.isConnected()) {
                 mWeightScaleProfile.disconnect();
-                mWspCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mWspCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
                 mLastRegisteredUserIndex = null;
             } else {

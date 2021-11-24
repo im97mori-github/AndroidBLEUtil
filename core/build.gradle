@@ -24,7 +24,6 @@ android {
 }
 
 dependencies {
-    api apiCoreConstantsAndroid
     api apiCoreUtilsAndroid
 }
 

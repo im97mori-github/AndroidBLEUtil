@@ -412,16 +412,7 @@ public class FitnessMachineControlPointCharacteristicData extends Characteristic
      */
     @Override
     public int hashCode() {
-        return uuid.hashCode()
-                ^ Integer.valueOf(property).hashCode()
-                ^ Integer.valueOf(permission).hashCode()
-                ^ Arrays.hashCode(descriptorDataList.toArray())
-                ^ Integer.valueOf(responseCode).hashCode()
-                ^ Long.valueOf(delay).hashCode()
-                ^ Arrays.hashCode(data)
-                ^ Integer.valueOf(notificationCount).hashCode()
-                ^ Arrays.hashCode(currentData)
-                ^ Arrays.hashCode(temporaryData)
+        return super.hashCode()
                 ^ Integer.valueOf(requestControlResultCode).hashCode()
                 ^ Integer.valueOf(resetResultCode).hashCode()
                 ^ Integer.valueOf(setTargetSpeedResultCode).hashCode()
@@ -454,16 +445,7 @@ public class FitnessMachineControlPointCharacteristicData extends Characteristic
         boolean result = false;
         if (obj instanceof FitnessMachineControlPointCharacteristicData) {
             FitnessMachineControlPointCharacteristicData target = (FitnessMachineControlPointCharacteristicData) obj;
-            result = uuid.equals(target.uuid)
-                    && property == target.property
-                    && permission == target.permission
-                    && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
-                    && responseCode == target.responseCode
-                    && delay == target.delay
-                    && Arrays.equals(data, target.data)
-                    && Arrays.equals(currentData, target.currentData)
-                    && Arrays.equals(temporaryData, target.temporaryData)
-                    && notificationCount == target.notificationCount
+            result = super.equals(target)
                     && requestControlResultCode == target.requestControlResultCode
                     && resetResultCode == target.resetResultCode
                     && setTargetSpeedResultCode == target.setTargetSpeedResultCode

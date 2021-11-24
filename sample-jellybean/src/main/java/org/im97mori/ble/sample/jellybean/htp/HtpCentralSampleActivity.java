@@ -1,6 +1,6 @@
 package org.im97mori.ble.sample.jellybean.htp;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -187,7 +187,7 @@ public class HtpCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mHealthThermometerProfile.isConnected()) {
                 mHealthThermometerProfile.disconnect();
-                mHtpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mHtpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

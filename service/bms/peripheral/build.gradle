@@ -26,7 +26,6 @@ android {
 dependencies {
     api "${myGroupId}:${servicePeripheralAndroid.artifactId}:${loadVersion}"
     api "${myGroupId}:${serviceBmsAndroid.artifactId}:${loadVersion}"
-    api "${myGroupId}:${coreConstantsErrorCodeAndroid.artifactId}:${loadVersion}"
     androidTestImplementation apiTestPeripheral
 }
 

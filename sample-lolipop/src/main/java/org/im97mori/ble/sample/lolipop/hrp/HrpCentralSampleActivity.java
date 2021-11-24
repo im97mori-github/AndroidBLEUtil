@@ -1,5 +1,7 @@
 package org.im97mori.ble.sample.lolipop.hrp;
 
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.util.Pair;
@@ -25,8 +27,6 @@ import org.im97mori.ble.sample.lolipop.SampleCallback;
 
 import java.util.LinkedList;
 import java.util.Set;
-
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 
 public class HrpCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
@@ -162,7 +162,7 @@ public class HrpCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mHeartRateProfile.isConnected()) {
                 mHeartRateProfile.disconnect();
-                mHrpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mHrpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

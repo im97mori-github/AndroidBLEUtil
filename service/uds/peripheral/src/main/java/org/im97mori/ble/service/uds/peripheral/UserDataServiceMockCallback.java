@@ -1,5 +1,44 @@
 package org.im97mori.ble.service.uds.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.AGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.EMAIL_ADDRESS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FIRST_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.GENDER_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LAST_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.USER_INDEX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_80;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ErrorCode.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+import static org.im97mori.ble.constants.ErrorCode.PROCEDURE_ALREADY_IN_PROGRESS;
+import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -54,7 +93,6 @@ import org.im97mori.ble.characteristic.u2a9a.UserIndex;
 import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
 import org.im97mori.ble.characteristic.u2aa2.Language;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
-import org.im97mori.ble.constants.ErrorCodeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
@@ -69,42 +107,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.AGE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.EMAIL_ADDRESS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.FIRST_NAME_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.GENDER_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.LAST_NAME_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.USER_INDEX_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
 
 /**
  * User Data Service (Service UUID: 0x181C) for Peripheral
@@ -2415,7 +2417,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 Integer currentUserIndex = mCurrentUserMap.get(device);
                 int responseCode;
                 if (currentUserIndex == null) {
-                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                    responseCode = APPLICATION_ERROR_80;
                 } else {
                     responseCode = characteristicData.responseCode;
                 }
@@ -2471,7 +2473,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 int responseCode;
                 if (currentUserIndex == null) {
                     currentUserIndex = UserIndexUtils.USER_ID_UNKNOWN_USER;
-                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                    responseCode = APPLICATION_ERROR_80;
                 } else {
                     responseCode = characteristicData.responseCode;
                 }
@@ -2520,7 +2522,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 Integer currentUserIndex = mCurrentUserMap.get(device);
                 int responseCode;
                 if (currentUserIndex == null) {
-                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                    responseCode = APPLICATION_ERROR_80;
                 } else {
                     responseCode = udsCharacteristicData.responseCode;
                 }
@@ -2576,6 +2578,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param device                      {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 2nd parameter
      * @param requestId                   {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 3rd parameter
      * @param bluetoothGattCharacteristic {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 4th parameter
+     * @param preparedWrite               {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 5th parameter
      * @param offset                      {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 7th parameter
      * @param value                       {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 8th parameter
      * @param force                       {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 9th parameter
@@ -2583,7 +2586,15 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @return {@code true}:handled, {@code false}:not handled
      */
     @SuppressLint("MissingPermission")
-    protected boolean onDatabaseChangeIncrementWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onDatabaseChangeIncrementWriteRequest(@NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int requestId
+            , @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic
+            , int offset
+            , boolean preparedWrite
+            , @NonNull byte[] value
+            , boolean force
+            , @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -2604,12 +2615,12 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 Integer currentUserIndex = mCurrentUserMap.get(device);
                 int responseCode;
                 if (currentUserIndex == null) {
-                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                    responseCode = APPLICATION_ERROR_80;
                 } else {
                     responseCode = characteristicData.responseCode;
                 }
 
-                result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
 
                 if (result && responseCode == BluetoothGatt.GATT_SUCCESS) {
                     mCurrentDatabaseChangeIncrementMap.put(currentUserIndex, new DatabaseChangeIncrement(value).getDatabaseChangeIncrement());
@@ -2700,6 +2711,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param device                      {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 2nd parameter
      * @param requestId                   {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 3rd parameter
      * @param bluetoothGattCharacteristic {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 4th parameter
+     * @param preparedWrite               {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 5th parameter
      * @param offset                      {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 7th parameter
      * @param value                       {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 8th parameter
      * @param force                       {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 9th parameter
@@ -2707,7 +2719,15 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @return {@code true}:handled, {@code false}:not handled
      */
     @SuppressLint("MissingPermission")
-    protected boolean onUserControlPointWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onUserControlPointWriteRequest(@NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int requestId
+            , @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic
+            , boolean preparedWrite
+            , int offset
+            , @NonNull byte[] value
+            , boolean force
+            , @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -2726,7 +2746,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 delay(now, characteristicData.delay);
 
                 if (BluetoothGatt.GATT_SUCCESS == characteristicData.responseCode) {
-                    int responseCode = ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+                    int responseCode = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
 
                     Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(USER_CONTROL_POINT_CHARACTERISTIC, characteristicInstanceId));
                     if (characteristicData instanceof UserControlPointCharacteristicData && descriptorDataMap != null) {
@@ -2897,7 +2917,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                 responseCode = BluetoothGatt.GATT_SUCCESS;
                                             }
                                         } else {
-                                            responseCode = ErrorCodeAndroid.PROCEDURE_ALREADY_IN_PROGRESS;
+                                            responseCode = PROCEDURE_ALREADY_IN_PROGRESS;
                                         }
 
                                     } else if (userControlPoint.isOpCodeDeleteUsers(userControlPoint.getOpCode())) {
@@ -2931,7 +2951,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                         }
                     }
 
-                    result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                    result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                 }
             }
             if (force && !result) {
@@ -2945,6 +2965,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param device                      {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 2nd parameter
      * @param requestId                   {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 3rd parameter
      * @param bluetoothGattCharacteristic {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 4th parameter
+     * @param preparedWrite               {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 5th parameter
      * @param offset                      {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 7th parameter
      * @param value                       {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 8th parameter
      * @param force                       {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 9th parameter
@@ -2952,7 +2973,14 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @return {@code true}:handled, {@code false}:not handled
      */
     @SuppressLint("MissingPermission")
-    protected boolean onUserDataWriteRequest(@NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onUserDataWriteRequest(@NonNull BluetoothDevice device
+            , int requestId
+            , @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic
+            , boolean preparedWrite
+            , int offset
+            , @NonNull byte[] value
+            , boolean force
+            , @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -2973,11 +3001,11 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 Integer currentUserIndex = mCurrentUserMap.get(device);
                 int responseCode;
                 if (currentUserIndex == null) {
-                    responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                    responseCode = APPLICATION_ERROR_80;
                 } else {
                     responseCode = udsCharacteristicData.responseCode;
                 }
-                result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
 
                 if (result && BluetoothGatt.GATT_SUCCESS == responseCode) {
                     CharacteristicData characteristicData = udsCharacteristicData.getUserData(currentUserIndex);
@@ -3013,11 +3041,11 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         if (bluetoothGattServer != null) {
             UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                result = onDatabaseChangeIncrementWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, offset, value, force, bluetoothGattServer);
+                result = onDatabaseChangeIncrementWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, offset, preparedWrite, value, force, bluetoothGattServer);
             } else if (USER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                result = onUserControlPointWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, offset, value, force, bluetoothGattServer);
+                result = onUserControlPointWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, offset, value, force, bluetoothGattServer);
             } else if (UDS_CHARACTERISTIC_SET.contains(characteristicUUID)) {
-                result = onUserDataWriteRequest(device, requestId, bluetoothGattCharacteristic, offset, value, force, bluetoothGattServer);
+                result = onUserDataWriteRequest(device, requestId, bluetoothGattCharacteristic, preparedWrite, offset, value, force, bluetoothGattServer);
             } else {
                 result = super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, force);
             }
@@ -3075,7 +3103,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
             if (bluetoothGattServer != null) {
                 if (mRegisteredUserIndicationData.timeout < SystemClock.elapsedRealtime()) {
-                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
+                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
                     mRegisteredUserIndicationData = null;
                 } else {
                     Bundle originalArgument = argument.getBundle(KEY_ORIGINAL_ARGUMENT);
@@ -3114,7 +3142,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
             if (bluetoothGattServer != null) {
                 if (mRegisteredUserIndicationData.timeout < SystemClock.elapsedRealtime()) {
-                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
+                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
                     mRegisteredUserIndicationData = null;
                 } else {
                     Bundle originalArgument = argument.getBundle(KEY_ORIGINAL_ARGUMENT);
@@ -3153,7 +3181,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
             if (bluetoothGattServer != null) {
                 if (mRegisteredUserIndicationData.timeout < SystemClock.elapsedRealtime()) {
-                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
+                    bluetoothGattServer.sendResponse(null, mRegisteredUserIndicationData.requestId, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED, mRegisteredUserIndicationData.offset, null);
                     mRegisteredUserIndicationData = null;
                 } else {
                     Bundle originalArgument = argument.getBundle(KEY_ORIGINAL_ARGUMENT);

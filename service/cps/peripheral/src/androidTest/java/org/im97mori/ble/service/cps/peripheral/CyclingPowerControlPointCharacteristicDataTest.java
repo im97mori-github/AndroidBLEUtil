@@ -11,7 +11,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
@@ -2399,7 +2401,8 @@ public class CyclingPowerControlPointCharacteristicDataTest {
         int startEnhancedOffsetCompensationResponseValue = 26;
         byte[] startEnhancedOffsetCompensationResponseParameter = new byte[]{27};
         byte[] currentData = new byte[]{32};
-        byte[] temporaryData = new byte[]{33};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(33, new byte[]{34});
 
         CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(descriptorDataList
                 , responseCode
@@ -2431,8 +2434,118 @@ public class CyclingPowerControlPointCharacteristicDataTest {
                 , startEnhancedOffsetCompensationResponseParameter);
 
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
 
+        assertNotEquals(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC.hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE).hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PERMISSION_WRITE).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(responseCode).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode((byte[]) null)
+                        ^ Integer.valueOf(0).hashCode()
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
+                        ^ Integer.valueOf(updateSensorLocationResponseValue).hashCode()
+                        ^ Integer.valueOf(requestSupportedSensorLocationsResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestSupportedSensorLocationsResponseParameter)
+                        ^ Integer.valueOf(setCrankLengthResponseValue).hashCode()
+                        ^ Integer.valueOf(requestCrankLengthResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestCrankLengthResponseParameter)
+                        ^ Integer.valueOf(setChainLengthResponseValue).hashCode()
+                        ^ Integer.valueOf(requestChainLengthResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestChainLengthResponseParameter)
+                        ^ Integer.valueOf(setChainWeightResponseValue).hashCode()
+                        ^ Integer.valueOf(requestChainWeightResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestChainWeightResponseParameter)
+                        ^ Integer.valueOf(setSpanLengthResponseValue).hashCode()
+                        ^ Integer.valueOf(requestSpanLengthResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestSpanLengthResponseParameter)
+                        ^ Integer.valueOf(startOffsetCompensationResponseValue).hashCode()
+                        ^ Arrays.hashCode(startOffsetCompensationResponseParameter)
+                        ^ Integer.valueOf(maskCyclingPowerMeasurementCharacteristicContentResponseValue).hashCode()
+                        ^ Integer.valueOf(requestSamplingRateResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestSamplingRateResponseParameter)
+                        ^ Integer.valueOf(requestFactoryCalibrationDateResponseValue).hashCode()
+                        ^ Arrays.hashCode(requestFactoryCalibrationDateResponseParameter)
+                        ^ Integer.valueOf(startEnhancedOffsetCompensationResponseValue).hashCode()
+                        ^ Arrays.hashCode(startEnhancedOffsetCompensationResponseParameter)
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+        int responseCode = 1;
+        long delay = 2;
+        int setCumulativeValueResponseValue = 3;
+        int updateSensorLocationResponseValue = 4;
+        int requestSupportedSensorLocationsResponseValue = 5;
+        byte[] requestSupportedSensorLocationsResponseParameter = new byte[]{6};
+        int setCrankLengthResponseValue = 7;
+        int requestCrankLengthResponseValue = 8;
+        byte[] requestCrankLengthResponseParameter = new byte[]{9};
+        int setChainLengthResponseValue = 10;
+        int requestChainLengthResponseValue = 11;
+        byte[] requestChainLengthResponseParameter = new byte[]{12};
+        int setChainWeightResponseValue = 13;
+        int requestChainWeightResponseValue = 14;
+        byte[] requestChainWeightResponseParameter = new byte[]{15};
+        int setSpanLengthResponseValue = 16;
+        int requestSpanLengthResponseValue = 17;
+        byte[] requestSpanLengthResponseParameter = new byte[]{18};
+        int startOffsetCompensationResponseValue = 19;
+        byte[] startOffsetCompensationResponseParameter = new byte[]{20};
+        int maskCyclingPowerMeasurementCharacteristicContentResponseValue = 21;
+        int requestSamplingRateResponseValue = 22;
+        byte[] requestSamplingRateResponseParameter = new byte[]{23};
+        int requestFactoryCalibrationDateResponseValue = 24;
+        byte[] requestFactoryCalibrationDateResponseParameter = new byte[]{25};
+        int startEnhancedOffsetCompensationResponseValue = 26;
+        byte[] startEnhancedOffsetCompensationResponseParameter = new byte[]{27};
+        byte[] currentData = new byte[]{32};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(33, new byte[]{34});
+
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , responseCode
+                , delay
+                , setCumulativeValueResponseValue
+                , updateSensorLocationResponseValue
+                , requestSupportedSensorLocationsResponseValue
+                , requestSupportedSensorLocationsResponseParameter
+                , setCrankLengthResponseValue
+                , requestCrankLengthResponseValue
+                , requestCrankLengthResponseParameter
+                , setChainLengthResponseValue
+                , requestChainLengthResponseValue
+                , requestChainLengthResponseParameter
+                , setChainWeightResponseValue
+                , requestChainWeightResponseValue
+                , requestChainWeightResponseParameter
+                , setSpanLengthResponseValue
+                , requestSpanLengthResponseValue
+                , requestSpanLengthResponseParameter
+                , startOffsetCompensationResponseValue
+                , startOffsetCompensationResponseParameter
+                , maskCyclingPowerMeasurementCharacteristicContentResponseValue
+                , requestSamplingRateResponseValue
+                , requestSamplingRateResponseParameter
+                , requestFactoryCalibrationDateResponseValue
+                , requestFactoryCalibrationDateResponseParameter
+                , startEnhancedOffsetCompensationResponseValue
+                , startEnhancedOffsetCompensationResponseParameter);
+
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC.hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE).hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PERMISSION_WRITE).hashCode()
@@ -2442,7 +2555,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Integer.valueOf(0).hashCode()
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
                         ^ Integer.valueOf(updateSensorLocationResponseValue).hashCode()
                         ^ Integer.valueOf(requestSupportedSensorLocationsResponseValue).hashCode()

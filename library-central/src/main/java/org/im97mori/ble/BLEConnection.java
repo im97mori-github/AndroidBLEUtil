@@ -1,5 +1,7 @@
 package org.im97mori.ble;
 
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -40,9 +42,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 /**
  * BLE connection(central role)
  * <p>
@@ -51,24 +50,14 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 public class BLEConnection extends BluetoothGattCallback implements BLECallbackDistributer.SubscriberInterface {
 
     /**
+     * BLE device
+     */
+    private final BluetoothDevice mBluetoothDevice;
+
+    /**
      * {@link Context} instance
      */
     protected final Context mContext;
-
-    /**
-     * BLE device
-     */
-    protected final BluetoothDevice mBluetoothDevice;
-
-    /**
-     * for {@link BLECallbackDistributer.SubscriberInterface#getSubscriberCallbackSet()}
-     */
-    protected final Set<BLECallback> mAttachedBLECallbackSet = new HashSet<>();
-
-    /**
-     * {@link BLECallbackDistributer} instance
-     */
-    protected BLECallbackDistributer mBLECallbackDistributer;
 
     /**
      * newest {@link BluetoothGatt} instance
@@ -81,6 +70,16 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     protected TaskHandler mTaskHandler;
 
     /**
+     * for {@link BLECallbackDistributer.SubscriberInterface#getSubscriberCallbackSet()}
+     */
+    protected final Set<BLECallback> mAttachedBLECallbackSet = new HashSet<>();
+
+    /**
+     * {@link BLECallbackDistributer} instance
+     */
+    protected BLECallbackDistributer mBLECallbackDistributer;
+
+    /**
      * @param context                {@link Context} instance
      * @param bluetoothDevice        BLE device
      * @param bleCallbackDistributer distributer instance
@@ -89,6 +88,20 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         mContext = context.getApplicationContext();
         mBluetoothDevice = bluetoothDevice;
         mBLECallbackDistributer = bleCallbackDistributer;
+    }
+
+    /**
+     * newest {@link BluetoothGatt} instance
+     */
+    public BluetoothGatt getBluetoothGatt() {
+        return mBluetoothGatt;
+    }
+
+    /**
+     * newest {@link TaskHandler} instance
+     */
+    public TaskHandler getTaskHandler() {
+        return mTaskHandler;
     }
 
     /**
@@ -188,6 +201,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @Nullable
     public Integer createDiscoverServiceTask(long timeout
             , @Nullable Bundle argument
@@ -211,6 +225,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @Nullable
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public Integer createRequestMtuTask(int mtu
@@ -255,7 +270,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         if (isConnected()) {
             mTaskHandler.clearTask();
 
-            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, UNKNOWN, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -317,7 +332,10 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * Callback at {@link ConnectTask} failed
      *
      * @param taskId   task id
-     * @param status   one of {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter, {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}, {@link org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}
+     * @param status   {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter
+     *                 {@link org.im97mori.ble.task.ConnectTask#STATUS_CANCEL}
+     *                 {@link org.im97mori.ble.task.ConnectTask#STATUS_CONNECT_GATT_FAILED}
+     *                 {@link org.im97mori.ble.task.ConnectTask#STATUS_DISCOVER_SERVICES_FAILED}
      * @param argument callback argument
      */
     public synchronized void onConnectFailed(@NonNull Integer taskId
@@ -352,7 +370,9 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      *
      * @param taskId        task id
      * @param bluetoothGatt Disconnected {@link BluetoothGatt}
-     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN}
+     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter
+     *                      {@link org.im97mori.ble.task.DisconnectTask#STATUS_CANCEL}
+     *                      {@link org.im97mori.ble.task.DisconnectTask#STATUS_MANUAL_DISCONNECT}
      * @param argument      callback argument
      */
     public synchronized void onDisconnected(@NonNull Integer taskId
@@ -802,7 +822,9 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param byteArrayInterface       write data
-     * @param writeType                one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
+     * @param writeType                {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}
+     *                                 {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}
+     *                                 {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
@@ -928,6 +950,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     public synchronized Integer createReadPhyTask(long timeout
@@ -953,6 +976,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     public synchronized Integer createSetPreferredPhyTask(int txPhy
@@ -978,6 +1002,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @Nullable
     public synchronized Integer createReadRemoteRssiTask(long timeout
             , @Nullable Bundle argument
@@ -998,6 +1023,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @Nullable
     public synchronized Integer createBeginReliableWriteTask(@Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
@@ -1018,6 +1044,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @Nullable
     public synchronized Integer createExecuteReliableWriteTask(long timeout
             , @Nullable Bundle argument
@@ -1039,6 +1066,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public synchronized Integer createAbortReliableWriteTask(long timeout
             , @Nullable Bundle argument
@@ -1064,6 +1092,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @SuppressWarnings("unused")
     @Nullable
     public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

@@ -1,5 +1,15 @@
 package org.im97mori.ble.service.rcs.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.RC_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_80;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_81;
+import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
+import static org.im97mori.ble.constants.ErrorCode.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -26,7 +36,6 @@ import org.im97mori.ble.callback.NotificationData;
 import org.im97mori.ble.characteristic.u2b1d.RCFeature;
 import org.im97mori.ble.characteristic.u2b1e.RCSettings;
 import org.im97mori.ble.characteristic.u2b1f.ReconnectionConfigurationControlPoint;
-import org.im97mori.ble.constants.ErrorCodeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
@@ -38,13 +47,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.RC_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
 
 /**
  * Reconnection Configuration Service (Service UUID: 0x1829) for Peripheral
@@ -672,7 +674,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                     delay(now, characteristicData.delay);
 
                     if (RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                        int responseCode = ErrorCodeAndroid.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
+                        int responseCode = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
 
                         Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC, characteristicInstanceId));
                         if (characteristicData instanceof ReconnectionConfigurationControlPointCharacteristicData && descriptorDataMap != null) {
@@ -696,14 +698,14 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                                         } else if (rcFeature.isRcFeaturesE2eCrcSupported()) {
                                             Integer requestCrc = requestReconnectionConfigurationControlPoint.getE2eCrc();
                                             if (requestCrc == null) {
-                                                responseCode = ErrorCodeAndroid.APPLICATION_ERROR_80;
+                                                responseCode = APPLICATION_ERROR_80;
                                             } else {
                                                 if (valueWithOffset.length > 2) {
                                                     int calculatedCrc = BLEUtils.createCrc(valueWithOffset, 0, valueWithOffset.length - 2);
                                                     if (requestCrc == calculatedCrc) {
                                                         responseCode = reconnectionConfigurationControlPointCharacteristicData.responseCode;
                                                     } else {
-                                                        responseCode = ErrorCodeAndroid.APPLICATION_ERROR_81;
+                                                        responseCode = APPLICATION_ERROR_81;
                                                     }
                                                 } else {
                                                     responseCode = APPLICATION_ERROR_9F;
@@ -1148,7 +1150,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                                             }
                                         }
 
-                                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
 
                                         if (result && BluetoothGatt.GATT_SUCCESS == responseCode) {
                                             characteristicData.currentData = valueWithOffset;
@@ -1176,7 +1178,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                                             }
                                         }
                                     } else {
-                                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+                                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, preparedWrite ? value : null);
                                     }
 
                                     break;
@@ -1185,7 +1187,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                         }
                     } else {
                         if (responseNeeded) {
-                            result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
+                            result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, preparedWrite ? value : null);
                         } else {
                             result = true;
                         }
@@ -1194,7 +1196,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                             mIsReliable |= preparedWrite;
 
                             if (mIsReliable) {
-                                characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
+                                characteristicData.temporaryData.put(offset, value);
                             } else {
                                 characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
                             }

@@ -1,7 +1,7 @@
 package org.im97mori.ble.sample.jellybean.tip;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
 import static org.im97mori.ble.constants.ServiceUUID.CURRENT_TIME_SERVICE;
+import static org.im97mori.ble.task.DisconnectTask.STATUS_MANUAL_DISCONNECT;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
@@ -53,7 +53,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mTipCallbackSample = new TipCallbackSample( this);
+        mTipCallbackSample = new TipCallbackSample(this);
         mTimeProfile = new TimeProfile(this, mTipCallbackSample, CURRENT_TIME_SERVICE);
         mTimeProfile.start();
 
@@ -244,7 +244,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             }
             if (mTimeProfile.isConnected()) {
                 mTimeProfile.disconnect();
-                mTipCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mTipCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, STATUS_MANUAL_DISCONNECT, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

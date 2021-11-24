@@ -11,7 +11,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
@@ -160,14 +162,49 @@ public class FitnessMachineStatusCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 2, 3, 4, new byte[]{5}));
         int spinDownStatusValue = 1;
         byte[] currentData = new byte[]{6};
-        byte[] temporaryData = new byte[]{7};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(7, new byte[]{8});
 
         FitnessMachineStatusCharacteristicData result1 = new FitnessMachineStatusCharacteristicData(descriptorDataList
                 , spinDownStatusValue);
 
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
 
+        assertNotEquals(FITNESS_MACHINE_STATUS_CHARACTERISTIC.hashCode()
+                        ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_NOTIFY).hashCode()
+                        ^ Integer.valueOf(0).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(BluetoothGatt.GATT_SUCCESS).hashCode()
+                        ^ Long.valueOf(0).hashCode()
+                        ^ Arrays.hashCode((byte[]) null)
+                        ^ Integer.valueOf(0).hashCode()
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(spinDownStatusValue).hashCode()
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 2, 3, 4, new byte[]{5}));
+        int spinDownStatusValue = 1;
+        byte[] currentData = new byte[]{6};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(7, new byte[]{8});
+
+        FitnessMachineStatusCharacteristicData result1 = new FitnessMachineStatusCharacteristicData(descriptorDataList
+                , spinDownStatusValue);
+
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(FITNESS_MACHINE_STATUS_CHARACTERISTIC.hashCode()
                         ^ Integer.valueOf(BluetoothGattCharacteristic.PROPERTY_NOTIFY).hashCode()
                         ^ Integer.valueOf(0).hashCode()
@@ -177,7 +214,7 @@ public class FitnessMachineStatusCharacteristicDataTest {
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Integer.valueOf(0).hashCode()
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(spinDownStatusValue).hashCode()
                 , result1.hashCode());
     }

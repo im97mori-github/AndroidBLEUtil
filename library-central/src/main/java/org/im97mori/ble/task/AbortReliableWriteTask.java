@@ -13,8 +13,6 @@ import androidx.annotation.RequiresApi;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-
 /**
  * Abort reliable write task
  * <p>
@@ -22,6 +20,11 @@ import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
  */
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class AbortReliableWriteTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
 
     /**
      * KEY:STATUS
@@ -113,7 +116,10 @@ public class AbortReliableWriteTask extends AbstractBLETask {
 
             // timeout
             if (message.obj == this && PROGRESS_TIMEOUT.equals(nextProgress)) {
-                mBLEConnection.getBLECallback().onAbortReliableWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgument);
+                mBLEConnection.getBLECallback().onAbortReliableWriteTimeout(getTaskId()
+                        , mBLEConnection.getBluetoothDevice()
+                        , mTimeout
+                        , mArgument);
                 mCurrentProgress = nextProgress;
             } else if (this == message.obj && PROGRESS_INIT.equals(mCurrentProgress)) {
                 if (PROGRESS_ABORT_RELIABLE_WRITE_START.equals(nextProgress)) {
@@ -135,12 +141,16 @@ public class AbortReliableWriteTask extends AbstractBLETask {
                     // current:abort reliable write start, next:abort reliable write success
 
                     // callback
-                    mBLEConnection.getBLECallback().onAbortReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
-
+                    mBLEConnection.getBLECallback().onAbortReliableWriteSuccess(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , mArgument);
                 } else if (ExecuteReliableWriteTask.PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR.equals(nextProgress)) {
                     // current:abort reliable write start, next:abort reliable write failed
 
-                    mBLEConnection.getBLECallback().onAbortReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                    mBLEConnection.getBLECallback().onAbortReliableWriteFailed(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_STATUS)
+                            , mArgument);
                 }
 
                 // remove timeout message
@@ -167,7 +177,10 @@ public class AbortReliableWriteTask extends AbstractBLETask {
     @Override
     public void cancel() {
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onAbortReliableWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onAbortReliableWriteFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

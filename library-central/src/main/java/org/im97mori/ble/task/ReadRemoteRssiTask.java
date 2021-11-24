@@ -1,8 +1,5 @@
 package org.im97mori.ble.task;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGatt;
 import android.os.Bundle;
@@ -20,6 +17,16 @@ import org.im97mori.ble.TaskHandler;
  * for central role
  */
 public class ReadRemoteRssiTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:READ_REMOTE_RSSI_FAILED
+     */
+    public static final int STATUS_READ_REMOTE_RSSI_FAILED = -2;
 
     /**
      * KEY:RSSI
@@ -179,7 +186,10 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
                     } else {
                         // failed
 
-                        mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                        mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId()
+                                , mBluetoothGatt.getDevice()
+                                , STATUS_READ_REMOTE_RSSI_FAILED
+                                , mArgument);
                         mCurrentProgress = PROGRESS_BUSY;
                     }
                 }
@@ -188,13 +198,17 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
                     // current:read remote rssi start, next:read remote rssi success
 
                     // callback
-                    mBLEConnection.getBLECallback().onReadRemoteRssiSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_RSSI), mArgument);
-
-
+                    mBLEConnection.getBLECallback().onReadRemoteRssiSuccess(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_RSSI)
+                            , mArgument);
                 } else if (PROGRESS_READ_REMOTE_RSSI_ERROR.equals(nextProgress)) {
                     // current:read remote rssi start, next:read remote rssi failed
 
-                    mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                    mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId()
+                            , mBluetoothGatt.getDevice()
+                            , bundle.getInt(KEY_STATUS)
+                            , mArgument);
                 }
 
                 // remove timeout message
@@ -222,7 +236,10 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId()
+                , mBLEConnection.getBluetoothDevice()
+                , STATUS_CANCEL
+                , mArgument);
     }
 
 }

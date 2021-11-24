@@ -1,5 +1,12 @@
 package org.im97mori.ble.service.uds.peripheral;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Parcel;
 
 import com.google.gson.Gson;
@@ -11,17 +18,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-@SuppressWarnings("UnnecessaryLocalVariable")
 public class UDSCharacteristicDataTest {
 
     @Test
@@ -212,8 +213,9 @@ public class UDSCharacteristicDataTest {
         UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
         assertArrayEquals(firstData, udsCharacteristicData.getBytes());
 
-        byte[] secondData = new byte[1];
-        udsCharacteristicData.temporaryData = secondData;
+        Map<Integer, byte[]> secondData = new HashMap<>();
+        secondData.put(1, new byte[2]);
+        udsCharacteristicData.temporaryData.putAll(secondData);
         assertArrayEquals(firstData, udsCharacteristicData.getBytes());
     }
 
@@ -239,7 +241,10 @@ public class UDSCharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertArrayEquals(result1.currentData, result2.currentData);
-        assertArrayEquals(result1.temporaryData, result2.temporaryData);
+        assertEquals(result1.temporaryData.size(), result2.temporaryData.size());
+        for (Integer key : result1.temporaryData.keySet()) {
+            assertArrayEquals(result1.temporaryData.get(key), result2.temporaryData.get(key));
+        }
         assertEquals(result1.notificationCount, result2.notificationCount);
     }
 
@@ -249,7 +254,7 @@ public class UDSCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         UDSCharacteristicData result1 = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, new byte[]{5, 6}, 7);
         result1.currentData = new byte[]{8};
-        result1.temporaryData = new byte[]{9};
+        result1.temporaryData.put(9, new byte[]{10});
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -267,7 +272,10 @@ public class UDSCharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertArrayEquals(result1.currentData, result2.currentData);
-        assertArrayEquals(result1.temporaryData, result2.temporaryData);
+        assertEquals(result1.temporaryData.size(), result2.temporaryData.size());
+        for (Integer key : result1.temporaryData.keySet()) {
+            assertArrayEquals(result1.temporaryData.get(key), result2.temporaryData.get(key));
+        }
         assertEquals(result1.notificationCount, result2.notificationCount);
     }
 
@@ -308,12 +316,50 @@ public class UDSCharacteristicDataTest {
         long delay = 4;
         byte[] data = new byte[]{5, 6};
         byte[] currentData = new byte[]{7, 8};
-        byte[] temporaryData = new byte[]{9, 10};
-        int notificationCount = 11;
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(9, new byte[]{10, 11});
+        int notificationCount = 12;
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(uuid, property, permission, descriptorDataList, responseCode, delay, data, notificationCount);
         result1.currentData = currentData;
-        result1.temporaryData = temporaryData;
+        result1.temporaryData.putAll(temporaryData);
+        assertNotEquals(uuid.hashCode()
+                        ^ Integer.valueOf(property).hashCode()
+                        ^ Integer.valueOf(permission).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(responseCode).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode(data)
+                        ^ Arrays.hashCode(currentData)
+                        ^ temporaryData.hashCode()
+                        ^ Integer.valueOf(notificationCount).hashCode()
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00003() {
+        UUID uuid = UUID.randomUUID();
+        int property = 1;
+        int permission = 2;
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int responseCode = 3;
+        long delay = 4;
+        byte[] data = new byte[]{5, 6};
+        byte[] currentData = new byte[]{7, 8};
+        Map<Integer, byte[]> temporaryData = new HashMap<>();
+        temporaryData.put(9, new byte[]{10, 11});
+        int notificationCount = 12;
+
+        UDSCharacteristicData result1 = new UDSCharacteristicData(uuid, property, permission, descriptorDataList, responseCode, delay, data, notificationCount);
+        result1.currentData = currentData;
+        result1.temporaryData.putAll(temporaryData);
+
+        int hashCode = 0;
+        for (Map.Entry<Integer, byte[]> entry : temporaryData.entrySet()) {
+            hashCode ^= entry.getKey().hashCode();
+            hashCode ^= Arrays.hashCode(entry.getValue());
+        }
         assertEquals(uuid.hashCode()
                         ^ Integer.valueOf(property).hashCode()
                         ^ Integer.valueOf(permission).hashCode()
@@ -322,7 +368,7 @@ public class UDSCharacteristicDataTest {
                         ^ Long.valueOf(delay).hashCode()
                         ^ Arrays.hashCode(data)
                         ^ Arrays.hashCode(currentData)
-                        ^ Arrays.hashCode(temporaryData)
+                        ^ hashCode
                         ^ Integer.valueOf(notificationCount).hashCode()
                 , result1.hashCode());
     }
@@ -524,15 +570,16 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertEquals(result1, result2);
     }
 
@@ -547,17 +594,18 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         UUID secondUUID = UUID.fromString("00000000-0000-0000-0000-000000000001");
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(secondUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -572,17 +620,18 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         int secondProperty = 12;
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, secondProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -597,17 +646,18 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         int secondPermission = 22;
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, secondPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -622,19 +672,19 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
-
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         List<DescriptorData> secondDescriptorDataList = new ArrayList<>();
         secondDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 111, 222, 333, null));
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, secondDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -649,17 +699,18 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         int secondResponseCode = 33;
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, secondResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -674,17 +725,18 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         long secondDelay = 44;
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, secondDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -699,17 +751,18 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         byte[] secondData = new byte[]{55, 66};
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, secondData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -724,17 +777,18 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         byte[] secondCurrentData = new byte[]{77, 88};
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = secondCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -749,17 +803,19 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
-        byte[] secondTemporaryData = new byte[]{99, 110};
+        Map<Integer, byte[]> secondTemporaryData = new HashMap<>();
+        secondTemporaryData.put(13, new byte[]{14, 15});
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = secondTemporaryData;
+        result2.temporaryData.putAll(secondTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -774,17 +830,18 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         int secondNotificationCount = 77;
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         UDSCharacteristicData result2 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, secondNotificationCount);
         result2.currentData = firstCurrentData;
-        result2.temporaryData = firstTemporaryData;
+        result2.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(result1, result2);
     }
 
@@ -799,12 +856,13 @@ public class UDSCharacteristicDataTest {
         long firstDelay = 4;
         byte[] firstData = new byte[]{5, 6};
         byte[] firstCurrentData = new byte[]{7, 8};
-        byte[] firstTemporaryData = new byte[]{9, 10};
-        int firstNotificationCount = 11;
+        Map<Integer, byte[]> firstTemporaryData = new HashMap<>();
+        firstTemporaryData.put(9, new byte[]{10, 11});
+        int firstNotificationCount = 12;
 
         UDSCharacteristicData result1 = new UDSCharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
         result1.currentData = firstCurrentData;
-        result1.temporaryData = firstTemporaryData;
+        result1.temporaryData.putAll(firstTemporaryData);
         assertNotEquals(null, result1);
     }
 

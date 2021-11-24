@@ -24,6 +24,7 @@ public interface ProfileCallback extends GenericAccessServiceCallback, GenericAt
      * @param bluetoothDeviceSet found {@link BluetoothDevice} set
      * @param timeout            scanning time
      * @param argument           callback argument
+     * @see org.im97mori.ble.profile.central.task.ScanTask
      */
     void onScanFinished(@NonNull Set<BluetoothDevice> bluetoothDeviceSet, long timeout, @Nullable Bundle argument);
 
@@ -31,7 +32,9 @@ public interface ProfileCallback extends GenericAccessServiceCallback, GenericAt
      * Scan error callback
      *
      * @param errorCode {@link android.bluetooth.le.ScanCallback#onScanFailed(int)} 1st parameter
+     *                  {@link org.im97mori.ble.profile.central.task.ScanTask#STATUS_CANCEL}
      * @param argument  callback argument
+     * @see org.im97mori.ble.profile.central.task.ScanTask
      */
     void onScanFailed(int errorCode, @Nullable Bundle argument);
 
@@ -40,6 +43,7 @@ public interface ProfileCallback extends GenericAccessServiceCallback, GenericAt
      *
      * @param bluetoothDevice bonded {@link BluetoothDevice} instance
      * @param argument        callback argument
+     * @see org.im97mori.ble.profile.central.task.BondTask
      */
     void onBondSuccess(@NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
 
@@ -47,8 +51,11 @@ public interface ProfileCallback extends GenericAccessServiceCallback, GenericAt
      * Bond error callback
      *
      * @param bluetoothDevice bonded failed {@link BluetoothDevice} instance
-     * @param status          {@link org.im97mori.ble.constants.ErrorCodeAndroid#UNKNOWN} or {@link  org.im97mori.ble.constants.ErrorCodeAndroid#CANCEL}
+     * @param status          {@link org.im97mori.ble.profile.central.task.BondTask#STATUS_CANCEL}
+     *                        {@link org.im97mori.ble.profile.central.task.BondTask#STATUS_CREATE_BOND_FAILED}
+     *                        {@link org.im97mori.ble.profile.central.task.BondTask#STATUS_BOND_FAILED}
      * @param argument        callback argument
+     * @see org.im97mori.ble.profile.central.task.BondTask
      */
     void onBondFailed(@NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
 
@@ -58,6 +65,7 @@ public interface ProfileCallback extends GenericAccessServiceCallback, GenericAt
      * @param bluetoothDevice bonded timeout {@link BluetoothDevice} instance
      * @param timeout         timeout(millis)
      * @param argument        callback argument
+     * @see org.im97mori.ble.profile.central.task.BondTask
      */
     void onBondTimeout(@NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 

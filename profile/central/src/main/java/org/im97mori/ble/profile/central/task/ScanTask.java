@@ -1,8 +1,5 @@
 package org.im97mori.ble.profile.central.task;
 
-import static org.im97mori.ble.constants.ErrorCodeAndroid.CANCEL;
-import static org.im97mori.ble.constants.ErrorCodeAndroid.UNKNOWN;
-
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -38,6 +35,31 @@ import java.util.Set;
  */
 @SuppressLint("MissingPermission")
 public class ScanTask extends AbstractBLETask {
+
+    /**
+     * STATUS:CANCEL
+     */
+    public static final int STATUS_CANCEL = -1;
+
+    /**
+     * STATUS:BLUETOOTH_MANAGER_NOT_FOUND
+     */
+    public static final int STATUS_BLUETOOTH_MANAGER_NOT_FOUND = -2;
+
+    /**
+     * STATUS:BLUETOOTH_ADAPTER_NOT_FOUND
+     */
+    public static final int STATUS_BLUETOOTH_ADAPTER_NOT_FOUND = -3;
+
+    /**
+     * STATUS:BLUETOOTH_LE_SCANNER_NOT_FOUND
+     */
+    public static final int STATUS_BLUETOOTH_LE_SCANNER_NOT_FOUND = -4;
+
+    /**
+     * STATUS:BLUETOOTH_ADAPTER_DISABLED
+     */
+    public static final int STATUS_BLUETOOTH_ADAPTER_DISABLED = -5;
 
     /**
      * KEY:STATUS
@@ -261,19 +283,22 @@ public class ScanTask extends AbstractBLETask {
                 BluetoothManager bluetoothManager = (BluetoothManager) mContext.getSystemService(Context.BLUETOOTH_SERVICE);
                 if (bluetoothManager == null) {
                     nextProgress = PROGRESS_FINISHED;
-                    mProfileCallback.onScanFailed(UNKNOWN, mArgument);
+                    mProfileCallback.onScanFailed(STATUS_BLUETOOTH_MANAGER_NOT_FOUND
+                            , mArgument);
                 } else {
                     mBluetoothAdapter = bluetoothManager.getAdapter();
                     if (mBluetoothAdapter == null) {
                         nextProgress = PROGRESS_FINISHED;
-                        mProfileCallback.onScanFailed(UNKNOWN, mArgument);
+                        mProfileCallback.onScanFailed(STATUS_BLUETOOTH_ADAPTER_NOT_FOUND
+                                , mArgument);
                     } else {
                         if (mBluetoothAdapter.isEnabled()) {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
                                 if (mBluetoothLeScanner == null) {
                                     nextProgress = PROGRESS_FINISHED;
-                                    mProfileCallback.onScanFailed(UNKNOWN, mArgument);
+                                    mProfileCallback.onScanFailed(STATUS_BLUETOOTH_LE_SCANNER_NOT_FOUND
+                                            , mArgument);
                                 } else {
                                     mBluetoothLeScanner.startScan(mFilteredScanCallback);
 
@@ -285,7 +310,8 @@ public class ScanTask extends AbstractBLETask {
                             }
                         } else {
                             nextProgress = PROGRESS_FINISHED;
-                            mProfileCallback.onScanFailed(UNKNOWN, mArgument);
+                            mProfileCallback.onScanFailed(STATUS_BLUETOOTH_ADAPTER_DISABLED
+                                    , mArgument);
                         }
                     }
                 }
@@ -306,7 +332,8 @@ public class ScanTask extends AbstractBLETask {
                 } else {
                     mBluetoothAdapter.stopLeScan(mFilteredLeScanCallback);
                 }
-                mProfileCallback.onScanFailed(bundle.getInt(KEY_STATUS), mArgument);
+                mProfileCallback.onScanFailed(bundle.getInt(KEY_STATUS)
+                        , mArgument);
                 mTaskHandler.removeCallbacksAndMessages(this);
                 mCurrentProgress = PROGRESS_FINISHED;
             }
@@ -337,7 +364,8 @@ public class ScanTask extends AbstractBLETask {
                 mBluetoothAdapter.stopLeScan(mFilteredLeScanCallback);
             }
         }
-        mProfileCallback.onScanFailed(CANCEL, mArgument);
+        mProfileCallback.onScanFailed(STATUS_CANCEL
+                , mArgument);
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
     }

@@ -11,8 +11,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.constants.ErrorCodeAndroid;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -39,7 +37,10 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}
+     * @param status          {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter
+     *                        {@link org.im97mori.ble.task.ConnectTask#STATUS_CANCEL}
+     *                        {@link org.im97mori.ble.task.ConnectTask#STATUS_CONNECT_GATT_FAILED}
+     *                        {@link org.im97mori.ble.task.ConnectTask#STATUS_DISCOVER_SERVICES_FAILED}
      * @param argument        callback argument
      * @see BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)
      * @see org.im97mori.ble.task.ConnectTask
@@ -62,7 +63,9 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}
+     * @param status          {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter
+     *                        {@link org.im97mori.ble.task.DisconnectTask#STATUS_CANCEL}
+     *                        {@link org.im97mori.ble.task.DisconnectTask#STATUS_MANUAL_DISCONNECT}
      * @param argument        callback argument
      * @see BluetoothGatt#disconnect()
      * @see BluetoothGatt#close()
@@ -88,7 +91,9 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BLEConnection#onServicesDiscovered(BluetoothGatt, int)} 2nd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status          {@link BLEConnection#onServicesDiscovered(BluetoothGatt, int)} 2nd parameter
+     *                        {@link org.im97mori.ble.task.DiscoverServiceTask#STATUS_CANCEL}
+     *                        {@link org.im97mori.ble.task.DiscoverServiceTask#STATUS_DISCOVER_SERVICES_FAILED}
      * @param argument        callback argument
      * @see org.im97mori.ble.task.DiscoverServiceTask
      */
@@ -121,7 +126,9 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BLEConnection#onMtuChanged(BluetoothGatt, int, int)} 2nd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status          {@link BLEConnection#onMtuChanged(BluetoothGatt, int, int)} 3rd parameter
+     *                        {@link org.im97mori.ble.task.RequestMtuTask#STATUS_CANCEL}
+     *                        {@link org.im97mori.ble.task.RequestMtuTask#STATUS_REQUEST_MTU_FAILED}
      * @param argument        callback argument
      * @see org.im97mori.ble.task.RequestMtuTask
      */
@@ -134,6 +141,7 @@ public interface BLECallback {
      * @param bluetoothDevice BLE device
      * @param timeout         timeout(millis)
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.RequestMtuTask
      */
     void onRequestMtuTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
@@ -148,6 +156,7 @@ public interface BLECallback {
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param values                   {@link BluetoothGattCharacteristic#getValue()}
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.ReadCharacteristicTask
      */
     void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
 
@@ -160,8 +169,12 @@ public interface BLECallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.ReadCharacteristicTask
      */
     void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument);
 
@@ -176,6 +189,7 @@ public interface BLECallback {
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.ReadCharacteristicTask
      */
     void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument);
 
@@ -190,6 +204,7 @@ public interface BLECallback {
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param values                   {@link BluetoothGattCharacteristic#getValue()}
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.WriteCharacteristicTask
      */
     void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
 
@@ -202,9 +217,12 @@ public interface BLECallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   one of {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
-     * @see ErrorCodeAndroid
+     * @see org.im97mori.ble.task.WriteCharacteristicTask
      */
     void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument);
 
@@ -219,6 +237,7 @@ public interface BLECallback {
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.WriteCharacteristicTask
      */
     void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument);
 
@@ -234,6 +253,7 @@ public interface BLECallback {
      * @param descriptorUUID           descriptor  {@link UUID}
      * @param descriptorInstanceId     task target descriptor incetanceId
      * @param values                   {@link BluetoothGattDescriptor#getValue()}
+     * @see org.im97mori.ble.task.ReadDescriptorTask
      */
     void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
 
@@ -248,8 +268,12 @@ public interface BLECallback {
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor  {@link UUID}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_READ_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.ReadDescriptorTask
      */
     void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument);
 
@@ -265,6 +289,7 @@ public interface BLECallback {
      * @param descriptorUUID           descriptor  {@link UUID}
      * @param descriptorInstanceId     task target descriptor incetanceId
      * @param timeout                  timeout(millis)
+     * @see org.im97mori.ble.task.ReadDescriptorTask
      */
     void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument);
 
@@ -281,6 +306,7 @@ public interface BLECallback {
      * @param descriptorInstanceId     task target descriptor incetanceId
      * @param values                   {@link BluetoothGattDescriptor#getValue()}
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.WriteDescriptorTask
      */
     void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
 
@@ -294,9 +320,12 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor incetanceId
-     * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
-     * @see ErrorCodeAndroid
+     * @see org.im97mori.ble.task.WriteDescriptorTask
      */
     void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument);
 
@@ -313,6 +342,7 @@ public interface BLECallback {
      * @param descriptorInstanceId     task target descriptor incetanceId
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.WriteDescriptorTask
      */
     void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument);
 
@@ -325,6 +355,7 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param values                   {@link BluetoothGattCharacteristic#getValue()}
+     * @see org.im97mori.ble.task.NotificatedTask
      */
     void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values);
 
@@ -336,6 +367,7 @@ public interface BLECallback {
      * @param txPhy           {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 2nd argument
      * @param rxPhy           {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 3rd argument
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ReadPhyTask
      */
     void onReadPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, @Nullable Bundle argument);
 
@@ -344,8 +376,10 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BLEConnection#onPhyRead(BluetoothGatt, int, int, int)} 4th parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status          {@link BLEConnection#onPhyRead(BluetoothGatt, int, int, int)} 4th parameter
+     *                        {@link org.im97mori.ble.task.ReadPhyTask#STATUS_CANCEL}
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ReadPhyTask
      */
     void onReadPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
 
@@ -356,6 +390,7 @@ public interface BLECallback {
      * @param bluetoothDevice BLE device
      * @param timeout         timeout(millis)
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ReadPhyTask
      */
     void onReadPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
@@ -368,6 +403,7 @@ public interface BLECallback {
      * @param rxPhy           {@link android.bluetooth.BluetoothGattCallback#onPhyUpdate(BluetoothGatt, int, int, int)} 3rd argument
      * @param phyOptions      {@link android.bluetooth.BluetoothGatt#setPreferredPhy(int, int, int)} 3rd argument
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.SetPreferredPhyTask
      */
     void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument);
 
@@ -376,8 +412,10 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BLEConnection#onPhyRead(BluetoothGatt, int, int, int)} 4th parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status          {@link BLEConnection#onPhyRead(BluetoothGatt, int, int, int)} 4th parameter
+     *                        {@link org.im97mori.ble.task.SetPreferredPhyTask#STATUS_CANCEL}
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.SetPreferredPhyTask
      */
     void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
 
@@ -388,6 +426,7 @@ public interface BLECallback {
      * @param bluetoothDevice BLE device
      * @param timeout         timeout(millis)
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.SetPreferredPhyTask
      */
     void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
@@ -398,6 +437,7 @@ public interface BLECallback {
      * @param bluetoothDevice BLE device
      * @param rssi            {@link android.bluetooth.BluetoothGattCallback#onReadRemoteRssi(BluetoothGatt, int, int)} 2nd argument
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ReadRemoteRssiTask
      */
     void onReadRemoteRssiSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int rssi, @Nullable Bundle argument);
 
@@ -406,8 +446,11 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BLEConnection#onReadRemoteRssi(BluetoothGatt, int, int)} 3rd parameter, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}, {@link ErrorCodeAndroid#BUSY}
+     * @param status          {@link BLEConnection#onReadRemoteRssi(BluetoothGatt, int, int)} 3rd parameter
+     *                        {@link org.im97mori.ble.task.ReadRemoteRssiTask#STATUS_CANCEL}
+     *                        {@link org.im97mori.ble.task.ReadRemoteRssiTask#STATUS_READ_REMOTE_RSSI_FAILED}
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ReadRemoteRssiTask
      */
     void onReadRemoteRssiFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
 
@@ -418,6 +461,7 @@ public interface BLECallback {
      * @param bluetoothDevice BLE device
      * @param timeout         timeout(millis)
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ReadRemoteRssiTask
      */
     void onReadRemoteRssiTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
@@ -427,6 +471,7 @@ public interface BLECallback {
      * @param taskId          task id
      * @param bluetoothDevice BLE device
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.BeginReliableWriteTask
      */
     void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
 
@@ -435,8 +480,10 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}
+     * @param status          {@link org.im97mori.ble.task.BeginReliableWriteTask#STATUS_CANCEL}
+     *                        {@link org.im97mori.ble.task.BeginReliableWriteTask#STATUS_BEGIN_RELIABLE_WRITE_FAILED}
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.BeginReliableWriteTask
      */
     void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
 
@@ -446,6 +493,7 @@ public interface BLECallback {
      * @param taskId          task id
      * @param bluetoothDevice BLE device
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ExecuteReliableWriteTask
      */
     void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
 
@@ -454,8 +502,11 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BluetoothGattCallback#onReliableWriteCompleted} 2nd argument, {@link ErrorCodeAndroid#UNKNOWN}, {@link ErrorCodeAndroid#CANCEL}
+     * @param status          {@link BluetoothGattCallback#onReliableWriteCompleted(BluetoothGatt, int)} 2nd argument
+     *                        {@link org.im97mori.ble.task.ExecuteReliableWriteTask#STATUS_CANCEL}
+     *                        {@link org.im97mori.ble.task.ExecuteReliableWriteTask#STATUS_EXECUTE_RELIABLE_WRITE_FAILED}
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ExecuteReliableWriteTask
      */
     void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
 
@@ -466,15 +517,17 @@ public interface BLECallback {
      * @param bluetoothDevice BLE device
      * @param timeout         timeout(millis)
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.ExecuteReliableWriteTask
      */
     void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
     /**
-     * Execute reliable write success callback
+     * Abort reliable write success callback
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.AbortReliableWriteTask
      */
     void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
 
@@ -483,8 +536,10 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BluetoothGattCallback#onReliableWriteCompleted} 2nd argument, {@link ErrorCodeAndroid#CANCEL}
+     * @param status          {@link BluetoothGattCallback#onReliableWriteCompleted} 2nd argument
+     *                        {@link org.im97mori.ble.task.AbortReliableWriteTask#STATUS_CANCEL}
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.AbortReliableWriteTask
      */
     void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
 
@@ -495,6 +550,7 @@ public interface BLECallback {
      * @param bluetoothDevice BLE device
      * @param timeout         timeout(millis)
      * @param argument        callback argument
+     * @see org.im97mori.ble.task.AbortReliableWriteTask
      */
     void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
@@ -509,6 +565,7 @@ public interface BLECallback {
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd paramater
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.SetNotificationTask
      */
     void onSetNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument);
 
@@ -522,8 +579,10 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd paramater
-     * @param status                   {@link ErrorCodeAndroid#UNKNOWN} or {@link ErrorCodeAndroid#BUSY}
+     * @param status                   {@link org.im97mori.ble.task.SetNotificationTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.SetNotificationTask#STATUS_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
+     * @see org.im97mori.ble.task.SetNotificationTask
      */
     void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument);
 
