@@ -75,6 +75,7 @@ dependencies {
     api "${myGroupId}:${characteristicU2a4eAndroid.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2a4fAndroid.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2a50Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2a52Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2a53Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2a54Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2a55Android.artifactId}:${loadVersion}"

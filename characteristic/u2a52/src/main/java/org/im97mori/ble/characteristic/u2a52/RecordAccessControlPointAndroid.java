@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RECORD_ACCESS_CONTRO
 /**
  * Record Access Control Point (Characteristics UUID: 0x2A52)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class RecordAccessControlPointAndroid extends RecordAccessControlPoint implements Parcelable {
 
@@ -59,6 +58,17 @@ public class RecordAccessControlPointAndroid extends RecordAccessControlPoint im
      */
     public RecordAccessControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param opCode   Op Code
+     * @param operator Operator
+     * @param operand  Operand
+     */
+    public RecordAccessControlPointAndroid(int opCode, int operator, @NonNull byte[] operand) {
+        super(opCode, operator, operand);
     }
 
     /**
