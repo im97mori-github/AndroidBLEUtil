@@ -1,26 +1,23 @@
 package org.im97mori.ble.characteristic.u2b48;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.MIDDLE_NAME_CHARACTERISTIC;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 
 /**
  * Middle Name (Characteristics UUID: 0x2B48)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class MiddleNameAndroid extends MiddleName implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see MultiplePacketCreater
      */
-    public static final ByteArrayCreater<MiddleNameAndroid> CREATOR = new ByteArrayCreater<MiddleNameAndroid>() {
+    public static final MultiplePacketCreater<MiddleNameAndroid, RegisteredUser> CREATOR = new MultiplePacketCreater<MiddleNameAndroid, RegisteredUser>() {
 
         /**
          * {@inheritDoc}
@@ -44,21 +41,29 @@ public class MiddleNameAndroid extends MiddleName implements Parcelable {
          * {@inheritDoc}
          */
         @NonNull
-        public MiddleNameAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MIDDLE_NAME_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MiddleNameAndroid(bluetoothGattCharacteristic);
+        @Override
+        public MiddleNameAndroid createFromMultiplePacketArray(@NonNull RegisteredUser[] multiplePacketArray) {
+            return new MiddleNameAndroid(multiplePacketArray);
         }
 
     };
 
     /**
-     * Constructor from {@link BluetoothGattCharacteristic}
+     * Constructor from RegisteredUser array
      *
-     * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B48
+     * @param registeredUsers first to last Registered User Data array
      */
-    public MiddleNameAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        super(bluetoothGattCharacteristic.getValue());
+    public MiddleNameAndroid(@NonNull RegisteredUser... registeredUsers) {
+        super(registeredUsers);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param middleName Middle Name
+     */
+    public MiddleNameAndroid(@NonNull String middleName) {
+        super(middleName);
     }
 
     /**
@@ -68,7 +73,7 @@ public class MiddleNameAndroid extends MiddleName implements Parcelable {
      */
     private MiddleNameAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(new RegisteredUser(in.createByteArray()));
     }
 
     /**

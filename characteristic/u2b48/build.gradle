@@ -25,7 +25,7 @@ android {
 
 dependencies {
     api apiCoreConstantsCharacteristic
-    api apiCharacteristicCore
+    api apiCharacteristicCoreAndroid
     api apiCoreUtilsAndroid
     api target['baseModule']
     api androidxAnnotation

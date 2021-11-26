@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2b4d;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.HIGH_INTENSITY_EXERCISE_THRESHOLD_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +10,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HIGH_INTENSITY_EXERCISE_THRESHOLD_CHARACTERISTIC;
-
 /**
  * High Intensity Exercise Threshold (Characteristics UUID: 0x2B4D)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class HighIntensityExerciseThresholdAndroid extends HighIntensityExerciseThreshold implements Parcelable {
 
@@ -59,6 +58,23 @@ public class HighIntensityExerciseThresholdAndroid extends HighIntensityExercise
      */
     public HighIntensityExerciseThresholdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param fieldSelector                           Field Selector
+     * @param thresholdAsEnergyExpenditurePerHour     Threshold as Energy
+     *                                                Expenditure per Hour
+     * @param thresholdAsMetabolicEquivalent          Threshold as Metabolic
+     *                                                Equivalent
+     * @param thresholdAsPercentageOfMaximumHeartRate Threshold as Percentage of
+     *                                                Maximum Heart Rate
+     * @param thresholdAsHeartRate                    Threshold as Heart Rate
+     */
+    public HighIntensityExerciseThresholdAndroid(int fieldSelector, int thresholdAsEnergyExpenditurePerHour,
+                                                 int thresholdAsMetabolicEquivalent, int thresholdAsPercentageOfMaximumHeartRate, int thresholdAsHeartRate) {
+        super(fieldSelector, thresholdAsEnergyExpenditurePerHour, thresholdAsMetabolicEquivalent, thresholdAsPercentageOfMaximumHeartRate, thresholdAsHeartRate);
     }
 
     /**

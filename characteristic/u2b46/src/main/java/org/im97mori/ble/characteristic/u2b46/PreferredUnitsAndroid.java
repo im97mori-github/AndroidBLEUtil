@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2b46;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.PREFERRED_UNITS_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +10,11 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PREFERRED_UNITS_CHARACTERISTIC;
+import java.util.UUID;
 
 /**
  * Preferred Units (Characteristics UUID: 0x2B46)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class PreferredUnitsAndroid extends PreferredUnits implements Parcelable {
 
@@ -59,6 +60,24 @@ public class PreferredUnitsAndroid extends PreferredUnits implements Parcelable 
      */
     public PreferredUnitsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param units 128bit unit uuid
+     */
+    public PreferredUnitsAndroid(@NonNull UUID... units) {
+        super(units);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param units 16bit unit uuid
+     */
+    public PreferredUnitsAndroid(@NonNull int... units) {
+        super(units);
     }
 
     /**

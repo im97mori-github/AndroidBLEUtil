@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_WEARING_POSIT
 /**
  * Device Wearing Position (Characteristics UUID: 0x2B4B)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class DeviceWearingPositionAndroid extends DeviceWearingPosition implements Parcelable {
 
@@ -59,6 +58,15 @@ public class DeviceWearingPositionAndroid extends DeviceWearingPosition implemen
      */
     public DeviceWearingPositionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param deviceWearingPosition Device Wearing Position
+     */
+    public DeviceWearingPositionAndroid(int deviceWearingPosition) {
+        super(deviceWearingPosition);
     }
 
     /**

@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CALORIC_INTAKE_CHARA
 /**
  * Caloric Intake (Characteristics UUID: 0x2B50)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class CaloricIntakeAndroid extends CaloricIntake implements Parcelable {
 
@@ -59,6 +58,15 @@ public class CaloricIntakeAndroid extends CaloricIntake implements Parcelable {
      */
     public CaloricIntakeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param caloricIntake Caloric Intake
+     */
+    public CaloricIntakeAndroid(int caloricIntake) {
+        super(caloricIntake);
     }
 
     /**

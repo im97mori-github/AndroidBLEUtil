@@ -193,6 +193,16 @@ dependencies {
     api "${myGroupId}:${characteristicU2b36Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2b35Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2b37Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b47Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b48Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b49Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b4aAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b4bAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b4cAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b4dAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b4eAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b4fAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b50Android.artifactId}:${loadVersion}"
 }
 
 afterEvaluate {

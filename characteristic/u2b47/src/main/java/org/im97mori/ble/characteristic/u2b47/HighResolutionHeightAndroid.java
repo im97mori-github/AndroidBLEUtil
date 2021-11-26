@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HIGH_RESOLUTION_HEIG
 /**
  * High Resolution Height (Characteristics UUID: 0x2B47)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class HighResolutionHeightAndroid extends HighResolutionHeight implements Parcelable {
 
@@ -59,6 +58,15 @@ public class HighResolutionHeightAndroid extends HighResolutionHeight implements
      */
     public HighResolutionHeightAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param height Height
+     */
+    public HighResolutionHeightAndroid(int height) {
+        super(height);
     }
 
     /**

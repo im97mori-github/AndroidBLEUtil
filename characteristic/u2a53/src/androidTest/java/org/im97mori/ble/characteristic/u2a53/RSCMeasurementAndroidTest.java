@@ -3,6 +3,7 @@ package org.im97mori.ble.characteristic.u2a53;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import static org.im97mori.ble.BLEUtils.BASE_UUID;
@@ -12,7 +13,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings({"unused"})
-public class RSCMeasurementAndroidTest {
+public class RSCMeasurementAndroidTest extends TestBase {
 
     //@formatter:off
     private static final byte[] data_00001;
@@ -94,32 +95,6 @@ public class RSCMeasurementAndroidTest {
     }
     //@formatter:on
 
-    private byte[] getData() {
-        int index = -1;
-        byte[] data = null;
-
-        StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
-        for (int i = 0; i < stackTraceElementArray.length; i++) {
-            StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if ("getData".equals(stackTraceElement.getMethodName())) {
-                index = i + 1;
-                break;
-            }
-        }
-        if (index >= 0 && index < stackTraceElementArray.length) {
-            StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
-            try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return data;
-    }
-
     @Test
     public void test_constructor_00001() {
         byte[] data = getData();
@@ -132,6 +107,8 @@ public class RSCMeasurementAndroidTest {
         assertTrue(result1.isFlagsInstantaneousStrideLengthNotPresent());
         assertFalse(result1.isFlagsInstantaneousStrideLengthPresent());
         assertEquals(0x0201, result1.getInstantaneousSpeed());
+        assertEquals(0x0201 * RSCMeasurement.INSTANTANEOUS_SPEED_RESOLUTION,
+                result1.getInstantaneousSpeedMeterPerSecond(), 0);
         assertEquals(0x03, result1.getInstantaneousCadence());
     }
 
@@ -147,8 +124,12 @@ public class RSCMeasurementAndroidTest {
         assertFalse(result1.isFlagsInstantaneousStrideLengthNotPresent());
         assertTrue(result1.isFlagsInstantaneousStrideLengthPresent());
         assertEquals(0x0201, result1.getInstantaneousSpeed());
+        assertEquals(0x0201 * RSCMeasurement.INSTANTANEOUS_SPEED_RESOLUTION,
+                result1.getInstantaneousSpeedMeterPerSecond(), 0);
         assertEquals(0x03, result1.getInstantaneousCadence());
         assertEquals(0x0504, result1.getInstantaneousStrideLength());
+        assertEquals(0x0504 * RSCMeasurement.INSTANTANEOUS_STRIDE_RESOLUTION,
+                result1.getInstantaneousStrideLengthMeter(), 0);
     }
 
     @Test
@@ -163,6 +144,8 @@ public class RSCMeasurementAndroidTest {
         assertTrue(result1.isFlagsTotalDistanceNotPresent());
         assertFalse(result1.isFlagsTotalDistancePresent());
         assertEquals(0x0201, result1.getInstantaneousSpeed());
+        assertEquals(0x0201 * RSCMeasurement.INSTANTANEOUS_SPEED_RESOLUTION,
+                result1.getInstantaneousSpeedMeterPerSecond(), 0);
         assertEquals(0x03, result1.getInstantaneousCadence());
     }
 
@@ -178,8 +161,11 @@ public class RSCMeasurementAndroidTest {
         assertFalse(result1.isFlagsTotalDistanceNotPresent());
         assertTrue(result1.isFlagsTotalDistancePresent());
         assertEquals(0x0201, result1.getInstantaneousSpeed());
+        assertEquals(0x0201 * RSCMeasurement.INSTANTANEOUS_SPEED_RESOLUTION,
+                result1.getInstantaneousSpeedMeterPerSecond(), 0);
         assertEquals(0x03, result1.getInstantaneousCadence());
         assertEquals(0x07060504L, result1.getTotalDistance());
+        assertEquals(0x07060504L * RSCMeasurement.TOTAL_DISTANCE_RESOLUTION, result1.getTotalDistanceMeter(), 0);
     }
 
     @Test

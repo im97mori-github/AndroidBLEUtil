@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HANDEDNESS_CHARACTER
 /**
  * Handedness (Characteristics UUID: 0x2B4A)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class HandednessAndroid extends Handedness implements Parcelable {
 
@@ -59,6 +58,15 @@ public class HandednessAndroid extends Handedness implements Parcelable {
      */
     public HandednessAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param handedness Handedness
+     */
+    public HandednessAndroid(int handedness) {
+        super(handedness);
     }
 
     /**

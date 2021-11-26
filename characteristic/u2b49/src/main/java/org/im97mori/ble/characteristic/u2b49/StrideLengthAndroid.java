@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.STRIDE_LENGTH_CHARAC
 /**
  * Stride Length (Characteristics UUID: 0x2B49)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class StrideLengthAndroid extends StrideLength implements Parcelable {
 
@@ -59,6 +58,15 @@ public class StrideLengthAndroid extends StrideLength implements Parcelable {
      */
     public StrideLengthAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param strideLength Stride Length
+     */
+    public StrideLengthAndroid(int strideLength) {
+        super(strideLength);
     }
 
     /**

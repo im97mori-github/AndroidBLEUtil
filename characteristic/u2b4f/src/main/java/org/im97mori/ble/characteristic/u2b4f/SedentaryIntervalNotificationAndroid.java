@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SEDENTARY_INTERVAL_N
 /**
  * Sedentary Interval Notification (Characteristics UUID: 0x2B4F)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class SedentaryIntervalNotificationAndroid extends SedentaryIntervalNotification implements Parcelable {
 
@@ -59,6 +58,15 @@ public class SedentaryIntervalNotificationAndroid extends SedentaryIntervalNotif
      */
     public SedentaryIntervalNotificationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param sedentaryIntervalNotification Sedentary Interval Notification
+     */
+    public SedentaryIntervalNotificationAndroid(int sedentaryIntervalNotification) {
+        super(sedentaryIntervalNotification);
     }
 
     /**

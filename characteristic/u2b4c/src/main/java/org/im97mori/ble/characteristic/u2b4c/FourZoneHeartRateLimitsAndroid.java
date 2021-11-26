@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2b4c;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.FOUR_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +10,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.FOUR_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
-
 /**
  * Four Zone Heart Rate Limits (Characteristics UUID: 0x2B4C)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class FourZoneHeartRateLimitsAndroid extends FourZoneHeartRateLimits implements Parcelable {
 
@@ -59,6 +58,22 @@ public class FourZoneHeartRateLimitsAndroid extends FourZoneHeartRateLimits impl
      */
     public FourZoneHeartRateLimitsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param fourZoneHeartRateLimitsLightModerateLimit Five Zone Heart Rate Limits
+     *                                                  - Very light / Light Limit
+     * @param fourZoneHeartRateLimitsModerateHardLimit  Five Zone Heart Rate Limits
+     *                                                  - Light / Moderate Limit
+     * @param fourZoneHeartRateLimitsHardMaximumLimit   Five Zone Heart Rate Limits
+     *                                                  - Moderate / Hard Limit
+     */
+    public FourZoneHeartRateLimitsAndroid(int fourZoneHeartRateLimitsLightModerateLimit,
+                                          int fourZoneHeartRateLimitsModerateHardLimit
+            , int fourZoneHeartRateLimitsHardMaximumLimit) {
+        super(fourZoneHeartRateLimitsLightModerateLimit, fourZoneHeartRateLimitsModerateHardLimit, fourZoneHeartRateLimitsHardMaximumLimit);
     }
 
     /**
