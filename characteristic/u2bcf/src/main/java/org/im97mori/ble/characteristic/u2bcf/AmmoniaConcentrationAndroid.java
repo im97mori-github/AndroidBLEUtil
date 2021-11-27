@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AMMONIA_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Ammonia Concentration (Characteristics UUID: 0x2BCF)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class AmmoniaConcentrationAndroid extends AmmoniaConcentration implements Parcelable {
 
@@ -59,6 +59,15 @@ public class AmmoniaConcentrationAndroid extends AmmoniaConcentration implements
      */
     public AmmoniaConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param ammoniaConcentration Ammonia Concentration
+     */
+    public AmmoniaConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT ammoniaConcentration) {
+        super(ammoniaConcentration);
     }
 
     /**

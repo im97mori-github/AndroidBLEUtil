@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.OZONE_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Ozone Concentration (Characteristics UUID: 0x2BD4)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class OzoneConcentrationAndroid extends OzoneConcentration implements Parcelable {
 
@@ -59,6 +59,15 @@ public class OzoneConcentrationAndroid extends OzoneConcentration implements Par
      */
     public OzoneConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param ozoneConcentration Ozone Concentration
+     */
+    public OzoneConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT ozoneConcentration) {
+        super(ozoneConcentration);
     }
 
     /**

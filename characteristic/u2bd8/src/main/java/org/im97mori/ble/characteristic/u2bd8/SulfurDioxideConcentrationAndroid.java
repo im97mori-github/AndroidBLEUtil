@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Sulfur Dioxide Concentration (Characteristics UUID: 0x2BD8)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class SulfurDioxideConcentrationAndroid extends SulfurDioxideConcentration implements Parcelable {
 
@@ -59,6 +59,15 @@ public class SulfurDioxideConcentrationAndroid extends SulfurDioxideConcentratio
      */
     public SulfurDioxideConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param sulfurDioxideConcentration Sulfur Dioxide Concentration
+     */
+    public SulfurDioxideConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT sulfurDioxideConcentration) {
+        super(sulfurDioxideConcentration);
     }
 
     /**

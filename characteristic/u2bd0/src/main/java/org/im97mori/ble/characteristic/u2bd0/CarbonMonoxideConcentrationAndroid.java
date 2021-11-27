@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2bd0;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,13 +9,11 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 /**
  * Carbon Monoxide Concentration (Characteristics UUID: 0x2BD0)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class CarbonMonoxideConcentrationAndroid extends CarbonMonoxideConcentration implements Parcelable {
 
@@ -59,6 +59,15 @@ public class CarbonMonoxideConcentrationAndroid extends CarbonMonoxideConcentrat
      */
     public CarbonMonoxideConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param carbonMonoxideConcentration Carbon Monoxide Concentration
+     */
+    public CarbonMonoxideConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT carbonMonoxideConcentration) {
+        super(carbonMonoxideConcentration);
     }
 
     /**

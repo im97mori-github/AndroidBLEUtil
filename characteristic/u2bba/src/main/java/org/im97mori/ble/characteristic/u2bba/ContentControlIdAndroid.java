@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CONTENT_CONTROL_ID_C
 /**
  * Content Control ID (Characteristics UUID: 0x2BBA)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ContentControlIdAndroid extends ContentControlId implements Parcelable {
 
@@ -59,6 +58,15 @@ public class ContentControlIdAndroid extends ContentControlId implements Parcela
      */
     public ContentControlIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param contentControlId Content Control ID
+     */
+    public ContentControlIdAndroid(int contentControlId) {
+        super(contentControlId);
     }
 
     /**

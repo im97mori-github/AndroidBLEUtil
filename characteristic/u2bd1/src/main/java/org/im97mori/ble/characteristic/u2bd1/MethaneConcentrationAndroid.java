@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.METHANE_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Methane Concentration (Characteristics UUID: 0x2BD1)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class MethaneConcentrationAndroid extends MethaneConcentration implements Parcelable {
 
@@ -59,6 +59,15 @@ public class MethaneConcentrationAndroid extends MethaneConcentration implements
      */
     public MethaneConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param methaneConcentration Methane Concentration
+     */
+    public MethaneConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT methaneConcentration) {
+        super(methaneConcentration);
     }
 
     /**

@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Sulfur Hexafluoride Concentration (Characteristics UUID: 0x2BD9)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class SulfurHexafluorideConcentrationAndroid extends SulfurHexafluorideConcentration implements Parcelable {
 
@@ -59,6 +59,15 @@ public class SulfurHexafluorideConcentrationAndroid extends SulfurHexafluorideCo
      */
     public SulfurHexafluorideConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param sulfurHexafluorideConcentration Sulfur Hexafluoride Concentration
+     */
+    public SulfurHexafluorideConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT sulfurHexafluorideConcentration) {
+        super(sulfurHexafluorideConcentration);
     }
 
     /**

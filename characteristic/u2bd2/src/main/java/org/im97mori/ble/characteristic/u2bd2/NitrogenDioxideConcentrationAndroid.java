@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Nitrogen Dioxide Concentration (Characteristics UUID: 0x2BD2)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class NitrogenDioxideConcentrationAndroid extends NitrogenDioxideConcentration implements Parcelable {
 
@@ -59,6 +59,15 @@ public class NitrogenDioxideConcentrationAndroid extends NitrogenDioxideConcentr
      */
     public NitrogenDioxideConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param nitrogenDioxideConcentration Nitrogen Dioxide Concentration
+     */
+    public NitrogenDioxideConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT nitrogenDioxideConcentration) {
+        super(nitrogenDioxideConcentration);
     }
 
     /**

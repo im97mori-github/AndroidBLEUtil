@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Particulate Matter - PM1 Concentration (Characteristics UUID: 0x2BD5)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ParticulateMatterPm1ConcentrationAndroid extends ParticulateMatterPm1Concentration implements Parcelable {
 
@@ -59,6 +59,16 @@ public class ParticulateMatterPm1ConcentrationAndroid extends ParticulateMatterP
      */
     public ParticulateMatterPm1ConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param particulateMatterPm1Concentration Particulate Matter - PM1
+     *                                          Concentration
+     */
+    public ParticulateMatterPm1ConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT particulateMatterPm1Concentration) {
+        super(particulateMatterPm1Concentration);
     }
 
     /**

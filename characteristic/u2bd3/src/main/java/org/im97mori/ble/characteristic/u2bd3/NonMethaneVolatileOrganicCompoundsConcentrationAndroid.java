@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Non-Methane Volatile Organic Compounds Concentration (Characteristics UUID: 0x2BD3)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class NonMethaneVolatileOrganicCompoundsConcentrationAndroid extends NonMethaneVolatileOrganicCompoundsConcentration implements Parcelable {
 
@@ -59,6 +59,15 @@ public class NonMethaneVolatileOrganicCompoundsConcentrationAndroid extends NonM
      */
     public NonMethaneVolatileOrganicCompoundsConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param nonMethaneVolatileOrganicCompoundsConcentration Non-Methane Volatile Organic Compounds Concentration
+     */
+    public NonMethaneVolatileOrganicCompoundsConcentrationAndroid(@NonNull IEEE_11073_20601_SFLOAT nonMethaneVolatileOrganicCompoundsConcentration) {
+        super(nonMethaneVolatileOrganicCompoundsConcentration);
     }
 
     /**
