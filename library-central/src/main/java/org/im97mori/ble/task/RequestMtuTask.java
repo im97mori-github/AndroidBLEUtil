@@ -66,6 +66,12 @@ public class RequestMtuTask extends AbstractBLETask {
     public static final String PROGRESS_FINISHED = "PROGRESS_FINISHED";
 
     /**
+     * Default(Minimum) MTU size
+     */
+    @SuppressWarnings("unused")
+    public static final int DEFAULT_MTU = 23;
+
+    /**
      * Maximum MTU size
      * <p>
      * Core Specification v5.3 Vol 3 Part F 3.2.9

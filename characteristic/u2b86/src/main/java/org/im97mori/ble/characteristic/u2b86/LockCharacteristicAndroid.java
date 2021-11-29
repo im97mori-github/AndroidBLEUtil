@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LOCK_CHARACTERISTIC;
 /**
  * Lock Characteristic (Characteristics UUID: 0x2B86)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class LockCharacteristicAndroid extends LockCharacteristic implements Parcelable {
 
@@ -59,6 +58,15 @@ public class LockCharacteristicAndroid extends LockCharacteristic implements Par
      */
     public LockCharacteristicAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param setMemberLock Set Member Lock
+     */
+    public LockCharacteristicAndroid(int setMemberLock) {
+        super(setMemberLock);
     }
 
     /**

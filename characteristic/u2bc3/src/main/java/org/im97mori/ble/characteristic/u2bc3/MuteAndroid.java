@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MUTE_CHARACTERISTIC;
 /**
  * Mute (Characteristics UUID: 0x2BC3)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class MuteAndroid extends Mute implements Parcelable {
 
@@ -59,6 +58,15 @@ public class MuteAndroid extends Mute implements Parcelable {
      */
     public MuteAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param mute Appearance Value
+     */
+    public MuteAndroid(int mute) {
+        super(mute);
     }
 
     /**

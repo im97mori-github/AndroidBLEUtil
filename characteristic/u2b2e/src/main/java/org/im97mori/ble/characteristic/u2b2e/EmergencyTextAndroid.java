@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.EMERGENCY_TEXT_CHARA
 /**
  * Emergency Text (Characteristics UUID: 0x2B2E)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class EmergencyTextAndroid extends EmergencyText implements Parcelable {
 
@@ -59,6 +58,15 @@ public class EmergencyTextAndroid extends EmergencyText implements Parcelable {
      */
     public EmergencyTextAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param emergencyText Sulfur Emergency Text
+     */
+    public EmergencyTextAndroid(@NonNull String emergencyText) {
+        super(emergencyText);
     }
 
     /**

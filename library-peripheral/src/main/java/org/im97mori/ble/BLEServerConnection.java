@@ -47,6 +47,12 @@ import java.util.UUID;
 public class BLEServerConnection extends BluetoothGattServerCallback implements BLEServerCallbackDistributer.SubscriberInterface {
 
     /**
+     * Default(Minimum) MTU size
+     */
+    @SuppressWarnings("unused")
+    public static final int DEFAULT_MTU = 23;
+
+    /**
      * SERVICE_UUID for Advertising
      *
      * @see org.im97mori.ble.constants.DataType#COMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE

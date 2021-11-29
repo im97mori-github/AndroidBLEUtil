@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SET_IDENTITY_RESOLVI
 /**
  * Set Identity Resolving Key Characteristic (Characteristics UUID: 0x2B84)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class SetIdentityResolvingKeyCharacteristicAndroid extends SetIdentityResolvingKeyCharacteristic implements Parcelable {
 
@@ -59,6 +58,16 @@ public class SetIdentityResolvingKeyCharacteristicAndroid extends SetIdentityRes
      */
     public SetIdentityResolvingKeyCharacteristicAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param type  Type
+     * @param value Value
+     */
+    public SetIdentityResolvingKeyCharacteristicAndroid(int type, @NonNull byte[] value) {
+        super(type, value);
     }
 
     /**

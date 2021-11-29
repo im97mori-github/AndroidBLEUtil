@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SIZE_CHARACTERISTIC;
 /**
  * Size Characteristic (Characteristics UUID: 0x2B85)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class SizeCharacteristicAndroid extends SizeCharacteristic implements Parcelable {
 
@@ -59,6 +58,15 @@ public class SizeCharacteristicAndroid extends SizeCharacteristic implements Par
      */
     public SizeCharacteristicAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param coordinatedSetSize Coordinated Set Size
+     */
+    public SizeCharacteristicAndroid(int coordinatedSetSize) {
+        super(coordinatedSetSize);
     }
 
     /**

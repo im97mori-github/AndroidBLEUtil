@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.EMERGENCY_ID_CHARACT
 /**
  * Emergency ID (Characteristics UUID: 0x2B2D)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class EmergencyIdAndroid extends EmergencyId implements Parcelable {
 

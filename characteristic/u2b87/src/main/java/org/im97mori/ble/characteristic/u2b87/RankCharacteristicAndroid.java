@@ -13,7 +13,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RANK_CHARACTERISTIC;
 /**
  * Rank Characteristic (Characteristics UUID: 0x2B87)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class RankCharacteristicAndroid extends RankCharacteristic implements Parcelable {
 
@@ -59,6 +58,15 @@ public class RankCharacteristicAndroid extends RankCharacteristic implements Par
      */
     public RankCharacteristicAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param setMemberRank Set Member Rank
+     */
+    public RankCharacteristicAndroid(int setMemberRank) {
+        super(setMemberRank);
     }
 
     /**
