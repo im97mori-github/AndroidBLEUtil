@@ -505,6 +505,11 @@ public class TipCallbackSample extends TimeProfileMockCallback implements TimePr
     }
 
     @Override
+    public void onMtuChanged(BluetoothDevice device, int mtu) {
+        callback(device, mtu);
+    }
+
+    @Override
     public void onAdvertisingStartFailed(Integer errorCode) {
         callback(errorCode);
     }

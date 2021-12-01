@@ -69,6 +69,30 @@ public class EmergencyTextAndroidTest extends TestBase {
     }
 
     @Test
+    public void test_constructor_00101() {
+        String emergencyText = "0";
+
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(emergencyText);
+        assertEquals(emergencyText, result1.getEmergencyText());
+    }
+
+    @Test
+    public void test_constructor_00102() {
+        String emergencyText = "01234567890123456789";
+
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(emergencyText);
+        assertEquals(emergencyText, result1.getEmergencyText());
+    }
+
+    @Test
+    public void test_constructor_00103() {
+        String emergencyText = "012345678901234567890";
+
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(emergencyText);
+        assertEquals("01234567890123456789", result1.getEmergencyText());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
@@ -143,7 +167,7 @@ public class EmergencyTextAndroidTest extends TestBase {
         bluetoothGattCharacteristic.setValue(data);
 
         EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
-        assertArrayEquals(Arrays.copyOfRange(data, 0, 20), result1.getBytes());
+        assertArrayEquals(Arrays.copyOfRange(data, 0, EmergencyTextAndroid.MAX_OCTETS), result1.getBytes());
     }
 
     @Test

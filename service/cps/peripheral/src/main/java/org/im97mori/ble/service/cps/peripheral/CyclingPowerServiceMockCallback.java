@@ -793,7 +793,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                     , originalCyclingPowerMeasurement.getAccumulatedEnergy());
 
                             if (device == null) {
-                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                     notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                     if (!mActivatedNotificationMap.containsKey(notificationData)) {
                                         Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
@@ -814,7 +814,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                 }
                             } else {
                                 notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                                if (mConnectedDeviceSet.contains(device)) {
+                                if (mConnectedDeviceMap.containsKey(device)) {
                                     Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                     if (currentTaskId == null || currentTaskId.equals(taskId)) {
                                         Integer newTaskId = bleServerConnection.createNotificationTask(device
@@ -838,7 +838,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                             }
                         } else {
                             if (device == null) {
-                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                     notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                     if (!mActivatedNotificationMap.containsKey(notificationData)) {
                                         Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
@@ -859,7 +859,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                 }
                             } else {
                                 notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                                if (mConnectedDeviceSet.contains(device)) {
+                                if (mConnectedDeviceMap.containsKey(device)) {
                                     Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                     if (currentTaskId == null || currentTaskId.equals(taskId)) {
                                         Integer newTaskId = bleServerConnection.createNotificationTask(device

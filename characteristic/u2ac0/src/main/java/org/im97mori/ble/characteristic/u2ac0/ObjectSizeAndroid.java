@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2ac0;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_SIZE_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +10,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_SIZE_CHARACTERISTIC;
-
 /**
  * object size (Characteristics UUID: 0x2AC0)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectSizeAndroid extends ObjectSize implements Parcelable {
 
@@ -59,6 +58,16 @@ public class ObjectSizeAndroid extends ObjectSize implements Parcelable {
      */
     public ObjectSizeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param currentSize   Current Size
+     * @param allocatedSize Allocated Size
+     */
+    public ObjectSizeAndroid(long currentSize, long allocatedSize) {
+        super(currentSize, allocatedSize);
     }
 
     /**

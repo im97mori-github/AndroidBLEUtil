@@ -645,6 +645,20 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
 
     /**
      * {@inheritDoc}
+     */
+    @Override
+    public void onMtuChanged(BluetoothDevice device, int mtu) {
+        for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackList()) {
+            try {
+                bleServerCallback.onMtuChanged(device, mtu);
+            } catch (Exception e) {
+                BLEPeripheralLogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
      *
      * @param errorCode
      */

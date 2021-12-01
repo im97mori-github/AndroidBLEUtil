@@ -495,6 +495,11 @@ public class CscpCallbackSample extends CyclingSpeedAndCadenceProfileMockCallbac
     }
 
     @Override
+    public void onMtuChanged(BluetoothDevice device, int mtu) {
+        callback(device, mtu);
+    }
+
+    @Override
     public void onAdvertisingStartFailed(Integer errorCode) {
         callback(errorCode);
     }

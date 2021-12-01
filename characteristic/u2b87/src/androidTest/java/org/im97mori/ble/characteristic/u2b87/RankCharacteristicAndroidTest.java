@@ -3,16 +3,11 @@ package org.im97mori.ble.characteristic.u2b87;
 import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
-import java.util.Arrays;
-
 import org.im97mori.ble.BLEUtils;
-import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 

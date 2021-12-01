@@ -2630,7 +2630,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                         for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorEntry : descriptorDataMap.entrySet()) {
                             DescriptorData descriptorData = descriptorEntry.getValue();
                             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorData.uuid) && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
-                                for (BluetoothDevice connectedDevice : mConnectedDeviceSet) {
+                                for (BluetoothDevice connectedDevice : mConnectedDeviceMap.keySet()) {
                                     if (!device.equals(connectedDevice)) {
                                         startNotification(null
                                                 , bleServerConnection
@@ -2851,7 +2851,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                                 , offset
                                                                 , new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_LIST_ALL_USERS, UserControlPoint.RESPONSE_VALUE_SUCCESS, mUserMap.size()).getBytes()
                                                                 , now + LIST_ALL_USERS_INDICATION_TIMEOUT
-                                                                , mUserMap.size() * mConnectedDeviceSet.size());
+                                                                , mUserMap.size() * mConnectedDeviceMap.size());
 
                                                         StringBuilder registerdUserName = new StringBuilder();
                                                         for (int userIndex : mUserMap.keySet()) {
@@ -2893,7 +2893,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                             }
                                                             Bundle bundle = new Bundle();
                                                             bundle.putInt(KEY_REQUEST_ID, requestId);
-                                                            for (BluetoothDevice connectedDevice : mConnectedDeviceSet) {
+                                                            for (BluetoothDevice connectedDevice : mConnectedDeviceMap.keySet()) {
                                                                 startNotification(null
                                                                         , bleServerConnection
                                                                         , connectedDevice
@@ -2932,7 +2932,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                         responseCode = BluetoothGatt.GATT_SUCCESS;
                                     }
 
-                                    for (BluetoothDevice connectedDevice : mConnectedDeviceSet) {
+                                    for (BluetoothDevice connectedDevice : mConnectedDeviceMap.keySet()) {
                                         startNotification(null
                                                 , bleServerConnection
                                                 , connectedDevice

@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2ac5;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_ACTION_CONTROL_POINT_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +10,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_ACTION_CONTROL_POINT_CHARACTERISTIC;
-
 /**
  * object actioncontrol point (Characteristics UUID: 0x2AC5)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectActionControlPointAndroid extends ObjectActionControlPoint implements Parcelable {
 
@@ -59,6 +58,27 @@ public class ObjectActionControlPointAndroid extends ObjectActionControlPoint im
      */
     public ObjectActionControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param opCode            Op Code
+     * @param size              Size
+     * @param type              Type
+     * @param offset            Offset
+     * @param length            Length
+     * @param parameter         Parameter
+     * @param mode              Mode
+     * @param requestOpCode     Request Op Code
+     * @param resultCode        Result Code
+     * @param checksum          Checksum
+     * @param responseParameter Response Parameter
+     */
+    public ObjectActionControlPointAndroid(int opCode, long size, @NonNull byte[] type, long offset, long length,
+                                           @NonNull byte[] parameter, int mode, int requestOpCode, int resultCode, int checksum,
+                                           @NonNull byte[] responseParameter) {
+        super(opCode, size, type, offset, length, parameter, mode, requestOpCode, resultCode, checksum, responseParameter);
     }
 
     /**

@@ -707,6 +707,11 @@ public class HrpCallbackSample extends HeartRateProfileMockCallback implements H
     }
 
     @Override
+    public void onMtuChanged(BluetoothDevice device, int mtu) {
+        callback(device, mtu);
+    }
+
+    @Override
     public void onAdvertisingStartFailed(Integer errorCode) {
         callback(errorCode);
     }

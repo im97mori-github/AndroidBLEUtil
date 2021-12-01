@@ -115,6 +115,11 @@ public class BaseBLEServerCallback implements BLEServerCallback {
     }
 
     @Override
+    public void onMtuChanged(BluetoothDevice device, int mtu) {
+
+    }
+
+    @Override
     public void onAdvertisingStartFailed(Integer errorCode) {
 
     }

@@ -761,7 +761,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                             }
                             for (NewAlert newAlert : newAlertList) {
                                 if (device == null) {
-                                    for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                    for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                         bleServerConnection.createNotificationTask(bluetoothDevice
                                                 , serviceUUID
                                                 , serviceInstanceId
@@ -775,7 +775,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                                                 , this);
                                     }
                                 } else {
-                                    if (mConnectedDeviceSet.contains(device)) {
+                                    if (mConnectedDeviceMap.containsKey(device)) {
                                         bleServerConnection.createNotificationTask(device
                                                 , serviceUUID
                                                 , serviceInstanceId
@@ -853,7 +853,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                             }
                             for (UnreadAlertStatus unreadAlertStatus : unreadAlertStatusList) {
                                 if (device == null) {
-                                    for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                    for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                         bleServerConnection.createNotificationTask(bluetoothDevice
                                                 , serviceUUID
                                                 , serviceInstanceId
@@ -867,7 +867,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                                                 , this);
                                     }
                                 } else {
-                                    if (mConnectedDeviceSet.contains(device)) {
+                                    if (mConnectedDeviceMap.containsKey(device)) {
                                         bleServerConnection.createNotificationTask(device
                                                 , serviceUUID
                                                 , serviceInstanceId

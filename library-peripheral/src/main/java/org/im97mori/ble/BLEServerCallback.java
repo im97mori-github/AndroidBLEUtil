@@ -220,6 +220,15 @@ public interface BLEServerCallback {
     void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings);
 
     /**
+     * MTU changed callback
+     *
+     * @param device The remote device that requested the MTU change
+     * @param mtu    The new MTU size
+     * @see BluetoothGattServerCallback#onMtuChanged(BluetoothDevice, int)
+     */
+    void onMtuChanged(BluetoothDevice device, int mtu);
+
+    /**
      * Advertising start error callback
      *
      * @param errorCode {@link AdvertiseCallback#onStartFailure(int)} 1st parameter, or null({@link BluetoothLeAdvertiser} not available)

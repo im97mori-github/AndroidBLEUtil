@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2ac8;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_CHANGED_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +10,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_CHANGED_CHARACTERISTIC;
-
 /**
  * object changed (Characteristics UUID: 0x2AC8)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectChangedAndroid extends ObjectChanged implements Parcelable {
 
@@ -59,6 +58,16 @@ public class ObjectChangedAndroid extends ObjectChanged implements Parcelable {
      */
     public ObjectChangedAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param flags    Flags
+     * @param objectId Object ID
+     */
+    public ObjectChangedAndroid(int flags, long objectId) {
+        super(flags, objectId);
     }
 
     /**

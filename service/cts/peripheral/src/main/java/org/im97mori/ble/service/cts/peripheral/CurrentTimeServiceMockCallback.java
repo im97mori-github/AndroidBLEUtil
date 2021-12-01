@@ -379,7 +379,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
                                     for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorDataEntry : remappedCharacteristicDescriptorMapEntry.getValue().entrySet()) {
                                         if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
                                             if (Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorDataEntry.getValue().getBytes())) {
-                                                for (BluetoothDevice targetDevice : mConnectedDeviceSet) {
+                                                for (BluetoothDevice targetDevice : mConnectedDeviceMap.keySet()) {
                                                     if (!device.equals(targetDevice)) {
                                                         startNotification(null
                                                                 , bleServerConnection

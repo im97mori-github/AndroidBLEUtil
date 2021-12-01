@@ -1998,7 +1998,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                         if (descriptorMap != null) {
                             for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorEntry : descriptorMap.entrySet()) {
                                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorEntry.getKey().first)) {
-                                    for (BluetoothDevice connectedBluetoothDevice : mConnectedDeviceSet) {
+                                    for (BluetoothDevice connectedBluetoothDevice : mConnectedDeviceMap.keySet()) {
                                         if (!connectedBluetoothDevice.equals(mCurrentControlDevice)) {
                                             startNotification(null
                                                     , bleServerConnection

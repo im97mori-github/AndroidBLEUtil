@@ -134,7 +134,7 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
 
                             NotificationData notificationData;
                             if (device == null) {
-                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                     if (mUserDataServiceMockCallback.hasNoConsent(bluetoothDevice, userId)) {
                                         continue;
                                     }
@@ -161,7 +161,7 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
                                     return;
                                 }
                                 notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                                if (mConnectedDeviceSet.contains(device)) {
+                                if (mConnectedDeviceMap.containsKey(device)) {
                                     Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                     if (currentTaskId == null || currentTaskId.equals(taskId)) {
                                         Integer newTaskId = bleServerConnection.createNotificationTask(device

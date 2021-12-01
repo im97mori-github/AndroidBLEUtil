@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2ac6;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_LIST_CONTROL_POINT_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +10,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_LIST_CONTROL_POINT_CHARACTERISTIC;
-
 /**
  * object list control point (Characteristics UUID: 0x2AC6)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectListControlPointAndroid extends ObjectListControlPoint implements Parcelable {
 
@@ -59,6 +58,21 @@ public class ObjectListControlPointAndroid extends ObjectListControlPoint implem
      */
     public ObjectListControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param opCode               Op Code
+     * @param objectId             Object ID
+     * @param listSortOrder        List Sort Order
+     * @param requestOpCode        Request Op Code
+     * @param resultCode           Result Code
+     * @param totalNumberOfObjects Total Number of Objects
+     */
+    public ObjectListControlPointAndroid(int opCode, long objectId, int listSortOrder, int requestOpCode, int resultCode,
+                                         int totalNumberOfObjects) {
+        super(opCode, objectId, listSortOrder, requestOpCode, resultCode, totalNumberOfObjects);
     }
 
     /**

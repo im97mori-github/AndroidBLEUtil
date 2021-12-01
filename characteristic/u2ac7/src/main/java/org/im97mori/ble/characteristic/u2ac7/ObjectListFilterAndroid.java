@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2ac7;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_LIST_FILTER_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +10,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_LIST_FILTER_CHARACTERISTIC;
-
 /**
  * object list filter (Characteristics UUID: 0x2AC7)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectListFilterAndroid extends ObjectListFilter implements Parcelable {
 
@@ -59,6 +58,33 @@ public class ObjectListFilterAndroid extends ObjectListFilter implements Parcela
      */
     public ObjectListFilterAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param filter     Filter
+     * @param name       Name
+     * @param objectType Object Type
+     * @param year1      timestamp1 Year
+     * @param month1     timestamp1 Month
+     * @param day1       timestamp1 Day
+     * @param hours1     timestamp1 Hours
+     * @param minutes1   timestamp1 Minutes
+     * @param seconds1   timestamp1 Seconds
+     * @param year2      timestamp2 Year
+     * @param month2     timestamp2 Month
+     * @param day2       timestamp2 Day
+     * @param hours2     timestamp2 Hours
+     * @param minutes2   timestamp2 Minutes
+     * @param seconds2   timestamp2 Seconds
+     * @param size1      size1
+     * @param size2      size2
+     */
+    public ObjectListFilterAndroid(int filter, @NonNull String name, @NonNull byte[] objectType, int year1, int month1,
+                                   int day1, int hours1, int minutes1, int seconds1, int year2, int month2, int day2, int hours2, int minutes2,
+                                   int seconds2, long size1, long size2) {
+        super(filter, name, objectType, year1, month1, day1, hours1, minutes1, seconds1, year2, month2, day2, hours2, minutes2, seconds2, size1, size2);
     }
 
     /**

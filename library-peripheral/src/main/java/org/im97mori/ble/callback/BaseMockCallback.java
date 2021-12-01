@@ -105,7 +105,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * connected central devices
      */
-    protected final Set<BluetoothDevice> mConnectedDeviceSet = new HashSet<>();
+    protected final Map<BluetoothDevice, Integer> mConnectedDeviceMap = new HashMap<>();
 
     /**
      * activated notification or indication map
@@ -203,7 +203,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         mRemappedServiceCharacteristicMap.clear();
         mRemappedCharacteristicDescriptorMap.clear();
         mAvailableServiceMap.clear();
-        mConnectedDeviceSet.clear();
+        mConnectedDeviceMap.clear();
         mActivatedNotificationMap.clear();
     }
 
@@ -212,7 +212,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      */
     @Override
     public synchronized void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
-        mConnectedDeviceSet.add(device);
+        mConnectedDeviceMap.put(device, BLEServerConnection.DEFAULT_MTU);
     }
 
     /**
@@ -220,7 +220,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      */
     @Override
     public synchronized void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
-        mConnectedDeviceSet.remove(device);
+        mConnectedDeviceMap.remove(device);
     }
 
     /**
@@ -583,7 +583,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                     if (isConfirm != null) {
                         NotificationData notificationData;
                         if (device == null) {
-                            for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                            for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                 notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                 if (!mActivatedNotificationMap.containsKey(notificationData)) {
                                     Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
@@ -604,7 +604,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             }
                         } else {
                             notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                            if (mConnectedDeviceSet.contains(device)) {
+                            if (mConnectedDeviceMap.containsKey(device)) {
                                 Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                 if (currentTaskId == null || currentTaskId.equals(taskId)) {
                                     Integer newTaskId = bleServerConnection.createNotificationTask(device
@@ -774,6 +774,14 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             result = bluetoothGattServer.sendResponse(device, requestId, status, 0, null);
         }
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public synchronized void onMtuChanged(BluetoothDevice device, int mtu) {
+        mConnectedDeviceMap.put(device, mtu);
     }
 
     /**
