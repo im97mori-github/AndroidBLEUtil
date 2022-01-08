@@ -2611,22 +2611,22 @@ public class BloodPressureServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        int bpmflags = 1;
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7, 8, 9}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11, 12, 13}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{14, 15, 16, 17}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{18, 19, 20, 21}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{22, 23, 24, 25}, 0);
-        int bpmyear = 26;
-        int bpmmonth = 27;
-        int bpmday = 28;
-        int bpmhours = 29;
-        int bpmminutes = 30;
-        int bpmseconds = 31;
-        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{32, 33, 34, 35}, 0);
-        int bpmuserId = 36;
-        byte[] bpmmeasurementStatus = new byte[]{37};
+        int bpmflags = 4;
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{5, 6}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{9, 10}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{11, 12}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{13, 14}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{15, 16}, 0);
+        int bpmyear = 17;
+        int bpmmonth = 18;
+        int bpmday = 19;
+        int bpmhours = 20;
+        int bpmminutes = 21;
+        int bpmseconds = 22;
+        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{23, 24}, 0);
+        int bpmuserId = 25;
+        byte[] bpmmeasurementStatus = new byte[]{26};
         final byte[] originalValues = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus).getBytes();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
@@ -2657,22 +2657,22 @@ public class BloodPressureServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        int bpmflags = 1;
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7, 8, 9}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11, 12, 13}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{14, 15, 16, 17}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{18, 19, 20, 21}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{22, 23, 24, 25}, 0);
-        int bpmyear = 26;
-        int bpmmonth = 27;
-        int bpmday = 28;
-        int bpmhours = 29;
-        int bpmminutes = 30;
-        int bpmseconds = 31;
-        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{32, 33, 34, 35}, 0);
-        int bpmuserId = 36;
-        byte[] bpmmeasurementStatus = new byte[]{37};
+        int bpmflags = 4;
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{5, 6}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{9, 10}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{11, 12}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{13, 14}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{15, 16}, 0);
+        int bpmyear = 17;
+        int bpmmonth = 18;
+        int bpmday = 19;
+        int bpmhours = 20;
+        int bpmminutes = 21;
+        int bpmseconds = 22;
+        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{23, 24}, 0);
+        int bpmuserId = 25;
+        byte[] bpmmeasurementStatus = new byte[]{26};
         final byte[] originalValues = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus).getBytes();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
@@ -2698,22 +2698,22 @@ public class BloodPressureServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        int bpmflags = 1;
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7, 8, 9}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11, 12, 13}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{14, 15, 16, 17}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{18, 19, 20, 21}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{22, 23, 24, 25}, 0);
-        int bpmyear = 26;
-        int bpmmonth = 27;
-        int bpmday = 28;
-        int bpmhours = 29;
-        int bpmminutes = 30;
-        int bpmseconds = 31;
-        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{32, 33, 34, 35}, 0);
-        int bpmuserId = 36;
-        byte[] bpmmeasurementStatus = new byte[]{37};
+        int bpmflags = 4;
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{5, 6}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{9, 10}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{11, 12}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{13, 14}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{15, 16}, 0);
+        int bpmyear = 17;
+        int bpmmonth = 18;
+        int bpmday = 19;
+        int bpmhours = 20;
+        int bpmminutes = 21;
+        int bpmseconds = 22;
+        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{23, 24}, 0);
+        int bpmuserId = 25;
+        byte[] bpmmeasurementStatus = new byte[]{26};
         final byte[] originalValues = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus).getBytes();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
@@ -2739,22 +2739,22 @@ public class BloodPressureServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        int bpmflags = 1;
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7, 8, 9}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11, 12, 13}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{14, 15, 16, 17}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{18, 19, 20, 21}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{22, 23, 24, 25}, 0);
-        int bpmyear = 26;
-        int bpmmonth = 27;
-        int bpmday = 28;
-        int bpmhours = 29;
-        int bpmminutes = 30;
-        int bpmseconds = 31;
-        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{32, 33, 34, 35}, 0);
-        int bpmuserId = 36;
-        byte[] bpmmeasurementStatus = new byte[]{37};
+        int bpmflags = 4;
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{5, 6}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{9, 10}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{11, 12}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{13, 14}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{15, 16}, 0);
+        int bpmyear = 17;
+        int bpmmonth = 18;
+        int bpmday = 19;
+        int bpmhours = 20;
+        int bpmminutes = 21;
+        int bpmseconds = 22;
+        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{23, 24}, 0);
+        int bpmuserId = 25;
+        byte[] bpmmeasurementStatus = new byte[]{26};
         final byte[] originalValues = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus).getBytes();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
@@ -2780,23 +2780,26 @@ public class BloodPressureServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        int icpflags = 38;
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{39, 40, 41, 42}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{43, 44, 45, 46}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{47, 48, 49, 50}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{51, 52, 53, 54}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{55, 56, 57, 58}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{59, 60, 61, 62}, 0);
-        int icpyear = 63;
-        int icpmonth = 64;
-        int icpday = 65;
-        int icphours = 66;
-        int icpminutes = 67;
-        int icpseconds = 68;
-        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{69, 70, 71, 72}, 0);
-        int icpuserId = 73;
-        byte[] icpmeasurementStatus = new byte[]{74};
-        final byte[] originalValues = new IntermediateCuffPressure(icpflags, icpbloodPressureMeasurementCompoundValueSystolicMmhg, icpbloodPressureMeasurementCompoundValueDiastolicMmhg, icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, icpbloodPressureMeasurementCompoundValueSystolicKpa, icpbloodPressureMeasurementCompoundValueDiastolicKpa, icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
+        int icpflags = 4;
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{5, 6}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueDiastolicUnused = new IEEE_11073_20601_SFLOAT(new byte[]{9, 10}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueMeanArterialPressureUnused = new IEEE_11073_20601_SFLOAT(new byte[]{11, 12}, 0);
+        int icpyear = 13;
+        int icpmonth = 14;
+        int icpday = 15;
+        int icphours = 16;
+        int icpminutes = 17;
+        int icpseconds = 18;
+        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{19, 20}, 0);
+        int icpuserId = 21;
+        byte[] icpmeasurementStatus = new byte[]{22};
+        final byte[] originalValues = new IntermediateCuffPressure(icpflags
+                , intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg
+                , intermediateCuffPressureCompoundValueCurrentCuffPressureKpa
+                , intermediateCuffPressureCompoundValueDiastolicUnused
+                , intermediateCuffPressureCompoundValueMeanArterialPressureUnused
+                , icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2826,23 +2829,26 @@ public class BloodPressureServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        int icpflags = 38;
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{39, 40, 41, 42}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{43, 44, 45, 46}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{47, 48, 49, 50}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{51, 52, 53, 54}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{55, 56, 57, 58}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{59, 60, 61, 62}, 0);
-        int icpyear = 63;
-        int icpmonth = 64;
-        int icpday = 65;
-        int icphours = 66;
-        int icpminutes = 67;
-        int icpseconds = 68;
-        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{69, 70, 71, 72}, 0);
-        int icpuserId = 73;
-        byte[] icpmeasurementStatus = new byte[]{74};
-        final byte[] originalValues = new IntermediateCuffPressure(icpflags, icpbloodPressureMeasurementCompoundValueSystolicMmhg, icpbloodPressureMeasurementCompoundValueDiastolicMmhg, icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, icpbloodPressureMeasurementCompoundValueSystolicKpa, icpbloodPressureMeasurementCompoundValueDiastolicKpa, icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
+        int icpflags = 4;
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{5, 6}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueDiastolicUnused = new IEEE_11073_20601_SFLOAT(new byte[]{9, 10}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueMeanArterialPressureUnused = new IEEE_11073_20601_SFLOAT(new byte[]{11, 12}, 0);
+        int icpyear = 13;
+        int icpmonth = 14;
+        int icpday = 15;
+        int icphours = 16;
+        int icpminutes = 17;
+        int icpseconds = 18;
+        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{19, 20}, 0);
+        int icpuserId = 21;
+        byte[] icpmeasurementStatus = new byte[]{22};
+        final byte[] originalValues = new IntermediateCuffPressure(icpflags
+                , intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg
+                , intermediateCuffPressureCompoundValueCurrentCuffPressureKpa
+                , intermediateCuffPressureCompoundValueDiastolicUnused
+                , intermediateCuffPressureCompoundValueMeanArterialPressureUnused
+                , icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2867,23 +2873,26 @@ public class BloodPressureServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        int icpflags = 38;
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{39, 40, 41, 42}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{43, 44, 45, 46}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{47, 48, 49, 50}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{51, 52, 53, 54}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{55, 56, 57, 58}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{59, 60, 61, 62}, 0);
-        int icpyear = 63;
-        int icpmonth = 64;
-        int icpday = 65;
-        int icphours = 66;
-        int icpminutes = 67;
-        int icpseconds = 68;
-        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{69, 70, 71, 72}, 0);
-        int icpuserId = 73;
-        byte[] icpmeasurementStatus = new byte[]{74};
-        final byte[] originalValues = new IntermediateCuffPressure(icpflags, icpbloodPressureMeasurementCompoundValueSystolicMmhg, icpbloodPressureMeasurementCompoundValueDiastolicMmhg, icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, icpbloodPressureMeasurementCompoundValueSystolicKpa, icpbloodPressureMeasurementCompoundValueDiastolicKpa, icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
+        int icpflags = 4;
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{5, 6}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueDiastolicUnused = new IEEE_11073_20601_SFLOAT(new byte[]{9, 10}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueMeanArterialPressureUnused = new IEEE_11073_20601_SFLOAT(new byte[]{11, 12}, 0);
+        int icpyear = 13;
+        int icpmonth = 14;
+        int icpday = 15;
+        int icphours = 16;
+        int icpminutes = 17;
+        int icpseconds = 18;
+        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{19, 20}, 0);
+        int icpuserId = 21;
+        byte[] icpmeasurementStatus = new byte[]{22};
+        final byte[] originalValues = new IntermediateCuffPressure(icpflags
+                , intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg
+                , intermediateCuffPressureCompoundValueCurrentCuffPressureKpa
+                , intermediateCuffPressureCompoundValueDiastolicUnused
+                , intermediateCuffPressureCompoundValueMeanArterialPressureUnused
+                , icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override
@@ -2908,23 +2917,26 @@ public class BloodPressureServiceTest extends AbstractCentralTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        int icpflags = 38;
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{39, 40, 41, 42}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{43, 44, 45, 46}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{47, 48, 49, 50}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{51, 52, 53, 54}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{55, 56, 57, 58}, 0);
-        IEEE_11073_20601_SFLOAT icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{59, 60, 61, 62}, 0);
-        int icpyear = 63;
-        int icpmonth = 64;
-        int icpday = 65;
-        int icphours = 66;
-        int icpminutes = 67;
-        int icpseconds = 68;
-        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{69, 70, 71, 72}, 0);
-        int icpuserId = 73;
-        byte[] icpmeasurementStatus = new byte[]{74};
-        final byte[] originalValues = new IntermediateCuffPressure(icpflags, icpbloodPressureMeasurementCompoundValueSystolicMmhg, icpbloodPressureMeasurementCompoundValueDiastolicMmhg, icpbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, icpbloodPressureMeasurementCompoundValueSystolicKpa, icpbloodPressureMeasurementCompoundValueDiastolicKpa, icpbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
+        int icpflags = 4;
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{5, 6}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueDiastolicUnused = new IEEE_11073_20601_SFLOAT(new byte[]{9, 10}, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueMeanArterialPressureUnused = new IEEE_11073_20601_SFLOAT(new byte[]{11, 12}, 0);
+        int icpyear = 13;
+        int icpmonth = 14;
+        int icpday = 15;
+        int icphours = 16;
+        int icpminutes = 17;
+        int icpseconds = 18;
+        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{19, 20}, 0);
+        int icpuserId = 21;
+        byte[] icpmeasurementStatus = new byte[]{22};
+        final byte[] originalValues = new IntermediateCuffPressure(icpflags
+                , intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg
+                , intermediateCuffPressureCompoundValueCurrentCuffPressureKpa
+                , intermediateCuffPressureCompoundValueDiastolicUnused
+                , intermediateCuffPressureCompoundValueMeanArterialPressureUnused
+                , icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus).getBytes();
         MockBloodPressureServiceCallback mockBloodPressureServiceCallback = new MockBloodPressureServiceCallback() {
 
             @Override

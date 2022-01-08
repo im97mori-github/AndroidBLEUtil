@@ -6,13 +6,16 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a31.ScanRefresh;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindow;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.scps.peripheral.ScanParametersServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 /**
  * Scan Parameters Profile for Peripheral
@@ -119,10 +122,16 @@ public class ScanParametersProfileMockCallback extends AbstractProfileMockCallba
     /**
      * @param context                           {@link Context} instance
      * @param scanParametersServiceMockCallback {@link org.im97mori.ble.service.scps.peripheral.ScanParametersServiceMockCallback} instance
+     * @param bleServerCallbacks                callback array
      */
     public ScanParametersProfileMockCallback(@NonNull Context context
-            , @NonNull ScanParametersServiceMockCallback scanParametersServiceMockCallback) {
-        super(context, true, scanParametersServiceMockCallback);
+            , @NonNull ScanParametersServiceMockCallback scanParametersServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(scanParametersServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

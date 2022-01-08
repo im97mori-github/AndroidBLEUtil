@@ -61,13 +61,16 @@ public class BlpCallbackSample extends BloodPressureProfileMockCallback implemen
         private final SampleCallback mSampleCallback;
 
         public Builder(@NonNull Context context, SampleCallback sampleCallback) {
-            super(context, new DisCallbackSample.Builder(sampleCallback), new BlsCallbackSample.Builder(sampleCallback));
+            super(context, new BlsCallbackSample.Builder(sampleCallback), new DisCallbackSample.Builder(sampleCallback));
             mSampleCallback = sampleCallback;
         }
 
         @Override
         public BlpCallbackSample build() {
-            return new BlpCallbackSample(mContext, mDeviceInformationServiceMockCallbackBuilder.build(), mBloodPressureServiceMockCallbackBuilder.build(), mSampleCallback);
+            return new BlpCallbackSample(mContext
+                    , mBloodPressureServiceMockCallbackBuilder.build()
+                    , mDeviceInformationServiceMockCallbackBuilder.build()
+                    , mSampleCallback);
         }
     }
 
@@ -79,8 +82,11 @@ public class BlpCallbackSample extends BloodPressureProfileMockCallback implemen
         this(context, null, null, sampleCallback);
     }
 
-    public BlpCallbackSample(Context context, DeviceInformationServiceMockCallback deviceInformationServiceMockCallback, BloodPressureServiceMockCallback bloodPressureServiceMockCallback, SampleCallback sampleCallback) {
-        super(context, deviceInformationServiceMockCallback, bloodPressureServiceMockCallback);
+    public BlpCallbackSample(Context context
+            , BloodPressureServiceMockCallback bloodPressureServiceMockCallback
+            , DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
+            , SampleCallback sampleCallback) {
+        super(context, bloodPressureServiceMockCallback, deviceInformationServiceMockCallback);
         mSampleCallback = sampleCallback;
     }
 
@@ -770,12 +776,10 @@ public class BlpCallbackSample extends BloodPressureProfileMockCallback implemen
     @Override
     public void onIntermediateCuffPressureNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull IntermediateCuffPressureAndroid intermediateCuffPressureAndroid) {
         callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat()
+                , intermediateCuffPressureAndroid.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat()
+                , intermediateCuffPressureAndroid.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat()
+                , intermediateCuffPressureAndroid.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat()
+                , intermediateCuffPressureAndroid.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat()
                 , intermediateCuffPressureAndroid.getYear()
                 , intermediateCuffPressureAndroid.getMonth()
                 , intermediateCuffPressureAndroid.getDay()

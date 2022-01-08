@@ -6105,7 +6105,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6137,7 +6137,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6169,7 +6169,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6201,7 +6201,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6233,7 +6233,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6265,7 +6265,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6297,7 +6297,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6329,7 +6329,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6361,7 +6361,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6393,7 +6393,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6425,7 +6425,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6457,7 +6457,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6489,7 +6489,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6521,7 +6521,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6553,7 +6553,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6585,7 +6585,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6617,7 +6617,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6649,7 +6649,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6681,7 +6681,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6713,7 +6713,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6745,7 +6745,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6777,7 +6777,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6809,7 +6809,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6841,7 +6841,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6873,7 +6873,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6905,7 +6905,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6937,7 +6937,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -6969,7 +6969,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7001,7 +7001,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7033,7 +7033,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7065,7 +7065,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7097,7 +7097,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7129,7 +7129,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7161,7 +7161,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7193,7 +7193,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7225,7 +7225,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7257,7 +7257,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7289,7 +7289,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7321,7 +7321,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7353,7 +7353,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7385,7 +7385,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7417,7 +7417,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7449,7 +7449,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7481,7 +7481,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7513,7 +7513,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7545,7 +7545,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7577,7 +7577,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7609,7 +7609,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7641,7 +7641,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7673,7 +7673,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7705,7 +7705,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7737,7 +7737,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7769,7 +7769,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7801,7 +7801,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7833,7 +7833,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7865,7 +7865,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7897,7 +7897,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7929,7 +7929,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7961,7 +7961,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -7993,7 +7993,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -8025,7 +8025,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());
@@ -8057,7 +8057,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 
         assertEquals(result2.getFilter(), result1.getFilter());
         assertEquals(result2.getName(), result1.getName());
-        assertEquals(result2.getObjectType(), result1.getObjectType());
+        assertArrayEquals(result2.getObjectType(), result1.getObjectType());
         assertEquals(result2.getYear1(), result1.getYear1());
         assertEquals(result2.getMonth1(), result1.getMonth1());
         assertEquals(result2.getDay1(), result1.getDay1());

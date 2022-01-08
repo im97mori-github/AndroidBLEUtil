@@ -12,17 +12,29 @@
     </group>
     <group android:id="@+id/connected">
         <item
+            android:id="@+id/has_device_information_service"
+            android:title="@string/menu_has_device_information_service" />
+        <item
             android:id="@+id/read_manufacturer_name"
             android:title="@string/menu_read_manufacturer_name" />
         <item
             android:id="@+id/read_model_number"
             android:title="@string/menu_read_model_number" />
         <item
+            android:id="@+id/has_system_id"
+            android:title="@string/menu_has_system_id" />
+        <item
+            android:id="@+id/read_system_id"
+            android:title="@string/menu_read_system_id" />
+        <item
             android:id="@+id/start_indicate_blood_pressure_mesurement"
             android:title="@string/menu_indicate_blood_pressure_start" />
         <item
             android:id="@+id/stop_indicate_blood_pressure_mesurement"
             android:title="@string/menu_indicate_blood_pressure_stop" />
+        <item
+            android:id="@+id/has_intermediate_cuff_pressure"
+            android:title="@string/menu_has_intermediate_cuff_pressure" />
         <item
             android:id="@+id/start_notificate_intermediate_cuff_pressure"
             android:title="@string/menu_notify_intermediate_cuff_pressure_start" />

@@ -6,6 +6,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2aa5.BondManagementFeatures;
 import org.im97mori.ble.characteristic.u2b1d.RCFeature;
 import org.im97mori.ble.characteristic.u2b1e.RCSettings;
@@ -14,7 +15,9 @@ import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.bms.peripheral.BondManagementServiceMockCallback;
 import org.im97mori.ble.service.rcs.peripheral.ReconnectionConfigurationServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
 
@@ -312,11 +315,17 @@ public class ReconnectionConfigurationProfileMockCallback extends AbstractProfil
      * @param context                                      {@link Context} instance
      * @param reconnectionConfigurationServiceMockCallback {@link ReconnectionConfigurationServiceMockCallback} instance
      * @param bondManagementServiceMockCallback            {@link BondManagementServiceMockCallback} instance
+     * @param bleServerCallbacks                           callback array
      */
     public ReconnectionConfigurationProfileMockCallback(@NonNull Context context
             , @NonNull ReconnectionConfigurationServiceMockCallback reconnectionConfigurationServiceMockCallback
-            , @Nullable BondManagementServiceMockCallback bondManagementServiceMockCallback) {
-        super(context, true, reconnectionConfigurationServiceMockCallback, bondManagementServiceMockCallback);
+            , @Nullable BondManagementServiceMockCallback bondManagementServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(reconnectionConfigurationServiceMockCallback, bondManagementServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

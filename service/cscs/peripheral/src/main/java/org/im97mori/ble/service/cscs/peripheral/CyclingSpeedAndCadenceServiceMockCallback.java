@@ -328,6 +328,14 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
     }
 
     /**
+     * @param serviceData   {@link ServiceData} instance
+     * @param isFallback fallback flag
+     */
+    public CyclingSpeedAndCadenceServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(new MockData(Collections.singletonList(serviceData)), isFallback);
+    }
+
+    /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
      */

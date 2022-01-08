@@ -6,6 +6,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameString;
 import org.im97mori.ble.characteristic.u2a5b.CSCMeasurement;
@@ -16,7 +17,9 @@ import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.cscs.peripheral.CyclingSpeedAndCadenceServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.CYCLING_SPEED_AND_CADENCE_SERVICE;
 
@@ -313,11 +316,17 @@ public class CyclingSpeedAndCadenceProfileMockCallback extends AbstractProfileMo
      * @param context                                   {@link Context} instance
      * @param cyclingSpeedAndCadenceServiceMockCallback {@link org.im97mori.ble.service.cscs.peripheral.CyclingSpeedAndCadenceServiceMockCallback} instance
      * @param deviceInformationServiceMockCallback      {@link org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback} instance
+     * @param bleServerCallbacks                        callback array
      */
     public CyclingSpeedAndCadenceProfileMockCallback(@NonNull Context context
             , @NonNull CyclingSpeedAndCadenceServiceMockCallback cyclingSpeedAndCadenceServiceMockCallback
-            , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback) {
-        super(context, true, cyclingSpeedAndCadenceServiceMockCallback, deviceInformationServiceMockCallback);
+            , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(cyclingSpeedAndCadenceServiceMockCallback, deviceInformationServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

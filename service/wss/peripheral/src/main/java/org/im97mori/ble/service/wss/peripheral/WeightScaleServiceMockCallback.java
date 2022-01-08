@@ -197,6 +197,14 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
     }
 
     /**
+     * @param serviceData   {@link ServiceData} instance
+     * @param isFallback fallback flag
+     */
+    public WeightScaleServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(new MockData(Collections.singletonList(serviceData)), isFallback);
+    }
+
+    /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
      */

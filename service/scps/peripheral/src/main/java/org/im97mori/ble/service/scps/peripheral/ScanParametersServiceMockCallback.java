@@ -183,6 +183,14 @@ public class ScanParametersServiceMockCallback extends AbstractServiceMockCallba
     }
 
     /**
+     * @param serviceData   {@link ServiceData} instance
+     * @param isFallback fallback flag
+     */
+    public ScanParametersServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(new MockData(Collections.singletonList(serviceData)), isFallback);
+    }
+
+    /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
      */

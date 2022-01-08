@@ -3,6 +3,7 @@ package org.im97mori.ble.characteristic.u2a36;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.characteristic.core.BloodPressureMeasurementUtils;
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
@@ -48,9 +49,9 @@ public class IntermediateCuffPressureAndroidTest {
                 | BloodPressureMeasurementUtils.FLAG_MEASUREMENT_STATUS_NOT_PRESENT, result1.getFlags());
         assertTrue(BloodPressureMeasurementUtils.isFlagsBloodPressureUnitsMmhg(result1.getFlags()));
         assertFalse(BloodPressureMeasurementUtils.isFlagsBloodPressureUnitsKpa(result1.getFlags()));
-        assertEquals(1, result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(2, result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(3, result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
+        assertEquals(1, result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(2, result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(3, result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
     }
 
     @Test
@@ -81,9 +82,9 @@ public class IntermediateCuffPressureAndroidTest {
                 | BloodPressureMeasurementUtils.FLAG_MEASUREMENT_STATUS_NOT_PRESENT, result1.getFlags());
         assertFalse(BloodPressureMeasurementUtils.isFlagsBloodPressureUnitsMmhg(result1.getFlags()));
         assertTrue(BloodPressureMeasurementUtils.isFlagsBloodPressureUnitsKpa(result1.getFlags()));
-        assertEquals(1, result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(2, result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(3, result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(1, result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+        assertEquals(2, result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(3, result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
     }
 
     @Test
@@ -1258,9 +1259,9 @@ public class IntermediateCuffPressureAndroidTest {
                 | BloodPressureMeasurementUtils.FLAG_MEASUREMENT_STATUS_PRESENT, result1.getFlags());
         assertTrue(BloodPressureMeasurementUtils.isFlagsBloodPressureUnitsMmhg(result1.getFlags()));
         assertFalse(BloodPressureMeasurementUtils.isFlagsBloodPressureUnitsKpa(result1.getFlags()));
-        assertEquals(1, result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(2, result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(3, result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
+        assertEquals(1, result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(2, result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(3, result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
         assertEquals(0x0004, result1.getYear());
         assertEquals(0x05, result1.getMonth());
         assertEquals(0x06, result1.getDay());
@@ -1318,9 +1319,9 @@ public class IntermediateCuffPressureAndroidTest {
                 | BloodPressureMeasurementUtils.FLAG_MEASUREMENT_STATUS_PRESENT, result1.getFlags());
         assertFalse(BloodPressureMeasurementUtils.isFlagsBloodPressureUnitsMmhg(result1.getFlags()));
         assertTrue(BloodPressureMeasurementUtils.isFlagsBloodPressureUnitsKpa(result1.getFlags()));
-        assertEquals(1, result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(2, result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(3, result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(1, result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+        assertEquals(2, result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(3, result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
         assertEquals(0x0004, result1.getYear());
         assertEquals(0x05, result1.getMonth());
         assertEquals(0x06, result1.getDay());
@@ -1335,30 +1336,39 @@ public class IntermediateCuffPressureAndroidTest {
     @Test
     public void test_constructor503() {
         int flags = 1;
-        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
-        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7, 8, 9}, 0);
-        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11, 12, 13}, 0);
-        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{14, 15, 16, 17}, 0);
-        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{18, 19, 20, 21}, 0);
-        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{22, 23, 24, 25}, 0);
-        int year = 26;
-        int month = 27;
-        int day = 28;
-        int hours = 29;
-        int minutes = 30;
-        int seconds = 31;
-        IEEE_11073_20601_SFLOAT pulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{32, 33, 34, 35}, 0);
-        int userId = 36;
-        byte[] measurementStatus = new byte[]{37};
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg = new IEEE_11073_20601_SFLOAT(
+                new byte[] { 2, 3 }, 0);
+        IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureKpa = new IEEE_11073_20601_SFLOAT(
+                new byte[] { 4, 5 }, 0);
+        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicUnused = new IEEE_11073_20601_SFLOAT(
+                new byte[] { (byte) BLEUtils.SFLOAT_NAN, (byte) (BLEUtils.SFLOAT_NAN >> 8) }, 0);
+        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureUnused = new IEEE_11073_20601_SFLOAT(
+                new byte[] { (byte) BLEUtils.SFLOAT_NAN, (byte) (BLEUtils.SFLOAT_NAN >> 8) }, 0);
+        int year = 6;
+        int month = 7;
+        int day = 8;
+        int hours = 9;
+        int minutes = 10;
+        int seconds = 11;
+        IEEE_11073_20601_SFLOAT pulseRate = new IEEE_11073_20601_SFLOAT(new byte[] { 12, 13 }, 0);
+        int userId = 14;
+        byte[] measurementStatus = new byte[] { 15 };
 
-        IntermediateCuffPressureAndroid result1 = new IntermediateCuffPressureAndroid(flags, bloodPressureMeasurementCompoundValueSystolicMmhg, bloodPressureMeasurementCompoundValueDiastolicMmhg, bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bloodPressureMeasurementCompoundValueSystolicKpa, bloodPressureMeasurementCompoundValueDiastolicKpa, bloodPressureMeasurementCompoundValueMeanArterialPressureKpa, year, month, day, hours, minutes, seconds, pulseRate, userId, measurementStatus);
+        IntermediateCuffPressureAndroid result1 = new IntermediateCuffPressureAndroid(flags,
+                intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg,
+                intermediateCuffPressureCompoundValueCurrentCuffPressureKpa,
+                bloodPressureMeasurementCompoundValueDiastolicUnused,
+                bloodPressureMeasurementCompoundValueMeanArterialPressureUnused, year, month, day, hours, minutes,
+                seconds, pulseRate, userId, measurementStatus);
         assertEquals(flags, result1.getFlags());
-        assertEquals(bloodPressureMeasurementCompoundValueSystolicMmhg, result1.getBloodPressureMeasurementCompoundValueSystolicMmhg());
-        assertEquals(bloodPressureMeasurementCompoundValueDiastolicMmhg, result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg());
-        assertEquals(bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg());
-        assertEquals(bloodPressureMeasurementCompoundValueSystolicKpa, result1.getBloodPressureMeasurementCompoundValueSystolicKpa());
-        assertEquals(bloodPressureMeasurementCompoundValueDiastolicKpa, result1.getBloodPressureMeasurementCompoundValueDiastolicKpa());
-        assertEquals(bloodPressureMeasurementCompoundValueMeanArterialPressureKpa, result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa());
+        assertEquals(intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg,
+                result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg());
+        assertEquals(intermediateCuffPressureCompoundValueCurrentCuffPressureKpa,
+                result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa());
+        assertEquals(bloodPressureMeasurementCompoundValueDiastolicUnused,
+                result1.getIntermediateCuffPressureCompoundValueDiastolicUnused());
+        assertEquals(bloodPressureMeasurementCompoundValueMeanArterialPressureUnused,
+                result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused());
         assertEquals(year, result1.getYear());
         assertEquals(month, result1.getMonth());
         assertEquals(day, result1.getDay());
@@ -1396,12 +1406,10 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1439,12 +1447,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1482,12 +1489,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1532,12 +1538,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1582,12 +1587,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1632,12 +1636,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1682,12 +1685,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1732,12 +1734,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1782,12 +1783,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1832,12 +1832,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1882,12 +1881,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1932,12 +1930,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -1982,12 +1979,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2032,12 +2028,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2082,12 +2077,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2132,12 +2126,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2175,12 +2168,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2220,12 +2212,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2263,12 +2254,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2307,12 +2297,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2351,12 +2340,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2394,12 +2382,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2445,12 +2432,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2496,12 +2482,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2547,12 +2532,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2598,12 +2582,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2649,12 +2632,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2700,12 +2682,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2751,12 +2732,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2812,12 +2792,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());
@@ -2873,12 +2852,11 @@ public class IntermediateCuffPressureAndroidTest {
         parcel.setDataPosition(0);
         IntermediateCuffPressureAndroid result2 = IntermediateCuffPressureAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getFlags(), result2.getFlags());
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat(), 0);
-        assertEquals(result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), result2.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), result2.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat(), 0);
+        assertEquals(result1.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), result2.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat(), 0);
+
         assertEquals(result1.getYear(), result2.getYear());
         assertEquals(result1.getMonth(), result2.getMonth());
         assertEquals(result1.getDay(), result2.getDay());

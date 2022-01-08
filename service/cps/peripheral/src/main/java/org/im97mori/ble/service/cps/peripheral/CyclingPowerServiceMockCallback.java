@@ -502,6 +502,14 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
     private final Map<Integer, Boolean> mMaskMap = new HashMap<>();
 
     /**
+     * @param serviceData   {@link ServiceData} instance
+     * @param isFallback fallback flag
+     */
+    public CyclingPowerServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(new MockData(Collections.singletonList(serviceData)), isFallback);
+    }
+
+    /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
      */

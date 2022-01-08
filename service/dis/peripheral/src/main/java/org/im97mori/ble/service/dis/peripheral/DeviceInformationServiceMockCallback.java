@@ -637,6 +637,14 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
     }
 
     /**
+     * @param serviceData   {@link ServiceData} instance
+     * @param isFallback fallback flag
+     */
+    public DeviceInformationServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(new MockData(Collections.singletonList(serviceData)), isFallback);
+    }
+
+    /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
      */

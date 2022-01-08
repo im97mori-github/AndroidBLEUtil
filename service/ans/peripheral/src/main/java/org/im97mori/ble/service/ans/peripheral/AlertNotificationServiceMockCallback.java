@@ -442,6 +442,14 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
     private final Map<Integer, Boolean> mUnreadAlertEnableMap = new HashMap<>();
 
     /**
+     * @param serviceData   {@link ServiceData} instance
+     * @param isFallback fallback flag
+     */
+    public AlertNotificationServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(new MockData(Collections.singletonList(serviceData)), isFallback);
+    }
+
+    /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
      */

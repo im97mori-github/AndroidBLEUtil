@@ -175,6 +175,7 @@
     <string name="menu_indicate_weight_mesurement_stop">Indicate Weight Measurement stop</string>
     <string name="menu_read_weight_scale_feature">Read Weight Scale Feature</string>
     <string name="menu_has_system_id">Has System ID</string>
+    <string name="menu_has_intermediate_cuff_pressure">Has Intermediate Cuff Pressure</string>
     <string name="menu_read_current_time">Read Current Time</string>
     <string name="menu_is_current_time_writable">Is Current Time Writable</string>
     <string name="menu_write_current_time">Write Current Time</string>

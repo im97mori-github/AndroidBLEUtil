@@ -1,10 +1,15 @@
 package org.im97mori.ble.profile.blp.peripheral;
 
+import static org.im97mori.ble.constants.ServiceUUID.BLOOD_PRESSURE_SERVICE;
+
 import android.bluetooth.BluetoothGatt;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
+import org.im97mori.ble.characteristic.u2a23.SystemId;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameString;
 import org.im97mori.ble.characteristic.u2a35.BloodPressureMeasurement;
@@ -15,9 +20,9 @@ import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.bls.peripheral.BloodPressureServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.ServiceUUID.BLOOD_PRESSURE_SERVICE;
+import java.util.stream.Stream;
 
 /**
  * Blood Pressure Profile for Peripheral
@@ -58,15 +63,15 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
 
         /**
          * @param context                                     {@link Context} instance
-         * @param deviceInformationServiceMockCallbackBuilder {@link org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder} instance
          * @param bloodPressureServiceMockCallbackBuilder     {@link org.im97mori.ble.service.bls.peripheral.BloodPressureServiceMockCallback.Builder} instance
+         * @param deviceInformationServiceMockCallbackBuilder {@link org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder} instance
          */
         public Builder(@NonNull Context context
-                , @NonNull DeviceInformationServiceMockCallback.Builder<? extends DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder
-                , @NonNull BloodPressureServiceMockCallback.Builder<? extends BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder) {
+                , @NonNull BloodPressureServiceMockCallback.Builder<? extends BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder
+                , @Nullable DeviceInformationServiceMockCallback.Builder<? extends DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder) {
             mContext = context;
-            mDeviceInformationServiceMockCallbackBuilder = deviceInformationServiceMockCallbackBuilder;
             mBloodPressureServiceMockCallbackBuilder = bloodPressureServiceMockCallbackBuilder;
+            mDeviceInformationServiceMockCallbackBuilder = deviceInformationServiceMockCallbackBuilder;
         }
 
         /**
@@ -100,8 +105,10 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
-            mHasManufacturerNameString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mHasManufacturerNameString = true;
+                mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
+            }
             return this;
         }
 
@@ -110,8 +117,10 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> removeManufacturerNameString() {
-            mHasManufacturerNameString = false;
-            mDeviceInformationServiceMockCallbackBuilder.removeManufacturerNameString();
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mHasManufacturerNameString = false;
+                mDeviceInformationServiceMockCallbackBuilder.removeManufacturerNameString();
+            }
             return this;
         }
 
@@ -146,8 +155,10 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
-            mHasModelNumberString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responseCode, delay, value);
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mHasModelNumberString = true;
+                mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responseCode, delay, value);
+            }
             return this;
         }
 
@@ -156,8 +167,58 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> removeModelNumberString() {
-            mHasModelNumberString = false;
-            mDeviceInformationServiceMockCallbackBuilder.removeModelNumberString();
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mHasModelNumberString = false;
+                mDeviceInformationServiceMockCallbackBuilder.removeModelNumberString();
+            }
+            return this;
+        }
+
+        /**
+         * @see #addSystemId(SystemId)
+         */
+        @NonNull
+        public Builder<T> addSystemId(long manufacturerIdentifier, int organizationallyUniqueIdentifier) {
+            return addSystemId(new SystemId(manufacturerIdentifier, organizationallyUniqueIdentifier));
+        }
+
+        /**
+         * @see #addSystemId(byte[])
+         */
+        @NonNull
+        public Builder<T> addSystemId(SystemId systemId) {
+            return addSystemId(systemId.getBytes());
+        }
+
+        /**
+         * @see #addSystemId(int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addSystemId(@NonNull byte[] value) {
+            return addSystemId(BluetoothGatt.GATT_SUCCESS
+                    , 0
+                    , value);
+        }
+
+        /**
+         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addSystemId(int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mDeviceInformationServiceMockCallbackBuilder.addSystemId(responseCode, delay, value);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#removeSystemId()
+         */
+        @NonNull
+        public Builder<T> removeSystemId() {
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mDeviceInformationServiceMockCallbackBuilder.removeSystemId();
+            }
             return this;
         }
 
@@ -243,24 +304,36 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          * @return {@link BloodPressureProfileMockCallback} instance
          */
         public BloodPressureProfileMockCallback build() {
-            if (!mHasManufacturerNameString) {
-                throw new RuntimeException("no Manufacturer Name String data");
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                if (!mHasManufacturerNameString) {
+                    throw new RuntimeException("no Manufacturer Name String data");
+                }
+                if (!mHasModelNumberString) {
+                    throw new RuntimeException("no Model Number String data");
+                }
             }
-            if (!mHasModelNumberString) {
-                throw new RuntimeException("no Model Number String data");
-            }
-            return new BloodPressureProfileMockCallback(mContext, mDeviceInformationServiceMockCallbackBuilder.build(), mBloodPressureServiceMockCallbackBuilder.build());
+            return new BloodPressureProfileMockCallback(mContext
+                    , mBloodPressureServiceMockCallbackBuilder.build()
+                    , mDeviceInformationServiceMockCallbackBuilder == null ? null : mDeviceInformationServiceMockCallbackBuilder.build());
         }
 
     }
 
     /**
      * @param context                              {@link Context} instance
-     * @param deviceInformationServiceMockCallback {@link DeviceInformationServiceMockCallback} instance
      * @param bloodPressureServiceMockCallback     {@link BloodPressureServiceMockCallback} instance
+     * @param deviceInformationServiceMockCallback {@link DeviceInformationServiceMockCallback} instance
+     * @param bleServerCallbacks                   callback array
      */
-    public BloodPressureProfileMockCallback(@NonNull Context context, @NonNull DeviceInformationServiceMockCallback deviceInformationServiceMockCallback, @NonNull BloodPressureServiceMockCallback bloodPressureServiceMockCallback) {
-        super(context, true, deviceInformationServiceMockCallback, bloodPressureServiceMockCallback);
+    public BloodPressureProfileMockCallback(@NonNull Context context
+            , @NonNull BloodPressureServiceMockCallback bloodPressureServiceMockCallback
+            , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(bloodPressureServiceMockCallback, deviceInformationServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

@@ -157,12 +157,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      */
     @SuppressLint("MissingPermission")
     public synchronized void quit() {
-        if (mAdvertiseCallback != null) {
-            mBluetoothLeAdvertiser.stopAdvertising(mAdvertiseCallback);
-            mAdvertiseCallback = null;
-            mBluetoothLeAdvertiser = null;
-            mBLEServerCallbackDistributer.onAdvertisingFinished();
-        }
+        stopAdvertising();
 
         if (mBluetoothGattServer != null) {
             mBluetoothGattServer.clearServices();
@@ -577,8 +572,11 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     public synchronized boolean stopAdvertising() {
         boolean result = false;
         if (mAdvertiseCallback != null) {
-            mBluetoothLeAdvertiser.stopAdvertising(mAdvertiseCallback);
+            if (mBluetoothAdapter != null && mBluetoothAdapter.isEnabled()) {
+                mBluetoothLeAdvertiser.stopAdvertising(mAdvertiseCallback);
+            }
             mAdvertiseCallback = null;
+            mBluetoothLeAdvertiser = null;
             mBLEServerCallbackDistributer.onAdvertisingFinished();
             result = true;
         }

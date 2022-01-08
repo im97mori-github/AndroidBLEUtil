@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameString;
 import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurement;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocation;
@@ -14,7 +15,9 @@ import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.hrs.peripheral.HeartRateServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.HEART_RATE_SERVICE;
 
@@ -204,9 +207,17 @@ public class HeartRateProfileMockCallback extends AbstractProfileMockCallback {
      * @param context                              {@link Context} instance
      * @param deviceInformationServiceMockCallback {@link org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback} instance
      * @param heartRateServiceMockCallback         {@link org.im97mori.ble.service.hrs.peripheral.HeartRateServiceMockCallback} instance
+     * @param bleServerCallbacks                   callback array
      */
-    public HeartRateProfileMockCallback(@NonNull Context context, @NonNull DeviceInformationServiceMockCallback deviceInformationServiceMockCallback, @NonNull HeartRateServiceMockCallback heartRateServiceMockCallback) {
-        super(context, true, deviceInformationServiceMockCallback, heartRateServiceMockCallback);
+    public HeartRateProfileMockCallback(@NonNull Context context
+            , @NonNull DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
+            , @NonNull HeartRateServiceMockCallback heartRateServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(deviceInformationServiceMockCallback, heartRateServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

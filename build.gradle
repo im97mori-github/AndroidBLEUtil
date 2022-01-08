@@ -7,7 +7,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath 'com.android.tools.build:gradle:7.0.4'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -25,52 +25,52 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.8.4'
-ext.uploadVersion = '0.8.4'
+ext.loadVersion = '0.8.5'
+ext.uploadVersion = '0.8.5'
 
 ext.coreUtilsAndroid = [
-        artifactId         : 'ble-core-utils-android'
-        , baseModule       : "${myGroupId}:ble-core-utils:${loadVersion}"
+        artifactId  : 'ble-core-utils-android'
+        , baseModule: "${myGroupId}:ble-core-utils:${loadVersion}"
 ]
 
 ext.coreAndroid = [
-        artifactId         : 'ble-core-android'
+        artifactId: 'ble-core-android'
 ]
 
 ext.advertisingAndroid = [
-        artifactId         : 'ble-advertising-android'
-        , baseModule       : "${myGroupId}:ble-advertising:${loadVersion}"
+        artifactId  : 'ble-advertising-android'
+        , baseModule: "${myGroupId}:ble-advertising:${loadVersion}"
 ]
 
 apply from: 'descriptor.gradle'
 apply from: 'characteristic.gradle'
 
 ext.handler = [
-        artifactId         : 'ble-handler'
+        artifactId: 'ble-handler'
 ]
 
 ext.central = [
-        artifactId         : 'ble-central'
+        artifactId: 'ble-central'
 ]
 
 ext.peripheral = [
-        artifactId         : 'ble-peripheral'
+        artifactId: 'ble-peripheral'
 ]
 
 apply from: 'service.gradle'
 apply from: 'profile.gradle'
 
 ext.testUtilAndroid = [
-        artifactId         : 'ble-test-android'
-        , baseModule       : "${myGroupId}:ble-test:${loadVersion}"
+        artifactId  : 'ble-test-android'
+        , baseModule: "${myGroupId}:ble-test:${loadVersion}"
 ]
 
 ext.testPeripheral = [
-        artifactId         : 'ble-test-peripheral'
+        artifactId: 'ble-test-peripheral'
 ]
 
 ext.testCentral = [
-        artifactId         : 'ble-test-central'
+        artifactId: 'ble-test-central'
 ]
 
 ext.apiCoreConstantsAppearance = "${myGroupId}:ble-core-constants-appearance:${loadVersion}"
@@ -114,6 +114,7 @@ ext.androidxTestCore = 'androidx.test:core:1.4.0'
 ext.stackLog = 'org.im97mori:stacklog:0.0.2'
 ext.gson = 'com.google.code.gson:gson:2.8.6'
 ext.junit = 'junit:junit:4.13.2'
+ext.desugar = 'com.android.tools:desugar_jdk_libs:1.1.5'
 
 
 // check extra library version for lint
@@ -128,4 +129,5 @@ dependencies {
     checkExtraLibraryVersion 'org.im97mori:stacklog:0.0.2'
     checkExtraLibraryVersion 'com.google.code.gson:gson:2.8.6'
     checkExtraLibraryVersion 'junit:junit:4.13.2'
+    checkExtraLibraryVersion 'com.android.tools:desugar_jdk_libs:1.1.5'
 }

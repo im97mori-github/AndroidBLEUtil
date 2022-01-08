@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.blp.central;
 
+import android.bluetooth.BluetoothGattService;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -20,9 +21,12 @@ import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -89,33 +93,59 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasManufacturerNameString_00001() {
+    public void test_hasDeviceInformationService_00001() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
-        assertNull(bloodPressureProfile.hasManufacturerNameString());
+        assertNull(bloodPressureProfile.hasDeviceInformationService());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasManufacturerNameString_00002() {
+    public void test_hasDeviceInformationService_00002() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(bloodPressureProfile.hasManufacturerNameString());
+        assertNotNull(bloodPressureProfile.hasDeviceInformationService());
         bloodPressureProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_hasModelNumberString_00001() {
+    public void test_hasDeviceInformationService_00003() {
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
-        assertNull(bloodPressureProfile.hasModelNumberString());
+        bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Boolean result = bloodPressureProfile.hasDeviceInformationService();
+        bloodPressureProfile.disconnect();
+        assertNotNull(result);
+        assertFalse(result);
     }
 
     @Test
     @RequiresDevice
-    public void test_hasModelNumberString_00002() {
+    public void test_hasDeviceInformationService_00004() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
+
         BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
         bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(bloodPressureProfile.hasModelNumberString());
+        bloodPressureProfile.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        Boolean result = bloodPressureProfile.hasDeviceInformationService();
+        bloodPressureProfile.disconnect();
+        assertNotNull(result);
+        assertTrue(result);
+    }
+
+
+    @Test
+    @RequiresDevice
+    public void test_hasSystemId_00001() {
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
+        assertNull(bloodPressureProfile.hasSystemId());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_hasSystemId_00002() {
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
+        bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(bloodPressureProfile.hasSystemId());
         bloodPressureProfile.disconnect();
     }
 
@@ -173,6 +203,34 @@ public class BloodPressureProfileTest extends AbstractCentralTest {
         };
         bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
         assertNotNull(bloodPressureProfile.getModelNumberString());
+        bloodPressureProfile.disconnect();
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_getSystemId_00001() {
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback());
+        assertNull(bloodPressureProfile.getSystemId());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_getSystemId_00002() {
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
+            @Override
+            public synchronized void createServices() {
+                if (mDeviceInformationService == null) {
+                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mBloodPressureProfileCallback, null) {
+                        @Override
+                        public synchronized Integer getSystemId() {
+                            return 1;
+                        }
+                    };
+                }
+            }
+        };
+        bloodPressureProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        assertNotNull(bloodPressureProfile.getSystemId());
         bloodPressureProfile.disconnect();
     }
 

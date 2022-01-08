@@ -4,10 +4,13 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.aios.peripheral.AutomationIOServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.AUTOMATION_IO_SERVICE;
 
@@ -428,9 +431,16 @@ public class AutomationIOProfileMockCallback extends AbstractProfileMockCallback
     /**
      * @param context                         {@link Context} instance
      * @param automationIOServiceMockCallback {@link org.im97mori.ble.service.aios.peripheral.AutomationIOServiceMockCallback} instance
+     * @param bleServerCallbacks              callback array
      */
-    public AutomationIOProfileMockCallback(@NonNull Context context, @NonNull AutomationIOServiceMockCallback automationIOServiceMockCallback) {
-        super(context, true, automationIOServiceMockCallback);
+    public AutomationIOProfileMockCallback(@NonNull Context context
+            , @NonNull AutomationIOServiceMockCallback automationIOServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(automationIOServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

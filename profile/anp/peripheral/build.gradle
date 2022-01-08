@@ -16,6 +16,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,6 +30,7 @@ android {
 dependencies {
     api "${myGroupId}:${profilePeripheralAndroid.artifactId}:${loadVersion}"
     api "${myGroupId}:${serviceAnsPeripheralAndroid.artifactId}:${loadVersion}"
+    coreLibraryDesugaring desugar
     androidTestImplementation apiTestUtilAndroid
 }
 

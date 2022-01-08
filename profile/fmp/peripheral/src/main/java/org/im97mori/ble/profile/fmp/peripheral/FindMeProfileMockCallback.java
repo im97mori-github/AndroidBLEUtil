@@ -4,11 +4,14 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.ias.peripheral.ImmediateAlertServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.IMMEDIATE_ALERT_SERVICE;
 
@@ -35,7 +38,7 @@ public class FindMeProfileMockCallback extends AbstractProfileMockCallback {
         protected final ImmediateAlertServiceMockCallback.Builder<? extends ImmediateAlertServiceMockCallback> mImmediateAlertServiceMockCallbackBuilder;
 
         /**
-         * @param context                                     {@link Context} instance
+         * @param context                                  {@link Context} instance
          * @param immediateAlertServiceMockCallbackBuilder {@link org.im97mori.ble.service.ias.peripheral.ImmediateAlertServiceMockCallback.Builder} instance
          */
         public Builder(@NonNull Context context
@@ -104,10 +107,16 @@ public class FindMeProfileMockCallback extends AbstractProfileMockCallback {
     /**
      * @param context                           {@link Context} instance
      * @param immediateAlertServiceMockCallback {@link ImmediateAlertServiceMockCallback} instance
+     * @param bleServerCallbacks                callback array
      */
     public FindMeProfileMockCallback(@NonNull Context context
-            , @NonNull ImmediateAlertServiceMockCallback immediateAlertServiceMockCallback) {
-        super(context, true, immediateAlertServiceMockCallback);
+            , @NonNull ImmediateAlertServiceMockCallback immediateAlertServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(immediateAlertServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

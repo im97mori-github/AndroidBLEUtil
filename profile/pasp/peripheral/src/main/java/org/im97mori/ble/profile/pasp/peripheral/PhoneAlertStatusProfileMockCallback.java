@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.characteristic.u2a3f.AlertStatus;
 import org.im97mori.ble.characteristic.u2a40.RingerControlPoint;
@@ -15,7 +16,9 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.pass.peripheral.PhoneAlertStatusServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.PHONE_ALERT_STATUS_SERVICE;
 
@@ -150,10 +153,16 @@ public class PhoneAlertStatusProfileMockCallback extends AbstractProfileMockCall
     /**
      * @param context                             {@link Context} instance
      * @param phoneAlertStatusServiceMockCallback {@link org.im97mori.ble.service.pass.peripheral.PhoneAlertStatusServiceMockCallback} instance
+     * @param bleServerCallbacks                  callback array
      */
     public PhoneAlertStatusProfileMockCallback(@NonNull Context context
-            , @NonNull PhoneAlertStatusServiceMockCallback phoneAlertStatusServiceMockCallback) {
-        super(context, true, phoneAlertStatusServiceMockCallback);
+            , @NonNull PhoneAlertStatusServiceMockCallback phoneAlertStatusServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(phoneAlertStatusServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

@@ -1,5 +1,7 @@
 package org.im97mori.ble.characteristic.u2a36;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,8 +10,6 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
 
 /**
  * Intermediate Cuff Pressure (Characteristics UUID: 0x2A36)
@@ -64,25 +64,65 @@ public class IntermediateCuffPressureAndroid extends IntermediateCuffPressure im
     /**
      * Constructor from parameters
      *
-     * @param flags                                                         Flags
-     * @param bloodPressureMeasurementCompoundValueSystolicMmhg             Blood Pressure Measurement Compound Value - Systolic (mmHg)
-     * @param bloodPressureMeasurementCompoundValueDiastolicMmhg            Blood Pressure Measurement Compound Value - Diastolic (mmHg)
-     * @param bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg Blood Pressure Measurement Compound Value - Mean Arterial Pressure (mmHg)
-     * @param bloodPressureMeasurementCompoundValueSystolicKpa              Blood Pressure Measurement Compound Value - Systolic (kPa)
-     * @param bloodPressureMeasurementCompoundValueDiastolicKpa             Blood Pressure Measurement Compound Value - Diastolic (kPa)
-     * @param bloodPressureMeasurementCompoundValueMeanArterialPressureKpa  Blood Pressure Measurement Compound Value - Mean Arterial Pressure (kPa)
-     * @param year                                                          Year
-     * @param month                                                         Month
-     * @param day                                                           Day
-     * @param hours                                                         Hours
-     * @param minutes                                                       Minutes
-     * @param seconds                                                       Seconds
-     * @param pulseRate                                                     Pulse Rate
-     * @param userId                                                        User ID
-     * @param measurementStatus                                             Measurement Status
+     * @param flags                                                           Flags
+     * @param intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg    Intermediate
+     *                                                                        Cuff
+     *                                                                        Pressure
+     *                                                                        Compound
+     *                                                                        Value
+     *                                                                        -
+     *                                                                        Current
+     *                                                                        Cuff
+     *                                                                        Pressure
+     *                                                                        (mmHg)
+     * @param intermediateCuffPressureCompoundValueCurrentCuffPressureKpa     Intermediate
+     *                                                                        Cuff
+     *                                                                        Pressure
+     *                                                                        Compound
+     *                                                                        Value
+     *                                                                        -
+     *                                                                        Current
+     *                                                                        Cuff
+     *                                                                        Pressure
+     *                                                                        (kPa)
+     * @param intermediateCuffPressureCompoundValueDiastolicUnused            Intermediate
+     *                                                                        Cuff
+     *                                                                        Pressure
+     *                                                                        Compound
+     *                                                                        Value
+     *                                                                        -
+     *                                                                        Diastolic
+     *                                                                        (unused)
+     * @param intermediateCuffPressureCompoundValueMeanArterialPressureUnused Intermediate
+     *                                                                        Cuff
+     *                                                                        Pressure
+     *                                                                        Compound
+     *                                                                        Value
+     *                                                                        - Mean
+     *                                                                        Arterial
+     *                                                                        Pressure
+     *                                                                        (unused)
+     * @param year                                                            Year
+     * @param month                                                           Month
+     * @param day                                                             Day
+     * @param hours                                                           Hours
+     * @param minutes                                                         Minutes
+     * @param seconds                                                         Seconds
+     * @param pulseRate                                                       Pulse
+     *                                                                        Rate
+     * @param userId                                                          User
+     *                                                                        ID
+     * @param measurementStatus                                               Measurement
+     *                                                                        Status
      */
-    public IntermediateCuffPressureAndroid(int flags, @NonNull IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg, @NonNull IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicMmhg, @NonNull IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, @NonNull IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicKpa, @NonNull IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicKpa, @NonNull IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureKpa, int year, int month, int day, int hours, int minutes, int seconds, IEEE_11073_20601_SFLOAT pulseRate, int userId, byte[] measurementStatus) {
-        super(flags, bloodPressureMeasurementCompoundValueSystolicMmhg, bloodPressureMeasurementCompoundValueDiastolicMmhg, bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bloodPressureMeasurementCompoundValueSystolicKpa, bloodPressureMeasurementCompoundValueDiastolicKpa, bloodPressureMeasurementCompoundValueMeanArterialPressureKpa, year, month, day, hours, minutes, seconds, pulseRate, userId, measurementStatus);
+    public IntermediateCuffPressureAndroid(int flags,
+                                    @NonNull IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg,
+                                    @NonNull IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureKpa,
+                                    @NonNull IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueDiastolicUnused,
+                                    @NonNull IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueMeanArterialPressureUnused, int year,
+                                    int month, int day, int hours, int minutes, int seconds, IEEE_11073_20601_SFLOAT pulseRate, int userId,
+                                    byte[] measurementStatus) {
+        super(flags, intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg, intermediateCuffPressureCompoundValueCurrentCuffPressureKpa, intermediateCuffPressureCompoundValueDiastolicUnused, intermediateCuffPressureCompoundValueMeanArterialPressureUnused, year, month, day, hours, minutes, seconds, pulseRate, userId, measurementStatus);
     }
 
     /**

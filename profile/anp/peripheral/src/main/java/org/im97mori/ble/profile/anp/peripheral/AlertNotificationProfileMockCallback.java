@@ -6,12 +6,15 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategory;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategory;
 import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.ans.peripheral.AlertNotificationServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
 
@@ -262,9 +265,16 @@ public class AlertNotificationProfileMockCallback extends AbstractProfileMockCal
     /**
      * @param context                              {@link Context} instance
      * @param alertNotificationServiceMockCallback {@link org.im97mori.ble.service.ans.peripheral.AlertNotificationServiceMockCallback} instance
+     * @param bleServerCallbacks                   callback array
      */
-    public AlertNotificationProfileMockCallback(@NonNull Context context, @NonNull AlertNotificationServiceMockCallback alertNotificationServiceMockCallback) {
-        super(context, true, alertNotificationServiceMockCallback);
+    public AlertNotificationProfileMockCallback(@NonNull Context context
+            , @NonNull AlertNotificationServiceMockCallback alertNotificationServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(alertNotificationServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

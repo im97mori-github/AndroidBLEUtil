@@ -6,6 +6,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a11.TimeWithDst;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
@@ -18,7 +19,9 @@ import org.im97mori.ble.service.cts.peripheral.CurrentTimeServiceMockCallback;
 import org.im97mori.ble.service.ndcs.peripheral.NextDstChangeServiceMockCallback;
 import org.im97mori.ble.service.rtus.peripheral.ReferenceTimeUpdateServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 /**
  * Time Profile for Peripheral
@@ -278,12 +281,18 @@ public class TimeProfileMockCallback extends AbstractProfileMockCallback {
      * @param currentTimeServiceMockCallback         {@link CurrentTimeServiceMockCallback} instance
      * @param nextDstChangeServiceMockCallback       {@link NextDstChangeServiceMockCallback} instance
      * @param referenceTimeUpdateServiceMockCallback {@link ReferenceTimeUpdateServiceMockCallback} instance
+     * @param bleServerCallbacks                     callback array
      */
     public TimeProfileMockCallback(@NonNull Context context
             , @NonNull CurrentTimeServiceMockCallback currentTimeServiceMockCallback
             , @Nullable NextDstChangeServiceMockCallback nextDstChangeServiceMockCallback
-            , @Nullable ReferenceTimeUpdateServiceMockCallback referenceTimeUpdateServiceMockCallback) {
-        super(context, true, currentTimeServiceMockCallback, nextDstChangeServiceMockCallback, referenceTimeUpdateServiceMockCallback);
+            , @Nullable ReferenceTimeUpdateServiceMockCallback referenceTimeUpdateServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(currentTimeServiceMockCallback, nextDstChangeServiceMockCallback, referenceTimeUpdateServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

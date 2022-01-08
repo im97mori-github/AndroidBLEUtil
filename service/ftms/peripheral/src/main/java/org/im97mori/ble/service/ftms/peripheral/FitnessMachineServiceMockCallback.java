@@ -1251,6 +1251,14 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
     protected BluetoothDevice mCurrentControlDevice;
 
     /**
+     * @param serviceData   {@link ServiceData} instance
+     * @param isFallback fallback flag
+     */
+    public FitnessMachineServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(new MockData(Collections.singletonList(serviceData)), isFallback);
+    }
+
+    /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
      */

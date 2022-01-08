@@ -612,12 +612,10 @@ public class BlpCallbackSample implements BloodPressureProfileCallback {
     @Override
     public void onIntermediateCuffPressureNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull IntermediateCuffPressureAndroid intermediateCuffPressureAndroid) {
         callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat()
+                , intermediateCuffPressureAndroid.getIntermediateCuffPressureCompoundValueCurrentCuffPressureMmhg().getSfloat()
+                , intermediateCuffPressureAndroid.getIntermediateCuffPressureCompoundValueCurrentCuffPressureKpa().getSfloat()
+                , intermediateCuffPressureAndroid.getIntermediateCuffPressureCompoundValueDiastolicUnused().getSfloat()
+                , intermediateCuffPressureAndroid.getIntermediateCuffPressureCompoundValueMeanArterialPressureUnused().getSfloat()
                 , intermediateCuffPressureAndroid.getYear()
                 , intermediateCuffPressureAndroid.getMonth()
                 , intermediateCuffPressureAndroid.getDay()

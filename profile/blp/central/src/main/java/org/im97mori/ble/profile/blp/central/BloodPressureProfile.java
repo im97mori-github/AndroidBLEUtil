@@ -1,8 +1,12 @@
 package org.im97mori.ble.profile.blp.central;
 
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattService;
 import android.content.Context;
 import android.os.Build;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +19,8 @@ import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
 import org.im97mori.ble.service.bls.central.BloodPressureService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
+
+import java.util.List;
 
 /**
  * Blood Pressure Profile for Central
@@ -37,6 +43,11 @@ public class BloodPressureProfile extends AbstractCentralProfile {
     protected BloodPressureService mBloodPressureService;
 
     /**
+     * {@code true}:Device has User Data Service, {@code false}:no User Data Service
+     */
+    private boolean mHasDeviceInformationService;
+
+    /**
      * @param context                      {@link Context} instance
      * @param bloodPressureProfileCallback {@link BloodPressureProfileCallback} instance
      */
@@ -46,25 +57,25 @@ public class BloodPressureProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see DeviceInformationService#hasManufacturerNameString()
+     * @return {@code true}:Device has Device Information Service, {@code false}:no Device Information Service
      */
     @Nullable
-    public synchronized Boolean hasManufacturerNameString() {
+    public synchronized Boolean hasDeviceInformationService() {
         Boolean result = null;
         if (mDeviceInformationService != null) {
-            result = mDeviceInformationService.hasManufacturerNameString();
+            result = mHasDeviceInformationService;
         }
         return result;
     }
 
     /**
-     * @see DeviceInformationService#hasModelNumberString()
+     * @see DeviceInformationService#hasSystemId()
      */
     @Nullable
-    public synchronized Boolean hasModelNumberString() {
+    public synchronized Boolean hasSystemId() {
         Boolean result = null;
         if (mDeviceInformationService != null) {
-            result = mDeviceInformationService.hasModelNumberString();
+            result = mDeviceInformationService.hasSystemId();
         }
         return result;
     }
@@ -89,6 +100,18 @@ public class BloodPressureProfile extends AbstractCentralProfile {
         Integer taskId = null;
         if (mDeviceInformationService != null) {
             taskId = mDeviceInformationService.getModelNumberString();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see DeviceInformationService#getSystemId()
+     */
+    @Nullable
+    public synchronized Integer getSystemId() {
+        Integer taskId = null;
+        if (mDeviceInformationService != null) {
+            taskId = mDeviceInformationService.getSystemId();
         }
         return taskId;
     }
@@ -198,6 +221,15 @@ public class BloodPressureProfile extends AbstractCentralProfile {
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public synchronized void disconnect() {
+        mHasDeviceInformationService = false;
+        super.disconnect();
+    }
+
+    /**
      * create {@link DeviceInformationService} and {@link BloodPressureService}
      *
      * @see #connect(BluetoothDevice)
@@ -221,6 +253,21 @@ public class BloodPressureProfile extends AbstractCentralProfile {
         super.quit();
         mDeviceInformationService = null;
         mBloodPressureService = null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public synchronized void onDiscoverServiceSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull List<BluetoothGattService> serviceList, @Nullable Bundle argument) {
+        if (bluetoothDevice.equals(mCurrentBluetoothDevice)) {
+            for (BluetoothGattService bluetoothGattService : serviceList) {
+                if (DEVICE_INFORMATION_SERVICE.equals(bluetoothGattService.getUuid())) {
+                    mHasDeviceInformationService = true;
+                }
+            }
+        }
+        super.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, argument);
     }
 
     /**

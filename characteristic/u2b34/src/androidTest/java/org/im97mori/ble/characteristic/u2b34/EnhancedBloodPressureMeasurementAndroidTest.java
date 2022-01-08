@@ -435,22 +435,22 @@ public class EnhancedBloodPressureMeasurementAndroidTest {
     public void test_constructor_00601() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(
-                new byte[]{2, 3, 4, 5}, 0);
+                new byte[]{2, 3}, 0);
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(
-                new byte[]{6, 7, 8, 9}, 0);
+                new byte[]{4, 5}, 0);
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(
-                new byte[]{10, 11, 12, 13}, 0);
+                new byte[]{6, 7}, 0);
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(
-                new byte[]{14, 15, 16, 17}, 0);
+                new byte[]{8, 9}, 0);
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(
-                new byte[]{18, 19, 20, 21}, 0);
+                new byte[]{10, 11}, 0);
         IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(
-                new byte[]{22, 23, 24, 25}, 0);
-        long timeStamp = 26;
-        IEEE_11073_20601_SFLOAT pulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{27, 28, 29, 30}, 0);
-        int userId = 31;
-        byte[] measurementStatus = new byte[]{32};
-        long userFacingTime = 33;
+                new byte[]{12, 13}, 0);
+        long timeStamp = 14;
+        IEEE_11073_20601_SFLOAT pulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{15, 16}, 0);
+        int userId = 17;
+        byte[] measurementStatus = new byte[]{18};
+        long userFacingTime = 19;
 
         EnhancedBloodPressureMeasurementAndroid result1 = new EnhancedBloodPressureMeasurementAndroid(flags,
                 bloodPressureMeasurementCompoundValueSystolicMmhg, bloodPressureMeasurementCompoundValueDiastolicMmhg,

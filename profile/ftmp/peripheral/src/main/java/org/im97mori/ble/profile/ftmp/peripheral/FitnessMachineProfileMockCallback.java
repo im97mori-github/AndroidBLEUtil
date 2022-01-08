@@ -6,6 +6,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameString;
 import org.im97mori.ble.characteristic.u2a80.Age;
@@ -42,7 +43,9 @@ import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallb
 import org.im97mori.ble.service.ftms.peripheral.FitnessMachineServiceMockCallback;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.FITNESS_MACHINE_SERVICE;
 
@@ -1440,12 +1443,18 @@ public class FitnessMachineProfileMockCallback extends AbstractProfileMockCallba
      * @param fitnessMachineServiceMockCallback    {@link FitnessMachineServiceMockCallback} instance
      * @param deviceInformationServiceMockCallback {@link DeviceInformationServiceMockCallback} instance
      * @param userDataServiceMockCallback          {@link UserDataServiceMockCallback} instance
+     * @param bleServerCallbacks                   callback array
      */
     public FitnessMachineProfileMockCallback(@NonNull Context context
             , @NonNull FitnessMachineServiceMockCallback fitnessMachineServiceMockCallback
             , @Nullable UserDataServiceMockCallback userDataServiceMockCallback
-            , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback) {
-        super(context, true, fitnessMachineServiceMockCallback, userDataServiceMockCallback, deviceInformationServiceMockCallback);
+            , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(fitnessMachineServiceMockCallback, userDataServiceMockCallback, deviceInformationServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

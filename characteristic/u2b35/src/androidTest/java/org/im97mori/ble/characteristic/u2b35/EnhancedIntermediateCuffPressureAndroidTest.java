@@ -384,14 +384,14 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
     public void test_constructor_00601() {
         int flags = 1;
         IEEE_11073_20601_SFLOAT intermediateCuffPressureValueMmhg = new IEEE_11073_20601_SFLOAT(
-                new byte[]{2, 3, 4, 5}, 0);
+                new byte[]{2, 3}, 0);
         IEEE_11073_20601_SFLOAT intermediateCuffPressureValueKpa = new IEEE_11073_20601_SFLOAT(
-                new byte[]{14, 15, 16, 17}, 0);
-        long timeStamp = 26;
-        IEEE_11073_20601_SFLOAT pulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{27, 28, 29, 30}, 0);
-        int userId = 31;
-        byte[] measurementStatus = new byte[]{32};
-        long userFacingTime = 33;
+                new byte[]{4, 5}, 0);
+        long timeStamp = 6;
+        IEEE_11073_20601_SFLOAT pulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{7, 8}, 0);
+        int userId = 9;
+        byte[] measurementStatus = new byte[]{10};
+        long userFacingTime = 11;
 
         EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(flags,
                 intermediateCuffPressureValueMmhg, intermediateCuffPressureValueKpa, timeStamp, pulseRate, userId,

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a1c.TemperatureMeasurement;
 import org.im97mori.ble.characteristic.u2a1d.TemperatureType;
 import org.im97mori.ble.characteristic.u2a1e.IntermediateTemperature;
@@ -18,7 +19,9 @@ import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.hts.peripheral.HealthThermometerServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.HEALTH_THERMOMETER_SERVICE;
 
@@ -356,9 +359,17 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
      * @param context                              {@link Context} instance
      * @param deviceInformationServiceMockCallback {@link DeviceInformationServiceMockCallback} instance
      * @param healthThermometerServiceMockCallback {@link org.im97mori.ble.service.hts.peripheral.HealthThermometerServiceMockCallback} instance
+     * @param bleServerCallbacks                   callback array
      */
-    public HealthThermometerProfileMockCallback(@NonNull Context context, @NonNull DeviceInformationServiceMockCallback deviceInformationServiceMockCallback, @NonNull HealthThermometerServiceMockCallback healthThermometerServiceMockCallback) {
-        super(context, true, deviceInformationServiceMockCallback, healthThermometerServiceMockCallback);
+    public HealthThermometerProfileMockCallback(@NonNull Context context
+            , @NonNull DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
+            , @NonNull HealthThermometerServiceMockCallback healthThermometerServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(deviceInformationServiceMockCallback, healthThermometerServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

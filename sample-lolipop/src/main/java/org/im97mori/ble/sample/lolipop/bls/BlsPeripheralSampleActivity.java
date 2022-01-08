@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.characteristic.core.BloodPressureMeasurementUtils;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 import org.im97mori.ble.characteristic.u2a35.BloodPressureMeasurement;
@@ -99,11 +100,9 @@ public class BlsPeripheralSampleActivity extends BaseActivity implements View.On
                 .addIntermediateCuffPressure(new IntermediateCuffPressure(
                         BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_KPA | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT | BloodPressureMeasurementUtils.FLAG_USER_ID_NOT_PRESENT | BloodPressureMeasurementUtils.FLAG_MEASUREMENT_STATUS_NOT_PRESENT
                         , new IEEE_11073_20601_SFLOAT(new byte[2], 0)
-                        , new IEEE_11073_20601_SFLOAT(new byte[2], 0)
-                        , new IEEE_11073_20601_SFLOAT(new byte[2], 0)
                         , new IEEE_11073_20601_SFLOAT(new byte[]{0x6e, 0x00}, 0)
-                        , new IEEE_11073_20601_SFLOAT(new byte[]{0x5a, 0x00}, 0)
-                        , new IEEE_11073_20601_SFLOAT(new byte[]{0x64, 0x00}, 0)
+                        , new IEEE_11073_20601_SFLOAT(new byte[]{(byte) BLEUtils.SFLOAT_NAN, (byte) (BLEUtils.SFLOAT_NAN >> 8)}, 0)
+                        , new IEEE_11073_20601_SFLOAT(new byte[]{(byte) BLEUtils.SFLOAT_NAN, (byte) (BLEUtils.SFLOAT_NAN >> 8)}, 0)
                         , 0
                         , 0
                         , 0

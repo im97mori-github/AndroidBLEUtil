@@ -118,6 +118,10 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
             mBloodPressureProfile.syncBondedDevice();
             mBluetoothDevice = null;
             updateLayout();
+        } else if (R.id.has_device_information_service == item.getItemId()) {
+            addRow("hasUserDataService",  mBloodPressureProfile.hasDeviceInformationService());
+        } else if (R.id.has_system_id == item.getItemId()) {
+            addRow("hasSystemId",  mBloodPressureProfile.hasSystemId());
         } else if (R.id.read_manufacturer_name == item.getItemId()) {
             mBloodPressureProfile.getManufacturerNameString();
         } else if (R.id.read_model_number == item.getItemId()) {
@@ -126,6 +130,8 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
             mBloodPressureProfile.startBloodPressureMeasurementIndication();
         } else if (R.id.stop_indicate_blood_pressure_mesurement == item.getItemId()) {
             mBloodPressureProfile.stopBloodPressureMeasurementIndication();
+        } else if (R.id.has_intermediate_cuff_pressure == item.getItemId()) {
+            addRow("isIntermediateCuffPressureSupported",  mBloodPressureProfile.isIntermediateCuffPressureSupported());
         } else if (R.id.start_notificate_intermediate_cuff_pressure == item.getItemId()) {
             mBloodPressureProfile.startIntermediateCuffPressureNotification();
         } else if (R.id.stop_notificate_intermediate_cuff_pressure == item.getItemId()) {

@@ -7,6 +7,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameString;
@@ -21,7 +22,9 @@ import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.LOCATION_AND_NAVIGATION_SERVICE;
 
@@ -424,12 +427,18 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
      * @param locationAndNavigationServiceMockCallback {@link LocationAndNavigationServiceMockCallback} instance
      * @param deviceInformationServiceMockCallback     {@link DeviceInformationServiceMockCallback} instance
      * @param batteryServiceMockCallback               {@link BatteryServiceMockCallback} instance
+     * @param bleServerCallbacks                       callback array
      */
     public LocationAndNavigationProfileMockCallback(@NonNull Context context
             , @NonNull LocationAndNavigationServiceMockCallback locationAndNavigationServiceMockCallback
             , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
-            , @Nullable BatteryServiceMockCallback batteryServiceMockCallback) {
-        super(context, true, deviceInformationServiceMockCallback, batteryServiceMockCallback, locationAndNavigationServiceMockCallback);
+            , @Nullable BatteryServiceMockCallback batteryServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(deviceInformationServiceMockCallback, batteryServiceMockCallback, locationAndNavigationServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

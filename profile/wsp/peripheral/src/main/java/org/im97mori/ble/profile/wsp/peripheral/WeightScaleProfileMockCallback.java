@@ -7,6 +7,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
@@ -30,7 +31,9 @@ import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallb
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 import org.im97mori.ble.service.wss.peripheral.WeightScaleServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.WEIGHT_SCALE_SERVICE;
 
@@ -911,14 +914,20 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
      * @param userDataServiceMockCallback          {@link UserDataServiceMockCallback} instance
      * @param batteryServiceMockCallback           {@link BatteryServiceMockCallback} instance
      * @param currentTimeServiceMockCallback       {@link CurrentTimeServiceMockCallback} instance
+     * @param bleServerCallbacks                   callback array
      */
     public WeightScaleProfileMockCallback(@NonNull Context context
             , @NonNull WeightScaleServiceMockCallback weightScaleServiceMockCallback
             , @NonNull DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
             , @Nullable UserDataServiceMockCallback userDataServiceMockCallback
             , @Nullable BatteryServiceMockCallback batteryServiceMockCallback
-            , @Nullable CurrentTimeServiceMockCallback currentTimeServiceMockCallback) {
-        super(context, true, weightScaleServiceMockCallback, deviceInformationServiceMockCallback, userDataServiceMockCallback, batteryServiceMockCallback, currentTimeServiceMockCallback);
+            , @Nullable CurrentTimeServiceMockCallback currentTimeServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(weightScaleServiceMockCallback, deviceInformationServiceMockCallback, userDataServiceMockCallback, batteryServiceMockCallback, currentTimeServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

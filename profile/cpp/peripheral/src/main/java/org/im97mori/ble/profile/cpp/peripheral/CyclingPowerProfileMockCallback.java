@@ -7,6 +7,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameString;
@@ -21,7 +22,9 @@ import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.service.cps.peripheral.CyclingPowerServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.CYCLING_POWER_SERVICE;
 
@@ -469,8 +472,13 @@ public class CyclingPowerProfileMockCallback extends AbstractProfileMockCallback
     public CyclingPowerProfileMockCallback(@NonNull Context context
             , @NonNull CyclingPowerServiceMockCallback cyclingPowerServiceMockCallback
             , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
-            , @Nullable BatteryServiceMockCallback batteryServiceMockCallback) {
-        super(context, true, cyclingPowerServiceMockCallback, deviceInformationServiceMockCallback, batteryServiceMockCallback);
+            , @Nullable BatteryServiceMockCallback batteryServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(cyclingPowerServiceMockCallback, deviceInformationServiceMockCallback, batteryServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

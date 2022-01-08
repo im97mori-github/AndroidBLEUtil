@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
 import org.im97mori.ble.profile.peripheral.AbstractProfileMockCallback;
@@ -11,7 +12,9 @@ import org.im97mori.ble.service.ias.peripheral.ImmediateAlertServiceMockCallback
 import org.im97mori.ble.service.lls.peripheral.LinkLossServiceMockCallback;
 import org.im97mori.ble.service.tps.peripheral.TxPowerServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.LINK_LOSS_SERVICE;
 
@@ -212,12 +215,18 @@ public class ProximityProfileMockCallback extends AbstractProfileMockCallback {
      * @param linkLossServiceMockCallback       {@link LinkLossServiceMockCallback} instance
      * @param immediateAlertServiceMockCallback {@link ImmediateAlertServiceMockCallback} instance
      * @param txPowerServiceMockCallback        {@link TxPowerServiceMockCallback} instance
+     * @param bleServerCallbacks                callback array
      */
     public ProximityProfileMockCallback(@NonNull Context context
             , @NonNull LinkLossServiceMockCallback linkLossServiceMockCallback
             , @NonNull ImmediateAlertServiceMockCallback immediateAlertServiceMockCallback
-            , @NonNull TxPowerServiceMockCallback txPowerServiceMockCallback) {
-        super(context, true, linkLossServiceMockCallback, immediateAlertServiceMockCallback, txPowerServiceMockCallback);
+            , @NonNull TxPowerServiceMockCallback txPowerServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(linkLossServiceMockCallback, immediateAlertServiceMockCallback, txPowerServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**

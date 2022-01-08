@@ -1092,6 +1092,14 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
     protected final Map<Pair<UUID, Integer>, Long> mLastNotifyMap = new HashMap<>();
 
     /**
+     * @param serviceData   {@link ServiceData} instance
+     * @param isFallback fallback flag
+     */
+    public AutomationIOServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(new MockData(Collections.singletonList(serviceData)), isFallback);
+    }
+
+    /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
      */

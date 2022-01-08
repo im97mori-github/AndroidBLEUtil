@@ -8,6 +8,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameString;
@@ -43,7 +44,9 @@ import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.ess.peripheral.EnvironmentalSensingServiceMockCallback;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.im97mori.ble.constants.ServiceUUID.ENVIRONMENTAL_SENSING_SERVICE;
 
@@ -3465,12 +3468,18 @@ public class EnvironmentalSensingProfileMockCallback extends AbstractProfileMock
      * @param environmentalSensingServiceMockCallback {@link org.im97mori.ble.service.ess.peripheral.EnvironmentalSensingServiceMockCallback} instance
      * @param deviceInformationServiceMockCallback    {@link org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback} instance
      * @param batteryServiceMockCallback              {@link org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback} instance
+     * @param bleServerCallbacks                      callback array
      */
     public EnvironmentalSensingProfileMockCallback(@NonNull Context context
             , @NonNull EnvironmentalSensingServiceMockCallback environmentalSensingServiceMockCallback
             , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
-            , @Nullable BatteryServiceMockCallback batteryServiceMockCallback) {
-        super(context, true, environmentalSensingServiceMockCallback, deviceInformationServiceMockCallback, batteryServiceMockCallback);
+            , @Nullable BatteryServiceMockCallback batteryServiceMockCallback
+            , @NonNull BLEServerCallback... bleServerCallbacks) {
+        super(context
+                , true
+                , Stream.concat(Arrays.stream(bleServerCallbacks)
+                        , Stream.of(environmentalSensingServiceMockCallback, deviceInformationServiceMockCallback, batteryServiceMockCallback))
+                        .toArray(BLEServerCallback[]::new));
     }
 
     /**
