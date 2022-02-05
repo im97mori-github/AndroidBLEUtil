@@ -48,7 +48,7 @@ afterEvaluate {
                 groupId = myGroupId
                 artifactId = target['artifactId']
                 version = uploadVersion
-                artifact(sourcesJar)
+                artifact sourcesJar
                 pom {
                     name = 'BLE Core Utility for Android'
                     url = 'https://github.com/im97mori-github/AndroidBLEUtil'

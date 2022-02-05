@@ -27,16 +27,13 @@ dependencies {
     api target['baseModule']
     api apiCoreUtilsAndroid
     api androidxAnnotation
-    androidTestImplementation apiTestUtilAndroid
+    testImplementation apiTestUtilAndroid
+    testImplementation robolectric
 }
 
 task sourcesJar(type: Jar) {
     archiveClassifier.set('sources')
     from android.sourceSets.main.java.srcDirs
-}
-
-artifacts {
-    archives  sourcesJar
 }
 
 afterEvaluate {
@@ -47,7 +44,7 @@ afterEvaluate {
                 groupId = myGroupId
                 artifactId = target['artifactId']
                 version = uploadVersion
-//                artifact(sourcesJar)
+                artifact sourcesJar
                 pom {
                     name = 'BLE Core Utility for Android'
                     url = 'https://github.com/im97mori-github/AndroidBLEUtil'

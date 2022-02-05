@@ -1,4 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+//plugins {
+//    id 'com.android.application' version '7.1.0' apply false
+//    id 'com.android.library' version '7.1.0' apply false
+//}
 
 buildscript {
     repositories {
@@ -25,8 +29,8 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 31
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.8.5'
-ext.uploadVersion = '0.8.5'
+ext.loadVersion = '0.8.6'
+ext.uploadVersion = '0.8.6'
 
 ext.coreUtilsAndroid = [
         artifactId  : 'ble-core-utils-android'
@@ -115,6 +119,7 @@ ext.stackLog = 'org.im97mori:stacklog:0.0.2'
 ext.gson = 'com.google.code.gson:gson:2.8.6'
 ext.junit = 'junit:junit:4.13.2'
 ext.desugar = 'com.android.tools:desugar_jdk_libs:1.1.5'
+ext.robolectric = 'org.robolectric:robolectric:4.6'
 
 
 // check extra library version for lint
@@ -130,4 +135,5 @@ dependencies {
     checkExtraLibraryVersion 'com.google.code.gson:gson:2.8.6'
     checkExtraLibraryVersion 'junit:junit:4.13.2'
     checkExtraLibraryVersion 'com.android.tools:desugar_jdk_libs:1.1.5'
+    checkExtraLibraryVersion 'org.robolectric:robolectric:4.6'
 }

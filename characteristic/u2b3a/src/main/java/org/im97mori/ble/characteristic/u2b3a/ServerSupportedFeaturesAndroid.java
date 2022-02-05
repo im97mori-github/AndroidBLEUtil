@@ -10,10 +10,11 @@ import org.im97mori.ble.ByteArrayCreater;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SERVER_SUPPORTED_FEATURES_CHARACTERISTIC;
 
+import java.util.List;
+
 /**
  * Server Supported Features (Characteristics UUID: 0x2B3A)
  */
-// TODO
 @SuppressWarnings({"WeakerAccess"})
 public class ServerSupportedFeaturesAndroid extends ServerSupportedFeatures implements Parcelable {
 
@@ -59,6 +60,15 @@ public class ServerSupportedFeaturesAndroid extends ServerSupportedFeatures impl
      */
     public ServerSupportedFeaturesAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param serverSupportedFeaturesList Server Supported Features List
+     */
+    public ServerSupportedFeaturesAndroid(@NonNull List<Integer> serverSupportedFeaturesList) {
+        super(serverSupportedFeaturesList);
     }
 
     /**
